@@ -1,2 +1,2 @@
-FROM wordpress:php8.0-apache
+FROM bitnami/wordpress-nginx
 COPY files/ /var/www/html
