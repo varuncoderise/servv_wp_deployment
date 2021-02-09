@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<title>CodeRise - Cloud, DevOps, Shopify, API, Mobile &amp; Web Development |</title>
+<!-- This site is optimized with the Yoast SEO plugin v6.0 - https://yoast.com/wordpress/plugins/seo/ -->
+<link rel="canonical" href="https://blog.coderise.io/" />
+<link rel="next" href="https://blog.coderise.io/page/2/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="CodeRise - Cloud, DevOps, Shopify, API, Mobile &amp; Web Development |" />
+<meta property="og:url" content="https://blog.coderise.io/" />
+<meta property="og:site_name" content="CodeRise - Cloud, DevOps, Shopify, API, Mobile  &amp; Web Development" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CodeRise - Cloud, DevOps, Shopify, API, Mobile &amp; Web Development |" />
+<meta name="twitter:site" content="@coderiseio" />
+<script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"WebSite","@id":"#website","url":"https:\/\/blog.coderise.io\/","name":"Kubernetes Docker Consulting | DevOps Cloud Consulting","potentialAction":{"@type":"SearchAction","target":"https:\/\/blog.coderise.io\/?s={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type='application/ld+json'>{"@context":"http:\/\/schema.org","@type":"Organization","url":"https:\/\/blog.coderise.io\/","sameAs":["https:\/\/www.linkedin.com\/company\/24979134\/admin\/updates\/","https:\/\/twitter.com\/coderiseio"],"@id":"#organization","name":"codeRISEIO","logo":"https:\/\/coderise.io\/wp-content\/uploads\/2017\/12\/CodeRise-e1513546647450.png"}</script>
+<!-- / Yoast SEO plugin. -->
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="CodeRise - Cloud, DevOps, Shopify, API, Mobile  &amp; Web Development &raquo; Feed" href="https://blog.coderise.io/feed/" />
+<link rel="alternate" type="application/rss+xml" title="CodeRise - Cloud, DevOps, Shopify, API, Mobile  &amp; Web Development &raquo; Comments Feed" href="https://blog.coderise.io/comments/feed/" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.coderise.io\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.11"}};
+!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+display: inline !important;
+border: none !important;
+box-shadow: none !important;
+height: 1em !important;
+width: 1em !important;
+margin: 0 .07em !important;
+vertical-align: -0.1em !important;
+background: none !important;
+padding: 0 !important;
+}
+</style>
+<!-- <link rel='stylesheet' id='contact-form-7-css'  href='https://blog.coderise.io/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.9.2' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='stm-stm-css'  href='https://blog.coderise.io/wp-content/uploads/stm_fonts/stm/stm.css?ver=1.0' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='spacexchimp_p010-frontend-css-css'  href='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/css/frontend.css?ver=4.9.11' type='text/css' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="//blog.coderise.io/wp-content/cache/wpfc-minified/5d4cc7c43f14244fce0496f44d5872c9/1609646883index.css" media="all"/>
+<style id='spacexchimp_p010-frontend-css-inline-css' type='text/css'>
+.CodeMirror {
+height: 100% !important;
+}
+</style>
+<!-- <link rel='stylesheet' id='spacexchimp_p010-codemirror-css-css'  href='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/codemirror.css?ver=4.9.11' type='text/css' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="//blog.coderise.io/wp-content/cache/wpfc-minified/be4f26a88014952ccdbaad7b04be3a18/1609646883index.css" media="all"/>
+<!-- <link rel='stylesheet' id='tp_twitter_plugin_css-css'  href='https://blog.coderise.io/wp-content/plugins/recent-tweets-widget/tp_twitter_plugin.css?ver=1.0' type='text/css' media='screen' /> -->
+<link rel="stylesheet" type="text/css" href="//blog.coderise.io/wp-content/cache/wpfc-minified/5e0db1277eafbec6676c4e14ec1d9b3f/1609646883index.css" media="screen"/>
+<!-- <link rel='stylesheet' id='rs-plugin-settings-css'  href='https://blog.coderise.io/wp-content/plugins/revslider/public/assets/css/settings.css?ver=5.4.6.3.1' type='text/css' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="//blog.coderise.io/wp-content/cache/wpfc-minified/abd2cb04ecc4b2f9007e7e074a400e58/1609646883index.css" media="all"/>
+<style id='rs-plugin-settings-inline-css' type='text/css'>
+#rs-demo-id {}
+</style>
+<link rel='stylesheet' id='contentberg-fonts-css'  href='https://fonts.googleapis.com/css?family=Roboto%3A400%2C500%2C700%7CPT+Serif%3A400%2C400i%2C600%7CIBM+Plex+Serif%3A500' type='text/css' media='all' />
+<!-- <link rel='stylesheet' id='contentberg-core-css'  href='https://blog.coderise.io/wp-content/themes/contentberg/style.css?ver=1.9.0' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='contentberg-lightbox-css'  href='https://blog.coderise.io/wp-content/themes/contentberg/css/lightbox.css?ver=1.9.0' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='font-awesome-css'  href='https://blog.coderise.io/wp-content/plugins/js_composer/assets/lib/bower/font-awesome/css/font-awesome.min.css?ver=5.4.5' type='text/css' media='all' /> -->
+<!-- <link rel='stylesheet' id='addtoany-css'  href='https://blog.coderise.io/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.14' type='text/css' media='all' /> -->
+<link rel="stylesheet" type="text/css" href="//blog.coderise.io/wp-content/cache/wpfc-minified/5ce01ef9325cd41129c64d8d1aadada5/1609646883index.css" media="all"/>
+<script src='//blog.coderise.io/wp-content/cache/wpfc-minified/1a0b944ee509a741377b304a14300d21/1609646883index.js' type="text/javascript"></script>
+<!-- <script type='text/javascript' src='https://blog.coderise.io/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script> -->
+<!-- <script type='text/javascript' src='https://blog.coderise.io/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script> -->
+<!-- <script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.0'></script> -->
+<!-- <script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/codemirror.js?ver=4.9.11'></script> -->
+<!-- <script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.tools.min.js?ver=5.4.6.3.1'></script> -->
+<!-- <script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.revolution.min.js?ver=5.4.6.3.1'></script> -->
+<link rel='https://api.w.org/' href='https://blog.coderise.io/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.coderise.io/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.coderise.io/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.9.11" />
+<script type="text/javascript">
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+</script>
+<script type="text/javascript" src="https://static.addtoany.com/menu/page.js" async="async"></script>
+<meta name="abstract" content="Cloud Consulting | DevOps Consulting | Shopify Development | Cloud Transformation">
+<meta name="author" content="Perishable">
+<meta name="classification" content="Cloud, DevOps, Kubernetes, Shopify, Docker, AWS, Azure, Docker, General, Helm, Jenkins, Kubernetes, Monitoring">
+<meta name="copyright" content="Copyright @2021 CodeRise Technologies Inc. All rights Reserved.">
+<meta name="designer" content="CodeRise Technologies Inc.">
+<meta name="distribution" content="Global">
+<meta name="language" content="en-US">
+<meta name="publisher" content="CodeRise Technologies Inc.">
+<meta name="rating" content="General">
+<meta name="resource-type" content="Document">
+<meta name="revisit-after" content="3">
+<meta name="subject" content="Cloud, DevOps, Shopify, Kubernetes, Consulting, Docker, Jenkins, Helm, AWS, Azure, EKS, GCP, GKE, Cluster">
+<meta name="template" content="Consulting">
+<meta name="google" content="notranslate" />
+<script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script data-ad-client="ca-pub-7366972089308699" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112030621-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'UA-112030621-1');
+</script>
+<script>
+!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t,e){var n=document.createElement("script");n.type="text/javascript";n.async=!0;n.src="https://cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a);analytics._loadOptions=e};analytics.SNIPPET_VERSION="4.1.0";
+analytics.load("KCw6PilEitSYLBwAzr9crz4xLJNnbOY8");
+analytics.page();
+}}();
+</script><meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="https://blog.coderise.io/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><meta name="generator" content="Powered by Slider Revolution 5.4.6.3.1 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<link rel="icon" href="https://blog.coderise.io/wp-content/uploads/2018/01/cropped-Transparent-Background-3-e1515860897550-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://blog.coderise.io/wp-content/uploads/2018/01/cropped-Transparent-Background-3-e1515860897550-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://blog.coderise.io/wp-content/uploads/2018/01/cropped-Transparent-Background-3-e1515860897550-180x180.png" />
+<meta name="msapplication-TileImage" content="https://blog.coderise.io/wp-content/uploads/2018/01/cropped-Transparent-Background-3-e1515860897550-270x270.png" />
+<script type="text/javascript">function setREVStartSize(e){
+try{ var i=jQuery(window).width(),t=9999,r=0,n=0,l=0,f=0,s=0,h=0;					
+if(e.responsiveLevels&&(jQuery.each(e.responsiveLevels,function(e,f){f>i&&(t=r=f,l=e),i>f&&f>r&&(r=f,n=e)}),t>r&&(l=n)),f=e.gridheight[l]||e.gridheight[0]||e.gridheight,s=e.gridwidth[l]||e.gridwidth[0]||e.gridwidth,h=i/s,h=h>1?1:h,f=Math.round(h*f),"fullscreen"==e.sliderLayout){var u=(e.c.width(),jQuery(window).height());if(void 0!=e.fullScreenOffsetContainer){var c=e.fullScreenOffsetContainer.split(",");if (c) jQuery.each(c,function(e,i){u=jQuery(i).length>0?u-jQuery(i).outerHeight(!0):u}),e.fullScreenOffset.split("%").length>1&&void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0?u-=jQuery(window).height()*parseInt(e.fullScreenOffset,0)/100:void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0&&(u-=parseInt(e.fullScreenOffset,0))}f=u}else void 0!=e.minHeight&&f<e.minHeight&&(f=e.minHeight);e.c.closest(".rev_slider_wrapper").css({height:f})					
+}catch(d){console.log("Failure at Presize of Slider:"+d)}
+};</script>
+<noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>
+</head>
+<body class="home blog right-sidebar  has-lb home-loop-1st-large wpb-js-composer js-comp-ver-5.4.5 vc_responsive">
+<div class="main-wrap">
+<header id="main-head" class="main-head head-nav-below has-search-modal simple simple-boxed">
+<div class="inner inner-head" data-sticky-bar="0">
+<div class="wrap cf wrap-head">
+<div class="left-contain">
+<span class="mobile-nav"><i class="fa fa-bars"></i></span>	
+<div class="title">
+<a href="https://coderise.io" title="CodeRise &#8211; Cloud, DevOps, Shopify, API, Mobile  &amp; Web Development" rel="home">
+<img class="mobile-logo" src="https://blog.coderise.io/wp-content/uploads/2020/03/LogoCodeRise-new-without-1.png" width="1128" height="282" 
+alt="CodeRise &#8211; Cloud, DevOps, Shopify, API, Mobile  &amp; Web Development" />
+<img src="https://blog.coderise.io/wp-content/uploads/2020/03/LogoCodeRise-new-without-1.png" class="logo-image" alt="CodeRise &#8211; Cloud, DevOps, Shopify, API, Mobile  &amp; Web Development" />
+</a>
+</div>			
+</div>
+<div class="navigation-wrap inline">
+<nav class="navigation inline simple light" data-sticky-bar="0">
+<div class="menu-main-menu-container"><ul id="menu-main-menu" class="menu"><li id="menu-item-3653" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3653"><a href="https://blog.coderise.io/about/"><span>ABOUT</span></a>
+<ul class="sub-menu">
+<li id="menu-item-3673" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3673"><a href="https://blog.coderise.io/careers/"><span>CAREERS</span></a></li>
+<li id="menu-item-8962" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8962"><a href="https://blog.coderise.io/testimonials-page/"><span>TESTIMONIALS</span></a></li>
+</ul>
+</li>
+<li id="menu-item-4453" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4453"><a href="https://blog.coderise.io/clients/"><span>CLIENTS</span></a></li>
+<li id="menu-item-6463" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-6463"><a href="https://coderise.io/#"><span>SERVICES</span></a>
+<ul class="sub-menu">
+<li id="menu-item-8753" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8753"><a href="https://coderise.io/devops-service-providers-digital-transformation/"><span>DIGITAL TRANSFORMATION</span></a></li>
+<li id="menu-item-8523" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8523"><a href="https://blog.coderise.io/automated-testing/"><span>AUTOMATED TESTING</span></a></li>
+<li id="menu-item-6473" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6473"><a href="https://blog.coderise.io/devops-as-a-service/"><span>DEVOPS AS A SERVICE</span></a></li>
+<li id="menu-item-6543" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6543"><a href="https://blog.coderise.io/kubernetes-consulting/"><span>KUBERNETES CONSULTING</span></a></li>
+<li id="menu-item-8793" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8793"><a href="/wordpress-migration-cloud-aws-gcp-azure/"><span>MIGRATE WORDPRESS TO CLOUD</span></a></li>
+</ul>
+</li>
+<li id="menu-item-223" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-223"><a href="/"><span>BLOG</span></a></li>
+<li id="menu-item-9096" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9096"><a href="https://learnfromexperts.ca"><span>TRAINING</span></a></li>
+<li id="menu-item-1553" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1553"><a href="https://blog.coderise.io/contact-us/"><span>CONTACT</span></a></li>
+</ul></div>				</nav>
+</div>
+<div class="actions">
+<a href="#" title="Search" class="search-link"><i class="fa fa-search"></i></a>
+</div>
+</div>
+</div>
+</header> <!-- .main-head -->	
+<div class="main wrap">
+<div class="ts-row cf">
+<div class="col-8 main-content cf">
+<div class="posts-dynamic posts-container ts-row grid count-100 grid-cols-2 mixed">
+<div class="col-12 large cf">
+<article id="post-8973" class="post-main large-post post-8973 post type-post status-publish format-standard has-post-thumbnail category-aws tag-aws-ftp-with-username-and-password tag-aws-managed-sftp tag-aws-sft-s3-username-password tag-aws-sftp-iam tag-aws-sftp-password tag-aws-sftp-s3 tag-aws-sftp-scope-down-policy tag-aws-sftp-solution tag-aws-sftp-username-password tag-enterprise-sftp-aws tag-managed-ftp-aws tag-setup-sftp-on-aws tag-sftp-on-aws-with-username-and-password tag-sftp-server-on-aws tag-sftp-server-on-aws-with-username-and-password">
+<header class="post-header cf">
+<div class="featured">
+<a href="https://blog.coderise.io/sftp-on-aws-with-username-and-password/" class="image-link"><img width="770" height="515" src="https://blog.coderise.io/wp-content/uploads/2019/12/aws-sftp-username-password-770x515.png" class="attachment-contentberg-main size-contentberg-main wp-post-image" alt="aws-sftp-username-password" title="Setup SFTP on AWS with Username and Password in 15 minutes" srcset="https://blog.coderise.io/wp-content/uploads/2019/12/aws-sftp-username-password-770x515.png 770w, https://blog.coderise.io/wp-content/uploads/2019/12/aws-sftp-username-password-270x180.png 270w" sizes="(max-width: 770px) 100vw, 770px" />				</a>
+</div>		
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/aws/" class="category">AWS</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/sftp-on-aws-with-username-and-password/">Setup SFTP on AWS with Username and Password in 15 minutes</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/sftp-on-aws-with-username-and-password/" class="meta-item date-link"><time class="post-date" datetime="2019-12-16T07:32:07+00:00">December 16, 2019</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">5 Mins Read</span>
+</div>
+</div>		
+</header><!-- .post-header -->
+<div class="post-content description cf post-excerpt">
+<p>In this blog, we will show you how to setup SFTP on AWS with Username and Password. Earlier this year, AWS added support for enabling password based authentication for AWS Transfer for SFTP using AWS Secrets Manager. AWS Transfer for SFTP is a fully managed service by AWS and helps you migrate your file transfer workflows to AWS. AWS Transfer for SFTP is built on top of S3 and can be a powerful tool if you are&hellip;</p>
+<div class="read-more"><a href="https://blog.coderise.io/sftp-on-aws-with-username-and-password/"><span>Read More</span></a></div>
+</div><!-- .post-content -->
+</article>
+</div>
+<div class="posts-wrap">				
+<div class="col-6">	
+<article id="post-8949" class="grid-post post-8949 post type-post status-publish format-standard has-post-thumbnail category-android category-mobile tag-android tag-android-mac-issue tag-android-studio tag-android_sdk_root tag-android-sdk tag-brew tag-broken-avd-path tag-cask tag-emulator tag-homebrew tag-mac tag-panic tag-panic-broken-avd-system-path tag-uninstall has-excerpt">
+<div class="post-header cf">
+<div class="post-thumb">
+<a href="https://blog.coderise.io/panic-broken-avd-system-path-android-emulator-setup-mac-homebrew/" class="image-link">
+<img width="368" height="245" src="https://blog.coderise.io/wp-content/uploads/2019/11/panic-broken-avd-path-android-mac.png" class="attachment-contentberg-grid size-contentberg-grid wp-post-image" alt="panic-broken-avd-path-android-mac" title="PANIC: Broken AVD system path &#8211; Android Emulator setup on Mac/Homebrew" srcset="https://blog.coderise.io/wp-content/uploads/2019/11/panic-broken-avd-path-android-mac.png 1614w, https://blog.coderise.io/wp-content/uploads/2019/11/panic-broken-avd-path-android-mac-300x200.png 300w, https://blog.coderise.io/wp-content/uploads/2019/11/panic-broken-avd-path-android-mac-768x511.png 768w, https://blog.coderise.io/wp-content/uploads/2019/11/panic-broken-avd-path-android-mac-1024x681.png 1024w" sizes="(max-width: 368px) 100vw, 368px" />					
+</a>
+</div>
+<div class="meta-title">
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/android/" class="category">Android</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/panic-broken-avd-system-path-android-emulator-setup-mac-homebrew/">PANIC: Broken AVD system path &#8211; Android Emulator setup on Mac/Homebrew</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/panic-broken-avd-system-path-android-emulator-setup-mac-homebrew/" class="meta-item date-link"><time class="post-date" datetime="2019-11-29T00:40:24+00:00">November 29, 2019</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">1 Min Read</span>
+</div>
+</div>		
+</div>
+</div><!-- .post-header -->
+<div class="post-content post-excerpt cf">
+<p>Yesterday, I downloaded the latest version of Android Studio to compile an Android App and run in an emulator. Little&hellip;</p>
+</div><!-- .post-content -->
+</article>
+</div>
+<div class="col-6">	
+<article id="post-8912" class="grid-post post-8912 post type-post status-publish format-standard has-post-thumbnail category-aws category-kubernetes category-wordpress tag-aws-eks-wordpress tag-install-wordpress-eks tag-install-wordpress-k8s tag-install-wordpress-on-aws tag-install-wordpress-on-eks tag-managed-kubernetes-service tag-migrate-wordpress-eks tag-migrate-wordpress-to-azure tag-migrate-wordpress-to-google tag-wordpress-aks tag-wordpress-aws tag-wordpress-azure-cloud tag-wordpress-eks tag-wordpress-gke tag-wordpress-google-cloud tag-wordpress-kubernetes tag-wordpress-lightsail tag-wordpress-setup-on-eks tag-wordpress-wordpress-kubernetes has-excerpt">
+<div class="post-header cf">
+<div class="post-thumb">
+<a href="https://blog.coderise.io/install-wordpress-on-eks/" class="image-link">
+<img width="370" height="239" src="https://blog.coderise.io/wp-content/uploads/2019/10/wordpress-eks.png" class="attachment-contentberg-grid size-contentberg-grid wp-post-image" alt="install wordpress on eks" title="Install WordPress on EKS  &#8211; AWS Kubernetes Service" srcset="https://blog.coderise.io/wp-content/uploads/2019/10/wordpress-eks.png 1836w, https://blog.coderise.io/wp-content/uploads/2019/10/wordpress-eks-300x194.png 300w, https://blog.coderise.io/wp-content/uploads/2019/10/wordpress-eks-768x496.png 768w, https://blog.coderise.io/wp-content/uploads/2019/10/wordpress-eks-1024x661.png 1024w" sizes="(max-width: 370px) 100vw, 370px" />					
+</a>
+</div>
+<div class="meta-title">
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/aws/" class="category">AWS</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/install-wordpress-on-eks/">Install WordPress on EKS  &#8211; AWS Kubernetes Service</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/install-wordpress-on-eks/" class="meta-item date-link"><time class="post-date" datetime="2019-10-19T04:33:28+00:00">October 19, 2019</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">4 Mins Read</span>
+</div>
+</div>		
+</div>
+</div><!-- .post-header -->
+<div class="post-content post-excerpt cf">
+<p>Install Wordpress on EKS Are you looking to install Wordpress on EKS ? Lot of our clients are migrating their&hellip;</p>
+</div><!-- .post-content -->
+</article>
+</div>
+<div class="col-6">	
+<article id="post-8895" class="grid-post post-8895 post type-post status-publish format-standard has-post-thumbnail category-general tag-brampton-cloud-consulting tag-brampton-devops-consulting tag-devops-cloud-consulting tag-guelph-devops-consulting tag-incubators-and-accelerators tag-kitchener-cloud-consulting tag-kubernetes-cloud-consulting tag-mississauga-cloud-consulting tag-mississauga-devops-consulting tag-montreal-cloud-consulting tag-toronto-accelerators tag-toronto-cloud-consulting tag-toronto-devops-consulting tag-toronto-incubators tag-toronto-kubernetes-consulting tag-waterloo-cloud-consulting tag-waterloo-devops-consulting has-excerpt">
+<div class="post-header cf">
+<div class="post-thumb">
+<a href="https://blog.coderise.io/toronto-incubators-accelerators/" class="image-link">
+<img width="368" height="245" src="https://blog.coderise.io/wp-content/uploads/2019/10/startup.jpeg" class="attachment-contentberg-grid size-contentberg-grid wp-post-image" alt="incubators and accelerators" title="Toronto Incubators and Accelerators | Waterloo | Kitchener | Canada" srcset="https://blog.coderise.io/wp-content/uploads/2019/10/startup.jpeg 2851w, https://blog.coderise.io/wp-content/uploads/2019/10/startup-300x200.jpeg 300w, https://blog.coderise.io/wp-content/uploads/2019/10/startup-768x512.jpeg 768w, https://blog.coderise.io/wp-content/uploads/2019/10/startup-1024x682.jpeg 1024w" sizes="(max-width: 368px) 100vw, 368px" />					
+</a>
+</div>
+<div class="meta-title">
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/general/" class="category">General</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/toronto-incubators-accelerators/">Toronto Incubators and Accelerators | Waterloo | Kitchener | Canada</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/toronto-incubators-accelerators/" class="meta-item date-link"><time class="post-date" datetime="2019-10-16T04:55:08+00:00">October 16, 2019</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">3 Mins Read</span>
+</div>
+</div>		
+</div>
+</div><!-- .post-header -->
+<div class="post-content post-excerpt cf">
+<p>Toronto Incubators and Accelerators Are you planning to open a startup but still haven&#8217;t decided on the city? Toronto is&hellip;</p>
+</div><!-- .post-content -->
+</article>
+</div>
+<div class="col-6">	
+<article id="post-8843" class="grid-post post-8843 post type-post status-publish format-standard has-post-thumbnail category-aws category-kubernetes tag-acm-certificates-with-amazon-eks tag-acm-eks tag-acm-kubernetes-certs tag-acm-kubernetes-multiple-certs tag-amazon-certificate-manager tag-domain-acm-cert-eks tag-eks-http-to-https-redirect tag-ingress-redirect-eks tag-multiple-certificates-eks-ingress tag-wordpress-acm-eks has-excerpt">
+<div class="post-header cf">
+<div class="post-thumb">
+<a href="https://blog.coderise.io/ingress-configuration-for-supporting-multiple-acm-issued-certificates-in-amazon-eks-part-2/" class="image-link">
+<img width="368" height="245" src="https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760.jpeg" class="attachment-contentberg-grid size-contentberg-grid wp-post-image" alt="" title="Ingress configuration for supporting multiple ACM issued certificates in Amazon EKS &#8211; Part 2" srcset="https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760.jpeg 1920w, https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760-300x200.jpeg 300w, https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760-768x512.jpeg 768w, https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760-1024x683.jpeg 1024w" sizes="(max-width: 368px) 100vw, 368px" />					
+</a>
+</div>
+<div class="meta-title">
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/aws/" class="category">AWS</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/ingress-configuration-for-supporting-multiple-acm-issued-certificates-in-amazon-eks-part-2/">Ingress configuration for supporting multiple ACM issued certificates in Amazon EKS &#8211; Part 2</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/ingress-configuration-for-supporting-multiple-acm-issued-certificates-in-amazon-eks-part-2/" class="meta-item date-link"><time class="post-date" datetime="2019-10-09T04:51:28+00:00">October 9, 2019</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">3 Mins Read</span>
+</div>
+</div>		
+</div>
+</div><!-- .post-header -->
+<div class="post-content post-excerpt cf">
+<p>In Part 1, we covered the ingress resource configuration for hosting multiple sites on a single Amazon EKS cluster. In&hellip;</p>
+</div><!-- .post-content -->
+</article>
+</div>
+<div class="col-6">	
+<article id="post-8803" class="grid-post post-8803 post type-post status-publish format-standard has-post-thumbnail category-aws category-kubernetes tag-acm-eks-wordpress tag-acm-kubernetes-wordpress tag-amazon-eks tag-eks tag-eks-wordpress tag-host-multiple-sites-eks tag-kubernetes tag-multiple-wordpress-eks tag-wordpress-sites-on-eks has-excerpt">
+<div class="post-header cf">
+<div class="post-thumb">
+<a href="https://blog.coderise.io/ingress-resource-for-hosting-multiple-sites-on-single-amazon-eks-cluster-part-1/" class="image-link">
+<img width="370" height="191" src="https://blog.coderise.io/wp-content/uploads/2018/01/kubernetes-logo.png" class="attachment-contentberg-grid size-contentberg-grid wp-post-image" alt="" title="Ingress resource for hosting multiple sites on single Amazon EKS cluster &#8211; Part 1" srcset="https://blog.coderise.io/wp-content/uploads/2018/01/kubernetes-logo.png 1638w, https://blog.coderise.io/wp-content/uploads/2018/01/kubernetes-logo-300x155.png 300w, https://blog.coderise.io/wp-content/uploads/2018/01/kubernetes-logo-768x397.png 768w, https://blog.coderise.io/wp-content/uploads/2018/01/kubernetes-logo-1024x530.png 1024w" sizes="(max-width: 370px) 100vw, 370px" />					
+</a>
+</div>
+<div class="meta-title">
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/aws/" class="category">AWS</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/ingress-resource-for-hosting-multiple-sites-on-single-amazon-eks-cluster-part-1/">Ingress resource for hosting multiple sites on single Amazon EKS cluster &#8211; Part 1</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/ingress-resource-for-hosting-multiple-sites-on-single-amazon-eks-cluster-part-1/" class="meta-item date-link"><time class="post-date" datetime="2019-10-09T04:23:34+00:00">October 9, 2019</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">3 Mins Read</span>
+</div>
+</div>		
+</div>
+</div><!-- .post-header -->
+<div class="post-content post-excerpt cf">
+<p>We recently helped a client migrate ten of his wordpress sites from shared hosting to Amazon EKS. One of the&hellip;</p>
+</div><!-- .post-content -->
+</article>
+</div>
+<div class="col-6">	
+<article id="post-7393" class="grid-post post-7393 post type-post status-publish format-standard has-post-thumbnail category-kubernetes tag-aws-logging tag-cluster-level-logging tag-cluster-logging tag-elastic-search tag-elasticsearch tag-elk tag-fluentd tag-gcp-logging tag-google-kubernetes-logging tag-k8s tag-kibana tag-kubernetes tag-kubernetes-efk tag-kubernetes-elk tag-kubernetes-logging tag-logging tag-node-level-logging tag-stackdriver has-excerpt">
+<div class="post-header cf">
+<div class="post-thumb">
+<a href="https://blog.coderise.io/logging-with-kubernetes/" class="image-link">
+<img width="370" height="208" src="https://blog.coderise.io/wp-content/uploads/2018/01/monitoring.jpg" class="attachment-contentberg-grid size-contentberg-grid wp-post-image" alt="" title="Logging with Kubernetes" srcset="https://blog.coderise.io/wp-content/uploads/2018/01/monitoring.jpg 950w, https://blog.coderise.io/wp-content/uploads/2018/01/monitoring-300x169.jpg 300w, https://blog.coderise.io/wp-content/uploads/2018/01/monitoring-768x432.jpg 768w" sizes="(max-width: 370px) 100vw, 370px" />					
+</a>
+</div>
+<div class="meta-title">
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/kubernetes/" class="category">Kubernetes</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/logging-with-kubernetes/">Logging with Kubernetes</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/logging-with-kubernetes/" class="meta-item date-link"><time class="post-date" datetime="2018-09-11T17:21:58+00:00">September 11, 2018</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">4 Mins Read</span>
+</div>
+</div>		
+</div>
+</div><!-- .post-header -->
+<div class="post-content post-excerpt cf">
+<p>Introduction In previous blogs, we have explored the creating Kubernetes cluster, deploying an application with Kubernetes cluster and monitoring Kubernetes&hellip;</p>
+</div><!-- .post-content -->
+</article>
+</div>
+<div class="col-6">	
+<article id="post-7333" class="grid-post post-7333 post type-post status-publish format-standard has-post-thumbnail category-azure category-kubernetes category-monitoring tag-grafana tag-influxdb tag-kubernetes tag-monitoring has-excerpt">
+<div class="post-header cf">
+<div class="post-thumb">
+<a href="https://blog.coderise.io/monitoring-with-kubernetes/" class="image-link">
+<img width="368" height="245" src="https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760.jpeg" class="attachment-contentberg-grid size-contentberg-grid wp-post-image" alt="" title="Monitoring with Kubernetes" srcset="https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760.jpeg 1920w, https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760-300x200.jpeg 300w, https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760-768x512.jpeg 768w, https://blog.coderise.io/wp-content/uploads/2018/02/pexels-photo-69760-1024x683.jpeg 1024w" sizes="(max-width: 368px) 100vw, 368px" />					
+</a>
+</div>
+<div class="meta-title">
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/azure/" class="category">Azure</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/monitoring-with-kubernetes/">Monitoring with Kubernetes</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/monitoring-with-kubernetes/" class="meta-item date-link"><time class="post-date" datetime="2018-09-11T17:17:57+00:00">September 11, 2018</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">5 Mins Read</span>
+</div>
+</div>		
+</div>
+</div><!-- .post-header -->
+<div class="post-content post-excerpt cf">
+<p>Introduction: In previous blogs, we have explored the Azure Container Service and Kubernetes. In this blog, we will explore the&hellip;</p>
+</div><!-- .post-content -->
+</article>
+</div>
+<div class="col-6">	
+<article id="post-7313" class="grid-post post-7313 post type-post status-publish format-standard has-post-thumbnail category-azure category-kubernetes tag-azure-kubernetes-service tag-deployment-and-services-in-kubernetes tag-kubernetes tag-microsoft-azure-kubernetes-cluster has-excerpt">
+<div class="post-header cf">
+<div class="post-thumb">
+<a href="https://blog.coderise.io/deploying-app-azure-kubernetes-service/" class="image-link">
+<img width="370" height="146" src="https://blog.coderise.io/wp-content/uploads/2018/01/coderise.jpg" class="attachment-contentberg-grid size-contentberg-grid wp-post-image" alt="coderiseio" title="Deploying Application on Azure Kubernetes Service" srcset="https://blog.coderise.io/wp-content/uploads/2018/01/coderise.jpg 1920w, https://blog.coderise.io/wp-content/uploads/2018/01/coderise-300x119.jpg 300w, https://blog.coderise.io/wp-content/uploads/2018/01/coderise-768x304.jpg 768w, https://blog.coderise.io/wp-content/uploads/2018/01/coderise-1024x405.jpg 1024w" sizes="(max-width: 370px) 100vw, 370px" />					
+</a>
+</div>
+<div class="meta-title">
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/azure/" class="category">Azure</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/deploying-app-azure-kubernetes-service/">Deploying Application on Azure Kubernetes Service</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/deploying-app-azure-kubernetes-service/" class="meta-item date-link"><time class="post-date" datetime="2018-09-10T17:39:14+00:00">September 10, 2018</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">3 Mins Read</span>
+</div>
+</div>		
+</div>
+</div><!-- .post-header -->
+<div class="post-content post-excerpt cf">
+<p>Launching the simple application with Azure Kubernetes Service In previous few blogs, we have explained about the Kubernetes and container&hellip;</p>
+</div><!-- .post-content -->
+</article>
+</div>
+<div class="col-6">	
+<article id="post-8223" class="grid-post post-8223 post type-post status-publish format-standard has-post-thumbnail category-managed-services tag-advantage tag-agile tag-agile-and-devops tag-agile-devops-advantages tag-california tag-canada tag-coderise tag-coderise-technologies tag-devops tag-devops-managed-service-providers tag-devops-service-provider tag-devops-service-providers tag-devops-services tag-devops-toronto tag-digital-transformation tag-managed-devops tag-managed-devops-provider tag-managed-devops-service tag-managed-devops-service-providers tag-managed-devops-services tag-montreal tag-new-york tag-north-america tag-ottawa tag-service tag-toronto tag-united-states tag-usa tag-vancouver tag-washington has-excerpt">
+<div class="post-header cf">
+<div class="post-thumb">
+<a href="https://blog.coderise.io/devops-service-providers-digital-transformation/" class="image-link">
+<img width="367" height="245" src="https://blog.coderise.io/wp-content/uploads/2018/09/agile-devops-managed-services.jpg" class="attachment-contentberg-grid size-contentberg-grid wp-post-image" alt="devops service providers" title="How DevOps Service Providers can drive Digital Transformation" srcset="https://blog.coderise.io/wp-content/uploads/2018/09/agile-devops-managed-services.jpg 1084w, https://blog.coderise.io/wp-content/uploads/2018/09/agile-devops-managed-services-300x200.jpg 300w, https://blog.coderise.io/wp-content/uploads/2018/09/agile-devops-managed-services-768x512.jpg 768w, https://blog.coderise.io/wp-content/uploads/2018/09/agile-devops-managed-services-1024x683.jpg 1024w" sizes="(max-width: 367px) 100vw, 367px" />					
+</a>
+</div>
+<div class="meta-title">
+<div class="post-meta post-meta-b">
+<span class="post-cat">	
+<span class="text-in">In</span> 
+<a href="https://blog.coderise.io/category/managed-services/" class="category">Managed Services</a>
+</span>
+<h2 class="post-title-alt">
+<a href="https://blog.coderise.io/devops-service-providers-digital-transformation/">How DevOps Service Providers can drive Digital Transformation</a>
+</h2>
+<div class="below">
+<a href="https://blog.coderise.io/devops-service-providers-digital-transformation/" class="meta-item date-link"><time class="post-date" datetime="2018-09-06T03:57:39+00:00">September 6, 2018</time></a>
+<span class="meta-sep"></span>
+<span class="meta-item read-time">6 Mins Read</span>
+</div>
+</div>		
+</div>
+</div><!-- .post-header -->
+<div class="post-content post-excerpt cf">
+<p>Transformation is the key to success to any company in the business landscape today and DevOps Service Providers like CodeRise Technologies&hellip;</p>
+</div><!-- .post-content -->
+</article>
+</div>
+</div>
+</div>
+<nav class="main-pagination">
+<div class="previous"><a href="https://blog.coderise.io/page/2/" ><i class="fa fa-angle-double-left"></i>Older Posts</a></div>
+<div class="next"></div>
+</nav>
+</div>
+<aside class="col-4 sidebar">
+<div class="inner">
+<ul>
+<li id="recent-posts-4" class="widget widget_recent_entries">		<h5 class="widget-title"><span>recent news</span></h5>		<ul>
+<li>
+<a href="https://blog.coderise.io/sftp-on-aws-with-username-and-password/">Setup SFTP on AWS with Username and Password in 15 minutes</a>
+<span class="post-date">December 16, 2019</span>
+</li>
+<li>
+<a href="https://blog.coderise.io/panic-broken-avd-system-path-android-emulator-setup-mac-homebrew/">PANIC: Broken AVD system path &#8211; Android Emulator setup on Mac/Homebrew</a>
+<span class="post-date">November 29, 2019</span>
+</li>
+<li>
+<a href="https://blog.coderise.io/install-wordpress-on-eks/">Install WordPress on EKS  &#8211; AWS Kubernetes Service</a>
+<span class="post-date">October 19, 2019</span>
+</li>
+</ul>
+</li>
+<li id="recent-posts-2" class="widget widget_recent_entries">		<h5 class="widget-title"><span>Recent Posts</span></h5>		<ul>
+<li>
+<a href="https://blog.coderise.io/sftp-on-aws-with-username-and-password/">Setup SFTP on AWS with Username and Password in 15 minutes</a>
+</li>
+<li>
+<a href="https://blog.coderise.io/panic-broken-avd-system-path-android-emulator-setup-mac-homebrew/">PANIC: Broken AVD system path &#8211; Android Emulator setup on Mac/Homebrew</a>
+</li>
+<li>
+<a href="https://blog.coderise.io/install-wordpress-on-eks/">Install WordPress on EKS  &#8211; AWS Kubernetes Service</a>
+</li>
+<li>
+<a href="https://blog.coderise.io/toronto-incubators-accelerators/">Toronto Incubators and Accelerators | Waterloo | Kitchener | Canada</a>
+</li>
+<li>
+<a href="https://blog.coderise.io/ingress-configuration-for-supporting-multiple-acm-issued-certificates-in-amazon-eks-part-2/">Ingress configuration for supporting multiple ACM issued certificates in Amazon EKS &#8211; Part 2</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</aside></div>	
+</div> <!-- .main -->
+
+<footer class="main-footer bold bold-light">
+<section class="upper-footer">
+<div class="wrap">
+<ul class="widgets ts-row cf">
+<li id="custom_html-4" class="widget_text widget column col-4 widget_custom_html"><div class="textwidget custom-html-widget">Locations served:<br/> <font color="#6c98e1">Toronto, NewYork, Mississauga, Vancouver, Ottawa, Montreal, Brampton, Calgary, Edmonton, Waterloo, Kitchener, Washington, Dallas, Boston, California, Seattle, Florida, Virginia, Texas, Austin, Delaware, Ohio, Oregon, Utah, Colorado, Maryland, Massachusetts, Santa Barbara, Los Angeles, Santa Monica, San Jose, Santa Clara, Sunnyvale, Bremerton, Silverdale, Rochester, Minnesota and many more across U.S.A and Canada.</font></div></li>				</ul>
+</div>
+</section>
+<section class="lower-footer cf">
+<div class="wrap">
+<ul class="social-icons">
+<li>
+<a href="https://twitter.com/coderiseio" class="social-link" target="_blank" title="Twitter">
+<i class="fa fa-twitter"></i>
+<span class="label">Twitter</span>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/company/24979134/admin/" class="social-link" target="_blank" title="LinkedIn">
+<i class="fa fa-linkedin"></i>
+<span class="label">LinkedIn</span>
+</a>
+</li>
+</ul>
+<p class="copyright">© 2021 CodeRise Technologies Inc. <a href="https://coderise.io">CodeRise.io</a>.				</p>
+<div class="to-top">
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i> Top</a>
+</div>
+</div>
+</section>
+</footer>	
+</div> <!-- .main-wrap -->
+<div class="mobile-menu-container off-canvas" id="mobile-menu">
+<a href="#" class="close"><i class="fa fa-times"></i></a>
+<div class="logo">
+<img class="mobile-logo" src="https://blog.coderise.io/wp-content/uploads/2020/03/LogoCodeRise-new-without-1.png" width="1128" height="282" 
+alt="CodeRise &#8211; Cloud, DevOps, Shopify, API, Mobile  &amp; Web Development" />
+</div>
+<ul class="mobile-menu"></ul>
+</div>
+<div class="search-modal-wrap">
+<div class="search-modal-box" role="dialog" aria-modal="true">
+<form method="get" class="search-form" action="https://blog.coderise.io/">
+<input type="search" class="search-field" name="s" placeholder="Search..." value="" required />
+<button type="submit" class="search-submit visuallyhidden">Submit</button>
+<p class="message">
+Type above and press <em>Enter</em> to search. Press <em>Esc</em> to cancel.		</p>
+</form>
+</div>
+</div>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/blog.coderise.io\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.9.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var spacexchimp_p010_scriptParams = {"theme":"default","line_numbers":"true","first_line_number":"0","tab_size":"4","dollar_sign":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/js/codemirror-settings.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/clike.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/css.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/htmlmixed.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/javascript.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/markdown.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/perl.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/php.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/sass.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/shell.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/sql.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/xml.js?ver=4.9.11'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/themes/contentberg/js/magnific-popup.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/themes/contentberg/js/jquery.fitvids.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-includes/js/imagesloaded.min.js?ver=3.2.0'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/themes/contentberg/js/object-fit-images.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/themes/contentberg/js/theme.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/themes/contentberg/js/theia-sticky-sidebar.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/themes/contentberg/js/jquery.slick.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-content/themes/contentberg/js/jarallax.js?ver=1.9.0'></script>
+<script type='text/javascript' src='https://blog.coderise.io/wp-includes/js/wp-embed.min.js?ver=4.9.11'></script>
+</body>
+</html><!-- WP Fastest Cache file was created in 1.3444299697876 seconds, on 03-01-21 4:10:00 -->
