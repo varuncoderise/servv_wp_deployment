@@ -2,6 +2,9 @@
 /** Enable W3 Total Cache */
 //define('WP_CACHE', false); // Added by W3 Total Cache
 
+if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false)
+    $_SERVER['HTTPS']='on';
+
 define( 'WP_HOME', 'https://blog.coderise.io' );
 define( 'WP_SITEURL', 'https://blog.coderise.io' );
 /**
