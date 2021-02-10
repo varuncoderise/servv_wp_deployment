@@ -1,2 +1,7 @@
-FROM bitnami/wordpress-nginx
-COPY files/ /var/www/html
+FROM wordpress:php7.3-apache
+
+RUN rm -rf /usr/src/wordpress/*
+
+COPY wordpress/ /usr/src/wordpress
+
+RUN chown -R www-data:www-data /usr/src/wordpress
