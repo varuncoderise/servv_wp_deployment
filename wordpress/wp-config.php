@@ -9,11 +9,6 @@ define('FORCE_SSL_ADMIN', true);
 if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false)
 $_SERVER['HTTPS']='on';
 
-// if site is set to run on SSL, then force-enable SSL detection!
-if (stripos(get_option('siteurl'), 'https://') === 0) {
-    $_SERVER['HTTPS'] = 'on';
-}
-
 $_SERVER['HTTPS']='on';
 
 define( 'WP_HOME', 'https://blog.coderise.io' );

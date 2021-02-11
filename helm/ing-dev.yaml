@@ -2,9 +2,7 @@
   kind: Ingress
   metadata:
     annotations:
-      nginx.ingress.kubernetes.io/configuration-snippet: |
-        more_set_headers "Access-Control-Allow-Origin: *";
-      nginx.ingress.kubernetes.io/use-regex: "true"
+      kubernetes.io/ingress.allow-http: "false"  
     name: blog-ingress
     namespace: coderise
   spec:
@@ -15,6 +13,6 @@
         - backend:
             serviceName: coderise-blog-v1
             servicePort: 80
-          path: /(.*)
+          path: /
 
 
