@@ -6,4 +6,9 @@ RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^blog\.coderise\.io$ [NC]
+RewriteRule ^(.*)$ "https://coderise.io/$1" [R=301,L]
 # END WordPress 
