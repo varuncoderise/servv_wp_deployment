@@ -210,7 +210,9 @@ class DUP_Server
 		$checks['SRV']['PHP']['maxtime']	 = $php_test2;
 		$checks['SRV']['PHP']['mysqli']		 = $php_test3;
 		$checks['SRV']['PHP']['version']	 = $php_test4;
-		$checks['SRV']['PHP']['ALL']		 = ($php_test0 && $php_test1 && $php_test2 && $php_test3 && $php_test4) ? 'Good' : 'Warn';
+        //MANAGED HOST
+        $checks['SRV']['SYS']['managedHost'] = !DUP_Custom_Host_Manager::getInstance()->isManaged();
+		$checks['SRV']['SYS']['ALL']		 = ($php_test0 && $php_test1 && $php_test2 && $php_test3 && $php_test4 && $checks['SRV']['SYS']['managedHost']) ? 'Good' : 'Warn';
 
 		//WORDPRESS SETTINGS
 		global $wp_version;
@@ -268,15 +270,11 @@ class DUP_Server
 	 */
 	private static function logCheckFalse($check, $errorMessage)
 	{
-		if (!is_bool($check)) {
-			throw new Exception('Exception: Not boolean $check [File: '.__FILE__.', Ln: '.__LINE__);
-		}
-
 		if (empty($errorMessage)) {
-			throw new Exception('Exception: Empty $errorMessage [File: '.__FILE__.', Ln: '.__LINE__);
+			throw new Exception('Exception: Empty $errorMessage variable [File: '.__FILE__.', Ln: '.__LINE__);
 		}
 
-		if (false === $check) {
+		if (filter_var($check, FILTER_VALIDATE_BOOLEAN) === false) {
 			DUP_LOG::trace($errorMessage);
 		}
 	}

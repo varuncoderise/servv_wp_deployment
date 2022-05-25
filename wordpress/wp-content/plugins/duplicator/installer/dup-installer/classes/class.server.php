@@ -19,17 +19,12 @@ class DUPX_Server
 	/**
 	 * The minimum PHP version the installer will support
 	 */
-	public static $php_version_min = "5.2.7";
+	public static $php_version_min = "5.3.8";
 
 	/**
 	 * Is the current servers version of PHP safe to use with the installer
 	 */
 	public static $php_version_safe = false;
-
-	/**
-     * Is PHP 5.3 or better running
-     */
-    public static $php_version_53_plus;
 
 	/**
 	 * A list of the core WordPress directories
@@ -41,7 +36,6 @@ class DUPX_Server
 		self::$php_safe_mode_on	 = in_array(strtolower(@ini_get('safe_mode')), array('on', 'yes', 'true', 1, "1"));
 		self::$php_version		 = phpversion();
 		self::$php_version_safe	 = (version_compare(phpversion(), self::$php_version_min) >= 0);
-		self::$php_version_53_plus	= version_compare(PHP_VERSION, '5.3.0') >= 0;
 	}
 
 	/**
@@ -69,14 +63,24 @@ class DUPX_Server
 	 */
 	public static function is_shell_exec_available()
 	{
-		if (array_intersect(array('shell_exec', 'escapeshellarg', 'escapeshellcmd', 'extension_loaded'), array_map('trim', explode(',', @ini_get('disable_functions'))))) return false;
+		if (array_intersect(array('shell_exec', 'escapeshellarg', 'escapeshellcmd', 'extension_loaded'), array_map('trim', explode(',', @ini_get('disable_functions'))))) {
+            return false;
+        }
 
 		//Suhosin: http://www.hardened-php.net/suhosin/
 		//Will cause PHP to silently fail.
-		if (extension_loaded('suhosin')) return false;
+		if (extension_loaded('suhosin')) {
+            return false;
+        }
+
+        if (! function_exists('shell_exec')) {
+			return false;
+	    }
 
 		// Can we issue a simple echo command?
-		if (!@shell_exec('echo duplicator')) return false;
+		if (!@shell_exec('echo duplicator')) {
+            return false;
+        }
 
 		return true;
 	}
@@ -103,7 +107,34 @@ class DUPX_Server
 		}
 		return $filepath;
 	}
-	
+    
+    /**
+     * 
+     * @return string[]
+     */
+    public static function getWpAddonsSiteLists()
+    {
+        $addonsSites  = array();
+        $pathsToCheck = $GLOBALS['DUPX_ROOT'];
+        
+        if (is_scalar($pathsToCheck)) {
+            $pathsToCheck = array($pathsToCheck);
+        }
+
+        foreach ($pathsToCheck as $mainPath) {
+            DupLiteSnapLibIOU::regexGlobCallback($mainPath, function ($path) use (&$addonsSites) {
+                if (DupLiteSnapLibUtilWp::isWpHomeFolder($path)) {
+                    $addonsSites[] = $path;
+                }
+            }, array(
+                'regexFile' => false,
+                'recursive' => true
+            ));
+        }
+
+        return $addonsSites;
+    }
+
 	/**
 	* Does the site look to be a WordPress site
 	*

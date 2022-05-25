@@ -1,9 +1,10 @@
-=== Insert Headers and Footers ===
+=== Insert Headers and Footers by WPBeginner ===
 Contributors: WPbeginner, smub, deb255
 Tags: code, content, css, facebook pixel, footer, footer code, footer scripts, footers, google analytics, head, header, header code, header scripts, headers, insert, insert code, insert scripts, js, meta, meta tags, scripts, wpmu
-Requires at least: 3.6
-Tested up to: 4.8
-Stable tag: 1.4.2
+Requires at least: 4.6
+Tested up to: 5.8
+Requires PHP: 5.2
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,8 +38,6 @@ If you find this plugin useful to insert header and footer scripts, please leave
 
 * <a href="http://optinmonster.com/" rel="friend" title="OptinMonster">OptinMonster</a> - Get More Email Subscribers
 * <a href="http://wpforms.com/" rel="friend" title="WPForms">WPForms</a> - Best Contact Form Builder Plugin
-* <a href="http://soliloquywp.com/" rel="friend" title="Soliloquy">Soliloquy</a> - Best WordPress Slider Plugin
-* <a href="http://enviragallery.com/" rel="friend" title="Envira Gallery">Envira Gallery</a> - Best WordPress Gallery Plugin
 * <a href="http://monsterinsights.com/" rel="friend" title="MonsterInsights">MonsterInsights</a> - Best Google Analytics Plugin
 
 To learn more about WordPress, you can also visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> for tutorials on topics like:
@@ -55,7 +54,7 @@ To learn more about WordPress, you can also visit <a href="http://www.wpbeginner
 2. Activate Insert Headers and Footers through the `Plugins` menu in WordPress.
 3. Insert code in your header or footer by going to the `Settings > Insert Headers and Footers` menu.
 
-[youtube https://www.youtube.com/watch?v=AXM1QgMODW0]
+[youtube https://www.youtube.com/watch?v=QXbrdVjWaME]
 
 == Screenshots ==
 
@@ -66,6 +65,14 @@ To learn more about WordPress, you can also visit <a href="http://www.wpbeginner
 = Can I use Insert Headers and Footers to install Google Analytics? =
 
 Yes, you can insert your Google Analytics code in the `Scripts in Header` field.
+
+= Can I use Insert Headers and Footers for Google AdSense? =
+
+Yes, to verify your account or to tag your page for Auto ads, paste the code AdSense gives you, into the Scripts in Header field.
+
+= How to disable Insert Headers and Footers on a specific page? =
+
+You can use one of the three available boolean filters: disable_ihaf, disable_ihaf_footer, disable_ihaf_header, disable_ihaf_body and return true value in order to disable printing either on the entire page or specifically in the header or footer of a given page.
 
 == Notes ==
 Insert Headers and Footers is the easiest way to insert code in your WordPress headers and footers.
@@ -78,6 +85,28 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.6.0 =
+* Fix: Only show settings CTA to users able to visit the settings page.
+* Enhancement: Improve settings page user experience on heavily customized WordPress installs.
+
+= 1.5.0 =
+* New: Code editors now use CodeMirror for syntax highlighting.
+
+= 1.4.6 =
+* Tested compatibility with WordPress 5.4.2
+
+= 1.4.5 =
+* Tested compatibility with WordPress 5.3.2
+* Add support for printing scripts right after the opening body tag using the `wp_body_open` action
+
+= 1.4.4 =
+* Tested compatibility with WordPress 5.2
+* Updated text-domain standards and in plugin header
+
+= 1.4.3 =
+* Update FAQs
+* Introduce three new filters: disable_ihaf, disable_ihaf_footer, disable_ihaf_header
 
 = 1.4.2 =
 * Code cleanups
@@ -109,7 +138,7 @@ Syed Balkhi
 * cleaned up code
 
 = 1.1 =
-* fixed unecessary CSS loading
+* fixed unnecessary CSS loading
 
 = 1.0 =
 * Initial version

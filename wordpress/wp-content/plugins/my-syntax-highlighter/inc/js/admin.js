@@ -4,7 +4,7 @@
  * @package     My Syntax Highlighter
  * @author      Arthur Gareginyan
  * @link        https://www.spacexchimp.com
- * @copyright   Copyright (c) 2016-2017 Space X-Chimp Studio. All Rights Reserved.
+ * @copyright   Copyright (c) 2016-2021 Space X-Chimp. All Rights Reserved.
  */
 
 
@@ -19,19 +19,19 @@ jQuery(document).ready(function($) {
         }, 3000);
     }
 
-    // Add dynamic content to page tabs. Needed for having an up to date content.
-    $('.include-tab-store').load('https://www.spacexchimp.com/assets/dynamic-content/plugins.html #include-tab-store');
+    // Add a dynamic content to the plugin settings page. Needed for having an up to date banners
+    $('.include-tab-store').load('https://resources.spacexchimp.com/wordpress/plugins/dynamic-content/page.html');
 
     // Add questions and answers into spoilers and color them in different colors
     $('.panel-group .panel').each(function(i) {
-         $('.question-' + (i+1) ).appendTo( $('h4', this) );
-         $('.answer-' + (i+1) ).appendTo( $('.panel-body', this) );
+        $('.question-' + (i+1) ).appendTo( $('h4', this) );
+        $('.answer-' + (i+1) ).appendTo( $('.panel-body', this) );
 
-         if ( $(this).find('h4 div').hasClass('question-red') ) {
-             $(this).addClass('panel-danger');
-         } else {
-             $(this).addClass('panel-info');
-         }
+        if ( $(this).find('h4 div').hasClass('question-red') ) {
+            $(this).addClass('panel-danger');
+        } else {
+            $(this).addClass('panel-info');
+        }
     });
 
     // Enable switches

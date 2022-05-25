@@ -193,17 +193,20 @@ class DUPX_Bootstrap
 		//MANUAL EXTRACTION NOT FOUND
 		if (! $manual_extract_found) {
 
-			//MISSING ARCHIVE FILE
+			//MISSING ARCHIVE FILE  
 			if (! file_exists($archive_filepath)) {
 				self::log("[ERROR] Archive file not found!");
-				$error  = "<style>.diff-list font { font-weight: bold; }</style>"
-                    . "<b>Archive not found!</b> The <i>'Required File'</i> below should be present in the <i>'Extraction Path'</i>.  "
-					. "The archive file name must be the <u>exact</u> name of the archive file placed in the extraction path character for character.<br/><br/>  "
-					. "If the file does not have the correct name then rename it to the <i>'Required File'</i> below.   When downloading the package files make "
-					. "sure both files are from the same package line in the packages view.  If the archive is not finished downloading please wait for it to complete.<br/><br/>"
-					. "If this message continues even with a valid archive file, consider clearing your browsers cache and refreshing, trying another browser or change the browsers "
-					. "URL from http to https or vice versa.<br/><br/>  "
-					. "<b>Extraction Path:</b> <span class='file-info'>{$this->installerExtractPath}/</span><br/><br/>";
+                $error = "<style>.diff-list font { font-weight: bold; }</style>"
+                    . "<b>Archive not found!</b> The required archive file must be present in the <i>'Extraction Path'</i> below.  When the archive file name was created "
+                    . "it was given a secure hashed file name.  This file name must be the <i>exact same</i> name as when it was created character for character.  "
+                    . "Each archive file has a unique installer associated with it and must be used together.  See the list below for more options:<br/>"
+                    . "<ul>"
+                    . "<li>If the archive is not finished downloading please wait for it to complete.</li>"
+                    . "<li>Rename the file to it original hash name.  See WordPress-Admin ❯ Packages ❯  Details. </li>"
+                    . "<li>When downloading, both files both should be from the same package line. </li>"
+                    . "<li>Also see: <a href='https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-050-q' target='_blank'>How to fix various errors that show up before step-1 of the installer?</a></li>"
+                    . "</ul><br/>"
+                    ."<b>Extraction Path:</b> <span class='file-info'>{$this->installerExtractPath}/</span><br/>";
 
 				return $error;
 			}
@@ -214,7 +217,7 @@ class DUPX_Bootstrap
 			if (!empty($archive_size) && !self::checkInputVaslidInt($archive_size)) {
 				$no_of_bits = PHP_INT_SIZE * 8;
                 $error  = 'Current is a '.$no_of_bits.'-bit SO. This archive is too large for '.$no_of_bits.'-bit PHP.'.'<br>';
-                $this->log('[ERROR] '.$error);
+                self::log('[ERROR] '.$error);
                 $error  .= 'Possibibles solutions:<br>';
                 $error  .= '- Use the file filters to get your package lower to support this server or try the package on a Linux server.'.'<br>';
                 $error  .= '- Perform a <a target="_blank" href="https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-015-q">Manual Extract Install</a>'.'<br>';
@@ -237,8 +240,8 @@ class DUPX_Bootstrap
 
 			//SIZE CHECK ERROR
 			if (($this->archiveRatio < 90) && ($this->archiveActualSize > 0) && ($this->archiveExpectedSize > 0)) {
-				$this->log("ERROR: The expected archive size should be around [{$archiveExpectedEasy}].  The actual size is currently [{$archiveActualEasy}].");
-				$this->log("ERROR: The archive file may not have fully been downloaded to the server");
+				self::log("ERROR: The expected archive size should be around [{$archiveExpectedEasy}].  The actual size is currently [{$archiveActualEasy}].");
+				self::log("ERROR: The archive file may not have fully been downloaded to the server");
 				$percent = round($this->archiveRatio);
 
 				$autochecked = isset($_POST['auto-fresh']) ? "checked='true'" : '';
@@ -550,6 +553,54 @@ class DUPX_Bootstrap
 
 		return $retVal;
 	}
+    
+        /**
+     * Fetches current URL via php
+     *
+     * @param bool $queryString If true the query string will also be returned.
+     * @param int $getParentDirLevel if 0 get current script name or parent folder, if 1 parent folder if 2 parent of parent folder ... 
+     *
+     * @returns The current page url
+     */
+    public static function getCurrentUrl($queryString = true, $requestUri = false, $getParentDirLevel = 0)
+    {
+        // *** HOST
+        if (isset($_SERVER['HTTP_X_ORIGINAL_HOST'])) {
+            $host = $_SERVER['HTTP_X_ORIGINAL_HOST'];
+        } else {
+            $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME']; //WAS SERVER_NAME and caused problems on some boxes
+        }
+
+        // *** PROTOCOL
+        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+            $_SERVER ['HTTPS'] = 'on';
+        }
+        if (isset($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] === 'https') {
+            $_SERVER ['HTTPS'] = 'on';
+        }
+        if (isset($_SERVER['HTTP_CF_VISITOR'])) {
+            $visitor = json_decode($_SERVER['HTTP_CF_VISITOR']);
+            if ($visitor->scheme == 'https') {
+                $_SERVER ['HTTPS'] = 'on';
+            }
+        }
+        $protocol = 'http'.((isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) === 'on') ? 's' : '');
+
+        if ($requestUri) {
+            $serverUrlSelf = preg_replace('/\?.*$/', '', $_SERVER['REQUEST_URI']);
+        } else {
+            // *** SCRIPT NAME
+            $serverUrlSelf = $_SERVER['SCRIPT_NAME'];
+            for ($i = 0; $i < $getParentDirLevel; $i++) {
+                $serverUrlSelf = preg_match('/^[\\\\\/]?$/', dirname($serverUrlSelf)) ? '' : dirname($serverUrlSelf);
+            }
+        }
+
+        // *** QUERY STRING 
+        $query = ($queryString && isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0 ) ? '?'.$_SERVER['QUERY_STRING'] : '';
+
+        return $protocol.'://'.$host.$serverUrlSelf.$query;
+    }
 
 	/**
      *  Attempts to set the 'dup-installer' directory permissions
@@ -593,7 +644,7 @@ class DUPX_Bootstrap
 		}
 	}
 
-    /**
+	/**
      * Set the permissions of a single directory or file
      *
      * @param string $path			The full path to the directory or file where perms will be set
@@ -601,15 +652,15 @@ class DUPX_Bootstrap
      *
      * @return bool		Returns true if the permission was properly set
      */
-    private function setPermsOnItem($path, $perms)
-    {
+	private function setPermsOnItem($path, $perms)
+	{        
         if (($result = self::chmod($path, $perms)) === false) {
             self::log("ERROR: Couldn't set permissions of $path<br/>");
         } else {
             self::log("Set permissions of $path<br/>");
         }
         return $result;
-    }
+	}
 
     /**
      * Compare two strings and return html text which represts diff
@@ -655,7 +706,7 @@ class DUPX_Bootstrap
 	{
         static $logfile = null;
         if (is_null($logfile)) {
-            $logfile = dirname(__FILE__).'/dup-installer-bootlog__'.self::SECONDARY_PACKAGE_HASH.'.txt';
+            $logfile = self::getBootLogFilePath();
         }
         if ($deleteOld && file_exists($logfile)) {
             @unlink($logfile);
@@ -663,6 +714,15 @@ class DUPX_Bootstrap
         $timestamp = date('M j H:i:s');
 		return @file_put_contents($logfile, '['.$timestamp.'] '.self::postprocessLog($s)."\n", FILE_APPEND);
 	}
+    
+    /**
+     * get boot log file name the dup-installer-bootlog__[HASH].txt file
+     *
+     * @return string 
+     */
+    public static function getBootLogFilePath() {
+        return dirname(__FILE__).'/dup-installer-bootlog__'.self::SECONDARY_PACKAGE_HASH.'.txt';
+    }
     
     protected static function postprocessLog($str) {
         return str_replace(array(
@@ -1161,16 +1221,24 @@ class DUPX_Bootstrap
 		$cmds = array('shell_exec', 'escapeshellarg', 'escapeshellcmd', 'extension_loaded');
 
 		//Function disabled at server level
-		if (array_intersect($cmds, array_map('trim', explode(',', @ini_get('disable_functions'))))) return false;
+		if (array_intersect($cmds, array_map('trim', explode(',', @ini_get('disable_functions')))))
+            return false;
 
 		//Suhosin: http://www.hardened-php.net/suhosin/
 		//Will cause PHP to silently fail
 		if (extension_loaded('suhosin')) {
 			$suhosin_ini = @ini_get("suhosin.executor.func.blacklist");
-			if (array_intersect($cmds, array_map('trim', explode(',', $suhosin_ini)))) return false;
+			if (array_intersect($cmds, array_map('trim', explode(',', $suhosin_ini))))
+                return false;
 		}
+
+        if (! function_exists('shell_exec')) {
+			return false;
+	    }
+
 		// Can we issue a simple echo command?
-		if (!@shell_exec('echo duplicator')) return false;
+		if (!@shell_exec('echo duplicator'))
+            return false;
 
 		return true;
 	}
@@ -1376,7 +1444,7 @@ class DUPX_Handler
             case E_ERROR :
                 $log_message = self::getMessage($errno, $errstr, $errfile, $errline);
                 if (DUPX_Bootstrap::log($log_message) === false) {
-                    $log_message = "Can\'t wrinte logfile\n\n".$log_message;
+                    $log_message = "Can\'t write logfile\n\n".$log_message;
                 }
                 die('<pre>'.htmlspecialchars($log_message).'</pre>');
                 break;
@@ -1565,7 +1633,7 @@ class DUPX_CSRF {
 
 	/**
 	 * Get all CSRF vars in array format
-	 * 
+	 *
 	 * @return array Key as CSRF name and value as CSRF value
 	 */
 	private static function getCSRFVars() {
@@ -1573,6 +1641,9 @@ class DUPX_CSRF {
 			$filePath = self::getFilePath();
 			if (file_exists($filePath)) {
 				$contents = file_get_contents($filePath);
+				if (!($contents = file_get_contents($filePath))) {
+					throw new Exception('Fail to read the CSRF file.');
+				}
 				if (empty($contents)) {
 					self::$CSRFVars = array();
 				} else {
@@ -1597,7 +1668,9 @@ class DUPX_CSRF {
 	private static function saveCSRFVars($CSRFVars) {
 		$contents = json_encode($CSRFVars);
 		$filePath = self::getFilePath();
-		file_put_contents($filePath, $contents);
+		if (!file_put_contents($filePath, $contents, LOCK_EX)) {
+			throw new Exception('Fail to write the CSRF file.');
+		}
 	}
 }
 
@@ -1605,16 +1678,22 @@ try {
     $boot  = new DUPX_Bootstrap();
     $boot_error = $boot->run();
     $auto_refresh = isset($_POST['auto-fresh']) ? true : false;
+
+	if ($boot_error == null) {
+		$step1_csrf_token = DUPX_CSRF::generate('step1');
+		DUPX_CSRF::setKeyVal('archive', $boot->archive);
+		DUPX_CSRF::setKeyVal('bootloader', $boot->bootloader);
+		DUPX_CSRF::setKeyVal('secondaryHash', DUPX_Bootstrap::SECONDARY_PACKAGE_HASH);
+		DUPX_CSRF::setKeyVal('installerOrigCall', DUPX_Bootstrap::getCurrentUrl());
+		DUPX_CSRF::setKeyVal('installerOrigPath', __FILE__);
+		DUPX_CSRF::setKeyVal('booturl', '//'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+		DUPX_CSRF::setKeyVal('bootLogFile', DUPX_Bootstrap::getBootLogFilePath());
+		DUPX_CSRF::setKeyVal('package_hash', DUPX_Bootstrap::PACKAGE_HASH);
+	}
 } catch (Exception $e) {
    $boot_error = $e->getMessage();
 }
 
-if ($boot_error == null) {
-	$step1_csrf_token = DUPX_CSRF::generate('step1');
-	DUPX_CSRF::setKeyVal('archive', $boot->archive);
-	DUPX_CSRF::setKeyVal('bootloader', $boot->bootloader);
-    DUPX_CSRF::setKeyVal('secondaryHash', DUPX_Bootstrap::SECONDARY_PACKAGE_HASH);
-}
 ?>
 
 <html>
@@ -1626,7 +1705,7 @@ if ($boot_error == null) {
 	<body>
 		<?php
 		$id = uniqid();
-		$html = "<form id='{$id}' method='post' action='{$boot->mainInstallerURL}' />\n";
+		$html = "<form id='{$id}' method='post' action=".str_replace('\\/', '/', json_encode($boot->mainInstallerURL))." />\n";
 		$data = array(
 			'csrf_token' => $step1_csrf_token,
 		);
@@ -1643,7 +1722,7 @@ if ($boot_error == null) {
 		<style>
 			body {font-family:Verdana,Arial,sans-serif; line-height:18px; font-size: 12px}
 			h2 {font-size:20px; margin:5px 0 5px 0; border-bottom:1px solid #dfdfdf; padding:3px}
-			div#content {border:1px solid #CDCDCD; width:750px; min-height:550px; margin:auto; margin-top:18px; border-radius:5px; box-shadow:0 8px 6px -6px #333; font-size:13px}
+			div#content {border:1px solid #CDCDCD; width:750px; min-height:550px; margin:auto; margin-top:18px; border-radius:3px; box-shadow:0 8px 6px -6px #333; font-size:13px}
 			div#content-inner {padding:10px 30px; min-height:550px}
 
 			/* Header */

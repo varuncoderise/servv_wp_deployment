@@ -3,8 +3,9 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 class DUPX_DBInstall
 {
-    const USER_DEFINER_PATTERN         = "/^(\s*(?:\/\*!\d+\s)?\s*(?:CREATE.+)?DEFINER\s*=)(\S+)(.*)$/m";
-    const SQL_SECURITY_INVOKER_PATTERN = "/^([\s\t]*CREATE.+PROCEDURE[\s\S]*)(BEGIN)([\s\S]*)$/";
+    const USER_DEFINER_REPLACE_PATTERN = "/^(\s*(?:\/\*!\d+\s)?\s*(?:CREATE.+)?DEFINER\s*=)(\S+)(.*)$/m";
+    const USER_DEFINER_REMOVE_PATTERN  = "/^(\s*(?:\/\*!\d+\s)?\s*(?:CREATE.+)?)(DEFINER\s*=\s*\S+)(.*)$/m";
+    const SQL_SECURITY_INVOKER_PATTERN = "/^([\s\t]*CREATE.+(?:PROCEDURE|FUNCTION)[\s\S]*)(BEGIN)([\s\S]*)$/";
     const SQL_SECURITY_INVOKER_REPLACE = "$1SQL SECURITY INVOKER\n$2$3";
     const QUERY_ERROR_LOG_LEN          = 200;
 
@@ -39,6 +40,8 @@ class DUPX_DBInstall
     public $dbcollatefb;
     public $dbobj_views;
     public $dbobj_procs;
+    public $dbobj_funcs;
+    public $dbRemoveDefiner;
 	public $dbFileSize = 0;
 	public $dbDefinerReplace;
 
@@ -51,7 +54,7 @@ class DUPX_DBInstall
         $this->root_path            = $GLOBALS['DUPX_ROOT'];
         $this->sql_file_path        = "{$GLOBALS['DUPX_INIT']}/dup-database__{$GLOBALS['DUPX_AC']->package_hash}.sql";
         $this->sql_result_file_path = "{$GLOBALS['DUPX_INIT']}/{$GLOBALS['SQL_FILE_NAME']}";
-		$this->dbFileSize			= @filesize($this->sql_file_path);
+        $this->dbFileSize			= @filesize($this->sql_file_path);
 
         //ESTABLISH CONNECTION
         $this->dbh = DUPX_DB::connect($post['dbhost'], $post['dbuser'], $post['dbpass']);
@@ -61,9 +64,17 @@ class DUPX_DBInstall
                 or DUPX_Log::error(sprintf(ERR_DBCREATE, $post['dbname']));
         }
 
-        @mysqli_query($this->dbh, "SET wait_timeout = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_TIME']));
-        @mysqli_query($this->dbh, "SET GLOBAL max_allowed_packet = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_PACKETS']));
-        @mysqli_query($this->dbh, "SET max_allowed_packet = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_PACKETS']));
+        //PHP 8.1 throws exceptions vs pre 8.1 which silently fails
+        try {
+            @mysqli_query($this->dbh, "SET wait_timeout = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_TIME']));
+            $qryResult = @mysqli_query($this->dbh, "SET GLOBAL max_allowed_packet = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_PACKETS']));
+			if ($qryResult === false) {
+				@mysqli_query($this->dbh, "SET max_allowed_packet = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_PACKETS']));
+			}
+        }
+        catch (Exception $ex) {
+             DUPX_Log::info("SQL ERROR:" . $ex->getMessage() . "\n" . $ex->getTraceAsString());
+        }
 
         $this->profile_start    = isset($post['profile_start']) ? DUPX_U::sanitize_text_field($post['profile_start']) : DUPX_U::getMicrotime();
         $this->start_microtime  = isset($post['start_microtime']) ? DUPX_U::sanitize_text_field($post['start_microtime']) : $start_microtime;
@@ -74,7 +85,8 @@ class DUPX_DBInstall
         $this->dbvar_maxtime    = is_null($this->dbvar_maxtime) ? 300 : $this->dbvar_maxtime;
         $this->dbvar_maxpacks   = is_null($this->dbvar_maxpacks) ? 1048576 : $this->dbvar_maxpacks;
         $this->dbvar_sqlmode    = empty($this->dbvar_sqlmode) ? 'NOT_SET' : $this->dbvar_sqlmode;
-        $this->dbDefinerReplace = '$1' . addcslashes("`" . $this->post["dbuser"] . "`@`" . $this->post["dbhost"] . "`", '\\$') . '$3';
+        $definerHost            = $this->post["dbhost"] == "localhost" || $this->post["dbhost"] == "127.0.0.1" ? $this->post["dbhost"] : '%';
+        $this->dbDefinerReplace = '$1' . addcslashes("`" . $this->post["dbuser"] . "`@`" . $definerHost . "`", '\\$') . '$3';
         $this->dbquery_errs     = isset($post['dbquery_errs']) ? DUPX_U::sanitize_text_field($post['dbquery_errs']) : 0;
         $this->drop_tbl_log     = isset($post['drop_tbl_log']) ? DUPX_U::sanitize_text_field($post['drop_tbl_log']) : 0;
         $this->rename_tbl_log   = isset($post['rename_tbl_log']) ? DUPX_U::sanitize_text_field($post['rename_tbl_log']) : 0;
@@ -83,13 +95,25 @@ class DUPX_DBInstall
         $this->dbcollatefb      = isset($post['dbcollatefb']) ? DUPX_U::sanitize_text_field($post['dbcollatefb']) : 0;
         $this->dbobj_views      = isset($post['dbobj_views']) ? DUPX_U::sanitize_text_field($post['dbobj_views']) : 0;
         $this->dbobj_procs      = isset($post['dbobj_procs']) ? DUPX_U::sanitize_text_field($post['dbobj_procs']) : 0;
+        $this->dbobj_funcs      = isset($post['dbobj_funcs']) ? DUPX_U::sanitize_text_field($post['dbobj_funcs']) : 0;
+        $this->dbRemoveDefiner  = isset($post['db_remove_definer']) ? DUPX_U::sanitize_text_field($post['db_remove_definer']) : 0;
     }
 
     public function prepareDB()
     {
         //RUN DATABASE SCRIPT
-        @mysqli_query($this->dbh, "SET wait_timeout = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_TIME']));
-        @mysqli_query($this->dbh, "SET max_allowed_packet = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_PACKETS']));
+        //PHP 8.1 throws exceptions vs pre-8.1 which silently fails
+        try {
+            @mysqli_query($this->dbh, "SET wait_timeout = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_TIME']));
+            $qryResult = @mysqli_query($this->dbh, "SET GLOBAL max_allowed_packet = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_PACKETS']));
+            if ($qryResult === false) {
+                @mysqli_query($this->dbh, "SET max_allowed_packet = ".mysqli_real_escape_string($this->dbh, $GLOBALS['DB_MAX_PACKETS']));
+            }
+        }
+        catch (Exception $ex) {
+             DUPX_Log::info("SQL ERROR:" . $ex->getMessage() . "\n" . $ex->getTraceAsString());
+        }
+
         DUPX_DB::setCharset($this->dbh, $this->post['dbcharset'], $this->post['dbcollate']);
 
         //Will set mode to null only for this db handle session
@@ -109,7 +133,6 @@ class DUPX_DBInstall
                 }
                 break;
         }
-
 
         //Set defaults incase the variable could not be read
         $this->drop_tbl_log   = 0;
@@ -146,10 +169,11 @@ class DUPX_DBInstall
 
             //DROP DB TABLES:  DROP TABLE statement does not support views
             case "empty":
-                //Drop all tables, views and procs
+                //Drop all tables, views, funcs and procs
                 $this->dropTables();
                 $this->dropViews();
                 $this->dropProcs();
+                $this->dropFuncs();
                 break;
 
             //RENAME DB TABLES
@@ -172,6 +196,7 @@ class DUPX_DBInstall
                 }
                 break;
         }
+
     }
 
     public function getRowCountMisMatchTables()
@@ -230,12 +255,13 @@ class DUPX_DBInstall
 
         @mysqli_autocommit($this->dbh, false);
 
-        $query = null;
+        $query = '';
         $delimiter = ';';
+
         while (($line = fgets($handle)) !== false) {
             if ('DELIMITER ;' == trim($query)) {
                 $delimiter = ';';
-                $query = null;
+                $query = '';
                 continue;
             }
             $query .= $line;
@@ -270,7 +296,7 @@ class DUPX_DBInstall
                         }
 
                         DUPX_Log::info("Skipping delimiter query");
-                        $query = null;
+                        $query = '';
                         continue;
                     }
 
@@ -333,7 +359,7 @@ class DUPX_DBInstall
                         $this->dbquery_rows++;
                     }
                 }
-                $query = null;
+                $query = '';
                 $counter++;
             }
         }
@@ -379,6 +405,14 @@ class DUPX_DBInstall
             DUPX_Log::info("DB PROCEDURES:\tdisabled");
         } else {
             DUPX_Log::info("DB PROCEDURES:\tenabled");
+        }
+
+        //Remove FUNCTIONS from DB
+        if (!$this->dbobj_funcs) {
+            $this->dropFuncs();
+            DUPX_Log::info("DB FUNCTIONS:\tdisabled");
+        } else {
+            DUPX_Log::info("DB FUNCTIONS:\tenabled");
         }
     }
 
@@ -447,6 +481,50 @@ class DUPX_DBInstall
                 ), DUPX_NOTICE_MANAGER::ADD_UNIQUE_PREPEND_IF_EXISTS, 'drop-proc-fail-msg');
             }
         }
+    }
+
+    private function dropFuncs()
+    {
+        $sql = "SHOW FUNCTION STATUS WHERE db='{$this->post['dbname']}'";
+        if (($result = mysqli_query($this->dbh, $sql)) === false || mysqli_num_rows($result) === 0) {
+            return;
+        }
+
+        DUPX_Log::info("MYSQL RESULT: ".DUPX_Log::varToString($result));
+        DUPX_Log::info("NUMBER OF FUNCS: ".DUPX_Log::varToString(mysqli_num_rows($result)));
+
+        $nManager = DUPX_NOTICE_MANAGER::getInstance();
+        while ($row = mysqli_fetch_row($result)) {
+            $func_name = $row[1];
+            $sql       = "DROP FUNCTION IF EXISTS `".mysqli_real_escape_string($this->dbh, $this->post['dbname'])."`.`".mysqli_real_escape_string($this->dbh, $func_name)."`";
+            if (!mysqli_query($this->dbh, $sql)) {
+                $err = mysqli_error($this->dbh);
+
+                $nManager->addNextStepNotice(array(
+                    'shortMsg'    => 'FUNCTION CLEAN ERROR',
+                    'level'       => DUPX_NOTICE_ITEM::SOFT_WARNING,
+                    'longMsg'     => sprintf('Unable to remove FUNCTION "%s" from database "%s".<br/>', $func_name, $this->post['dbname']),
+                    'longMsgMode' => DUPX_NOTICE_ITEM::MSG_MODE_HTML,
+                ), DUPX_NOTICE_MANAGER::ADD_UNIQUE_APPEND, 'drop-func-fail-msg');
+
+                $nManager->addFinalReportNotice(array(
+                    'shortMsg'    => 'PROCEDURE CLEAN ERROR: '.$err,
+                    'level'       => DUPX_NOTICE_ITEM::SOFT_WARNING,
+                    'longMsg'     => sprintf('Unable to remove FUNCTION "%s" from database "%s".', $func_name, $this->post['dbname']),
+                    'longMsgMode' => DUPX_NOTICE_ITEM::MSG_MODE_HTML,
+                    'sections'    => 'database',
+                ));
+
+                DUPX_Log::info("FUNCTION CLEAN ERROR: '{$err}'\n\t[SQL=".substr($sql, 0, self::QUERY_ERROR_LOG_LEN)."...]\n\n");
+            }
+        }
+
+        $nManager->addNextStepNotice(array(
+            'shortMsg'    => 'PROCEDURE CLEAN ERROR',
+            'level'       => DUPX_NOTICE_ITEM::SOFT_WARNING,
+            'longMsg'     => sprintf(ERR_DROP_FUNCTION_TRYCLEAN, mysqli_error($this->dbh)),
+            'longMsgMode' => DUPX_NOTICE_ITEM::MSG_MODE_HTML,
+        ), DUPX_NOTICE_MANAGER::ADD_UNIQUE_PREPEND_IF_EXISTS, 'drop-func-fail-msg');
     }
 
     private function dropViews()
@@ -579,26 +657,34 @@ class DUPX_DBInstall
         return $query;
     }
 
-    private function applyProcUserFix()
-    {
-        foreach ($this->sql_result_data as $key => $query) {
-            if (preg_match("/DEFINER.*PROCEDURE/", $query) === 1) {
-                $query                       = preg_replace("/DEFINER.*PROCEDURE/", "PROCEDURE", $query);
-                $query                       = str_replace("BEGIN", "SQL SECURITY INVOKER\nBEGIN", $query);
-                $this->sql_result_data[$key] = $query;
-            }
-        }
-    }
-
     private function applyQueryProcAndViewFix($query)
     {
-        return preg_replace(array(
-            self::USER_DEFINER_PATTERN,
-            self::SQL_SECURITY_INVOKER_PATTERN
-        ), array(
-            $this->dbDefinerReplace,
-            self::SQL_SECURITY_INVOKER_REPLACE
-        ), $query);
+        static $replaceRules = null;
+        if (is_null($replaceRules)) {
+            $replaceRules['patterns'] = array(
+                self::USER_DEFINER_REPLACE_PATTERN,
+                self::SQL_SECURITY_INVOKER_PATTERN
+            );
+
+            $replaceRules['replaces'] = array(
+                $this->dbDefinerReplace,
+                self::SQL_SECURITY_INVOKER_REPLACE
+            );
+
+            if ($this->dbRemoveDefiner) {
+                //No need to run the definer replace if we are removing them
+                $replaceRules['patterns'][0] = self::USER_DEFINER_REMOVE_PATTERN;
+                $replaceRules['replaces'][0] = "$1 $3";
+            }
+        }
+
+        $fixedQuery = preg_replace($replaceRules['patterns'], $replaceRules['replaces'], $query);
+
+        if ($fixedQuery !== $query) {
+            DUPX_Log::info("REPLACED DEFINER/INVOKER IN QUERY: [sql=".$fixedQuery."]", DUPX_Log::LV_DEBUG);
+        }
+
+        return $fixedQuery;
     }
 
     private function delimiterFix($counter)

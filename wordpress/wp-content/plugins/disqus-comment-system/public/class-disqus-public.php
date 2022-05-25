@@ -58,7 +58,7 @@ class Disqus_Public {
 		if ( $user->ID ) {
 			$payload_user['id'] = $user->ID;
 			$payload_user['username'] = $user->display_name;
-			$payload_user['avatar'] = get_avatar( $user->ID, 92 );
+			$payload_user['avatar'] = get_avatar_url( $user->ID, 92 );
 			$payload_user['email'] = $user->user_email;
 			$payload_user['url'] = $user->user_url;
 		}
@@ -208,7 +208,9 @@ class Disqus_Public {
 	 * @since    3.0
 	 */
 	public function enqueue_comment_count() {
-		if ( $this->dsq_can_load( 'count' ) ) {
+		global $post;
+
+		if ( $this->dsq_comment_count_can_load_for_post( $post ) ) {
 
 			$count_vars = array(
 				'disqusShortname' => $this->shortname,
@@ -264,6 +266,34 @@ class Disqus_Public {
 	}
 
 	/**
+	 * Determines if Disqus is configured and should load the comment count script on a given page.
+	 *
+	 * @since     3.0.18
+	 * @access    private
+	 * @param     WP_Post $post    The WordPress post used to determine if Disqus can be loaded.
+	 * @return    boolean          Whether Disqus is configured properly and should load the comment count on the current page.
+	 */
+	private function dsq_comment_count_can_load_for_post( $post ) {
+		// Checks if the plugin is configured properly
+		// and is a valid page.
+		if ( ! $this->dsq_can_load( 'count' ) ) {
+			return false;
+		}
+
+		// Make sure we have a $post object.
+		if ( ! isset( $post ) ) {
+			return false;
+		}
+
+		// Make sure comments are open if it's a single post page.
+		if ( is_singular() && ! comments_open() ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Determines if Disqus is configured and can the comments embed on a given page.
 	 *
 	 * @since     3.0
@@ -298,6 +328,11 @@ class Disqus_Public {
 
 		// Don't load embed when comments are closed on a post.
 		if ( 'open' != $post->comment_status ) {
+			return false;
+		}
+
+		// Don't load embed when comments are closed on a post. These lines can solve a conflict with plugin Public Post Preview.
+		if ( ! comments_open() ) {
 			return false;
 		}
 

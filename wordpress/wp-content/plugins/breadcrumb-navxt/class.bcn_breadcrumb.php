@@ -1,6 +1,6 @@
 <?php
 /*  
-	Copyright 2007-2017  John Havlik  (email : john.havlik@mtekk.us)
+	Copyright 2007-2021  John Havlik  (email : john.havlik@mtekk.us)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ require_once(dirname(__FILE__) . '/includes/block_direct_access.php');
 class bcn_breadcrumb
 {
 	//Our member variables
-	const version = '5.7.1';
+	const version = '7.0.1';
 	//The main text that will be shown
 	protected $title;
 	//The breadcrumb's template, used durring assembly
@@ -33,24 +33,22 @@ class bcn_breadcrumb
 	//The link the breadcrumb leads to, null if $linked == false
 	protected $url;
 	//The corresponding resource ID
-	protected $id = NULL;
-	private $_title = NULL;
+	protected $id = null;
+	private $_title = null;
 	//The type of this breadcrumb
 	protected $type;
-	protected $allowed_html = array();
-	const default_template_no_anchor = '<span property="itemListElement" typeof="ListItem"><span property="name">%htitle%</span><meta property="position" content="%position%"></span>';
+	const default_template_no_anchor = '<span property="itemListElement" typeof="ListItem"><span property="name" class="%type%">%htitle%</span><meta property="url" content="%link%"><meta property="position" content="%position%"></span>';
 	/**
 	 * The enhanced default constructor, ends up setting all parameters via the set_ functions
-	 *  
+	 *
 	 * @param string $title (optional) The title of the breadcrumb
 	 * @param string $template (optional) The html template for the breadcrumb
 	 * @param string $type (optional) The breadcrumb type
 	 * @param string $url (optional) The url the breadcrumb links to
+	 * @param bool $linked (optional) Whether or not the breadcrumb uses the linked or unlinked template
 	 */
-	public function __construct($title = '', $template = '', array $type = array(), $url = '', $id = NULL)
+	public function __construct($title = '', $template = '', array $type = array(), $url = '', $id = null, $linked = false)
 	{
-		//Filter allowed_html array to allow others to add acceptable tags
-		$this->allowed_html = apply_filters('bcn_allowed_html', wp_kses_allowed_html('post'));
 		//The breadcrumb type
 		$this->type = $type;
 		//Set the resource id
@@ -60,39 +58,39 @@ class bcn_breadcrumb
 		//Set the default anchorless templates value
 		$this->template_no_anchor = bcn_breadcrumb::default_template_no_anchor;
 		//If we didn't get a good template, use a default template
-		if($template == NULL)
+		if($template == null)
 		{
 			$this->set_template(bcn_breadcrumb::get_default_template());
 		}
 		//If something was passed in template wise, update the appropriate internal template
 		else
 		{
-			//Loose comparison, evaluates to true if URL is '' or NULL
-			if($url == NULL)
-			{
-				$this->template_no_anchor = wp_kses(apply_filters('bcn_breadcrumb_template_no_anchor', $template, $this->type, $this->id), $this->allowed_html);
-				$this->set_template(bcn_breadcrumb::get_default_template());
-			}
-			else
+			if($linked)
 			{
 				$this->set_template($template);
 			}
+			else
+			{
+				$this->template_no_anchor =  $this->run_template_kses(apply_filters('bcn_breadcrumb_template_no_anchor', $template, $this->type, $this->id));
+				$this->set_template(bcn_breadcrumb::get_default_template());
+			}
 		}
-		//Always NULL if unlinked
+		//Always null if unlinked
 		$this->set_url($url);
+		$this->set_linked($linked);
 	}
 	/**
 	 * Function to return the translated default template
-	 * 
+	 *
 	 * @return string The default breadcrumb template 
 	 */
 	static public function get_default_template()
 	{
-		return __('<span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to %title%." href="%link%" class="%type%"><span property="name">%htitle%</span></a><meta property="position" content="%position%"></span>', 'breadcrumb-navxt');
+		return sprintf('<span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="%1$s" href="%%link%%" class="%%type%%" bcn-aria-current><span property="name">%%htitle%%</span></a><meta property="position" content="%%position%%"></span>', esc_attr__('Go to %title%.','breadcrumb-navxt'));
 	}
 	/**
 	 * Function to set the protected title member
-	 * 
+	 *
 	 * @param string $title The title of the breadcrumb
 	 */
 	public function set_title($title)
@@ -103,7 +101,7 @@ class bcn_breadcrumb
 	}
 	/**
 	 * Function to get the protected title member
-	 * 
+	 *
 	 * @return $this->title
 	 */
 	public function get_title()
@@ -113,31 +111,60 @@ class bcn_breadcrumb
 	}
 	/**
 	 * Function to set the internal URL variable
-	 * 
-	 * @param string $url the url to link to
+	 *
+	 * @param string $url the URL to link to
 	 */
 	public function set_url($url)
 	{
+		$url = trim($url);
 		$this->url = apply_filters('bcn_breadcrumb_url', $url, $this->type, $this->id);
-		//If the URL seemed nullish, we are not linked
-		if($this->url == NULL)
-		{
-			$this->linked = false;
-		}
-		else
-		{
-			$this->linked = true;
-		}
+	}
+	/**
+	 * Function to get the internal URL variable
+	 * 
+	 * @return string the URL that the breadcrumb links to
+	 */
+	public function get_url()
+	{
+		return $this->url;
+	}
+	/**
+	 * Function to set the internal breadcrumb linked status
+	 * 
+	 * @param bool $linked whether or not the breadcrumb uses the linked or unlinked template
+	 */
+	public function set_linked($linked)
+	{
+		$this->linked = apply_filters('bcn_breadcrumb_linked', $linked, $this->type, $this->id);
+	}
+	/**
+	 * Function to check if this breadcrumb will be linked
+	 * 
+	 * @return boolean whether or not this breadcrumb is linked
+	 */
+	public function is_linked()
+	{
+		return $this->linked;
+	}
+	/**
+	 * A wrapper for wp_kses which handles getting the allowed html
+	 * 
+	 * @param string $template_str The tempalte string to run through kses
+	 * @return string The template string post cleaning
+	 */
+	protected function run_template_kses($template_str)
+	{
+		return wp_kses($template_str, apply_filters('bcn_allowed_html', wp_kses_allowed_html('post')));
 	}
 	/**
 	 * Function to set the internal breadcrumb template
-	 * 
+	 *
 	 * @param string $template the template to use durring assebly
 	 */
 	public function set_template($template)
 	{
 		//Assign the breadcrumb template
-		$this->template = wp_kses(apply_filters('bcn_breadcrumb_template', $template, $this->type, $this->id), $this->allowed_html);
+		$this->template = $this->run_template_kses(apply_filters('bcn_breadcrumb_template', $template, $this->type, $this->id));
 	}
 	/**
 	 * Function to set the internal breadcrumb ID
@@ -159,7 +186,7 @@ class bcn_breadcrumb
 	}
 	/**
 	 * Append a type entry to the type array
-	 * 
+	 *
 	 * @param string $type the type to append
 	 */
 	public function add_type($type)
@@ -168,7 +195,7 @@ class bcn_breadcrumb
 	}
 	/**
 	 * Return the type array
-	 * 
+	 *
 	 * @return array The type array
 	 */
 	public function get_types()
@@ -177,7 +204,7 @@ class bcn_breadcrumb
 	}
 	/**
 	 * This function will intelligently trim the title to the value passed in through $max_length. This function is deprecated, do not call.
-	 * 
+	 *
 	 * @param int $max_length of the title.
 	 * @deprecated since 5.2.0
 	 */
@@ -192,7 +219,7 @@ class bcn_breadcrumb
 		{
 			//Trim the title
 			$this->title = mb_substr($this->title, 0, $max_length - 1);
-			//Make sure we can split a, but we want to limmit to cutting at max an additional 25%
+			//Make sure we can split, but we want to limmit to cutting at max an additional 25%
 			if(mb_strpos($this->title, ' ', .75 * $max_length) > 0)
 			{
 				//Don't split mid word
@@ -205,18 +232,27 @@ class bcn_breadcrumb
 			$this->title = rtrim($this->title) . html_entity_decode('&hellip;', ENT_COMPAT, 'UTF-8');
 		}
 		//Return to the encoded version of all HTML entities (keep standards complance)
-		$this->title = htmlentities($this->title, ENT_COMPAT, 'UTF-8');
+		$this->title = force_balance_tags(htmlentities($this->title, ENT_COMPAT, 'UTF-8'));
 	}
 	/**
 	 * Assembles the parts of the breadcrumb into a html string
-	 * 
+	 *
 	 * @param bool $linked Allow the output to contain anchors?
 	 * @param int $position The position of the breadcrumb in the trail (between 1 and n when there are n breadcrumbs in the trail)
-	 * 
+	 * @param bool $is_current_item Whether or not this breadcrumb represents the current item
+	 *
 	 * @return string The compiled breadcrumb string
 	 */
-	public function assemble($linked, $position)
+	public function assemble($linked, $position, $is_current_item = false)
 	{
+		if($is_current_item)
+		{
+			$aria_current_str = 'aria-current="page"';
+		}
+		else
+		{
+			$aria_current_str = '';
+		}
 		//Build our replacements array
 		$replacements = array(
 			'%title%' => esc_attr(strip_tags($this->title)),
@@ -225,12 +261,18 @@ class bcn_breadcrumb
 			'%type%' => apply_filters('bcn_breadcrumb_types', $this->type, $this->id),
 			'%ftitle%' => esc_attr(strip_tags($this->_title)),
 			'%fhtitle%' => $this->_title,
-			'%position%' => $position
+			'%position%' => $position,
+			'bcn-aria-current' => $aria_current_str
 			);
 		//The type may be an array, implode it if that is the case
 		if(is_array($replacements['%type%']))
 		{
-			$replacements['%type%'] = implode(' ', $replacements['%type%']);
+			array_walk($replacements['%type%'], 'sanitize_html_class');
+			$replacements['%type%'] = esc_attr(implode(' ', $replacements['%type%']));
+		}
+		else
+		{
+			_doing_it_wrong(__CLASS__ . '::' . __FUNCTION__, __('bcn_breadcrumb::type must be an array', 'breadcrumb-navxt'), '6.0.2');	
 		}
 		$replacements = apply_filters('bcn_template_tags', $replacements, $this->type, $this->id);
 		//If we are linked we'll need to use the normal template
@@ -248,19 +290,19 @@ class bcn_breadcrumb
 	}
 	/**
 	 * Assembles the parts of the breadcrumb into a JSON-LD ready object-array
-	 * 
+	 *
 	 * @param int $position The position of the breadcrumb in the trail (between 1 and n when there are n breadcrumbs in the trail)
-	 * 
+	 *
 	 * @return array(object) The prepared array object ready to pass into json_encode
 	 */
 	public function assemble_json_ld($position)
 	{
-		return (object)array(
+		return (object) apply_filters('bcn_breadcrumb_assembled_json_ld_array', array(
 			'@type' => 'ListItem',
 			'position' => $position,
 			'item' => (object)array(
 				'@id' => esc_url($this->url),
 				'name' => esc_attr($this->title))
-		);
+		), $this->type, $this->id);
 	}
 }

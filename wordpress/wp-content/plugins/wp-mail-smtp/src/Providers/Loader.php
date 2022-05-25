@@ -3,7 +3,8 @@
 namespace WPMailSMTP\Providers;
 
 use WPMailSMTP\Debug;
-use WPMailSMTP\MailCatcher;
+use WPMailSMTP\MailCatcherInterface;
+use WPMailSMTP\Options;
 
 /**
  * Class Loader.
@@ -15,19 +16,33 @@ class Loader {
 	/**
 	 * Key is the mailer option, value is the path to its classes.
 	 *
+	 * @since 1.0.0
+	 * @since 1.6.0 Added Sendinblue.
+	 * @since 1.7.0 Added AmazonSES/Outlook as indication of the Pro mailers.
+	 *
 	 * @var array
 	 */
 	protected $providers = array(
-		'mail'     => '\WPMailSMTP\Providers\Mail\\',
-		'gmail'    => '\WPMailSMTP\Providers\Gmail\\',
-		'mailgun'  => '\WPMailSMTP\Providers\Mailgun\\',
-		'sendgrid' => '\WPMailSMTP\Providers\Sendgrid\\',
-		'pepipost' => '\WPMailSMTP\Providers\Pepipost\\',
-		'smtp'     => '\WPMailSMTP\Providers\SMTP\\',
+		'mail'        => 'WPMailSMTP\Providers\Mail\\',
+		'smtpcom'     => 'WPMailSMTP\Providers\SMTPcom\\',
+		'sendinblue'  => 'WPMailSMTP\Providers\Sendinblue\\',
+		'amazonses'   => 'WPMailSMTP\Providers\AmazonSES\\',
+		'gmail'       => 'WPMailSMTP\Providers\Gmail\\',
+		'mailgun'     => 'WPMailSMTP\Providers\Mailgun\\',
+		'outlook'     => 'WPMailSMTP\Providers\Outlook\\',
+		'pepipostapi' => 'WPMailSMTP\Providers\PepipostAPI\\',
+		'postmark'    => 'WPMailSMTP\Providers\Postmark\\',
+		'sendgrid'    => 'WPMailSMTP\Providers\Sendgrid\\',
+		'sparkpost'   => 'WPMailSMTP\Providers\SparkPost\\',
+		'zoho'        => 'WPMailSMTP\Providers\Zoho\\',
+		'smtp'        => 'WPMailSMTP\Providers\SMTP\\',
+		'pepipost'    => 'WPMailSMTP\Providers\Pepipost\\',
 	);
 
 	/**
-	 * @var \WPMailSMTP\MailCatcher
+	 * @since 1.0.0
+	 *
+	 * @var MailCatcherInterface
 	 */
 	private $phpmailer;
 
@@ -39,6 +54,15 @@ class Loader {
 	 * @return array
 	 */
 	public function get_providers() {
+
+		if ( ! Options::init()->is_mailer_active( 'pepipost' ) ) {
+			unset( $this->providers['pepipost'] );
+		}
+
+		if ( ! Options::init()->is_mailer_active( 'pepipostapi' ) ) {
+			unset( $this->providers['pepipostapi'] );
+		}
+
 		return apply_filters( 'wp_mail_smtp_providers_loader_get_providers', $this->providers );
 	}
 
@@ -49,14 +73,17 @@ class Loader {
 	 *
 	 * @param string $provider
 	 *
-	 * @return array
+	 * @return string|null
 	 */
 	public function get_provider_path( $provider ) {
+
 		$provider = sanitize_key( $provider );
+
+		$providers = $this->get_providers();
 
 		return apply_filters(
 			'wp_mail_smtp_providers_loader_get_provider_path',
-			isset( $this->providers[ $provider ] ) ? $this->providers[ $provider ] : null,
+			isset( $providers[ $provider ] ) ? $providers[ $provider ] : null,
 			$provider
 		);
 	}
@@ -68,9 +95,10 @@ class Loader {
 	 *
 	 * @param string $provider
 	 *
-	 * @return \WPMailSMTP\Providers\OptionsAbstract|null
+	 * @return OptionsAbstract|null
 	 */
 	public function get_options( $provider ) {
+
 		return $this->get_entity( $provider, 'Options' );
 	}
 
@@ -79,9 +107,10 @@ class Loader {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return \WPMailSMTP\Providers\OptionsAbstract[]
+	 * @return OptionsAbstract[]
 	 */
 	public function get_options_all() {
+
 		$options = array();
 
 		foreach ( $this->get_providers() as $provider => $path ) {
@@ -110,17 +139,14 @@ class Loader {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param string $provider
-	 * @param MailCatcher $phpmailer
+	 * @param string               $provider  The provider name.
+	 * @param MailCatcherInterface $phpmailer The MailCatcher object.
 	 *
-	 * @return \WPMailSMTP\Providers\MailerAbstract|null
+	 * @return MailerAbstract|null
 	 */
 	public function get_mailer( $provider, $phpmailer ) {
 
-		if (
-			$phpmailer instanceof MailCatcher ||
-			$phpmailer instanceof \PHPMailer
-		) {
+		if ( wp_mail_smtp()->is_valid_phpmailer( $phpmailer ) ) {
 			$this->phpmailer = $phpmailer;
 		}
 
@@ -132,23 +158,24 @@ class Loader {
 	 *
 	 * @param string $provider
 	 *
-	 * @return \WPMailSMTP\Providers\AuthAbstract|null
+	 * @return AuthAbstract|null
 	 */
 	public function get_auth( $provider ) {
+
 		return $this->get_entity( $provider, 'Auth' );
 	}
 
 	/**
 	 * Get a generic entity based on the request.
 	 *
-	 * @uses ReflectionClass
+	 * @uses  \ReflectionClass
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param string $provider
 	 * @param string $request
 	 *
-	 * @return null
+	 * @return OptionsAbstract|MailerAbstract|AuthAbstract|null
 	 */
 	protected function get_entity( $provider, $request ) {
 
@@ -172,11 +199,43 @@ class Loader {
 					$entity = new $class();
 				}
 			}
-		} catch ( \Exception $e ) {
+		}
+		catch ( \Exception $e ) {
 			Debug::set( "There was a problem while retrieving {$request} for {$provider}: {$e->getMessage()}" );
 			$entity = null;
 		}
 
 		return apply_filters( 'wp_mail_smtp_providers_loader_get_entity', $entity, $provider, $request );
+	}
+
+	/**
+	 * Get supports options for all mailers.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @return array
+	 */
+	public function get_supports_all() {
+
+		$supports = [];
+
+		foreach ( $this->get_providers() as $provider => $path ) {
+			$option = $this->get_options( $provider );
+
+			if ( ! $option instanceof OptionsAbstract ) {
+				continue;
+			}
+
+			$mailer_slug     = $option->get_slug();
+			$mailer_supports = $option->get_supports();
+
+			if ( empty( $mailer_slug ) || empty( $mailer_supports ) ) {
+				continue;
+			}
+
+			$supports[ $mailer_slug ] = $mailer_supports;
+		}
+
+		return apply_filters( 'wp_mail_smtp_providers_loader_get_supports_all', $supports );
 	}
 }

@@ -19,7 +19,7 @@ class DUPX_Boot
 
     const ARCHIVE_PREFIX      = 'dup-archive__';
     const ARCHIVE_EXTENSION   = '.txt';
-    const MINIMUM_PHP_VERSION = '5.2.17';
+    const MINIMUM_PHP_VERSION = '5.3.8';
 
     /**
      * this variable becomes false after the installer is initialized by skipping the shutdown function defined in the boot class
@@ -55,12 +55,16 @@ class DUPX_Boot
         // set all PHP.INI settings
         self::phpIni();
         self::initParamsBase();
+        DUPX_Security::getInstance();
 
         /*
          * INIZIALIZE
          */
         // init global values
         DUPX_Constants::init();
+
+        //init managed host manager
+        DUPX_Custom_Host_Manager::getInstance()->init();
 
         // init ERR defines
         DUPX_Constants::initErrDefines();
@@ -150,7 +154,9 @@ class DUPX_Boot
         require_once($GLOBALS['DUPX_INIT'].'/classes/class.package.php');
         require_once($GLOBALS['DUPX_INIT'].'/ctrls/ctrl.base.php');
         require_once($GLOBALS['DUPX_INIT'].'/classes/config/class.archive.config.php');
+        require_once($GLOBALS['DUPX_INIT'].'/classes/config/class.security.php');
         require_once($GLOBALS['DUPX_INIT'].'/classes/class.logging.php');
+        require_once($GLOBALS['DUPX_INIT'].'/classes/host/class.custom.host.manager.php');
     }
 
     /**
@@ -295,9 +301,18 @@ class DUPX_Boot
         } else {
             $phpVersion = PHP_VERSION;
         }
-        // no html
-        echo 'This server is running PHP: '.$phpVersion.'. A minimum of PHP '.self::MINIMUM_PHP_VERSION.' is required to run the installer.'
-        .' Contact your hosting provider or server administrator and let them know you would like to upgrade your PHP version.';
+        $minPHPVersion = self::MINIMUM_PHP_VERSION;
+        
+        echo '<div style="line-height:25px">';
+
+        echo "NOTICE: This web server is running <b>PHP: {$phpVersion}</b>.&nbsp; A minimum of PHP {$minPHPVersion} is required to run the installer and PHP 7.0+ is recommended.<br/>";
+        echo "Please contact your host or server administrator and let them know you would like to upgrade your PHP version.<br/>";
+        
+        echo '<i>For more information on this topic see the FAQ titled '
+        . '<a href="https://snapcreek.com/duplicator/docs/faqs-tech/#faq-licensing-017-q" target="_blank">What version of PHP Does Duplicator Support?</a></i>';
+
+        echo '</div>';
+        
         die();
     }
 }

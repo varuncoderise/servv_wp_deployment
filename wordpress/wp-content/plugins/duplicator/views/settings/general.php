@@ -114,8 +114,12 @@ $unhook_third_party_css = DUP_Settings::Get('unhook_third_party_css');
         <tr valign="top">
             <th scope="row"><label><?php esc_html_e("Version", 'duplicator'); ?></label></th>
             <td>
-                <?php echo DUPLICATOR_VERSION ?> &nbsp;
-                <i><small>(<?php echo DUPLICATOR_VERSION_BUILD ?>)</small></i>
+                <?php 
+                    echo DUPLICATOR_VERSION . ' &nbsp; ';
+                    echo (stristr(DUPLICATOR_VERSION_BUILD, 'rc'))
+                        ? "<span style='color:red'>["  . DUPLICATOR_VERSION_BUILD . "]</span>"
+                        : "<span style='color:gray'>[" . DUPLICATOR_VERSION_BUILD . "]</span>";
+                ?>
             </td>
         </tr>
         <tr valign="top">
@@ -203,10 +207,10 @@ $unhook_third_party_css = DUP_Settings::Get('unhook_third_party_css');
             </td>
         </tr>
         <tr>
-            <th scope="row"><label><?php esc_html_e("Other Plugins/Themes JS", 'duplicator'); ?></label></th>
+            <th scope="row"><label><?php esc_html_e("Foreign JavaScript", 'duplicator'); ?></label></th>
             <td>
                 <input type="checkbox" name="unhook_third_party_js" id="unhook_third_party_js" <?php checked($unhook_third_party_js, true); ?>  value="1"/>
-                <label for="unhook_third_party_js"><?php esc_html_e("Unhook them on Duplicator pages", 'duplicator'); ?></label> <br/>
+                <label for="unhook_third_party_js"><?php esc_html_e("Disable", 'duplicator'); ?></label> <br/>
                 <p class="description">
                     <?php
                     esc_html_e("Check this option if other plugins/themes JavaScript files are conflicting with Duplicator.", 'duplicator');
@@ -219,10 +223,10 @@ $unhook_third_party_css = DUP_Settings::Get('unhook_third_party_css');
             </td>
         </tr>
         <tr>
-            <th scope="row"><label><?php esc_html_e("Other Plugins/Themes CSS", 'duplicator'); ?></label></th>
+            <th scope="row"><label><?php esc_html_e("Foreign CSS", 'duplicator'); ?></label></th>
             <td>
                 <input type="checkbox" name="unhook_third_party_css" id="unhook_third_party_css" <?php checked($unhook_third_party_css, true); ?>  value="1"/>
-                <label for="unhook_third_party_css"><?php esc_html_e("Unhook them on Duplicator pages", 'duplicator'); ?></label> <br/>
+                <label for="unhook_third_party_css"><?php esc_html_e("Disable", 'duplicator'); ?></label> <br/>
                 <p class="description">
                     <?php
                     esc_html_e("Check this option if other plugins/themes CSS files are conflicting with Duplicator.", 'duplicator');

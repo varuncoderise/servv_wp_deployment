@@ -11,7 +11,7 @@
 function mc4wp_get_edit_form_url( $form_id, $tab = '' ) {
 	$url = admin_url( sprintf( 'admin.php?page=mailchimp-for-wp-forms&view=edit-form&form_id=%d', $form_id ) );
 
-	if( ! empty( $tab ) ) {
+	if ( ! empty( $tab ) ) {
 		$url .= sprintf( '&tab=%s', $tab );
 	}
 
@@ -55,7 +55,7 @@ function mc4wp_get_add_form_url() {
 //
 //	# Help text
 //	if( ! empty( $help_text ) ) {
-//		echo sprintf( '<p class="help">%s</p>', $help_text );
+//		echo sprintf( '<p class="description">%s</p>', $help_text );
 //	}
 //
 //	echo '</td>';

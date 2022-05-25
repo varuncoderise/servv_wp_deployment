@@ -2,17 +2,18 @@
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 ?>
 <!-- ================================================================
-SERVER  -->
+SETUP  -->
 <div class="details-title">
-	<i class="fa fa-hdd-o"></i> <?php esc_html_e("Server", 'duplicator');	?>
-	<div class="dup-more-details" title="<?php esc_attr_e('Show Diagnostics', 'duplicator');?>">
-		<a href="?page=duplicator-tools&tab=diagnostics" target="_blank"><i class="fa fa-microchip"></i></a>
+	<i class="fas fa-tasks"></i> <?php esc_html_e("Setup", 'duplicator');	?>
+	<div class="dup-more-details">
+		<a href="?page=duplicator-tools&tab=diagnostics" target="_blank" title="<?php esc_attr_e('Show Diagnostics', 'duplicator');?>"><i class="fa fa-microchip"></i></a>&nbsp;
+        <a href="site-health.php" target="_blank" title="<?php esc_attr_e('Check Site Health', 'duplicator');?>"><i class="fas fa-file-medical-alt"></i></a>
 	</div>
 </div>
 
 <!-- ============
-PHP SETTINGS -->
-<div class="scan-item">
+SYSTEM AND WORDPRESS -->
+<div class="scan-item scan-item-first">
 
     <?php
     
@@ -53,8 +54,8 @@ PHP SETTINGS -->
     }
     ?>
 	<div class='title' onclick="Duplicator.Pack.toggleScanItem(this);">
-		<div class="text"><i class="fa fa-caret-right"></i> <?php esc_html_e('Setup', 'duplicator');?></div>
-		<div id="data-srv-php-all"></div>
+		<div class="text"><i class="fa fa-caret-right"></i> <?php esc_html_e('System', 'duplicator');?></div>
+		<div id="data-srv-sys-all"></div>
 	</div>
 	<div class="info">
 	<?php
@@ -85,22 +86,37 @@ PHP SETTINGS -->
 			. 'the process.   If you are on a budget host and limited on processing time, consider using the database or file filters to shrink the size of your overall package.   '
 			. 'However use caution as excluding the wrong resources can cause your install to not work properly.', 'duplicator');
 		echo "&nbsp;<i><a href='http://www.php.net/manual/en/info.configuration.php#ini.max-execution-time' target='_blank'>[" . esc_html__('details', 'duplicator')  . "]</a></i>";
+        if ($zip_check != null) {
+            echo '<br/><br/>';
+            echo '<span style="font-weight:bold">';
+            _e('Get faster builds with Duplicator Pro with access to shell_exec zip.', 'duplicator');
+            echo '</span>';
+            echo "&nbsp;<i><a href='https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=free_max_execution_time_warn&utm_campaign=duplicator_pro' target='_blank'>[" . esc_html__('details', 'duplicator') . "]</a></i>";
+        }
 
-		if ($zip_check != null) {
-			echo '<br/><br/>';
-			echo '<span style="font-weight:bold">';
-			_e('Get faster builds with Duplicator Pro with access to shell_exec zip.', 'duplicator');
-			echo '</span>';
-			echo "&nbsp;<i><a href='https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=free_max_execution_time_warn&utm_campaign=duplicator_pro' target='_blank'>[" . esc_html__('details', 'duplicator') . "]</a></i>";
-		}
+        //MANAGED HOST
+        $test = DUP_Custom_Host_Manager::getInstance()->isManaged() ? "true" : "false";
+        echo '<hr size="1" /><span id="data-srv-sys-managedHost"></span>&nbsp;<b>' . esc_html__('Managed Host', 'duplicator') . ":</b>&nbsp; '{$test}' <br/>";
+        _e('A managed host is a WordPress host that tightly controls the server environment so that the software running on it can be closely ‘managed’ by the hosting company. '
+            .'Managed hosts typically have constraints imposed to facilitate this management, including the locking down of certain files and directories as well as non-standard configurations.', 'duplicator');
+        echo '<br/><br/>';
+        _e('Duplicator Lite allows users to build a package on managed hosts, however, the installer may not properly install packages created on managed hosts due to the non-standard configurations of managed hosts. '
+            .'It is also possible the package engine of Duplicator Lite won’t be able to capture all of the necessary data of a site running on a managed host.', 'duplicator');
+        echo '<br/><br/>';
+        _e('<b>Due to these constraints Lite does not officially support the migration of managed hosts.</b> '
+            .'It’s possible one could get the package to install but it may require custom manual effort. '
+            .'To get support and the advanced installer processing required for managed host support we encourage users to <i>'
+            .'<a href="https://snapcreek.com/duplicator/?utm_source=duplicator_free&amp;utm_medium=wordpress_plugin&amp;utm_content=free_is_mu_warn3&amp;utm_campaign=duplicator_pro" target="_blank">upgrade to Duplicator Pro</a></i>. '
+            .'Pro has more sophisticated package and installer logic and accounts for odd configurations associated with managed hosts.', 'duplicator');
+        echo '<br/><br/>';
+
 	?>
 	</div>
 </div>
 
 <!-- ============
 WP SETTINGS -->
-<div class="scan-item scan-item-last">
-
+<div class="scan-item">
 
 	<div class="title" onclick="Duplicator.Pack.toggleScanItem(this);">
 		<div class="text"><i class="fa fa-caret-right"></i> <?php esc_html_e('WordPress', 'duplicator');?></div>
@@ -120,7 +136,7 @@ WP SETTINGS -->
                 $filter_text="";
                 if($core_dir_notice) {
                     echo '<small id="data-srv-wp-core-missing-dirs">';
-                       esc_html_e("The core WordPress paths below will <u>not</u> be included in the archive. These paths are required for WordPress to function!");
+                       esc_html_e("The core WordPress paths below will NOT be included in the archive. These paths are required for WordPress to function!", 'duplicator');
                        echo "<br/>";
                        foreach($core_dir_included as $core_dir) {
                            echo '&nbsp; &nbsp; <b><i class="fa fa-exclamation-circle scan-warn"></i>&nbsp;'. $core_dir . '</b><br/>';
@@ -131,7 +147,7 @@ WP SETTINGS -->
 
                 if($core_file_notice) {
                     echo '<small id="data-srv-wp-core-missing-dirs">';
-                       esc_html_e("The core WordPress file below will <u>not</u> be included in the archive. This file is required for WordPress to function!");
+                       esc_html_e("The core WordPress file below will NOT be included in the archive. This file is required for WordPress to function!", 'duplicator');
                        echo "<br/>";
                        foreach($core_files_included as $core_file) {
                             echo '&nbsp; &nbsp; <b><i class="fa fa-exclamation-circle scan-warn"></i>&nbsp;'. $core_file . '</b><br/>';
@@ -170,21 +186,49 @@ WP SETTINGS -->
 		//MU SITE
 		if (is_multisite()) {
 			echo '<hr size="1" /><span><div class="scan-warn"><i class="fa fa-exclamation-triangle fa-sm"></i></div></span>&nbsp;<b>' . esc_html__('Multisite: Unsupported', 'duplicator') . "</b> <br/>";
-			esc_html_e('Duplicator does not support WordPress multisite migrations.  We recommend using Duplicator Pro which currently supports full multisite migrations and subsite to '
-				. 'standalone site migrations.', 'duplicator');
+			esc_html_e('Duplicator does not support WordPress multisite migrations.  We strongly recommend using Duplicator Pro which currently supports full multisite migrations and various other '
+				. 'subsite scenarios.', 'duplicator');
 			echo '<br/><br/>';
 
-			esc_html_e('While it is not recommended you can still continue with the build of this package.  Please note that at install time additional manual custom configurations will '
-				. 'need to be made to finalize this multisite migration.', 'duplicator');
-			echo "&nbsp;<i><a href='https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=free_is_mu_warn&utm_campaign=duplicator_pro' target='_blank'>[" . esc_html__('upgrade to pro', 'duplicator') . "]</a></i>";
+			esc_html_e('While it is not recommended you can still continue with the build of this package.  At install time additional manual custom configurations will '
+				. 'need to be made to finalize this multisite migration.  Please note that any support requests for mulitsite with Duplicator Lite will not be supported.', 'duplicator');
+			echo "&nbsp;<i><a href='https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=free_is_mu_warn4&utm_campaign=duplicator_pro' target='_blank'>[" . esc_html__('upgrade to pro', 'duplicator') . "]</a></i>";
 		} else {
 			echo '<hr size="1" /><span><div class="scan-good"><i class="fa fa-check"></i></div></span>&nbsp;<b>' . esc_html__('Multisite: N/A', 'duplicator') . "</b> <br/>";
 			esc_html_e('This is not a multisite install so duplication will proceed without issue.  Duplicator does not officially support multisite. However, Duplicator Pro supports '
 				. 'duplication of a full multisite network and also has the ability to install a multisite subsite as a standalone site.', 'duplicator');
-			echo "&nbsp;<i><a href='https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=free_is_mu_warn&utm_campaign=duplicator_pro' target='_blank'>[" . esc_html__('upgrade to pro', 'duplicator') . "]</a></i>";
+			echo "&nbsp;<i><a href='https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=free_is_mu_warn5&utm_campaign=duplicator_pro' target='_blank'>[" . esc_html__('upgrade to pro', 'duplicator') . "]</a></i>";
 		}
 		?>
 	</div>
+</div>
+
+<!-- ======================
+MIGRATION STATUS -->
+<div id="migratepackage-block"  class="scan-item">
+	<div class='title' onclick="Duplicator.Pack.toggleScanItem(this);">
+		<div class="text"><i class="fa fa-caret-right"></i> <?php esc_html_e('Migration Status', 'duplicator');?></div>
+        <div id="data-arc-status-migratepackage"></div>
+	</div>
+    <div class="info">
+        <script id="hb-migrate-package-result" type="text/x-handlebars-template">
+            <div class="container">
+                <div class="data">
+                    {{#if ARC.Status.CanbeMigratePackage}}
+                        <?php esc_html_e("The package created here can be migrated to a new server.", 'duplicator'); ?>
+                    {{else}}
+                        <span style="color: red;">
+                            <?php
+                            esc_html_e("The package created here cannot be migrated to a new server.
+                                The Package created here can be restored on the same server.", 'duplicator');
+                            ?>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </script>
+        <div id="migrate-package-result"></div>
+    </div>
 </div>
 
 <script>
@@ -198,7 +242,8 @@ WP SETTINGS -->
 		$('#data-srv-php-maxtime').html(Duplicator.Pack.setScanStatus(data.SRV.PHP.maxtime));
 		$('#data-srv-php-version').html(Duplicator.Pack.setScanStatus(data.SRV.PHP.version));
 		$('#data-srv-php-openssl').html(Duplicator.Pack.setScanStatus(data.SRV.PHP.openssl));
-		$('#data-srv-php-all').html(Duplicator.Pack.setScanStatus(data.SRV.PHP.ALL));
+		$('#data-srv-sys-managedHost').html(Duplicator.Pack.setScanStatus(data.SRV.SYS.managedHost));
+		$('#data-srv-sys-all').html(Duplicator.Pack.setScanStatus(data.SRV.SYS.ALL));
 
 		$('#data-srv-wp-version').html(Duplicator.Pack.setScanStatus(data.SRV.WP.version));
 		$('#data-srv-wp-core').html(Duplicator.Pack.setScanStatus(data.SRV.WP.core));

@@ -5,11 +5,53 @@ var Wpfc_New_Dialog = {
 	clone: "",
 	current_page_number: 1,
 	total_page_number: 0,
+	interval : false,
+	enable_button: function(button_type){
+		clearInterval(this.interval);
+
+		let self = this;
+		let modal = jQuery("#" + self.id);
+		let button = modal.find(".wpfc-dialog-buttons[action='" + button_type + "']");
+
+		button.attr("disabled", false);
+		button.text(button.text().replace(/\.+$/, ""));
+	},
+	disable_button: function(button_type){
+		let self = this;
+		let modal = jQuery("#" + self.id);
+		let button = modal.find(".wpfc-dialog-buttons[action='" + button_type + "']");
+		let text = button.text();
+		let dot = 0;
+
+		button.attr("disabled", true);
+
+		button.text(text + ".");
+
+		self.interval = setInterval(function(){
+			text = button.text();
+			dot = text.match(/\./g);
+
+			console.log(dot);
+			console.log(button);
+
+			if(dot){
+				if(dot.length < 3){
+					button.text(text + ".");
+				}else{
+					button.text(text.replace(/\.+$/, ""));
+				}
+			}else{
+				button.text(text + ".");
+			}
+		}, 300);
+	},
 	dialog: function(id, buttons, callback){
 		var self = this;
 		self.clone = jQuery("div[template-id='" + id + "']").clone();
 
 		self.total_page_number = self.clone.find("div[wpfc-page]").length;
+		self.total_page_number = self.total_page_number > 0 ? self.total_page_number : self.clone.find("div[wpfc-cdn-page]").length;
+
 
 		self.template_id = id;
 		self.id = id + "-" + new Date().getTime();
@@ -22,7 +64,11 @@ var Wpfc_New_Dialog = {
 		
 		self.clone.show();
 		
-		self.clone.draggable();
+		self.clone.draggable({
+			stop: function(){
+				jQuery(this).height("auto");
+			}
+		});
 		self.clone.position({my: "center", at: "center", of: window});
 		self.clone.find(".close-wiz").click(function(){
 			self.remove(this);
@@ -37,6 +83,9 @@ var Wpfc_New_Dialog = {
 				callback(self);
 			}
 		}
+
+		self.click_event_add_new_keyword_button();
+		self.add_new_keyword_keypress();
 	},
 	remove: function(button){
 		jQuery(button).closest("div[id^='wpfc-modal-']").remove();
@@ -100,8 +149,8 @@ var Wpfc_New_Dialog = {
 		this.clone.find("button[action='" + index + "']").hide();
 	},
 	show_page: function(number){
-		this.clone.find("div[wpfc-page]").hide();
-		this.clone.find("div[wpfc-page='" + number + "']").show();
+		this.clone.find("div[wpfc-page], div[wpfc-cdn-page]").hide();
+		this.clone.find("div[wpfc-page='" + number + "'], div[wpfc-cdn-page='" + number + "']").show();
 		this.current_page_number = number;
 	},
 	update_ids_for_label: function(){
@@ -128,7 +177,7 @@ var Wpfc_New_Dialog = {
 				jQuery("div.tab1 div[template-id='" + self.template_id + "'] div.window-content select[name='" + jQuery(this).attr("name") + "']").val(jQuery(this).val());
 			}else if(jQuery(this).prop("tagName") == "INPUT"){
 				if(jQuery(this).attr("type") == "checkbox"){
-					if(typeof jQuery(this).attr("checked") != "undefined"){
+					if(jQuery(this).is(':checked')){
 						jQuery("div.tab1 div[template-id='" + self.template_id + "'] div.window-content input[name='" + jQuery(this).attr("name") + "']").attr("checked", true);
 					}else{
 						jQuery("div.tab1 div[template-id='" + self.template_id + "'] div.window-content input[name='" + jQuery(this).attr("name") + "']").attr("checked", false);
@@ -138,5 +187,35 @@ var Wpfc_New_Dialog = {
 				}
 			}
 		});
-	}
+	},
+	add_new_keyword_keypress: function(){
+		Wpfc_New_Dialog.clone.find(".wpfc-textbox-con .fixed-search input").keypress(function(e){
+			if(e.keyCode == 13){
+				var keyword = jQuery(e.target).val().replace(/(\s|\,)/g, "");
+				
+				Wpfc_New_Dialog.clone.find(".wpfc-textbox-con").hide();
+				jQuery(e.target).val("");
+				jQuery('<li class="keyword-item"><a class="keyword-label">' + keyword + '</a></li>').insertBefore(Wpfc_New_Dialog.clone.find(".wpfc-add-new-keyword").closest(".keyword-item")).click(function(){
+					jQuery(this).remove();
+				});
+			}
+		});
+	},
+	click_event_add_new_keyword_button: function(){
+		Wpfc_New_Dialog.clone.find(".wpfc-add-new-keyword").click(function(){
+			Wpfc_New_Dialog.clone.find(".wpfc-textbox-con").show();
+			Wpfc_New_Dialog.clone.find(".wpfc-textbox-con .fixed-search input").focus();
+		});
+	},
+	insert_keywords: function(id, keywords){
+		if(keywords){
+			jQuery.each(keywords.split(","), function( index, value ) {
+				jQuery('<li class="keyword-item"><a class="keyword-label">' + value + '</a></li>').insertBefore(jQuery("div[id^='" + id + "']").find(".wpfc-add-new-keyword").closest(".keyword-item")).click(function(){
+					jQuery(this).remove();
+				});
+			});
+		}
+
+		
+	},
 };

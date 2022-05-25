@@ -6,74 +6,105 @@
 defined( 'ABSPATH' ) or die( "Restricted access!" );
 
 /**
- * Base for the _load_scripts hook
+ * Callback to register the CodeMirror library
  */
-function spacexchimp_p010_load_scripts_base( $options ) {
+function spacexchimp_p010_load_scripts_codemirror() {
 
-    // Put value of constants to variables for easier access
-    $slug = SPACEXCHIMP_P010_SLUG;
-    $prefix = SPACEXCHIMP_P010_PREFIX;
-    $url = SPACEXCHIMP_P010_URL;
+    // Put value of plugin constants into an array for easier access
+    $plugin = spacexchimp_p010_plugin();
 
-    // Load jQuery library
-    wp_enqueue_script( 'jquery' );
+    // Put the value of the plugin options into an array for easier access
+    $options = spacexchimp_p010_options();
 
-    // CodeMirror library
-    wp_enqueue_script( $prefix . '-codemirror-js', $url . 'inc/lib/codemirror/codemirror.js' );
-    wp_enqueue_style( $prefix . '-codemirror-css', $url . 'inc/lib/codemirror/codemirror.css' );
+    // Register main files of the CodeMirror library
+    wp_register_style( $plugin['prefix'] . '-codemirror-css', $plugin['url'] . 'inc/lib/codemirror/lib/codemirror.css', array(), $plugin['version'], 'all' );
+    wp_register_script( $plugin['prefix'] . '-codemirror-js', $plugin['url'] . 'inc/lib/codemirror/lib/codemirror.js', array(), $plugin['version'], false );
+
+    // Register settings file
+    wp_register_script( $plugin['prefix'] . '-codemirror-settings-js', $plugin['url'] . 'inc/js/codemirror-settings.js', array(), $plugin['version'], true );
+
+    // Register addons
+    $addons = array(
+                    'display' => array( 'autorefresh' )
+                   );
+    foreach ( $addons as $addons_group_name => $addons_group ) {
+        foreach ( $addons_group as $addon ) {
+            wp_register_script( $plugin['prefix'] . '-codemirror-addon-' . $addon . '-js', $plugin['url'] . 'inc/lib/codemirror/addon/' . $addons_group_name . '/' . $addon . '.js', array(), $plugin['version'], false );
+        }
+    }
+
+    // Register modes
+    $modes = spacexchimp_p010_get_codemirror_mode_names();
+    foreach ( $modes as $mode ) {
+        wp_register_script( $plugin['prefix'] . '-codemirror-mode-' . $mode . '-js', $plugin['url'] . 'inc/lib/codemirror/mode/' . $mode . '/' . $mode . '.js', array(), $plugin['version'], true );
+    }
+
+    // Register theme
     if ( $options['theme'] != "default" ) {
-        wp_enqueue_style( $prefix . '-codemirror-theme-css', $url . 'inc/lib/codemirror/theme/' . $options['theme'] . '.css' );
+        wp_register_style( $plugin['prefix'] . '-codemirror-theme-css', $plugin['url'] . 'inc/lib/codemirror/theme/' . $options['theme'] . '.css', array(), $plugin['version'], 'all' );
     }
-    wp_enqueue_script( $prefix . '-codemirror-settings-js', $url . 'inc/js/codemirror-settings.js', array(), false, true );
 
-    // CodeMirror Modes
-    wp_enqueue_script( $prefix . '-codemirror-mode-clike-js', $url . 'inc/lib/codemirror/mode/clike.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-css-js', $url . 'inc/lib/codemirror/mode/css.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-htmlmixed-js', $url . 'inc/lib/codemirror/mode/htmlmixed.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-javascript-js', $url . 'inc/lib/codemirror/mode/javascript.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-markdown-js', $url . 'inc/lib/codemirror/mode/markdown.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-perl-js', $url . 'inc/lib/codemirror/mode/perl.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-php-js', $url . 'inc/lib/codemirror/mode/php.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-sass-js', $url . 'inc/lib/codemirror/mode/sass.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-shell-js', $url . 'inc/lib/codemirror/mode/shell.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-sql-js', $url . 'inc/lib/codemirror/mode/sql.js', array(), false, true );
-    wp_enqueue_script( $prefix . '-codemirror-mode-xml-js', $url . 'inc/lib/codemirror/mode/xml.js', array(), false, true );
+}
 
-    // Dynamic JS. Create JS object and injected it into the JS file
-    $theme = !empty( $options['theme'] ) ? $options['theme'] : 'default';
-    $first_line_number = !empty( $options['first_line_number'] ) ? $options['first_line_number'] : '0';
-    $tab_size = !empty( $options['tab_size'] ) ? $options['tab_size'] : '4';
-    $dollar_sign = ( !empty( $options['dollar_sign'] ) && ( $options['dollar_sign'] == "on" ) ) ? 'true' : 'false';
-    if ( !empty( $options['line_numbers'] ) && ( $options['line_numbers'] == "on" ) || !empty( $options['dollar_sign'] ) && ( $options['dollar_sign'] == "on" ) ) {
-        $line_numbers = "true";
-    } else {
-        $line_numbers = "false";
+/**
+ * Callback for the dynamic JavaScript
+ */
+function spacexchimp_p010_load_scripts_dynamic_js() {
+
+    // Put value of plugin constants into an array for easier access
+    $plugin = spacexchimp_p010_plugin();
+
+    // Put the value of the plugin options into an array for easier access
+    $options = spacexchimp_p010_options();
+
+    if ( $options['dollar_sign'] == "true" ) {
+        $options['line_numbers'] = "true";
     }
+
+    // Create an array (JS object) with all the settings
     $script_params = array(
-                           'theme' => $theme,
-                           'line_numbers' => $line_numbers,
-                           'first_line_number' => $first_line_number,
-                           'tab_size' => $tab_size,
-                           'dollar_sign' => $dollar_sign
+                           'theme' => $options['theme'],
+                           'line_numbers' => $options['line_numbers'],
+                           'first_line_number' => $options['first_line_number'],
+                           'dollar_sign' => $options['dollar_sign'],
+                           'tab_size' => $options['tab_size']
                            );
-    wp_localize_script( $prefix . '-codemirror-settings-js', $prefix . '_scriptParams', $script_params );
 
-    // Dynamic CSS. Create CSS and injected it into the stylesheet
-    if ( !empty( $options['automatic_height'] ) && ( $options['automatic_height'] == "on" ) ) {
-        $block_height = "100%";
-    } elseif ( !empty( $options['block_height'] ) ) {
-        $block_height = $options['block_height'] . "px";
+    // Inject the array into the JavaScript file
+    wp_localize_script( $plugin['prefix'] . '-codemirror-settings-js', $plugin['prefix'] . '_scriptParams', $script_params );
+}
+
+/**
+ * Callback for the dynamic CSS
+ */
+function spacexchimp_p010_load_scripts_dynamic_css() {
+
+    // Put value of plugin constants into an array for easier access
+    $plugin = spacexchimp_p010_plugin();
+
+    // Put the value of the plugin options into an array for easier access
+    $options = spacexchimp_p010_options();
+
+    // Create an array with all the settings (CSS code)
+    if ( $options['automatic_height'] == "true" ) {
+        $custom_css = "
+                        .CodeMirror,
+                        .CodeMirror-scroll,
+                        .CodeMirror-gutters {
+                            height: auto !important;
+                        }
+                      ";
     } else {
-        $block_height = "300px";
+        $custom_css = "
+                        .CodeMirror {
+                            height: " . $options['block_height'] . " !important;
+                        }
+                      ";
     }
-    $custom_css = "
-                    .CodeMirror {
-                        height: " . $block_height . " !important;
-                    }
-                  ";
-    wp_add_inline_style( $prefix . '-frontend-css', $custom_css );
-    wp_add_inline_style( $prefix . '-admin-css', $custom_css );
 
+    // Inject the array into the stylesheet
+    wp_add_inline_style( $plugin['prefix'] . '-frontend-css', $custom_css );
+    wp_add_inline_style( $plugin['prefix'] . '-admin-css', $custom_css );
 }
 
 /**
@@ -81,65 +112,95 @@ function spacexchimp_p010_load_scripts_base( $options ) {
  */
 function spacexchimp_p010_load_scripts_admin( $hook ) {
 
-    // Put value of constants to variables for easier access
-    $slug = SPACEXCHIMP_P010_SLUG;
-    $prefix = SPACEXCHIMP_P010_PREFIX;
-    $url = SPACEXCHIMP_P010_URL;
-    $settings = SPACEXCHIMP_P010_SETTINGS;
+    // Put value of plugin constants into an array for easier access
+    $plugin = spacexchimp_p010_plugin();
 
     // Return if the page is not a settings page of this plugin
-    $settings_page = 'settings_page_' . $slug;
-    if ( $settings_page != $hook ) return;
+    $settings_page = 'settings_page_' . $plugin['slug'];
+    if ( $settings_page != $hook ) {
+        return;
+    }
 
-    // Read options from database
-    $options = get_option( $settings . '_settings' );
+    // Put the value of the plugin options into an array for easier access
+    $options = spacexchimp_p010_options();
+
+    // Load jQuery library
+    wp_enqueue_script( 'jquery' );
 
     // Bootstrap library
-    wp_enqueue_style( $prefix . '-bootstrap-css', $url . 'inc/lib/bootstrap/bootstrap.css' );
-    wp_enqueue_style( $prefix . '-bootstrap-theme-css', $url . 'inc/lib/bootstrap/bootstrap-theme.css' );
-    wp_enqueue_script( $prefix . '-bootstrap-js', $url . 'inc/lib/bootstrap/bootstrap.js' );
+    wp_enqueue_style( $plugin['prefix'] . '-bootstrap-css', $plugin['url'] . 'inc/lib/bootstrap/bootstrap.css', array(), $plugin['version'], 'all' );
+    wp_enqueue_style( $plugin['prefix'] . '-bootstrap-theme-css', $plugin['url'] . 'inc/lib/bootstrap/bootstrap-theme.css', array(), $plugin['version'], 'all' );
+    wp_enqueue_script( $plugin['prefix'] . '-bootstrap-js', $plugin['url'] . 'inc/lib/bootstrap/bootstrap.js', array(), $plugin['version'], false );
 
     // Font Awesome library
-    wp_enqueue_style( $prefix . '-font-awesome-css', $url . 'inc/lib/font-awesome/css/font-awesome.css', 'screen' );
+    wp_enqueue_style( $plugin['prefix'] . '-font-awesome-css', $plugin['url'] . 'inc/lib/font-awesome/css/font-awesome.css', array(), $plugin['version'], 'screen' );
 
     // Other libraries
-    wp_enqueue_script( $prefix . '-bootstrap-checkbox-js', $url . 'inc/lib/bootstrap-checkbox.js' );
+    wp_enqueue_script( $plugin['prefix'] . '-bootstrap-checkbox-js', $plugin['url'] . 'inc/lib/bootstrap-checkbox.js', array(), $plugin['version'], false );
 
     // Style sheet
-    wp_enqueue_style( $prefix . '-admin-css', $url . 'inc/css/admin.css' );
+    wp_enqueue_style( $plugin['prefix'] . '-admin-css', $plugin['url'] . 'inc/css/admin.css', array(), $plugin['version'], 'all' );
 
     // JavaScript
-    wp_enqueue_script( $prefix . '-admin-js', $url . 'inc/js/admin.js', array(), false, true );
+    wp_enqueue_script( $plugin['prefix'] . '-admin-js', $plugin['url'] . 'inc/js/admin.js', array(), $plugin['version'], true );
 
-    // Call the function that contain a basis of scripts
-    spacexchimp_p010_load_scripts_base( $options );
+    // Call the function that enqueue the CodeMirror library
+    spacexchimp_p010_load_scripts_codemirror();
 
+    // CodeMirror library
+    wp_enqueue_script( $plugin['prefix'] . '-codemirror-js' );
+    wp_enqueue_script( $plugin['prefix'] . '-codemirror-settings-js' );
+    wp_enqueue_style( $plugin['prefix'] . '-codemirror-css' );
+
+    // CodeMirror addons (only those that are used in the preview section)
+    $addons = array( 'autorefresh' );
+    foreach ( $addons as $addon ) {
+        wp_enqueue_script( $plugin['prefix'] . '-codemirror-addon-' . $addon . '-js' );
+    }
+
+    // CodeMirror modes (only those that are used in the preview section)
+    $modes = array( 'xml' );
+    foreach ( $modes as $mode ) {
+        wp_enqueue_script( $plugin['prefix'] . '-codemirror-mode-' . $mode . '-js' );
+    }
+
+    // CodeMirror theme
+    if ( $options['theme'] != "default" ) {
+        wp_enqueue_style( $plugin['prefix'] . '-codemirror-theme-css' );
+    }
+
+    // Call the function that contains the dynamic JavaScript
+    spacexchimp_p010_load_scripts_dynamic_js();
+
+    // Call the function that contains the dynamic CSS
+    spacexchimp_p010_load_scripts_dynamic_css();
 }
-add_action( 'admin_enqueue_scripts', 'spacexchimp_p010_load_scripts_admin' );
+add_action( 'admin_enqueue_scripts', $plugin['prefix'] . '_load_scripts_admin' );
 
 /**
  * Load scripts and style sheet for front end of website
  */
 function spacexchimp_p010_load_scripts_frontend() {
 
-    // Put value of constants to variables for easier access
-    $slug = SPACEXCHIMP_P010_SLUG;
-    $prefix = SPACEXCHIMP_P010_PREFIX;
-    $url = SPACEXCHIMP_P010_URL;
-    $settings = SPACEXCHIMP_P010_SETTINGS;
+    // Put value of plugin constants into an array for easier access
+    $plugin = spacexchimp_p010_plugin();
 
-    // Read options from database
-    $options = get_option( $settings . '_settings' );
+    // Put the value of the plugin options into an array for easier access
+    $options = spacexchimp_p010_options();
 
-    // If the "Enable Plugin" option is on
-    if ( !empty( $options['enable'] ) && $options['enable'] == "on" ) {
+    // Load jQuery library
+    wp_enqueue_script( 'jquery' );
 
-        // Style sheet
-        wp_enqueue_style( $prefix . '-frontend-css', $url . 'inc/css/frontend.css' );
+    // Style sheet
+    wp_enqueue_style( $plugin['prefix'] . '-frontend-css', $plugin['url'] . 'inc/css/frontend.css', array(), $plugin['version'], 'all' );
 
-        // Call the function that contain a basis of scripts
-        spacexchimp_p010_load_scripts_base( $options );
-    }
+    // Call the function that enqueue the CodeMirror library
+    spacexchimp_p010_load_scripts_codemirror();
 
+    // Call the function that contains the dynamic JavaScript
+    spacexchimp_p010_load_scripts_dynamic_js();
+
+    // Call the function that contains the dynamic CSS
+    spacexchimp_p010_load_scripts_dynamic_css();
 }
-add_action( 'wp_enqueue_scripts', 'spacexchimp_p010_load_scripts_frontend' );
+add_action( 'wp_enqueue_scripts', $plugin['prefix'] . '_load_scripts_frontend' );

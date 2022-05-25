@@ -13,7 +13,7 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 /**
  * Step 3 functions
- * Singlethon
+ * Singleton
  */
 final class DUPX_S3_Funcs
 {
@@ -211,7 +211,7 @@ final class DUPX_S3_Funcs
         // OTHER
         $this->post['exe_safe_mode'] = filter_input(INPUT_POST, 'exe_safe_mode', FILTER_VALIDATE_BOOLEAN, array('options' => array('default' => false)));
         $this->post['config_mode']   = DUPX_U::isset_sanitize($_POST, 'config_mode', array('default' => 'NEW'));
-        $this->post['plugins']       = filter_input(INPUT_POST, 'plugins', FILTER_SANITIZE_STRING,
+        $this->post['plugins']       = filter_input(INPUT_POST, 'plugins', FILTER_UNSAFE_RAW,
             array(
             'options' => array(
                 'default' => array()
@@ -223,7 +223,7 @@ final class DUPX_S3_Funcs
     }
 
     /**
-     * get vaule post if  thepost isn't initialized inizialize it
+     * get value post if  the post isn't initialized initialize it
      * 
      * @param string $key
      * @return mixed
@@ -736,10 +736,10 @@ final class DUPX_S3_Funcs
                 $dbhost = DUPX_U::getEscapedGenericString($this->post['dbhost']);
 
                 $confTransformer->update('constant', 'DB_NAME', $dbname, array('raw' => true));
-                DUPX_Log::info('UPDATE DB_NAME '.DUPX_Log::varToString($dbname));
+                DUPX_Log::info('UPDATE DB_NAME '. DUPX_Log::varToString('** OBSCURED **'));
 
                 $confTransformer->update('constant', 'DB_USER', $dbuser, array('raw' => true));
-                DUPX_Log::info('UPDATE DB_USER '.DUPX_Log::varToString($dbuser));
+                DUPX_Log::info('UPDATE DB_USER '. DUPX_Log::varToString('** OBSCURED **'));
 
                 $confTransformer->update('constant', 'DB_PASSWORD', $dbpass, array('raw' => true));
                 DUPX_Log::info('UPDATE DB_PASSWORD '.DUPX_Log::varToString('** OBSCURED **'));
@@ -984,7 +984,7 @@ LONGMSG;
         mysqli_query($this->dbh,
             "UPDATE `".mysqli_real_escape_string($this->dbh, $GLOBALS['DUPX_AC']->wp_tableprefix)."options` SET option_value = '".mysqli_real_escape_string($this->dbh, $this->post['siteurl'])."'  WHERE option_name = 'siteurl' ");
         mysqli_query($this->dbh,
-            "INSERT INTO `".mysqli_real_escape_string($this->dbh, $GLOBALS['DUPX_AC']->wp_tableprefix)."options` (option_value, option_name) VALUES('".mysqli_real_escape_string($this->dbh,
+            "REPLACE INTO `".mysqli_real_escape_string($this->dbh, $GLOBALS['DUPX_AC']->wp_tableprefix)."options` (option_value, option_name) VALUES('".mysqli_real_escape_string($this->dbh,
                 $this->post['exe_safe_mode'])."','duplicator_exe_safe_mode')");
         //Reset the postguid data
         if ($this->post['postguid']) {
@@ -994,6 +994,8 @@ LONGMSG;
             $update_guid = @mysqli_affected_rows($this->dbh) or 0;
             DUPX_Log::info("Reverted '{$update_guid}' post guid columns back to '{$this->post['url_old']}'");
         }
+        
+        DUPX_U::maintenanceMode(false);
     }
 
     /**
@@ -1040,16 +1042,15 @@ LONGMSG;
                 $reactivate_plugins_after_installation_str)."','duplicator_reactivate_plugins_after_installation')");
         }
         
-        // Start
-        // Force Duplicator active so we the security cleanup will be available
+        // Force Duplicator active so the security cleanup will be available
         if (!in_array('duplicator/duplicator.php', $plugin_list)) {
             $plugin_list[] = 'duplicator/duplicator.php';
         }
         $serial_plugin_list = @serialize($plugin_list);
-        // End
         
         mysqli_query($this->dbh,
-            "UPDATE `".mysqli_real_escape_string($this->dbh, $GLOBALS['DUPX_AC']->wp_tableprefix)."options` SET option_value = '".mysqli_real_escape_string($this->dbh, $serial_plugin_list)."'  WHERE option_name = 'active_plugins' ");
+            "UPDATE `".mysqli_real_escape_string($this->dbh, $GLOBALS['DUPX_AC']->wp_tableprefix)."options` "
+            . "SET option_value = '".mysqli_real_escape_string($this->dbh, $serial_plugin_list)."'  WHERE option_name = 'active_plugins' ");
     }
 
     /**
@@ -1092,7 +1093,7 @@ LONGMSG;
             'reactivate' => true
         );
 
-        DUPX_Log::info('Deactivated plugins list here: '.DUPX_Log::varToString(array_keys($excludePlugins)));
+        DUPX_Log::info('Auto Deactivated plugins list here: '.DUPX_Log::varToString(array_keys($excludePlugins)));
         return $excludePlugins;
     }
 

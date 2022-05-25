@@ -92,7 +92,7 @@ class DUP_Web_Services
                 )
             ),
             'hash' => array(
-                'filter'  => FILTER_SANITIZE_STRING,
+                'filter'  => FILTER_UNSAFE_RAW,
                 'flags'   => FILTER_REQUIRE_SCALAR,
                 'options' => array(
                     'default' => false
@@ -178,7 +178,7 @@ class DUP_Web_Services
                 throw new Exception('Security issue');
             }
 
-            $notice_id = DupLiteSnapLibUtil::filterInputRequest('notice_id', FILTER_SANITIZE_STRING);
+            $notice_id = DupLiteSnapLibUtil::filterInputRequest('notice_id', FILTER_UNSAFE_RAW);
 
             if (empty($notice_id)) {
                 throw new Exception(__('Invalid Request', 'duplicator'));
@@ -206,18 +206,21 @@ class DUP_Web_Services
         try {
             DUP_Util::hasCapability('export', DUP_Util::SECURE_ISSUE_THROW);
 
-            $nonce = filter_input(INPUT_POST, 'nonce', FILTER_SANITIZE_STRING);
+            $nonce = filter_input(INPUT_POST, 'nonce', FILTER_UNSAFE_RAW);
             if (!wp_verify_nonce($nonce, 'duplicator_admin_notice_to_dismiss')) {
                 DUP_Log::trace('Security issue');
                 throw new Exception('Security issue');
             }
 
-            $noticeToDismiss = filter_input(INPUT_POST, 'notice', FILTER_SANITIZE_STRING);
+            $noticeToDismiss = filter_input(INPUT_POST, 'notice', FILTER_UNSAFE_RAW);
             switch ($noticeToDismiss) {
-                case DUP_UI_Notice::OPTION_KEY_INSTALLER_HASH_NOTICE:
                 case DUP_UI_Notice::OPTION_KEY_ACTIVATE_PLUGINS_AFTER_INSTALL:
-                case DUP_UI_Notice::OPTION_KEY_NEW_STORAGE_POSITION:
+                case DUP_UI_Notice::OPTION_KEY_NEW_NOTICE_TEMPLATE:
                     delete_option($noticeToDismiss);
+                    break;
+                case DUP_UI_Notice::OPTION_KEY_IS_PRO_ENABLE_NOTICE_DISMISSED:
+                case DUP_UI_Notice::OPTION_KEY_IS_MU_NOTICE_DISMISSED:
+                    update_option($noticeToDismiss, true);
                     break;
                 default:
                     throw new Exception('Notice invalid');

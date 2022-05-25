@@ -4,7 +4,7 @@
  * @package     My Syntax Highlighter
  * @author      Arthur Gareginyan
  * @link        https://www.spacexchimp.com
- * @copyright   Copyright (c) 2016-2017 Space X-Chimp Studio. All Rights Reserved.
+ * @copyright   Copyright (c) 2016-2021 Space X-Chimp. All Rights Reserved.
  */
 
 
@@ -19,10 +19,13 @@ p {
 .postbox a {
     text-decoration: none;
 }
+.postbox button.btn {
+    height: 34px;
+}
 
 /* Title and Description of page
  -------------------------------------------------------------- */
-h2 {
+.sxc-header {
     padding: 30px !important;
     background-color: #333;
     color: #e0dfdc;
@@ -31,7 +34,8 @@ h2 {
     text-align: center;
     text-transform: uppercase;
     text-rendering: optimizeLegibility;
-    text-shadow: 0 -1px 0 #fff,
+    text-shadow:
+                 0 -1px 0 #fff,
                  0 1px 0 #2e2e2e,
                  0 2px 0 #2a2a2a,
                  0 3px 0 #262626,
@@ -40,25 +44,25 @@ h2 {
                  0 6px 0 #1a1a1a,
                  0 7px 0 #161616,
                  0 8px 0 #121212,
-                 0 22px 30px #000000;
+                 0 22px 30px #000;
     letter-spacing: 0.1em;
     line-height: 50px !important;
     overflow: hidden;
 }
-h2 span {
+.sxc-header span {
     content: '\A';
     display: block;
     margin-top: 15px;
     font-size: 16px;
-    letter-spacing: .2em;
+    letter-spacing: 0.2em;
     text-shadow: none;
     line-height: 20px;
 }
-h2 span a,
-h2 span a:hover {
+.sxc-header span a,
+.sxc-header span a:hover {
     color: #fff;
 }
-h2 span a:hover {
+.sxc-header span a:hover {
     text-shadow: none;
     text-decoration: none;
     -webkit-transition: all 0.2s ease-in-out;
@@ -66,7 +70,7 @@ h2 span a:hover {
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
-h2 .version {
+.sxc-header .version {
     position: absolute;
     right: 40px;
     color: #a6a6a6;
@@ -98,6 +102,11 @@ h2 .version {
 #side-sortables .banner img {
     width: 265px;
 }
+#side-sortables .banner .btn {
+    width: 95%;
+    height: 40px;
+    margin-bottom: 0;
+}
 
 /* Support - Tab and Addition section
  -------------------------------------------------------------- */
@@ -109,6 +118,7 @@ h2 .version {
 }
 #support-addition {
     display: none;
+    margin-top: 30px;
 }
 
 /* Responsive page
@@ -153,7 +163,7 @@ h2 .version {
     -moz-border-radius: 0.3rem;
     border-radius: 0.3rem;
 }
-.tabs-nav:after {
+.tabs-nav::after {
     content: '';
     display: block;
     height: 0;
@@ -171,7 +181,7 @@ h2 .version {
     -moz-border-radius: 3px 0 0 3px;
     border-radius: 3px 0 0 3px;
 }
-.tabs-nav li.active:before {
+.tabs-nav li.active::before {
     position: absolute;
     content: '';
     top: 0;
@@ -180,7 +190,7 @@ h2 .version {
     width: 1px;
     background: #f2f2f2;
 }
-.tabs-nav li.active:after {
+.tabs-nav li.active::after {
     background-color: #f2f2f2;
     position: absolute;
     content: '';
@@ -273,6 +283,28 @@ h2 .version {
     text-align: center;
 }
 
+/* Messages
+ -------------------------------------------------------------- */
+#setting-error-settings_updated {
+    display: none;
+}
+#message.updated i {
+    padding-right: 5px;
+    color: green;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+#message.error i {
+    padding-right: 5px;
+    color: red;
+    font-size: 2.5em;
+    vertical-align: middle;
+}
+#message.error span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
 /* Notes
  -------------------------------------------------------------- */
 .note {
@@ -286,6 +318,19 @@ h2 .version {
     letter-spacing: 0.1px;
 }
 
+/* Help text
+ -------------------------------------------------------------- */
+td.help-text {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    float: left;
+    clear: left;
+    color: #797979;
+    line-height: 15px;
+    padding-top: 0;
+}
+
 /* Spoilers
  -------------------------------------------------------------- */
 .panel-group {
@@ -295,21 +340,21 @@ h2 .version {
     text-decoration: none;
 }
 .panel-title,
-.panel-title:before,
-.panel-body:before  {
+.panel-title::before,
+.panel-body::before {
     font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
     font-size: 16px;
     font-weight: 400;
     color: #6d6d6d;
     text-shadow: 1px 1px 0 #fff;
 }
-.panel-title:before {
+.panel-title::before {
     content: "Q.";
     display: inline-block;
     color: red;
     padding-right: 8px;
 }
-.panel-title:after {
+.panel-title::after {
     content: "\25BC";
     float: right;
     margin: 0;
@@ -321,7 +366,7 @@ h2 .version {
 .panel-title > div {
     display: inline;
 }
-.panel-body:before {
+.panel-body::before {
     content: "A.";
     display: inline-block;
     color: #00a5e2;
@@ -329,6 +374,7 @@ h2 .version {
 }
 .panel-body {
     display: inline-block;
+    width: 100%;
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13px;
 }
@@ -392,30 +438,29 @@ h2 .version {
     color: #32689a;
     font-family: "Lucida Grande", Tahoma, sans-serif;
     font-size: 18px;
-    font-weight: 600;
     text-shadow: 1px 1px 0 #fff;
     border-bottom-color: rgba(0, 0, 0, 0.4);
     -webkit-border-radius: 3px !important;
     -moz-border-radius: 3px !important;
     border-radius: 3px !important;
-    background-image: -moz-linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.05) 49%, rgba(0,0,0,.05) 51%, rgba(0,0,0,.1));
-    background-image: -ms-linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.05) 49%, rgba(0,0,0,.05) 51%, rgba(0,0,0,.1));
-    background-image: -o-linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.05) 49%, rgba(0,0,0,.05) 51%, rgba(0,0,0,.1));
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.1)), color-stop(49%, rgba(255,255,255,.05)), color-stop(51%, rgba(0,0,0,.05)), to(rgba(0,0,0,.1)));
-    background-image: -webkit-linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.05) 49%, rgba(0,0,0,.05) 51%, rgba(0,0,0,.1));
-    background-image: linear-gradient(rgba(255,255,255,.1), rgba(255,255,255,.05) 49%, rgba(0,0,0,.05) 51%, rgba(0,0,0,.1));
+    background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
+    background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
+    background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), color-stop(49%, rgba(255, 255, 255, 0.05)), color-stop(51%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 49%, rgba(0, 0, 0, 0.05) 51%, rgba(0, 0, 0, 0.1));
 }
 .button-labeled:hover,
 .button-labeled:focus {
     color: #32689a;
     background-position: 0;
     background-color: transparent;
-    background-image: -moz-linear-gradient(rgba(255,255,255,.15) 49%, rgba(0,0,0,.1) 51%, rgba(0,0,0,.15));
-    background-image: -ms-linear-gradient(rgba(255,255,255,.15) 49%, rgba(0,0,0,.1) 51%, rgba(0,0,0,.15));
-    background-image: -o-linear-gradient(rgba(255,255,255,.15) 49%, rgba(0,0,0,.1) 51%, rgba(0,0,0,.15));
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.15)), color-stop(49%, rgba(255,255,255,.15)), color-stop(51%, rgba(0,0,0,.1)), to(rgba(0,0,0,.15)));
-    background-image: -webkit-linear-gradient(rgba(255,255,255,.15) 49%, rgba(0,0,0,.1) 51%, rgba(0,0,0,.15));
-    background-image: linear-gradient(rgba(255,255,255,.15) 49%, rgba(0,0,0,.1) 51%, rgba(0,0,0,.15));
+    background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
+    background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
+    background-image: -o-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.15)), color-stop(49%, rgba(255, 255, 255, 0.15)), color-stop(51%, rgba(0, 0, 0, 0.1)), to(rgba(0, 0, 0, 0.15)));
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
+    background-image: linear-gradient(rgba(255, 255, 255, 0.15) 49%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.15));
 }
 .button-labeled .btn-label {
     position: relative;
@@ -432,6 +477,33 @@ h2 .version {
     max-width: 100%;
     font-size: 18px;
     overflow: hidden;
+}
+
+/* Custom List
+ -------------------------------------------------------------- */
+.custom-list {
+    margin-top: 15px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+    list-style-type: none;
+}
+.custom-list li {
+    counter-increment: step-counter;
+    margin-bottom: 15px;
+    font-family: Verdana, Geneva, sans-serif;
+}
+.custom-list li::before {
+    content: '+';
+    margin-left: -30px;
+    margin-right: 8px;
+    padding: 4px 7px;
+    font-size: 90%;
+    font-weight: bold;
+    background-color: #00c8c8;
+    color: white;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
 }
 
 /* Custom List Numbers
@@ -469,7 +541,7 @@ h2 .version {
 .wp-color-result {
     height: 30px;
 }
-.wp-color-result:after {
+.wp-color-result::after {
     line-height: 28px;
 }
 
@@ -478,6 +550,8 @@ h2 .version {
 .form-table {
     clear: none;
     margin-left: 20px;
+    width: -webkit-calc(100% - 40px);
+    width: calc(100% - 40px);
     font-family: Verdana, Geneva, sans-serif;
     font-size: 13px;
 }
@@ -488,19 +562,8 @@ h2 .version {
 .form-table td {
     padding-bottom: 10px;
 }
-
-/* Help text
- -------------------------------------------------------------- */
-td.help-text {
-    width: 90%;
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 12px;
-    font-style: italic;
-    float: left;
-    clear: left;
-    color: #797979;
-    line-height: 15px;
-    padding-top: 0;
+.form-table th[scope="row"] {
+    font-weight: normal;
 }
 
 /* Control: Field
@@ -509,12 +572,30 @@ td.help-text {
 .control-textarea {
     position: relative;
     max-width: 600px;
-    width: 90%;
+    width: 100%;
     padding-top: 5px;
     background: #fcfcfc;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+}
+
+/* Control: List
+ -------------------------------------------------------------- */
+.control-list input[type=radio] {
+    padding: 2px;
+    width: 1.5rem;
+    min-width: 1.5rem;
+    height: 1.5rem;
+}
+.control-list input[type="radio"]:checked::before {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-image: -webkit-linear-gradient(top, #5cb85c 0, #419641 100%);
+    background-image: -o-linear-gradient(top, #5cb85c 0, #419641 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5cb85c), to(#419641));
+    background-image: linear-gradient(to bottom, #5cb85c 0, #419641 100%);
 }
 
 /* Control: Number
@@ -539,12 +620,10 @@ td.help-text {
 #preview p {
     margin-top: 10px;
 }
-
-/* CodeMirror Editor */
-.CodeMirror {
+#preview .CodeMirror {
     border: 1px solid #e0e0e0;
     border-radius: 3px;
 }
-.CodeMirror-linenumber {
+#preview .CodeMirror-linenumber {
     text-align: center !important;
 }

@@ -70,16 +70,17 @@ class DUPX_DBTest
 		//REQUIRMENTS
 		//Pass States: skipped = -1		failed = 0		passed = 1   warned = 2
 		$this->reqs[5]	 = array('title' => "Create Database User", 'info' => "{$default_msg}", 'pass' => -1);
-		$this->reqs[10]	 = array('title' => "Verify Host Connection", 'info' => "{$default_msg}", 'pass' => -1);
-		$this->reqs[20]	 = array('title' => "Check Server Version", 'info' => "{$default_msg}", 'pass' => -1);
-		$this->reqs[30]	 = array('title' => "Create New Database Tests", 'info' => "{$default_msg}", 'pass' => -1);
-		$this->reqs[40]	 = array('title' => "Confirm Database Visibility", 'info' => "{$default_msg}", 'pass' => -1);
+		$this->reqs[10]	 = array('title' => "Host Connection", 'info' => "{$default_msg}", 'pass' => -1);
+		$this->reqs[20]	 = array('title' => "Database Version", 'info' => "{$default_msg}", 'pass' => -1);
+		$this->reqs[30]	 = array('title' => "Database Create New Tests", 'info' => "{$default_msg}", 'pass' => -1);
+		$this->reqs[40]	 = array('title' => "Privileges: User Visibility", 'info' => "{$default_msg}", 'pass' => -1);
 		$this->reqs[50]	 = array('title' => "Manual Table Check", 'info' => "{$default_msg}", 'pass' => -1);
-		$this->reqs[60]	 = array('title' => "Test User Table Privileges", 'info' => "{$default_msg}", 'pass' => -1);
+		$this->reqs[60]	 = array('title' => "Privileges: User Resources", 'info' => "{$default_msg}", 'pass' => -1);
 		$this->reqs[70]	 = array('title' => "Check Collation Capability", 'info' => "{$default_msg}", 'pass' => -1);
-		$this->reqs[80]	 = array('title' => "Check GTID mode", 'info' => "{$default_msg}", 'pass' => -1);
+		$this->reqs[80]	 = array('title' => "Database GTID mode", 'info' => "{$default_msg}", 'pass' => -1);
 		//NOTICES
 		$this->notices[10]	 = array('title' => "Table Case Sensitivity", 'info' => "{$default_msg}", 'pass' => -1);
+		$this->notices[20]	 = array('title' => "Source Database Triggers", 'info' => "{$default_msg}", 'pass' => -1);
        }
 
 	public function run()
@@ -143,6 +144,7 @@ class DUPX_DBTest
 
 		//NOTICES
 		$this->n10All($this->notices[10]);
+		$this->n20All($this->notices[20]);
 		$this->r70All($this->reqs[70]);
 		$this->r80All($this->reqs[80]);
 		$this->basicCleanup();
@@ -222,7 +224,7 @@ class DUPX_DBTest
 
 	/**
 	 * Create New Database Basic Test
-	 * Use selects: 'Create New Database' for basic
+	 * Use selects: 'Create New Database for basic
 	 *
 	 * @return null
 	 */
@@ -352,7 +354,7 @@ class DUPX_DBTest
 
 			if ($this->tblPerms['all']) {
 				$test['pass']	 = 1;
-				$test['info']	 = "The user <b>[".htmlentities($this->in->dbuser)."]</b> the correct privileges on the database <b>[".htmlentities($this->in->dbname)."]</b>";
+				$test['info']	 = "The user <b>[".htmlentities($this->in->dbuser)."]</b> has the correct privileges on the database <b>[".htmlentities($this->in->dbname)."]</b>";
 			} else {
 				$list		 = array();
 				$test['pass']	 = 0;
@@ -400,32 +402,23 @@ class DUPX_DBTest
 			$invalid_match = 0;
 
 			foreach($this->collationStatus as $key => $val) {
-
 				if ($this->collationStatus[$key]['found'] == 0) {
 				    if($this->in->dbcollatefb){
 				        $not_supported_col = $this->collationStatus[$key]['name'];
-                        //returns false or key
-                        $i = array_search($not_supported_col,$collation_arr);
-
-                        if($i !== false){
-                            ++$i;
-                            for($i; $i < $collation_arr_max; $i++) {
-
-                                $col_status = DUPX_DB::getCollationStatus($this->dbh, array($collation_arr[$i]));
-                                $cur_col_is_supported = $col_status[0]['found'];
-                                if($cur_col_is_supported){
-                                    $this->collationReplaceList[] = array(
-                                        'search'    => $not_supported_col,
-                                        'replace'   => $collation_arr[$i]
-                                    );
-									++$invalid_match;
-									break;
-                                }
-                            }
-                        } else {
-                            $invalid = 1;
-                            break;
-                        }
+                        for($i = 0; $i < $collation_arr_max; $i++) {
+							$col_status = DUPX_DB::getCollationStatus($this->dbh, array($collation_arr[$i]));
+							$cur_col_is_supported = $col_status[0]['found'];
+							if($cur_col_is_supported){
+								$this->collationReplaceList[] = array(
+									'search'    => $not_supported_col,
+									'replace'   => $collation_arr[$i]
+								);
+								++$invalid_match;
+								break;
+							}
+						}
+						$invalid = 1;
+                    	break;
                     } else {
                         $invalid = 1;
                         break;
@@ -543,6 +536,32 @@ class DUPX_DBTest
 			$test['info']	 = "Failure in attempt to read the upper case table status.<br/>" . $this->formatError($ex);
 		}
 	}
+
+    /**
+     * Show source site trigger creates
+     *
+     * @return null
+     */
+    private function n20All(&$test)
+    {
+        if ($this->isFailedState($test)) {
+            return;
+        }
+
+        $triggers = (array)$this->ac->dbInfo->triggerList;
+        if (count($triggers) > 0) {
+            $test['pass'] = 0;
+            $test['info'] = "";
+
+            foreach ($triggers as $trigger) {
+                $test['info'] .= $trigger->create."\n\n";;
+            }
+
+        } else {
+            $test['pass'] = 1;
+            $test['info'] = "Source site did not contain triggers.";
+        }
+    }
 
 	/**
 	 * Input has UTF8 data

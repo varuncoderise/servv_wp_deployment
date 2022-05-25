@@ -104,7 +104,7 @@ jQuery(document).ready(function($)
 	}
 
     Duplicator.Tools.readLogfile = function() {
-        $.get('<?php echo esc_url($logurl); ?>', function(data) {
+        $.get(<?php echo str_replace('\\/', '/', json_encode($logurl)); ?>, function(data) {
             $('#dup-log-content').text(data);
         }, 'text');
     };
@@ -175,7 +175,7 @@ jQuery(document).ready(function($)
 		<tr>
 			<td id="dup-log-panel-left">
 				<div class="name">
-					<i class='fa fa-list-alt'></i> <b><?php echo basename($logurl); ?></b> &nbsp; | &nbsp;
+					<i class='fas fa-file-contract fa-fw'></i> <b><?php echo basename($logurl); ?></b> &nbsp; | &nbsp;
 					<i style="cursor: pointer"
 						data-tooltip-title="<?php esc_attr_e("Host Recommendation:", 'duplicator'); ?>"
 						data-tooltip="<?php esc_attr_e('Duplicator recommends going with the high performance pro plan or better from our recommended list', 'duplicator'); ?>">

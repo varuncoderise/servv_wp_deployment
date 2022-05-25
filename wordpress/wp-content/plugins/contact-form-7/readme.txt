@@ -2,9 +2,9 @@
 Contributors: takayukister
 Donate link: https://contactform7.com/donate/
 Tags: contact, form, contact form, feedback, email, ajax, captcha, akismet, multilingual
-Requires at least: 4.7
-Tested up to: 4.9.1
-Stable tag: 4.9.2
+Requires at least: 5.7
+Tested up to: 5.8
+Stable tag: 5.5.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,15 +14,32 @@ Just another contact form plugin. Simple but flexible.
 
 Contact Form 7 can manage multiple contact forms, plus you can customize the form and the mail contents flexibly with simple markup. The form supports Ajax-powered submitting, CAPTCHA, Akismet spam filtering and so on.
 
-= Docs & Support =
+= Docs and support =
 
-You can find [docs](https://contactform7.com/docs/), [FAQ](https://contactform7.com/faq/) and more detailed information about Contact Form 7 on [contactform7.com](https://contactform7.com/). If you were unable to find the answer to your question on the FAQ or in any of the documentation, you should check the [support forum](https://wordpress.org/support/plugin/contact-form-7/) on WordPress.org. If you can't locate any topics that pertain to your particular issue, post a new topic for it.
+You can find [docs](https://contactform7.com/docs/), [FAQ](https://contactform7.com/faq/) and more detailed information about Contact Form 7 on [contactform7.com](https://contactform7.com/). When you can't find the answer to your question on the FAQ or in any of the documentation, check the [support forum](https://wordpress.org/support/plugin/contact-form-7/) on WordPress.org. If you can't locate any topics that pertain to your particular issue, post a new topic for it.
 
-= Contact Form 7 Needs Your Support =
+= Contact Form 7 needs your support =
 
-It is hard to continue development and support for this free plugin without contributions from users like you. If you enjoy using Contact Form 7 and find it useful, please consider [__making a donation__](https://contactform7.com/donate/). Your donation will help encourage and support the plugin's continued development and better user support.
+It is hard to continue development and support for this free plugin without contributions from users like you. If you enjoy using Contact Form 7 and find it useful, please consider [making a donation](https://contactform7.com/donate/). Your donation will help encourage and support the plugin's continued development and better user support.
 
-= Recommended Plugins =
+= Privacy notices =
+
+With the default configuration, this plugin, in itself, does not:
+
+* track users by stealth;
+* write any user personal data to the database;
+* send any data to external servers;
+* use cookies.
+
+If you activate certain features in this plugin, the contact form submitter's personal data, including their IP address, may be sent to the service provider. Thus, confirming the provider's privacy policy is recommended. These features include:
+
+* reCAPTCHA ([Google](https://policies.google.com/?hl=en))
+* Akismet ([Automattic](https://automattic.com/privacy/))
+* Constant Contact ([Endurance International Group](https://www.endurance.com/privacy))
+* [Sendinblue](https://www.sendinblue.com/legal/privacypolicy/)
+* [Stripe](https://stripe.com/privacy)
+
+= Recommended plugins =
 
 The following plugins are recommended for Contact Form 7 users:
 
@@ -31,16 +48,16 @@ The following plugins are recommended for Contact Form 7 users:
 
 = Translations =
 
-You can [translate Contact Form 7](https://contactform7.com/translating-contact-form-7/) on [__translate.wordpress.org__](https://translate.wordpress.org/projects/wp-plugins/contact-form-7).
+You can [translate Contact Form 7](https://contactform7.com/translating-contact-form-7/) on [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/contact-form-7).
 
 == Installation ==
 
 1. Upload the entire `contact-form-7` folder to the `/wp-content/plugins/` directory.
-1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Activate the plugin through the **Plugins** screen (**Plugins > Installed Plugins**).
 
-You will find 'Contact' menu in your WordPress admin panel.
+You will find **Contact** menu in your WordPress admin screen.
 
-For basic usage, you can also have a look at the [plugin web site](https://contactform7.com/).
+For basic usage, have a look at the [plugin's website](https://contactform7.com/).
 
 == Frequently Asked Questions ==
 
@@ -48,7 +65,7 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 
 1. [Docs](https://contactform7.com/docs/)
 1. [FAQ](https://contactform7.com/faq/)
-1. [Support Forum](https://wordpress.org/support/plugin/contact-form-7/)
+1. [Support forum](https://wordpress.org/support/plugin/contact-form-7/)
 
 [Support](https://contactform7.com/support/)
 
@@ -60,48 +77,34 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 
 For more information, see [Releases](https://contactform7.com/category/releases/).
 
-= 4.9.2 =
+= 5.5.3 =
 
-* Remove improper uses of esc_sql().
-* Fix the refill REST-API request so that a nonce is set when available.
-* Give more contrast to unused mail-tags in the Mail tab panel to make them easier to recognize.
-* Undo the previous change of HTTP status code for the REST-API response.
+[https://contactform7.com/contact-form-7-553/](https://contactform7.com/contact-form-7-553/)
 
-= 4.9.1 =
+= 5.5.2 =
 
-* Code using create_function() has been removed to avoid security risks and warnings given when using with PHP 7.2+.
-* Display the notice of config validation again to encourage admins to apply some important validation items recently added.
-* REST API endpoint returns more specific HTTP status code 409 instead of 400.
-* Fixed appearance of configuration error signs in the Additional Settings tab.
+* REST API: Removes argument schema reference that causes error when the form has 'id' field.
+* Changes method names that are reserved in PHP 5.6.
 
-= 4.9 =
+= 5.5.1 =
 
-* Supports subscribers_only setting
-* Changes the default value of WPCF7_VERIFY_NONCE to false
-* WPCF7_FormTagsManager::collect_tag_types() supports invert option
-* New filter hooks: wpcf7_verify_nonce, wpcf7_subscribers_only_notice, wpcf7_remote_ip_addr, and wpcf7_submission_is_blacklisted
-* Fixed: Form-tag's tabindex option did not accept 0 or negative integer values
-* Shows a validation error when no option in a radio buttons group is checked
-* Config validator: Adds a validation rule against the use of deprecated settings (on_sent_ok and on_submit)
-* Allows to pass the skip_mail option through the WPCF7_ContactForm::submit() and WPCF7_Submission::get_instance() function parameters.
-* Triggers wpcf7beforesubmit custom DOM event. You can manipulate the formData object through an event handler.
+* Fixed: Reserved keyword was used in PHP class constant name.
+* Fixed: Uncaught TypeError on `in_array()` call.
 
-= 4.8.1 =
+= 5.5 =
 
-* wpcf7.initForm JavaScript function added to isolate form initialization process.
-* Fix response message duplication caused by repeated click on submit button.
-* Clear $phpmailer->AltBody to avoid unintended inheritance from previous wp_mail() calls.
-* Fix incorrect character count of textarea input.
-* Akismet: Exclude the comment_author, comment_author_email, and comment_author_url values from the comment_content value.
-* REST API: More reliable approach to build route URLs.
-* Include free_text inputs into event.detail.inputs.
+[https://contactform7.com/contact-form-7-55/](https://contactform7.com/contact-form-7-55/)
 
-= 4.8 =
+= 5.4.2 =
 
-* Stopped using jquery.form.js.
-* Added custom REST API endpoints for Ajax form submissions.
-* WPCF7_FormTag class implements ArrayAccess interface.
-* WPCF7_FormTagsManager::filter() filters form-tags based on features they support.
-* New form-tag features: do-not-store, display-block, and display-hidden
-* Removed inappropriate content from h1 headings.
-* Added the support of size:invisible option to the reCAPTCHA form-tag.
+[https://contactform7.com/contact-form-7-542/](https://contactform7.com/contact-form-7-542/)
+
+= 5.4.1 =
+
+[https://contactform7.com/contact-form-7-541/](https://contactform7.com/contact-form-7-541/)
+
+= 5.4 =
+
+[https://contactform7.com/contact-form-7-54/](https://contactform7.com/contact-form-7-54/)
+
+== Upgrade Notice ==

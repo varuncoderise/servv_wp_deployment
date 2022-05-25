@@ -15,8 +15,12 @@
                         "pdf",
                         "png",
                         "svg",
+                        "swf",
                         "ttf",
-                        "woff"
+                        "webm",
+                        "webp",
+                        "woff",
+                        "woff2"
                         );
 
         foreach ($types as $key => $value) {

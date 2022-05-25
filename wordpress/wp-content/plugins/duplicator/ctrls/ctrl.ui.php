@@ -53,48 +53,51 @@ class DUP_CTRL_UI extends DUP_CTRL_Base
 
         $inputData = filter_input_array(INPUT_POST, array(
             'states' => array(
-                'filter'  => FILTER_SANITIZE_STRING,
+                'filter'  => FILTER_UNSAFE_RAW,
                 'flags'   => FILTER_FORCE_ARRAY,
                 'options' => array(
                     'default' => array()
                 )
             ),
             'key'    => array(
-                'filter'  => FILTER_SANITIZE_STRING,
+                'filter'  => FILTER_UNSAFE_RAW,
                 'options' => array(
                     'default' => false
                 )
             ),
             'value'  => array(
-                'filter'  => FILTER_SANITIZE_STRING,
+                'filter'  => FILTER_UNSAFE_RAW,
                 'options' => array(
                     'default' => false
                 )
             )
         ));
 
-        foreach ($inputData['states'] as $index => $state) {
-            $filteredState = filter_var_array($state, array(
-                'key'   => array(
-                    'filter'  => FILTER_SANITIZE_STRING,
-                    'options' => array(
-                        'default' => false
+        if (is_array($inputData) && is_array($inputData['states'])) {
+            foreach ($inputData['states'] as $index => $state) {
+                $filteredState = filter_var_array($state, array(
+                    'key'   => array(
+                        'filter'  => FILTER_UNSAFE_RAW,
+                        'options' => array(
+                            'default' => false
+                        )
+                    ),
+                    'value' => array(
+                        'filter'  => FILTER_UNSAFE_RAW,
+                        'options' => array(
+                            'default' => false
+                        )
                     )
-                ),
-                'value' => array(
-                    'filter'  => FILTER_SANITIZE_STRING,
-                    'options' => array(
-                        'default' => false
-                    )
-                )
-            ));
+                ));
 
-            if ($filteredState['key'] === false && $filteredState['value']) {
-                $isValid = false;
-                break;
+                if ($filteredState['key'] === false && $filteredState['value']) {
+                    $isValid = false;
+                    break;
+                }
+                $inputData['states'][$index] = $filteredState;
             }
-            $inputData['states'][$index] = $filteredState;
         }
+
         if ($inputData['key'] === false || $inputData['value'] === false) {
             $isValid = false;
         }
