@@ -11,8 +11,8 @@ $_SERVER['HTTPS']='on';
 
 $_SERVER['HTTPS']='on';
 
-define( 'WP_HOME', 'https://blog.coderise.io' );
-define( 'WP_SITEURL', 'https://blog.coderise.io' );
+define( 'WP_HOME', 'https://coderise.io' );
+define( 'WP_SITEURL', 'https://coderise.io' );
 
 
 
