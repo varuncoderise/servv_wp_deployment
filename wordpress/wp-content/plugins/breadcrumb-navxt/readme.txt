@@ -3,8 +3,8 @@ Contributors: mtekk, hakre
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=FD5XEU783BR8U&lc=US&item_name=Breadcrumb%20NavXT%20Donation&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: breadcrumb, breadcrumbs, trail, navigation, menu, widget
 Requires at least: 4.9
-Tested up to: 5.8
-Stable tag: 7.0.1
+Tested up to: 6.0
+Stable tag: 7.0.2
 Requires PHP: 7.0
 License: GPLv2 or later
 Adds breadcrumb navigation showing the visitor's path to their current location.
@@ -49,6 +49,12 @@ Please visit [Breadcrumb NavXT's Documentation](http://mtekk.us/code/breadcrumb-
 6. A screenshot of the Settings Import/Export/Reset form under the Help menu
 
 == Changelog ==
+
+= 7.0.2 =
+Release date: January, 4th 2022
+
+* Behavior change: Allow value of `Hhome_template`, `Hhome_template_unlinked`, `hseparator`, and `hseparator_higher_dim` to be overridden via `bcn_settings_init`.
+* Bug fix: Fixed cause of “Sorry, you are not allowed to access this page.” message when attempting to visit the settings page.
 
 = 7.0.1 =
 Release date: December, 27th 2021
