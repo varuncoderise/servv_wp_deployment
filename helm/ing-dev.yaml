@@ -7,7 +7,7 @@
     namespace: coderise
   spec:
     rules:
-    - host: coderise.io
+    - host: blog.coderise.io
       http:
         paths:
         - backend:
