@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: 058291926324.dkr.ecr.us-east-1.amazonaws.com/coderise-blog
+  repository: 058291926324.dkr.ecr.us-east-2.amazonaws.com/blog
   tag: php-73-apache-4
   pullPolicy: Always
 
