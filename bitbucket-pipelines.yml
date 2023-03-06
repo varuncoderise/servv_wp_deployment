@@ -1,0 +1,39 @@
+image:
+  name: 058291926324.dkr.ecr.us-east-2.amazonaws.com/agent:latest
+  aws:
+    access-key: $AWS_ACCESS_KEY_ID
+    secret-key: $AWS_SECRET_ACCESS_KEY
+    region: $AWS_REGION
+options:
+  max-time: 20
+definitions:
+  services:
+    docker:
+      memory: 3072
+
+  buildMain: &buildMain
+    name: Build Blog
+    caches:
+      - docker
+    services:
+      - docker
+    script: 
+      - eval $(aws ecr get-login --no-include-email --region $AWS_REGION_ECR | sed 's|https://||')
+      - aws eks --region $AWS_REGION update-kubeconfig --name $EKS_CLUSTER --role-arn $EKS_ROLE_ARN
+      - aws eks get-token --cluster-name $EKS_CLUSTER --region $AWS_REGION --role-arn $EKS_ROLE_ARN      
+      - make deploy APP=blog API_VERSION=v1 BRANCH=$BITBUCKET_BRANCH    
+      
+pipelines:
+  default:     
+    - step:
+        <<: *buildMain
+        deployment: dev
+  branches:
+    master:
+      - step:
+          <<: *buildMain
+          deployment: staging
+    release/*:
+      - step:
+          <<: *buildMain
+          deployment: production
