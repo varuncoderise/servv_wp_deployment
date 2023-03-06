@@ -21,7 +21,7 @@ definitions:
       - eval $(aws ecr get-login --no-include-email --region $AWS_REGION_ECR | sed 's|https://||')
       - aws eks --region $AWS_REGION update-kubeconfig --name $EKS_CLUSTER --role-arn $EKS_ROLE_ARN
       - aws eks get-token --cluster-name $EKS_CLUSTER --region $AWS_REGION --role-arn $EKS_ROLE_ARN      
-      - make deploy APP=blog API_VERSION=v1 BRANCH=$BITBUCKET_BRANCH    
+      - make deploy APP=coderise-blog API_VERSION=v1 BRANCH=$BITBUCKET_BRANCH    
       
 pipelines:
   default:     
