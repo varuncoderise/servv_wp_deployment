@@ -41,11 +41,11 @@ spec:
             protocol: TCP
         livenessProbe:
           httpGet:
-            path: /api/coderise-blog/health
+            path: /wp-admin/install.php
             port: http
         readinessProbe:
           httpGet:
-            path: /api/coderise-blog/health
+            path: /wp-admin/install.php
             port: http
         resources:
           {{- toYaml .Values.resources | nindent 12 }}
