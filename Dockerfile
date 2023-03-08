@@ -1,4 +1,4 @@
-FROM wordpress:6.0.3-php8.1-apache
+FROM wordpress:php7.3-apache
 
 RUN rm -rf /usr/src/wordpress/*
 
