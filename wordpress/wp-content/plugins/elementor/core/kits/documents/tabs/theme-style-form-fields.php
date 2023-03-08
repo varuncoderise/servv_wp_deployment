@@ -87,6 +87,7 @@ class Theme_Style_Form_Fields extends Tab_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
+				'label' => esc_html__( 'Typography', 'elementor' ),
 				'name' => 'form_label_typography',
 				'selector' => $label_selector,
 			]
@@ -104,6 +105,7 @@ class Theme_Style_Form_Fields extends Tab_Base {
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
+				'label' => esc_html__( 'Typography', 'elementor' ),
 				'name' => 'form_field_typography',
 				'selector' => $input_selector,
 			]
@@ -182,18 +184,6 @@ class Theme_Style_Form_Fields extends Tab_Base {
 		);
 
 		$this->add_control(
-			$prefix . '_accent_color',
-			[
-				'label' => esc_html__( 'Accent Color', 'elementor' ),
-				'type' => Controls_Manager::COLOR,
-				'dynamic' => [],
-				'selectors' => [
-					$selector => 'accent-color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
 			$prefix . '_background_color',
 			[
 				'label' => esc_html__( 'Background Color', 'elementor' ),
@@ -231,7 +221,7 @@ class Theme_Style_Form_Fields extends Tab_Base {
 			[
 				'label' => esc_html__( 'Border Radius', 'elementor' ),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
+				'size_units' => [ 'px', '%' ],
 				'selectors' => [
 					$selector => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],

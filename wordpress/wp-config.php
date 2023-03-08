@@ -19,9 +19,10 @@
  */
 
 define('FORCE_SSL_ADMIN', true);
-define('FORCE_SSL_LOGIN', true);
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'){ $_SERVER['HTTPS']='on'; }
 
+if (strpos($_SERVER['HTTP_X_FORWARDED_PROTO'], 'https') !== false)
+
+$_SERVER['HTTPS']='on';
 
 define( 'WP_HOME', 'https://coderise.io' );
 define( 'WP_SITEURL', 'https://coderise.io' );
@@ -92,6 +93,11 @@ define( 'WP_DEBUG', false );
 /* Add any custom values between this line and the "stop editing" line. */
 
 
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+
+	$_SERVER['HTTPS'] = 'on';
+
+}
 
 /* That's all, stop editing! Happy publishing. */
 

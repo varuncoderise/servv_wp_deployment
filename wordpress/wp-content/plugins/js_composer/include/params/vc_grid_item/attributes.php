@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param $value
  * @param $data
  *
+ * @return string
  * @since 4.4
  *
- * @return string
  */
 function vc_gitem_template_attribute_filter_terms_css_classes( $value, $data ) {
 	$output = '';
@@ -34,7 +34,7 @@ function vc_gitem_template_attribute_filter_terms_css_classes( $value, $data ) {
  * Get image for post
  *
  * @param $data
- * @return mixed|string|void
+ * @return mixed|string
  */
 function vc_gitem_template_attribute_post_image( $data ) {
 	/**
@@ -52,6 +52,11 @@ function vc_gitem_template_attribute_post_image( $data ) {
 	return apply_filters( 'vc_gitem_template_attribute_post_image_html', $html );
 }
 
+/**
+ * @param $value
+ * @param $data
+ * @return mixed
+ */
 function vc_gitem_template_attribute_featured_image( $value, $data ) {
 	/**
 	 * @var Wp_Post $post
@@ -74,9 +79,9 @@ function vc_gitem_template_attribute_featured_image( $value, $data ) {
  * @param $value
  * @param $data
  *
+ * @return mixed
  * @since 4.5
  *
- * @return mixed
  */
 function vc_gitem_template_attribute_vc_btn( $value, $data ) {
 	/**
@@ -123,9 +128,46 @@ function vc_gitem_template_attribute_post_image_url( $value, $data ) {
 		$attachment_id = get_post_thumbnail_id( $post->ID );
 		$src = vc_get_image_by_size( $attachment_id, $size );
 	}
-	if ( empty( $src ) && ! empty( $data ) ) {
-		$output = esc_attr( rawurldecode( $data ) );
-	} elseif ( ! empty( $src ) ) {
+
+	if ( ! empty( $src ) ) {
+		$output = is_array( $src ) ? $src[0] : $src;
+	} else {
+		$output = vc_asset_url( 'vc/vc_gitem_image.png' );
+	}
+
+	return apply_filters( 'vc_gitem_template_attribute_post_image_url_value', $output );
+}
+
+/**
+ * Get post image url
+ *
+ * @param $value
+ * @param $data
+ *
+ * @return string
+ */
+function vc_gitem_template_attribute_post_full_image_url( $value, $data ) {
+	$output = '';
+	/**
+	 * @var null|Wp_Post $post ;
+	 */
+	extract( array_merge( array(
+		'post' => null,
+		'data' => '',
+	), $data ) );
+	$extraImageMeta = explode( ':', $data );
+	$size = 'full'; // default size
+	if ( isset( $extraImageMeta[1] ) ) {
+		$size = $extraImageMeta[1];
+	}
+	if ( 'attachment' === $post->post_type ) {
+		$src = vc_get_image_by_size( $post->ID, $size );
+	} else {
+		$attachment_id = get_post_thumbnail_id( $post->ID );
+		$src = vc_get_image_by_size( $attachment_id, $size );
+	}
+
+	if ( ! empty( $src ) ) {
 		$output = is_array( $src ) ? $src[0] : $src;
 	} else {
 		$output = vc_asset_url( 'vc/vc_gitem_image.png' );
@@ -145,18 +187,32 @@ function vc_gitem_template_attribute_post_image_url( $value, $data ) {
 function vc_gitem_template_attribute_post_image_url_href( $value, $data ) {
 	$link = vc_gitem_template_attribute_post_image_url( $value, $data );
 
-	return strlen( $link ) ? ' href="' . esc_attr( $link ) . '"' : '';
+	return strlen( $link ) ? ' href="' . esc_url( $link ) . '"' : '';
 }
 
 /**
- * Add image url as href with css classes for PrettyPhoto js plugin.
+ * Get post image url with href for a dom element
  *
  * @param $value
  * @param $data
  *
  * @return string
  */
-function vc_gitem_template_attribute_post_image_url_attr_prettyphoto( $value, $data ) {
+function vc_gitem_template_attribute_post_full_image_url_href( $value, $data ) {
+	$link = vc_gitem_template_attribute_post_full_image_url( $value, $data );
+
+	return strlen( $link ) ? ' href="' . esc_url( $link ) . '"' : '';
+}
+
+/**
+ * Add image url as href with css classes for lightbox js plugin.
+ *
+ * @param $value
+ * @param $data
+ *
+ * @return string
+ */
+function vc_gitem_template_attribute_post_image_url_attr_lightbox( $value, $data ) {
 	$data_default = $data;
 	/**
 	 * @var Wp_Post $post ;
@@ -165,11 +221,57 @@ function vc_gitem_template_attribute_post_image_url_attr_prettyphoto( $value, $d
 		'post' => null,
 		'data' => '',
 	), $data ) );
-	$href = vc_gitem_template_attribute_post_image_url_href( $value, array( 'post' => $post, 'data' => '' ) );
-	$rel = ' data-rel="' . esc_attr( 'prettyPhoto[rel-' . md5( vc_request_param( 'shortcode_id' ) ) . ']' ) . '"';
-	return $href . $rel . ' class="' . esc_attr( $data . ( strlen( $href ) ? ' prettyphoto' : '' ) )
-	       . '" title="' . esc_attr(
-		   apply_filters( 'vc_gitem_template_attribute_post_title', $post->post_title, $data_default ) ) . '"';
+	$href = vc_gitem_template_attribute_post_full_image_url_href( $value, array(
+		'post' => $post,
+		'data' => '',
+	) );
+	$rel = ' data-lightbox="' . esc_attr( 'lightbox[rel-' . md5( vc_request_param( 'shortcode_id' ) ) . ']' ) . '"';
+
+	return $href . $rel . ' class="' . esc_attr( $data ) . '" title="' . esc_attr( apply_filters( 'vc_gitem_template_attribute_post_title', $post->post_title, $data_default ) ) . '"';
+}
+
+/**
+ * Add image url as href with css classes for lightbox js plugin.
+ *
+ * @param $value
+ * @param $data
+ *
+ * @return string
+ */
+function vc_gitem_template_attribute_post_full_image_url_attr_lightbox( $value, $data ) {
+	$data_default = $data;
+	/**
+	 * @var Wp_Post $post ;
+	 */
+	extract( array_merge( array(
+		'post' => null,
+		'data' => '',
+	), $data ) );
+	$href = vc_gitem_template_attribute_post_image_url_href( $value, array(
+		'post' => $post,
+		'data' => '',
+	) );
+	$rel = ' data-lightbox="' . esc_attr( 'lightbox[rel-' . md5( vc_request_param( 'shortcode_id' ) ) . ']' ) . '"';
+
+	return $href . $rel . ' class="' . esc_attr( $data ) . '" title="' . esc_attr( apply_filters( 'vc_gitem_template_attribute_post_title', $post->post_title, $data_default ) ) . '"';
+}
+
+/**
+ * @param $value
+ * @param $data
+ * @return string
+ * @depreacted 6.6.0
+ */
+function vc_gitem_template_attribute_post_image_url_attr_prettyphoto( $value, $data ) {
+	return vc_gitem_template_attribute_post_image_url_attr_lightbox( $value, $data );
+}
+/**
+ * @param $value
+ * @param $data
+ * @return string
+ */
+function vc_gitem_template_attribute_post_full_image_url_attr_prettyphoto( $value, $data ) {
+	return vc_gitem_template_attribute_post_full_image_url_attr_lightbox( $value, $data );
 }
 
 /**
@@ -194,7 +296,15 @@ function vc_gitem_template_attribute_post_image_alt( $value, $data ) {
 		return '';
 	}
 
-	$alt = trim( strip_tags( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) );
+	$alt = trim( wp_strip_all_tags( get_post_meta( $attachment_id, '_wp_attachment_image_alt', true ) ) );
+	$title = trim( wp_strip_all_tags( $data['post']->post_title ) );
+
+	if ( empty( $alt ) ) {
+		$alt = trim( wp_strip_all_tags( $data['post']->post_excerpt ) ); // If not, Use the Caption
+	}
+	if ( empty( $alt ) ) {
+		$alt = $title;
+	}
 
 	return apply_filters( 'vc_gitem_template_attribute_post_image_url_value', $alt );
 }
@@ -325,9 +435,10 @@ function vc_gitem_template_attribute_post_data( $value, $data ) {
 		'data' => '',
 	), $data ) );
 
-	return strlen( $data ) > 0 ? apply_filters( 'vc_gitem_template_attribute_' . $data, (
-		isset( $post->$data ) ? $post->$data : ''
-	), array( 'post' => $post, 'data' => '' ) ) : $value;
+	return strlen( $data ) > 0 ? apply_filters( 'vc_gitem_template_attribute_' . $data, ( isset( $post->$data ) ? $post->$data : '' ), array(
+		'post' => $post,
+		'data' => '',
+	) ) : $value;
 }
 
 /**
@@ -366,10 +477,19 @@ function vc_gitem_template_attribute_post_title( $value, $data ) {
 		'post' => null,
 		'data' => '',
 	), $data ) );
+	$id = 0;
+	if ( isset( $data['post'] ) ) {
+		$id = apply_filters( 'wpml_object_id', $id, 'post', true );
+	}
 
-	return the_title( '', '', false );
+	return get_the_title( $id );
 }
 
+/**
+ * @param $value
+ * @param $data
+ * @return string|null
+ */
 function vc_gitem_template_attribute_post_author( $value, $data ) {
 	/**
 	 * @var null|Wp_Post $post ;
@@ -383,6 +503,11 @@ function vc_gitem_template_attribute_post_author( $value, $data ) {
 	return get_the_author();
 }
 
+/**
+ * @param $value
+ * @param $data
+ * @return string
+ */
 function vc_gitem_template_attribute_post_author_href( $value, $data ) {
 	/**
 	 * @var null|Wp_Post $post ;
@@ -395,6 +520,12 @@ function vc_gitem_template_attribute_post_author_href( $value, $data ) {
 
 	return get_author_posts_url( get_the_author_meta( 'ID' ), get_the_author_meta( 'user_nicename' ) );
 }
+
+/**
+ * @param $value
+ * @param $data
+ * @return mixed
+ */
 function vc_gitem_template_attribute_post_categories( $value, $data ) {
 	/**
 	 * @var null|Wp_Post $post ;
@@ -418,9 +549,13 @@ function vc_gitem_template_attribute_post_categories( $value, $data ) {
  */
 add_filter( 'vc_gitem_template_attribute_filter_terms_css_classes', 'vc_gitem_template_attribute_filter_terms_css_classes', 10, 2 );
 add_filter( 'vc_gitem_template_attribute_post_image', 'vc_gitem_template_attribute_post_image', 10, 2 );
+add_filter( 'vc_gitem_template_attribute_post_full_image', 'vc_gitem_template_attribute_post_full_image', 10, 2 );
 add_filter( 'vc_gitem_template_attribute_post_image_url', 'vc_gitem_template_attribute_post_image_url', 10, 2 );
+add_filter( 'vc_gitem_template_attribute_post_full_image_url', 'vc_gitem_template_attribute_post_full_image_url', 10, 2 );
 add_filter( 'vc_gitem_template_attribute_post_image_url_href', 'vc_gitem_template_attribute_post_image_url_href', 10, 2 );
+add_filter( 'vc_gitem_template_attribute_post_full_image_url_href', 'vc_gitem_template_attribute_post_full_image_url_href', 10, 2 );
 add_filter( 'vc_gitem_template_attribute_post_image_url_attr_prettyphoto', 'vc_gitem_template_attribute_post_image_url_attr_prettyphoto', 10, 2 );
+add_filter( 'vc_gitem_template_attribute_post_full_image_url_attr_prettyphoto', 'vc_gitem_template_attribute_post_full_image_url_attr_prettyphoto', 10, 2 );
 add_filter( 'vc_gitem_template_attribute_post_image_alt', 'vc_gitem_template_attribute_post_image_alt', 10, 2 );
 add_filter( 'vc_gitem_template_attribute_post_link_url', 'vc_gitem_template_attribute_post_link_url', 10, 2 );
 add_filter( 'vc_gitem_template_attribute_post_date', 'vc_gitem_template_attribute_post_date', 10, 2 );

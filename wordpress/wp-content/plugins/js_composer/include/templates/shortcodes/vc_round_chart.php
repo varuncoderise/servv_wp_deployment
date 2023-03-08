@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $css
  * @var $css_animation
  * Shortcode class
- * @var $this WPBakeryShortCode_Vc_Round_Chart
+ * @var WPBakeryShortCode_Vc_Round_Chart $this
  */
 $el_class = $el_id = $title = $type = $style = $legend = $animation = $tooltips = $stroke_color = $stroke_width = $values = $css = $css_animation = $custom_stroke_color = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -85,12 +85,19 @@ $colors = array(
 		'normal' => $base_colors['normal'],
 		'active' => $base_colors['active'],
 	),
+	'modern' => array(),
 );
 foreach ( $base_colors['normal'] as $name => $color ) {
-	$colors['modern']['normal'][ $name ] = array( vc_colorCreator( $color, 7 ), $color );
+	$colors['modern']['normal'][ $name ] = array(
+		vc_colorCreator( $color, 7 ),
+		$color,
+	);
 }
 foreach ( $base_colors['active'] as $name => $color ) {
-	$colors['modern']['active'][ $name ] = array( vc_colorCreator( $color, 7 ), $color );
+	$colors['modern']['active'][ $name ] = array(
+		vc_colorCreator( $color, 7 ),
+		$color,
+	);
 }
 
 wp_enqueue_script( 'vc_round_chart' );
@@ -110,7 +117,7 @@ if ( ! empty( $tooltips ) ) {
 }
 
 if ( ! empty( $animation ) ) {
-	$options[] = 'data-vc-animation="' . esc_attr( $animation ) . '"';
+	$options[] = 'data-vc-animation="' . esc_attr( str_replace( 'easein', 'easeIn', $animation ) ) . '"';
 }
 
 if ( ! empty( $stroke_color ) ) {
@@ -134,46 +141,49 @@ if ( ! empty( $stroke_width ) ) {
 $values = (array) vc_param_group_parse_atts( $values );
 $data = array();
 
+$labels = [];
+$datasets = [];
+$datasetValues = [];
+$datasetColors = [];
 foreach ( $values as $k => $v ) {
 
 	if ( 'custom' === $style ) {
 		if ( ! empty( $v['custom_color'] ) ) {
 			$color = $v['custom_color'];
-			$highlight = vc_colorCreator( $v['custom_color'], - 10 ); //10% darker
 		} else {
 			$color = $base_colors['normal']['grey'];
-			$highlight = $base_colors['active']['grey'];
 		}
 	} else {
 		$color = isset( $colors[ $style ]['normal'][ $v['color'] ] ) ? $colors[ $style ]['normal'][ $v['color'] ] : $v['normal']['color'];
-		$highlight = isset( $colors[ $style ]['active'][ $v['color'] ] ) ? $colors[ $style ]['active'][ $v['color'] ] : $v['active']['color'];
 	}
-
-	$data[] = array(
-		'value' => intval( isset( $v['value'] ) ? $v['value'] : 0 ),
-		'color' => $color,
-		'highlight' => $highlight,
-		'label' => isset( $v['title'] ) ? $v['title'] : '',
-	);
+	$labels[] = isset( $v['title'] ) ? $v['title'] : '';
+	$datasetValues[] = (int) ( isset( $v['value'] ) ? $v['value'] : 0 );
+	$datasetColors[] = $color;
 }
 
 $options[] = 'data-vc-type="' . esc_attr( $type ) . '"';
-$options[] = 'data-vc-values="' . esc_attr( json_encode( $data ) ) . '"';
-
+$legendColor = isset( $atts['legend_color'] ) ? $atts['legend_color'] : 'black';
+if ( 'custom' === $legendColor ) {
+	$legendColor = isset( $atts['custom_legend_color'] ) ? $atts['custom_legend_color'] : 'black';
+} else {
+	$legendColor = vc_convert_vc_color( $legendColor );
+}
+$round_chart_data = [
+	'labels' => $labels,
+	'datasets' => [
+		[
+			'data' => $datasetValues,
+			'backgroundColor' => $datasetColors,
+		],
+	],
+];
+$options[] = 'data-vc-values="' . esc_attr( wp_json_encode( $round_chart_data ) ) . '"';
+$options[] = 'data-vc-legend-color="' . esc_attr( $legendColor ) . '"';
 if ( '' !== $title ) {
 	$title = '<h2 class="wpb_heading">' . $title . '</h4>';
 }
 
 $canvas_html = '<canvas class="vc_round-chart-canvas" width="1" height="1"></canvas>';
-$legend_html = '';
-if ( $legend ) {
-	foreach ( $data as $v ) {
-		$color = is_array( $v['color'] ) ? current( $v['color'] ) : $v['color'];
-		$legend_html .= '<li><span style="background-color:' . $color . '"></span>' . $v['label'] . '</li>';
-	}
-	$legend_html = '<ul class="vc_chart-legend">' . $legend_html . '</ul>';
-	$canvas_html = '<div class="vc_chart-with-legend">' . $canvas_html . '</div>';
-}
 if ( ! empty( $el_id ) ) {
 	$options[] = 'id="' . esc_attr( $el_id ) . '"';
 }
@@ -181,9 +191,9 @@ $output = '
 <div class="' . esc_attr( $css_class ) . '" ' . implode( ' ', $options ) . '>
 	' . $title . '
 	<div class="wpb_wrapper">
-		' . $canvas_html . $legend_html . '
+		' . $canvas_html . '
 	</div>' . '
 </div>' . '
 ';
 
-echo $output;
+return $output;

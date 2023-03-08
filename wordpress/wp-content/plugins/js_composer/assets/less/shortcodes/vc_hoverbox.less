@@ -101,6 +101,7 @@
 .vc-hoverbox-block {
   height: 100%;
   width: 100%;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -117,7 +118,7 @@
 .vc-hoverbox-block-inner {
   flex-shrink: 0;
   padding: 20px;
-  * {
+  > * {
     backface-visibility: hidden;
   }
 }

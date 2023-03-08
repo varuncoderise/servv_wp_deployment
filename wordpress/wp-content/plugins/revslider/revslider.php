@@ -1,238 +1,267 @@
 <?php
 /*
 Plugin Name: Slider Revolution
-Plugin URI: http://revolution.themepunch.com/
-Description: Slider Revolution - Premium responsive slider
+Plugin URI: https://www.sliderrevolution.com/
+Description: Slider Revolution - More than just a WordPress Slider
 Author: ThemePunch
-Version: 5.4.6.3.1
-Author URI: http://themepunch.com
+Text Domain: revslider
+Domain Path: /languages
+Version: 6.5.19
+Author URI: https://themepunch.com/
 */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
+if(!defined('WPINC')){ die; }
 
-if(class_exists('RevSliderFront')) {
+if(class_exists('RevSliderFront')){
 	die('ERROR: It looks like you have more than one instance of Slider Revolution installed. Please remove additional instances for this plugin to work again.');
 }
 
-$revSliderVersion	= '5.4.6.3.1';
-$revSliderAsTheme	= false;
-$revslider_screens	= array();
-$revslider_fonts	= array();
-$rs_plugin_url		= str_replace('index.php','',plugins_url( 'index.php', __FILE__ ));
-if(strpos($rs_plugin_url, 'http') === false) {
-	$site_url		= get_site_url();
-	$rs_plugin_url	= (substr($site_url, -1) === '/') ? substr($site_url, 0, -1). $rs_plugin_url : $site_url. $rs_plugin_url;
-}
-$rs_plugin_url		= str_replace(array(chr(10), chr(13)), '', $rs_plugin_url);
-
+define('RS_REVISION',			'6.5.19');
 define('RS_PLUGIN_PATH',		plugin_dir_path(__FILE__));
+define('RS_PLUGIN_SLUG_PATH',	plugin_basename(__FILE__));
 define('RS_PLUGIN_FILE_PATH',	__FILE__);
-define('RS_PLUGIN_URL',			$rs_plugin_url);
 define('RS_PLUGIN_SLUG',		apply_filters('set_revslider_slug', 'revslider'));
+define('RS_PLUGIN_URL',			get_rs_plugin_url());
+define('RS_PLUGIN_URL_CLEAN',	str_replace(array('http://', 'https://'), '//', RS_PLUGIN_URL));
 define('RS_DEMO',				false);
+define('RS_TP_TOOLS',			'6.5.18'); //holds the version of the tp-tools script, load only the latest!
 
-if(isset($_GET['revSliderAsTheme'])){
-	if($_GET['revSliderAsTheme'] == 'true'){
-		update_option('revSliderAsTheme', 'true');
-	}else{
-		update_option('revSliderAsTheme', 'false');
-	}
-}
+global $revslider_fonts;
+global $revslider_is_preview_mode;
+global $revslider_save_post;
+global $revslider_addon_notice_merged;
+global $revslider_animations;
+global $rs_loaded_by_editor;
 
-//set the RevSlider Plugin as a Theme. This hides the activation notice and the activation area in the Slider Overview
-function set_revslider_as_theme(){
-	global $revSliderAsTheme;
-	
-	if(defined('REV_SLIDER_AS_THEME')){
-		if(REV_SLIDER_AS_THEME == true)
-			$revSliderAsTheme = true;
-	}else{
-		if(get_option('revSliderAsTheme', 'true') == 'true')
-			$revSliderAsTheme = true;
-	}
-}
+$revslider_fonts = array('queue' => array(), 'loaded' => array());
+$revslider_is_preview_mode = false;
+$revslider_save_post = false;
+$rs_loaded_by_editor = false;
+$revslider_addon_notice_merged = 0;
+$revslider_animations = array();
 
-//include frameword files
-require_once(RS_PLUGIN_PATH . 'includes/framework/include-framework.php');
-
-//include bases
-require_once($folderIncludes . 'base.class.php');
-require_once($folderIncludes . 'elements-base.class.php');
-require_once($folderIncludes . 'base-admin.class.php');
-require_once($folderIncludes . 'base-front.class.php');
-
-//include product files
-require_once(RS_PLUGIN_PATH . 'includes/globals.class.php');
-require_once(RS_PLUGIN_PATH . 'includes/operations.class.php');
-require_once(RS_PLUGIN_PATH . 'includes/slider.class.php');
-require_once(RS_PLUGIN_PATH . 'includes/output.class.php');
-require_once(RS_PLUGIN_PATH . 'includes/slide.class.php');
-require_once(RS_PLUGIN_PATH . 'includes/widget.class.php');
+//include framework files
+require_once(RS_PLUGIN_PATH . 'includes/data.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/functions.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/cache.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/em-integration.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/cssparser.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/woocommerce.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/wpml.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/colorpicker.class.php');
 require_once(RS_PLUGIN_PATH . 'includes/navigation.class.php');
 require_once(RS_PLUGIN_PATH . 'includes/object-library.class.php');
-require_once(RS_PLUGIN_PATH . 'includes/template.class.php');
-require_once(RS_PLUGIN_PATH . 'includes/external-sources.class.php');
+require_once(RS_PLUGIN_PATH . 'admin/includes/loadbalancer.class.php');
+require_once(RS_PLUGIN_PATH . 'admin/includes/plugin-update.class.php');
+require_once(RS_PLUGIN_PATH . 'admin/includes/widget.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/extension.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/favorite.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/aq-resizer.class.php');
 require_once(RS_PLUGIN_PATH . 'includes/page-template.class.php');
 
-require_once(RS_PLUGIN_PATH . 'includes/tinybox.class.php');
-require_once(RS_PLUGIN_PATH . 'includes/extension.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/EspressoDev/InstagramBasicDisplayException.php');
+require_once(RS_PLUGIN_PATH . 'includes/EspressoDev/InstagramBasicDisplay.php');
+require_once(RS_PLUGIN_PATH . 'includes/external/facebook.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/external/flickr.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/external/instagram.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/external/twitter.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/external/vimeo.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/external/youtube.class.php');
+
+require_once(RS_PLUGIN_PATH . 'includes/slider.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/slide.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/output.class.php');
 require_once(RS_PLUGIN_PATH . 'public/revslider-front.class.php');
 
-try{
-	$rs_rsl	= (isset($_GET['rs_refresh_server'])) ? true : false;
-	$rslb	= new RevSliderLoadBalancer();
-	$GLOBALS['rslb'] = $rslb;
-	$rslb->refresh_server_list($rs_rsl);
-	
-	//register the revolution slider widget
-	RevSliderFunctionsWP::registerWidget('RevSliderWidget');
+require_once(RS_PLUGIN_PATH . 'includes/globals.class.php');
+require_once(RS_PLUGIN_PATH . 'includes/backwards.php');
 
-	//add shortcode
+//divi
+require_once(RS_PLUGIN_PATH . 'admin/includes/shortcode_generator/divi/revslider-divi.php');
+
+try{
+	RevSliderFunctions::set_memory_limit();
+
 	function rev_slider_shortcode($args, $mid_content = null){
-		
-        extract(shortcode_atts(array('alias' => ''), $args, 'rev_slider'));
-		extract(shortcode_atts(array('settings' => ''), $args, 'rev_slider'));
-		extract(shortcode_atts(array('order' => ''), $args, 'rev_slider'));
-		
-		if($settings !== '') $settings = json_decode(str_replace(array('({', '})', "'"), array('[', ']', '"'), $settings) ,true);
-		if($order !== '') $order = explode(',', $order);
-		
-        $sliderAlias = ($alias != '') ? $alias : RevSliderFunctions::getVal($args,0);
-		
-		$gal_ids = RevSliderFunctionsWP::check_for_shortcodes($mid_content); //check for example on gallery shortcode and do stuff
-		
-		ob_start();
-		if(!empty($gal_ids)){ //add a gallery based slider
-			$slider = RevSliderOutput::putSlider($sliderAlias, '', $gal_ids);
-		}else{
-			$slider = RevSliderOutput::putSlider($sliderAlias, '', array(), $settings, $order);
+
+		//do not render in elementor preview iframe
+		if (isset($_GET['elementor-preview'])) return false;
+
+		//skip shortcode generation if any of these functions found in backtrace 
+		//function can be provided as array item without key
+		//or as 'class' => 'function'
+		$skip_functions = apply_filters(
+			'rs_shortcode_skip_functions',
+			array(
+				'WC_Structured_Data' => 'generate_product_data', // woocommerce
+				'AIOSEO\Plugin\Common\Meta\Description' => 'getDescription', // all-in-one-seo
+				//'Elementor\Core\Editor\Editor' => 'print_editor_template', // elementor
+			)
+		);
+
+		$backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+		foreach ($backtrace as $trace) {
+			foreach ($skip_functions as $class => $func) {
+				if ($trace['function'] == $func) {
+					//no class was provided, func matched, return
+					if (!is_string($class)) return false;
+					//class provided in key, compare with trace class
+					if (isset($trace['class']) && $trace['class'] == $class) return false;
+				}
+			}
 		}
+		
+		$output = new RevSliderOutput();
+
+		if(is_admin() && $output->_is_gutenberg_page()) return false;
+
+		$sc_attr = shortcode_atts(
+			array(
+				'alias' => '',
+				'settings' => '',
+				'order' => '',
+				'usage' => '',
+				'modal' => '',
+				'layout' => '',
+				'offset' => '',
+				'skin' => '',
+				'zindex' => '',
+			),
+			$args,
+			'rev_slider'
+		);
+
+		$slider_alias = ($sc_attr['alias'] != '') ? $sc_attr['alias'] : $output->get_val($args, 0); //backwards compatibility
+
+		//this fixes an issue with the Visual Composer extension
+		if(empty($slider_alias)){
+			return (function_exists('is_user_logged_in') && is_user_logged_in()) ? '<div><img src="' . RS_PLUGIN_URL_CLEAN . 'admin/assets/images/rs6_logo_2x.png"></div>' : '';
+		}
+
+		$output->set_custom_order($sc_attr['order']);
+		$output->set_custom_settings($sc_attr['settings']);
+		$output->set_custom_skin($sc_attr['skin']);
+
+		$gallery_ids = $output->check_for_shortcodes($mid_content); //check for example on gallery shortcode and do stuff
+		if($gallery_ids !== false) $output->set_gallery_ids($gallery_ids);
+
+		ob_start();
+		$slider = $output->add_slider_to_stage(
+			$slider_alias,
+			$sc_attr['usage'],
+			$sc_attr['layout'],
+			$sc_attr['offset'],
+			$sc_attr['modal']
+		);
 		$content = ob_get_contents();
 		ob_clean();
 		ob_end_clean();
-		
+
+		if(!empty($sc_attr['zindex'])){
+			$content = '<div class="wp-block-themepunch-revslider" style="z-index:'.$sc_attr['zindex'].';">' .$content. '</div>';
+		}
+
 		if(!empty($slider)){
-			// Do not output Slider if we are on mobile
-			$disable_on_mobile = $slider->getParam("disable_on_mobile","off");
-			if($disable_on_mobile == 'on'){
-				$mobile = (strstr($_SERVER['HTTP_USER_AGENT'],'Android') || strstr($_SERVER['HTTP_USER_AGENT'],'webOS') || strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') ||strstr($_SERVER['HTTP_USER_AGENT'],'iPod') || strstr($_SERVER['HTTP_USER_AGENT'],'iPad') || strstr($_SERVER['HTTP_USER_AGENT'],'Windows Phone') || wp_is_mobile()) ? true : false;
-				if($mobile) return false;
-			}
-			
-			$show_alternate = $slider->getParam("show_alternative_type","off");
-			
-			if($show_alternate == 'mobile' || $show_alternate == 'mobile-ie8'){
-				if(strstr($_SERVER['HTTP_USER_AGENT'],'Android') || strstr($_SERVER['HTTP_USER_AGENT'],'webOS') || strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') ||strstr($_SERVER['HTTP_USER_AGENT'],'iPod') || strstr($_SERVER['HTTP_USER_AGENT'],'iPad') || strstr($_SERVER['HTTP_USER_AGENT'],'Windows Phone') || wp_is_mobile()){
-					$show_alternate_image = $slider->getParam("show_alternate_image","");
-					return '<img class="tp-slider-alternative-image" src="'.$show_alternate_image.'" data-no-retina>';
-				}
-			}
-		
-			//handle slider output types
-			$outputType = $slider->getParam("output_type","");
-			switch($outputType){
-				case "compress":
-					$content = str_replace("\n", "", $content);
-					$content = str_replace("\r", "", $content);
-					return($content);
-				break;
-				case "echo":
+			switch($slider->get_param(array('troubleshooting', 'outPutFilter'), '')){
+				case 'compress':
+					$content = str_replace(array("\n", "\r"), '', $content);
+					return $content;
+				case 'echo':
+					global $revslider_save_post;
+					if($revslider_save_post) return $content;
 					echo $content; //bypass the filters
 				break;
 				default:
-					return($content);
-				break;
+					return $content;
 			}
-		}else
-			return($content); //normal output
-
+		}else{
+			return $content;
+		}
 	}
 
-	add_shortcode( 'rev_slider', 'rev_slider_shortcode' );
-	
-	/**
-	 * Call Extensions
-	 */
-	$revext = new RevSliderExtension();
-	
-	add_action('plugins_loaded', array( 'RevSliderTinyBox', 'visual_composer_include' )); //VC functionality
-	add_action('plugins_loaded', array( 'RevSliderPageTemplate', 'get_instance' ));
-	
-	if(is_admin()){ //load admin part
-	
-		require_once(RS_PLUGIN_PATH . 'includes/framework/update.class.php');
-		require_once(RS_PLUGIN_PATH . 'includes/framework/newsletter.class.php');
-		require_once(RS_PLUGIN_PATH . 'admin/revslider-admin.class.php');
+	$rslb = RevSliderGlobals::instance()->get('RevSliderLoadBalancer');
+	$rslb->refresh_server_list();
+	add_shortcode('rev_slider', 'rev_slider_shortcode');
+	add_action('save_post', array('RevSliderFront', 'set_post_saving'));
+	add_action('widgets_init', array('RevSliderWidget', 'register_widget'));
 
-		$productAdmin = new RevSliderAdmin(RS_PLUGIN_FILE_PATH);
-		
-		//add tiny box dropdown menu
-		add_action('admin_head', array('RevSliderTinyBox', 'add_tinymce_editor'));
-		
-		
-	}else{ //load front part
+	if(is_admin()){
+		require_once(RS_PLUGIN_PATH . 'admin/includes/license.class.php');
+		require_once(RS_PLUGIN_PATH . 'admin/includes/addons.class.php');
+		require_once(RS_PLUGIN_PATH . 'admin/includes/template.class.php');
+		require_once(RS_PLUGIN_PATH . 'admin/includes/functions-admin.class.php');
+		require_once(RS_PLUGIN_PATH . 'admin/includes/folder.class.php');
+		require_once(RS_PLUGIN_PATH . 'admin/includes/import.class.php');
+		require_once(RS_PLUGIN_PATH . 'admin/includes/export.class.php');
+		require_once(RS_PLUGIN_PATH . 'admin/includes/export-html.class.php');
+		require_once(RS_PLUGIN_PATH . 'admin/includes/newsletter.class.php');
+		require_once(RS_PLUGIN_PATH . 'admin/revslider-admin.class.php');
+		require_once(RS_PLUGIN_PATH . 'includes/update.class.php');
+		//require_once(RS_PLUGIN_PATH . 'admin/includes/debug.php');
+
+		$rs_admin = new RevSliderAdmin();
+	}else{
+		require_once(RS_PLUGIN_PATH . 'public/includes/functions-public.class.php');
 
 		/**
-		 *
-		 * put rev slider on the page.
-		 * the data can be slider ID or slider alias.
+		 * add RevSlider to the page/post
 		 */
-		function putRevSlider($data,$putIn = ""){
-			$operations = new RevSliderOperations();
-			$arrValues = $operations->getGeneralSettingsValues();
-			$includesGlobally = RevSliderFunctions::getVal($arrValues, "includes_globally","on");
-			$strPutIn = RevSliderFunctions::getVal($arrValues, "pages_for_includes");
-			$isPutIn = RevSliderOutput::isPutIn($strPutIn,true);
-			if($isPutIn == false && $includesGlobally == "off"){
-				$output = new RevSliderOutput();
-				$option1Name = __("Include RevSlider libraries globally (all pages/posts)", 'revslider');
-				$option2Name = __("Pages to include RevSlider libraries", 'revslider');
-				$output->putErrorMessage(__("If you want to use the PHP function \"putRevSlider\" in your code please make sure to check \" ",'revslider').$option1Name.__(" \" in the backend's \"General Settings\" (top right panel). <br> <br> Or add the current page to the \"",'revslider').$option2Name.__("\" option box.", 'revslider'));
-				return(false);
+		function putRevSlider($data, $put_in = ''){
+			add_revslider($data, $put_in);
+		}
+
+		function add_revslider($data, $put_in = ''){
+			$output = new RevSliderOutput();
+			$g_values = $output->get_global_settings();
+			$add_to = $output->get_val($g_values, 'includeids', '');
+			$output->set_add_to($add_to);
+			if($output->check_add_to(true) == false && $output->_truefalse($output->get_val($g_values, 'allinclude', true)) == false){
+				$output->print_error_message(
+					__('If you want to use the PHP function "add_revslider" in your code please make sure to activate ', 'revslider').
+					__('"Include RevSlider libraries globally" ', 'revslider').
+					__('and/or add the current page to the ', 'revslider').
+					__('"Pages to include RevSlider libraries" option ', 'revslider').
+					__('in the "Global Settings" of Slider Revolution.', 'revslider')
+				);
+				return false;
 			}
-			
-			
+
 			ob_start();
-			$slider = RevSliderOutput::putSlider($data,$putIn);
+			$output->set_add_to($put_in);
+			$slider = $output->add_slider_to_stage($data);
 			$content = ob_get_contents();
 			ob_clean();
 			ob_end_clean();
-			
-			if(is_object($slider)){
-				$disable_on_mobile = @$slider->getParam("disable_on_mobile","off"); // Do not output Slider if we are on mobile
-				if($disable_on_mobile == 'on'){
-					$mobile = (strstr($_SERVER['HTTP_USER_AGENT'],'Android') || strstr($_SERVER['HTTP_USER_AGENT'],'webOS') || strstr($_SERVER['HTTP_USER_AGENT'],'iPhone') ||strstr($_SERVER['HTTP_USER_AGENT'],'iPod') || strstr($_SERVER['HTTP_USER_AGENT'],'Windows Phone') || strstr($_SERVER['HTTP_USER_AGENT'],'iPad') || wp_is_mobile()) ? true : false;
-					if($mobile) return false;
-				}
-			}
-			
+
 			echo $content;
+
 		}
 
-
-		/**
-		 *
-		 * put rev slider on the page.
-		 * the data can be slider ID or slider alias.
-		 */
-		function checkRevSliderExists($alias){
-            $rev = new RevSlider();
-            return $rev->isAliasExists($alias);
-		}
-
-		$productFront = new RevSliderFront(RS_PLUGIN_FILE_PATH);
+		$rev_slider_front = new RevSliderFront();
 	}
-	
-	add_action('plugins_loaded', array( 'RevSliderFront', 'createDBTables' )); //add update checks
-	add_action('plugins_loaded', array( 'RevSliderPluginUpdate', 'do_update_checks' )); //add update checks
-	
+
+	register_activation_hook(__FILE__, array('RevSliderFront', 'create_tables'));
+	register_activation_hook(__FILE__, array('RevSliderAdmin', 'welcome_screen_activate'));
+	add_action('plugins_loaded', array('RevSliderFront', 'create_tables'));
+	add_action('plugins_loaded', array('RevSliderPluginUpdate', 'do_update_checks')); //add update checks
+	add_action('plugins_loaded', array('RevSliderPageTemplate', 'get_instance'));
+	add_action('plugins_loaded', array('RevSliderFront', 'add_post_editor'));
+
+	add_filter('wpseo_sitemap_entry', array('RevSliderFront', 'get_images_for_seo'), 10, 3);
 }catch(Exception $e){
 	$message = $e->getMessage();
-	$trace = $e->getTraceAsString();
-	echo _e("Revolution Slider Error:",'revslider')." <b>".$message."</b>";
+	//$trace = $e->getTraceAsString();
+	echo _e('Revolution Slider Error:', 'revslider').' <b>'. esc_html($message) .'</b>';
 }
 
-?>
+function get_rs_plugin_url(){
+	$url = str_replace('index.php', '', plugins_url('index.php', __FILE__ ));
+	if(strpos($url, 'http') === false) {
+		$site_url	= get_site_url();
+		$url		= (substr($site_url, -1) === '/') ? substr($site_url, 0, -1). $url : $site_url. $url;
+	}
+	$url = str_replace(array(chr(10), chr(13)), '', $url);
+
+	return $url;
+}

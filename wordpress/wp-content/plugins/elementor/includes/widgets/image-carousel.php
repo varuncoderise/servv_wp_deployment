@@ -175,116 +175,6 @@ class Widget_Image_Carousel extends Widget_Base {
 		);
 
 		$this->add_control(
-			'navigation_previous_icon',
-			[
-				'label' => esc_html__( 'Previous Arrow Icon', 'elementor' ),
-				'type' => Controls_Manager::ICONS,
-				'fa4compatibility' => 'icon',
-				'skin' => 'inline',
-				'label_block' => false,
-				'skin_settings' => [
-					'inline' => [
-						'none' => [
-							'label' => 'Default',
-							'icon' => 'eicon-chevron-left',
-						],
-						'icon' => [
-							'icon' => 'eicon-star',
-						],
-					],
-				],
-				'recommended' => [
-					'fa-regular' => [
-						'arrow-alt-circle-left',
-						'caret-square-left',
-					],
-					'fa-solid' => [
-						'angle-double-left',
-						'angle-left',
-						'arrow-alt-circle-left',
-						'arrow-circle-left',
-						'arrow-left',
-						'caret-left',
-						'caret-square-left',
-						'chevron-circle-left',
-						'chevron-left',
-						'long-arrow-alt-left',
-					],
-				],
-				'conditions' => [
-					'relation' => 'or',
-					'terms' => [
-						[
-							'name' => 'navigation',
-							'operator' => '=',
-							'value' => 'both',
-						],
-						[
-							'name' => 'navigation',
-							'operator' => '=',
-							'value' => 'arrows',
-						],
-					],
-				],
-			]
-		);
-
-		$this->add_control(
-			'navigation_next_icon',
-			[
-				'label' => esc_html__( 'Next Arrow Icon', 'elementor' ),
-				'type' => Controls_Manager::ICONS,
-				'fa4compatibility' => 'icon',
-				'skin' => 'inline',
-				'label_block' => false,
-				'skin_settings' => [
-					'inline' => [
-						'none' => [
-							'label' => 'Default',
-							'icon' => 'eicon-chevron-right',
-						],
-						'icon' => [
-							'icon' => 'eicon-star',
-						],
-					],
-				],
-				'recommended' => [
-					'fa-regular' => [
-						'arrow-alt-circle-right',
-						'caret-square-right',
-					],
-					'fa-solid' => [
-						'angle-double-right',
-						'angle-right',
-						'arrow-alt-circle-right',
-						'arrow-circle-right',
-						'arrow-right',
-						'caret-right',
-						'caret-square-right',
-						'chevron-circle-right',
-						'chevron-right',
-						'long-arrow-alt-right',
-					],
-				],
-				'conditions' => [
-					'relation' => 'or',
-					'terms' => [
-						[
-							'name' => 'navigation',
-							'operator' => '=',
-							'value' => 'both',
-						],
-						[
-							'name' => 'navigation',
-							'operator' => '=',
-							'value' => 'arrows',
-						],
-					],
-				],
-			]
-		);
-
-		$this->add_control(
 			'link_to',
 			[
 				'label' => esc_html__( 'Link', 'elementor' ),
@@ -701,7 +591,7 @@ class Widget_Image_Carousel extends Widget_Base {
 			]
 		);
 
-		$this->add_responsive_control(
+		$this->add_control(
 			'image_spacing_custom',
 			[
 				'label' => esc_html__( 'Image Spacing', 'elementor' ),
@@ -714,6 +604,7 @@ class Widget_Image_Carousel extends Widget_Base {
 				'default' => [
 					'size' => 20,
 				],
+				'show_label' => false,
 				'condition' => [
 					'image_spacing' => 'custom',
 					'slides_to_show!' => '1',
@@ -732,12 +623,12 @@ class Widget_Image_Carousel extends Widget_Base {
 			]
 		);
 
-		$this->add_responsive_control(
+		$this->add_control(
 			'image_border_radius',
 			[
 				'label' => esc_html__( 'Border Radius', 'elementor' ),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
+				'size_units' => [ 'px', '%' ],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-image-carousel-wrapper .elementor-image-carousel .swiper-slide-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -757,7 +648,7 @@ class Widget_Image_Carousel extends Widget_Base {
 			]
 		);
 
-		$this->add_responsive_control(
+		$this->add_control(
 			'caption_align',
 			[
 				'label' => esc_html__( 'Alignment', 'elementor' ),
@@ -902,14 +793,12 @@ class Widget_Image_Carousel extends Widget_Base {
 			return;
 		}
 
-		$swiper_class = Plugin::$instance->experiments->is_feature_active( 'e_swiper_latest' ) ? 'swiper' : 'swiper-container';
-
 		$this->add_render_attribute( [
 			'carousel' => [
 				'class' => 'elementor-image-carousel swiper-wrapper',
 			],
 			'carousel-wrapper' => [
-				'class' => 'elementor-image-carousel-wrapper ' . $swiper_class,
+				'class' => 'elementor-image-carousel-wrapper swiper-container',
 				'dir' => $settings['direction'],
 			],
 		] );
@@ -1009,15 +898,12 @@ class Widget_Image_Carousel extends Widget_Base {
 
 	private function render_swiper_button( $type ) {
 		$direction = 'next' === $type ? 'right' : 'left';
-		$icon_settings = $this->get_settings_for_display( 'navigation_' . $type . '_icon' );
 
-		if ( empty( $icon_settings['value'] ) ) {
-			$icon_settings = [
-				'library' => 'eicons',
-				'value' => 'eicon-chevron-' . $direction,
-			];
-		}
+		$icon_value = 'eicon-chevron-' . $direction;
 
-		Icons_Manager::render_icon( $icon_settings, [ 'aria-hidden' => 'true' ] );
+		Icons_Manager::render_icon( [
+			'library' => 'eicons',
+			'value' => $icon_value,
+		], [ 'aria-hidden' => 'true' ] );
 	}
 }

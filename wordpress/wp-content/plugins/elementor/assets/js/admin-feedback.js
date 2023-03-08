@@ -1,4 +1,4 @@
-/*! elementor - v3.11.2 - 22-02-2023 */
+/*! elementor - v3.6.7 - 03-07-2022 */
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
@@ -72,7 +72,8 @@ var __webpack_exports__ = {};
     },
     initModal: function initModal() {
       var self = this,
-        modal;
+          modal;
+
       self.getModal = function () {
         if (!modal) {
           modal = elementorCommon.dialogsManager.createWidget('lightbox', {
@@ -103,7 +104,7 @@ var __webpack_exports__ = {};
             },
             onShow: function onShow() {
               var $dialogModal = $('#elementor-deactivate-feedback-modal'),
-                radioSelector = '.elementor-deactivate-feedback-dialog-input';
+                  radioSelector = '.elementor-deactivate-feedback-dialog-input';
               $dialogModal.find(radioSelector).on('change', function () {
                 $dialogModal.attr('data-feedback-selected', $(this).val());
               });
@@ -111,12 +112,13 @@ var __webpack_exports__ = {};
             }
           });
         }
+
         return modal;
       };
     },
     sendFeedback: function sendFeedback() {
       var self = this,
-        formData = self.cache.$dialogForm.serialize();
+          formData = self.cache.$dialogForm.serialize();
       self.getModal().getElements('submit').text('').addClass('elementor-loading');
       $.post(ajaxurl, formData, this.deactivate.bind(this));
     },

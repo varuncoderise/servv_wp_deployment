@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 4.2
  */
-class Vc_Backend_Editor implements Vc_Editor_Interface {
+class Vc_Backend_Editor {
 
 	/**
 	 * @var
@@ -51,6 +51,14 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 		), 5 );
 		add_action( 'admin_print_scripts-post.php', array(
 			$this,
+			'registerScripts',
+		) );
+		add_action( 'admin_print_scripts-post-new.php', array(
+			$this,
+			'registerScripts',
+		) );
+		add_action( 'admin_print_scripts-post.php', array(
+			$this,
 			'printScriptsMessages',
 		) );
 		add_action( 'admin_print_scripts-post-new.php', array(
@@ -60,25 +68,25 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 
 	}
 
+	public function registerScripts() {
+		$this->registerBackendJavascript();
+		$this->registerBackendCss();
+		// B.C:
+		wpbakery()->registerAdminCss();
+		wpbakery()->registerAdminJavascript();
+	}
+
 	/**
-	 *    Calls add_meta_box to create Editor block. Block is rendered by WPBakeryVisualComposerLayout.
-	 *
-	 * @see WPBakeryVisualComposerLayout
+	 * @param $post_type
+	 * @throws \Exception
 	 * @since  4.2
 	 * @access public
 	 *
-	 * @param $post_type
 	 */
 	public function render( $post_type ) {
 		if ( $this->isValidPostType( $post_type ) ) {
-			$this->registerBackendJavascript();
-			$this->registerBackendCss();
-			// B.C:
-			visual_composer()->registerAdminCss();
-			visual_composer()->registerAdminJavascript();
-
 			// meta box to render
-			add_meta_box( 'wpb_visual_composer', __( 'WPBakery Page Builder', 'js_composer' ), array(
+			add_meta_box( 'wpb_wpbakery', esc_html__( 'WPBakery Page Builder', 'js_composer' ), array(
 				$this,
 				'renderEditor',
 			), $post_type, 'normal', 'high' );
@@ -100,7 +108,7 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 			return false;
 		}
 		$this->post = $post;
-		$post_custom_css = strip_tags( get_post_meta( $post->ID, '_wpb_post_custom_css', true ) );
+		$post_custom_css = wp_strip_all_tags( get_post_meta( $post->ID, '_wpb_post_custom_css', true ) );
 		$this->post_custom_css = $post_custom_css;
 		vc_include_template( 'editors/backend_editor.tpl.php', array(
 			'editor' => $this,
@@ -134,13 +142,15 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 	 * @param string $type
 	 *
 	 * @return bool
+	 * @throws \Exception
 	 */
 	public function isValidPostType( $type = '' ) {
+		$type = ! empty( $type ) ? $type : get_post_type();
 		if ( 'vc_grid_item' === $type ) {
 			return false;
 		}
 
-		return vc_check_post_type( ! empty( $type ) ? $type : get_post_type() );
+		return apply_filters( 'vc_is_valid_post_type_be', vc_check_post_type( $type ), $type );
 	}
 
 	/**
@@ -171,7 +181,7 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 			WPBakeryShortCodeFishBones::enqueueJs();
 		} else {
 			wp_enqueue_script( 'vc-backend-actions-js' );
-			$this->enqueueCss(); //needed for navbar @todo split
+			$this->enqueueCss(); // needed for navbar @todo split
 		}
 		do_action( 'vc_backend_editor_enqueue_js_css' );
 	}
@@ -179,21 +189,25 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 	public function registerBackendJavascript() {
 		// editor can be disabled but fe can be enabled. so we currently need this file. @todo maybe make backend-disabled.min.js
 		wp_register_script( 'vc-backend-actions-js', vc_asset_url( 'js/dist/backend-actions.min.js' ), array(
-			'jquery',
+			'jquery-core',
 			'backbone',
 			'underscore',
 		), WPB_VC_VERSION, true );
-		wp_register_script( 'vc-backend-min-js', vc_asset_url( 'js/dist/backend.min.js' ), array( 'vc-backend-actions-js' ), WPB_VC_VERSION, true );
 		// used in tta shortcodes, and panels.
-		wp_register_script( 'vc_accordion_script', vc_asset_url( 'lib/vc_accordion/vc-accordion.min.js' ), array( 'jquery' ), WPB_VC_VERSION, true );
-		wp_register_script( 'wpb_php_js', vc_asset_url( 'lib/php.default/php.default.min.js' ), array( 'jquery' ), WPB_VC_VERSION, true );
+		wp_register_script( 'vc_accordion_script', vc_asset_url( 'lib/vc_accordion/vc-accordion.min.js' ), array( 'jquery-core' ), WPB_VC_VERSION, true );
+		wp_register_script( 'vc-backend-min-js', vc_asset_url( 'js/dist/backend.min.js' ), array(
+			'vc-backend-actions-js',
+			'vc_accordion_script',
+			'wp-color-picker',
+		), WPB_VC_VERSION, true );
+		wp_register_script( 'wpb_php_js', vc_asset_url( 'lib/php.default/php.default.min.js' ), array( 'jquery-core' ), WPB_VC_VERSION, true );
 		// used as polyfill for JSON.stringify and etc
 		wp_register_script( 'wpb_json-js', vc_asset_url( 'lib/bower/json-js/json2.min.js' ), array(), WPB_VC_VERSION, true );
 		// used in post settings editor
-		wp_register_script( 'ace-editor', vc_asset_url( 'lib/bower/ace-builds/src-min-noconflict/ace.js' ), array( 'jquery' ), WPB_VC_VERSION, true );
-		wp_register_script( 'webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js' ); // Google Web Font CDN
+		wp_register_script( 'ace-editor', vc_asset_url( 'lib/bower/ace-builds/src-min-noconflict/ace.js' ), array( 'jquery-core' ), WPB_VC_VERSION, true );
+		wp_register_script( 'webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js', array(), WPB_VC_VERSION, true ); // Google Web Font CDN
 
-		wp_localize_script( 'vc-backend-actions-js', 'i18nLocale', visual_composer()->getEditorsLocale() );
+		wp_localize_script( 'vc-backend-actions-js', 'i18nLocale', wpbakery()->getEditorsLocale() );
 	}
 
 	public function registerBackendCss() {
@@ -209,19 +223,19 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 			 * @todo check vc_add-element-deprecated-warning for fa icon usage ( set to our font )
 			 * also used in vc_icon shortcode
 			 */
-			wp_register_style( 'font-awesome', vc_asset_url( 'lib/bower/font-awesome/css/font-awesome.min.css' ), array(), WPB_VC_VERSION );
-
+			wp_register_style( 'vc_font_awesome_5_shims', vc_asset_url( 'lib/bower/font-awesome/css/v4-shims.min.css' ), array(), WPB_VC_VERSION );
+			wp_register_style( 'vc_font_awesome_5', vc_asset_url( 'lib/bower/font-awesome/css/all.min.css' ), array( 'vc_font_awesome_5_shims' ), WPB_VC_VERSION );
 			/**
 			 * @todo check for usages
 			 * definetelly used in edit form param: css_animation, but curreny vc_add_shortcode_param doesn't accept css [ @todo refactor that ]
 			 */
-			wp_register_style( 'animate-css', vc_asset_url( 'lib/bower/animate-css/animate.min.css' ), array(), WPB_VC_VERSION );
+			wp_register_style( 'vc_animate-css', vc_asset_url( 'lib/bower/animate-css/animate.min.css' ), array(), WPB_VC_VERSION );
 		}
 	}
 
 	public function enqueueJs() {
 		$wp_dependencies = array(
-			'jquery',
+			'jquery-core',
 			'underscore',
 			'backbone',
 			'media-views',
@@ -264,9 +278,9 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 			// deprecated for tabs/accordion
 			'ui-custom-theme',
 			// used in deprecated message and also in vc-icon shortcode
-			'font-awesome',
+			'vc_font_awesome_5',
 			// used in css_animation edit form param
-			'animate-css',
+			'vc_animate-css',
 		);
 		$dependencies = array(
 			'js_composer',
@@ -283,6 +297,7 @@ class Vc_Backend_Editor implements Vc_Editor_Interface {
 
 	/**
 	 * @return bool
+	 * @throws \Exception
 	 */
 	public function editorEnabled() {
 		return vc_user_access()->part( 'backend_editor' )->can()->get();

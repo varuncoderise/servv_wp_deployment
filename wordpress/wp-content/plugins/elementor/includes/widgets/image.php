@@ -490,7 +490,7 @@ class Widget_Image extends Widget_Base {
 			[
 				'label' => esc_html__( 'Border Radius', 'elementor' ),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
+				'size_units' => [ 'px', '%' ],
 				'selectors' => [
 					'{{WRAPPER}} img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -521,7 +521,7 @@ class Widget_Image extends Widget_Base {
 			]
 		);
 
-		$this->add_responsive_control(
+		$this->add_control(
 			'caption_align',
 			[
 				'label' => esc_html__( 'Alignment', 'elementor' ),
@@ -823,14 +823,14 @@ class Widget_Image extends Widget_Base {
 	/**
 	 * Retrieve image widget link URL.
 	 *
-	 * @since 3.11.0
-	 * @access protected
+	 * @since 1.0.0
+	 * @access private
 	 *
 	 * @param array $settings
 	 *
 	 * @return array|string|false An array/string containing the link URL, or false if no link.
 	 */
-	protected function get_link_url( $settings ) {
+	private function get_link_url( $settings ) {
 		if ( 'none' === $settings['link_to'] ) {
 			return false;
 		}
