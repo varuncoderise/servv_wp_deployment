@@ -23,8 +23,8 @@ define('FORCE_SSL_LOGIN', true);
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'){ $_SERVER['HTTPS']='on'; }
 
 
-define( 'WP_HOME', 'https://blog.coderise.io' );
-define( 'WP_SITEURL', 'https://blog.coderise.io' );
+define( 'WP_HOME', 'https://coderise.io' );
+define( 'WP_SITEURL', 'https://coderise.io' );
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
