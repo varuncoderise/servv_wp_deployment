@@ -8,10 +8,10 @@ Author: Jeff Starr
 Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
-Requires at least: 4.1
-Tested up to: 5.8
-Stable tag: 20210713
-Version: 20210713
+Requires at least: 4.6
+Tested up to: 6.2
+Stable tag: 20230227
+Version:    20230227
 Requires PHP: 5.6.20
 Text Domain: head-meta-data
 Domain Path: /languages
@@ -99,14 +99,38 @@ Shortcodes enable you to include dynamic bits of information in your meta tags. 
 So you can display your own set of customized meta tags exactly as desired. See the [Installation section](https://wordpress.org/plugins/head-meta-data/#installation) for more information about the HMD shortcodes!
 
 
+**More Info**
+
+Head Meta Data is designed to complete a site's head construct by including some of the more obscure meta tags, such as "author", "copyright", "designer", and so forth. As a matter of practicality, the more widely used tags such as "description" and "keywords" have been omitted, as they are already included via wide variety of plugins (such as "All in One SEO") in a more dynamic way. Even so, adding "description", "keyword", or any other tags is easy from the plugin's settings page.
+
+
 **Privacy**
 
 This plugin does not collect or store any user data. It does not set any cookies, and it does not connect to any third-party locations. Thus, this plugin does not affect user privacy in any way.
 
+Head Meta Data is developed and maintained by [Jeff Starr](https://twitter.com/perishable), 15-year [WordPress developer](https://plugin-planet.com/) and [book author](https://books.perishablepress.com/).
 
-**More Info**
 
-Head Meta Data is designed to complete a site's head construct by including some of the more obscure meta tags, such as "author", "copyright", "designer", and so forth. As a matter of practicality, the more widely used tags such as "description" and "keywords" have been omitted, as they are already included via wide variety of plugins (such as "All in One SEO") in a more dynamic way. Even so, adding "description", "keyword", or any other tags is easy from the plugin's settings page.
+**Support development**
+
+I develop and maintain this free plugin with love for the WordPress community. To show support, you can [make a donation](https://monzillamedia.com/donate.html) or purchase one of my books: 
+
+* [The Tao of WordPress](https://wp-tao.com/)
+* [Digging into WordPress](https://digwp.com/)
+* [.htaccess made easy](https://htaccessbook.com/)
+* [WordPress Themes In Depth](https://wp-tao.com/wordpress-themes-book/)
+* [Wizard's SQL Recipes for WordPress](https://books.perishablepress.com/downloads/wizards-collection-sql-recipes-wordpress/)
+
+And/or purchase one of my premium WordPress plugins:
+
+* [BBQ Pro](https://plugin-planet.com/bbq-pro/) - Super fast WordPress firewall
+* [Blackhole Pro](https://plugin-planet.com/blackhole-pro/) - Automatically block bad bots
+* [Banhammer Pro](https://plugin-planet.com/banhammer-pro/) - Monitor traffic and ban the bad guys
+* [GA Google Analytics Pro](https://plugin-planet.com/ga-google-analytics-pro/) - Connect WordPress to Google Analytics
+* [Simple Ajax Chat Pro](https://plugin-planet.com/simple-ajax-chat-pro/) - Unlimited chat rooms
+* [USP Pro](https://plugin-planet.com/usp-pro/) - Unlimited front-end forms
+
+Links, tweets and likes also appreciated. Thanks! :)
 
 
 
@@ -226,28 +250,7 @@ More screenshots available at the [HMD Homepage](https://perishablepress.com/hea
 
 == Frequently Asked Questions ==
 
-To ask a question, suggest a feature, or provide feedback, [contact me directly](https://perishablepress.com/contact/).
-
-
-
-== Support development of this plugin ==
-
-I develop and maintain this free plugin with love for the WordPress community. To show support, you can [make a donation](https://monzillamedia.com/donate.html) or purchase one of my books: 
-
-* [The Tao of WordPress](https://wp-tao.com/)
-* [Digging into WordPress](https://digwp.com/)
-* [.htaccess made easy](https://htaccessbook.com/)
-* [WordPress Themes In Depth](https://wp-tao.com/wordpress-themes-book/)
-
-And/or purchase one of my premium WordPress plugins:
-
-* [BBQ Pro](https://plugin-planet.com/bbq-pro/) - Super fast WordPress firewall
-* [Blackhole Pro](https://plugin-planet.com/blackhole-pro/) - Automatically block bad bots
-* [Banhammer Pro](https://plugin-planet.com/banhammer-pro/) - Monitor traffic and ban the bad guys
-* [GA Google Analytics Pro](https://plugin-planet.com/ga-google-analytics-pro/) - Connect WordPress to Google Analytics
-* [USP Pro](https://plugin-planet.com/usp-pro/) - Unlimited front-end forms
-
-Links, tweets and likes also appreciated. Thanks! :)
+To ask a question, suggest a feature, or provide feedback, [contact me directly](https://plugin-planet.com/support/#contact).
 
 
 
@@ -255,6 +258,36 @@ Links, tweets and likes also appreciated. Thanks! :)
 
 If you like Head Meta Data, please take a moment to [give a 5-star rating](https://wordpress.org/support/plugin/head-meta-data/reviews/?rate=5#new-post). It helps to keep development and support going strong. Thank you!
 
+
+**820230227**
+
+* Improves responsive styles
+* Improves logic when calling `get_current_screen()`
+* Moves WP Resources panel to its own function
+* Removes SES Pro from WP Resources panel
+* Tests on WordPress 6.1 + 6.2 (beta)
+* Tests on PHP 8.1 and 8.2
+
+**20220925**
+
+* Adds custom footer text to plugin settings
+* Improves logic of settings validation
+* Improves plugin documentation
+* Updates translation template
+* Updates "Show Support" panel
+* Tests on WordPress 6.1
+
+**20220515**
+
+* Tests on WordPress 6.0
+
+**20220113**
+
+* Updates support panel
+* Improves loading of translations
+* Updates some links to external resources
+* Changes minimum required WP version to 4.6
+* Tests on WordPress 5.9
 
 **20210713**
 

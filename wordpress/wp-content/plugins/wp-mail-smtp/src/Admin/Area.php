@@ -46,7 +46,7 @@ class Area {
 	 *
 	 * @var array
 	 */
-	public static $pages_registered = [ 'general', 'logs', 'about', 'tools', 'reports' ];
+	public static $pages_registered = [ 'general', 'logs', 'about', 'tools', 'reports', 'alerts' ];
 
 	/**
 	 * Area constructor.
@@ -137,6 +137,20 @@ class Area {
 		}
 
 		switch ( $error ) {
+			case 'oauth_invalid_state':
+				WP::add_admin_notice(
+					esc_html__( 'There was an error while processing the authentication request. The state key is invalid. Please try again.', 'wp-mail-smtp' ),
+					WP::ADMIN_NOTICE_ERROR
+				);
+				break;
+
+			case 'google_invalid_nonce':
+				WP::add_admin_notice(
+					esc_html__( 'There was an error while processing the authentication request. The nonce is invalid. Please try again.', 'wp-mail-smtp' ),
+					WP::ADMIN_NOTICE_ERROR
+				);
+				break;
+
 			case 'google_access_denied':
 				WP::add_admin_notice( /* translators: %s - error code, returned by Google API. */
 					sprintf( esc_html__( 'There was an error while processing the authentication request: %s. Please try again.', 'wp-mail-smtp' ), '<code>' . $error . '</code>' ),
@@ -480,9 +494,12 @@ class Area {
 												'$50'
 											)
 											. '</p>',
-				'upgrade_doc'       => '<a href="https://wpmailsmtp.com/docs/how-to-upgrade-wp-mail-smtp-to-pro-version/?utm_source=WordPress&amp;utm_medium=link&amp;utm_campaign=liteplugin" target="_blank" rel="noopener noreferrer" class="already-purchased">
-												' . esc_html__( 'Already purchased?', 'wp-mail-smtp' ) . '
-											</a>',
+				'upgrade_doc'       => sprintf(
+					'<a href="%1$s" target="_blank" rel="noopener noreferrer" class="already-purchased">%2$s</a>',
+					// phpcs:ignore WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
+					esc_url( wp_mail_smtp()->get_utm_url( 'https://wpmailsmtp.com/docs/how-to-upgrade-wp-mail-smtp-to-pro-version/', [ 'medium' => 'plugin-settings', 'content' => 'Pro Mailer Popup - Already purchased' ] ) ),
+					esc_html__( 'Already purchased?', 'wp-mail-smtp' )
+				),
 			],
 			'all_mailers_supports'    => wp_mail_smtp()->get_providers()->get_supports_all(),
 			'nonce'                   => wp_create_nonce( 'wp-mail-smtp-admin' ),
@@ -828,7 +845,7 @@ class Area {
 	 *
 	 * @return string
 	 */
-	protected function get_current_tab() {
+	public function get_current_tab() {
 
 		$current = '';
 
@@ -895,19 +912,22 @@ class Area {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return \WPMailSMTP\Admin\PageAbstract[]
+	 * @return PageAbstract[]
 	 */
 	public function get_pages() {
 
 		if ( empty( $this->pages ) ) {
-			$this->pages = array(
-				'settings' => new Pages\SettingsTab(),
-				'test'     => new Pages\TestTab( new Pages\Tools() ),
-				'logs'     => new Pages\LogsTab(),
-				'control'  => new Pages\ControlTab(),
-				'misc'     => new Pages\MiscTab(),
-				'auth'     => new Pages\AuthTab(),
-			);
+			$this->pages = [
+				'settings'    => new Pages\SettingsTab(),
+				'test'        => new Pages\TestTab( new Pages\Tools() ),
+				'logs'        => new Pages\LogsTab(),
+				'alerts'      => new Pages\AlertsTab(),
+				'connections' => new Pages\AdditionalConnectionsTab(),
+				'routing'     => new Pages\SmartRoutingTab(),
+				'control'     => new Pages\ControlTab(),
+				'misc'        => new Pages\MiscTab(),
+				'auth'        => new Pages\AuthTab(),
+			];
 		}
 
 		return apply_filters( 'wp_mail_smtp_admin_get_pages', $this->pages );
@@ -1189,17 +1209,8 @@ class Area {
 
 		$custom['docs'] = sprintf(
 			'<a href="%1$s" target="_blank" aria-label="%2$s" rel="noopener noreferrer">%3$s</a>',
-			esc_url(
-				add_query_arg(
-					[
-						'utm_content'  => 'Documentation',
-						'utm_campaign' => 'liteplugin',
-						'utm_medium'   => 'all-plugins',
-						'utm_source'   => 'WordPress',
-					],
-					'https://wpmailsmtp.com/docs/'
-				)
-			),
+			// phpcs:ignore WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
+			esc_url( wp_mail_smtp()->get_utm_url( 'https://wpmailsmtp.com/docs/', [ 'medium' => 'all-plugins', 'content' => 'Documentation' ] ) ),
 			esc_attr__( 'Go to WPMailSMTP.com documentation page', 'wp-mail-smtp' ),
 			esc_html__( 'Docs', 'wp-mail-smtp' )
 		);

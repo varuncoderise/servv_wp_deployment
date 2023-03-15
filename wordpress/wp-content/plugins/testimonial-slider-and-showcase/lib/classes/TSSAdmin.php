@@ -23,17 +23,16 @@ if ( ! class_exists( 'TSSAdmin' ) ) :
 				'admin_init',
 				function () {
 					$current = time();
-					if ( mktime( 0, 0, 0, 11, 22, 2021 ) <= $current && $current <= mktime( 0, 0, 0, 12, 6, 2021 ) ) {
-						if ( '1' !== get_option( 'rttss_bf_2021' ) ) {
-							if ( ! isset( $GLOBALS['rt_tss_bf_2021_notice'] ) ) {
-								$GLOBALS['rt_tss_bf_2021_notice'] = 'rttss_bf_2021';
+					if ( mktime( 0, 0, 0, 11, 18, 2022 ) <= $current && $current <= mktime( 0, 0, 0, 1, 15, 2023 ) ) {
+						if ( '1' !== get_option( 'rttss_ny_2022' ) ) {
+							if ( ! isset( $GLOBALS['rt_tss_ny_2022_notice'] ) ) {
+								$GLOBALS['rt_tss_ny_2022_notice'] = 'rttss_ny_2022';
 								self::notice();
 							}
 						}
 					}
 				}
 			);
-
 		}
 
 		/**
@@ -55,14 +54,14 @@ if ( ! class_exists( 'TSSAdmin' ) ) :
 					$plugin_name   = TSS_ITEM_NAME . ' Pro';
 					$download_link = TSSPro()->pro_version_link();
 					?>
-				<div class="notice notice-info is-dismissible" data-rttssdismissable="rttss_bf_2021"
+				<div class="notice notice-info is-dismissible" data-rttssdismissable="rttss_ny_2022"
 					style="display:grid;grid-template-columns: 100px auto;padding-top: 25px; padding-bottom: 22px;">
 					<img alt="<?php echo esc_attr( $plugin_name ); ?>" src="<?php echo esc_url( TSSPro()->assetsUrl ) . 'images/icon-128x128.gif'; ?>" width="74px" height="74px" style="grid-row: 1 / 4; align-self: center;justify-self: center"/>
-					<h3 style="margin:0;"><?php echo sprintf( '%s Black Friday Deal!!', esc_html( $plugin_name ) ); ?></h3>
+					<h3 style="margin:0;"><?php echo sprintf( '%s New Year Deal!!', esc_html( $plugin_name ) ); ?></h3>
 
 					<p style="margin:0 0 2px;">
 						<?php echo esc_html__( "Don't miss out on our biggest sale of the year! Get yours.", 'testimonial-slider-showcase' ); ?>
-						<b><?php echo esc_html( $plugin_name ); ?> plan</b> with <b>UP TO 50% OFF</b>! Limited time offer expires on December 5.
+						<b><?php echo esc_html( $plugin_name ); ?> plan</b> with <b>UP TO 50% OFF</b>! Limited time offer!!
 					</p>
 
 					<p style="margin:0;">
@@ -104,7 +103,7 @@ if ( ! class_exists( 'TSSAdmin' ) ) :
 				function () {
 					check_ajax_referer( 'rttss-dismissible-notice', 'nonce' );
 
-					update_option( 'rttss_bf_2021', '1' );
+					update_option( 'rttss_ny_2022', '1' );
 					wp_die();
 				}
 			);

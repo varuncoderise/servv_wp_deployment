@@ -909,8 +909,10 @@ function A2A_SHARE_SAVE_options_page() {
 	
 	<script src="https://static.addtoany.com/menu/page.js"></script>
 	<script>
-	if ( window.a2a && a2a.svg_css ) a2a.svg_css();
-	jQuery(document).ready( function() { if ( ! window.a2a) jQuery('<div class="error"><p><strong>Something is preventing AddToAny from loading. Try disabling content blockers such as ad-blocking add-ons, or try another web browser.</strong></p></div>').insertBefore('.nav-tab-wrapper:eq(0)'); });	
+	jQuery(document).on( 'load', function() {
+		if ( ! window.a2a) jQuery('<div class="error"><p><strong>Something is preventing AddToAny from loading. Try disabling content blockers such as ad-blocking add-ons, or try another web browser.</strong></p></div>').insertBefore('.nav-tab-wrapper:eq(0)');
+		if ( window.a2a && a2a.svg_css ) a2a.svg_css();
+	});
 	</script>
 
 <?php
@@ -1247,7 +1249,7 @@ function A2A_SHARE_SAVE_admin_head() {
 	.ui-sortable-placeholder{background-color:transparent;border:1px dashed #CCC !important;}
 	.addtoany_admin_list{list-style:none;padding:0;margin:0;}
 	.addtoany_admin_list li{border-radius:6px;}
-	
+
 	#addtoany_services_selectable{clear:left;display:none;}
 	#addtoany_services_selectable li{cursor:pointer;float:left;width:150px;font-size:12px;line-height:24px;margin:0;padding:6px;border:1px solid transparent;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
 	#addtoany_services_selectable li:hover, #addtoany_services_selectable li.addtoany_selected{border:1px solid #CCC;background-color:#FFF;}
@@ -1257,6 +1259,8 @@ function A2A_SHARE_SAVE_admin_head() {
 	#addtoany_services_selectable .addtoany_3p_button{padding:8px 6px 4px;}
 	#addtoany_services_selectable .addtoany_3p_button img{border-radius:0;width:auto;height:20px;}
 	
+	/* Work around jQuery UI 1.13.0 bug: https://github.com/jquery/jquery-ui/issues/1998 */
+	#addtoany_services_sortable{display:flex;flex-flow:row wrap;align-items:flex-start;}
 	#addtoany_services_sortable li, #addtoany_services_sortable li.dummy:hover{cursor:move;float:left;padding:14px 10px;border:1px solid transparent;}
 	#addtoany_services_sortable li:hover{border:1px solid #CCC;background-color:#FFF;}
 	#addtoany_services_sortable li.dummy, #addtoany_services_sortable li.dummy:hover{cursor:auto;background-color:transparent;}

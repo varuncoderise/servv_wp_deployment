@@ -381,7 +381,7 @@ if ( ! class_exists( 'TSSPortSCMeta' ) ) :
 				'tss-admin',
 				'tss',
 				[
-					'ajaxurl' => esc_url( admin_url( 'admin-ajax.php ' ) ),
+					'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
 					'nonce'   => esc_attr( wp_create_nonce( TSSPro()->nonceText() ) ),
 					'nonceId' => esc_attr( TSSPro()->nonceId() ),
 				]

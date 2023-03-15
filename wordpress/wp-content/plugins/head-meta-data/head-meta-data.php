@@ -8,10 +8,10 @@
 	Author URI: https://plugin-planet.com/
 	Donate link: https://monzillamedia.com/donate.html
 	Contributors: specialk
-	Requires at least: 4.1
-	Tested up to: 5.8
-	Stable tag: 20210713
-	Version: 20210713
+	Requires at least: 4.6
+	Tested up to: 6.2
+	Stable tag: 20230227
+	Version:    20230227
 	Requires PHP: 5.6.20
 	Text Domain: head-meta-data
 	Domain Path: /languages
@@ -32,13 +32,13 @@
 	You should have received a copy of the GNU General Public License
 	with this program. If not, visit: https://www.gnu.org/licenses/
 	
-	Copyright 2021 Monzilla Media. All rights reserved.
+	Copyright 2023 Monzilla Media. All rights reserved.
 */
 
 if (!defined('ABSPATH')) die();
 
-$hmd_wp_vers = '4.1';
-$hmd_version = '20210713';
+$hmd_wp_vers = '4.6';
+$hmd_version = '20230227';
 $hmd_plugin  = esc_html__('Head Meta Data', 'head-meta-data');
 $hmd_options = get_option('hmd_options');
 $hmd_path    = plugin_basename(__FILE__); // 'head-meta-data/head-meta-data.php';
@@ -49,7 +49,7 @@ function hmd_i18n_init() {
 	load_plugin_textdomain('head-meta-data', false, dirname(plugin_basename(__FILE__)) .'/languages/');
 	
 }
-add_action('plugins_loaded', 'hmd_i18n_init');
+add_action('init', 'hmd_i18n_init');
 
 function hmd_require_wp_version() {
 	
@@ -333,6 +333,39 @@ function add_hmd_links($links, $file) {
 }
 add_filter('plugin_row_meta', 'add_hmd_links', 10, 2);
 
+function hmd_footer_text($text) {
+	
+	$screen_id = hmd_get_current_screen_id();
+	
+	$ids = array('settings_page_head-meta-data/head-meta-data');
+	
+	if ($screen_id && apply_filters('head_meta_data_admin_footer_text', in_array($screen_id, $ids))) {
+		
+		$text = __('Like this plugin? Give it a', 'head-meta-data');
+		
+		$text .= ' <a target="_blank" rel="noopener noreferrer" href="https://wordpress.org/support/plugin/head-meta-data/reviews/?rate=5#new-post">';
+		
+		$text .= __('★★★★★ rating&nbsp;&raquo;', 'head-meta-data') .'</a>';
+		
+	}
+	
+	return $text;
+	
+}
+add_filter('admin_footer_text', 'hmd_footer_text', 10, 1);
+
+function hmd_get_current_screen_id() {
+	
+	if (!function_exists('get_current_screen')) require_once ABSPATH .'/wp-admin/includes/screen.php';
+	
+	$screen = get_current_screen();
+	
+	if ($screen && property_exists($screen, 'id')) return $screen->id;
+	
+	return false;
+	
+}
+
 function hmd_delete_plugin_options() {
 	delete_option('hmd_options');
 }
@@ -395,7 +428,7 @@ function hmd_add_defaults() {
 		update_option('hmd_options', $arr);
 	}
 }
-register_activation_hook (__FILE__, 'hmd_add_defaults');
+register_activation_hook(__FILE__, 'hmd_add_defaults');
 
 function hmd_init() {
 	register_setting('hmd_plugin_options', 'hmd_options', 'hmd_validate_options');
@@ -428,6 +461,7 @@ function hmd_validate_options($input) {
 
 	// dealing with kses
 	global $allowedposttags;
+	$default_allowedposttags = $allowedposttags; 
 	$allowed_atts = array(
 		'align'=>array(), 'class'=>array(), 'id'=>array(), 'dir'=>array(), 'lang'=>array(), 'style'=>array(), 'label'=>array(), 'url'=>array(), 
 		'xml:lang'=>array(), 'src'=>array(), 'alt'=>array(), 'name'=>array(), 'content'=>array(), 'http-equiv'=>array(), 'profile'=>array(), 
@@ -462,6 +496,8 @@ function hmd_validate_options($input) {
 
 	if (!isset($input['hmd_format'])) $input['hmd_format'] = null;
 	$input['hmd_format'] = ($input['hmd_format'] == 1 ? 1 : 0);
+
+	$allowedposttags = $default_allowedposttags;
 
 	return $input;
 }
@@ -665,7 +701,7 @@ function hmd_render_form() {
 									<tr>
 										<th scope="row"><label><?php esc_html_e('More tags', 'head-meta-data'); ?></label></th>
 										<td>
-											<a target="_blank" rel="noopener noreferrer" href="https://perishablepress.com/contact/" title="<?php esc_html_e('Contact the developer via contact form', 'head-meta-data'); ?>">
+											<a target="_blank" rel="noopener noreferrer" href="https://plugin-planet.com/support/#contact" title="<?php esc_html_e('Contact the developer via contact form', 'head-meta-data'); ?>">
 											<?php esc_html_e('Suggest more meta tags', 'head-meta-data'); ?>&nbsp;&raquo;</a>
 										</td>
 									</tr>
@@ -747,7 +783,7 @@ function hmd_render_form() {
 					</div>
 					
 					<div id="mm-panel-current" class="postbox">
-						<h2><?php esc_html_e('Show Support', 'head-meta-data'); ?></h2>
+						<h2><?php esc_html_e('WP Resources', 'head-meta-data'); ?></h2>
 						<div class="toggle">
 							<?php require_once('support-panel.php'); ?>
 						</div>

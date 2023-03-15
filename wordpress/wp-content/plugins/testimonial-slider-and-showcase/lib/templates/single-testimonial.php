@@ -34,7 +34,7 @@ while ( have_posts() ) :
 				<div class="rt-col-md-4 rt-col-sm-12 rt-col-xs-12 ">
 					<div class="testi-meta">
 						<div class="profile-img"><?php the_post_thumbnail( 'large' ); ?></div>
-						<h2><?php the_title(); ?></h2>
+						<h2><?php echo wp_kses( get_the_title(), TSSPro()->allowedHtml() ); ?></h2>
 						<?php
 						$html = '';
 						if ( is_array( $settings['field'] ) && ! empty( $settings['field'] ) && in_array( 'rating', $settings['field'], true ) ) {

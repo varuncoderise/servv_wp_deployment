@@ -989,7 +989,19 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 				$css .= "#{$layoutID}.tss-wrapper .single-item-wrapper .author-social {";
 				$css .= ( ! empty( $social['align'] ) ? 'text-align:' . $social['align'] . ';' : null );
 				$css .= '}';
+
+				$css .= "#{$layoutID}.tss-wrapper .author-social .dashicons-skype:before,
+						#{$layoutID}.tss-wrapper .author-social .dashicons-telegram:before {";
+				$css .= ( ! empty( $social['color'] ) ? 'background-color:' . $social['color'] . ';' : null );
+				$css .= '}';
+
+				$css .= "#{$layoutID}.tss-wrapper .author-social .dashicons-skype:before,
+						#{$layoutID}.tss-wrapper .author-social .dashicons-telegram:before {";
+				$css .= ( ! empty( $social['size'] ) ? 'width:' . $social['size'] . 'px;' : null );
+				$css .= ( ! empty( $social['size'] ) ? 'height:' . $social['size'] . 'px;' : null );
+				$css .= '}';
 			}
+
 
 			// Testimonial
 			if ( ! empty( $testimonial ) && is_array( $testimonial ) ) {
@@ -1319,6 +1331,14 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 							'id'    => [],
 						],
 						'hr'     => [
+							'class' => [],
+							'id'    => [],
+						],
+						'p'     => [
+							'class' => [],
+							'id'    => [],
+						],
+						'div'   => [
 							'class' => [],
 							'id'    => [],
 						],

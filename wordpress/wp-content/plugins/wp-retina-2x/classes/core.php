@@ -4,13 +4,16 @@ require trailingslashit( WR2X_PATH ) . 'vendor/autoload.php';
 
 class Meow_WR2X_Core {
 
+	private static $plugin_option_name = 'wr2x_options';
+	private $option_name = 'wr2x_options';
+
 	public $method = false;
 	public $retina_sizes = array();
 	public $disabled_sizes = array();
 	public $lazy = false;
 
 	public function __construct() {
-		global $wr2x_core;		
+		global $wr2x_core;
 		if ( !empty( $wr2x_core ) ) {
 			return $wr2x_core;
 		}
@@ -25,20 +28,29 @@ class Meow_WR2X_Core {
 	}
 
 	function init() {
-		$this->method = get_option( "wr2x_method" );
-		$this->retina_sizes = get_option( 'wr2x_retina_sizes', array() );
-		$this->disabled_sizes = get_option( 'wr2x_disabled_sizes', array() );
-		$this->lazy = get_option( "wr2x_picturefill_lazysizes" ) && class_exists( 'MeowPro_WR2X_Core' );
+		$options = $this->get_all_options();
+		$this->method = $options["method"];
+		$this->retina_sizes = $options['retina_sizes'] ?? array();
+		$this->disabled_sizes = $options['disabled_sizes'] ?? array();
+		$this->lazy = $options["picturefill_lazysizes"] && class_exists( 'MeowPro_WR2X_Core' );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 		add_filter( 'wp_generate_attachment_metadata', array( $this, 'wp_generate_attachment_metadata' ) );
 		add_action( 'delete_attachment', array( $this, 'delete_attachment' ) );
 		add_filter( 'generate_rewrite_rules', array( 'Meow_WR2X_Admin', 'generate_rewrite_rules' ) );
 		add_filter( 'retina_validate_src', array( $this, 'validate_src' ) );
 		add_filter( 'wp_calculate_image_srcset', array( $this, 'calculate_image_srcset' ), 1000, 5 );
-		if ( get_option( 'wr2x_big_image_size_threshold', false ) ) {
+		add_filter( 'media_row_actions', array( $this, 'add_action_link'), 10, 2 );
+		add_filter( 'attachment_fields_to_edit', array( $this, 'add_replace_image_button'), 10, 2 );
+		add_action( 'add_meta_boxes', array( $this, 'add_metabox' ) );
+
+		if ( $options['big_image_size_threshold'] ?? false ) {
 			add_filter( 'big_image_size_threshold', array( $this, 'big_image_size_threshold' ) );
 		}
-		
+
+		if ( $options['gif_thumbnails_disabled'] ?? false ) {
+			add_filter( 'intermediate_image_sizes_advanced', array( $this, 'disable_upload_sizes' ), 10, 2);
+		}
+
 		// Disable Image-Sizes based on Settings.
 		if ( !empty( $this->disabled_sizes ) ) {
 			$this->disable_image_sizes();
@@ -71,30 +83,31 @@ class Meow_WR2X_Core {
 		// Admin Screens
 		if ( is_admin() ) {
 			$this->admin = new Meow_WR2X_Admin( $this );
-			if ( !get_option( "wr2x_hide_retina_dashboard" ) ) {
+			if ( !$options["hide_retina_dashboard"] ) {
 				new Meow_WR2X_Dashboard( $this );
 			}
-			if ( !get_option( "wr2x_hide_retina_column" ) ) {
+			if ( !$options["hide_retina_column"] ) {
 				new Meow_WR2X_Library( $this );
 			}
 		}
 	}
 
 	function set_defaults() {
-		$wr2x_retina_sizes = get_option( 'wr2x_retina_sizes', null );
-		$wr2x_disabled_sizes = get_option( 'wr2x_disabled_sizes', null );
-		$wr2x_auto_generate = get_option( 'wr2x_auto_generate', null );
+		$options = $this->get_all_options();
+		$wr2x_retina_sizes = $options['retina_sizes'] ?? null;
+		$wr2x_disabled_sizes = $options['disabled_sizes'] ?? null;
+		$wr2x_auto_generate = $options['auto_generate'] ?? null;
 		if ( is_null( $this->method ) ) {
-			update_option( 'wr2x_method', 'Responsive' );
+			$options['method'] = 'Responsive';
 			$this->method = 'Responsive';
 		}
 		if ( is_null( $wr2x_auto_generate ) ) {
-			update_option( 'wr2x_auto_generate', '1' );
+			$options['auto_generate'] = true;
 		}
 		if ( is_null( $wr2x_retina_sizes ) ) {
 			$wr2x_retina_sizes = array();
 			// Let's try to get this data from the old option first
-			$wr2x_ignore_sizes = get_option( 'wr2x_ignore_sizes' );
+			$wr2x_ignore_sizes = $options['ignore_sizes'];
 			$sizes = $this->get_image_sizes();
 			$large_w = 1024;
 			$large_h = 1024;
@@ -107,15 +120,15 @@ class Meow_WR2X_Core {
 			}
 			if ( !empty( $wr2x_ignore_sizes ) ) {
 				$wr2x_retina_sizes = array_diff( $wr2x_retina_sizes, array_keys( $wr2x_ignore_sizes ) );
-				delete_option( 'wr2x_ignore_sizes' );
+				$options['ignore_sizes'] = [];
 			}
-			update_option( 'wr2x_retina_sizes', $wr2x_retina_sizes );
+			$options['retina_sizes'] = $wr2x_retina_sizes;
 		}
 
 		if ( is_null( $wr2x_disabled_sizes ) ) {
-			update_option( 'wr2x_disabled_sizes', [ 'medium_large' ] );
-			delete_option( 'wr2x_disable_medium_large' );
+			$options['disabled_sizes'] = [ 'medium_large' ];
 		}
+		update_option( $this->option_name, $options );
 	}
 
 	function big_image_size_threshold() {
@@ -129,6 +142,31 @@ class Meow_WR2X_Core {
     return strpos( $_SERVER[ 'REQUEST_URI' ], $rest_prefix ) !== false ? true : false;
 	}
 
+	function add_action_link( $actions, $post ) {
+		$actions['action_link'] = '<span class="wr2x-action-link" data-id="' . $post->ID . '">Replace Image</span>';
+		return $actions;
+	}
+
+	function add_replace_image_button( $form_fields, $post ) {
+		$form_fields['replace_image'] = array(
+			'value' => '',
+			'required' => false,
+			'input' => 'html',
+			'html' => '<span class="wr2x-replace-image-button" data-id="' . $post->ID . '"></span>',
+			'label' => '',
+			'helps' => '',
+		);
+		return $form_fields;
+	}
+
+	function add_metabox() {
+		add_meta_box( 'wr2x-metabox', 'Perfect Image', array( $this, 'render_metabox' ), 'attachment', 'side', 'default' );
+	}
+
+	function render_metabox( $post ) {
+		echo '<div id="wr2x-metabox-item" data-id="' . $post->ID . '"></div>';
+	}
+
 	/**
 	 *
 	 * REMOVE (DISABLE) IMAGE SIZES
@@ -136,7 +174,7 @@ class Meow_WR2X_Core {
 	 */
 
 	function disable_image_sizes() {
-		$wr2x_disabled_sizes = get_option( 'wr2x_disabled_sizes', array() );
+		$wr2x_disabled_sizes = $this->get_option( 'disabled_sizes', array() );
 		foreach ( $wr2x_disabled_sizes as $size ) {
 			remove_image_size( $size );
 			add_filter( 'image_size_names_choose', array( $this, 'unset_image_sizes' ) );
@@ -145,10 +183,24 @@ class Meow_WR2X_Core {
 	}
 
 	function unset_image_sizes( $sizes ) {
-		$wr2x_disabled_sizes = get_option( 'wr2x_disabled_sizes', array() );
+		$wr2x_disabled_sizes = $this->get_option( 'disabled_sizes', array() );
 		foreach ( $wr2x_disabled_sizes as $size ) {
 			unset( $sizes[$size] );
 		}
+		return $sizes;
+	}
+
+	function disable_upload_sizes( $sizes, $metadata ) {
+		// Get filetype data.
+		$filetype = wp_check_filetype( $metadata['file'] );
+
+		// Check if is gif.
+		if( $filetype['type'] == 'image/gif' ) {
+			// Unset sizes if file is gif.
+			$sizes = array();
+		}
+
+		// Return sizes you want to create from image (None if image is gif.)
 		return $sizes;
 	}
 
@@ -182,8 +234,8 @@ class Meow_WR2X_Core {
 		if ( !isset( $buffer ) || trim( $buffer ) === '' )
 			return $buffer;
 		$html = new KubAT\PhpSimple\HtmlDomParser();
-		$lazysize = get_option( "wr2x_picturefill_lazysizes" ) && class_exists( 'MeowPro_WR2X_Core' );
-		$killSrc = !get_option( "wr2x_picturefill_keep_src" );
+		$lazysize = $this->get_option( "picturefill_lazysizes" ) && class_exists( 'MeowPro_WR2X_Core' );
+		$killSrc = !$this->get_option( "picturefill_keep_src" );
 		$nodes_count = 0;
 		$nodes_replaced = 0;
 		$html = $html->str_get_html( $buffer );
@@ -270,7 +322,7 @@ class Meow_WR2X_Core {
 		$this->log( "$nodes_replaced/$nodes_count img tags were replaced." );
 
 		// INLINE CSS BACKGROUND
-		if ( get_option( 'wr2x_picturefill_css_background', false ) && class_exists( 'MeowPro_WR2X_Core' ) ) {
+		if ( $this->get_option( 'picturefill_css_background', false ) && class_exists( 'MeowPro_WR2X_Core' ) ) {
 			// Standard CSS background
 			preg_match_all( "/url(?:\(['\"]?)(.*?)(?:['\"]?\))/", $buffer, $matches );
 			//error_log( print_r( $matches, 1 ) );
@@ -393,7 +445,7 @@ class Meow_WR2X_Core {
 	 */
 
 	function calculate_image_srcset( $srcset, $size, $image_src, $image_meta, $attachment_id ) {
-		if ( get_option( "wr2x_disable_responsive" ) )
+		if ( $this->get_option( "disable_responsive" ) )
 			return null;
 		if ( empty( $srcset ) ) {
 			return $srcset;
@@ -591,6 +643,96 @@ class Meow_WR2X_Core {
 		return $ignores;
 	}
 
+	// OPTIMIZE ISSUES
+
+	function get_optimize_issues( $search = '' ) {
+		if ( $search ) {
+			return $this->calculate_issues_by_search( $search );
+		}
+		$optimize_issues = get_transient( 'wr2x_optimize_issues' );
+		if ( !$optimize_issues || !is_array( $optimize_issues ) ) {
+			$optimize_issues = $this->calculate_optimize_issues();
+		}
+		return $optimize_issues;
+	}
+
+	function calculate_optimize_issues() {
+		global $wpdb;
+		$postids = $wpdb->get_col( "
+			SELECT p.ID FROM $wpdb->posts p
+			WHERE post_status = 'inherit'
+			AND post_type = 'attachment'" . $this->create_sql_if_wpml_original() . "
+			AND ( post_mime_type = 'image/jpeg' OR
+				post_mime_type = 'image/jpg' OR
+				post_mime_type = 'image/png' OR
+				post_mime_type = 'image/gif' )
+			AND NOT EXISTS ( SELECT meta_id FROM $wpdb->postmeta WHERE post_id = p.ID AND meta_key = '_wr2x_optimize' )
+		" );
+		$ignored = $this->get_ignores();
+
+		// This is for PHP 7.4+
+		//$optimize_issues = array_filter( $postids, fn ( $id ) => !in_array( $id, $ignored ) );
+
+		$optimize_issues = array_filter( $postids, function( $id ) use ( $ignored ) {
+			return !in_array( $id, $ignored );
+		} );
+
+		set_transient( 'wr2x_optimize_issues', $optimize_issues );
+		return $optimize_issues;
+	}
+
+	function calculate_optimize_issues_by_search( $search ) {
+		global $wpdb;
+		$postids = $wpdb->get_col( $wpdb->prepare( "
+			SELECT p.ID FROM $wpdb->posts p
+			WHERE post_status = 'inherit'
+			AND p.post_title LIKE %s
+			AND post_type = 'attachment'" . $this->create_sql_if_wpml_original() . "
+			AND ( post_mime_type = 'image/jpeg' OR
+				post_mime_type = 'image/jpg' OR
+				post_mime_type = 'image/png' OR
+				post_mime_type = 'image/gif' )
+			AND NOT EXISTS ( SELECT meta_id FROM $wpdb->postmeta WHERE post_id = p.ID AND meta_key = '_wr2x_optimize' )
+		", ( '%' . $search . '%' ) ) );
+		$ignored = $this->get_ignores();
+
+		// This is for PHP 7.4+
+		//return array_filter( $postids, fn ( $id ) => in_array( $id, $ignored ) );
+
+		return array_filter( $postids, function( $id ) use ( $ignored ) {
+			return in_array( $id, $ignored );
+		} );
+	}
+
+	function add_optimize_issue( $attachmentId ) {
+		if ( $this->is_ignore( $attachmentId ) )
+			return;
+		$optimize_issues = $this->get_optimize_issues();
+		if ( !in_array( $attachmentId, $optimize_issues ) ) {
+			array_push( $optimize_issues, $attachmentId );
+			set_transient( 'wr2x_optimize_issues', $optimize_issues );
+		}
+		return $optimize_issues;
+	}
+
+	function remove_optimize_issue( $attachmentId ) {
+		$optimize_issues = array_diff( $this->get_optimize_issues(), array( $attachmentId ) );
+		set_transient( 'wr2x_optimize_issues', $optimize_issues );
+		return $optimize_issues;
+	}
+
+	function update_optimise_issue_status( $attachment_id ) {
+		$optimize_issues = $this->get_optimize_issues();
+		$considered_optimize_issue = in_array( $attachment_id, $optimize_issues );
+		$optimize_post_meta = get_post_meta( $attachment_id, '_wr2x_optimize', true );
+		$is_optimized = !empty( $optimize_post_meta );
+
+		if ( $considered_optimize_issue && $is_optimized )
+			$this->remove_optimize_issue( $attachment_id );
+		else if ( !$considered_optimize_issue && !$is_optimized )
+			$this->add_optimize_issue( $attachment_id );
+	}
+
 	/**
 	 *
 	 * GET DETAILS / INFO
@@ -610,6 +752,7 @@ class Meow_WR2X_Core {
 		$entry->filesize = $attached_file ? size_format( filesize( $attached_file ), 2 ) : 0;
 		$version = get_post_meta( $mediaId, '_media_version', true );
 		$entry->version = (int)$version;
+		$entry->optimized = get_post_meta( $mediaId, '_wr2x_optimize', true );
 		return $entry;
 	}
 
@@ -706,7 +849,7 @@ class Meow_WR2X_Core {
 		$pathinfo = pathinfo( $meta['file'] );
 		$uploads = wp_upload_dir();
 		$basepath_url = trailingslashit( $uploads['baseurl'] ) . $pathinfo['dirname'];
-		if ( get_option( "wr2x_full_size" ) ) {
+		if ( $this->get_option( "full_size" ) ) {
 			$sizes['full-size']['file'] = $pathinfo['basename'];
 			$sizes['full-size']['width'] = $meta['width'];
 			$sizes['full-size']['height'] = $meta['height'];
@@ -850,7 +993,7 @@ class Meow_WR2X_Core {
 			$image->crop( $customCrop['x'] * $customCrop['scale'], $customCrop['y'] * $customCrop['scale'], $customCrop['w'] * $customCrop['scale'], $customCrop['h'] * $customCrop['scale'], $width, $height, false );
 
 		// Quality
-		$quality = get_option( 'wr2x_quality' );
+		$quality = $this->get_option( 'quality' );
 		if ( empty( $quality ) ) {
 			$quality = apply_filters( 'jpeg_quality', 75 );
 		}
@@ -899,7 +1042,7 @@ class Meow_WR2X_Core {
 	}
 
 	function get_retina_from_remote_url( $url ) {
-		$over_http = get_option( 'wr2x_over_http_check', false ) && class_exists( 'MeowPro_WR2X_Core' );
+		$over_http = $this->get_option( 'over_http_check', false ) && class_exists( 'MeowPro_WR2X_Core' );
 		if ( !$over_http )
 			return null;
 		$potential_retina_url = $this->rewrite_url_to_retina( $url );
@@ -922,7 +1065,7 @@ class Meow_WR2X_Core {
 	// Return retina URL from the image URL
 	function get_retina_from_url( $url ) {
 		$this->log( "Standard URL: " . $url, true);
-		$over_http = get_option( 'wr2x_over_http_check', false ) && class_exists( 'MeowPro_WR2X_Core' );
+		$over_http = $this->get_option( 'over_http_check', false ) && class_exists( 'MeowPro_WR2X_Core' );
 		$filepath = $this->from_url_to_system( $url );
 		if ( empty ( $filepath ) )
 			return $this->get_retina_from_remote_url( $url );
@@ -986,13 +1129,13 @@ class Meow_WR2X_Core {
 
 		$cdn_domain = "";
 		$cdn_params = array();
-		$wr2x_easyio_domain = get_option( 'wr2x_easyio_domain', '' );
-		$wr2x_cdn_domain = get_option( 'wr2x_cdn_domain', '' );
+		$wr2x_easyio_domain = $this->get_option( 'easyio_domain', '' );
+		$wr2x_cdn_domain = $this->get_option( 'cdn_domain', '' );
 
 		// CDN Domain
 		if ( !empty( $wr2x_easyio_domain ) ) {
 			$cdn_domain = "${wr2x_easyio_domain}";
-			if ( get_option( 'wr2x_easyio_lossless', false ) ) {
+			if ( $this->get_option( 'easyio_lossless', false ) ) {
 				$cdn_params['lossy'] = 0;
 			}
 		}
@@ -1032,8 +1175,10 @@ class Meow_WR2X_Core {
 	// 	add_options_page( 'Retina', 'Retina', 'manage_options', 'wr2x_settings', 'wr2x_settings_page' );
 	// }
 
-	function get_image_sizes( $output_type = OBJECT ) {
+	function get_image_sizes( $output_type = OBJECT, $options = null ) {
 		$sizes = array();
+		$options = $options ?? [];
+		$needs_update = false;
 
 		global $_wp_additional_image_sizes;
 		foreach ( get_intermediate_image_sizes() as $s ) {
@@ -1056,7 +1201,8 @@ class Meow_WR2X_Core {
 			$retina = in_array( $s, $this->retina_sizes );
 			if ( !$enabled && $retina ) {
 				$this->retina_sizes = array_diff( $this->retina_sizes, array( $s ) );
-				update_option( 'wr2x_retina_sizes', $this->retina_sizes );
+				$options['retina_sizes'] = $this->retina_sizes;
+				$needs_update = true;
 				$retina = false;
 			}
 
@@ -1077,7 +1223,8 @@ class Meow_WR2X_Core {
 			$retina = in_array( $size, $this->retina_sizes );
 			if ( $retina ) {
 				$retina_sizes = array_diff( $this->retina_sizes, array( $size ) );
-				update_option( 'wr2x_retina_sizes', $retina_sizes );
+				$options['retina_sizes'] = $retina_sizes;
+				$needs_update = true;
 			}
 			if ( !array_key_exists( $size, $sizes ) ) {
 				$disabled_to_add[$size] = array( 
@@ -1088,12 +1235,13 @@ class Meow_WR2X_Core {
 				);
 			}
 		}
+		if ( $needs_update ) {
+			update_option( $this->option_name, $options );
+		}
 
 		usort( $disabled_to_add, array( $this, 'sizes_sort_func' ) );
 		$sizes = array_merge( $sizes, $disabled_to_add );
 
-		// if ( get_option( 'wr2x_disable_medium_large' ) )
-		// 	unset( $sizes['medium_large'] );
 		if ( $output_type === ARRAY_A ) {
 			return array_values( $sizes );
 		} 
@@ -1108,7 +1256,7 @@ class Meow_WR2X_Core {
 	function get_active_image_sizes() {
 		$sizes = $this->get_image_sizes();
 		$active_sizes = array();
-		// $ignore = get_option( "wr2x_ignore_sizes", array() );
+		// $ignore = $this->get_option( "ignore_sizes", array() );
 		// if ( empty( $ignore ) )
 		// 	$ignore = array();
 		// $ignore = array_keys( $ignore );
@@ -1149,7 +1297,7 @@ class Meow_WR2X_Core {
 	function is_debug() {
 		static $debug = -1;
 		if ( $debug == -1 ) {
-			$debug = get_option( "wr2x_debug" );
+			$debug = $this->get_option( "debug" );
 		}
 		return !!$debug;
 	}
@@ -1259,7 +1407,7 @@ class Meow_WR2X_Core {
 		}
 
 		// Full-Size (if required in the settings)
-		$fullsize_required = get_option( "wr2x_full_size" ) && class_exists( 'MeowPro_WR2X_Core' );
+		$fullsize_required = $this->get_option( "full_size" ) && class_exists( 'MeowPro_WR2X_Core' );
 		$retina_file = trailingslashit( $pathinfo_fullsize['dirname'] ) . $pathinfo_fullsize['filename'] . 
 			$this->retina_extension() . $pathinfo_fullsize['extension'];
 		if ( $retina_file && file_exists( $retina_file ) )
@@ -1291,7 +1439,7 @@ class Meow_WR2X_Core {
 	}
 
 	function wp_generate_attachment_metadata( $meta ) {
-		if ( get_option( "wr2x_auto_generate" ) == true )
+		if ( $this->get_option( "auto_generate" ) == true )
 			if ( $this->is_image_meta( $meta ) )
 				$this->generate_images( $meta );
 			return $meta;
@@ -1325,7 +1473,7 @@ class Meow_WR2X_Core {
 		$original_basename = $pathinfo['basename'];
 		$basepath = trailingslashit( $uploads['basedir'] ) . $pathinfo['dirname'];
 
-		// $ignore = get_option( "wr2x_ignore_sizes" );
+		// $ignore = $this->get_option( "ignore_sizes" );
 		// if ( empty( $ignore ) )
 		// 	$ignore = array();
 		// $ignore = array_keys( $ignore );
@@ -1504,14 +1652,14 @@ class Meow_WR2X_Core {
 		}
 
 		// No Picturefill Script
-		if ( $this->method == "Picturefill"  && !get_option( "wr2x_picturefill_noscript" ) ) {
+		if ( $this->method == "Picturefill"  && !$this->get_option( "picturefill_noscript" ) ) {
 			$physical_file = trailingslashit( WR2X_PATH ) . 'app/picturefill.min.js';
 			$cache_buster = file_exists( $physical_file ) ? filemtime( $physical_file ) : WR2X_VERSION;
 			wp_enqueue_script( 'wr2x-picturefill-js', trailingslashit( WR2X_URL ) . 'app/picturefill.min.js', array(), $cache_buster, false );
 		}
 
 		// Lazysizes
-		if ( get_option( "wr2x_picturefill_lazysizes" ) && class_exists( 'MeowPro_WR2X_Core' ) ) {
+		if ( $this->get_option( "picturefill_lazysizes" ) && class_exists( 'MeowPro_WR2X_Core' ) ) {
 			$physical_file = trailingslashit( WR2X_PATH ) . 'app/lazysizes.min.js';
 			$cache_buster = file_exists( $physical_file ) ? filemtime( $physical_file ) : WR2X_VERSION;
 			wp_enqueue_script( 'wr2x-picturefill-js', trailingslashit( WR2X_URL ) . 'app/lazysizes.min.js', array(), $cache_buster, false );
@@ -1556,6 +1704,119 @@ class Meow_WR2X_Core {
 	function can_access_features() {
 		return apply_filters( 'wr2x_allow_usage', current_user_can( 'administrator' ) );
 	}
+
+	#region Options
+
+	static function get_plugin_option_name() {
+		return self::$plugin_option_name;
+	}
+
+	function get_option_name() {
+		return $this->option_name;
+	}
+
+	function get_option( $option, $default = null ) {
+		$options = $this->get_all_options();
+		return $options[$option] ?? $default;
+	}
+
+	function list_options() {
+		return array(
+			'method' => 'none',
+			'retina_sizes' => [],
+			'disabled_sizes' => [],
+			'picturefill_lazysizes' => false,
+			'big_image_size_threshold' => false,
+			'hide_retina_dashboard' => false,
+			'hide_retina_column' => true,
+			'hide_optimize' => true,
+			'auto_generate' => false,
+			'ignore_sizes' => [],
+			'picturefill_keep_src' => false,
+			'picturefill_css_background' => false,
+			'disable_responsive' => false,
+			'full_size' => false,
+			'quality' => 75,
+			'over_http_check' => false,
+			'easyio_domain' => '',
+			'cdn_domain' => '',
+			'easyio_lossless' => '',
+			'debug' => false,
+			'picturefill_noscript' => false,
+			'image_replace' => false,
+			'sizes' => [],
+			'module_retina_enabled' => true,
+			'module_optimize_enabled' => true,
+			'module_ui_enabled' => true,
+			'gif_thumbnails_disabled' => false,
+		);
+	}
+
+	function get_all_options() {
+		//delete_option( $this->option_name );
+		$options = get_option( $this->option_name, null );
+		$options = $this->check_options( $options );
+		foreach ( $options as $option => $value ) {
+			if ($option === 'retina_sizes' || $option === 'disabled_sizes') {
+				$options[$option] = array_values( $value );
+				continue;
+			}
+		}
+		$options['sizes'] = $this->get_image_sizes( ARRAY_A, $options );
+		return $options;
+	}
+
+	// Upgrade from the old way of storing options to the new way.
+	function check_options( $options = [] ) {
+		$plugin_options = $this->list_options();
+		$options = empty( $options ) ? [] : $options;
+		$hasChanges = false;
+		foreach ( $plugin_options as $option => $default ) {
+			// The option already exists
+			if ( isset( $options[$option] ) ) {
+				continue;
+			}
+			// The option does not exist, so we need to add it.
+			// Let's use the old value if any, or the default value.
+			$options[$option] = get_option( 'wr2x_' . $option, $default );
+			delete_option( 'wr2x_' . $option );
+			$hasChanges = true;
+		}
+		if ( empty( $options['sizes'] ) ) {
+			$options['sizes'] = $this->get_image_sizes( ARRAY_A, $options );
+			$hasChanges = true;
+		}
+		if ( $hasChanges ) {
+			update_option( $this->option_name , $options );
+		}
+		return $options;
+	}
+
+	function update_options( $options ) {
+		if ( !update_option( $this->option_name, $options, false ) ) {
+			return false;
+		}
+		$options = $this->sanitize_options();
+		return $options;
+	}
+
+	// Validate and keep the options clean and logical.
+	function sanitize_options() {
+		$options = $this->get_all_options();
+
+		// Update member variables.
+		$this->method = $options["method"];
+		$this->retina_sizes = $options['retina_sizes'] ?? array();
+		$this->disabled_sizes = $options['disabled_sizes'] ?? array();
+		$this->lazy = $options["picturefill_lazysizes"] && class_exists( 'MeowPro_WR2X_Core' );
+
+		$options['sizes'] = $this->get_image_sizes( ARRAY_A, $options );
+		update_option( $this->option_name, $options, false );
+
+		return $options;
+	}
+
+	// #endregion
 
 }
 

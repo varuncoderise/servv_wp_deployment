@@ -763,6 +763,9 @@ if ( ! class_exists( 'TSSProOptions' ) ) :
 					'linkedin'  => esc_html__( 'Linkedin', 'testimonial-slider-showcase' ),
 					'pinterest' => esc_html__( 'Pinterest', 'testimonial-slider-showcase' ),
 					'email'     => esc_html__( 'Email', 'testimonial-slider-showcase' ),
+					'skype'     => esc_html__( 'Skype', 'testimonial-slider-showcase' ),
+					'whatsapp'     => esc_html__( 'Whatsapp', 'testimonial-slider-showcase' ),
+					'telegram'     => esc_html__( 'Telegram', 'testimonial-slider-showcase' ),
 				]
 			);
 		}

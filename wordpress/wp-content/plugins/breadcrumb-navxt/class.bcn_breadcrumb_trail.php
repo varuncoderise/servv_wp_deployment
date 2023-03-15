@@ -1,6 +1,6 @@
 <?php
 /*
-	Copyright 2015-2022  John Havlik  (email : john.havlik@mtekk.us)
+	Copyright 2015-2023  John Havlik  (email : john.havlik@mtekk.us)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ require_once(dirname(__FILE__) . '/includes/block_direct_access.php');
 class bcn_breadcrumb_trail
 {
 	//Our member variables
-	const version = '7.0.2';
+	const version = '7.2.0';
 	//An array of breadcrumbs
 	public $breadcrumbs = array();
 	public $trail = array();
@@ -576,6 +576,11 @@ class bcn_breadcrumb_trail
 	 */
 	protected function do_archive_by_term($term, $is_paged = false)
 	{
+		if(!($term instanceof WP_Term))
+		{
+			_doing_it_wrong(__CLASS__ . '::' . __FUNCTION__, __('$term global is not of type WP_Term', 'breadcrumb-navxt'), '7.0.3');
+			return;
+		}
 		//Place the breadcrumb in the trail, uses the constructor to set the title, template, and type, get a pointer to it in return
 		$breadcrumb = $this->add(new bcn_breadcrumb(
 				$term->name,
@@ -1045,15 +1050,18 @@ class bcn_breadcrumb_trail
 		//For posts
 		else if(is_singular())
 		{
-			$this->do_post(get_post(), false, (get_query_var('page') > 1));
+			//Could use the $post global, but we can't really trust it
+			$type = get_post();
+			$this->do_post($type, false, (get_query_var('page') > 1));
 			//If this is an attachment then we need to change the queried object to the parent post
 			if(is_attachment())
 			{
-				//Could use the $post global, but we can't really trust it
-				$post = get_post();
-				$type = get_post($post->post_parent); //TODO check for WP_Error?
+				$type = get_post($type->post_parent); //TODO check for WP_Error?
 			}
-			$this->do_root($type->post_type, $this->opt['apost_' . $type->post_type . '_root'], is_paged(), false);
+			if($type instanceof WP_Post)
+			{
+				$this->do_root($type->post_type, $this->opt['apost_' . $type->post_type . '_root'], is_paged(), false);
+			}
 		}
 		//For searches
 		else if(is_search())
@@ -1100,7 +1108,7 @@ class bcn_breadcrumb_trail
 				$this->do_archive_by_post_type($this->get_type_string_query_var(), false, is_paged(), true);
 			}
 			//For taxonomy based archives
-			else if(is_category() || is_tag() || is_tax())
+			else if((is_category() || is_tag() || is_tax()) && $type instanceof WP_Term)
 			{
 				$this->do_archive_by_term($type, is_paged());
 				$type_str = $this->type_archive($type);
@@ -1220,12 +1228,14 @@ class bcn_breadcrumb_trail
 	 * @param string $template The template to use for the string output of each breadcrumb. Also known as the inner template.
 	 * @param string $outer_template The template to place an entire dimension of the trail into for all dimensions higher than 1.
 	 * @param string $separator The separator to use at this level of the breadcrumb trail
+	 * @param int $depth The iteration depth
 	 * 
 	 * @return string Compiled string version of breadcrumb trail ready for display.
 	 */
-	protected function display_loop($breadcrumbs, $linked, $reverse, $template, $outer_template, $separator)
+	protected function display_loop($breadcrumbs, $linked, $reverse, $template, $outer_template, $separator, $depth = 1)
 	{
 		$position = 1;
+		$breadcrumbs = apply_filters('bcn_before_loop', $breadcrumbs);
 		$last_position = count($breadcrumbs);
 		if($reverse)
 		{
@@ -1243,7 +1253,7 @@ class bcn_breadcrumb_trail
 			if(is_array($breadcrumb))
 			{
 				$trail_str .= sprintf($outer_template, 
-						$this->display_loop($breadcrumb, $linked, $reverse, $template, $outer_template, $this->opt['hseparator_higher_dim']), $separator);
+						$this->display_loop($breadcrumb, $linked, $reverse, $template, $outer_template, $this->opt['hseparator_higher_dim'], $depth + 1), $separator);
 			}
 			else if($breadcrumb instanceof bcn_breadcrumb)
 			{
@@ -1261,7 +1271,9 @@ class bcn_breadcrumb_trail
 				//Filter li_attributes adding attributes to the li element
 				//TODO: Remove the bcn_li_attributes filter
 				$attribs = apply_filters_deprecated('bcn_li_attributes', array($attribs, $breadcrumb->get_types(), $breadcrumb->get_id()), '6.0.0', 'bcn_display_attributes');
+				//TODO: Deprecate this filter in favor of just using bcn_display_attributes_array
 				$attribs = apply_filters('bcn_display_attributes', $attribs, $breadcrumb->get_types(), $breadcrumb->get_id());
+				$separator = apply_filters('bcn_display_separator', $separator, $position, $last_position, $depth);
 				//Assemble the breadcrumb
 				$trail_str .= sprintf($template, $breadcrumb->assemble($linked, $position, ($key === 0)), $separator, $attribs);
 			}

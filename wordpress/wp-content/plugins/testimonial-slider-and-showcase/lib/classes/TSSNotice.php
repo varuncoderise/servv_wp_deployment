@@ -168,9 +168,10 @@ if ( ! class_exists( 'TSSNotice' ) ):
 			$exclude = [ 'themes.php', 'users.php', 'tools.php', 'options-general.php', 'options-writing.php', 'options-reading.php', 'options-discussion.php', 'options-media.php', 'options-permalink.php', 'options-privacy.php', 'edit-comments.php', 'upload.php', 'media-new.php', 'admin.php', 'import.php', 'export.php', 'site-health.php', 'export-personal-data.php', 'erase-personal-data.php' ];
 
 			if ( ! in_array( $pagenow, $exclude ) ) {
-				$dont_disturb = add_query_arg( 'rttss_spare_me', '1', self::rttss_current_admin_url() );
-				$remind_me    = add_query_arg( 'rttss_remind_me', '1', self::rttss_current_admin_url() );
-				$rated        = add_query_arg( 'rttss_rated', '1', self::rttss_current_admin_url() );
+				$args         = [ '_wpnonce' => wp_create_nonce( 'rttss_notice_nonce' ) ];
+				$dont_disturb = add_query_arg( $args + [ 'rttss_spare_me' => '1' ], self::rttss_current_admin_url() );
+				$remind_me    = add_query_arg( $args + [ 'rttss_remind_me' => '1' ], self::rttss_current_admin_url() );
+				$rated        = add_query_arg( $args + [ 'rttss_rated' => '1' ], self::rttss_current_admin_url() );
 				$reviewurl    = 'https://wordpress.org/support/plugin/testimonial-slider-and-showcase/reviews/?filter=5#new-post';
 
 				printf(
@@ -326,6 +327,10 @@ if ( ! class_exists( 'TSSNotice' ) ):
 		 * @return void
 		 */
 		public static function rttss_spare_me() {
+			if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'], 'rttss_notice_nonce' ) ) {
+				return;
+			}
+
 			if ( isset( $_GET['rttss_spare_me'] ) && ! empty( $_GET['rttss_spare_me'] ) ) {
 				$spare_me = sanitize_text_field( wp_unslash( $_GET['rttss_spare_me'] ) );
 
@@ -353,7 +358,6 @@ if ( ! class_exists( 'TSSNotice' ) ):
 				}
 			}
 		}
-
 	}
 
 endif;

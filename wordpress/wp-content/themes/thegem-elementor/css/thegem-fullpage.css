@@ -19,7 +19,9 @@
     height: 100vh;
 }
 
-.thegem-fp.elementor-editor-active #site-header-wrapper {
+.thegem-fp.elementor-editor-active #site-header-wrapper,
+.thegem-fp.elementor-editor-active #site-header,
+.thegem-fp.elementor-editor-active .header-sticky-template {
     display: none;
 }
 

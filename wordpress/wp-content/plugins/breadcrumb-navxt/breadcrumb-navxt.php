@@ -3,7 +3,7 @@
 Plugin Name: Breadcrumb NavXT
 Plugin URI: http://mtekk.us/code/breadcrumb-navxt/
 Description: Adds a breadcrumb navigation showing the visitor&#39;s path to their current location. For details on how to use this plugin visit <a href="http://mtekk.us/code/breadcrumb-navxt/">Breadcrumb NavXT</a>. 
-Version: 7.0.2
+Version: 7.2.0
 Author: John Havlik
 Author URI: http://mtekk.us/
 License: GPL2
@@ -11,7 +11,7 @@ Text Domain: breadcrumb-navxt
 Domain Path: /languages
 */
 /*
-	Copyright 2007-2022  John Havlik  (email : john.havlik@mtekk.us)
+	Copyright 2007-2023  John Havlik  (email : john.havlik@mtekk.us)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -63,7 +63,7 @@ $breadcrumb_navxt = null;
 //TODO change to extends \mtekk\plugKit
 class breadcrumb_navxt
 {
-	const version = '7.0.2';
+	const version = '7.2.0';
 	protected $name = 'Breadcrumb NavXT';
 	protected $identifier = 'breadcrumb-navxt';
 	protected $unique_prefix = 'bcn';
@@ -386,8 +386,13 @@ class breadcrumb_navxt
 				false,
 				_x('Paged Breadcrumb', 'Paged as in when on an archive or post that is split into multiple pages', 'breadcrumb-navxt'));
 		//Post types
-		foreach($GLOBALS['wp_post_types']as $post_type)
+		foreach($GLOBALS['wp_post_types'] as $post_type)
 		{
+			//If we somehow end up with the WP_Post_Types array having a non-WP_Post_Type object, we should skip it
+			if(!($post_type instanceof WP_Post_Type))
+			{
+				continue;
+			}
 			$settings['Hpost_' . $post_type->name . '_template'] = new setting\setting_html(
 					'post_' . $post_type->name . '_template',
 					bcn_breadcrumb::get_default_template(),
@@ -609,26 +614,27 @@ class breadcrumb_navxt
 		$opts = adminKit::settings_to_opts($this->settings);
 		//Run setup_options for compatibilty reasons
 		breadcrumb_navxt::setup_options($opts);
-		
+		//TODO: Unit tests needed to ensure the expected behavior exists
 		//Grab the current settings for the current local site from the db
 		$this->breadcrumb_trail->opt = wp_parse_args(get_option('bcn_options'), $opts);
 		//If we're in multisite mode, look at the three BCN_SETTINGS globals
 		if(is_multisite())
 		{
+			$multisite_opts = wp_parse_args(get_site_option('bcn_options'), $opts);
 			if(defined('BCN_SETTINGS_USE_NETWORK') && BCN_SETTINGS_USE_NETWORK)
 			{
 				//Grab the current network wide settings
-				$this->breadcrumb_trail->opt = wp_parse_args(get_site_option('bcn_options'), $opts);
+				$this->breadcrumb_trail->opt = $multisite_opts;
 			}
 			else if(defined('BCN_SETTINGS_FAVOR_LOCAL') && BCN_SETTINGS_FAVOR_LOCAL)
 			{
-				//Grab the current settings for the current local site from the db
-				$this->breadcrumb_trail->opt = wp_parse_args(get_option('bcn_options'), $this->breadcrumb_trail->opt);
+				//Grab the current local site settings and merge into network site settings + defaults
+				$this->breadcrumb_trail->opt = wp_parse_args(get_option('bcn_options'), $multisite_opts);
 			}
 			else if(defined('BCN_SETTINGS_FAVOR_NETWORK') && BCN_SETTINGS_FAVOR_NETWORK)
 			{
-				//Grab the current settings from the db
-				$this->breadcrumb_trail->opt = wp_parse_args(get_site_option('bcn_options'), get_option('bcn_options'));
+				//Grab the current network site settings and merge into local site settings + defaults
+				$this->breadcrumb_trail->opt = wp_parse_args(get_site_option('bcn_options'), $this->breadcrumb_trail->opt);
 			}
 		}
 		//Currently only support using post_parent for the page hierarchy

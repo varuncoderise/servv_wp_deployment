@@ -49,7 +49,7 @@
 					<div class="<?php echo(get_page_template_slug() !== 'single-thegem_footer-fullwidth.php' && get_post_type() != 'thegem_templates' ? 'container' : 'fullwidth-content'); ?>">
 						<?php $GLOBALS['thegem_template_type'] = 'footer';
 						echo \Elementor\Plugin::$instance->frontend->get_builder_content(get_the_ID(), false);
-						unset($GLOBALS['footer']); ?>
+						unset($GLOBALS['thegem_template_type']); ?>
 					</div>
 					<?php
 					wp_reset_postdata();

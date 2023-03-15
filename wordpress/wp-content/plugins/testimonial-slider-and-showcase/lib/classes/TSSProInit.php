@@ -28,6 +28,7 @@ if ( ! class_exists( 'TSSProInit' ) ) :
 			add_action( 'wp_ajax_tssSettingsAction', [ $this, 'tssSettingsUpdate' ] );
 			add_filter( 'plugin_action_links_' . plugin_basename( TSS_PLUGIN_ACTIVE_FILE_NAME ), [ $this, 'rt_plugin_active_link_marketing' ] );
 			add_action( 'admin_init', [ $this, 'my_plugin_redirect' ] );
+			add_filter( 'wp_insert_post_data', [ $this, 'sanitize_title' ], 99, 1 );
 		}
 
 		/**
@@ -201,9 +202,28 @@ if ( ! class_exists( 'TSSProInit' ) ) :
 			$styles  = [];
 
 			$swiperKey = class_exists( 'Rtcl' ) ? 'rtt-swiper' : 'swiper';
+			$default_swiper_path = TSSPro()->assetsUrl . 'vendor/swiper/swiper.min.js';
+
+			if ( 'swiper' === $swiperKey ) {
+				if ( defined( 'ELEMENTOR_ASSETS_PATH' ) ) {
+					$is_swiper8_enable = get_option( 'elementor_experiment-e_swiper_latest' );
+
+					if ( $is_swiper8_enable == 'active' ) {
+						$el_swiper_path = 'lib/swiper/v8/swiper.min.js';
+					} else {
+						$el_swiper_path = 'lib/swiper/swiper.min.js';
+					}
+
+					$elementor_swiper_path = ELEMENTOR_ASSETS_PATH . $el_swiper_path;
+
+					if ( file_exists( $elementor_swiper_path ) ) {
+						$default_swiper_path = ELEMENTOR_ASSETS_URL . $el_swiper_path;
+					}
+				}
+			}
 
 			$scripts[ $swiperKey ]         = [
-				'src'    => TSSPro()->assetsUrl . 'vendor/swiper/swiper.min.js',
+				'src'    => $default_swiper_path,
 				'deps'   => [ 'jquery' ],
 				'footer' => false,
 			];
@@ -462,5 +482,12 @@ if ( ! class_exists( 'TSSProInit' ) ) :
 			return $links;
 		}
 
+		public function sanitize_title( $data ) {
+			if ( $data['post_type'] === TSSPro()->post_type && isset( $_POST['post_title'] ) ) {
+				$data['post_title'] = wp_kses( $data['post_title'], TSSPro()->allowedHtml() );
+			}
+
+			return $data;
+		}
 	}
 endif;

@@ -832,11 +832,7 @@ if (!function_exists('thegem_search_grid_content')) {
 				'posts_per_page' => $items_per_page,
 			);
 
-			if (is_numeric($settings['search']) && get_post_status(absint($settings['search']))) {
-				$args['p'] = $settings['search'];
-			} else {
-				$args['s'] = $settings['search'];
-			}
+			$args['s'] = $settings['search'];
 
 			$search_grid_loop = new WP_Query( $args );
 

@@ -176,6 +176,7 @@ if ( ! class_exists( 'TSSElementorRender' ) ) :
 							'orderby'    => 'meta_value_num',
 							'order'      => 'ASC',
 							'meta_key'   => '_order',
+							'include'    => $postCategories,
 						]
 					);
 

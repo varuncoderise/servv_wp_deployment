@@ -25,7 +25,7 @@
 		});
 
 		// Real header sticky option
-		if (!$header.hasClass('header-with-sticky-template')) {
+		if (1 || !$header.hasClass('header-with-sticky-template')) {
 			var $adminBar = $('#wpadminbar');
 			var headerHeight = $header.find('.header-wrapper')[0].offsetHeight;
 			var adminBarHeight = $adminBar.length > 0 ? $adminBar[0].offsetHeight : 0;
@@ -43,6 +43,8 @@
 
 				stickAfter = $firstSticky.offset().top - adminBarHeight;
 			}
+
+			stickAfter = headerHeight + adminBarHeight;
 
 		}
 

@@ -54,10 +54,7 @@ class Meow_WR2X_Admin extends MeowCommon_Admin {
 			'rest_nonce' => wp_create_nonce( 'wp_rest' ),
 			//'image_sizes' => $this->core->get_image_sizes( ARRAY_A ),
 
-			// Specific to Retina
-			'retina_sizes' => array_values( get_option( 'wr2x_retina_sizes', array() ) ),
-			'full_size' => get_option( 'wr2x_full_size', false )
-
+			'options' => $this->core->get_all_options(),
 		] ) );
 
 		wp_enqueue_script( 'wr2x_perfect_images-index' );
@@ -90,7 +87,8 @@ class Meow_WR2X_Admin extends MeowCommon_Admin {
 
 	static function generate_rewrite_rules( $wp_rewrite, $flush = false ) {
 		global $wp_rewrite;
-		$method = get_option( "wr2x_method" );
+		$options = get_option( Meow_WR2X_Core::get_plugin_option_name(), null );
+		$method = $options["method"] ?? false;
 		if ( $method == "Retina-Images" ) {
 
 			// MODIFICATION: docwhat

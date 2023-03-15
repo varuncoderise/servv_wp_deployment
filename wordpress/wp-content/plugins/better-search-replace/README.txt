@@ -1,9 +1,9 @@
 === Better Search Replace ===
-Contributors: deliciousbrains, mattshaw
+Contributors: wpengine, deliciousbrains, mattshaw
 Tags: search replace, search and replace, update urls, database, search replace database, update database urls, update live url, better search replace, search&replace
 Requires at least: 3.0.1
-Tested up to: 5.6
-Stable tag: trunk
+Tested up to: 6.1.1
+Stable tag: 1.4.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -94,6 +94,16 @@ More information on moving WordPress can be found [here](http://codex.wordpress.
 2. After running a search/replace dry-run.
 
 == Changelog ==
+
+= 1.4.2 - January 10, 2023 =
+* Security: Arbitrary tab templates in the `templates` directory can no longer be loaded using a query parameter.
+
+= 1.4.1 - July 25, 2022 =
+* Security: Selected tables are now confirmed to exist before processing the request
+
+= 1.4 - April 7, 2022 =
+* New: Better Search Replace has a brand new user interface
+* Improvement: Default capability required to use the plugin has changed from "install_plugins" to "manage_options" for compatibility with DISALLOW_FILE_MODS
 
 = 1.3.4 - December 7, 2020 =
 * Improvement: WordPress 5.6 and PHP 8 compatible

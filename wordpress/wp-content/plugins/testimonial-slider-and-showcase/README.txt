@@ -3,8 +3,8 @@ Contributors: techlabpro1
 Donate link:
 Tags: testimonials slider, testimonial, testimonials,testimonial slider, testimonial showcase, responsive testimonial, testimonial plugin
 Requires at least: 4.5
-Tested up to: 6.0
-Stable tag: 2.2.6
+Tested up to: 6.1
+Stable tag: 2.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Best Testimonial Slider and Showcase plugin for WordPress website. Testimonials 
 
 == Description ==
 
-👉 [Demo](https://www.radiustheme.com/demo/plugins/testimonial-slider/) | [Documentation](https://www.radiustheme.com/setup-wp-testimonials-slider-showcase-wordpress/) | [Get Pro](https://www.radiustheme.com/downloads/wp-testimonial-slider-showcase-pro-wordpress/) 👈
+👉 [Demo](https://www.radiustheme.com/demo/plugins/testimonial-slider/) | [Documentation](https://www.radiustheme.com/docs/testimonial-slider/getting-started/installation/) | [Get Pro](https://www.radiustheme.com/downloads/wp-testimonial-slider-showcase-pro-wordpress/) 👈
 
 Best Testimonial Slider and Showcase plugin for WordPress website. It is a developer and user-friendly testimonial plugin that facilitates easy management of customer testimonials. Since it is fully responsive, it ensures that your testimonials appear in beautiful layouts on all devices.
 
@@ -185,6 +185,27 @@ The following are the fields that this plugin allows you to have on your testimo
 06. Styles
 
 == Changelog ==
+
+= 2.3.1 (March 13, 2023) =
+* Fixed: Elementor slider compatibility issue.
+* Fixed: Some slider CSS.
+
+= 2.3.0 (January 09, 2023) =
+* Added: 3 new social profile support (Skype, Whatsapp & Telegram).
+* Fixed: Some design issues in frontend submission form.
+
+= 2.2.10 (December 15, 2022) =
+* Fixed: A security bug.
+* Fixed: Shortcode preview issue.
+
+= 2.2.9 (November 18, 2022) =
+* Improved: Some styles.
+
+= 2.2.8 (November 08, 2022) =
+* Fixed: Some errors with PHP 8.0 environment.
+
+= 2.2.7 (September 19, 2022) =
+* Fixed: Proper sanitization and escaping for title field.
 
 = 2.2.6 (July 27, 2022) =
 * Fixed: Parse error in the earlier PHP versions.

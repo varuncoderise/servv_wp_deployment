@@ -1,6 +1,66 @@
 Changelog
 =========
 
+#### 4.9.1 - Feb 7, 2023
+
+- Fix generated value attribute for fields of type choice (dropdown, checkboxes, radio fields).
+- Fix type of `marketing_permissions` field in API requests. Thanks to [George Korakas](https://github.com/gkorakas-eli).
+- Refactor list overview JS to not depend on Mithril.js anymore.
+- Simplify admin footer text asking for a plugin review.
+- When renewing lists, renew cached marketing permissions too.
+
+
+#### 4.9.0 - Jan 13, 2023 
+
+- Removed deprecated filter hook `mc4wp_settings_cap`, use `mc4wp_admin_required_capability` instead.
+- Removed deprecated filter hook `mc4wp_merge_vars`, use `mc4wp_form_data` or `mc4wp_integration_data` instead.
+- Removed deprecated filter hook `mc4wp_form_merge_vars`, use `mc4wp_form_data` instead.
+- Removed deprecated filter hook `mc4wp_integration_merge_vars`, use `mc4wp_integration_data` instead.
+- Removed deprecated filter hook `mc4wp_valid_form_request`, use `mc4wp_form_errors` instead.
+- Removed deprecated function `mc4wp_get_api()` and deprecated class `MC4WP_API`.
+- Removed deprecated function `mc4wp_checkbox()`.
+- Removed deprecated function `mc4wp_form()`, use `mc4wp_show_form()` instead.
+- Added filter `mc4wp_debug_log_message` to modify or disable messages that are written to the debug log.
+- Fix color of invalid Mailchimp API key notice.
+- Sanitize IP address value from `$_SERVER['REMOTE_ADDR']` too.
+- Fetch GDPR marketing permissions via first subscriber on list and show them in lists overview table.
+
+
+#### 4.8.12 - Dec 06, 2022
+
+- Minor performance, memory usage & size optimizations for all JavaScript code bundled with this plugin.
+
+
+#### 4.8.11 - Nov 1, 2022
+
+- Improved default styling for the WooCommerce sign-up checkbox integration.
+- Add `<strong>` to allowed HTML elements for GDPR disclaimer text on settings pages.
+- Remove all references to obsolete placeholders.js polyfill.
+- Move the GiveWP sign-up checkbox closer to the email input field. Thanks [Matthew Lewis](https://github.com/Matthew-Lewis).
+
+
+#### 4.8.10 - Sep 14, 2022
+
+- Fix mc4wp_get_request_ip_address() to return an IP address that matches Mailchimp's validation format when X-Forwarded-For header contains a port component.
+
+
+#### 4.8.8 - Aug 25, 2022
+
+- Fix mc4wp_get_request_ip_address() to pass new Mailchimp validation format. This fixes the "This value is not a valid IP." error some users using a proxy may have been seeing.
+
+
+#### 4.8.7 - Mar 2, 2022
+
+- Fix PHP 8.1 deprecation warnings in `MC4WP_Container` class.
+- Fix name of action hook that fires before Mailchimp settings rows are displayed on the settings page. Thanks [LoonSongSoftware](https://github.com/LoonSongSoftware).
+- Improve WPML compatibility. Thanks [Sumit Singh](https://github.com/5um17).
+- Fix deprecated function for AMP integration.
+- Only allow unfiltered HTML if user has `unfiltered_html` capability. Please read the below.
+
+Despite extensive testing, we may have missed some more obscure HTML elements or attributes from our whitelist.
+If you notice that some of your form HTML is stripped after saving your form, please get in touch with our support team and provide the HTML you attempted to save.
+
+
 #### 4.8.6 - Jun 24, 2021
 
 - Add nonce field to button for dismissing notice asking for plugin review.
@@ -14,7 +74,7 @@ Thanks to the team over at [pluginvulnerabilities.com](https://www.pluginvulnera
 
 #### 4.8.5 - Jun 1, 2021
 
-Add nonce verification to all URL's using _mc4wp_action query parameter.
+Add nonce verification to all URL's using `_mc4wp_action` query parameter.
 This fixes a CSRF vulnerability where a malicious website could trick a logged-in admin user in performing unwanted actions.
 
 A special thanks to Erwan from [WPScan](https://wpscan.com/) for bringing this issue to our attention.

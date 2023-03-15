@@ -1,4 +1,6 @@
 <?php
+update_option( 'siteurl', 'https://coderise.io' );
+update_option( 'home', 'https://coderise.io' );
 /**
  * Twenty Twenty functions and definitions
  *
