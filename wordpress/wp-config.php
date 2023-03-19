@@ -17,7 +17,7 @@
  *
  * @package WordPress
  */
-
+define('WP_MEMORY_LIMIT', '1024M');
 define('FORCE_SSL_ADMIN', true);
 
 /* Turn HTTPS 'on' if HTTP_X_FORWARDED_PROTO matches 'https' */
