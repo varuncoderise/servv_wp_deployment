@@ -14,17 +14,17 @@ deploy: build install
 
 .PHONY:build
 build:
-	  $(aws ecr get-login --no-include-email --region $(ECR_REGION) | sed 's|https://||') \
-	  docker build --build-arg SSH_PRIVATE_KEY=$(BITBUCKET_SSH_KEY) -t 058291926324.dkr.ecr.$(ECR_REGION).amazonaws.com/$(APP)$(DOCKER_ENV):$(IMAGE_TAG) . ;  \
-	  docker push 058291926324.dkr.ecr.$(ECR_REGION).amazonaws.com/$(APP)$(DOCKER_ENV):$(IMAGE_TAG) ; \
-	  echo Completed $(APP) build... ; \
-	  cd .. ;
+	$(aws ecr get-login --no-include-email --region $(ECR_REGION) | sed 's|https://||') \
+	docker build --build-arg SSH_PRIVATE_KEY=$(BITBUCKET_SSH_KEY) -t 058291926324.dkr.ecr.$(ECR_REGION).amazonaws.com/$(APP)$(DOCKER_ENV):$(IMAGE_TAG) . ;  \
+	docker push 058291926324.dkr.ecr.$(ECR_REGION).amazonaws.com/$(APP)$(DOCKER_ENV):$(IMAGE_TAG) ; \
+	echo Completed $(APP) build... ; \
+	cd .. ;
 
 .PHONY:install
 install:
-	  cd ./helm/$(APP)-chart ; \
-	  helm upgrade --install $(APP) -f $(CODERISE_ENV)/$(VERSION)/values.yaml --set image.tag=$(IMAGE_TAG) -n $(CODERISE_NS) . ; \
-	  cd ../../.. ; 
+	cd ./helm/$(APP)-chart ; \
+	helm upgrade --install $(APP) -f $(CODERISE_ENV)/$(VERSION)/values.yaml --set image.tag=$(IMAGE_TAG) -n $(CODERISE_NS) . ; \
+	cd ../../.. ; 
 
 .PHONY: uninstall
 uninstall:  
