@@ -8,6 +8,7 @@ VERSION           := $(API_VERSION)
 OPTS              := $(HELM_OPTS)
 IMAGE_TAG         := $(BITBUCKET_BUILD_NUMBER)
 APP               := $(APP)
+AWS_ACCOUNT       := 058291926324
 
 .PHONY:deploy
 deploy: build install
@@ -15,7 +16,8 @@ deploy: build install
 .PHONY:build
 build:
 	$(aws ecr get-login --no-include-email --region $(ECR_REGION) | sed 's|https://||') \
-	docker build --build-arg SSH_PRIVATE_KEY=$(BITBUCKET_SSH_KEY) -t 058291926324.dkr.ecr.$(ECR_REGION).amazonaws.com/$(APP)$(DOCKER_ENV):$(IMAGE_TAG) . ;  \
+	$(aws ecr get-login-password --region $(ECR_REGION) | docker login --username AWS --password-stdin $(AWS_ACCOUNT).dkr.ecr.$(ECR_REGION).amazonaws.com) \
+	docker build --build-arg SSH_PRIVATE_KEY=$(BITBUCKET_SSH_KEY) -t $(AWS_ACCOUNT).dkr.ecr.$(ECR_REGION).amazonaws.com/$(APP)$(DOCKER_ENV):$(IMAGE_TAG) . ;  \
 	docker push 058291926324.dkr.ecr.$(ECR_REGION).amazonaws.com/$(APP)$(DOCKER_ENV):$(IMAGE_TAG) ; \
 	echo Completed $(APP) build... ; \
 	cd .. ;
