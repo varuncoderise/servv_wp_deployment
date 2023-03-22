@@ -84,6 +84,10 @@ function vc_page_welcome_redirect() {
 	}
 }
 
+// Enables redirect on activation.
+add_action( 'vc_activation_hook', 'vc_page_welcome_set_redirect' );
+add_action( 'admin_init', 'vc_page_welcome_redirect' );
+
 /**
  * @return mixed|void
  */

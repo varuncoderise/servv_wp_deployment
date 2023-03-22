@@ -6,6 +6,7 @@ use WP_Query;
 use Yoast\WP\SEO\Conditionals\Front_End_Conditional;
 use Yoast\WP\SEO\Helpers\Options_Helper;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
+use Yoast\WP\SEO\Helpers\Redirect_Helper;
 
 /**
  * Class Crawl_Cleanup_Searches.
@@ -30,14 +31,21 @@ class Crawl_Cleanup_Searches implements Integration_Interface {
 	private $options_helper;
 
 	/**
+	 * The redirect helper.
+	 *
+	 * @var Redirect_Helper
+	 */
+	private $redirect_helper;
+
+	/**
 	 * Crawl_Cleanup_Searches integration constructor.
 	 *
-	 * @param Options_Helper $options_helper The option helper.
+	 * @param Options_Helper  $options_helper  The option helper.
+	 * @param Redirect_Helper $redirect_helper The redirect helper.
 	 */
-	public function __construct(
-		Options_Helper $options_helper
-	) {
-		$this->options_helper = $options_helper;
+	public function __construct( Options_Helper $options_helper, Redirect_Helper $redirect_helper ) {
+		$this->options_helper  = $options_helper;
+		$this->redirect_helper = $redirect_helper;
 	}
 
 	/**
@@ -50,6 +58,9 @@ class Crawl_Cleanup_Searches implements Integration_Interface {
 	public function register_hooks() {
 		if ( $this->options_helper->get( 'search_cleanup' ) ) {
 			\add_filter( 'pre_get_posts', [ $this, 'validate_search' ] );
+		}
+		if ( $this->options_helper->get( 'redirect_search_pretty_urls' ) && ! empty( \get_option( 'permalink_structure' ) ) ) {
+			\add_action( 'template_redirect', [ $this, 'maybe_redirect_searches' ], 2 );
 		}
 	}
 
@@ -80,6 +91,44 @@ class Crawl_Cleanup_Searches implements Integration_Interface {
 		$this->limit_characters();
 
 		return $query;
+	}
+
+	/**
+	 * Redirect pretty search URLs to the "raw" equivalent
+	 */
+	public function maybe_redirect_searches() {
+		if ( ! \is_search() ) {
+			return;
+		}
+
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		if ( isset( $_SERVER['REQUEST_URI'] ) && \stripos( $_SERVER['REQUEST_URI'], '/search/' ) === 0 ) {
+			$args = [];
+
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			$parsed = \wp_parse_url( $_SERVER['REQUEST_URI'] );
+
+			if ( ! empty( $parsed['query'] ) ) {
+				\wp_parse_str( $parsed['query'], $args );
+			}
+
+			$args['s'] = \get_search_query();
+
+			$proper_url = \home_url( '/' );
+
+			if ( \intval( \get_query_var( 'paged' ) ) > 1 ) {
+				$proper_url .= \sprintf( 'page/%s/', \get_query_var( 'paged' ) );
+				unset( $args['paged'] );
+			}
+
+			$proper_url = \add_query_arg( \array_map( 'rawurlencode_deep', $args ), $proper_url );
+
+			if ( ! empty( $parsed['fragment'] ) ) {
+				$proper_url .= '#' . \rawurlencode( $parsed['fragment'] );
+			}
+
+			$this->redirect_away( 'We redirect pretty URLs to the raw format.', $proper_url );
+		}
 	}
 
 	/**
@@ -119,8 +168,7 @@ class Crawl_Cleanup_Searches implements Integration_Interface {
 			$to_url = \get_home_url();
 		}
 
-		\wp_safe_redirect( $to_url, 301, 'Yoast Search Filtering: ' . $reason );
-		exit;
+		$this->redirect_helper->do_safe_redirect( $to_url, 301, 'Yoast Search Filtering: ' . $reason );
 	}
 
 	/**
@@ -129,23 +177,28 @@ class Crawl_Cleanup_Searches implements Integration_Interface {
 	 * @return void
 	 */
 	private function limit_characters() {
-		$s = \get_search_query();
-		if ( \mb_strlen( $s, 'UTF-8' ) > $this->options_helper->get( 'search_character_limit' ) ) {
-			$new_s = \mb_substr( $s, 0, $this->options_helper->get( 'search_character_limit' ), 'UTF-8' );
-			$this->redirect_away( 'Your search exceeded the number of allowed characters.', \get_bloginfo( 'url' ) . '/?s=' . \rawurlencode( $new_s ) );
+		// We retrieve the search term unescaped because we want to count the characters properly. We make sure to escape it afterwards, if we do something with it.
+		$unescaped_s = \get_search_query( false );
+
+		// We then unslash the search term, again because we want to count the characters properly. We make sure to slash it afterwards, if we do something with it.
+		$raw_s = \wp_unslash( $unescaped_s );
+		if ( \mb_strlen( $raw_s, 'UTF-8' ) > $this->options_helper->get( 'search_character_limit' ) ) {
+			$new_s = \mb_substr( $raw_s, 0, $this->options_helper->get( 'search_character_limit' ), 'UTF-8' );
+			\set_query_var( 's', \wp_slash( \esc_attr( $new_s ) ) );
 		}
 	}
 
 	/**
-	 * Determines if a string contains an emoji or not.
+	 * Determines if a text string contains an emoji or not.
 	 *
-	 * @param string $string The string to detect emoji in.
+	 * @param string $text The text string to detect emoji in.
 	 *
 	 * @return bool
 	 */
-	private function has_emoji( $string ) {
+	private function has_emoji( $text ) {
 		$emojis_regex = '/([^-\p{L}\x00-\x7F]+)/u';
-		\preg_match( $emojis_regex, $string, $matches );
+		\preg_match( $emojis_regex, $text, $matches );
+
 		return ! empty( $matches );
 	}
 }
