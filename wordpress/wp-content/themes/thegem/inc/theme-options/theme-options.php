@@ -777,7 +777,7 @@ class ThegemThemeOptions {
     function ajaxApi() {
         $request = json_decode(file_get_contents('php://input'), true);
 
-        switch($request['action']) {
+        switch($request['to_action']) {
             case 'save':
                 $response = $this->apiSave($request);
                 break;

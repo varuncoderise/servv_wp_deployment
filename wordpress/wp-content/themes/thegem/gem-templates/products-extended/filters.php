@@ -159,7 +159,7 @@ if ($params['product_show_filter'] == '1' && (
 						} ?>
 
 						<?php if ($params['filter_by_price'] == '1') {
-							$price_range = thegem_extended_products_get_product_price_range($featured_only, $sale_only, $categories, $attributes); ?>
+							$price_range = thegem_extended_products_get_product_price_range($featured_only, $sale_only, $categories_current, $attributes_current); ?>
 							<div class="portfolio-filter-item price">
 								<h4 class="name widget-title"><span
 											class="widget-title-by"><?php echo esc_html($params['filter_buttons_hidden_filter_by_text']); ?> </span><?php echo esc_html($params['filter_by_price_title']);

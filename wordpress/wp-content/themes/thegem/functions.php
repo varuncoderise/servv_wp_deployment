@@ -3455,15 +3455,22 @@ function thegem_pages_search_filter($query) {
 			if (empty(get_query_var('post_type')) || get_query_var('post_type') == 'any') {
 				$query->set('post_type', thegem_get_search_post_types_array());
 			}
-			if (is_numeric($query->query_vars['s']) && get_post_status(absint($query->query_vars['s']))) {
-				$query->set('p', $query->query_vars['s']);
-				$query->set('s', '');
+			if (is_numeric($query->query_vars['s']) && get_query_var('post_type') !== 'product') {
+				add_filter('posts_where', 'thegem_id_search_where');
 			}
 		}
 	}
 }
 
 add_action('pre_get_posts','thegem_pages_search_filter');
+
+function thegem_id_search_where( $where ){
+	global $wpdb;
+	$where = preg_replace(
+		"/\(\s*{$wpdb->posts}.post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
+		"({$wpdb->posts}.post_title LIKE $1) OR ({$wpdb->posts}.ID LIKE $1)", $where );
+	return $where;
+}
 
 function thegem_ajax_search_mini() {
 	$search = $_POST['search'];
@@ -3481,11 +3488,7 @@ function thegem_ajax_search_mini() {
 				'posts_per_page' => $post_types_ppp[$key],
 			);
 
-			if (is_numeric($search) && get_post_status(absint($search))) {
-				$args['p'] = $search;
-			} else {
-				$args['s'] = $search;
-			}
+			$args['s'] = $search;
 
 			$posts = new WP_Query( $args );
 
@@ -3556,11 +3559,7 @@ function thegem_ajax_search_form() {
 				'posts_per_page' => $post_types_ppp[$key],
 			);
 
-			if (is_numeric($search) && get_post_status(absint($search))) {
-				$args['p'] = $search;
-			} else {
-				$args['s'] = $search;
-			}
+			$args['s'] = $search;
 
 			if ($post_type === 'product' && $product_category != '') {
 				$args['tax_query'] = array(
@@ -3676,11 +3675,7 @@ function thegem_ajax_search() {
 			'posts_per_page' => $post_types_ppp[$key],
 		);
 
-		if (is_numeric($search) && get_post_status(absint($search))) {
-			$args['p'] = $search;
-		} else {
-			$args['s'] = $search;
-		}
+		$args['s'] = $search;
 
 		$posts = new WP_Query( $args );
 
@@ -6618,6 +6613,7 @@ function thegem_inline_enqueue_scripts_print() {
 	<?php
 }
 add_action('gem_before_page_content', 'thegem_inline_enqueue_scripts_print', 6);
+add_action('tcb_landing_body_open', 'thegem_inline_enqueue_scripts_print', 6);
 
 function thegem_revslider_include_libraries($load) {
 	$thegem_page_id = is_singular() ? get_the_ID() : 0;
