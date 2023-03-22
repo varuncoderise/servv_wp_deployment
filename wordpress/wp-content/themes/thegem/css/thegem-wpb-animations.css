@@ -1,0 +1,121 @@
+	/*WPB*/
+@-webkit-keyframes TGslideInDown {
+    0% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        visibility: visible;
+		opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+		opacity: 1;
+    }
+}
+@keyframes TGslideInDown {
+    0% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        visibility: visible;
+		opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+		opacity: 1;
+    }
+}
+.animated.slideInDown {
+    -webkit-animation-name: TGslideInDown;
+    animation-name: TGslideInDown;
+}
+@-webkit-keyframes TGslideInLeft {
+    0% {
+        -webkit-transform: translateX(-100%);
+		transform: translateX(-100%);
+		visibility: visible;
+		opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+    }
+}
+@keyframes TGslideInLeft {
+    0% {
+        -webkit-transform: translateX(-100%);
+		transform: translateX(-100%);
+		visibility: visible;
+		opacity: 0;
+    }
+    100% {
+        -webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+    }
+}
+.animated.slideInLeft {
+    -webkit-animation-name: TGslideInLeft;
+    animation-name: TGslideInLeft;
+}
+@-webkit-keyframes TGslideInRight {
+    0% {
+		-webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		visibility: visible;
+		opacity: 0;
+    }
+    100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+    }
+}
+@keyframes TGslideInRight {
+    0% {
+        -webkit-transform: translateX(100%);
+		transform: translateX(100%);
+		visibility: visible;
+		opacity: 0;
+    }
+    100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+		opacity: 1;
+    }
+}
+.animated.slideInRight {
+    -webkit-animation-name: TGslideInRight;
+    animation-name: TGslideInRight;
+}
+@-webkit-keyframes TGslideInUp {
+    0% {
+		-webkit-transform: translateY(100%);
+		transform: translateY(100%);
+		visibility: visible;
+		opacity: 0;
+    }
+    100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+    }
+}
+@keyframes TGslideInUp {
+    0% {
+		-webkit-transform: translateY(100%);
+		transform: translateY(100%);
+		visibility: visible;
+		opacity: 0;
+    }
+    100% {
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		opacity: 1;
+    }
+}
+.animated.slideInUp {
+    -webkit-animation-name: TGslideInUp;
+    animation-name: TGslideInUp;
+}
