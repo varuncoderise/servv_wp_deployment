@@ -47,7 +47,27 @@ get_header(); ?>
 		thegem_slideshow_block(array('slideshow_type' => $thegem_page_data['slideshow']['slideshow_type'], 'slideshow' => $thegem_page_data['slideshow']['slideshow_slideshow'], 'lslider' => $thegem_page_data['slideshow']['slideshow_layerslider'], 'slider' => $thegem_page_data['slideshow']['slideshow_revslider'], 'preloader' => !empty($thegem_page_data['slideshow']['slideshow_preloader'])));
 	}
 	echo thegem_page_title();
-?>
+	$search_template_id = thegem_search_template();
+	if ( $search_template_id && defined('WPB_VC_VERSION')) { ?>
+		<div class="block-content">
+			<div class="fullwidth-content">
+				<div class="thegem-template-wrapper thegem-template-blog-archive thegem-template-<?php echo esc_attr($search_template_id); ?>">
+					<?php
+					$template_custom_css = get_post_meta($search_template_id, '_wpb_shortcodes_custom_css', true) . get_post_meta($search_template_id, '_wpb_post_custom_css', true);
+					if($template_custom_css) {
+						echo '<style>' . $template_custom_css . '</style>';
+					}
+					$template = get_post($search_template_id);
+					$template->post_content = str_replace(array('<p>[', ']</p>'), array('[', ']'), $template->post_content);
+					$template->post_content = str_replace(array('[vc_row ', '[vc_row]', '[vc_column ', '[vc_column]', '[vc_column_inner'), array('[vc_row template_fw="1" ', '[vc_row template_fw="1"]', '[vc_column template_flex="1" ', '[vc_column template_flex="1"]', '[vc_column_inner template_flex="1"'), $template->post_content);
+					$GLOBALS['thegem_template_type'] = 'blog-archive';
+					echo do_shortcode($template->post_content);
+					unset($GLOBALS['thegem_template_type']);
+					?>
+				</div>
+			</div><!-- .container -->
+		</div><!-- .block-content -->
+	<?php } else { ?>
 
 	<div class="block-content<?php echo esc_attr($thegem_no_margins_block); ?>">
 		<div class="container">
@@ -58,7 +78,91 @@ get_header(); ?>
 
 						if (thegem_get_option('search_layout_type') == 'grid') {
 							thegem_search_grid_content();
+						} elseif(thegem_get_option('search_layout_type') == 'list') {
+
+							$params = array(
+								'skin_source' => thegem_get_option('search_skin_source'),
+								'loop_builder' => thegem_get_option('search_item_builder_template'),
+								'gaps_desktop' => thegem_get_option('search_list_builder_gaps_desktop'),
+								'gaps_tablet' => thegem_get_option('search_list_builder_gaps_tablet'),
+							);
+							if (!is_singular()) {
+								wp_enqueue_style('thegem-blog');
+								wp_enqueue_style('thegem-additional-blog');
+								wp_enqueue_style('thegem-blog-timeline-new');
+								wp_enqueue_script('thegem-scroll-monitor');
+								wp_enqueue_script('thegem-items-animations');
+								wp_enqueue_script('thegem-blog');
+								wp_enqueue_script('thegem-gallery');
+								if(!empty($params['skin_source']) && $params['skin_source'] === 'builder' && !empty($params['loop_builder'])) {
+									$params['gaps_desktop'] = intval($params['gaps_desktop']) > 0 || $params['gaps_desktop'] === '0' ? intval($params['gaps_desktop']) : 42;
+									$params['gaps_tablet'] = intval($params['gaps_tablet']) > 0 || $params['gaps_tablet'] === '0' ? intval($params['gaps_tablet']) : 42;
+									echo '<style type="text/css">';
+									echo thegem_generate_css(
+										array('rules' => array(array(
+											'selector' => '.blog .thegem-template-loop-item.thegem-template-'.esc_attr($params['loop_builder']),
+											'styles' => array(
+												'margin-bottom' => $params['gaps_desktop'].'px',
+											)
+										)))
+									);
+									echo thegem_generate_css(
+										array('media' => '(max-width: 1023px)', 'rules' => array(array(
+											'selector' => '.blog .thegem-template-loop-item.thegem-template-'.esc_attr($params['loop_builder']),
+											'styles' => array(
+												'margin-bottom' => $params['gaps_tablet'].'px',
+											)
+										)))
+									);
+									echo '</style>';
+								}
+								echo '<div class="blog blog-style-default">';
+							}
+
+							while (have_posts()) : the_post();
+
+								if(!empty($params['skin_source']) && $params['skin_source'] === 'builder' && !empty($params['loop_builder'])) {
+?>
+<div <?php post_class(); ?> data-default-sort="<?php echo intval(get_post()->menu_order); ?>" data-sort-date="<?php echo get_the_date('U'); ?>">
+	<div class="thegem-template-wrapper thegem-template-loop-item thegem-template-<?php echo esc_attr($params['loop_builder']); ?> thegem-loop-post-<?= esc_attr(get_the_id());?>">
+		<?php
+		$thegem_template_type_outer = isset($GLOBALS['thegem_template_type']) ? $GLOBALS['thegem_template_type'] : '';
+		$GLOBALS['thegem_template_type'] = 'loop-item';
+		$GLOBALS['thegem_loop_item_post'] = get_the_id();
+		$template = get_post($params['loop_builder']);
+		$template->post_content = str_replace(array('<p>[', ']</p>'), array('[', ']'), $template->post_content);
+		$template_html = do_shortcode($template->post_content);
+		$custom_css = get_post_meta($params['loop_builder'], '_wpb_shortcodes_custom_css', true) . get_post_meta($params['loop_builder'], '_wpb_post_custom_css', true);
+		$custom_css = str_replace(array("\n", "\r"), '', $custom_css);
+		if ($custom_css) {
+			$template_html = '<style>' . esc_js($custom_css) . '</style>' . $template_html;
+		}
+		echo $template_html;
+		unset($GLOBALS['thegem_template_type']);
+		unset($GLOBALS['thegem_loop_item_post']);
+		if (!empty($thegem_template_type_outer)) {
+			$GLOBALS['thegem_template_type'] = $thegem_template_type_outer;
+		}
+		?>
+	</div>
+</div>
+<?php
+								} else {
+									get_template_part('content', 'blog-item');
+								}
+
+							endwhile;
+
+							if (!is_singular()) {
+								thegem_pagination();
+								echo '</div>';
+							}
+
 						} else {
+							$skin_params = array(
+								'skin_source' => thegem_get_option('search_skin_source'),
+								'loop_builder' => thegem_get_option('search_item_builder_template'),
+							);
 							if(!is_singular()) {
 								$blog_style = '3x';
 								$params = array(
@@ -78,7 +182,36 @@ get_header(); ?>
 
 							while ( have_posts() ) : the_post();
 
-								include(locate_template(array('gem-templates/blog/content-blog-item-masonry.php', 'content-blog-item.php')));
+								if(!empty($skin_params['skin_source']) && $skin_params['skin_source'] === 'builder' && !empty($skin_params['loop_builder'])) {
+									$thegem_classes = array('col-lg-4', 'col-md-4', 'col-sm-6', 'col-xs-6');
+?>
+<article <?php post_class($thegem_classes); ?> data-default-sort="<?php echo intval(get_post()->menu_order); ?>" data-sort-date="<?php echo get_the_date('U'); ?>">
+	<div class="thegem-template-wrapper thegem-template-loop-item thegem-template-<?php echo esc_attr($skin_params['loop_builder']); ?> thegem-loop-post-<?= esc_attr(get_the_id());?>">
+		<?php
+		$thegem_template_type_outer = isset($GLOBALS['thegem_template_type']) ? $GLOBALS['thegem_template_type'] : '';
+		$GLOBALS['thegem_template_type'] = 'loop-item';
+		$GLOBALS['thegem_loop_item_post'] = get_the_id();
+		$template = get_post($skin_params['loop_builder']);
+		$template->post_content = str_replace(array('<p>[', ']</p>'), array('[', ']'), $template->post_content);
+		$template_html = do_shortcode($template->post_content);
+		$custom_css = get_post_meta($skin_params['loop_builder'], '_wpb_shortcodes_custom_css', true) . get_post_meta($skin_params['loop_builder'], '_wpb_post_custom_css', true);
+		$custom_css = str_replace(array("\n", "\r"), '', $custom_css);
+		if ($custom_css) {
+			$template_html = '<style>' . esc_js($custom_css) . '</style>' . $template_html;
+		}
+		echo $template_html;
+		unset($GLOBALS['thegem_template_type']);
+		unset($GLOBALS['thegem_loop_item_post']);
+		if (!empty($thegem_template_type_outer)) {
+			$GLOBALS['thegem_template_type'] = $thegem_template_type_outer;
+		}
+		?>
+	</div>
+</article>
+<?php
+								} else {
+									include(locate_template(array('gem-templates/blog/content-blog-item-masonry.php', 'content-blog-item.php')));
+								}
 
 							endwhile;
 
@@ -100,6 +233,7 @@ get_header(); ?>
 			</div>
 		</div><!-- .container -->
 	</div><!-- .block-content -->
+<?php } ?>
 </div><!-- #main-content -->
 
 <?php

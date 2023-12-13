@@ -1,3 +1,12 @@
+<?php
+$post_image = '';
+$attachment_id = get_post_thumbnail_id($post->ID);
+if ($attachment_id) {
+	$post_image = thegem_generate_thumbnail_src($attachment_id, 'thegem-blog-timeline-large');
+	if ($post_image && $post_image[0]) {
+		$post_image = $post_image[0];
+	}
+} ?>
 <div class="socials-sharing socials socials-colored-hover ">
 	<a class="socials-item" target="_blank"
 	   href="<?php echo esc_url('https://www.facebook.com/sharer/sharer.php?u=' . urlencode(get_permalink())); ?>"

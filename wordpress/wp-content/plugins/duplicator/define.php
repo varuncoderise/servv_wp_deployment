@@ -3,10 +3,15 @@
 //Prevent directly browsing to the file
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
+define('DUPLICATOR_BLOG_URL', 'https://duplicator.com/');
+define('DUPLICATOR_DOCS_URL', DUPLICATOR_BLOG_URL . 'knowledge-base/');
+define(
+    'DUPLICATOR_TECH_FAQ_URL',
+    DUPLICATOR_BLOG_URL . 'knowledge-base-article-categories/troubleshooting/'
+);
 
 if (function_exists('plugin_dir_url')) {
-    define('DUPLICATOR_VERSION', '1.5.3.1');
-    define('DUPLICATOR_VERSION_BUILD', '2022-11-16_13:00');
+    define('DUPLICATOR_VERSION', '1.5.7.1');
     define('DUPLICATOR_PLUGIN_URL', plugin_dir_url(__FILE__));
     define('DUPLICATOR_SITE_URL', get_site_url());
 
@@ -120,6 +125,14 @@ if (function_exists('plugin_dir_url')) {
         if (!defined('PHP_RELEASE_VERSION')) {
             define('PHP_RELEASE_VERSION', $version[2]);
         }
+    }
+
+    if (!defined('DUPLICATOR_CUSTOM_STATS_REMOTE_HOST')) {
+        define('DUPLICATOR_CUSTOM_STATS_REMOTE_HOST', '');
+    }
+
+    if (!defined('DUPLICATOR_USTATS_DISALLOW')) {
+        define('DUPLICATOR_USTATS_DISALLOW', false);
     }
 } else {
     error_reporting(0);

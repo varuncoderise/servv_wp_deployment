@@ -19,7 +19,7 @@
   } else {
     // browser global
     factory(
-      window.Isotope.LayoutMode
+      window.ThegemIsotope.LayoutMode
     );
   }
 
@@ -189,7 +189,7 @@ Metro.prototype.buildRows = function() {
     var self = this;
 
     var container = this.options.isFitWidth ? this.element.parentNode : this.element;
-    jQuery(this.isotope.options.itemSelector + ' .caption', container).hide();
+    jQuery(this.thegem_isotope.options.itemSelector + ' .caption', container).hide();
 
     this.getContainerWidth();
 
@@ -214,16 +214,17 @@ Metro.prototype.buildRows = function() {
             var calculatedWidth = Math.round(item.size.innerWidth * rel - 0.5);
             calculatedWidth += (item.size.outerWidth - item.size.innerWidth);
             jQuery(item.element).css('width', calculatedWidth);
+            jQuery(self.thegem_isotope.options.itemImageWrapperSelector + ' img', item.element).css('height', height - 0.5);
         });
     }
 
-    jQuery(this.isotope.options.itemSelector + ' .caption', container).show();
+    jQuery(this.thegem_isotope.options.itemSelector + ' .caption', container).show();
 };
 
 Metro.prototype.initItems = function() {
     var self = this;
 
-    this.items = this.isotope.filteredItems;
+    this.items = this.thegem_isotope.filteredItems;
     var container = this.options.isFitWidth ? this.element.parentNode : this.element;
 
     this.items.forEach(function(item, index) {
@@ -231,13 +232,18 @@ Metro.prototype.initItems = function() {
             var maxHeight = 0,
                 maxHeightImage = null;
 
-            jQuery(self.isotope.options.itemImageWrapperSelector + ' img', item.element).each(function() {
+            jQuery(self.thegem_isotope.options.itemImageWrapperSelector + ' img', item.element).each(function() {
+                if (jQuery(this).closest('.portfolio-image-slider').length) {
+                    return;
+                }
                 var imageHeight = parseInt(jQuery(this).attr('height'));
                 if (!isNaN(imageHeight) && imageHeight > maxHeight) {
                     maxHeight = imageHeight;
                     maxHeightImage = this;
                 }
             });
+            var widthPercents = jQuery(maxHeightImage).outerWidth() / jQuery(maxHeightImage).parent().outerWidth();
+            widthPercents = widthPercents ? widthPercents : 1;
 
             if (maxHeightImage !== null) {
                 self.items[ index ].imageWidth = parseInt(jQuery(maxHeightImage).attr('width'));
@@ -251,7 +257,7 @@ Metro.prototype.initItems = function() {
 
         var $element = jQuery(item.element);
         if (!$element.data('original-width')) {
-            var original = self.items[ index ].imageWidth / 1.1;
+            var original = self.items[ index ].imageWidth / widthPercents;
             var padding = parseFloat($element.css('padding-left'));
             if (isNaN(padding)) {
                 padding = 0;
@@ -259,12 +265,13 @@ Metro.prototype.initItems = function() {
             $element.data('original-width', original + 2 * padding);
         }
         $element.css('width', $element.data('original-width'));
+        $element.find('img').css('height', '');
     });
 };
 
 Metro.prototype.getColumnCount = function() {
     var container = this.options.isFitWidth ? this.element.parentNode : this.element;
-    if (this.isotope.options.itemSelector == '.portfolio-item') {
+    if (this.thegem_isotope.options.itemSelector == '.portfolio-item') {
         var classes = jQuery(container).closest('.portfolio').attr('class');
     } else {
         var classes = jQuery(container).closest('.gem-gallery-grid').attr('class');
@@ -317,7 +324,7 @@ Metro.prototype._getItemLayoutPosition = function( item ) {
 
   var itemWidth = item.size.outerWidth + this.gutter;
   // if this element cannot fit in the current row
-  var containerWidth = this.isotope.size.innerWidth + this.gutter;
+  var containerWidth = this.thegem_isotope.size.innerWidth + this.gutter;
   if ( this.x !== 0 && itemWidth + this.x > containerWidth ) {
     this.x = 0;
     this.y = this.maxY;

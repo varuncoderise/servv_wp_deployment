@@ -17,7 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 $el_class = $equal_height = $content_placement = $css = $el_id = '';
 $disable_element = '';
-$output = $after_output = $element_css = $id = '';
+$thegem_revesrse_columns_tablet = $thegem_revesrse_columns_mobile = '';
+$output = $before_output = $after_output = $element_css = $id = '';
 $disable_custom_paddings_mobile = $disable_custom_paddings_tablet = $z_index = '';
 $visible_element_users = !empty($atts['visible_element_users']) ? $atts['visible_element_users'] : '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
@@ -86,6 +87,15 @@ if ( ! empty( $content_placement ) ) {
 	$css_classes[] = 'vc_row-o-content-' . $content_placement;
 }
 
+if ( !empty( $thegem_revesrse_columns_tablet ) ) {
+	$flex_row = true;
+	$css_classes[] = 'thegem-reverse-columns-tablet';
+}
+if ( !empty( $thegem_revesrse_columns_mobile ) ) {
+	$flex_row = true;
+	$css_classes[] = 'thegem-reverse-columns-mobile';
+}
+
 if ( ! empty( $flex_row ) ) {
 	$css_classes[] = 'vc_row-flex';
 }
@@ -95,6 +105,15 @@ if ($z_index !== '') {
 }
 
 $wrapper_attributes = array();
+
+if(!empty($thegem_background_overlay)) {
+	$before_output .= '<div class="gem-vc-background-overlay"></div>';
+	$css_classes[] = 'gem-vc-background-overlay-container';
+	$element_css .= thegem_vc_background_overlay_css($atts, $uniqid);
+}
+if(!empty($thegem_row_overflow) && $thegem_row_overflow === 'hidden') {
+	$element_css .= '.'.esc_attr($uniqid).'.wpb_row {overflow: hidden;}';
+}
 
 if(!empty($interactions_enabled)) {
 	$wrapper_attributes[] = interactions_data_attr($atts);
@@ -208,6 +227,12 @@ if(!empty($thegem_enable_shadow)) {
 	. '}';
 }
 
+$element_css .= thegem_row_inner_absolute_css($atts, $uniqid);
+
+if(function_exists('thegem_data_editor_attribute')) {
+	$editor_attr = thegem_data_editor_attribute($uniqid.'-editor');
+}
+
 // build attributes for wrapper
 if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
@@ -216,7 +241,8 @@ if ( ! empty( $el_id ) ) {
 $css_class = preg_replace( '/\s+/', ' ', apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, implode( ' ', array_filter( array_unique( $css_classes ) ) ), $this->settings['base'], $atts ) );
 $wrapper_attributes[] = 'class="' . esc_attr( trim( $css_class ) ) . '"';
 
-$output .= '<div ' . implode( ' ', $wrapper_attributes ) . '>';
+$output .= '<div ' . implode( ' ', $wrapper_attributes ) . ' ' . $editor_attr . '>';
+$output .= $before_output;
 $output .= wpb_js_remove_wpautop( $content );
 $output .= '</div>';
 $output .= $after_output;

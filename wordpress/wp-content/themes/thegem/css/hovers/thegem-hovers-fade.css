@@ -7,10 +7,8 @@
 	transition: transform 0.5s;
 }
 
-.hover-fade .portfolio-item:hover .image .image-inner.fallback-zooming img,
-.hover-fade .portfolio-item.hover-effect .image .image-inner.fallback-zooming img,
-.hover-fade .gallery-item:hover .overlay-wrap .image-wrap.fallback-zooming img,
-.hover-fade .gallery-item.hover-effect .overlay-wrap .image-wrap.fallback-zooming img {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .image-inner.fallback-zooming img,
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay-wrap .image-wrap.fallback-zooming img {
 	-webkit-transform: translate(0,0) scale(1.12);
 	transform: translate(0,0) scale(1.12);
 	-webkit-transition: -webkit-transform 0.5s;
@@ -26,28 +24,23 @@
 	transition: transform 0.5s;
 }
 
-.hover-fade .portfolio-item:hover .image .image-inner.fallback-sliding img,
-.hover-fade .portfolio-item.hover-effect .image .image-inner.fallback-sliding img,
-.hover-fade .gallery-item:hover .overlay-wrap .image-wrap.fallback-zooming img,
-.hover-fade .gallery-item.hover-effect .overlay-wrap .image-wrap.fallback-zooming img {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .image-inner.fallback-sliding img,
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay-wrap .image-wrap.fallback-zooming img {
 	-webkit-transform: translateX(-5%);
 	transform: translateX(-5%);
 	-webkit-transition: -webkit-transform 0.5s;
 	transition: transform 0.5s;
 }
 
-.news-grid.hover-fade .portfolio-item:hover .image.format-video.has-post-thumbnail .image-inner img,
-.news-grid.hover-fade .portfolio-item.hover-effect .image.format-video.has-post-thumbnail .image-inner img {
+.news-grid.hover-fade .portfolio-item:is(:hover, .hover-effect) .image.format-video.has-post-thumbnail .image-inner img {
 	-webkit-transform: translate(0, 0) scale(1);
 	transform: translate(0, 0) scale(1);
 }
 
 .hover-fade .portfolio-item .image .overlay,
-.hover-fade .portfolio-item:hover .image .overlay,
-.hover-fade .portfolio-item.hover-effect .image .overlay,
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay,
 .hover-fade .gallery-item .overlay-wrap .overlay,
-.hover-fade .gallery-item:hover .overlay-wrap .overlay,
-.hover-fade .gallery-item.hover-effect .overlay-wrap .overlay {
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay-wrap .overlay {
 	display: block;
 	-webkit-transition: background 0.5s 0.2s;
 	transition: background 0.5s 0.2s;
@@ -68,10 +61,8 @@
 	background: transparent;
 }
 
-.hover-fade .portfolio-item:hover .image .overlay:before,
-.hover-fade .portfolio-item.hover-effect .image .overlay:before,
-.hover-fade .gallery-item:hover .overlay-wrap .overlay:before,
-.hover-fade .gallery-item.hover-effect .overlay-wrap .overlay:before {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay:before,
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay-wrap .overlay:before {
 	opacity: 1;
 	-webkit-transition: opacity 0.5s;
 	transition: opacity 0.5s;
@@ -113,14 +104,10 @@
 	margin-left: 10px;
 }
 
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons > .icon,
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons > .icon,
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons-inner > .icon,
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons-inner > .icon,
-.hover-fade .gallery-item:hover .overlay .overlay-content-inner a.icon,
-.hover-fade .gallery-item.hover-effect .overlay .overlay-content-inner a.icon,
-.portfolio.products.hover-fade .portfolio-item:hover .image .overlay .portfolio-icons.product-bottom a.added_to_cart,
-.portfolio.products.hover-fade .portfolio-item.hover-effect .image .overlay .portfolio-icons.product-bottom a.added_to_cart {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons > .icon,
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons-inner > .icon,
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay .overlay-content-inner a.icon,
+.portfolio.products.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .portfolio-icons.product-bottom a.added_to_cart {
 	opacity: 1;
 	-webkit-transform: scale(1);
 	transform: scale(1);
@@ -128,64 +115,45 @@
 	transition: top 0s;
 }
 
-.portfolio.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons > .yith-wcwl-add-to-wishlist.added.icon:hover,
-.portfolio.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons > .yith-wcwl-add-to-wishlist.added.icon:hover,
-.portfolio.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons-inner > .yith-wcwl-add-to-wishlist.added.icon:hover,
-.portfolio.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons-inner > .yith-wcwl-add-to-wishlist.added.icon:hover {
+.portfolio.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons > .yith-wcwl-add-to-wishlist.added.icon:hover,
+.portfolio.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons-inner > .yith-wcwl-add-to-wishlist.added.icon:hover {
 	-webkit-transform: none;
 	transform: none;
 }
 
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons > .icon:nth-child(1),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons > .icon:nth-child(1),
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons-inner > .icon:nth-child(1),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons-inner > .icon:nth-child(1),
-.hover-fade .gallery-item:hover .overlay .overlay-content-inner a.icon:nth-child(1),
-.hover-fade .gallery-item.hover-effect .overlay .overlay-content-inner a.icon:nth-child(1) {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons > .icon:nth-child(1),
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons-inner > .icon:nth-child(1),
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay .overlay-content-inner a.icon:nth-child(1) {
 	-webkit-transition: opacity 0.5s 0s, background-color 0.3s 0s, color 0.3s 0s, -webkit-transform 0.4s 0s;
 	transition: opacity 0.5s 0s, background-color 0.3s 0s, color 0.3s 0s, transform 0.4s 0s;
 }
 
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons > .icon:nth-child(2),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons > .icon:nth-child(2),
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons-inner > .icon:nth-child(2),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons-inner > .icon:nth-child(2),
-.hover-fade .gallery-item:hover .overlay .overlay-content-inner a.icon:nth-child(2),
-.hover-fade .gallery-item.hover-effect .overlay .overlay-content-inner a.icon:nth-child(2) {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons > .icon:nth-child(2),
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons-inner > .icon:nth-child(2),
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay .overlay-content-inner a.icon:nth-child(2) {
 	-webkit-transition: opacity 0.5s 0.05s, background-color 0.3s 0s, color 0.3s 0s, -webkit-transform 0.4s 0.05s;
 	transition: opacity 0.5s 0.05s, background-color 0.3s 0s, color 0.3s 0s, transform 0.4s 0.05s;
 }
 
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons > .icon:nth-child(3),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons > .icon:nth-child(3),
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons-inner > .icon:nth-child(3),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons-inner > .icon:nth-child(3),
-.hover-fade .gallery-item:hover .overlay .overlay-content-inner a.icon:nth-child(3),
-.hover-fade .gallery-item.hover-effect .overlay .overlay-content-inner a.icon:nth-child(3),
-.portfolio.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons > .yith-wcwl-add-to-wishlist a.icon,
-.portfolio.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons > .yith-wcwl-add-to-wishlist a.icon,
-.portfolio.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons-inner > .yith-wcwl-add-to-wishlist a.icon,
-.portfolio.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons-inner > .yith-wcwl-add-to-wishlist a.icon {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons > .icon:nth-child(3),
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons-inner > .icon:nth-child(3),
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay .overlay-content-inner a.icon:nth-child(3),
+.portfolio.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons > .yith-wcwl-add-to-wishlist a.icon,
+.portfolio.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons-inner > .yith-wcwl-add-to-wishlist a.icon {
 	-webkit-transition: opacity 0.5s 0.1s, background-color 0.3s 0s, color 0.3s 0s, -webkit-transform 0.4s 0.1s;
 	transition: opacity 0.5s 0.1s, background-color 0.3s 0s, color 0.3s 0s, transform 0.4s 0.1s;
 }
 
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons > .icon:nth-child(4),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons > .icon:nth-child(4),
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons-inner > .icon:nth-child(4),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons-inner > .icon:nth-child(4),
-.hover-fade .gallery-item:hover .overlay .overlay-content-inner a.icon:nth-child(4),
-.hover-fade .gallery-item.hover-effect .overlay .overlay-content-inner a.icon:nth-child(4) {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons > .icon:nth-child(4),
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons-inner > .icon:nth-child(4),
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay .overlay-content-inner a.icon:nth-child(4) {
 	-webkit-transition: opacity 0.5s 0.15s, background-color 0.3s 0s, color 0.3s 0s, -webkit-transform 0.4s 0.15s;
 	transition: opacity 0.5s 0.15s, background-color 0.3s 0s, color 0.3s 0s, transform 0.4s 0.15s;
 }
 
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons > .icon:nth-child(5),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons > .icon:nth-child(5),
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-icons-inner > .icon:nth-child(5),
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-icons-inner > .icon:nth-child(5),
-.hover-fade .gallery-item:hover .overlay .overlay-content-inner a.icon:nth-child(5),
-.hover-fade .gallery-item.hover-effect .overlay .overlay-content-inner a.icon:nth-child(5) {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons > .icon:nth-child(5),
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-icons-inner > .icon:nth-child(5),
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay .overlay-content-inner a.icon:nth-child(5) {
 	-webkit-transition: opacity 0.5s 0.2s, background-color 0.3s 0s, color 0.3s 0s, -webkit-transform 0.4s 0.2s;
 	transition: opacity 0.5s 0.2s, background-color 0.3s 0s, color 0.3s 0s, transform 0.4s 0.2s;
 }
@@ -215,12 +183,9 @@
 	transition: transform 0s 0.5s, opacity 0.3s 0.1s, top 0.3s 0.1s;
 }
 
-.hover-fade .portfolio-item:hover .image .links .caption .title,
-.hover-fade .portfolio-item.hover-effect .image .links .caption .title,
-.hover-fade .portfolio-item:hover .image .links .caption .categories,
-.hover-fade .portfolio-item.hover-effect.image .links .caption .categories,
-.products.hover-fade.title-on-hover .portfolio-item:hover .image .links .caption .product-info,
-.products.hover-fade.title-on-hover .portfolio-item.hover-effect .image .links .caption .product-info {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .links .caption .title,
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .links .caption .categories,
+.products.hover-fade.title-on-hover .portfolio-item:is(:hover, .hover-effect) .image .links .caption .product-info {
 	opacity: 1;
 	top: 0;
 	-webkit-transform: scale(1);
@@ -235,8 +200,7 @@
 	transition: padding 0.3s;
 }
 
-.hover-fade .gallery-item:hover .overlay .overlay-content-inner .title,
-.hover-fade .gallery-item.hover-effect .overlay .overlay-content-inner .title {
+.hover-fade .gallery-item:is(:hover, .hover-effect) .overlay .overlay-content-inner .title {
 	opacity: 1;
 	top: 0;
 	-webkit-transform: scale(1);
@@ -258,8 +222,7 @@
 	transition: transform 0s 0.5s, opacity 0.3s 0.1s, top 0.3s 0.1s;
 }
 
-.hover-fade .portfolio-item:hover .image .links .caption .info,
-.hover-fade .portfolio-item.hover-effect .image .links .caption .info {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .links .caption .info {
 	opacity: 1;
 	top: 0;
 	-webkit-transform: scale(1);
@@ -288,8 +251,7 @@
 	top: 350px;
 }
 
-.portfolio.hover-fade.fullwidth-columns-4 .fullwidth-block .portfolio-item:hover .image .overlay .links .caption .subtitle,
-.portfolio.hover-fade.fullwidth-columns-4 .fullwidth-block .portfolio-item.hover-effect .image .overlay .links .caption .subtitle {
+.portfolio.hover-fade.fullwidth-columns-4 .fullwidth-block .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .caption .subtitle {
 	opacity: 1;
 	top: 120px;
 	display: block;
@@ -299,8 +261,7 @@
 	transition: transform 0.3s 0.1s, opacity 0.3s 0.1s, top 0s;
 }
 
-.portfolio.hover-fade.fullwidth-columns-4 .fullwidth-block .portfolio-item.double-item:hover .image .overlay .links .caption .subtitle,
-.portfolio.hover-fade.fullwidth-columns-4 .fullwidth-block .portfolio-item.double-item.hover-effect .image .overlay .links .caption .subtitle {
+.portfolio.hover-fade.fullwidth-columns-4 .fullwidth-block .portfolio-item.double-item:is(:hover, .hover-effect) .image .overlay .links .caption .subtitle {
 	top: 150px;
 }
 
@@ -315,8 +276,7 @@
 	transition: opacity 0.3s, margin 0.3s 0.3s, transform 0s;
 }
 
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-sharing-pane,
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-sharing-pane {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-sharing-pane {
 	visibility: hidden;
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
@@ -324,8 +284,7 @@
 	transition: opacity 0.5s, transform 0s, margin 0.3s;
 }
 
-.hover-fade .portfolio-item:hover .image .overlay .links .portfolio-sharing-pane.active,
-.hover-fade .portfolio-item.hover-effect .image .overlay .links .portfolio-sharing-pane.active {
+.hover-fade .portfolio-item:is(:hover, .hover-effect) .image .overlay .links .portfolio-sharing-pane.active {
 	opacity: 1;
 	visibility: visible;
 	margin-top: 20px;
@@ -353,8 +312,7 @@
 	top: 310px;
 }
 
-.gem-gallery-grid.hover-fade.fullwidth-columns-4 .gallery-item:hover .overlay .overlay-content-inner .subtitle,
-.gem-gallery-grid.hover-fade.fullwidth-columns-4 .gallery-item.hover-effect .overlay .overlay-content-inner .subtitle {
+.gem-gallery-grid.hover-fade.fullwidth-columns-4 .gallery-item:is(:hover, .hover-effect) .overlay .overlay-content-inner .subtitle {
 	opacity: 1;
 	top: 80px;
 	-webkit-transform: scale(1);
@@ -363,7 +321,6 @@
 	transition: transform 0.3s 0.1s, opacity 0.3s 0.1s, top 0s;
 }
 
-.gem-gallery-grid.hover-fade.fullwidth-columns-4 .gallery-item.double-item:hover .overlay .overlay-content-inner .subtitle,
-.gem-gallery-grid.hover-fade.fullwidth-columns-4 .gallery-item.double-item.hover-effect .overlay .overlay-content-inner .subtitle {
+.gem-gallery-grid.hover-fade.fullwidth-columns-4 .gallery-item.double-item:is(:hover, .hover-effect) .overlay .overlay-content-inner .subtitle {
 	top: 110px;
 }

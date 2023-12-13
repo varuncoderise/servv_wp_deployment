@@ -26,7 +26,7 @@ if($thegem_cart_empty_template) :
 	}
 	$template = get_post($thegem_cart_empty_template);
 	$GLOBALS['thegem_template_type'] = 'cart-empty';
-	echo '<div class="cart-empty"><div class="thegem-template-wrapper thegem-template-cart-empty thegem-template-'.$thegem_cart_empty_template.'">';
+	echo '<div class="wc-empty-cart-message"></div><div class="cart-empty"><div class="thegem-template-wrapper thegem-template-cart-empty thegem-template-'.$thegem_cart_empty_template.'">';
 	echo do_shortcode($template->post_content);
 	echo '</div></div>';
 	unset($GLOBALS['thegem_template_type']);
@@ -35,6 +35,7 @@ else :
 do_action( 'woocommerce_cart_is_empty' );
 
 if(thegem_get_option('cart_layout', 'modern') == 'modern') : ?>
+<div class="wc-empty-cart-message"></div>
 <div class="woocommerce-empty-cart cart-empty centered-box">
 	<div class="woocommerce-empty-cart__title title-h2"><?php echo wp_kses_post(apply_filters( 'wc_empty_cart_message', __( 'Your cart is currently empty.', 'woocommerce' ) )); ?></div>
 	<?php if(thegem_get_option('cart_empty_text')) : ?>

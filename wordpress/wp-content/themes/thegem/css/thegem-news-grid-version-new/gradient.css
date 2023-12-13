@@ -100,7 +100,8 @@
 	transition: opacity 0.3s 0.15s, top 0.3s 0.15s;
 }
 
-.version-new.news-grid.hover-new-gradient .portfolio-item .image .links .caption .description {
+.version-new.news-grid.hover-new-gradient .portfolio-item .image .links .caption .description,
+.version-new.news-grid.hover-new-gradient .portfolio-item .image .links .caption .details {
 	opacity: 0;
 	-webkit-transform: translateY(-200px);
 	transform: translateY(-200px);
@@ -124,7 +125,8 @@
 	transition: opacity 0.3s, top 0.3s;
 }
 
-.version-new.news-grid.hover-new-gradient .portfolio-item:hover .image .links .caption .description {
+.version-new.news-grid.hover-new-gradient .portfolio-item:hover .image .links .caption .description,
+.version-new.news-grid.hover-new-gradient .portfolio-item:hover .image .links .caption .details {
 	opacity: 1;
 	top: 0;
 	-webkit-transform: translateY(0);
@@ -190,16 +192,16 @@
 }
 
 .version-new.news-grid.portfolio.hover-new-gradient .portfolio-item .image .links .caption .author {
-    margin-bottom: 0;
+    margin-bottom: 9px;
 	padding-top: 0;
 }
 
 .version-new.news-grid.portfolio.hover-new-gradient .portfolio-item .image .links .caption .grid-post-meta {
-	margin-top: 9px;
+	margin-top: 0;
 }
 
 .version-new.news-grid.portfolio.hover-new-gradient .portfolio-item .image .links .caption .author + .description {
-    margin-top: 7px;
+   margin-top: 0;
 }
 
 .version-new.news-grid.hover-new-gradient .portfolio-item .image .links .caption .slide-content-visible {

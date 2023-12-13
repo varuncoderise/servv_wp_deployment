@@ -2416,7 +2416,7 @@ table.shop_table_responsive td[data-title]:before,
 
 <?php if(thegem_get_option('h6_font_size')) : ?>
 :root {
-	--thegem-to-h6-font-size: <?php echo thegem_get_option('h6_font_size'); ?>;
+	--thegem-to-h6-font-size: <?php echo thegem_get_option('h6_font_size'); ?>px;
 	--thegem-to-h6-font-size-small: <?php echo (thegem_get_option('h6_font_size')*0.875); ?>px;
 	--thegem-to-h6-font-size-tiny: <?php echo (thegem_get_option('h6_font_size')*0.44); ?>px;
 }
@@ -3108,7 +3108,6 @@ option,
 .gallery-item .overlay .subtitle,
 .cart_totals table .shipping td label,
 .woocommerce-cart-form.responsive .cart-item .gem-table .shop_table td.product-price,
-.portfolio-filters a,
 .gem-media-grid-2 .vc_gitem-animated-block .vc_gitem-zone-b .vc_gitem-post-data-source-post_excerpt > div,
 body .hamburger-minicart > .minicart .total strong,
 body .hamburger-minicart > .minicart ul li .quantity,
@@ -3171,6 +3170,109 @@ body .hamburger-minicart > .minicart ul li .quantity,
 .product-page__wrapper .size-guide{
     line-height: <?php echo (thegem_get_option('body_line_height')*0.875); ?>px;
 }
+<?php endif; ?>
+
+<?php if(thegem_get_option('body_custom_responsive_fonts')) : ?>
+<?php if(thegem_get_option('body_font_size_tablet')) : ?>
+	@media (max-width: 1199px) {
+		body,
+		.text-body,
+		.gem-table thead th,
+		.inline-column,
+		.inline-inside > *,
+		option,
+		.portfolio.columns-1 .portfolio-item .caption .subtitle,
+		.gallery-item .overlay .subtitle,
+		.cart_totals table .shipping td label,
+		.woocommerce-cart-form.responsive .cart-item .gem-table .shop_table td.product-price,
+		.gem-media-grid-2 .vc_gitem-animated-block .vc_gitem-zone-b .vc_gitem-post-data-source-post_excerpt > div,
+		body .hamburger-minicart > .minicart .total strong,
+		body .hamburger-minicart > .minicart ul li .quantity,
+		.page-breadcrumbs ul li:not(:last-child):after,
+		.product-page__wrapper .product-page__nav .product-page__nav-preview .nav-preview__info-title,
+		.product-page__wrapper .product-page__nav .product-page__nav-preview .nav-preview__info del,
+		.thegem-combobox-wrap .thegem-combobox,
+		.single-product-content-right .compare,
+		.single-product-content-right .yith-ywraq-add-to-quote{
+			font-size: <?php echo thegem_get_option('body_font_size_tablet'); ?>px;
+		}
+	}
+<?php endif; ?>
+<?php if(thegem_get_option('body_line_height_tablet')) : ?>
+	@media (max-width: 1199px) {
+		body,
+		.text-body,
+		.gem-table thead th,
+		.inline-column,
+		.inline-inside > *,
+		option,
+		.portfolio.columns-1 .portfolio-item .caption .subtitle,
+		.gallery-item .overlay .subtitle,
+		.cart_totals table .shipping td label,
+		.woocommerce-cart-form.responsive .cart-item .gem-table .shop_table td.product-price,
+		.gem-media-grid-2 .vc_gitem-animated-block .vc_gitem-zone-b .vc_gitem-post-data-source-post_excerpt > div,
+		body .hamburger-minicart > .minicart .total strong,
+		body .hamburger-minicart > .minicart ul li .quantity,
+		.page-breadcrumbs ul li:not(:last-child):after,
+		.product-page__wrapper .product-page__nav .product-page__nav-preview .nav-preview__info-title,
+		.product-page__wrapper .product-page__nav .product-page__nav-preview .nav-preview__info del,
+		.thegem-combobox-wrap .thegem-combobox,
+		.single-product-content-right .compare,
+		.single-product-content-right .yith-ywraq-add-to-quote{
+			line-height: <?php echo thegem_get_option('body_line_height_tablet'); ?>px;
+		}
+	}
+<?php endif; ?>
+<?php if(thegem_get_option('body_font_size_mobile')) : ?>
+	@media (max-width: 767px) {
+		body,
+		.text-body,
+		.gem-table thead th,
+		.inline-column,
+		.inline-inside > *,
+		option,
+		.portfolio.columns-1 .portfolio-item .caption .subtitle,
+		.gallery-item .overlay .subtitle,
+		.cart_totals table .shipping td label,
+		.woocommerce-cart-form.responsive .cart-item .gem-table .shop_table td.product-price,
+		.gem-media-grid-2 .vc_gitem-animated-block .vc_gitem-zone-b .vc_gitem-post-data-source-post_excerpt > div,
+		body .hamburger-minicart > .minicart .total strong,
+		body .hamburger-minicart > .minicart ul li .quantity,
+		.page-breadcrumbs ul li:not(:last-child):after,
+		.product-page__wrapper .product-page__nav .product-page__nav-preview .nav-preview__info-title,
+		.product-page__wrapper .product-page__nav .product-page__nav-preview .nav-preview__info del,
+		.thegem-combobox-wrap .thegem-combobox,
+		.single-product-content-right .compare,
+		.single-product-content-right .yith-ywraq-add-to-quote{
+			font-size: <?php echo thegem_get_option('body_font_size_mobile'); ?>px;
+		}
+	}
+<?php endif; ?>
+<?php if(thegem_get_option('body_line_height_mobile')) : ?>
+	@media (max-width: 767px) {
+		body,
+		.text-body,
+		.gem-table thead th,
+		.inline-column,
+		.inline-inside > *,
+		option,
+		.portfolio.columns-1 .portfolio-item .caption .subtitle,
+		.gallery-item .overlay .subtitle,
+		.cart_totals table .shipping td label,
+		.woocommerce-cart-form.responsive .cart-item .gem-table .shop_table td.product-price,
+		.gem-media-grid-2 .vc_gitem-animated-block .vc_gitem-zone-b .vc_gitem-post-data-source-post_excerpt > div,
+		body .hamburger-minicart > .minicart .total strong,
+		body .hamburger-minicart > .minicart ul li .quantity,
+		.page-breadcrumbs ul li:not(:last-child):after,
+		.product-page__wrapper .product-page__nav .product-page__nav-preview .nav-preview__info-title,
+		.product-page__wrapper .product-page__nav .product-page__nav-preview .nav-preview__info del,
+		.thegem-combobox-wrap .thegem-combobox,
+		.single-product-content-right .compare,
+		.single-product-content-right .yith-ywraq-add-to-quote{
+			line-height: <?php echo thegem_get_option('body_line_height_mobile'); ?>px;
+		}
+	}
+<?php endif; ?>
 <?php endif; ?>
 
 <?php if(thegem_get_option('body_text_transform')) : ?>
@@ -3391,6 +3493,7 @@ body .hamburger-minicart > .minicart ul li .quantity,
 input[type='submit'],
 .gem-pagination a,
 .gem-pagination .current,
+.gem-pagination .dots,
 .blog-load-more button,
 body .wp-block-button .wp-block-button__link,
 body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a,
@@ -3409,6 +3512,7 @@ body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a,
 input[type='submit'],
 .gem-pagination a,
 .gem-pagination .current,
+.gem-pagination .dots,
 .blog-load-more button,
 body .wp-block-button .wp-block-button__link,
 body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a,
@@ -3441,6 +3545,7 @@ body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a,
 input[type='submit'],
 .gem-pagination a,
 .gem-pagination .current,
+.gem-pagination .dots,
 .blog-load-more button,
 body .wp-block-button .wp-block-button__link,
 body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a,
@@ -3526,7 +3631,7 @@ body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a,
         font-family: '<?php echo thegem_get_option('slideshow_title_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_title_font_style')) : ?>
         .gem-nivoslider-title {
         font-style: normal;
@@ -3543,37 +3648,37 @@ body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a,
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_title_font_size')) : ?>
         .gem-nivoslider-title {
         font-size: <?php echo thegem_get_option('slideshow_title_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_title_line_height')) : ?>
         .gem-nivoslider-title {
         line-height: <?php echo thegem_get_option('slideshow_title_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_title_text_transform')) : ?>
         .gem-nivoslider-title {
         text-transform: <?php echo thegem_get_option('slideshow_title_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_title_letter_spacing') !== '') : ?>
         .gem-nivoslider-title {
         letter-spacing: <?php echo strval(thegem_get_option('slideshow_title_letter_spacing')); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_description_font_family')) : ?>
         .gem-nivoslider-description {
         font-family: '<?php echo thegem_get_option('slideshow_description_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_description_font_style')) : ?>
         .gem-nivoslider-description {
         font-style: normal;
@@ -3590,25 +3695,25 @@ body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a,
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_description_font_size')) : ?>
         .gem-nivoslider-description {
         font-size: <?php echo thegem_get_option('slideshow_description_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_description_line_height')) : ?>
         .gem-nivoslider-description {
         line-height: <?php echo thegem_get_option('slideshow_description_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_description_text_transform')) : ?>
         .gem-nivoslider-description {
         text-transform: <?php echo thegem_get_option('slideshow_description_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('slideshow_description_letter_spacing') !== '') : ?>
         .gem-nivoslider-description {
         letter-spacing: <?php echo strval(thegem_get_option('slideshow_description_letter_spacing')); ?>px;
@@ -4683,7 +4788,7 @@ body .gem-testimonial-position{
         font-family: '<?php echo thegem_get_option('product_title_listing_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_listing_font_style')) : ?>
         .product-info .product-title.title-h6,
         .products .portfolio-item .wrap > .caption .title {
@@ -4703,28 +4808,28 @@ body .gem-testimonial-position{
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_listing_font_size')) : ?>
         .product-info .product-title.title-h6,
         .products .portfolio-item .wrap > .caption .title {
         font-size: <?php echo thegem_get_option('product_title_listing_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_listing_line_height')) : ?>
         .product-info .product-title.title-h6,
         .products .portfolio-item .wrap > .caption .title {
         line-height: <?php echo thegem_get_option('product_title_listing_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_listing_text_transform')) : ?>
         .product-info .product-title.title-h6,
         .products .portfolio-item .wrap > .caption .title {
         text-transform: <?php echo thegem_get_option('product_title_listing_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_listing_letter_spacing') !== '') : ?>
         .product-info .product-title.title-h6,
         .products .portfolio-item .wrap > .caption .title {
@@ -4741,7 +4846,7 @@ body .gem-testimonial-position{
         font-family: '<?php echo thegem_get_option('product_title_page_font_family'); ?>';
     }
     <?php endif; ?>
-    
+
     <?php if(thegem_get_option('product_title_page_font_style')) : ?>
     :root {
         --thegem-to-product-title-font-style: normal;
@@ -4771,7 +4876,7 @@ body .gem-testimonial-position{
     }
     <?php endif; ?>
     <?php endif; ?>
-    
+
     <?php if(thegem_get_option('product_title_page_font_size')) : ?>
     :root {
         --thegem-to-product-title-font-size: <?php echo thegem_get_option('product_title_page_font_size'); ?>px;
@@ -4784,7 +4889,7 @@ body .gem-testimonial-position{
         font-size: <?php echo (thegem_get_option('product_title_page_font_size')*0.5); ?>px;
     }
     <?php endif; ?>
-    
+
     <?php if(thegem_get_option('product_title_page_line_height')) : ?>
     :root {
         --thegem-to-product-title-line-height: <?php echo thegem_get_option('product_title_page_line_height'); ?>px;
@@ -4797,7 +4902,7 @@ body .gem-testimonial-position{
         line-height: <?php echo (thegem_get_option('product_title_page_line_height')*0.5); ?>px;
     }
     <?php endif; ?>
-    
+
     <?php if(thegem_get_option('product_title_page_text_transform')) : ?>
     :root {
         --thegem-to-product-title-text-transform: <?php echo thegem_get_option('product_title_page_text_transform'); ?>;
@@ -4807,7 +4912,7 @@ body .gem-testimonial-position{
         text-transform: <?php echo thegem_get_option('product_title_page_text_transform'); ?>;
     }
     <?php endif; ?>
-    
+
     <?php if(thegem_get_option('product_title_page_letter_spacing') !== '') : ?>
 :root {
     --thegem-to-product-title-letter-spacing: <?php echo strval(thegem_get_option('product_title_page_letter_spacing')); ?>px;
@@ -4820,13 +4925,13 @@ body .gem-testimonial-position{
     letter-spacing: <?php echo (thegem_get_option('product_title_page_letter_spacing')*0.5); ?>px;
 }
 <?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_widget_font_family')) : ?>
         .widget .gem-products-title {
         font-family: '<?php echo thegem_get_option('product_title_widget_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_widget_font_style')) : ?>
         .widget .gem-products-title {
         font-style: normal;
@@ -4843,37 +4948,40 @@ body .gem-testimonial-position{
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_widget_font_size')) : ?>
         .widget .gem-products-title {
         font-size: <?php echo thegem_get_option('product_title_widget_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_widget_line_height')) : ?>
         .widget .gem-products-title {
         line-height: <?php echo thegem_get_option('product_title_widget_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_widget_text_transform')) : ?>
         .widget .gem-products-title {
         text-transform: <?php echo thegem_get_option('product_title_widget_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_widget_letter_spacing') !== '') : ?>
         .widget .gem-products-title {
         letter-spacing: <?php echo strval(thegem_get_option('product_title_widget_letter_spacing')); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_cart_font_family')) : ?>
+        :root {
+            --thegem-to-product-title-cart-font-family: <?php echo thegem_get_option('product_title_cart_font_family'); ?>;
+        }
         .shop_table .product-name .product-title {
         font-family: '<?php echo thegem_get_option('product_title_cart_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_cart_font_style')) : ?>
         .shop_table .product-name .product-title {
         font-style: normal;
@@ -4890,31 +4998,31 @@ body .gem-testimonial-position{
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_cart_font_size')) : ?>
         .shop_table .product-name .product-title {
         font-size: <?php echo thegem_get_option('product_title_cart_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_cart_line_height')) : ?>
         .shop_table .product-name .product-title {
         line-height: <?php echo thegem_get_option('product_title_cart_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_cart_text_transform')) : ?>
         .shop_table .product-name .product-title {
         text-transform: <?php echo thegem_get_option('product_title_cart_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_title_cart_letter_spacing') !== '') : ?>
         .shop_table .product-name .product-title {
         letter-spacing: <?php echo strval(thegem_get_option('product_title_cart_letter_spacing')); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_listing_font_family')) : ?>
         .products .product-info .price ins,
         .products .product-info .price .amount,
@@ -4924,7 +5032,7 @@ body .gem-testimonial-position{
         font-family: '<?php echo thegem_get_option('product_price_listing_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_listing_font_style')) : ?>
         .products .product-info .price ins,
         .products .product-info .price .amount,
@@ -4953,7 +5061,7 @@ body .gem-testimonial-position{
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_listing_font_size')) : ?>
         .products .product-info .price ins,
         .products .product-info .price .amount,
@@ -4963,7 +5071,7 @@ body .gem-testimonial-position{
         font-size: <?php echo thegem_get_option('product_price_listing_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_listing_line_height')) : ?>
         .products .product-info .price ins,
         .products .product-info .price .amount,
@@ -4973,7 +5081,7 @@ body .gem-testimonial-position{
         line-height: <?php echo thegem_get_option('product_price_listing_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_listing_text_transform')) : ?>
         .products .product-info .price ins,
         .products .product-info .price .amount,
@@ -4983,7 +5091,7 @@ body .gem-testimonial-position{
         text-transform: <?php echo thegem_get_option('product_price_listing_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_listing_letter_spacing') !== '') : ?>
         .products .product-info .price ins,
         .products .product-info .price .amount,
@@ -4993,7 +5101,7 @@ body .gem-testimonial-position{
         letter-spacing: <?php echo strval(thegem_get_option('product_price_listing_letter_spacing')); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_page_font_family')) : ?>
         :root {
         --thegem-to-product-price-font-family: <?php echo thegem_get_option('product_price_page_font_family'); ?>;
@@ -5002,7 +5110,7 @@ body .gem-testimonial-position{
         font-family: '<?php echo thegem_get_option('product_price_page_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_page_font_style')) : ?>
         :root {
         --thegem-to-product-price-font-style: normal;
@@ -5029,7 +5137,7 @@ body .gem-testimonial-position{
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_page_font_size')) : ?>
         :root {
         --thegem-to-product-price-font-size: <?php echo strval(thegem_get_option('product_price_page_font_size')); ?>px;
@@ -5057,7 +5165,7 @@ body .gem-testimonial-position{
         font-size: <?php echo intval(thegem_get_option('product_price_page_font_size')*0.7857); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_page_line_height')) : ?>
         :root {
         --thegem-to-product-price-line-height: <?php echo strval(thegem_get_option('product_price_page_line_height')); ?>px;
@@ -5075,7 +5183,7 @@ body .gem-testimonial-position{
         line-height: <?php echo intval(thegem_get_option('product_price_page_line_height')*0.7857); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_page_text_transform')) : ?>
         :root {
         --thegem-to-product-price-text-transform: <?php echo thegem_get_option('product_price_page_text_transform'); ?>;
@@ -5084,7 +5192,7 @@ body .gem-testimonial-position{
         text-transform: <?php echo thegem_get_option('product_price_page_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_page_letter_spacing') !== '') : ?>
         :root {
         --thegem-to-product-price-letter-spacing: <?php echo strval(thegem_get_option('product_price_page_letter_spacing')); ?>;
@@ -5093,14 +5201,14 @@ body .gem-testimonial-position{
         letter-spacing: <?php echo strval(thegem_get_option('product_price_page_letter_spacing')); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_widget_font_family')) : ?>
         .widget .gem-products-price ins,
         .widget .gem-products-price .amount {
         font-family: '<?php echo thegem_get_option('product_price_widget_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_widget_font_style')) : ?>
         .widget .gem-products-price ins,
         .widget .gem-products-price .amount {
@@ -5120,35 +5228,35 @@ body .gem-testimonial-position{
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_widget_font_size')) : ?>
         .widget .gem-products-price ins,
         .widget .gem-products-price .amount {
         font-size: <?php echo thegem_get_option('product_price_widget_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_widget_line_height')) : ?>
         .widget .gem-products-price ins,
         .widget .gem-products-price .amount {
         line-height: <?php echo thegem_get_option('product_price_widget_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_widget_text_transform')) : ?>
         .widget .gem-products-price ins,
         .widget .gem-products-price .amount {
         text-transform: <?php echo thegem_get_option('product_price_widget_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_widget_letter_spacing') !== '') : ?>
         .widget .gem-products-price ins,
         .widget .gem-products-price .amount {
         letter-spacing: <?php echo strval(thegem_get_option('product_price_widget_letter_spacing')); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_cart_font_family')) : ?>
         :root {
         --thegem-to-product-price-cart-font-family: '<?php echo thegem_get_option('product_price_cart_font_family'); ?>';
@@ -5159,7 +5267,7 @@ body .gem-testimonial-position{
         font-family: '<?php echo thegem_get_option('product_price_cart_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_cart_font_style')) : ?>
         :root {
         --thegem-to-product-price-cart-font-style: normal;
@@ -5192,7 +5300,7 @@ body .gem-testimonial-position{
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_cart_font_size')) : ?>
         :root {
         --thegem-to-product-price-cart-font-size: <?php echo thegem_get_option('product_price_cart_font_size'); ?>px;
@@ -5206,7 +5314,7 @@ body .gem-testimonial-position{
         font-size: <?php echo thegem_get_option('product_price_cart_font_size')*0.8333; ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_cart_line_height')) : ?>
         :root {
         --thegem-to-product-price-cart-line-height: <?php echo thegem_get_option('product_price_cart_line_height'); ?>px;
@@ -5220,7 +5328,7 @@ body .gem-testimonial-position{
         line-height: <?php echo thegem_get_option('product_price_cart_line_height')*0.8333; ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_cart_text_transform')) : ?>
         :root {
         --thegem-to-product-price-cart-text-transform: <?php echo thegem_get_option('product_price_cart_text_transform'); ?>;
@@ -5231,7 +5339,7 @@ body .gem-testimonial-position{
         text-transform: <?php echo thegem_get_option('product_price_cart_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_price_cart_letter_spacing') !== '') : ?>
         :root {
         --thegem-to-product-price-cart-letter-spacing: <?php echo strval(thegem_get_option('product_price_cart_letter_spacing')); ?>px;
@@ -5326,10 +5434,9 @@ body .widget .tagcloud a,
 .gem-search-form.gem-search-form-style-light .search-field,
 .page-title-block.custom-page-title,
 .custom-footer,
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-form,
-.portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list,
+.portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-form,
+.portfolio-filters-list.style-standard:not(.single-filter, .style-standard-mobile) .portfolio-filter-item .portfolio-filter-item-list,
 .portfolio-sorting-select ul,
-.portfolio-filters-list.style-hidden .portfolio-filters-outer .portfolio-filters-area,
 .thegem-popup-notification .notification-message,
 body .vc_tta.vc_tta-color-thegem.vc_tta-style-classic .vc_tta-panel.vc_active .vc_tta-panel-heading,
 body .vc_tta.vc_tta-color-thegem.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-body,
@@ -5343,12 +5450,6 @@ body .vc_tta.vc_tta-color-thegem.vc_tta-style-classic .vc_tta-tab.vc_active > a,
 .thegem-fullscreen-search .search-results-section:nth-child(even) .pages-list .page-item article a,
 table.variations .thegem-select {
 	background-color: <?php echo thegem_get_option('main_background_color'); ?>;
-}
-@media (max-width: 991px) {
-	.portfolio-filters-list.style-standard .portfolio-filters-outer .portfolio-filters-area,
-	.portfolio-filters-list.style-sidebar .portfolio-filters-outer .portfolio-filters-area {
-		background-color: <?php echo thegem_get_option('main_background_color');?>
-	}
 }
 .portfolio.hover-gradient .portfolio-item .image .overlay .links a.icon:before,
 .gem-gallery-grid.hover-gradient .gallery-item .overlay a.icon::before,
@@ -5407,6 +5508,7 @@ body #primary-navigation #primary-menu > li.menu-item-cart > a.circle-count .min
 .wpb_wrapper .vc_progress_bar .vc_label_units,
 .portfolio-item .image .overlay .links a.icon:before,
 .portfolio.hover-title .portfolio-item .caption .title,
+.portfolio.hover-title .portfolio-item .caption .details,
 .portfolio.hover-title.columns-4 .portfolio-item .caption .title,
 .portfolio.hover-title .portfolio-item .caption .subtitle,
 .portfolio.hover-title .portfolio-item .caption .info,
@@ -5642,7 +5744,7 @@ body .gem-table-style-3 tr:nth-child(odd) td:nth-child(odd),
 .portfolio-filters-list .portfolio-search-filter .portfolio-search-filter-form input,
 .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-form input,
 .portfolio-filters-list .widget_product_search input,
-.portfolio-filters-list.style-standard .portfolio-filter-item .portfolio-filter-item-list .price-range-slider .slider-amount,
+.portfolio-filters-list.style-standard:not(.style-standard-mobile) .portfolio-filter-item .portfolio-filter-item-list .price-range-slider .slider-amount,
 body .vc_tta.vc_tta-color-thegem.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-heading,
 body .vc_tta.vc_tta-color-thegem.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-heading:hover,
 body .vc_tta.vc_tta-color-thegem.vc_tta-style-classic .vc_tta-panel .vc_tta-panel-heading:focus,
@@ -6061,7 +6163,8 @@ body .products .product-category a:hover .category-overlay,
 .portfolio.background-style-gray:not(.disabled-hover):not(.list-style) .portfolio-item:hover .wrap > .caption,
 .portfolio.background-style-gray:not(.disabled-hover).list-style .portfolio-item .wrap > .caption:hover,
 .portfolio.background-style-dark .portfolio-item .wrap > .caption,
-.gem-attribute-selector .gem-attribute-options li .text {
+.gem-attribute-selector .gem-attribute-options li .text,
+.gem-attribute-selector .gem-attribute-options li .image-hover {
 	background-color: <?php echo thegem_get_option('styled_elements_color_4'); ?>;
 }
 body .woocommerce .woocommerce-cart-form .actions .submit-buttons .checkout-button-button .checkout-button:hover,
@@ -6070,6 +6173,7 @@ body .woocommerce .wc-proceed-to-checkout .checkout-button-button .checkout-butt
 .related-posts-carousel .related-posts-navigation .gem-button.related-posts-next:hover,
 body .woocommerce-cart-checkout-steps-content .step.active,
 body .gem-attribute-selector.type-color .gem-attribute-options li.selected,
+body .gem-attribute-selector.type-image .gem-attribute-options li.selected,
 body .portfolio-filters-list .portfolio-filter-item.attribute-type-color ul li a.active .color:before,
 body .portfolio-filters-list .portfolio-filter-item.attribute-type-color ul li a:hover .color:before,
 body .portfolio-filters-list .widget_layered_nav ul li.chosen a.attribute-type-color .color:before,
@@ -6098,12 +6202,8 @@ body.woocommerce-cart-layout-modern .woocommerce .woocommerce-order .woocommerce
 .vertical-menu-item-widgets .vertical-minisearch.menu-item-ajax-search .sf-input {
 	color: <?php echo thegem_get_option('styled_elements_color_4'); ?>;
 }
-.version-new.news-grid.portfolio.hover-new-default .portfolio-item .image .links .caption .info,
-.version-new.news-grid.portfolio.hover-new-zooming-blur .portfolio-item .image .links .caption .info,
-.version-new.news-grid.portfolio.hover-new-vertical-sliding .portfolio-item .image .links .caption .info {
-	background-color: rgba(<?php echo implode(', ', hex_to_rgb(thegem_get_option('styled_elements_color_4'))); ?>, 0.7);
-}
-body .gem-attribute-selector .gem-attribute-options li .text:after {
+body .gem-attribute-selector .gem-attribute-options li .text:after,
+body .gem-attribute-selector .gem-attribute-options li .image-hover:after {
 	border-top-color: <?php echo thegem_get_option('styled_elements_color_4'); ?>;
 }
 <?php endif; ?>
@@ -6121,10 +6221,8 @@ body .gem-attribute-selector .gem-attribute-options li .text:after {
 .thegem-accordion__item{
 	border-top: 1px solid <?php echo thegem_get_option('divider_default_color'); ?>;
 }
-@media (max-width: 991px) {
-	.portfolio-filters-list.style-standard .portfolio-filters-area-scrollable .portfolio-filter-item {
-		border-top: 1px solid <?php echo thegem_get_option('divider_default_color'); ?>;
-	}
+.portfolio-filters-list.style-standard-mobile .portfolio-filters-area-scrollable .portfolio-filter-item {
+	border-top: 1px solid <?php echo thegem_get_option('divider_default_color'); ?>;
 }
 .blog-style-default article:not(.sticky),
 .thegem-accordion__item:last-child,
@@ -7319,14 +7417,17 @@ body,
 .shop-widget-area .gem-products-title a,
 .woocommerce-page ul.product_list_widget li a,
 .portfolio.hover-zooming-blur .portfolio-item .image .overlay .links .caption .subtitle,
+.portfolio.hover-zooming-blur .portfolio-item .image .overlay .links .caption .details,
 .portfolio.hover-zooming-blur .portfolio-item .image .overlay .links .caption .info,
 .portfolio.hover-horizontal-sliding .overlay .links .caption .info span.sep,
 .version-new.news-grid.hover-new-zooming-blur .portfolio-item .image .overlay .links .caption .subtitle,
+.version-new.news-grid.hover-new-zooming-blur .portfolio-item .image .overlay .links .caption .details,
 .version-new.news-grid.hover-new-zooming-blur .portfolio-item .image .overlay .links .caption .post-date,
 .version-new.news-grid.hover-new-zooming-blur .portfolio-item .image .overlay .links .caption .grid-post-meta a.icon.share:before,
 .version-new.news-grid.hover-new-zooming-blur .portfolio-item .image .overlay .links .portfolio-sharing-pane .socials-item,
 .version-new.news-grid.hover-new-zooming-blur .portfolio-item .links .caption .grid-post-meta .comments-link a,
 .version-default.news-grid.hover-default-zooming-blur .portfolio-item .image .overlay .links .caption .subtitle,
+.version-default.news-grid.hover-default-zooming-blur .portfolio-item .image .overlay .links .caption .details,
 .version-default.news-grid.hover-default-zooming-blur .portfolio-item .image .overlay .links .caption .post-date,
 .version-new.news-grid .portfolio-item .wrap > .caption .grid-post-meta .comments-link a,
 .version-new.news-grid .portfolio-item .wrap > .caption .grid-post-meta .zilla-likes,
@@ -7450,6 +7551,7 @@ h4,
 body .testimonials-style-2-item .testimonials-style-2-text.gem-testimonial-text,
 .diagram-wrapper.style-3 .digram-line-box .skill-title span,
 .portfolio.hover-zooming-blur .portfolio-item .image .overlay .links .caption .title,
+.portfolio.hover-zooming-blur .portfolio-item .image .overlay .links .caption .product-variations,
 .portfolio.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-sharing-pane .socials-item,
 .blog-style-masonry .entry-title.title-h4 a,
 .gem-basic-grid .post-title h4.entry-title a,
@@ -7890,6 +7992,7 @@ body .woocommerce .edit-address-form .form-row textarea.input-text::-webkit-inpu
 .products .product-bottom .add_to_cart_button,
 .products .product-bottom .added_to_cart,
 .products .product-bottom .add_to_wishlist,
+.products .product-bottom .button:is(.product_type_grouped, .product_type_external),
 .products .product-bottom .yith-wcwl-wishlistaddedbrowse a,
 .combobox-wrapper .combobox-button:before {
 	color: <?php echo thegem_get_option('system_icons_font'); ?>;
@@ -7942,6 +8045,9 @@ input[type='submit'],
 .single-product-content-right .compare.button{
     color: <?php echo thegem_get_option('button_text_basic_color'); ?> !important;
 }
+.gem-button svg {
+	fill: <?php echo thegem_get_option('button_text_basic_color'); ?>;
+}
 <?php endif; ?>
 
 <?php if(thegem_get_option('button_text_hover_color')) : ?>
@@ -7965,6 +8071,9 @@ input[type='submit']:hover,
 .single-product-content-right .yith-ywraq-add-to-quote a.button:hover,
 .single-product-content-right .compare.button:hover{
     color: <?php echo thegem_get_option('button_text_hover_color'); ?> !important;
+}
+.gem-button:hover svg {
+	fill: <?php echo thegem_get_option('button_text_hover_color'); ?>;
 }
 <?php endif; ?>
 
@@ -8064,6 +8173,9 @@ body .checkout-navigation-buttons .checkout-place-order button:hover,
 .woocommerce-checkout-layout-one-page-modern #checkout-login-popup .checkout-login .checkout-login-button button:hover {
 	color: <?php echo thegem_get_option('button_outline_text_basic_color'); ?>;
 }
+.gem-button.gem-button-style-outline svg {
+	fill:  <?php echo thegem_get_option('button_outline_text_basic_color'); ?>;
+}
 <?php endif; ?>
 
 <?php if(thegem_get_option('button_outline_text_hover_color')) : ?>
@@ -8075,6 +8187,9 @@ body.woocommerce-cart-layout-modern .woocommerce-empty-cart .return-to-shop .gem
 body .checkout-navigation-buttons .checkout-place-order button,
 .woocommerce-checkout-layout-one-page-modern #checkout-login-popup .checkout-login .checkout-login-button button {
 	color: <?php echo thegem_get_option('button_outline_text_hover_color'); ?>;
+}
+.gem-button.gem-button-style-outline:hover svg {
+	fill:  <?php echo thegem_get_option('button_outline_text_hover_color'); ?>;
 }
 <?php endif; ?>
 
@@ -8218,7 +8333,7 @@ body .gem-attribute-selector.type-label .gem-attribute-options li:hover .label,
 .portfolio-filters-list .widget .price_slider .ui-slider-handle,
 .portfolio-filters-list .widget .price_slider .ui-slider-handle + span,
 .thegem-fullscreen-search .top-searches .top-search-item:hover {
-	background-color: <?php echo thegem_get_option('widget_hover_link_color'); ?>;
+	background: <?php echo thegem_get_option('widget_hover_link_color'); ?>;
 }
 <?php endif; ?>
 
@@ -8303,11 +8418,16 @@ body #colophon .widget .gem-testimonial-position,
 <?php endif; ?>
 
 <?php if(thegem_get_option('portfolio_date_color')) : ?>
+:root {
+	--thegem-to-portfolio-date-color: <?php echo thegem_get_option('portfolio_date_color'); ?>;
+}
 .portfolio-item .caption .info,
 .portfolio.background-style-gray:not(.disabled-hover):not(.list-style) .portfolio-item:hover .wrap > .caption .subtitle,
 .portfolio.background-style-gray:not(.disabled-hover).list-style .portfolio-item .wrap > .caption:hover .subtitle,
+.portfolio.background-style-gray.version-alternative:not(.disabled-hover):not(.list-style) .portfolio-item:hover .wrap > .caption .zilla-likes,
 .portfolio.background-style-dark:not(.list-style) .portfolio-item:not(:hover) .wrap > .caption .subtitle,
 .portfolio.background-style-dark.list-style .portfolio-item .wrap > .caption:not(:hover) .subtitle,
+.portfolio.background-style-dark.version-alternative:not(.list-style) .portfolio-item:not(:hover) .wrap > .caption .zilla-likes,
 .news-grid.hover-horizontal-sliding .portfolio-item .image .links .caption .author .author-name,
 .news-grid.hover-horizontal-sliding .portfolio-item .image .links .caption .author .author-name a {
 	color: <?php echo thegem_get_option('portfolio_date_color'); ?>;
@@ -8339,25 +8459,29 @@ body #colophon .widget .gem-testimonial-position,
 <?php endif; ?>
 
 <?php if(thegem_get_option('portfolio_filter_button_color')) : ?>
-.portfolio .portfolio-filters a {
+.portfolio .portfolio-filters a,
+.portfolio-top-panel-row.filter-style-buttons .portfolio-filters-more-button {
 	color: <?php echo thegem_get_option('portfolio_filter_button_color'); ?>;
 }
 <?php endif; ?>
 
 <?php if(thegem_get_option('portfolio_filter_button_background_color')) : ?>
-.portfolio .portfolio-filters a {
+.portfolio .portfolio-filters a,
+.portfolio-top-panel-row.filter-style-buttons .portfolio-filters-more-button {
 	background-color: <?php echo thegem_get_option('portfolio_filter_button_background_color'); ?>;
 }
 <?php endif; ?>
 
 <?php if(thegem_get_option('portfolio_filter_button_hover_color')) : ?>
-.portfolio .portfolio-filters a:hover {
+.portfolio .portfolio-filters a:hover,
+.portfolio-top-panel-row.filter-style-buttons .portfolio-filters-more-button:hover {
 	color: <?php echo thegem_get_option('portfolio_filter_button_hover_color'); ?>;
 }
 <?php endif; ?>
 
 <?php if(thegem_get_option('portfolio_filter_button_hover_background_color')) : ?>
-.portfolio .portfolio-filters a:hover {
+.portfolio .portfolio-filters a:hover,
+.portfolio-top-panel-row.filter-style-buttons .portfolio-filters-more-button:hover {
 	background-color: <?php echo thegem_get_option('portfolio_filter_button_hover_background_color'); ?>;
 }
 <?php endif; ?>
@@ -8371,6 +8495,9 @@ body #colophon .widget .gem-testimonial-position,
 <?php if(thegem_get_option('portfolio_filter_button_active_background_color')) : ?>
 .portfolio .portfolio-filters a.active {
 	background-color: <?php echo thegem_get_option('portfolio_filter_button_active_background_color'); ?>;
+}
+.portfolio-top-panel-row.filter-style-buttons .portfolio-filters-more-dropdown a:hover {
+	color: <?php echo thegem_get_option('portfolio_filter_button_active_background_color'); ?>;
 }
 <?php endif; ?>
 
@@ -8425,8 +8552,8 @@ body #colophon .widget .gem-testimonial-position,
 .row .vc_carousel-control .icon-prev,
 .thegem_pf_item .post-meta-navigation a,
 .thegem_pf_item .post-meta-left .post-meta-date:before,
-.extended-carousel-grid .extended-products-carousel .owl-nav .owl-prev div,
-.extended-carousel-grid .extended-products-carousel .owl-nav .owl-next div {
+.extended-carousel-grid .owl-carousel .owl-nav .owl-prev div,
+.extended-carousel-grid .owl-carousel .owl-nav .owl-next div {
 	color: <?php echo thegem_get_option('sliders_arrow_color'); ?>;
 }
 <?php endif; ?>
@@ -8441,8 +8568,8 @@ body #colophon .widget .gem-testimonial-position,
 .portfolio.portfolio-slider .portolio-slider-next span,
 .gem-gallery .gem-gallery-thumbs-navigation .gem-prev:not(:hover):after,
 .gem-gallery .gem-gallery-thumbs-navigation .gem-next:not(:hover):after,
-.extended-carousel-grid .extended-products-carousel .owl-nav .owl-prev div.position-on,
-.extended-carousel-grid .extended-products-carousel .owl-nav .owl-next div.position-on {
+.extended-carousel-grid .owl-carousel .owl-nav .owl-prev div.position-on,
+.extended-carousel-grid .owl-carousel .owl-nav .owl-next div.position-on {
 	background-color: <?php echo thegem_get_option('sliders_arrow_background_color'); ?>;
 }
 <?php endif; ?>
@@ -8460,8 +8587,8 @@ body #colophon .widget .gem-testimonial-position,
 .portfolio.portfolio-slider .portolio-slider-next span,
 .portfolio.portfolio-slider .portolio-slider-prev:hover span,
 .portfolio.portfolio-slider .portolio-slider-next:hover span,
-.extended-carousel-grid .extended-products-carousel .owl-nav .owl-prev:hover div.position-on,
-.extended-carousel-grid .extended-products-carousel .owl-nav .owl-next:hover div.position-on {
+.extended-carousel-grid .owl-carousel .owl-nav .owl-prev:hover div.position-on,
+.extended-carousel-grid .owl-carousel .owl-nav .owl-next:hover div.position-on {
 	color: <?php echo thegem_get_option('sliders_arrow_hover_color'); ?>;
 }
 <?php endif; ?>
@@ -8477,8 +8604,8 @@ body #colophon .widget .gem-testimonial-position,
 .row .vc_images_carousel .vc_carousel-control .icon-next:hover,
 .portfolio.portfolio-slider .portolio-slider-prev:hover span,
 .portfolio.portfolio-slider .portolio-slider-next:hover span,
-.extended-carousel-grid .extended-products-carousel .owl-nav .owl-prev:hover div.position-on,
-.extended-carousel-grid .extended-products-carousel .owl-nav .owl-next:hover div.position-on {
+.extended-carousel-grid .owl-carousel .owl-nav .owl-prev:hover div.position-on,
+.extended-carousel-grid .owl-carousel .owl-nav .owl-next:hover div.position-on {
 	background-color: <?php echo thegem_get_option('sliders_arrow_background_hover_color'); ?>;
 }
 <?php endif; ?>
@@ -8741,6 +8868,9 @@ body .gem-testimonials.fullwidth-block .gem-next:hover:after {
 .woocommerce-info:before {
 	color: <?php echo thegem_get_option('icons_symbol_color'); ?>;
 }
+.gem-icon svg {
+	fill: <?php echo thegem_get_option('icons_symbol_color'); ?>;
+}
 <?php endif; ?>
 
 <?php if(thegem_get_option('icons_portfolio_gallery_hover_color')) : ?>
@@ -8806,13 +8936,18 @@ body .gem-testimonials.fullwidth-block .gem-next:hover:after {
 .gallery-item .overlay .title,
 .gallery-item .overlay .subtitle,
 .gallery-item .overlay a.icon:before,
+.gallery-item .overlay a.icon i,
 .gem-gallery .gem-gallery-preview-carousel-wrap:hover .gem-prev:after,
 .gem-gallery .gem-gallery-preview-carousel-wrap:hover .gem-next:after,
 .gem-gallery .gem-gallery-preview-carousel-wrap .gem-gallery-item a:after,
+.gem-gallery .gem-gallery-preview-carousel-wrap .gem-gallery-item a i,
 .gem-gallery .gem-gallery-preview-carousel-wrap .gem-gallery-item .gem-gallery-caption,
 .gem-gallery-hover-zooming-blur .gem-gallery-preview-carousel-wrap .gem-gallery-item a:after,
+.gem-gallery-hover-zooming-blur .gem-gallery-preview-carousel-wrap .gem-gallery-item a i,
 .gem-gallery-hover-gradient .gem-gallery-preview-carousel-wrap .gem-gallery-item a:after,
+.gem-gallery-hover-gradient .gem-gallery-preview-carousel-wrap .gem-gallery-item a i,
 .gem-simple-gallery .gem-gallery-item a:after,
+.gem-simple-gallery .gem-gallery-item a i,
 .portfolio.hover-gradient .portfolio-item .image .overlay .links .caption .info a,
 .portfolio.hover-gradient .portfolio-item .image .overlay .links .caption .info span.sep,
 .portfolio.hover-gradient .portfolio-item .image .overlay .links .caption .subtitle,
@@ -8833,6 +8968,7 @@ body .gem-testimonials.fullwidth-block .gem-next:hover:after {
 .version-default.news-grid.title-on-hover .portfolio-item .image .links .caption .author,
 .version-default.news-grid .portfolio-item .links .caption .grid-post-meta .grid-post-meta-comments-likes a,
 .version-new.news-grid.portfolio.title-on-page .portfolio-item .image .links .caption .info a,
+.version-new.news-grid.portfolio.title-on-page .portfolio-item .image .links .caption .info span,
 .version-new.news-grid.portfolio.title-on-page .portfolio-item .image .links .caption .info .sep,
 .news-grid.portfolio.hover-default-zooming-blur .portfolio-item .image .overlay .caption .title > *,
 .version-default.news-grid.hover-default-zooming-blur .portfolio-item .image .links .caption .author,
@@ -8855,14 +8991,6 @@ body .gem-testimonials.fullwidth-block .gem-next:hover:after {
 }
 .gem-pagination a,
 .gem-pagination .current {
-	border: 2px solid <?php echo thegem_get_option('pagination_basic_color'); ?>;
-}
-.gem-pagination .prev,
-.gem-pagination .next {
-	background-color: <?php echo thegem_get_option('pagination_basic_color'); ?>;
-}
-.gem-pagination a,
-.gem-pagination .current {
 	color: <?php echo thegem_get_option('pagination_basic_color'); ?>;
 }
 body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a {
@@ -8882,13 +9010,12 @@ body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a {
     --thegem-to-pagination-background-color: <?php echo thegem_get_option('pagination_basic_background_color'); ?>;
 }
 .gem-pagination a,
-.gem-pagination .current {
+.gem-pagination .current,
+.gem-pagination .dots {
 	background-color: <?php echo thegem_get_option('pagination_basic_background_color'); ?>;
 }
 .gem-pagination a:hover,
-.gem-pagination .current,
-.gem-pagination .prev,
-.gem-pagination .next {
+.gem-pagination .current {
 	color: <?php echo thegem_get_option('pagination_basic_background_color'); ?>;
 }
 body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page a {
@@ -8928,9 +9055,6 @@ body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-next a:hover {
 .gem-pagination .current {
 	background-color: <?php echo thegem_get_option('pagination_active_color'); ?>;
 }
-.gem-pagination .current {
-	border-color: <?php echo thegem_get_option('pagination_active_color'); ?>;
-}
 body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page.vc_grid-active a {
 	background-color: <?php echo thegem_get_option('pagination_active_color'); ?> !important;
 }
@@ -8952,7 +9076,7 @@ body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page.vc_grid-active
 .vc_pagination.vc_pagination-style-thegem.vc_pagination-shape-circle .vc_pagination-trigger:hover,
 .row .theme-default .nivo-controlNav a,
 .product-gallery .owl-dots .owl-dot span,
-.extended-carousel-grid .owl-dots .owl-dot span {
+.extended-carousel-grid .owl-carousel .owl-dots .owl-dot span {
 	background-color: <?php echo thegem_get_option('mini_pagination_color'); ?>;
 }
 .portfolio-filters-list .portfolio-filter-item.single .portfolio-filter-item-list ul li a:before {
@@ -8972,7 +9096,7 @@ body .vc_grid-pagination .vc_grid-pagination-list li.vc_grid-page.vc_grid-active
 .vc_pagination.vc_pagination-style-thegem.vc_pagination-shape-circle .vc_active .vc_pagination-trigger,
 .row .theme-default .nivo-controlNav a.active,
 .product-gallery .owl-dots .owl-dot.active span,
-.extended-carousel-grid .owl-dots .owl-dot.active span {
+.extended-carousel-grid .owl-carousel .owl-dots .owl-dot.active span {
 	background-color: <?php echo thegem_get_option('mini_pagination_active_color'); ?>;
 }
 <?php endif; ?>
@@ -9164,6 +9288,9 @@ body .breadcrumbs a:hover {
 <?php endif; ?>
 
 <?php if(thegem_get_option('product_title_cart_color')) : ?>
+:root {
+    --thegem-to-product-title-cart-color: <?php echo thegem_get_option('product_title_cart_color'); ?>;
+}
 body .shop_table.cart .product-name .product-title,
 body .shop_table.cart .product-name .product-title a {
 	color: <?php echo thegem_get_option('product_title_cart_color'); ?>;
@@ -10312,6 +10439,22 @@ body {
 <?php endif; ?>
 <?php endif; ?>
 
+<?php if(thegem_get_option('page_layout_style') == 'fullwidth') : ?>
+<?php if(thegem_get_option('main_background_type') == 'image'): ?>
+<?php if(thegem_get_option('main_background_image_color')) : ?>
+body {
+	background-color: <?php echo thegem_get_option('main_background_image_color'); ?>;
+}
+<?php endif; ?>
+<?php else : ?>
+<?php if(thegem_get_option('main_background_color')) : ?>
+body {
+	background-color: <?php echo thegem_get_option('main_background_color'); ?>;
+}
+<?php endif; ?>
+<?php endif; ?>
+<?php endif; ?>
+
 <?php if(thegem_get_option('basic_inner_background_type') == 'image'): ?>
 <?php if(thegem_get_option('basic_inner_background_image')) : ?>
 #page {
@@ -10555,6 +10698,9 @@ body {
 
 <?php if(thegem_get_option('main_background_type') == 'image'): ?>
 <?php if(thegem_get_option('main_background_image')) : ?>
+:root {
+	--thegem-to-main-bg-image-color: <?php echo thegem_get_option('main_background_image_color'); ?>;
+}
 .block-content {
 	background-image: url('<?php echo thegem_get_option('main_background_image'); ?>');
 	background-repeat: <?php echo (thegem_get_option('main_background_image_repeat') ? '' : 'no-'); ?>repeat;
@@ -11001,7 +11147,7 @@ body {
         font-family: '<?php echo thegem_get_option('product_grid_title_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_title_font_style')) : ?>
         :root {
         --thegem-to-product-grid-title-font-style: normal;
@@ -11028,7 +11174,7 @@ body {
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_title_font_size')) : ?>
         :root {
         --thegem-to-product-grid-title-font-size: <?php echo thegem_get_option('product_grid_title_font_size'); ?>px;
@@ -11042,7 +11188,7 @@ body {
         }
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_title_line_height')) : ?>
         :root {
         --thegem-to-product-grid-title-line-height: <?php echo thegem_get_option('product_grid_title_line_height'); ?>px;
@@ -11057,7 +11203,7 @@ body {
         }
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_title_text_transform')) : ?>
         :root {
         --thegem-to-product-grid-title-text-transform: <?php echo thegem_get_option('product_grid_title_text_transform'); ?>;
@@ -11066,7 +11212,7 @@ body {
         text-transform: <?php echo thegem_get_option('product_grid_title_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_title_letter_spacing') !== '') : ?>
         :root {
         --thegem-to-product-grid-title-letter-spacing: <?php echo strval(thegem_get_option('product_grid_title_letter_spacing')); ?>px;
@@ -11103,21 +11249,21 @@ body {
 	.portfolio.extended-products-grid.caption-container-preset-light .portfolio-item .image .overlay .links .caption .title,
 	.portfolio.extended-products-grid.caption-container-preset-solid .portfolio-item .image .overlay .links .caption .title,
 	.portfolio.extended-products-grid.caption-container-preset-transparent .portfolio-item .image .overlay .links .caption .title,
-	.portfolio.extended-products-grid.caption-container-preset-light .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple,
-	.portfolio.extended-products-grid.caption-container-preset-solid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple,
-	.portfolio.extended-products-grid.caption-container-preset-transparent .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple,
-	.portfolio.extended-products-grid.caption-container-preset-light .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable,
-	.portfolio.extended-products-grid.caption-container-preset-solid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable,
-	.portfolio.extended-products-grid.caption-container-preset-transparent .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable {
+	.portfolio.extended-products-grid.caption-container-preset-light .portfolio-item .caption .cart.type_button.simple-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-solid .portfolio-item .caption .cart.type_button.simple-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-transparent .portfolio-item .caption .cart.type_button.simple-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-light .portfolio-item .caption .cart.type_button.variable-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-solid .portfolio-item .caption .cart.type_button.variable-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-transparent .portfolio-item .caption .cart.type_button.variable-type-button .button {
 	color: <?php echo thegem_get_option('product_grid_title_color_on_image'); ?>;
 	}
 
-	.portfolio.extended-products-grid.caption-container-preset-light .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple,
-	.portfolio.extended-products-grid.caption-container-preset-solid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple,
-	.portfolio.extended-products-grid.caption-container-preset-transparent .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple,
-	.portfolio.extended-products-grid.caption-container-preset-light .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable,
-	.portfolio.extended-products-grid.caption-container-preset-solid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable,
-	.portfolio.extended-products-grid.caption-container-preset-transparent .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable {
+	.portfolio.extended-products-grid.caption-container-preset-light .portfolio-item .caption .cart.type_button.simple-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-solid .portfolio-item .caption .cart.type_button.simple-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-transparent .portfolio-item .caption .cart.type_button.simple-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-light .portfolio-item .caption .cart.type_button.variable-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-solid .portfolio-item .caption .cart.type_button.variable-type-button .button,
+	.portfolio.extended-products-grid.caption-container-preset-transparent .portfolio-item .caption .cart.type_button.variable-type-button .button {
 	border-color: <?php echo thegem_get_option('product_grid_title_color_on_image'); ?>;
 	}
 
@@ -11138,7 +11284,7 @@ body {
         font-family: '<?php echo thegem_get_option('product_grid_category_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_font_style')) : ?>
         :root {
         --thegem-to-product-grid-category-font-style: normal;
@@ -11168,7 +11314,7 @@ body {
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_font_size')) : ?>
         :root {
         --thegem-to-product-grid-category-font-size: <?php echo thegem_get_option('product_grid_category_font_size'); ?>px;
@@ -11178,7 +11324,7 @@ body {
         font-size: <?php echo thegem_get_option('product_grid_category_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_line_height')) : ?>
         :root {
         --thegem-to-product-grid-category-line-height: <?php echo thegem_get_option('product_grid_category_line_height'); ?>px;
@@ -11188,7 +11334,7 @@ body {
         line-height: <?php echo thegem_get_option('product_grid_category_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_text_transform')) : ?>
         :root {
         --thegem-to-product-grid-category-text-transform: <?php echo thegem_get_option('product_grid_category_text_transform'); ?>;
@@ -11198,7 +11344,7 @@ body {
         text-transform: <?php echo thegem_get_option('product_grid_category_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_letter_spacing') !== '') : ?>
         :root {
         --thegem-to-product-grid-category-letter-spacing: <?php echo strval(thegem_get_option('product_grid_category_letter_spacing')); ?>px;
@@ -11339,7 +11485,7 @@ body {
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_border_width')) : ?>
-	.portfolio.extended-products-grid .portfolio-item .caption a.add_to_cart_button.type_button,
+	.portfolio.extended-products-grid .portfolio-item .caption .cart.type_button .button,
 	.thegem-popup-notification .notification-message a.button {
 	border-width: <?php echo thegem_get_option('product_grid_button_border_width'); ?>px;
 	border-style: solid;
@@ -11347,85 +11493,85 @@ body {
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_border_radius') !== '') : ?>
-	.portfolio.extended-products-grid .portfolio-item .caption a.add_to_cart_button.type_button,
+	.portfolio.extended-products-grid .portfolio-item .caption .cart.type_button .button,
 	.thegem-popup-notification .notification-message a.button {
 	border-radius: <?php echo thegem_get_option('product_grid_button_border_radius'); ?>px;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_add_to_cart_color')) : ?>
-	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple {
+	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption .cart.type_button.simple-type-button .button {
 	color: <?php echo thegem_get_option('product_grid_button_add_to_cart_color'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_add_to_cart_color_hover')) : ?>
-	.portfolio.extended-products-grid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple:hover {
+	.portfolio.extended-products-grid .portfolio-item .caption .cart.type_button.simple-type-button .button:hover {
 	color: <?php echo thegem_get_option('product_grid_button_add_to_cart_color_hover'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_add_to_cart_background')) : ?>
-	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple {
+	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption .cart.type_button.simple-type-button .button {
 	background-color: <?php echo thegem_get_option('product_grid_button_add_to_cart_background'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_add_to_cart_background_hover')) : ?>
-	.portfolio.extended-products-grid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple:hover {
+	.portfolio.extended-products-grid .portfolio-item .caption .cart.type_button.simple-type-button .button:hover {
 	background-color: <?php echo thegem_get_option('product_grid_button_add_to_cart_background_hover'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_add_to_cart_border_color')) : ?>
-	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple {
+	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption .cart.type_button.simple-type-button .button {
 	border-color: <?php echo thegem_get_option('product_grid_button_add_to_cart_border_color'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_add_to_cart_border_color_hover')) : ?>
-	.portfolio.extended-products-grid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_simple:hover {
+	.portfolio.extended-products-grid .portfolio-item .caption .cart.type_button.simple-type-button .button:hover {
 	border-color: <?php echo thegem_get_option('product_grid_button_add_to_cart_border_color_hover'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_select_options_color')) : ?>
-	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable,
+	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption .cart.type_button.variable-type-button .button,
 	.thegem-popup-notification .notification-message a.button {
 	color: <?php echo thegem_get_option('product_grid_button_select_options_color'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_select_options_color_hover')) : ?>
-	.portfolio.extended-products-grid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable:hover,
+	.portfolio.extended-products-grid .portfolio-item .caption .cart.type_button.variable-type-button .button:hover,
 	.thegem-popup-notification .notification-message a.button:hover {
 	color: <?php echo thegem_get_option('product_grid_button_select_options_color_hover'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_select_options_background')) : ?>
-	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable,
+	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption .cart.type_button.variable-type-button .button,
 	.thegem-popup-notification .notification-message a.button {
 	background-color: <?php echo thegem_get_option('product_grid_button_select_options_background'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_select_options_background_hover')) : ?>
-	.portfolio.extended-products-grid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable:hover,
+	.portfolio.extended-products-grid .portfolio-item .caption .cart.type_button.variable-type-button .button:hover,
 	.thegem-popup-notification .notification-message a.button:hover {
 	background-color: <?php echo thegem_get_option('product_grid_button_select_options_background_hover'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_select_options_border_color')) : ?>
-	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable,
+	.portfolio.extended-products-grid.caption-position-page .portfolio-item .caption .cart.type_button.variable-type-button .button,
 	.thegem-popup-notification .notification-message a.button {
 	border-color: <?php echo thegem_get_option('product_grid_button_select_options_border_color'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_button_select_options_border_color_hover')) : ?>
-	.portfolio.extended-products-grid .portfolio-item .caption a.add_to_cart_button.type_button.product_type_variable:hover,
+	.portfolio.extended-products-grid .portfolio-item .caption .cart.type_button.variable-type-button .button:hover,
 	.thegem-popup-notification .notification-message a.button:hover {
 	border-color: <?php echo thegem_get_option('product_grid_button_select_options_border_color_hover'); ?>;
 	}
@@ -11434,11 +11580,10 @@ body {
 
 <?php if (thegem_get_option('product_grid_icons_border_width')) : ?>
 	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
+	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption .icon a,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons a.icon,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons .icon a,
+	.portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
 	border-width: <?php echo thegem_get_option('product_grid_icons_border_width'); ?>px;
 	border-style: solid;
 	}
@@ -11446,85 +11591,87 @@ body {
 
 <?php if (thegem_get_option('product_grid_icons_border_radius') !== '') : ?>
 	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
+	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption .icon a,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons a.icon,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons .icon a,
+	.portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
 	border-radius: <?php echo thegem_get_option('product_grid_icons_border_radius'); ?>px;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_icons_color')) : ?>
+:root {
+	--thegem-to-product-grid-icon-color: <?php echo thegem_get_option('product_grid_icons_color'); ?>;
+}
 	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
+	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption .icon a,
+	.portfolio.extended-products-grid.caption-position-hover:is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons a.icon,
+	.portfolio.extended-products-grid.caption-position-hover:is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons .icon a,
+	.portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
 	color: <?php echo thegem_get_option('product_grid_icons_color'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_icons_color_hover')) : ?>
 	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button:hover {
+	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption .icon a:hover,
+	.portfolio.extended-products-grid.caption-position-hover:is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
+	.portfolio.extended-products-grid.caption-position-hover:is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons .icon a:hover,
+	.portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button:hover {
 	color: <?php echo thegem_get_option('product_grid_icons_color_hover'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_icons_caption_image_color')) : ?>
-	.portfolio.extended-products-grid.caption-position-image .portfolio-item .image .overlay .links .portfolio-icons a.icon {
+	.portfolio.extended-products-grid.caption-position-image .portfolio-item .image .overlay .links .portfolio-icons a.icon,
+	.portfolio.extended-products-grid.caption-position-image .portfolio-item .image .overlay .links .portfolio-icons .icon a {
 	color: <?php echo thegem_get_option('product_grid_icons_caption_image_color'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_icons_caption_image_color_hover')) : ?>
-	.portfolio.extended-products-grid.caption-position-image .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover {
+	.portfolio.extended-products-grid.caption-position-image .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
+	.portfolio.extended-products-grid.caption-position-image .portfolio-item .image .overlay .links .portfolio-icons .icon a:hover {
 	color: <?php echo thegem_get_option('product_grid_icons_caption_image_color_hover'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_icons_background')) : ?>
 	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
+	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption .icon a,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons a.icon,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons .icon a,
+	.portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
 	background-color: <?php echo thegem_get_option('product_grid_icons_background'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_icons_background_hover')) : ?>
 	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button:hover {
+	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption .icon a:hover,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons .icon a:hover,
+	.portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button:hover {
 	background-color: <?php echo thegem_get_option('product_grid_icons_background_hover'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_icons_border_color')) : ?>
 	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon,
-	.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
+	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption .icon a,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons a.icon,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons .icon a,
+	.portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
 	border-color: <?php echo thegem_get_option('product_grid_icons_border_color'); ?>;
 	}
 <?php endif; ?>
 
 <?php if (thegem_get_option('product_grid_icons_border_color_hover')) : ?>
 	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
-	.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button:hover {
+	.portfolio.extended-products-grid .portfolio-item .wrap .product-bottom.on-page-caption .icon a:hover,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons a.icon:hover,
+	.portfolio.extended-products-grid:is(.caption-position-hover, .caption-position-image):is(.hover-slide, .hover-fade) .portfolio-item .image .overlay .links .portfolio-icons .icon a:hover,
+	.portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button:hover {
 	border-color: <?php echo thegem_get_option('product_grid_icons_border_color_hover'); ?>;
 	}
 <?php endif; ?>
@@ -11540,7 +11687,7 @@ body {
         font-family: '<?php echo thegem_get_option('product_labels_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_labels_font_style')) : ?>
         .product .onsale,
         .product .new-label,
@@ -11572,7 +11719,7 @@ body {
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_labels_font_size')) : ?>
         .product-gallery-labels .product-labels .onsale,
         .product-gallery-labels .product-labels .new-label,
@@ -11592,7 +11739,7 @@ body {
         font-size: <?php echo thegem_get_option('product_labels_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_labels_line_height')) : ?>
         .product-gallery-labels .product-labels .onsale,
         .product-gallery-labels .product-labels .new-label,
@@ -11612,7 +11759,7 @@ body {
         line-height: <?php echo thegem_get_option('product_labels_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_labels_text_transform')) : ?>
         .product .onsale,
         .product .new-label,
@@ -11623,7 +11770,7 @@ body {
         text-transform: <?php echo thegem_get_option('product_labels_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_labels_letter_spacing') !== '') : ?>
         .portfolio.extended-products-grid .product .onsale,
         .portfolio.extended-products-grid .product .new-label,
@@ -11858,13 +12005,13 @@ body {
         font-family: '<?php echo thegem_get_option('product_grid_category_counts_font_family'); ?>';
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_counts_font_size')) : ?>
         .products-categories-widget .category-count {
         font-size: <?php echo thegem_get_option('product_grid_category_counts_font_size'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_counts_font_style')) : ?>
         .products-categories-widget .category-count {
         font-style: normal;
@@ -11881,19 +12028,19 @@ body {
             }
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_counts_line_height')) : ?>
         .products-categories-widget .category-count {
         line-height: <?php echo thegem_get_option('product_grid_category_counts_line_height'); ?>px;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_counts_text_transform')) : ?>
         .products-categories-widget .category-count {
         text-transform: <?php echo thegem_get_option('product_grid_category_counts_text_transform'); ?>;
         }
 	<?php endif; ?>
-	
+
 	<?php if(thegem_get_option('product_grid_category_counts_letter_spacing') !== '') : ?>
         .products-categories-widget .category-count {
         letter-spacing: <?php echo strval(thegem_get_option('product_grid_category_counts_letter_spacing')); ?>px;
@@ -11923,7 +12070,7 @@ body {
 	}
 <?php endif; ?>
 
-<?php if(thegem_get_option('product_archive_type') == 'grid') :
+<?php if(thegem_get_option('product_archive_type') !== 'legacy') :
 
 	if (thegem_get_option('product_archive_preset_type') == 'on_image') {
 		$hover_effect = thegem_get_option('product_archive_image_hover_effect_image');
@@ -11948,6 +12095,9 @@ body {
 		'image_gaps' => thegem_get_option('product_archive_size_desktop'),
 		'image_gaps_tablet' => thegem_get_option('product_archive_size_tablet'),
 		'image_gaps_mobile' => thegem_get_option('product_archive_size_mobile'),
+		'image_column_width' => thegem_get_option('product_archive_image_column_width_desktop'),
+		'image_column_width_tablet' => thegem_get_option('product_archive_image_column_width_tablet'),
+		'image_column_width_mobile' => thegem_get_option('product_archive_image_column_width_mobile'),
 		'product_show_categories' => thegem_get_option('product_archive_show_categories_desktop'),
 		'product_show_categories_tablet' => thegem_get_option('product_archive_show_categories_tablet'),
 		'product_show_categories_mobile' => thegem_get_option('product_archive_show_categories_mobile'),
@@ -11989,10 +12139,14 @@ body {
 		'button_options_background_color_hover' => thegem_get_option('product_archive_button_select_options_background_color_hover'),
 		'button_options_border_color_normal' => thegem_get_option('product_archive_button_select_options_border_color'),
 		'button_options_border_color_hover' => thegem_get_option('product_archive_button_select_options_border_color_hover'),
-		'filter_by_categories_order' => thegem_get_option('product_archive_filter_by_categories_order'),
-		'filter_by_attribute_order' => thegem_get_option('product_archive_filter_by_attribute_order'),
-		'filter_by_price_order' => thegem_get_option('product_archive_filter_by_price_order'),
-		'filter_by_status_order' => thegem_get_option('product_archive_filter_by_status_order'),
+		'truncate_description' => thegem_get_option('product_archive_truncate_description'),
+		'image_size' => thegem_get_option('product_archive_image_size'),
+		'image_ratio_full' => thegem_get_option('product_archive_image_ratio_full'),
+		'image_ratio_custom' => thegem_get_option('product_archive_image_ratio_custom'),
+		'image_aspect_ratio' => thegem_get_option('product_archive_image_aspect_ratio'),
+		'items_list_max_height' => thegem_get_option('product_archive_items_list_max_height'),
+		'items_list_max_height_tablet' => thegem_get_option('product_archive_items_list_max_height_tablet'),
+		'items_list_max_height_mobile' => thegem_get_option('product_archive_items_list_max_height_mobile'),
 	));
 	echo thegem_extended_products_render_styles($params);
 
@@ -12014,11 +12168,12 @@ body .woocommerce-wishlist .wishlist_table .product-add-to-cart .add_to_cart_but
 	content: '\e67d';
 }
 body .products .product-bottom .add_to_cart_button:before,
-body .portfolio.extended-products-grid .product-bottom .add_to_cart_button i.default:before,
-body .portfolio.extended-products-grid.hover-default .portfolio-item .caption .add_to_cart_button i.default:before,
-body .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .add_to_cart_button i.default:before,
-body .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .add_to_cart_button i.default:before,
-body .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .add_to_cart_button i.default:before {
+body .portfolio.extended-products-grid .product-bottom .cart i.default:before,
+body .portfolio.extended-products-grid.hover-default .portfolio-item .caption .cart i.default:before,
+body .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .cart i.default:before,
+body .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .cart i.default:before,
+body .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .cart i.default:before,
+body .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .cart i.default:before {
 	content: '\e67e';
 }
 body.mobile-cart-position-top #site-header .mobile-cart > a:before {
@@ -12041,11 +12196,11 @@ body .woocommerce-wishlist .wishlist_table .product-add-to-cart .add_to_cart_but
 	content: '\e67f';
 }
 body .products .product-bottom .add_to_cart_button:before,
-body .portfolio.extended-products-grid .product-bottom .add_to_cart_button i.default:before,
-body .portfolio.extended-products-grid.hover-default .portfolio-item .caption .add_to_cart_button i.default:before,
-body .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .add_to_cart_button i.default:before,
-body .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .add_to_cart_button i.default:before,
-body .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .add_to_cart_button i.default:before {
+body .portfolio.extended-products-grid .product-bottom .cart i.default:before,
+body .portfolio.extended-products-grid.hover-default .portfolio-item .caption .cart i.default:before,
+body .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .cart i.default:before,
+body .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .cart i.default:before,
+body .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .cart i.default:before {
 	content: '\e680';
 }
 body.mobile-cart-position-top #site-header .mobile-cart > a:before {

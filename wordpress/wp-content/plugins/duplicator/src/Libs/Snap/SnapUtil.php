@@ -98,12 +98,29 @@ class SnapUtil
     public static function versionCompare($version1, $version2, $operator = null, $vLevel = 0)
     {
         if ($vLevel > 0) {
-            $tV1      = array_slice(explode('.', $version1), 0, $vLevel);
+            $tV1      = array_slice(preg_split("/[.-]/", $version1), 0, $vLevel);
             $version1 = implode('.', $tV1);
-            $tV2      = array_slice(explode('.', $version2), 0, $vLevel);
+            $tV2      = array_slice(preg_split("/[.-]/", $version2), 0, $vLevel);
             $version2 = implode('.', $tV2);
         }
         return version_compare($version1, $version2, $operator);
+    }
+
+    /**
+     * Return version with level
+     *
+     * @param string $version version
+     * @param int    $vLevel  version level 0 is all levels
+     *
+     * @return string
+     */
+    public static function getVersion($version, $vLevel = 0)
+    {
+        if ($vLevel > 0) {
+            $tV1     = array_slice(preg_split("/[.-]/", $version), 0, $vLevel);
+            $version = implode('.', $tV1);
+        }
+        return $version;
     }
 
     /**
@@ -475,9 +492,9 @@ class SnapUtil
     }
 
     /**
-     * Sanitize valu to int
+     * Sanitize value to int
      *
-     * @param mixed $input   Input valie
+     * @param mixed $input   Input value
      * @param int   $default Default value if input isnt valid
      *
      * @return int
@@ -489,14 +506,32 @@ class SnapUtil
         } elseif (is_bool($input)) {
             return (int) $input;
         } else {
-            return filter_var($input, FILTER_VALIDATE_INT, array( 'options' => array( 'default' => $default)));
+            return filter_var($input, FILTER_VALIDATE_INT, array('options' => array( 'default' => $default)));
+        }
+    }
+
+    /**
+     * Sanitize value to bool
+     *
+     * @param mixed $input Input value
+     *
+     * @return bool
+     */
+    public static function sanitizeBool($input)
+    {
+        if (!is_scalar($input)) {
+            return false;
+        } elseif (is_bool($input)) {
+            return $input;
+        } else {
+            return filter_var($input, FILTER_VALIDATE_BOOLEAN);
         }
     }
 
     /**
      * Sanitize value from input $_GET, $_POST, $_REQUEST ...
      *
-     * @param int    $type             One of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV or Sanitize::INPUT_REQUEST
+     * @param int    $type             One of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV or SnapUtil::INPUT_REQUEST
      * @param string $varName          Name of a variable to get.
      * @param mixed  $default          default value if var $varName don't exists
      * @param string $extraAcceptChars extra accepted chars
@@ -515,7 +550,7 @@ class SnapUtil
     /**
      * Sanitize value from input $_GET, $_POST, $_REQUEST ...
      *
-     * @param int    $type    One of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV or Sanitize::INPUT_REQUEST
+     * @param int    $type    One of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV or SnapUtil::INPUT_REQUEST
      * @param string $varName Name of a variable to get.
      * @param int    $default default value if var $varName don't exists
      *
@@ -533,7 +568,25 @@ class SnapUtil
     /**
      * Sanitize value from input $_GET, $_POST, $_REQUEST ...
      *
-     * @param int    $type    One of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV or Sanitize::INPUT_REQUEST
+     * @param int       $type    One of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV or SnapUtil::INPUT_REQUEST
+     * @param string    $varName Name of a variable to get.
+     * @param null|bool $default default value if var $varName don't exists
+     *
+     * @return bool return default value if varName isn't defined
+     */
+    public static function sanitizeBoolInput($type, $varName, $default = false)
+    {
+        if (($value = self::getValueByType($type, $varName)) === null) {
+            return $default;
+        }
+
+        return self::sanitizeBool($value);
+    }
+
+    /**
+     * Sanitize value from input $_GET, $_POST, $_REQUEST ...
+     *
+     * @param int    $type    One of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV or SnapUtil::INPUT_REQUEST
      * @param string $varName Name of a variable to get.
      * @param mixed  $default default value if var $varName don't exists
      *
@@ -550,7 +603,7 @@ class SnapUtil
     /**
      * Return value input by type null if don't exists
      *
-     * @param int    $type    One of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV or Sanitize::INPUT_REQUEST
+     * @param int    $type    One of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, INPUT_ENV or SnapUtil::INPUT_REQUEST
      * @param string $varName Name of a variable to get.
      *
      * @return string|string[]|null
@@ -604,6 +657,7 @@ class SnapUtil
             $type = INPUT_POST;
         }
 
+        // phpcs:ignore PHPCompatibility.FunctionUse.NewFunctionParameters.filter_input_array_add_emptyFound
         $result = filter_input_array($type, $definition, $add_empty);
 
         if (!is_array($result)) {
@@ -673,6 +727,7 @@ class SnapUtil
             }
             return null;
         } else {
+            // phpcs:ignore PHPCompatibility.FunctionUse.NewFunctions.array_key_firstFound
             return array_key_first($arr);
         }
     }
@@ -804,7 +859,8 @@ class SnapUtil
                 // rand() can accept arguments in either order, PHP cannot.
                 $_max = max($min, $_max);
                 $_min = min($min, $_max);
-                $val  = random_int($_min, $_max);
+                // phpcs:ignore PHPCompatibility.FunctionUse.NewFunctions.random_intFound
+                $val = random_int($_min, $_max);
                 if (false !== $val) {
                     return abs(intval($val));
                 } else { // @phpstan-ignore-line
@@ -876,5 +932,26 @@ class SnapUtil
             return false;
         }
         return phpinfo($flags);
+    }
+
+    /**
+     * Wrapper for set_time_limit to see if it is enabled.
+     *
+     * @since 1.6.4
+     *
+     * @param int $limit Time limit.
+     *
+     * @return void
+     */
+    public static function duplicatorSetTimeLimit($limit = 0)
+    {
+
+        if (
+            function_exists('set_time_limit') &&
+            false === strpos(ini_get('disable_functions'), 'set_time_limit') &&
+            ! ini_get('safe_mode')
+        ) { // phpcs:ignore PHPCompatibility.IniDirectives.RemovedIniDirectives.safe_modeDeprecatedRemoved
+            @set_time_limit( $limit ); // @codingStandardsIgnoreLine
+        }
     }
 }

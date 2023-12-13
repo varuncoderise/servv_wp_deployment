@@ -9,9 +9,9 @@ Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
 Requires at least: 4.6
-Tested up to: 6.2
-Stable tag: 20230227
-Version:    20230227
+Tested up to: 6.4
+Stable tag: 20231026
+Version:    20231026
 Requires PHP: 5.6.20
 Text Domain: head-meta-data
 Domain Path: /languages
@@ -81,6 +81,8 @@ This outputs dynamic titles and descriptions, useful for SEO. You also can add c
 * Works with or without Gutenberg Block Editor
 * Regularly updated and "future proof"
 * Lightweight, fast, and secure
+
+> Pro version coming soon! :)
 
 
 **Shortcodes**
@@ -258,6 +260,25 @@ To ask a question, suggest a feature, or provide feedback, [contact me directly]
 
 If you like Head Meta Data, please take a moment to [give a 5-star rating](https://wordpress.org/support/plugin/head-meta-data/reviews/?rate=5#new-post). It helps to keep development and support going strong. Thank you!
 
+
+**20231026**
+
+* Updates default translation template
+* Updates custom banner notice
+* Tests on WordPress 6.4
+
+**20230715**
+
+* Improves support panel logic
+* Improves localization function
+* Improves plugin action link function
+* Improves `hmd_render_form()` function
+* Improves appearance of settings page
+* Changes plugin settings menu slug
+* Adds custom notice on settings page
+* Adds information about pro version
+* Updates default translation template
+* Tests on WordPress 6.3
 
 **820230227**
 

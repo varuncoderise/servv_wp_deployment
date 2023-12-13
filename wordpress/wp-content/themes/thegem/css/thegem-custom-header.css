@@ -216,10 +216,10 @@ body.single-thegem_templates.compose-mode .thegem-template-header .vc_row[data-v
 
 #site-header.header-light .thegem-vc-text .wpb_wrapper p,
 #site-header.header-light .thegem-vc-text .wpb_wrapper span,
-#site-header.header-light .thegem-te-heading .thegem-heading span{
+#site-header.header-light .thegem-template-wrapper .wpb-content-wrapper > .thegem-te-heading > .thegem-heading > span{
 	color: var(--header-builder-light-color) !important;
 }
-#site-header.header-light .thegem-te-heading .thegem-heading a:hover span{
+#site-header.header-light .thegem-template-wrapper .wpb-content-wrapper > .thegem-te-heading > .thegem-heading > a:hover > span{
 	color: var(--header-builder-light-color-hover) !important;
 }
 #site-header.header-light .vc_row,

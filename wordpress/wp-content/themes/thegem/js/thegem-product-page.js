@@ -25,7 +25,7 @@
                 productPageScripts.rating();
                 productPageScripts.productVariable();
                 productPageScripts.productQuantity();
-                if (!isExternalProduct && !isGroupedProduct && !isSubscriptionProduct && isAjaxLoad) {
+                if (isAjaxLoad) {
                     productPageScripts.ajaxAddToCart();
                 }
                 productPageScripts.ajaxAddToWishlist();
@@ -83,6 +83,14 @@
                         animateLine($tabNavItemActive[0], $line);
                     };
 
+                const vcFullWidthRowFix = () => {
+                    const $elements = $('[data-vc-full-width="true"]', $tabs);
+
+                    $elements.each(function () {
+                        $(this).trigger('VCRowFullwidthUpdate').trigger('resize')
+                    })
+                }
+
                 $tabNavItem.each(function (index, el) {
                     onLoadLine();
 
@@ -104,6 +112,8 @@
                     if (window.tgpLazyItems !== undefined) {
                         window.tgpLazyItems.scrollHandle();
                     }
+
+                    vcFullWidthRowFix();
                 });
             },
 
@@ -117,8 +127,15 @@
                     tabActiveClass = 'thegem-tabs__nav-item--active';
 
                 $accItemTitle.click(function(e){
-                    let current = $(this).attr('data-id'),
-                        currentAttrValue = '#' + current;
+                    const current = $(this).attr('data-id');
+                    const currentAttrValue = '#' + current;
+
+                    if ($(window).width() < 768) {
+                        setTimeout(() => {
+                            const topPosition = $(e.target).offset().top;
+                            window.scrollTo({top: topPosition});
+                        }, 250);
+                    }
 
                     if($(e.target).is('.thegem-accordion__item--active')){
                         $(this).removeClass(activeClass);
@@ -268,10 +285,11 @@
 
                     comboboxInit = () => {
                         if(!isComboboxInit) {
-                            productPageScripts.combobox();
+                            setTimeout(() => productPageScripts.combobox(), 250);
                             isComboboxInit = true;
                         }
                     },
+
                     comboboxRefresh = () => {
                         productPageScripts.combobox();
                         $(".thegem-combobox-wrap").find(".thegem-combobox:last-of-type").remove();
@@ -290,6 +308,13 @@
                             $combobox.find('.thegem-combobox__trigger').text(text);
                         });
                     });
+                });
+
+                $variationForm.on('woocommerce_update_variation_values', function() {
+                    comboboxRefresh();
+
+                    let text = $('.thegem-combobox__options-item').eq(0).text();
+                    $combobox.find('.thegem-combobox__trigger').text(text);
                 });
 
                 //huck for double submit form
@@ -314,33 +339,29 @@
                 $wrapper.on('click', '.single_add_to_cart_button', function (e, fragments, cart_hash) {
                     e.preventDefault();
 
-                    let $thisButton = $(this),
-                        $form = $thisButton.closest('form.cart'),
-                        id = $thisButton.val(),
-                        productQty = $form.find('input[name=quantity]').val() || 1,
-                        productId = $form.find('input[name=product_id]').val() || id,
-                        variationId = $form.find('input[name=variation_id]').val() || 0;
-
-                    let item = {};
-                    $form.find('select[name^=attribute]').each(function() {
-                        let attribute = $(this).attr("name");
-                        let attributeVal = $(this).val();
-
-                        item[attribute] = attributeVal;
+                    const $thisButton = $(this);
+                    const $form = $thisButton.closest('form');
+                    const data = {};
+                    $form.serializeArray().forEach(el => {
+                        data[el.name] = el.value
                     });
+                    data['action'] = 'thegem_ajax_add_to_cart';
+                    data['product_id'] = data.product_id ? data.product_id : $thisButton.val();
+                    data['add-to-cart'] = data['add-to-cart'] ? data['add-to-cart'] : data.product_id;
 
-                    let data = {
-                        action: 'woocommerce_ajax_add_to_cart',
-                        product_id: productId,
-                        product_sku: '',
-                        quantity: productQty,
-                        variation_id: variationId,
-                        variation: item,
-                    };
+                    // Check empty and out stock variation
+                    let variation_check = true
+                    const variationId = $form.find('input[name=variation_id]').val() || 0
 
-                    if ( $form.find('input[name=variation_id]').length > 0 && variationId == 0 ) {
-                        return false;
+                    if ($form.find('input[name=variation_id]').length > 0 && $form.data('product_variations').length > 0) {
+                        $form.data('product_variations').forEach(variation => {
+                            if (variationId == 0 || (variation.variation_id == variationId && !variation.is_in_stock)) {
+                                variation_check = false
+                            }
+                        })
                     }
+
+                    if (!variation_check) return false;
 
                     $(document.body).trigger('adding_to_cart', [$thisButton, data]);
 

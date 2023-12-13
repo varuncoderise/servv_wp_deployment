@@ -15,24 +15,28 @@ get_header(); ?>
 
 <?php
 	$thegem_no_margins_block = '';
+	$post_type_name = 'post';
 	if (is_archive() || is_home()) {
-		$thegem_term_id = get_queried_object() ? get_queried_object()->term_id : 0;
-		$thegem_output_settings = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings('blog'), 'blog');
+		$thegem_term_id = get_queried_object() && !empty(get_queried_object()->term_id) ? get_queried_object()->term_id : 0;
+		if(is_post_type_archive() && in_array(get_queried_object()->name, thegem_get_available_po_custom_post_types())) {
+			$post_type_name = get_queried_object()->name;
+			$thegem_output_settings = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings($post_type_name.'_archive'), 'cpt_archive');
+		} else {
+			$thegem_output_settings = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings('blog'), 'blog');
+		}
+		if($thegem_term_id) {
+			$tax = get_taxonomy(get_queried_object()->taxonomy);
+			if (!empty($tax->object_type) && !empty($tax->object_type[0])) {
+				$post_type_name = $tax->object_type[0];
+			}
+			$thegem_output_settings = thegem_get_output_page_settings($thegem_term_id, array(), 'term');
+		}
 		$thegem_page_data = array(
 			'title' => $thegem_output_settings,
 			'effects' => $thegem_output_settings,
 			'slideshow' => $thegem_output_settings,
 			'sidebar' => $thegem_output_settings
 		);
-		if(get_term_meta($thegem_term_id , 'thegem_taxonomy_custom_page_options', true)) {
-			$thegem_output_settings = thegem_get_output_page_settings($thegem_term_id, array(), 'term');
-			$thegem_page_data = array(
-				'title' => $thegem_output_settings,
-				'effects' => $thegem_output_settings,
-				'slideshow' => $thegem_output_settings,
-				'sidebar' => $thegem_output_settings
-			);
-		}
 
 		if($thegem_page_data['effects']['effects_no_bottom_margin']) {
 			$thegem_no_margins_block .= ' no-bottom-margin';
@@ -66,11 +70,16 @@ get_header(); ?>
 	}
 	echo thegem_page_title();
 
-	$archive_template_id = thegem_blog_archive_template();
+	if ($post_type_name == 'post') {
+		$archive_template_id = thegem_blog_archive_template();
+	} else {
+		$archive_template_id = thegem_cpt_archive_template();
+	}
+
 	if ( $archive_template_id && defined('WPB_VC_VERSION') ) { ?>
 		<div class="block-content">
 			<div class="fullwidth-content">
-				<div class="thegem-template-wrapper thegem-template-blog-archive thegem-template-single-product thegem-template-<?php the_ID(); ?>">
+				<div class="thegem-template-wrapper thegem-template-blog-archive thegem-template-<?php echo esc_attr($archive_template_id); ?>">
 					<?php
 					$template_custom_css = get_post_meta($archive_template_id, '_wpb_shortcodes_custom_css', true) . get_post_meta($archive_template_id, '_wpb_post_custom_css', true);
 					if($template_custom_css) {

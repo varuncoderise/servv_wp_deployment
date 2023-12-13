@@ -80,17 +80,17 @@ $isMenuVertical = thegem_get_option('header_layout') == 'vertical';
 
 if (!$isLegacy) {
 	$left_column_width_dynamic = $thegem_product_data['product_gallery_column_width'];
-	$left_column_width = $left_column_width_preset === $left_column_width_dynamic ? $left_column_width_preset : $left_column_width_dynamic;
+	$left_column_width = ($left_column_width_preset === $left_column_width_dynamic) ? $left_column_width_preset : $left_column_width_dynamic;
 	$left_column_position = $thegem_product_data['product_gallery_column_position'];
-	$left_column_order = $thegem_product_data['product_gallery_column_position'] == 'left' ? '0' : '1';
+	$left_column_order = ($thegem_product_data['product_gallery_column_position'] == 'left') ? '0' : '1';
 	$left_column_style = 'width: '.esc_attr($left_column_width.'%').'; float: '.esc_attr($left_column_position).'; order: '.esc_attr($left_column_order).';' ;
 
 	$right_column_width = 100 - $left_column_width.'%';
-	$right_column_position = $left_column_position == 'left' ? 'right' : 'left';
-	$right_column_order = $left_column_order == '0' ? '1' : '0';
-	$right_column_padding = !wp_is_mobile() && $isGridGallery ? $thegem_product_data['product_gallery_grid_top_margin'] : 0;
+	$right_column_position = ($left_column_position == 'left') ? 'right' : 'left';
+	$right_column_order = ($left_column_order == '0') ? '1' : '0';
+	$right_column_padding = (!wp_is_mobile() && $isGridGallery) ? $thegem_product_data['product_gallery_grid_top_margin'] : 0;
 	$right_column_style = 'width: '.esc_attr($right_column_width != '0%' ? $right_column_width : '100%').'; float: '.esc_attr($right_column_position).'; order: '.esc_attr($right_column_order).'; margin-top: '.esc_attr($right_column_width != '0%' ? '0' : '70px').'; padding-top: '.esc_attr($right_column_padding).'px; z-index: 1;';
-	
+
 	$centeredModeBoxedStyle = 'background-color: '.esc_attr($isCenteredModeBoxedBackground).'; box-shadow: 0 0 5px rgba(0, 0, 0, 0.05); padding: 70px 40px;';
 }
 
@@ -133,13 +133,13 @@ if ( post_password_required() ) {
 				<div class="<?=$right_column_class?> <?php if ($isCenteredMode): ?><?=$centeredModeClass?><?php endif;?>" <?php if ($isCenteredMode && $centeredModeGap > 0): ?>style="padding-top: <?=$centeredModeGap?>px;"<?php endif; ?>>
 					<?php if ($isCenteredMode): ?><div class="<?=$right_column_centered_class?>" <?php if ($isCenteredModeBoxed && $isCenteredModeBoxedBackground) : ?>style="<?=$centeredModeBoxedStyle?>"<?php endif; ?>><?php endif; ?>
 			<?php endif; ?>
-			
+
 			<?php do_action('woocommerce_single_product_summary'); ?>
 
 			<?php if ($isGalleryDisabled): ?>
 				<?php do_action('thegem_woocommerce_single_product_left'); ?>
 			<?php endif; ?>
-			
+
 			<?php if (!$isLegacy): ?><?php if ($isCenteredMode): ?></div><?php endif; ?></div><?php endif; ?>
 		</div>
 	</div>

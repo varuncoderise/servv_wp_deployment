@@ -337,7 +337,7 @@
 		} catch (e) {}
 	});
 
-	$( document.body ).on( 'wc_cart_emptied', function() {
+	$(document.body ).on( 'wc_cart_emptied', function() {
 		if($('.thegem-template-cart-empty').length == 0 && $('.woocommerce-empty-cart').length) {
 			$('.woocommerce-empty-cart').closest('.block-content').removeClass('no-top-margin no-bottom-margin');
 		}

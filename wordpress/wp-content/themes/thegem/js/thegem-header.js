@@ -55,12 +55,12 @@
 				self.updateStartTop();
 			});
 
-			$(window).scroll(function() {
+			$(window).on('scroll', function() {
 				self.scrollHandler();
 			});
 
 			if ($('#thegem-perspective').length) {
-				this.$page.scroll(function() {
+				this.$page.on('scroll', function() {
 					self.scrollHandler();
 				});
 			}
@@ -159,7 +159,9 @@
 				var $img = $('.site-title .site-logo a .logo img', this.$el);
 			}
 
-			if ($img.length && $img[0].complete) {
+			if (!$img.length) {
+				self.initializeHeight();
+			} else if ($img[0].complete) {
 				self.setMargin($img);
 				self.initializeHeight();
 			} else {
@@ -343,7 +345,7 @@
 			set: function (url, cachedData, callback) {
 				localCache.remove(url);
 				localCache.data[url] = cachedData;
-				if ($.isFunction(callback)) callback(cachedData);
+				if (typeof callback === "function") callback(cachedData);
 			}
 		};
 
@@ -406,6 +408,9 @@
 			$fullscreenSearchResults.find('.preloader-new').remove();
 			$fullscreenSearchResults.find('.result-sections').html('');
 
+			let scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+			$('.header-background, .top-area, .block-content, #page-title').css('padding-right', scrollbarWidth);
+
 			$('body').toggleClass('fullscreen-search-opened');
 
 			$('#thegem-perspective.modalview .perspective-menu-close').trigger('click');
@@ -428,6 +433,7 @@
 			e.preventDefault();
 			$('.menu-item-fullscreen-search').removeClass('active');
 			$fullscreenSearch.removeClass('active');
+			$('.header-background, .top-area, .block-content, #page-title').css('padding-right', 0);
 			$('body').removeClass('fullscreen-search-opened');
 			if (ajaxActive) {
 				ajax.abort();
@@ -438,7 +444,7 @@
 			$fullscreenSearchResults.find('.result-sections').html('');
 		});
 
-		$(document).keyup(function(e) {
+		$(document).on('keyup', function(e) {
 			if (e.key === "Escape") {
 				$('.fullscreen-search .sf-close').trigger('click');
 			}
@@ -448,7 +454,9 @@
 
 			const $ajaxSearchParams = $('#ajax-search-params'),
 				postTypes = $ajaxSearchParams.data('post-types'),
-				postTypesPpp = $ajaxSearchParams.data('post-types-ppp');
+				postTypesPpp = $ajaxSearchParams.data('post-types-ppp'),
+				resultTitle = $ajaxSearchParams.data('result-title'),
+				showAllText = $ajaxSearchParams.data('show-all');
 
 			const ajaxSearch = (query) => {
 
@@ -474,6 +482,8 @@
 						search: query,
 						post_types: postTypes,
 						post_types_ppp: postTypesPpp,
+						result_title: resultTitle,
+						show_all_text: showAllText,
 					},
 					beforeSend: function () {
 						if (localCache.exist(query)) {

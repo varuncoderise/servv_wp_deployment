@@ -9,8 +9,12 @@
         var self = this;
         this.el = el;
         this.$el = $(el);
+        this.prevStickyHeaderState = null;
 
-        this.options = {};
+        this.options = {
+            hideStickyHeader: false,
+            fullWidth: false,
+        };
         $.extend(this.options, options);
 
         self.init();
@@ -58,10 +62,28 @@
                 height: this.$el.outerHeight()
             });
 
-            this.$el.css({
-                width: this.$wrapper.outerWidth(),
-                margin: 0
-            });
+            if (this.options.fullWidth) {
+                this.$el.css({
+                    width: "",
+                    margin: "",
+                    padding: ""
+                });
+                var marg = (window.innerWidth - this.$wrapper.outerWidth()) / 2;
+                this.$el.css({
+                    width: window.innerWidth,
+                    margin: 0,
+                    marginLeft: -marg,
+                    marginRight: -marg,
+                    paddingLeft: parseInt(this.$el.css('padding-left')) + marg,
+                    paddingRight: parseInt(this.$el.css('padding-right')) + marg
+                });
+            } else {
+                this.$el.css({
+                    width: this.$wrapper.outerWidth(),
+                    margin: 0
+                });
+            }
+
         },
 
         getParent: function () {
@@ -92,7 +114,8 @@
                 width: "",
                 top: "",
                 bottom: "",
-                margin: ""
+                margin: "",
+                padding: ""
             });
         },
 
@@ -100,7 +123,7 @@
             var top_offset = parseInt($('html').css('margin-top'));
 
             var $header = $('#site-header');
-            if ($header.hasClass('fixed')) {
+            if ($header.hasClass('fixed') && !this.options.hideStickyHeader) {
                 top_offset += $header.outerHeight();
             }
 
@@ -116,6 +139,10 @@
                     bottom: bottom,
                     left: offset.left
                 });
+                if (this.options.hideStickyHeader && this.prevStickyHeaderState !== 'hidden') {
+                    this.prevStickyHeaderState = 'hidden';
+                    $('body').removeClass('shown-sticky-filters').addClass('hidden-sticky-filters');
+                }
                 return;
             }
 
@@ -125,12 +152,20 @@
                     bottom: "",
                     left: offset.left
                 });
+                if (this.options.hideStickyHeader && this.prevStickyHeaderState !== 'shown') {
+                    this.prevStickyHeaderState = 'shown';
+                    $('body').removeClass('hidden-sticky-filters').addClass('shown-sticky-filters');
+                }
             } else {
                 this.$el.removeClass('sticky-fixed').css({
                     top: "",
                     bottom: "",
                     left: ""
                 });
+                if (this.options.hideStickyHeader && this.prevStickyHeaderState !== 'hidden') {
+                    this.prevStickyHeaderState = 'hidden';
+                    $('body').removeClass('shown-sticky-filters').addClass('hidden-sticky-filters');
+                }
             }
         }
     };
@@ -426,9 +461,9 @@
                 return;
             }
 
-            unstickElement();
+            unstick();
 
-            stickElement();
+            stick();
 
             if (settings.parent) {
                 // Force recalculation of the relation between the element and its parent

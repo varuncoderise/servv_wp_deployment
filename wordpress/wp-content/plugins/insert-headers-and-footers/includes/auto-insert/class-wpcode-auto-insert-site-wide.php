@@ -5,10 +5,21 @@
  * @package wpcode
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class WPCode_Auto_Insert_Single.
  */
 class WPCode_Auto_Insert_Site_Wide extends WPCode_Auto_Insert_Type {
+
+	/**
+	 * The category of this type.
+	 *
+	 * @var string
+	 */
+	public $category = 'global';
 
 	/**
 	 * Load the available options and labels.
@@ -18,9 +29,18 @@ class WPCode_Auto_Insert_Site_Wide extends WPCode_Auto_Insert_Type {
 	public function init() {
 		$this->label     = __( 'Site wide', 'insert-headers-and-footers' );
 		$this->locations = array(
-			'site_wide_header' => __( 'Site Wide Header', 'insert-headers-and-footers' ),
-			'site_wide_body'   => __( 'Site Wide Body', 'insert-headers-and-footers' ),
-			'site_wide_footer' => __( 'Site Wide Footer', 'insert-headers-and-footers' ),
+			'site_wide_header' => array(
+				'label'       => esc_html__( 'Site Wide Header', 'insert-headers-and-footers' ),
+				'description' => esc_html__( 'Insert snippet between the head tags of your website on all pages.', 'insert-headers-and-footers' ),
+			),
+			'site_wide_body'   => array(
+				'label'       => esc_html__( 'Site Wide Body', 'insert-headers-and-footers' ),
+				'description' => esc_html__( 'Insert the snippet just after the opening body tag.', 'insert-headers-and-footers' ),
+			),
+			'site_wide_footer' => array(
+				'label'       => esc_html__( 'Site Wide Footer', 'insert-headers-and-footers' ),
+				'description' => esc_html__( 'Insert the snippet in the footer just before the closing body tag.', 'insert-headers-and-footers' ),
+			),
 		);
 	}
 

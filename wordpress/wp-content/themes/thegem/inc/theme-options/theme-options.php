@@ -47,7 +47,7 @@ class ThegemThemeOptions {
         foreach ($taxonomies as $taxonomy) {
             if($taxonomy->publicly_queryable) {
                 add_action($taxonomy->name . '_edit_form', array($this,'addTaxonomyOptionsMetabox'), 15, 2);
-                add_action($taxonomy->name . '_edit_form_fields','thegem_taxonomy_edit_form_fields', 15);
+                //add_action($taxonomy->name . '_edit_form_fields','thegem_taxonomy_edit_form_fields', 15);
             }
         }
     }
@@ -89,8 +89,8 @@ class ThegemThemeOptions {
     }
 
     function addTaxonomyOptionsMetabox($tag, $taxonomy) {
-		echo '<div class="postbox taxonomy-box" id="thegem_taxonomy_custom_page_options_boxes2" style="display:none">';
-		echo '<h3 class="hndle">' . __('Custom Page Options', 'thegem') . '</h3>';
+		echo '<div class="postbox taxonomy-box" id="thegem_taxonomy_custom_page_options_boxes2">';
+		echo '<h3 class="hndle">' . __('Page Options', 'thegem') . '</h3>';
 		echo '<div class="inside">';
 
         $this->renderPageOptions();
@@ -198,7 +198,7 @@ class ThegemThemeOptions {
         $product_archive_item_data = thegem_get_sanitize_product_archive_data(0, $options['product_archive_item_data']);
         $blog_archive_item_data = thegem_get_sanitize_blog_archive_data(0, $options['blog_archive_item_data']);
 
-        update_term_meta($term_id, 'thegem_taxonomy_custom_page_options', !empty($_POST['thegem_taxonomy_custom_page_options']));
+        delete_term_meta($term_id, 'thegem_taxonomy_custom_page_options');
         update_term_meta($term_id, 'thegem_page_data', $page_data);
         update_term_meta($term_id, 'thegem_product_archive_page_data', $product_archive_item_data);
         update_term_meta($term_id, 'thegem_blog_archive_page_data', $blog_archive_item_data);
@@ -242,6 +242,12 @@ class ThegemThemeOptions {
                 break;
 
             case 'thegem_pf_item':
+
+                //save grid appearance gif
+                if (isset($options['portfolio_item_data']['grid_appearance_gif'])) {
+                    $options['portfolio_item_data']['grid_appearance_gif'] = $options['portfolio_item_data']['grid_appearance_gif']['id'];
+                }
+
                 $portfolio_item_data = thegem_get_sanitize_pf_item_data(0, $options['portfolio_item_data']);
                 update_post_meta($post_id, 'thegem_portfolio_item_data', $portfolio_item_data);
                 unset($options['portfolio_item_data']);
@@ -249,11 +255,23 @@ class ThegemThemeOptions {
                 $data = thegem_get_sanitize_pf_item_elements_data($post_id, $options['portfolio_elements_data']);
                 update_post_meta($post_id, 'thegem_pf_item_page_elements_data', $data);
                 unset($options['portfolio_elements_data']);
+
+                //save meta data
+                $portfolio_meta = $portfolio_item_data['meta'];
+                if (!empty($portfolio_meta)){
+                    foreach ($portfolio_meta as $meta) {
+                        if (!empty($meta['value'])){
+                            update_post_meta($post_id, $meta['key'], $meta['value']);
+                        } else{
+                            delete_post_meta($post_id, $meta['key'], $meta['value']);
+                        }
+                    }
+                }
+
                 break;
 
             case 'product':
-                $product_item_data = thegem_get_sanitize_pf_item_data(0, $options['product_item_data']);
-
+                $product_item_data = thegem_get_sanitize_product_page_data(0, $options['product_item_data']);
                 $size_guide = thegem_get_sanitize_product_size_guide_data(0, array(
                     'size_guide' => $product_item_data['size_guide'],
                     'custom_image' => $product_item_data['size_guide_image'],
@@ -269,15 +287,18 @@ class ThegemThemeOptions {
 
                 $product_page = thegem_get_sanitize_product_page_data(0, array(
                     'product_layout_settings' => $product_item_data['product_layout_settings'],
-
                     'product_layout_source' => $product_item_data['product_layout_source'],
                     'product_builder_template' => $product_item_data['product_builder_template'],
-
                     'product_gallery' => $product_item_data['product_gallery'],
                     'product_gallery_type' => $product_item_data['product_gallery_type'],
+                    'product_gallery_thumb_on_mobile' => $product_item_data['product_gallery_thumb_on_mobile'],
+                    'product_gallery_thumb_position' => $product_item_data['product_gallery_thumb_position'],
                     'product_gallery_column_position' => $product_item_data['product_gallery_column_position'],
                     'product_gallery_column_width' => $product_item_data['product_gallery_column_width'],
                     'product_gallery_show_image' => $product_item_data['product_gallery_show_image'],
+                    'product_gallery_image_ratio' => $product_item_data['product_gallery_image_ratio'],
+                    'product_gallery_grid_image_size' => $product_item_data['product_gallery_grid_image_size'],
+                    'product_gallery_grid_image_ratio' => $product_item_data['product_gallery_grid_image_ratio'],
                     'product_gallery_zoom' => $product_item_data['product_gallery_zoom'],
                     'product_gallery_lightbox' => $product_item_data['product_gallery_lightbox'],
                     'product_gallery_labels' => $product_item_data['product_gallery_labels'],
@@ -291,7 +312,6 @@ class ThegemThemeOptions {
                     'product_gallery_grid_gaps_hide' => $product_item_data['product_gallery_grid_gaps_hide'],
                     'product_gallery_grid_top_margin' => $product_item_data['product_gallery_grid_top_margin'],
                     'product_gallery_video_autoplay' => $product_item_data['product_gallery_video_autoplay'],
-
                     'product_page_layout' => $product_item_data['product_page_layout'],
                     'product_page_layout_style' => $product_item_data['product_page_layout_style'],
                     'product_page_layout_centered' => $product_item_data['product_page_layout_centered'],
@@ -386,7 +406,8 @@ class ThegemThemeOptions {
                     'product_page_elements_related_columns_desktop' => $product_item_data['product_page_elements_related_columns_desktop'],
                     'product_page_elements_related_columns_tablet' => $product_item_data['product_page_elements_related_columns_tablet'],
                     'product_page_elements_related_columns_mobile' => $product_item_data['product_page_elements_related_columns_mobile'],
-                    'product_page_elements_related_columns_100' => $product_item_data['product_page_elements_related_columns_100'],
+                    'product_page_additional_tabs' => $product_item_data['product_page_additional_tabs'],
+                    'product_page_additional_tabs_data' => $product_item_data['product_page_additional_tabs_data'],
                 ));
                 update_post_meta($post_id, 'thegem_product_page_data', $product_page);
 
@@ -399,10 +420,23 @@ class ThegemThemeOptions {
             unset($options['popups_item_data']);
         }
 
+        // Save custom fields
+        if(isset($options['custom_fields_item_data'])) {
+            $custom_fields = $options['custom_fields_item_data'];
+            if (!empty($custom_fields)){
+                foreach ($custom_fields as $field) {
+                    if (!empty($field['value'])){
+                        update_post_meta($post_id, $field['key'], $field['value']);
+                    } else{
+                        delete_post_meta($post_id, $field['key'], $field['value']);
+                    }
+                }
+            }
+        }
+
         $page_data = thegem_get_sanitize_admin_page_data(0, $options);
 
         update_post_meta($post_id, 'thegem_page_data', $page_data);
-
     }
 
     function getBackupsInfo() {
@@ -423,11 +457,46 @@ class ThegemThemeOptions {
     }
 
     function apiPurgeThumbnailsCache() {
-        global $wpdb;
-        $prefix = thegem_get_image_cache_option_key_prefix();
-        $wpdb->query("DELETE FROM `{$wpdb->options}` WHERE `option_name` LIKE '%{$prefix}%'");
+        $meta_key = 'thegem_image_src_cache';
+        delete_post_meta_by_key($meta_key);
+        $meta_key = 'thegem_image_regenerated';
+        delete_post_meta_by_key($meta_key);
 
         return array();
+    }
+
+    function apiApplyCustomField($request) {
+        $posts = get_posts(array(
+            'numberposts' => -1,
+            'post_type' => $request['pt'],
+        ));
+
+        foreach ($posts as $post) {
+            if (!empty($request['value'])){
+                update_post_meta($post->ID, $request['key'], $request['value']);
+            } else{
+                delete_post_meta($post->ID, $request['key'], $request['value']);
+            }
+        }
+
+        return $request;
+    }
+
+    function apiApplyProjectDetails($request) {
+        $posts = get_posts(array(
+            'numberposts' => -1,
+            'post_type' => $request['pt'],
+        ));
+
+        foreach ($posts as $post) {
+            if (!empty($request['value'])){
+                update_post_meta($post->ID, $request['key'], $request['value']);
+            } else{
+                delete_post_meta($post->ID, $request['key'], $request['value']);
+            }
+        }
+
+        return $request;
     }
 
     function apiActivate($request) {
@@ -641,6 +710,16 @@ class ThegemThemeOptions {
         unset($theme_options['thegemPopupsSearch']);
         update_option('thegem_popups', $thegemPopups);
 
+        // Save Portfolio Project Details
+        $projectDetails = array();
+        if (!empty($theme_options['portfolio_project_details_data'])) {
+            foreach (json_decode($theme_options['portfolio_project_details_data']) as $pd){
+                $pd->key = '_thegem_cf_'.str_replace( '-', '_', sanitize_title($pd->title));
+                $projectDetails[] = $pd;
+            }
+            $theme_options['portfolio_project_details_data'] = json_encode($projectDetails);
+        }
+
         update_option('thegem_theme_options', $theme_options);
 
         foreach($request['options']['page_options'] as $page=>$options) {
@@ -775,9 +854,12 @@ class ThegemThemeOptions {
     }
 
     function ajaxApi() {
+
+        check_ajax_referer( 'thegem_theme_options_api', 'security' );
+
         $request = json_decode(file_get_contents('php://input'), true);
 
-        switch($request['action']) {
+        switch($request['to_action']) {
             case 'save':
                 $response = $this->apiSave($request);
                 break;
@@ -822,6 +904,12 @@ class ThegemThemeOptions {
                 break;
             case 'optimizerRestore':
                 $response = $this->optimizerRestore($request);
+                break;
+            case 'applyCustomField':
+                $response = $this->apiApplyCustomField($request);
+                break;
+            case 'applyProjectDetails':
+                $response = $this->apiApplyProjectDetails($request);
                 break;
             default:
                 $response['status'] = false;
@@ -895,18 +983,31 @@ class ThegemThemeOptions {
             }
         }
 
+        // Get custom post types & taxonomies settings
+        $custom_post_types_taxonomies = array_merge(
+            thegem_get_list_po_custom_post_types(),
+            thegem_get_list_po_custom_taxonomies()
+        );
+        $custom_post_types_taxonomies_settings = array();
+        foreach ($custom_post_types_taxonomies as $type) {
+            $custom_post_types_taxonomies_settings[$type] = thegem_theme_options_get_page_settings($type);
+        }
+
         return array_merge(
             $options,
             array(
-                'page_options'=>array(
-                    'default'=>thegem_theme_options_get_page_settings('default'),
-                    'blog'=>thegem_theme_options_get_page_settings('blog'),
-                    'search'=>thegem_theme_options_get_page_settings('search'),
-                    'global'=>thegem_theme_options_get_page_settings('global'),
-                    'post'=>thegem_theme_options_get_page_settings('post'),
-                    'portfolio'=>thegem_theme_options_get_page_settings('portfolio'),
-                    'product'=>thegem_theme_options_get_page_settings('product'),
-                    'product_categories'=>thegem_theme_options_get_page_settings('product_categories'),
+                'page_options'=>array_merge(
+                    array(
+                        'default'=>thegem_theme_options_get_page_settings('default'),
+                        'blog'=>thegem_theme_options_get_page_settings('blog'),
+                        'search'=>thegem_theme_options_get_page_settings('search'),
+                        'global'=>thegem_theme_options_get_page_settings('global'),
+                        'post'=>thegem_theme_options_get_page_settings('post'),
+                        'portfolio'=>thegem_theme_options_get_page_settings('portfolio'),
+                        'product'=>thegem_theme_options_get_page_settings('product'),
+                        'product_categories'=>thegem_theme_options_get_page_settings('product_categories'),
+                    ),
+                    $custom_post_types_taxonomies_settings
                 ),
             )
         );
@@ -976,6 +1077,12 @@ class ThegemThemeOptions {
             case 'single-post':
                 $getTemplatesArray = thegem_get_posts_list();
                 break;
+            case 'loop-item':
+                $getTemplatesArray = thegem_get_loop_items_list();
+                break;
+            case 'portfolio':
+                $getTemplatesArray = thegem_get_portfolio_list();
+                break;
         }
 
         foreach($getTemplatesArray as $k=>$v) {
@@ -1044,7 +1151,17 @@ class ThegemThemeOptions {
         $data = array();
 
         foreach(thegem_get_single_posts_list() as $k=>$v) {
-            $data[] = array( 'value' => strval($k), 'label' => $v, 'preview' => $k ? get_term_link($k, 'post') : '');
+            $data[] = array( 'value' => strval($k), 'label' => $v, 'preview' => $k ? get_permalink($k) : '');
+        }
+
+        return $data;
+    }
+
+    function getPortfolioList() {
+        $data = array();
+
+        foreach(thegem_get_portfolios_list() as $k=>$v) {
+            $data[] = array( 'value' => strval($k), 'label' => $v, 'preview' => $k ? get_permalink($k) : '');
         }
 
         return $data;
@@ -1063,6 +1180,30 @@ class ThegemThemeOptions {
         }
 
         return $pages;
+    }
+
+    function getPortfolioMeta() {
+        global $pagenow;
+        $details = thegem_get_option('portfolio_project_details');
+        if (empty($details)) return;
+
+        $data = array();
+        $details_data = json_decode(thegem_get_option('portfolio_project_details_data'), true);
+        if (!empty($details_data)) {
+            foreach($details_data as $v) {
+                $pm = get_post_meta(get_the_ID(), $v['key'], true);
+                $value = !empty($pm) ? $pm : '';
+
+                $data[] = array(
+                    'key' => '_thegem_cf_'.str_replace( '-', '_', sanitize_title($v['title'])),
+                    'title' => $v['title'],
+                    'type' => $v['type'],
+                    'value' => $pagenow == 'post-new.php' ? $v['value'] : $value,
+                );
+            }
+        }
+
+        return $data;
     }
 
     function getCustomTitles() {
@@ -1157,6 +1298,17 @@ class ThegemThemeOptions {
 
         $postTypes = thegem_get_list_po_custom_post_types(false);
         foreach($postTypes as $k => $v) {
+            $data[] = array('label' => $v, 'value' => $k, 'formats' => post_type_supports( $k, 'post-formats'));
+        }
+
+        return $data;
+    }
+
+    function getCustomTaxonomies() {
+        $data = array();
+
+        $taxonomies = thegem_get_list_po_custom_taxonomies(false);
+        foreach($taxonomies as $k => $v) {
             $data[] = array('label' => $v, 'value' => $k);
         }
 
@@ -1208,7 +1360,7 @@ class ThegemThemeOptions {
         $appData=array_merge( array(
             'version' => $thegem_theme->get('Version'),
             'appUrl' => THEGEM_THEME_URI.'/inc/theme-options/dist/',
-            'apiUrl' => admin_url( 'admin-ajax.php' ).'?action=thegem_theme_options_api'.$lang,
+            'apiUrl' => admin_url( 'admin-ajax.php' ).'?action=thegem_theme_options_api&security='.wp_create_nonce( 'thegem_theme_options_api' ).$lang,
             'styleEditorCssUrl' => THEGEM_THEME_URI.'/css/style-editor.css',
             'adminUrl' => admin_url(),
             'homeUrl' => $this->cutSchemeFromUrl(trailingslashit(get_home_url())),
@@ -1220,6 +1372,7 @@ class ThegemThemeOptions {
             'gdpr_extras_google_fonts' => $this->get_gdpr_theme_fonts(),
             'WCAttributes' => $this->getWCAttributes(),
             'customPostTypes' => $this->getCustomPostTypes(),
+            'customTaxonomies' => $this->getCustomTaxonomies(),
             'wysiwygFormats' => $this->getWysiwygFormats(),
             'settings' => $this->getSettings(),
             'presetsUrl' => THEGEM_THEME_URI.'/images/backgrounds/presets/',
@@ -1259,12 +1412,19 @@ class ThegemThemeOptions {
             'postBuilderCreateUrl' => admin_url('edit.php?post_type=thegem_templates&action=thegem_templates_new&_wpnonce='.$newTemplateNonce.'&template_type=single-post'),
             'postBuilderImportUrl' => admin_url('edit.php?post_type=thegem_templates&templates_type=single-post#open-modal-import'),
             'postBuilderPreviewList' => $this->getSinglePostsList(),
+            'loopBuilderTemplates' => $this->getTemplates('loop-item'),
+            'loopBuilderCreateUrl' => admin_url('edit.php?post_type=thegem_templates&action=thegem_templates_new&_wpnonce='.$newTemplateNonce.'&template_type=loop-item'),
+            'loopBuilderImportUrl' => admin_url('edit.php?post_type=thegem_templates&templates_type=loop-item#open-modal-import'),
             'sectionBuilderTemplates' => $this->getTemplates('section'),
             'sectionBuilderCreateUrl' => admin_url('edit.php?post_type=thegem_templates&action=thegem_templates_new&_wpnonce='.$newTemplateNonce.'&template_type=content'),
             'sectionBuilderImportUrl' => admin_url('edit.php?post_type=thegem_templates&templates_type=content#open-modal-import'),
             'popupsTemplates' => $this->getTemplates('popups'),
             'popupsCreateUrl' => admin_url('edit.php?post_type=thegem_templates&templates_type=popup#open-modal-proceed'),
             'popupsImportUrl' => admin_url('edit.php?post_type=thegem_templates&templates_type=popup#open-modal-import'),
+            'portfolioBuilderTemplates' => $this->getTemplates('portfolio'),
+            'portfolioBuilderCreateUrl' => admin_url('edit.php?post_type=thegem_templates&action=thegem_templates_new&_wpnonce='.$newTemplateNonce.'&template_type=portfolio'),
+            'portfolioBuilderImportUrl' => admin_url('edit.php?post_type=thegem_templates&templates_type=portfolio#open-modal-import'),
+            'portfolioBuilderPreviews' => $this->getPortfolioList(),
         ), $specificData);
 
         wp_localize_script("thegem-theme-options-0", 'theme_options_app_data', $appData);
@@ -1273,6 +1433,41 @@ class ThegemThemeOptions {
     function getWysiwygFormats() {
         $settings = thegem_init_editor(array());
         return json_decode($settings['style_formats'], true);
+    }
+
+    function getCustomFieldsFromPostTypes($post_type) {
+        global $pagenow;
+        switch ($post_type) {
+            case 'page':
+                $post_type = 'default';
+                break;
+            case 'thegem_pf_item':
+                $post_type = 'portfolio';
+                break;
+        }
+
+        $pt_data = thegem_theme_options_get_page_settings($post_type);
+        $custom_fields = !empty($pt_data['custom_fields']) ? $pt_data['custom_fields'] : null;
+        $custom_fields_data = !empty($pt_data['custom_fields_data']) ? json_decode($pt_data['custom_fields_data'], true) : null;
+        $data = array();
+
+        if (empty($custom_fields)) return;
+
+        if (!empty($custom_fields_data)) {
+            foreach($custom_fields_data as $field) {
+                $pm = get_post_meta(get_the_ID(), $field['key'], true);
+                $value = !empty($pm) ? $pm : '';
+
+                $data[] = array(
+                    'key' => $field['key'],
+                    'title' => $field['title'],
+                    'type' => $field['type'],
+                    'value' => $pagenow == 'post-new.php' ? $field['value'] : $value,
+                );
+            }
+        }
+
+        return $data;
     }
 
     function getPageOptions($post, $type) {
@@ -1305,6 +1500,29 @@ class ThegemThemeOptions {
             $page_data['popups_item_data'] = $popup_data;
         }
 
+        // Get custom fields
+        if (empty($page_data['custom_fields_item_data'])){
+            $page_data['custom_fields_item_data'] = $this->getCustomFieldsFromPostTypes($post->post_type);
+        } else{
+            $meta_data = array();
+            if (!empty($this->getCustomFieldsFromPostTypes($post->post_type))) {
+                foreach ($this->getCustomFieldsFromPostTypes($post->post_type) as $item) {
+                    $meta_data[] = array(
+                        'key' => $item['key'],
+                        'title' => $item['title'],
+                        'type' => $item['type'],
+                        'value' => get_post_meta($post->ID, $item['key'], true)
+                    );
+                }
+            }
+
+            if (!empty($meta_data)){
+                $page_data['custom_fields_item_data'] = $meta_data;
+            } else{
+                $page_data['custom_fields_item_data'] = $this->getCustomFieldsFromPostTypes($post->post_type);
+            }
+        }
+
         switch ($post->post_type) {
             case 'post':
                 $page_data['post_item_data'] = thegem_get_sanitize_admin_post_data($post->ID);
@@ -1313,8 +1531,41 @@ class ThegemThemeOptions {
 
             case 'thegem_pf_item':
                 $portfolio_item_data = thegem_get_sanitize_pf_item_data($post->ID);
-                if (empty($portfolio_item_data['types']))
+                if (empty($portfolio_item_data['types'])) {
                     $portfolio_item_data['types'] = array(0 => array('link' => '', 'link_target' => '_self', 'type' => 'self-link'));
+                }
+
+                //get grid appearance gif
+                if (!empty($portfolio_item_data['grid_appearance_gif'])) {
+                    $portfolio_item_data['grid_appearance_gif'] = array(
+                        'id' => $portfolio_item_data['grid_appearance_gif'],
+                        'url' => wp_get_attachment_image_src($portfolio_item_data['grid_appearance_gif'], 'full')[0]
+                    );
+                } else{
+                    $portfolio_item_data['grid_appearance_gif'] = null;
+                }
+
+                //get meta data
+                if (empty($portfolio_item_data['meta']) || empty(thegem_get_option('portfolio_project_details'))){
+                    $portfolio_item_data['meta'] = $this->getPortfolioMeta();
+                } else{
+                    $meta_data = array();
+                    foreach ($this->getPortfolioMeta() as $item) {
+                        $meta_data[] = array(
+                            'key' => '_thegem_cf_'.str_replace( '-', '_', sanitize_title($item['title'])),
+                            'title' => $item['title'],
+                            'type' => $item['type'],
+                            'value' => get_post_meta($post->ID, $item['key'], true)
+                        );
+                    }
+
+                    if (!empty($meta_data)){
+                        $portfolio_item_data['meta'] = $meta_data;
+                    } else{
+                        $portfolio_item_data['meta'] = $this->getPortfolioMeta();
+                    }
+                }
+
                 $page_data['portfolio_item_data'] = $portfolio_item_data;
 
                 $page_data['portfolio_elements_data'] = thegem_get_sanitize_pf_item_elements_data($post->ID);
@@ -1325,6 +1576,7 @@ class ThegemThemeOptions {
                 $highlight = thegem_get_sanitize_product_featured_data($post->ID);
                 $hover = !empty(get_post_meta($post->ID, 'thegem_product_disable_hover', true));
                 $product_page = thegem_get_sanitize_product_page_data($post->ID);
+
                 $page_data['product_item_data'] = array(
                     'thegem_product_disable_hover' => $hover ? 1 : 0,
                     'highlight' => $highlight['highlight'],
@@ -1337,9 +1589,14 @@ class ThegemThemeOptions {
                     'product_builder_template' => $product_page['product_builder_template'],
                     'product_gallery' => $product_page['product_gallery'],
                     'product_gallery_type' => $product_page['product_gallery_type'],
+                    'product_gallery_thumb_on_mobile' => $product_page['product_gallery_thumb_on_mobile'],
+                    'product_gallery_thumb_position' => $product_page['product_gallery_thumb_position'],
                     'product_gallery_column_position' => $product_page['product_gallery_column_position'],
                     'product_gallery_column_width' => $product_page['product_gallery_column_width'],
                     'product_gallery_show_image' => $product_page['product_gallery_show_image'],
+                    'product_gallery_image_ratio' => $product_page['product_gallery_image_ratio'],
+                    'product_gallery_grid_image_size' => $product_page['product_gallery_grid_image_size'],
+                    'product_gallery_grid_image_ratio' => $product_page['product_gallery_grid_image_ratio'],
                     'product_gallery_zoom' => $product_page['product_gallery_zoom'],
                     'product_gallery_lightbox' => $product_page['product_gallery_lightbox'],
                     'product_gallery_labels' => $product_page['product_gallery_labels'],
@@ -1448,7 +1705,10 @@ class ThegemThemeOptions {
                     'product_page_elements_related_columns_tablet' => $product_page['product_page_elements_related_columns_tablet'],
                     'product_page_elements_related_columns_mobile' => $product_page['product_page_elements_related_columns_mobile'],
                     'product_page_elements_related_columns_100' => $product_page['product_page_elements_related_columns_100'],
+                    'product_page_additional_tabs' => $product_page['product_page_additional_tabs'],
+                    'product_page_additional_tabs_data' => $product_page['product_page_additional_tabs_data'],
                 );
+
                 break;
         }
 
@@ -1975,7 +2235,7 @@ class ThegemThemeOptions {
             return array('reason'=>'error','message'=>sprintf(esc_html__('TheGem\'s styles cannot be customized because file "%s" cannot be modified. Please check your server\'s settings. Then click "Save" button.', 'thegem'), get_stylesheet_directory() . '/css/custom.css'));
         } else {
             $wp_filesystem->put_contents($wp_filesystem->find_folder(get_template_directory()) . 'css/style-editor.css', $editor_css);
-            $custom_css_files = glob(get_template_directory().'/css/custom-*.css');
+            $custom_css_files = glob(get_stylesheet_directory().'/css/custom-*.css');
             foreach($custom_css_files as $file) {
                 if(basename($file, '.css') != $new_name) {
                     $wp_filesystem->delete($wp_filesystem->find_folder(get_stylesheet_directory()) . 'css/'.basename($file, '.css').'.css', $custom_css);

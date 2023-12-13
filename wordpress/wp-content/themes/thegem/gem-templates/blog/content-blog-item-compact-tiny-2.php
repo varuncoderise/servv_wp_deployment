@@ -6,7 +6,8 @@ $item_colors = isset($params['item_colors']) ? $params['item_colors'] : array();
 
 $thegem_classes = array();
 
-if (is_sticky() && !is_paged()) {
+$is_sticky = is_sticky() && empty($params['ignore_sticky']) && !is_paged();
+if ($is_sticky) {
 	$thegem_classes = array_merge($thegem_classes, array('sticky'));
 }
 

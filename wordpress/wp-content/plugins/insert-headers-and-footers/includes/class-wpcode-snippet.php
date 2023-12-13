@@ -192,12 +192,36 @@ class WPCode_Snippet {
 	public $schedule;
 
 	/**
+	 * Location extra parameters.
+	 * This is used to store extra parameters for the location.
+	 *
+	 * @var array
+	 */
+	public $location_extra;
+
+	/**
+	 * Get an array of the shortcode attributes for this snippet.
+	 *
+	 * @var array
+	 */
+	public $shortcode_attributes;
+
+	/**
+	 * Used to store the shortcode attributes values.
+	 *
+	 * @var array
+	 */
+	public $attributes;
+
+	/**
 	 * Constructor. If the post passed is not the correct post type
 	 * the object will clear itself.
 	 *
 	 * @param array|int|WP_Post $snippet Load a snippet by id, WP_Post or array.
 	 */
 	public function __construct( $snippet ) {
+		$snippet = apply_filters( 'wpcode_load_snippet', $snippet );
+
 		if ( is_int( $snippet ) ) {
 			$this->load_from_id( $snippet );
 		} elseif ( $snippet instanceof WP_Post ) {
@@ -404,6 +428,13 @@ class WPCode_Snippet {
 	 * @return int|false
 	 */
 	public function save() {
+
+		// Allow to prevent saving the snippet.
+		$pre_save = apply_filters( 'wpcode_pre_save_snippet', false, $this );
+		if ( false !== $pre_save ) {
+			return $pre_save;
+		}
+
 		$post_args = array(
 			'post_type' => $this->post_type,
 		);
@@ -419,7 +450,7 @@ class WPCode_Snippet {
 		}
 
 		// If the user is not allowed to activate/deactivate snippets, prevent it and show error.
-		if ( ! current_user_can( 'wpcode_activate_snippets' ) ) {
+		if ( ! current_user_can( 'wpcode_activate_snippets', $this ) ) {
 			wpcode()->error->add_error(
 				array(
 					'message' => __( 'You are not allowed to change snippet status, please contact your webmaster.', 'insert-headers-and-footers' ),
@@ -435,6 +466,8 @@ class WPCode_Snippet {
 			$post_args['post_status'] = $this->active ? 'publish' : 'draft';
 		}
 
+		do_action( 'wpcode_before_snippet_save', $this );
+
 		if ( isset( $post_args['ID'] ) ) {
 			$insert_result = wp_update_post( $post_args );
 		} else {
@@ -448,6 +481,9 @@ class WPCode_Snippet {
 			return false;
 		}
 		$this->id = $insert_result;
+
+		// Reset the last error.
+		$this->reset_last_error();
 
 		if ( isset( $this->code_type ) ) {
 			wp_set_post_terms( $this->id, $this->code_type, $this->code_type_taxonomy );
@@ -492,6 +528,9 @@ class WPCode_Snippet {
 		if ( isset( $this->generator_data ) ) {
 			update_post_meta( $this->id, '_wpcode_generator_data', $this->generator_data );
 		}
+		if ( isset( $this->location_extra ) ) {
+			update_post_meta( $this->id, '_wpcode_location_extra', $this->location_extra );
+		}
 		if ( isset( $this->cloud_id ) ) {
 			$auth_username = wpcode()->library_auth->get_auth_username();
 			$cloud_ids     = get_post_meta( $this->id, '_wpcode_cloud_id', true );
@@ -522,6 +561,9 @@ class WPCode_Snippet {
 		}
 		if ( isset( $this->schedule ) ) {
 			update_post_meta( $this->id, '_wpcode_schedule', $this->schedule );
+		}
+		if ( isset( $this->shortcode_attributes ) ) {
+			update_post_meta( $this->id, '_wpcode_shortcode_attributes', $this->shortcode_attributes );
 		}
 
 		/**
@@ -624,6 +666,88 @@ class WPCode_Snippet {
 		$this->active = false;
 		$this->get_id();
 		$this->save();
+	}
+
+	/**
+	 * This deactivates the snippet without regardless of user permissions.
+	 * Should only be used for unattended auto-deactivation when a snippet throws a potentially blocking error.
+	 *
+	 * @return void
+	 */
+	public function force_deactivate() {
+		global $wpdb;
+
+		// Add a filter so we can hijack the deactivate logic if needed.
+		$force_deactivate = apply_filters( 'wpcode_force_deactivate_snippet', false, $this );
+		if ( false !== $force_deactivate ) {
+			return;
+		}
+
+		// We need to make a direct call as using wp_update_post will load the post content and if the current user
+		// doesn't have the unfiltered_html capability, the code will be changed unexpectedly.
+		$update = $wpdb->update( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$wpdb->posts,
+			array(
+				'post_status' => 'draft',
+			),
+			array(
+				'ID' => $this->get_id(),
+			)
+		);
+
+		if ( $update ) {
+			// Rebuild cache to avoid the snippet being loaded again.
+			wpcode()->cache->cache_all_loaded_snippets();
+
+			wpcode()->error->add_error(
+				array(
+					'message' => sprintf(
+					/* translators: %s: Snippet title and ID used in the error log for clarity. */
+						esc_html__( 'Snippet %s was automatically deactivated due to a fatal error.', 'insert-headers-and-footers' ),
+						sprintf( '"%s" (#%d)', $this->get_title(), $this->get_id() )
+					),
+				)
+			);
+		}
+	}
+
+	/**
+	 * Set the last error for this snippet.
+	 *
+	 * @param array $error The error details.
+	 *
+	 * @return void
+	 */
+	public function set_last_error( $error ) {
+		if ( ! isset( $error['message'] ) ) {
+			return;
+		}
+		update_post_meta( $this->get_id(), '_wpcode_last_error', $error );
+	}
+
+	/**
+	 * Get the last error for this snippet.
+	 *
+	 * @return array|false
+	 */
+	public function get_last_error() {
+		$error = get_post_meta( $this->get_id(), '_wpcode_last_error', true );
+
+		if ( empty( $error ) || ! is_array( $error ) ) {
+			return false;
+		}
+
+		return $error;
+	}
+
+	/**
+	 * Remove the meta that stores the last error.
+	 *
+	 * @return void
+	 */
+	public function reset_last_error() {
+		delete_post_meta( $this->get_id(), '_wpcode_last_error' );
+		wpcode()->error->clear_snippets_errors();
 	}
 
 	/**
@@ -760,16 +884,18 @@ class WPCode_Snippet {
 	 */
 	public function get_data_for_caching() {
 		return array(
-			'id'            => $this->get_id(),
-			'title'         => $this->get_title(),
-			'code'          => $this->get_code(),
-			'code_type'     => $this->get_code_type(),
-			'location'      => $this->get_location(),
-			'auto_insert'   => $this->get_auto_insert(),
-			'insert_number' => $this->get_auto_insert_number(),
-			'use_rules'     => $this->conditional_rules_enabled(),
-			'rules'         => $this->get_conditional_rules(),
-			'priority'      => $this->get_priority(),
+			'id'                   => $this->get_id(),
+			'title'                => $this->get_title(),
+			'code'                 => $this->get_code(),
+			'code_type'            => $this->get_code_type(),
+			'location'             => $this->get_location(),
+			'auto_insert'          => $this->get_auto_insert(),
+			'insert_number'        => $this->get_auto_insert_number(),
+			'use_rules'            => $this->conditional_rules_enabled(),
+			'rules'                => $this->get_conditional_rules(),
+			'priority'             => $this->get_priority(),
+			'location_extra'       => $this->get_location_extra(),
+			'shortcode_attributes' => $this->get_shortcode_attributes(),
 		);
 	}
 
@@ -900,5 +1026,84 @@ class WPCode_Snippet {
 		$schedule = $this->get_schedule();
 
 		return ! empty( $schedule['start'] ) || ! empty( $schedule['end'] );
+	}
+
+	/**
+	 * Extra data for the selected auto-insert location.
+	 *
+	 * @return array
+	 */
+	public function get_location_extra() {
+		if ( ! isset( $this->location_extra ) ) {
+			$this->location_extra = get_post_meta( $this->get_id(), '_wpcode_location_extra', true );
+		}
+
+		return $this->location_extra;
+	}
+
+	/**
+	 * Load the shortcode attributes and return.
+	 *
+	 * @return array
+	 */
+	public function get_shortcode_attributes() {
+		if ( ! isset( $this->shortcode_attributes ) ) {
+			$attributes = get_post_meta( $this->get_id(), '_wpcode_shortcode_attributes', true );
+			if ( ! is_array( $attributes ) ) {
+				$attributes = array();
+			}
+			$this->shortcode_attributes = $attributes;
+		}
+
+		return $this->shortcode_attributes;
+	}
+
+	/**
+	 * Set shortcode attribute value.
+	 *
+	 * @param string $key The attribute key.
+	 * @param string $value The value for the attribute.
+	 *
+	 * @return void
+	 */
+	public function set_attribute( $key, $value ) {
+		$this->attributes[ $key ] = $value;
+	}
+
+	/**
+	 * Duplicates a snippet with all its data.
+	 *
+	 * @return void
+	 */
+	public function duplicate() {
+		$this->get_data_for_caching();
+		$this->get_note();
+		$this->get_tags();
+		$this->get_custom_shortcode();
+		$this->get_device_type();
+		$this->get_schedule();
+		// Add a suffix to the title.
+		$this->title = $this->get_title() . ' - Copy';
+		// Make sure the snippet is not active.
+		$this->post_data->post_status = 'draft';
+
+		// Let's make sure the slashes don't get removed from the code.
+		$this->code = wp_slash( $this->code );
+		/**
+		 * Fires before a snippet that is about to be duplicated is saved.
+		 *
+		 * @param WPCode_Snippet $snippet The snippet object.
+		 */
+		do_action( 'wpcode_before_snippet_duplicated', $this );
+		// Remove the id to create a new snippet.
+		unset( $this->id );
+		// Save the new snippet.
+		$this->save();
+		/**
+		 * Fires after a snippet has been duplicated.
+		 *
+		 * @param WPCode_Snippet $snippet The snippet object.
+		 */
+		do_action( 'wpcode_after_snippet_duplicated', $this );
 	}
 }

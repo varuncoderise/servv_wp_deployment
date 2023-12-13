@@ -344,12 +344,8 @@
                 }
             }
 
-            if (
-                (this.node.className && this.node.className.indexOf('portfolio') != -1) ||
-                (id && document.querySelector('div.portfolio #' + id) !== null &&
-                    !(this.node.closest('div.portfolio').classList.contains('extended-products-grid') &&
-                        this.node.closest('div.portfolio').classList.contains('portfolio-style-justified')) )
-            ) {
+            if (id && document.querySelector('div.portfolio #' + id) !== null &&
+                !this.node.closest('div.portfolio').classList.contains('disable-isotope')) {
                 var ancestorNode = getAncestorNode(this.node, 'portfolio');
                 if (ancestorNode !== null) {
                     return {

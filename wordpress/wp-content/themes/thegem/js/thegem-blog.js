@@ -15,6 +15,43 @@
 			window.thegemBlogLoadMoreRequest($blog, $(this), false);
 		});
 
+		$('.portfolio-navigator', $blog.parent()).on('click', 'a', function (e) {
+			e.preventDefault();
+			var current_page = $blog.data('current-page') ? $blog.data('current-page') : 1;
+			var pages_count = $blog.data('pages-count');
+			if ($(this).hasClass('current'))
+				return false;
+			var page;
+			if ($(this).hasClass('prev')) {
+				page = current_page - 1;
+			} else if ($(this).hasClass('next')) {
+				page = current_page + 1
+			} else {
+				page = $(this).data('page');
+			}
+			if (page < 1)
+				page = 1;
+			if (page > pages_count)
+				page = pages_count;
+			$blog.data('next-page', page);
+			$(this).parents('.portfolio-navigator ').find('a').removeClass('current');
+			$(this).parents('.portfolio-navigator ').find('a[data-page="' + page + '"]').addClass('current');
+			$blog.data('current-page', page);
+			if (page === 1) {
+				$(this).parents('.portfolio-navigator ').find('a.prev').hide();
+			} else {
+				$(this).parents('.portfolio-navigator ').find('a.prev').show();
+			}
+			if (page == pages_count) {
+				$(this).parents('.portfolio-navigator ').find('a.next').hide();
+			} else {
+				$(this).parents('.portfolio-navigator ').find('a.next').show();
+			}
+			window.thegemBlogLoadMoreRequest($blog, $(this), false);
+
+			$("html, body").animate({scrollTop: $blog.offset().top - 200}, 600);
+		});
+
 		window.thegemInitBlogScrollNextPage($blog, $blog.siblings('.blog-scroll-pagination'));
 
 		var itemsAnimations = $blog.itemsAnimations({
@@ -23,7 +60,8 @@
 		});
 		itemsAnimations.show();
 
-		window.thegemBlogImagesLoaded($blog, 'article img', function() {
+		window.thegemBlogImagesLoaded($blog, 'article:not(.format-gallery) img, article.format-gallery .gem-gallery-item:first-child img', function() {
+			$blog.prev('.preloader').remove();
 			if ($blog.hasClass('blog-style-justified-2x') || $blog.hasClass('blog-style-justified-3x') || $blog.hasClass('blog-style-justified-4x')) {
 				window.thegemBlogOneSizeArticles($blog);
 			}

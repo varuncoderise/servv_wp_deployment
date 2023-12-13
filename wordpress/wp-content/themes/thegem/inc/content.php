@@ -417,282 +417,218 @@ function thegem_post_tags() {
 
 if (!function_exists('thegem_blog')) {
 function thegem_blog($params = array()) {
-	$params = array_merge(array(
-		'blog_style' => 'default',
-		'justified_style' => 'justified-style-1',
-		'slider_style' => 'fullwidth',
-		'slider_autoscroll' => 0,
-		'source_type' => 'custom',
-		'select_blog_categories' => '1',
-		'blog_categories' => '',
-		'select_blog_tags' => '1',
-		'blog_tags' => '',
-		'select_blog_posts' => '1',
-		'blog_posts' => '',
-		'select_blog_authors' => '',
-		'blog_authors' => '',
-		'blog_order_by' => 'default',
-		'blog_order' => 'default',
-		'blog_offset' => '',
-		'blog_exclude_posts' => '',
-		'blog_post_per_page' => '',
-		'blog_post_types' => '',
-		'blog_pagination' => '',
-		'blog_ignore_sticky' => 0,
-		'is_ajax' => 0,
-		'paged' => -1,
-		'effects_enabled' => 0,
-		'loading_animation' => 'move-up',
-		'show_title' => 1,
-		'truncate_title' => 0,
-		'title_size' => 25,
-		'hide_featured' => 0,
-		'hide_date' => 0,
-		'hide_author' => 0,
-		'hide_comments' => 0,
-		'hide_likes' => 0,
-		'show_category' => 1,
-		'show_description' => 1,
-		'truncate_description' => 0,
-		'description_size' => 25,
-		'show_separator' => 1,
-		'button' => array(),
-		'item_colors' => array(),
-		'bottom_gap' => '',
-		'image_size' => '',
-		'image_border_radius' => '',
-		'title_preset' => 'default',
-		'title_transform' => '',
-		'post_excerpt_preset' => 'text-body-tiny',
-		'hover_overlay_color' => '',
-		'icon_on_hover' => 1,
-		'image_height' => '',
-		'fullwidth_section_images' => '',
-	), $params);
-
-	$params['button'] = array_merge(array(
-		'text' => __('Load More', 'thegem'),
-		'style' => 'flat',
-		'size' => 'medium',
-		'text_weight' => 'normal',
-		'no_uppercase' => 0,
-		'corner' => 25,
-		'border' => 2,
-		'text_color' => '',
-		'background_color' => '#00bcd5',
-		'border_color' => '',
-		'hover_text_color' => '',
-		'hover_background_color' => '',
-		'hover_border_color' => '',
-		'icon_pack' => 'elegant',
-		'icon_elegant' => '',
-		'icon_material' => '',
-		'icon_fontawesome' => '',
-		'icon_thegem_header' => '',
-		'icon_userpack' => '',
-		'icon_position' => 'left',
-		'separator' => 'load-more',
-	), $params['button']);
-
-	$params['item_colors'] = array_merge(array(
-		'background_color' => '',
-		'post_title_color' => '',
-		'post_title_hover_color' => '',
-		'post_excerpt_color' => '',
-		'sharing_button_color' => '',
-		'sharing_button_icon_color' => '',
-		'time_line_color' => '',
-		'month_color' => '',
-		'date_color' => '',
-		'time_color' => '',
-		'border_color' => '',
-		'additional_background_color' => '',
-	), $params['item_colors']);
 
 	$params['button']['icon'] = '';
-	if($params['button']['icon_elegant'] && $params['button']['icon_pack'] == 'elegant') {
+	if (!empty($params['button']['icon_elegant']) && $params['button']['icon_pack'] == 'elegant') {
 		$params['button']['icon'] = $params['button']['icon_elegant'];
 	}
-	if($params['button']['icon_material'] && $params['button']['icon_pack'] == 'material') {
+	if (!empty($params['button']['icon_material']) && $params['button']['icon_pack'] == 'material') {
 		$params['button']['icon'] = $params['button']['icon_material'];
 	}
-	if($params['button']['icon_fontawesome'] && $params['button']['icon_pack'] == 'fontawesome') {
+	if (!empty($params['button']['icon_fontawesome']) && $params['button']['icon_pack'] == 'fontawesome') {
 		$params['button']['icon'] = $params['button']['icon_fontawesome'];
 	}
-	if($params['button']['icon_thegem_header'] && $params['button']['icon_pack'] == 'thegem-header') {
+	if (!empty($params['button']['icon_thegem_header']) && $params['button']['icon_pack'] == 'thegem-header') {
 		$params['button']['icon'] = $params['button']['icon_thegem_header'];
 	}
-	if($params['button']['icon_userpack'] && $params['button']['icon_pack'] == 'userpack') {
+	if (!empty($params['button']['icon_userpack']) && $params['button']['icon_pack'] == 'userpack') {
 		$params['button']['icon'] = $params['button']['icon_userpack'];
 	}
 
 	$params['justified_style'] = thegem_check_array_value(array('justified-style-1', 'justified-style-2'), $params['justified_style'], 'justified-style-1');
 	$params['slider_style'] = thegem_check_array_value(array('fullwidth', 'halfwidth'), $params['slider_style'], 'fullwidth');
-	if (in_array($params['blog_style'], ['compact-tiny-1', 'compact-tiny-2', 'compact-tiny-3', 'classic-tiny'])) {
+	$is_compact = false;
+	if (in_array($params['style'], ['compact-tiny-1', 'compact-tiny-2', 'compact-tiny-3', 'classic-tiny'])) {
 		$params['loading_animation'] = 'disabled';
-		$params['blog_pagination'] = 'disable';
+		$params['post_pagination'] = $params['compact_post_pagination'];
+		$is_compact = true;
 	} else {
-		$params['blog_pagination'] = thegem_check_array_value(array('normal', 'more', 'scroll', 'disable'), $params['blog_pagination'], 'normal');
+		$params['post_pagination'] = thegem_check_array_value(array('normal', 'more', 'scroll', 'disable'), $params['post_pagination'], 'normal');
 		$params['loading_animation'] = thegem_check_array_value(array('disabled', 'bounce', 'move-up', 'fade-in', 'fall-perspective', 'scale', 'flip'), $params['loading_animation'], 'move-up');
 	}
 
-	if ($params['blog_pagination'] == 'scroll' && $params['blog_style'] != 'grid_carousel' && $params['blog_style'] != 'slider') {
+	if ($params['post_pagination'] == 'scroll' && $params['style'] != 'grid_carousel' && $params['style'] != 'slider') {
 		$params['effects_enabled'] = true;
 	}
 
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : ((get_query_var('page')) ? get_query_var('page') : 1);
-	if ($params['blog_pagination'] == 'disable' || $params['blog_style'] == 'grid_carousel'|| $params['blog_style'] == 'slider')
+	if ($params['post_pagination'] == 'disable' || $params['style'] == 'grid_carousel'|| $params['style'] == 'slider')
 		$paged = 1;
 
-	if ($params['paged'] != -1)
+	if (isset($params['paged']) && $params['paged'] != -1)
 		$paged = $params['paged'];
 
-	$params['blog_style'] = thegem_check_array_value(array('default', 'timeline', 'timeline_new', '2x', '3x', '4x', 'justified-2x', 'justified-3x', 'justified-4x', '100%', 'grid_carousel', 'styled_list1', 'styled_list2', 'multi-author', 'compact', 'compact-2', 'slider', 'compact-tiny-1', 'compact-tiny-2', 'compact-tiny-3', 'classic-tiny'), $params['blog_style'], 'default');
-	$params['blog_post_per_page'] = intval($params['blog_post_per_page']) > 0 ? intval($params['blog_post_per_page']) : 5;
+	$params['style'] = thegem_check_array_value(array('default', 'timeline', 'timeline_new', '2x', '3x', '4x', 'justified-2x', 'justified-3x', 'justified-4x', '100%', 'grid_carousel', 'styled_list1', 'styled_list2', 'multi-author', 'compact', 'compact-2', 'slider', 'compact-tiny-1', 'compact-tiny-2', 'compact-tiny-3', 'classic-tiny'), $params['style'], 'default');
+	$params['post_per_page'] = intval($params['post_per_page']) > 0 ? intval($params['post_per_page']) : 5;
 
-	if ($params['source_type'] == 'archive') {
-		$params['select_blog_categories'] = '';
-		$params['select_blog_tags'] = '';
-		$params['select_blog_posts'] = '';
-		$params['select_blog_authors'] = '';
-		if ( is_category() ) {
-			$params['select_blog_categories'] = '1';
-			$params['blog_categories'] = get_queried_object()->slug;
-		} else if ( is_tag() ) {
-			$params['select_blog_tags'] = '1';
-			$params['blog_tags'] = get_queried_object()->slug;
-		} else if ( is_author() ) {
-			$params['select_blog_authors'] = '1';
-			$params['blog_authors'] = get_queried_object()->ID;
-		} else {
-			$params['select_blog_categories'] = '1';
-			$params['blog_categories'] = '';
-		}
-	} else if ($params['source_type'] == 'related') {
-		$params['select_blog_categories'] = '';
-		$params['select_blog_tags'] = '';
-		$params['select_blog_posts'] = '';
-		$params['select_blog_authors'] = '';
-		if (!empty($params['related_by_categories'])) {
-			$categories = get_the_category();
-			if ( ! empty( $categories ) ) {
-				$params['select_blog_categories'] = '1';
-				$params['blog_categories'] = '';
-				foreach( $categories as $category ) {
-					$params['blog_categories'] .= empty($params['blog_categories']) ? $category->slug : ',' . $category->slug;
-				}
-			}
-		}
-		if (!empty($params['related_by_tags'])) {
-			$tags = get_the_terms( get_the_ID(), 'post_tag' );
-			if ( ! empty( $tags ) ) {
-				$params['select_blog_tags'] = '1';
-				$params['blog_tags'] = '';
-				foreach( $tags as $tag ) {
-					$params['blog_tags'] .= empty($params['blog_tags']) ? $tag->slug : ',' . $tag->slug;
-				}
-			}
-		}
-		if (!empty($params['related_by_author'])) {
-			$params['select_blog_authors'] = '1';
-			$params['blog_authors'] = get_the_author_meta( 'ID' );
-		}
-		if (!empty($params['blog_exclude_posts'])) {
-			$params['blog_exclude_posts'] .= ',' . get_the_ID();
-		} else {
-			$params['blog_exclude_posts'] = get_the_ID();
-		}
-	}
-
-	$params['blog_post_types'] = is_array($params['blog_post_types']) && !empty($params['blog_post_types']) ? $params['blog_post_types'] : array('post');
-
-	if ($params['blog_style'] == 'timeline_new') {
-		$params['blog_ignore_sticky'] = 1;
-	}
-
-	$args = array(
-		'post_type' => $params['blog_post_types'],
-		'posts_per_page' => $params['blog_post_per_page'],
-		'post_status' => 'publish',
-		'ignore_sticky_posts' => $params['blog_ignore_sticky'],
-	);
-
-	$tax_query = [];
-
-	if ($params['select_blog_tags'] && !empty($params['blog_tags'])) {
-		$tax_query[] = array(
-			'taxonomy' => 'post_tag',
-			'field' => 'slug',
-			'terms' => explode(',', $params['blog_tags'])
-		);
-	}
-
-	if ($params['select_blog_categories'] && !empty($params['blog_categories'])) {
-		$cat_tax_query = array(
-			'relation' => 'OR',
-			array(
-				'taxonomy' => 'category',
-				'field' => 'slug',
-				'terms' => explode(',', $params['blog_categories'])
-			),
-		);
-		if (taxonomy_exists('thegem_news_sets')) {
-			$cat_tax_query[] = array(
-				'taxonomy' => 'thegem_news_sets',
-				'field' => 'slug',
-				'terms' => explode(',', $params['blog_categories'])
-			);
-		}
-		if (!empty($tax_query)) {
-			$tax_query[] = $cat_tax_query;
-		} else {
-			$tax_query = $cat_tax_query;
-		}
-	}
-
-	if (!empty($tax_query)) {
-		$args['tax_query'] = $tax_query;
-	}
-
-	if ($params['select_blog_posts'] && !empty($params['blog_posts'])) {
-		$args['post__in'] = explode(',', $params['blog_posts']);
-		$args['ignore_sticky_posts'] = '1';
-	}
-
-	if ($params['select_blog_authors'] && !empty($params['blog_authors'])) {
-		$args['author__in'] = explode(',', $params['blog_authors']);
-	}
-
-	if (isset($params['blog_order_by']) && $params['blog_order_by'] != 'default') {
-		$args['orderby'] = $params['blog_order_by'];
-	}
-
-	if (isset($params['blog_order']) && $params['blog_order'] != 'default') {
-		$args['order'] = $params['blog_order'];
-	}
-
-	if (!empty($params['blog_offset'])) {
-		$args['offset'] = $params['blog_post_per_page'] * ($paged - 1) + $params['blog_offset'];
+	if (!empty($params['categories'])) {
+		$params['categories'] = explode(',', $params['categories']);
 	} else {
-		$args['paged'] = $paged;
+		$params['categories'] = ['0'];
+	}
+	if (!empty($params['tags'])) {
+		$params['tags'] = explode(',', $params['tags']);
+	}
+	if (!empty($params['posts'])) {
+		$params['posts'] = explode(',', $params['posts']);
+	}
+	if (!empty($params['authors'])) {
+		$params['authors'] = explode(',', $params['authors']);
 	}
 
-	if (!empty($params['blog_exclude_posts'])) {
-		$args['post__not_in'] = explode(',', $params['blog_exclude_posts']);
+	$single_post_id = function_exists('thegem_templates_init_post') && thegem_templates_init_post() ? thegem_templates_init_post()->ID : get_the_ID();
+	$post_type = !empty($params['query_type']) ? $params['query_type'] : 'post';
+	$taxonomy_filter = $manual_selection = $blog_authors = $date_query = [];
+
+	if ($params['query_type'] == 'post') {
+
+		if ($params['select_blog_categories'] && !empty($params['categories']) && !in_array('0', $params['categories'])) {
+			$taxonomy_filter['category'] = $params['categories'];
+		}
+		if ($params['select_blog_tags'] && !empty($params['tags'])) {
+			$taxonomy_filter['post_tag'] = $params['tags'];
+		}
+		if ($params['select_blog_posts'] && !empty($params['posts'])) {
+			$manual_selection = $params['posts'];
+		}
+		if ($params['select_blog_authors'] && !empty($params['authors'])) {
+			$blog_authors = $params['authors'];
+		}
+
+		if ($params['exclude_blog_posts_type'] == 'current') {
+			$params['exclude_blog_posts'] = [$single_post_id];
+		} else if ($params['exclude_blog_posts_type'] == 'term') {
+			$params['exclude_blog_posts'] = thegem_get_posts_query_section_exclude_ids($params['exclude_post_terms'], $post_type);
+		} else {
+			$params['exclude_blog_posts'] = !empty($params['exclude_blog_posts']) ? explode(',', $params['exclude_blog_posts']) : [];
+		}
+		$exclude = isset($params['exclude_blog_posts']) ? $params['exclude_blog_posts'] : [];
+
+	} else if ($params['query_type'] == 'related'|| $params['query_type'] == 'archive' || $params['query_type'] == 'manual') {
+
+		if ($params['query_type'] == 'related') {
+			$post_type = isset($params['taxonomy_related_post_type']) ? $params['taxonomy_related_post_type'] : 'any';
+			$taxonomies = $params['taxonomy_related'] = !empty($params['taxonomy_related']) ? explode(',', $params['taxonomy_related']) : [];
+			if (!empty($taxonomies)) {
+				foreach ($taxonomies as $tax) {
+					if ($tax == 'authors') {
+						$blog_authors = $params['select_blog_authors'] = array(get_the_author_meta('ID'));
+					} else {
+						$tax_terms = get_the_terms($single_post_id, $tax);
+						if (!empty($tax_terms) && !is_wp_error($tax_terms)) {
+							$taxonomy_filter[$tax] = [];
+							foreach ($tax_terms as $term) {
+								$taxonomy_filter[$tax][] = $term->slug;
+							}
+						}
+					}
+				}
+			}
+			$params['related_tax_filter'] = $taxonomy_filter;
+		} else if ($params['query_type'] == 'archive') {
+			$post_type = $params['archive_post_type'] = get_post_type() == 'thegem_templates' ? 'post' : get_post_type();
+
+			if(get_post_type() == 'thegem_templates') {
+				$post_id = get_the_ID();
+				$editor_post_id = $post_id;
+				$preview_settings = get_post_meta($editor_post_id, 'thegem_template_preview_settings', true);
+				if(!empty($preview_settings)) {
+					$preview_tax = empty($preview_settings['demo_tax']) ? 'category' : $preview_settings['demo_tax'];
+					if(!empty($preview_settings['demo_term_id'])) {
+						$preview_term_id = $preview_settings['demo_term_id'];
+						$preview_term = get_term($preview_term_id);
+						if(!empty($preview_term) && !is_wp_error($preview_term)) {
+							$obj = $preview_term;
+							$taxonomy_filter[$preview_tax] = array($obj->slug);
+							$preview_taxonomy = get_taxonomy($preview_tax);
+							$post_type = !empty($preview_taxonomy->object_type) ? $preview_taxonomy->object_type[0] : $post_type;
+						}
+					}
+				}
+			}
+
+			if (is_author()) {
+				$blog_authors = $params['select_blog_authors'] = array(get_queried_object()->ID);
+			} else if (is_category() || is_tag() || is_tax()) {
+				$taxonomy_filter[get_queried_object()->taxonomy] = array(get_queried_object()->slug);
+				$params['archive_tax_filter'] = $taxonomy_filter;
+			} else if (is_date()) {
+				if (!empty(get_query_var('year'))) {
+					$date_query['year'] = get_query_var('year');
+				}
+				if (!empty(get_query_var('monthnum'))) {
+					$date_query['month'] = get_query_var('monthnum');
+				}
+				if (!empty(get_query_var('day'))) {
+					$date_query['day'] = get_query_var('day');
+				}
+				$params['date_query'] = $date_query;
+			}
+		} else {
+			$post_type = 'any';
+			$manual_selection = $params['select_posts_manual'] = !empty($params['select_posts_manual']) ? explode(',', $params['select_posts_manual']) : [];
+		}
+
+		if ($params['exclude_posts_manual_type'] == 'current') {
+			$params['exclude_posts_manual'] = [$single_post_id];
+		} else if ($params['exclude_posts_manual_type'] == 'term') {
+			$params['exclude_posts_manual'] = thegem_get_posts_query_section_exclude_ids($params['exclude_any_terms'], $post_type);
+		} else {
+			$params['exclude_posts_manual'] = !empty($params['exclude_posts_manual']) ? explode(',', $params['exclude_posts_manual']) : [];
+		}
+
+		$exclude = $params['exclude_posts_manual'];
+		$params['with_filter'] = '';
+
+	} else {
+
+		$source_post_type = $params['source_post_type_' . $post_type] = !empty($params['source_post_type_' . $post_type]) ? explode(',', $params['source_post_type_' . $post_type]) : [];
+		foreach ($source_post_type as $source) {
+			if ($source == 'all') {
+
+			} else if ($source == 'manual') {
+				$manual_selection = $params['source_post_type_' . $post_type . '_manual'] = !empty($params['source_post_type_' . $post_type . '_manual']) ? explode(',', $params['source_post_type_' . $post_type . '_manual']) : [];
+			} else {
+				$tax_terms = $params['source_post_type_' . $post_type . '_tax_' . $source] = !empty($params['source_post_type_' . $post_type . '_tax_' . $source]) ? explode(',', $params['source_post_type_' . $post_type . '_tax_' . $source]) : [];
+				if (!empty($tax_terms)) {
+					$taxonomy_filter[$source] = $tax_terms;
+				}
+			}
+		}
+
+		if ($params['exclude_' . $post_type . '_manual_type'] == 'current') {
+			$params['source_post_type_' . $post_type . '_exclude'] = [$single_post_id];
+		} else if ($params['exclude_' . $post_type . '_manual_type'] == 'term') {
+			$params['source_post_type_' . $post_type . '_exclude'] = thegem_get_posts_query_section_exclude_ids($params['exclude_' . $post_type . '_terms'], $post_type);
+		} else {
+			$params['source_post_type_' . $post_type . '_exclude'] = !empty($params['source_post_type_' . $post_type . '_exclude']) ? explode(',', $params['source_post_type_' . $post_type . '_exclude']) : [];
+		}
+
+		$exclude = $params['source_post_type_' . $post_type . '_exclude'];
 	}
 
-	$posts = new WP_Query($args);
-
-	$next_page = 0;
-	if($params['blog_pagination'] == 'more' || $params['blog_pagination'] == 'scroll') {
-		$max_page = ceil(($posts->found_posts - intval($params['blog_offset'])) / $params['blog_post_per_page']);
-		if($max_page > $paged)
-			$next_page = $paged + 1;
-		else
-			$next_page = 0;
+	if ($params['style'] == 'timeline_new') {
+		$params['ignore_sticky'] = 1;
 	}
 
-	$blog_style = $params['blog_style'];
+	$orderby = $order = '';
+	if (isset($params['order_by']) && $params['order_by'] != 'default') {
+		$orderby = $params['order_by'];
+	}
+	if (isset($params['order']) && $params['order'] != 'default') {
+		$order = $params['order'];
+	}
+
+	$posts = get_thegem_extended_blog_posts($post_type, $taxonomy_filter, [], $manual_selection, $exclude, $blog_authors, $paged, $params['post_per_page'], $orderby, $order, $params['offset'], $params['ignore_sticky'], false, false, $date_query);
+
+	$max_page = ceil(($posts->found_posts - intval($params['offset'])) / $params['post_per_page']);
+
+	if ($max_page > $paged)
+		$next_page = $paged + 1;
+	else
+		$next_page = 0;
+
+	$blog_style = $params['style'];
 
 	wp_enqueue_style('thegem-blog');
 	wp_enqueue_style('thegem-additional-blog');
@@ -704,14 +640,21 @@ function thegem_blog($params = array()) {
 		wp_enqueue_style('thegem-animations');
 	}
 
-	if (!in_array($blog_style, ['compact-tiny-1', 'compact-tiny-2', 'compact-tiny-3', 'classic-tiny'])) {
+	if (!$is_compact) {
 		wp_enqueue_style('thegem-additional-blog');
-		if ($blog_style == '2x' || $blog_style == '3x' || $blog_style == '4x' || $blog_style == '100%' || $blog_style == 'timeline_new') {
-			$enqueued_stript = 'thegem-blog-isotope';
-		} else {
-			$enqueued_stript = 'thegem-blog';
-		}
 
+		if ($params['effects_enabled']) {
+			thegem_lazy_loading_enqueue();
+		}
+	}
+	if ($blog_style == '2x' || $blog_style == '3x' || $blog_style == '4x' || $blog_style == '100%' || $blog_style == 'timeline_new') {
+		$enqueued_stript = 'thegem-blog-isotope';
+	} else if (!$is_compact || $params['post_pagination'] == 'normal') {
+		$enqueued_stript = 'thegem-blog';
+	}
+	$style_uid = substr(md5(rand()), 0, 7);
+
+	if (!empty($enqueued_stript)) {
 		wp_enqueue_script($enqueued_stript);
 
 		$localize = array_merge(
@@ -721,17 +664,13 @@ function thegem_blog($params = array()) {
 				'nonce' => wp_create_nonce('blog_ajax-nonce')
 			)
 		);
-		if($params['blog_pagination'] == 'more' || $params['blog_pagination'] == 'scroll') {
-			wp_localize_script($enqueued_stript, 'thegem_blog_ajax', $localize);
-		}
-
-		if ($params['effects_enabled']) {
-			thegem_lazy_loading_enqueue();
+		if ($params['post_pagination'] == 'more' || $params['post_pagination'] == 'scroll' || ($is_compact && $params['post_pagination'] == 'normal')) {
+			wp_localize_script($enqueued_stript, 'thegem_blog_ajax_'.$style_uid, $localize);
 		}
 	}
 
 	if($posts->have_posts()) {
-		if ($params['blog_style'] == 'grid_carousel') {
+		if ($params['style'] == 'grid_carousel') {
 			wp_enqueue_script('thegem-news-carousel');
 			echo '<div class="preloader"><div class="preloader-spin"></div></div>';
 			echo '<div class="gem-news gem-news-type-carousel clearfix ' . ($params['effects_enabled'] ? 'lazy-loading' : '') . '" ' . ($params['effects_enabled'] ? 'data-ll-item-delay="0"' : '') . '>';
@@ -740,7 +679,7 @@ function thegem_blog($params = array()) {
 				include(locate_template('content-news-carousel-item.php'));
 			}
 			echo '</div>';
-		} elseif ($params['blog_style'] == 'slider') {
+		} elseif ($params['style'] == 'slider') {
 			$thegem_slider_style = $params['slider_style'];
 			wp_enqueue_script('thegem-news-carousel');
 			echo '<div class="preloader default-background gem-blog-slider-preloader"><div class="preloader-spin-new"></div></div>';
@@ -751,7 +690,8 @@ function thegem_blog($params = array()) {
 			}
 			echo '</div>';
 		} else {
-			if($params['is_ajax']) {
+			$gridSelector = '.blog#style-' . $style_uid;
+			if (!empty($params['is_ajax'])) {
 				echo '<div data-page="' . $paged . '" data-next-page="' . $next_page . '">';
 			} else {
 				if ($blog_style == '2x' || $blog_style == '3x' || $blog_style == '4x' || $blog_style == '100%')
@@ -759,16 +699,15 @@ function thegem_blog($params = array()) {
 				if ($blog_style == 'timeline_new') {
 					echo '<div class="timeline_new-wrapper"><div class="timeline-new-line"'.(!empty($params['item_colors']['time_line_color']) ? ' style="background-color: '.esc_attr($params['item_colors']['time_line_color']).'"' : '').'></div>';
 				}
-				$unique_id = uniqid('thegem-blog-').rand(1,9999);
 				if (!empty($params['hover_overlay_color'])) { ?>
 					<style>
-						#<?php echo esc_attr($unique_id); ?> article a.default:before,
-						#<?php echo esc_attr($unique_id); ?> article .post-featured-content > a:before {
+						<?php echo esc_attr($gridSelector); ?> article a.default:before,
+						<?php echo esc_attr($gridSelector); ?> article .post-featured-content > a:before {
 							background-color: <?php echo esc_attr($params['hover_overlay_color']); ?>;
 						}
 					</style>
 				<?php }
-				echo '<div id="'.esc_attr($unique_id).'" class="blog blog-style-'.str_replace('%', '', $blog_style) . ($blog_style == 'timeline_new' ? ' blog-style-timeline' : '').' '. ($blog_style == 'justified-2x' || $blog_style == 'justified-3x' || $blog_style == 'justified-4x' && $params['justified_style'] ? $params['justified_style'].' inline-row' : '').' clearfix '.($blog_style == '2x' || $blog_style == '3x' || $blog_style == '4x' || $blog_style == '100%' ? 'blog-style-masonry ' : '').($blog_style == '100%' ? 'fullwidth-block' : '') . ' item-animation-' . $params['loading_animation'] . '" data-next-page="' . $next_page . '">';
+				echo '<div id="style-'.esc_attr($style_uid).'" data-style-uid="'.esc_attr($style_uid).'" class="blog blog-style-'.str_replace('%', '', $blog_style) . ($blog_style == 'timeline_new' ? ' blog-style-timeline' : '').' '. ($blog_style == 'justified-2x' || $blog_style == 'justified-3x' || $blog_style == 'justified-4x' && $params['justified_style'] ? $params['justified_style'].' inline-row' : '').' clearfix '.($blog_style == '2x' || $blog_style == '3x' || $blog_style == '4x' || $blog_style == '100%' ? 'blog-style-masonry ' : '').($blog_style == '100%' ? 'fullwidth-block' : '') . ' item-animation-' . $params['loading_animation'] . ' pagination-' . $params['post_pagination'] . '" data-next-page="' . $next_page . '" data-pages-count="' . $max_page . '">';
 			}
 
 			$last_post_date = '';
@@ -784,14 +723,34 @@ function thegem_blog($params = array()) {
 				$last_post_date = get_the_date("M Y");
 			}
 			echo '</div>';
-			if (!$params['is_ajax'] && $blog_style == 'timeline_new') {
+			if (empty($params['is_ajax']) && $blog_style == 'timeline_new') {
 				echo "</div>";
 			}
-			if ($params['blog_pagination'] == 'normal' && !$params['is_ajax'])
-				thegem_pagination($posts);
+			if ($params['post_pagination'] == 'normal' && empty($params['is_ajax']))
+				if (in_array($params['style'], ['compact-tiny-1', 'compact-tiny-2', 'compact-tiny-3', 'classic-tiny'])) {
+					if ($max_page > 1) { ?>
+						<div class="portfolio-navigator gem-pagination">
+							<a href="#" class="prev" style="display: none;">
+								<i class="default"></i>
+							</a>
+							<div class="pages">
+								<?php for ($i = 0; $i < $max_page; $i++) { ?>
+									<a href="#" data-page="<?php echo $i + 1; ?>" <?php echo $i == 0 ? 'class="current"' : ''; ?>>
+										<?php echo $i + 1; ?>
+									</a>
+								<?php } ?>
+							</div>
+							<a href="#" class="next">
+								<i class="default"></i>
+							</a>
+						</div>
+					<?php }
+				} else {
+					thegem_pagination($posts);
+				}
 			?>
 
-			<?php if($params['blog_pagination'] == 'more' && !$params['is_ajax'] && $posts->max_num_pages > $paged): ?>
+			<?php if($params['post_pagination'] == 'more' && empty($params['is_ajax']) && $max_page > $paged): ?>
 				<div class="blog-load-more <?php if ($blog_style == 'timeline_new') echo 'blog-load-more-style-timeline-new'?>">
 					<div class="inner">
 						<?php thegem_button(array_merge($params['button'], array('tag' => 'button', 'position' => 'center')), 1); ?>
@@ -799,7 +758,7 @@ function thegem_blog($params = array()) {
 				</div>
 			<?php endif; ?>
 
-			<?php if($params['blog_pagination'] == 'scroll' && !$params['is_ajax'] && $posts->max_num_pages > $paged): ?>
+			<?php if($params['post_pagination'] == 'scroll' && empty($params['is_ajax']) && $max_page > $paged): ?>
 				<div class="blog-scroll-pagination"></div>
 			<?php endif; ?>
 
@@ -807,10 +766,44 @@ function thegem_blog($params = array()) {
 		}
 	}
 
-	wp_reset_postdata();
+	if (function_exists('thegem_templates_close_post')) {
+		thegem_templates_close_post();
+	}
 }
 }
 
+if (!function_exists('thegem_get_posts_query_section_exclude_ids')) {
+	function thegem_get_posts_query_section_exclude_ids($terms, $post_type) {
+		$exclude_ids = [];
+		if (!empty($terms)) {
+			$exclude_terms = explode(',', $terms);
+			foreach ($exclude_terms as $id) {
+				$id = str_replace(' ', '', $id);
+				$arr = explode("|", $id);
+				$term = get_term_by('id', $arr[1], $arr[0]);
+
+				$args = array(
+					'post_type' => $post_type,
+					'post_status' => 'publish',
+					'posts_per_page' => -1,
+					'fields' => 'ids',
+					'tax_query' => array(
+						array(
+							'taxonomy' => $term->taxonomy,
+							'field' => 'term_id',
+							'terms' => $term->term_id,
+						),
+					),
+				);
+				$wp_query_result = new WP_Query($args);
+				$post_ids = !empty($wp_query_result->posts) ? $wp_query_result->posts : array();
+				$exclude_ids = array_unique(array_merge($exclude_ids, $post_ids));
+			}
+		}
+
+		return $exclude_ids;
+	}
+}
 
 function thegem_get_search_form($form) {$product_search = '';
 	if (thegem_is_plugin_active('woocommerce/woocommerce.php') && thegem_get_option('website_search_post_type_products') == '1') {
@@ -958,6 +951,7 @@ function thegem_button($params = array(), $echo = false) {
 		'size' => 'small',
 		'size_tablet' => '',
 		'size_mobile' => '',
+		'text_style' => '',
 		'text_weight' => 'normal',
 		'no-uppercase' => 0,
 		'corner' => 3,
@@ -969,9 +963,11 @@ function thegem_button($params = array(), $echo = false) {
 		'hover_text_color' => '',
 		'hover_background_color' => '',
 		'hover_border_color' => '',
+		'icon_source' => '',
 		'icon' => '',
 		'icon_pack' => '',
 		'icon_position' => 'left',
+		'icon_image_file' => '',
 		'separator' => '',
 		'separator_weight' => '',
 		'extra_class' => '',
@@ -1004,6 +1000,18 @@ function thegem_button($params = array(), $echo = false) {
 		'padding_right' => '',
 		'padding_right_tablet' => '',
 		'padding_right_mobile' => '',
+		'margin_left' => '',
+		'margin_left_tablet' => '',
+		'margin_left_mobile' => '',
+		'margin_right' => '',
+		'margin_right_tablet' => '',
+		'margin_right_mobile' => '',
+		'margin_top' => '',
+		'margin_top_tablet' => '',
+		'margin_top_mobile' => '',
+		'margin_bottom' => '',
+		'margin_bottom_tablet' => '',
+		'margin_bottom_mobile' => '',
 		'letter_spacing' => '',
 		'text_transform' => '',
 
@@ -1022,6 +1030,7 @@ function thegem_button($params = array(), $echo = false) {
 	$params['size'] = thegem_check_array_value(array('tiny', 'small', 'medium', 'large', 'giant'), $params['size'], 'small');
 	$params['size_tablet'] = thegem_check_array_value(array('', 'tiny', 'small', 'medium', 'large', 'giant'), $params['size_tablet'], '');
 	$params['size_mobile'] = thegem_check_array_value(array('', 'tiny', 'small', 'medium', 'large', 'giant'), $params['size_mobile'], '');
+	$params['text_style'] = thegem_check_array_value(array('', 'title-h1', 'title-h2', 'title-h3', 'title-h4', 'title-h5', 'title-h6', 'title-xlarge', 'styled-subtitle', 'title-main-menu', 'text-body', 'text-body-tiny'), $params['text_style'], '');
 	$params['text_weight'] = thegem_check_array_value(array('normal', 'thin'), $params['text_weight'], 'normal');
 	$params['no-uppercase'] = $params['no-uppercase'] ? 1 : 0;
 	$params['text_transform'] = thegem_check_array_value(array('', 'capitalize', 'lowercase', 'uppercase', 'none'), $params['text_transform'], '');
@@ -1186,6 +1195,17 @@ function thegem_button($params = array(), $echo = false) {
 	if(intval($params['padding_right_mobile']) > 0 || $params['padding_right_mobile'] === '0') {
 		$responsive_mobile_styles .= 'padding-right: '.intval($params['padding_right_mobile']).'px;';
 	}
+	foreach(array('left', 'right', 'top', 'bottom') as $margin_dir) {
+		if(intval($params['margin_'.$margin_dir]) > 0 || $params['margin_'.$margin_dir] === '0') {
+			$responsive_styles .= 'margin-'.$margin_dir.': '.intval($params['margin_'.$margin_dir]).'px;';
+		}
+		if(intval($params['margin_'.$margin_dir.'_tablet']) > 0 || $params['margin_'.$margin_dir.'_tablet'] === '0') {
+			$responsive_tablet_styles .= 'margin-'.$margin_dir.': '.intval($params['margin_'.$margin_dir.'_tablet']).'px;';
+		}
+		if(intval($params['margin_'.$margin_dir.'_mobile']) > 0 || $params['margin_'.$margin_dir.'_mobile'] === '0') {
+			$responsive_mobile_styles .= 'margin-'.$margin_dir.': '.intval($params['margin_'.$margin_dir.'_mobile']).'px;';
+		}
+	}
 	$button_custom_css ='';
 	if(!empty($responsive_styles)) {
 		$button_custom_css .='.'.$unique.' .gem-button {'.$responsive_styles.'}';
@@ -1202,11 +1222,27 @@ function thegem_button($params = array(), $echo = false) {
 	if(!empty($params['text_transform'])) {
 		$button_custom_css .='.'.$unique.' .gem-button {text-transform: '.$params['text_transform'].';}';
 	}
+	if($params['text_color']) {
+		$button_custom_css .='.'.$unique.' .gem-button svg {fill: '.$params['text_color'].';}';
+	}
+	if($params['hover_text_color']) {
+		$button_custom_css .='.'.$unique.' .gem-button:hover svg {fill: '.$params['hover_text_color'].';}';
+	}
 	if(!empty($button_custom_css)) {
 		$output .= '<style type="text/css">'.$button_custom_css.'</style>';
 	}
 
-	$output .= '<div'.$id.' class="'.esc_attr('gem-button-container gem-button-position-'.$params['position'].$el_class).'" '.$interactions_data.' '.$delay.'>';
+	$editor_attr = thegem_data_editor_attribute('gem-button-position-'.$params['position']);
+
+	if(!empty($params['text_style'])) {
+		$params['text'] = '<span class="gem-button-text '.$params['text_style'].($params['text_weight'] === 'thin' ? ' light' : '').'">'.$params['text'].'</span>';
+		$params['attributes']['class'] .= ' gem-button-flex';
+	}
+	if(($params['icon_source'] === 'image' || $params['icon_source'] === 'svg') && !empty($params['icon_image_file'])) {
+		$params['attributes']['class'] .= ' gem-button-flex';
+	}
+
+	$output .= '<div'.$id.' class="'.esc_attr('gem-button-container gem-button-position-'.$params['position'].$el_class).'" '.$interactions_data.' '.$delay.$editor_attr.'>';
 	if($params['separator']) {
 		$output .= '<div class="gem-button-separator gem-button-separator-type-'.esc_attr($params['separator']).'">'.$sep.'<div class="gem-button-separator-button">';
 	}
@@ -1214,7 +1250,7 @@ function thegem_button($params = array(), $echo = false) {
 	if($params['title']) {
 		$output .= ' title="'.esc_attr($params['title']).'"';
 	}
-	$output .= ' class="'.esc_attr('gem-button gem-button-size-'.$params['size'].' gem-button-style-'.$params['style'].' gem-button-text-weight-'.$params['text_weight'].($params['style'] == 'outline' ? ' gem-button-border-'.$params['border'] : '').($params['text'] == '' ? ' gem-button-empty' : '').($params['icon'] && $params['text'] != '' ? ' gem-button-icon-position-'.$params['icon_position'] : '').($params['no-uppercase'] ? ' gem-button-no-uppercase' : '').(empty($params['attributes']['class']) ? '' : ' '.$params['attributes']['class']) . ($is_effects_enabled && !$is_enabled_button_animation ? ' lazy-loading-item' : '')) .'"';
+	$output .= ' class="'.esc_attr('gem-button gem-button-size-'.$params['size'].' gem-button-style-'.$params['style'].' gem-button-text-weight-'.$params['text_weight'].($params['style'] == 'outline' ? ' gem-button-border-'.$params['border'] : '').($params['text'] == '' ? ' gem-button-empty' : '').((($params['icon'] && $params['icon_source'] !== 'image' && $params['icon_source'] !== 'svg') || (($params['icon_source'] === 'image' || $params['icon_source'] === 'svg') && !empty($params['icon_image_file']))) && $params['text'] != '' ? ' gem-button-icon-position-'.$params['icon_position'] : '').($params['no-uppercase'] ? ' gem-button-no-uppercase' : '').(empty($params['attributes']['class']) ? '' : ' '.$params['attributes']['class']) . ($is_effects_enabled && !$is_enabled_button_animation ? ' lazy-loading-item' : '')) .'"';
 	$output .= !$is_enabled_button_animation ? ' data-ll-effect="drop-right-without-wrap"' : '';
 	$output .= ' style="';
 	$output .= 'border-radius: '.esc_attr($params['corner']).'px;';
@@ -1299,11 +1335,11 @@ function thegem_button($params = array(), $echo = false) {
 	}
 	if($params['tag'] != 'input') {
 		$output .= '>';
-		if($params['icon']) {
+		if(($params['icon'] && $params['icon_source'] !== 'image' && $params['icon_source'] !== 'svg') || (($params['icon_source'] === 'image' || $params['icon_source'] === 'svg') && !empty($params['icon_image_file']))) {
 			if($params['icon_position'] == 'left') {
-				$output .= thegem_build_icon($params['icon_pack'], $params['icon']).$params['text'];
+				$output .= thegem_build_icon($params['icon_pack'], $params['icon'], '', $params['icon_source'], $params['icon_image_file']).$params['text'];
 			} else {
-				$output .= $params['text'].thegem_build_icon($params['icon_pack'], $params['icon']);
+				$output .= $params['text'].thegem_build_icon($params['icon_pack'], $params['icon'], '', $params['icon_source'], $params['icon_image_file']);
 			}
 		} else {
 			$output .= $params['text'];
@@ -1325,23 +1361,71 @@ function thegem_button($params = array(), $echo = false) {
 }
 
 if(!function_exists('thegem_build_icon')) {
-function thegem_build_icon($pack, $icon, $class = '') {
-	if($icon) {
+function thegem_build_icon($pack, $icon, $class = '', $source ='', $image = '') {
+	if($icon && $source !== 'image') {
 		if(in_array($pack, array('elegant', 'material', 'fontawesome', 'userpack', 'thegemdemo', 'thegem-header'))) {
 			wp_enqueue_style('icons-'.$pack);
 			return '<i class="gem-print-icon gem-icon-pack-'.esc_attr($pack).' '.esc_attr($class).'">&#x'.$icon.';</i>';
 		} else {
 			return '<i class="gem-print-icon gem-icon-pack-'.esc_attr($pack).' gem-icon-'.esc_attr($icon).' '.esc_attr($class).'"></i>';
 		}
+	} elseif($source === 'image' && !empty($image)) {
+		return '<img class="gem-print-icon" src="' . thegem_attachment_url($image) . '" alt="#" />';
+	} elseif($source === 'svg' && !empty($image)) {
+		return thegem_get_svg_content($image, array('class' => 'gem-print-icon'));
 	}
+}
+}
+
+if(!function_exists('thegem_get_svg_content')) {
+function thegem_get_svg_content($file, $atts = array()) {
+	$output = '';
+	$filename = $file;
+	if(get_attached_file($file)) {
+		$filename = get_attached_file($file);
+	}
+	if(!empty($filename) && file_exists($filename)) {
+		$content = file_get_contents($filename);
+		$content = preg_replace('#<style(.*?)>(.*?)</style>#is', '', $content);
+		preg_match('/<\s*svg\s*(?<attr>[^>]*?)?>(?<content>.*?)?<\s*\/\s*svg\s*>/ims', $content, $svg);
+		if(!empty($svg['content'])) {
+			$svg_attrs = !empty($svg['attr']) ? wp_kses_hair($svg['attr'], wp_allowed_protocols()) : array();
+			unset($svg_attrs['id']);
+			$attrs = '';
+			if(!empty($svg_attrs)) {
+				foreach($svg_attrs as $a) {
+					$val = $a['value'].(!empty($atts[$a['name']]) ? ' '.$atts[$a['name']] : '');
+					unset($atts[$a['name']]);
+					$attrs .= ' '.esc_attr($a['name']).'="'.esc_attr($val).'"';
+				}
+				foreach($atts as $k => $a) {
+					$attrs .= ' '.esc_attr($k).'="'.esc_attr($a).'"';
+				}
+			}
+			$output = '<svg'.$attrs.'>'.$svg['content'].'</svg>';
+		}
+	}
+	return $output;
 }
 }
 
 function thegem_get_post_featured_content($post_id, $thumb_size = 'thegem-blog-default-large', $single = false, $picture_sources=array(), $audio_with_thumb = false) {
 	$format = get_post_format($post_id);
-	$post_item_data = thegem_get_sanitize_post_data($post_id);
+	if (get_post_type($post_id) == 'thegem_pf_item') {
+		$post_item_data = thegem_get_sanitize_pf_item_data($post_id);
+		foreach ($post_item_data as $key => $value) {
+			if (strpos($key, 'grid_appearance_') !== false) {
+				$post_item_data[str_replace('grid_appearance_','', $key)] = $value;
+				unset($post_item_data[$key]);
+			}
+		}
+	} else if (get_post_type($post_id) == 'post' || get_post_type($post_id) == 'page' || get_post_type($post_id) == 'product') {
+		$post_item_data = thegem_get_sanitize_post_data($post_id);
+	} else {
+		$post_item_data = thegem_get_sanitize_cpt_item_data($post_id);
+	}
 	$output = '';
-	if($post_item_data['show_featured_content'] || !$single) {
+	if(!empty($post_item_data['show_featured_content']) || !$single) {
 		if($format == 'video' && $post_item_data['video']) {
 			$aspect_percents = thegem_aspect_ratio_to_percents($post_item_data['video_aspect_ratio']);
 			$video_block = '';
@@ -1376,8 +1460,6 @@ function thegem_get_post_featured_content($post_id, $thumb_size = 'thegem-blog-d
 				}
 			}
 			if ($post_item_data['audio']) {
-				wp_enqueue_style('wp-mediaelement');
-				wp_enqueue_script('thegem-mediaelement');
 				$output .= '<div class="audio-block"><audio width="100%" controls="controls" src="'.esc_url($post_item_data['audio']).'" preload="none"></audio></div>';
 			}
 		} elseif($format == 'gallery' && thegem_is_plugin_active('thegem-elements/thegem-elements.php') && $post_item_data['gallery']) {
@@ -1473,7 +1555,7 @@ if(!function_exists('thegem_post_picture')) {
 
 if(!function_exists('thegem_generate_picture')) {
 	function thegem_generate_picture($attachment_id, $default_size, $sources=array(), $attrs=array(), $return_info=false) {
-		if (!$attachment_id || !in_array($default_size, array_keys(thegem_image_sizes()))) {
+		if (!$attachment_id || (!in_array($default_size, ['full', 'woocommerce_thumbnail', 'woocommerce_single', 'thumbnail', 'medium', 'medium_large', 'large', '1536x1536', '2048x2048']) && !in_array($default_size, array_keys(thegem_image_sizes())))) {
 			return '';
 		}
 		$default_image = thegem_generate_thumbnail_src($attachment_id, $default_size);
@@ -1487,10 +1569,12 @@ if(!function_exists('thegem_generate_picture')) {
 		if (empty($attrs['alt'])) {
 			$attachment = get_post($attachment_id);
 			$attrs['alt'] = trim(strip_tags(get_post_meta($attachment_id, '_wp_attachment_image_alt', true)));
-			if(empty($default_attr['alt']))
-				$attrs['alt'] = trim(strip_tags($attachment->post_excerpt));
-			if(empty($default_attr['alt']))
-				$attrs['alt'] = trim(strip_tags($attachment->post_title));
+			if ($attachment) {
+				if(empty($default_attr['alt']))
+					$attrs['alt'] = trim(strip_tags($attachment->post_excerpt));
+				if(empty($default_attr['alt']))
+					$attrs['alt'] = trim(strip_tags($attachment->post_title));
+			}
 		}
 
 		$attrs = wp_parse_args($attrs, $default_attrs);
@@ -1521,6 +1605,9 @@ if(!function_exists('thegem_generate_picture_sources')) {
 		?>
 		<?php foreach ($sources as $source): ?>
 			<?php
+				if(!thegem_get_option('mobile_thumbnails_enabled') && !empty($source['media'])) {
+					continue;
+				}
 				$srcset = thegem_srcset_generate_urls($attachment_id, $source['srcset']);
 				if (!$srcset) {
 					continue;
@@ -1540,8 +1627,13 @@ if(!function_exists('thegem_srcset_generate_urls')) {
 			if (!in_array($size, $thegem_sizes)) {
 				continue;
 			}
+			if(!thegem_get_option('retina_thumbnails_enabled') && $condition !== '1x') {
+				continue;
+			}
 			$im = thegem_generate_thumbnail_src($attachment_id, $size);
-			$result[$condition] = esc_url($im[0]);
+			if ($im) {
+				$result[$condition] = esc_url($im[0]);
+			}
 		}
 		return $result;
 	}
@@ -1676,9 +1768,7 @@ function thegem_tribe_events_views_v2_bootstrap_html($html, $context, $view_slug
 	$thegem_page_data = thegem_get_output_page_settings($thegem_page_id);
 	if(is_tax()) {
 		$thegem_term_id = get_queried_object()->term_id;
-		if(get_term_meta($thegem_term_id , 'thegem_taxonomy_custom_page_options', true)) {
-			$thegem_page_data = thegem_get_output_page_settings($thegem_term_id, array(), 'term');
-		}
+		$thegem_page_data = thegem_get_output_page_settings($thegem_term_id, array(), 'term');
 	}
 	$thegem_no_margins_block = '';
 	if ($thegem_page_data['effects_no_bottom_margin'] || $thegem_page_data['content_padding_bottom'] === 0) {
@@ -1747,6 +1837,48 @@ function thegem_single_post_template() {
 	return false;
 }
 
+function thegem_page_template() {
+	if(!function_exists('thegem_get_template_type') || !is_page()) return false;
+	$page_id = get_the_ID();
+	$page_data = thegem_get_sanitize_page_item_data($page_id);
+	if($page_data['page_layout_source'] !== 'builder') return false;
+	$template_id = intval($page_data['page_builder_template']);
+	if($template_id < 1) return false;
+	$template = get_post($template_id);
+	if($template && thegem_get_template_type($template_id) == 'single-post') {
+		return $template_id;
+	}
+	return false;
+}
+
+function thegem_portfolio_template() {
+	if(!function_exists('thegem_get_template_type') || !is_singular('thegem_pf_item')) return false;
+	$post_id = get_the_ID();
+	$portfolio_data = thegem_get_sanitize_pf_item_data($post_id);
+	if(!isset($portfolio_data['portfolio_layout_source']) || $portfolio_data['portfolio_layout_source'] !== 'builder') return false;
+	$template_id = intval($portfolio_data['portfolio_builder_template']);
+	if($template_id < 1) return false;
+	$template = get_post($template_id);
+	if($template && thegem_get_template_type($template_id) == 'portfolio') {
+		return $template_id;
+	}
+	return false;
+}
+
+function thegem_cpt_template() {
+	if(!function_exists('thegem_get_template_type') || !is_singular() || !in_array(get_post_type(), thegem_get_available_po_custom_post_types(), true)) return false;
+	$post_id = get_the_ID();
+	$cpt_data = thegem_get_sanitize_cpt_item_data($post_id);
+	if(!isset($cpt_data['layout_source']) || $cpt_data['layout_source'] !== 'builder') return false;
+	$template_id = intval($cpt_data['builder_template']);
+	if($template_id < 1) return false;
+	$template = get_post($template_id);
+	if($template && thegem_get_template_type($template_id) == 'single-post') {
+		return $template_id;
+	}
+	return false;
+}
+
 function thegem_disable_cache() {
 	//if(!(get_option('thegem_enabled_wpsupercache_autoptimize')) || !function_exists('wpsc_init')) return ;
 	$disable_cache = false;
@@ -1789,3 +1921,55 @@ function thegem_clean_contact_forms() {
 		}
 	}
 }
+
+function thegem_fix_wpml_missing_language() {
+	if(get_option('thegem_fix_wpml_missing_language') && defined('ICL_SITEPRESS_VERSION')) {
+		global $iclTranslationManagement;
+		$iclTranslationManagement->add_missing_language_information();
+		delete_option('thegem_fix_wpml_missing_language');
+	}
+}
+add_action('init', 'thegem_fix_wpml_missing_language', 10);
+
+/* Content for Off-Canvas Area */
+
+function theged_add_off_canvas_content_to_menu_start() {
+	if(thegem_get_option('header_layout') == 'fullwidth_hamburger' || thegem_get_option('header_layout') == 'overlay') {
+		if(thegem_get_option('header_content_offcanvas_area') == 'global_section' && thegem_get_option('header_content_offcanvas_global_section')) {
+			$GLOBALS['thegem_menu_template'] = thegem_get_option('header_content_offcanvas_global_section');
+			add_filter('wp_nav_menu_items', 'thegem_menu_insert_template', 10, 2);
+			add_filter('thegem_nav_menu_class', 'thegem_menu_off_canvas_content_class', 10, 2);
+			//$settings['menu_class'] .= ' hamburger-with-template';
+		}
+	}
+}
+add_action('thegem_before_nav_menu', 'theged_add_off_canvas_content_to_menu_start');
+
+function theged_add_off_canvas_content_to_menu_end() {
+	remove_filter('wp_nav_menu_items', 'thegem_menu_insert_template');
+	remove_filter('thegem_nav_menu_class', 'thegem_menu_off_canvas_content_class');
+}
+add_action('thegem_after_nav_menu', 'theged_add_off_canvas_content_to_menu_end');
+
+function thegem_menu_insert_template($items, $args) {
+	$template_id = $GLOBALS['thegem_menu_template'];
+	$items .= '<li class="menu-item menu-item-type-template" style="display: none">';
+	$template_id = intval($template_id);
+	if($template_id > 0 && $template = get_post($template_id)) {
+		$items .= do_shortcode('[gem_template id="'.intval($template).'"]');
+	}
+	$items .= '</li>';
+	unset($GLOBALS['thegem_menu_template']);
+
+	return $items;
+}
+function thegem_menu_off_canvas_content_class($classes) {
+	$classes .= ' hamburger-with-template';
+	return $classes;
+}
+
+function thegem_acf_google_map_api( $api ){
+	$api['key'] = thegem_get_option('google_map_api_key');
+	return $api;
+}
+add_filter('acf/fields/google_map/api', 'thegem_acf_google_map_api');

@@ -30,6 +30,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $ken_burns_image
  * @var $ken_burns_direction
  * @var $ken_burns_transition_speed
+ * @var $video_background_type
+ * @var $video_background_src
+ * @var $video_background_acpect_ratio
+ * @var $video_background_play_on_mobile
+ * @var $video_background_fallback
+ * @var $video_background_overlay_color
+ * @var $video_background_overlay_opacity
+ * @var $video_background_poster
+ *
  * Shortcode class
  * @var $this WPBakeryShortCode_VC_Row
  */
@@ -39,7 +48,7 @@ $full_width = $equal_height = $flex_row = $columns_placement = $content_placemen
 $parallax_image = $css = $el_id = $video_bg = $video_bg_url = $video_bg_parallax = $css_animation = '';
 $ken_burns_enabled = $header_sticky_row = $header_shrink_row = $disable_element = $uniqid = $element_css = '';
 $thegem_revesrse_columns_tablet = $thegem_revesrse_columns_mobile = '';
-$output = $after_output = '';
+$output = $after_output = $before_output = '';
 
 $fw_container_start = '<div class="container">';
 $fw_container_end = '</div>';
@@ -95,6 +104,10 @@ if ($disable_custom_paddings_tablet) {
 }
 if ($disable_custom_paddings_mobile) {
 	$css_classes[] = 'disable-custom-paggings-mobile';
+}
+if ($vertical_slider) {
+	$full_width = empty($full_width) ? 'stretch_row' : $full_width;
+	$full_height = 1;
 }
 
 if ( ! empty( $atts['gap'] ) ) {
@@ -285,6 +298,41 @@ if ($ken_burns_enabled) {
 	$ken_burns_output = '<div class="thegem-ken-burns-bg '.$ken_burns_classes.'" style="'.implode(' ', $ken_burns_styles).'"></div>';
 }
 
+if (!empty($video_background_type) && !empty($video_background_src)) {
+	$fullwidth_uid = uniqid();
+	$video = thegem_video_background(
+		$video_background_type,
+		$video_background_src,
+		$video_background_acpect_ratio,
+		false,
+		$video_background_overlay_color,
+		$video_background_overlay_opacity,
+		thegem_attachment_url($video_background_poster),
+		$video_background_play_on_mobile,
+		thegem_attachment_url($video_background_fallback),
+		$background_style,
+		$background_position_horizontal,
+		$background_position_vertical
+	);
+	
+	/*
+	$fullwidth_uid = uniqid();
+	$html_js = '<script type="text/javascript">if (typeof(gem_fix_fullwidth_position) == "function") { gem_fix_fullwidth_position(document.getElementById("fullwidth-block-' . $fullwidth_uid . '")); }</script>';
+	$before_output .= '<div id="fullwidth-block-' . $fullwidth_uid . '" class="fullwidth-block">'.$html_js.$video.'</div>';
+	*/
+	
+	$before_output .= '<div class="vc_row_custom_video_background">'.$video.'</div>';
+}
+
+if(!empty($thegem_background_overlay)) {
+	$before_output .= '<div class="gem-vc-background-overlay"></div>';
+	$css_classes[] = 'gem-vc-background-overlay-container';
+	$element_css .= thegem_vc_background_overlay_css($atts, $uniqid);
+}
+if(!empty($thegem_row_overflow) && $thegem_row_overflow === 'hidden') {
+	$element_css .= '.'.esc_attr($uniqid).'.wpb_row {overflow: hidden;}';
+}
+
 if(!empty($interactions_enabled)) {
 	$wrapper_attributes[] = interactions_data_attr($atts);
 	$css_classes[] = 'gem-interactions-enabled';
@@ -457,6 +505,7 @@ if(!empty($element_css)) {
 	$output .= '<style>'. $element_css .'</style>';
 }
 
+$output .= $before_output;
 $output .= wpb_js_remove_wpautop( $content );
 if ($template_fw && $full_width === 'stretch_row') {
 	$output .= $fw_container_end;

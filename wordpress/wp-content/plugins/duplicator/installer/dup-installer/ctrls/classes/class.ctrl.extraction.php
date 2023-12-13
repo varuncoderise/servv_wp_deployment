@@ -11,6 +11,7 @@ use Duplicator\Installer\Core\Deploy\DupArchive\Daws;
 use Duplicator\Installer\Core\Deploy\Files\FilterMng;
 use Duplicator\Installer\Core\Deploy\Files\Filters;
 use Duplicator\Installer\Core\Deploy\Files\RemoveFiles;
+use Duplicator\Installer\Utils\LinkManager;
 use Duplicator\Installer\Utils\Log\Log;
 use Duplicator\Installer\Utils\Log\LogHandler;
 use Duplicator\Installer\Core\Params\PrmMng;
@@ -460,6 +461,7 @@ class DUP_Extraction extends AbstractJsonSerializable
             -1),
             'includedFiles'            => array(),
             'dir_mode_override'        => 'u+rwx',
+            'keep_file_time'           => ($paramsManager->getValue(PrmMng::PARAM_FILE_TIME) == 'original') ? true : false
         );
 
         $params['filtered_files'][] = DupArchive::INDEX_FILE_NAME;
@@ -474,7 +476,7 @@ class DUP_Extraction extends AbstractJsonSerializable
 
         $daws = new Daws();
         $daws->setFailureCallBack(function ($failure) {
-            self::reportExtractionNotices($failure->subject, $failure->description);
+            DUP_Extraction::reportExtractionNotices($failure->subject, $failure->description);
         });
         $dupResult         = $daws->processRequest($params);
         $this->dawn_status = $dupResult->status;
@@ -510,10 +512,10 @@ class DUP_Extraction extends AbstractJsonSerializable
         Log::info('DUP INSTALLER ARCHIVE PATH:"' . $dupInstallerZipPath . '"', Log::LV_DETAILED);
 
         if ($zip->open($this->archive_path) !== true) {
+            $faqURL       = LinkManager::getDocUrl('how-to-fix-installer-archive-extraction-issues', 'install');
             $zip_err_msg  = ERR_ZIPOPEN;
-            $zip_err_msg .= "<br/><br/><b>To resolve error see <a href='" .
-                DUPX_Constants::FAQ_URL . "/#faq-installer-130-q' target='_blank'>" .
-                DUPX_Constants::FAQ_URL . "/#faq-installer-130-q</a></b>";
+            $zip_err_msg .= '<br/><br/><b>To resolve error see <a href="' . $faqURL . '" target="_blank">' .
+                DUPX_Constants::FAQ_URL . "how-to-fix-installer-archive-extraction-issues/</a></b>";
             Log::info($zip_err_msg);
             throw new Exception("Couldn't open zip archive.");
         }
@@ -562,7 +564,8 @@ class DUP_Extraction extends AbstractJsonSerializable
                 ) {
                     Log::info("SKIPPING NOT IN ZIPATH:\"" . Log::v2str($extract_filename) . "\"", Log::LV_DETAILED);
                 } else {
-                    $this->extractFile($zip, $extract_filename, $archiveConfig->destFileFromArchiveName($extract_filename));
+                    $destFilePath = $archiveConfig->destFileFromArchiveName($extract_filename);
+                    $this->extractFile($zip, $extract_filename, $destFilePath);
                 }
             }
 
@@ -753,6 +756,9 @@ class DUP_Extraction extends AbstractJsonSerializable
                 }
                 // SET ONLY FILES
                 self::setPermsFromParams($newFilePath, false);
+                if (PrmMng::getInstance()->getValue(PrmMng::PARAM_FILE_TIME) == 'current') {
+                    touch($newFilePath, time());
+                }
             }
         } catch (Exception $ex) {
             self::reportExtractionNotices($zipFilename, $ex->getMessage());
@@ -1008,9 +1014,10 @@ class DUP_Extraction extends AbstractJsonSerializable
         Log::info('SHELL COMMAND: ' . Log::v2str($command));
         $stderr = shell_exec($command);
         if ($stderr != '') {
+            $faqUrl       = LinkManager::getDocUrl('how-to-fix-installer-archive-extraction-issues', 'install', 'shell exec error');
             $zip_err_msg  = ERR_SHELLEXEC_ZIPOPEN . ": $stderr";
-            $zip_err_msg .= "<br/><br/><b>To resolve error see <a href='https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-130-q' " .
-            "target='_blank'>https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-130-q</a></b>";
+            $zip_err_msg .= '<br/><br/><b>To resolve error see <a href="' . $faqUrl . '" target="_blank">'
+                . DUPX_Constants::FAQ_URL . "how-to-fix-installer-archive-extraction-issues</a></b>";
             Log::error($zip_err_msg);
         }
     }

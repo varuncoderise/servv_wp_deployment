@@ -41,7 +41,7 @@ if ( $cross_sells ) : ?>
 			<?php if($isLegacy) : ?></div><div class="gem-button-separator-holder"><div style="border-color: #b6c6c9;" class="gem-button-separator-line"></div></div></div><?php endif; ?>
 		<?php endif; ?>
 
-		<?php if ( thegem_get_option('product_archive_type') != 'grid' ) : ?>
+		<?php if ( thegem_get_option('product_archive_type') == 'legacy' ) : ?>
 			<?php woocommerce_product_loop_start(); ?>
 
 				<?php foreach ( $cross_sells as $cross_sell ) : ?>

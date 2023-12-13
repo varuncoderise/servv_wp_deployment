@@ -4,15 +4,19 @@ add_action('init', 'thegem_init_global_page_settings');
 function thegem_init_global_page_settings() {
 	global $thegem_global_page_settings;
 	$thegem_global_page_settings = array(
-		'global' => thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_global'), 'global'),
-		'page' => thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_default'), 'default'),
-		'post' => thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_post'), 'post'),
-		'portfolio' => thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_portfolio'), 'portfolio'),
-		'product' => thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_product'), 'product'),
-		'product_category' => thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_product_categories'), 'product_category'),
-		'blog' => thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_blog'), 'blog'),
-		'search' => thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_search'), 'search'),
+		'global' => array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_global'), 'global')),
+		'page' => array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_default'), 'default')),
+		'post' => array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_post'), 'post')),
+		'portfolio' => array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_portfolio'), 'portfolio')),
+		'product' => array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_product'), 'product')),
+		'product_category' => array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_product_categories'), 'product_category')),
+		'blog' => array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_blog'), 'blog')),
+		'search' => array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_search'), 'search')),
 	);
+	foreach(thegem_get_available_po_custom_post_types() as $post_type) {
+		$thegem_global_page_settings[$post_type] = array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_'.$post_type), 'cpt'));
+		$thegem_global_page_settings[$post_type.'_archive'] = array_map('stripslashes', thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_'.$post_type.'_archive'), 'cpt_archive'));
+	}
 	$thegem_global_page_settings['global']['header_hide_top_area'] = !thegem_get_option('top_area_show');
 	$thegem_global_page_settings['global']['header_hide_top_area_tablet'] = thegem_get_option('top_area_disable_tablet');
 	$thegem_global_page_settings['global']['header_hide_top_area_mobile'] = thegem_get_option('top_area_disable_mobile');
@@ -76,6 +80,20 @@ function thegem_get_post_data($default = array(), $post_data_name = '', $post_id
 				$post_data['title_font_preset_style'] = 'title-xlarge';
 			}
 		}
+		if($type === 'term' && metadata_exists('term', $post_id, 'thegem_taxonomy_custom_page_options')) {
+			$custom_po = get_term_meta($post_id, 'thegem_taxonomy_custom_page_options', true);
+			if(empty($custom_po)) {
+				$post_data['effects_hide_header'] = 'default';
+				$post_data['title_show'] = 'default';
+				$post_data['content_area_options'] = 'default';
+				$post_data['sidebar_show'] = 'default';
+				$post_data['effects_hide_footer'] = 'default';
+				$post_data['footer_hide_widget_area'] = 'default';
+				$post_data['footer_hide_default'] = 'default';
+				$post_data['footer_custom_show'] = 'default';
+				$post_data['enable_page_preloader'] = 'default';
+			}
+		}
 	}
 	if($post_data_name == 'post_general_item' && is_array($post_data)) {
 		if(!in_array($post_data['show_featured_content'], array('default', 'enabled', 'disabled'), true)) {
@@ -90,6 +108,12 @@ function thegem_get_post_data($default = array(), $post_data_name = '', $post_id
 				$post_data['post_layout_source'] = 'default';
 			}
 		}*/
+	}
+	if($post_data_name == 'portfolio_item' && is_array($post_data) && function_exists('thegeme_migrate_portfolio_item_data')) {
+		if(!isset($post_data['grid_appearance_type'])) {
+			update_post_meta($post_id, 'thegem_portfolio_item_data_old', $post_data);
+			$post_data = thegeme_migrate_portfolio_item_data($post_data);
+		}
 	}
 	if($post_data_name == 'product_size_guide' && is_array($post_data)) {
 		if(!isset($post_data['size_guide'])) {
@@ -107,6 +131,11 @@ function thegem_get_post_data($default = array(), $post_data_name = '', $post_id
 		$post_data = get_post_meta($post_id, 'thegem_product_gallery_data', true);
 		if(!empty($post_data) && is_array($post_data)) {
 			$post_data['product_page_layout'] = 'legacy';
+		}
+	}
+	if($post_data_name == 'blog_archive_page' && is_array($post_data)) {
+		if(!isset($post_data['blog_archive_layout_settings']) && isset($post_data['blog_archive_layout_source']) && $post_data['blog_archive_layout_source'] === 'builder') {
+			$post_data['blog_archive_layout_settings'] = 'custom';
 		}
 	}
 	if(!is_array($default)) {
@@ -164,6 +193,7 @@ function thegem_get_sanitize_product_size_guide_data($post_id = 0, $item_data = 
 	$post_item_data = array(
 		'size_guide' => 'default',
 		'custom_image' => '',
+		'custom_text' => '',
 	);
 	if(is_array($item_data) && !empty($item_data)) {
 		$post_item_data = array_merge($post_item_data, $item_data);
@@ -173,6 +203,7 @@ function thegem_get_sanitize_product_size_guide_data($post_id = 0, $item_data = 
 
 	$post_item_data['size_guide'] = thegem_check_array_value(array('default', 'custom', 'disabled'), $post_item_data['size_guide'], 'default');
 	$post_item_data['custom_image'] = esc_url($post_item_data['custom_image']);
+	$post_item_data['custom_text'] = esc_html($post_item_data['custom_text']);
 
 	return $post_item_data;
 }
@@ -259,21 +290,28 @@ function thegem_icon_list_info() {
 	die(-1);
 }
 
-function thegem_taxonomy_edit_form_fields() {
-?>
-	<tr class="form-field">
-		<th valign="top" scope="row"><label for="thegem_taxonomy_custom_page_options"><?php esc_html_e('Use custom page options', 'thegem'); ?></label></th>
-		<td>
-			<input type="checkbox" id="thegem_taxonomy_custom_page_options" name="thegem_taxonomy_custom_page_options" value="1" <?php checked(get_term_meta($_REQUEST['tag_ID'] , 'thegem_taxonomy_custom_page_options', true), 1); ?>/><br />
-		</td>
-	</tr>
-<?php
-}
-
 add_action('admin_init', 'thegem_post_types_admin_init');
 function thegem_post_types_admin_init() {
 	add_post_type_support( 'post', 'page-attributes' );
 }
+
+function thegem_order_pre_insert_post($post, \WP_REST_Request $request) {
+	$body = $request->get_body();
+	if ($body) {
+		$body = json_decode($body);
+		if (isset($body->menu_order)) {
+			$post->menu_order = $body->menu_order;
+		}
+	}
+	return $post;
+}
+add_filter('rest_pre_insert_post', 'thegem_order_pre_insert_post', 12, 2);
+
+function thegem_order_prepare_post(\WP_REST_Response $response, $post, $request) {
+	$response->data['menu_order'] = $post->menu_order;
+	return $response;
+}
+add_filter('rest_prepare_post', 'thegem_order_prepare_post', 12, 3);
 
 function thegem_get_output_page_settings($post_id = 0, $item_data = array(), $type = false) {
 	static $cache;
@@ -333,7 +371,7 @@ function thegem_get_output_page_settings($post_id = 0, $item_data = array(), $ty
 		} elseif(isset($output_data['menu_options']) && $output_data['menu_options'] == 'default' && $check_menu_custom) {
 			$output_data['header_menu_logo_light'] = thegem_get_option_page_setting('header_menu_logo_light', $output_data['header_menu_logo_light'], $post_id, $type);
 		}
-	
+
 		if(!$output_data['menu_show']) {
 			$output_data['header_transparent'] = 1;
 			$output_data['header_opacity'] = 0;
@@ -494,14 +532,14 @@ function thegem_get_option_page_setting($key, $value, $post_id, $type='default')
 
 	$defaults = $thegem_global_page_settings;
 	$value = isset($defaults['global'][$key]) ? $defaults['global'][$key] : $value;
-	if($type === 'blog' || $type === 'term') {
+	if($type === 'blog' || $type === 'term' || $type === 'cpt_archive') {
 		if (!isset($terms[$post_id])) {
 			$term = get_term($post_id);
 			$terms[$post_id] = $term;
 		} else {
 			$term = $terms[$post_id];
 		}
-		if($type === 'term' && $term && ($term->taxonomy == 'product_cat' || $term->taxonomy == 'product_tag')) {
+		if($type === 'term' && !is_wp_error($term) && ($term->taxonomy == 'product_cat' || $term->taxonomy == 'product_tag')) {
 			//huck 2.5level for product title & paddings
 			if (!thegem_get_option('global_settings_apply_product_categories'.thegem_get_options_group_by_key($key)) && $key == 'title_show') {
 				$value = thegem_get_option('product_title_show');
@@ -516,13 +554,28 @@ function thegem_get_option_page_setting($key, $value, $post_id, $type='default')
 				$value = thegem_get_option('product_content_padding_top_mobile');
 			}
 			//huck for sidebar in shop grid
-			if (thegem_get_option('product_archive_type') == 'grid' && isset($defaults['product_category'][$key]) && ($key == 'sidebar_show' || $key == 'sidebar_position' || $key == 'sidebar_sticky')) {
+			if (thegem_get_option('product_archive_type') !== 'legacy' && isset($defaults['product_category'][$key]) && ($key == 'sidebar_show' || $key == 'sidebar_position' || $key == 'sidebar_sticky')) {
 				$value = $defaults['product_category'][$key];
 			}
 
 			$value = isset($defaults['product_category'][$key]) && thegem_get_option('global_settings_apply_product_categories'.thegem_get_options_group_by_key($key)) ? $defaults['product_category'][$key] : $value;
 		} else {
 			$value = isset($defaults['blog'][$key]) && thegem_get_option('global_settings_apply_blog'.thegem_get_options_group_by_key($key)) ? $defaults['blog'][$key] : $value;
+			if($type === 'cpt_archive' && is_post_type_archive() && in_array(get_queried_object()->name, thegem_get_available_po_custom_post_types())) {
+				$cpt = get_queried_object()->name;
+				if(!empty($defaults[$cpt.'_archive'])) {
+					$value = isset($defaults[$cpt.'_archive'][$key]) && !empty($defaults[$cpt.'_archive']['global_settings_apply'.thegem_get_options_group_by_key($key)]) ? $defaults[$cpt.'_archive'][$key] : $value;
+				}
+			}
+			if($type === 'term' && !is_wp_error($term)) {
+				$tax = get_taxonomy($term->taxonomy);
+				if(!empty($tax->object_type) && !empty($tax->object_type[0]) && in_array($tax->object_type[0], thegem_get_available_po_custom_post_types(), true)) {
+					$cpt = $tax->object_type[0];
+					if(!empty($defaults[$cpt.'_archive'])) {
+						$value = isset($defaults[$cpt.'_archive'][$key]) && !empty($defaults[$cpt.'_archive']['global_settings_apply'.thegem_get_options_group_by_key($key)]) ? $defaults[$cpt.'_archive'][$key] : $value;
+					}
+				}
+			}
 		}
 	} elseif($type === 'product_category') {
 		//huck 2.5level for product title & paddings
@@ -539,7 +592,7 @@ function thegem_get_option_page_setting($key, $value, $post_id, $type='default')
 			$value = thegem_get_option('product_content_padding_top_mobile');
 		}
 		//huck for sidebar in shop grid
-		if (thegem_get_option('product_archive_type') == 'grid' && isset($defaults['product_category'][$key]) && ($key == 'sidebar_show' || $key == 'sidebar_position' || $key == 'sidebar_sticky')) {
+		if (thegem_get_option('product_archive_type') !== 'legacy' && isset($defaults['product_category'][$key]) && ($key == 'sidebar_show' || $key == 'sidebar_position' || $key == 'sidebar_sticky')) {
 			$value = $defaults['product_category'][$key];
 		}
 
@@ -562,6 +615,9 @@ function thegem_get_option_page_setting($key, $value, $post_id, $type='default')
 		}
 		if($postType === 'thegem_pf_item' || $type === 'portfolio') {
 			$value = isset($defaults['portfolio'][$key]) && thegem_get_option('global_settings_apply_portfolio'.thegem_get_options_group_by_key($key)) ? $defaults['portfolio'][$key] : $value;
+		}
+		if(in_array($postType, thegem_get_available_po_custom_post_types(), true)) {
+			$value = isset($defaults[$postType][$key]) && !empty($defaults[$postType]['global_settings_apply'.thegem_get_options_group_by_key($key)]) ? $defaults[$postType][$key] : $value;
 		}
 		if($postType === 'product' || $type === 'product') {
 			//huck 2.5level for product title & paddings
@@ -996,12 +1052,12 @@ function thegem_get_sanitize_admin_page_data($post_id = 0, $item_data = array(),
 		'page_layout_breadcrumbs_alignment' => thegem_get_option('page_layout_breadcrumbs_alignment'),
 		'page_layout_breadcrumbs_bottom_spacing' => thegem_get_option('page_layout_breadcrumbs_bottom_spacing'),
 		'page_layout_breadcrumbs_shop_category' => thegem_get_option('page_layout_breadcrumbs_shop_category'),
-		'delay_js_execution' => '0',
+		'delay_js_execution_desktop' => '0',
 		'disable_cache' => '0',
 
 	), $post_id, $item_data, $type);
 	foreach($page_data as $key => $value) {
-		if($value !== 'default' && $key != 'delay_js_execution' && $key != 'delay_js_execution') {
+		if($value !== 'default' && $key != 'delay_js_execution_desktop' && $key != 'delay_js_execution_desktop') {
 			$page_data[$key] = thegem_get_option_page_setting($key, $value, $post_id, $type);
 		}
 	}
@@ -1161,7 +1217,7 @@ function thegem_get_sanitize_admin_page_data($post_id = 0, $item_data = array(),
 	$page_data['page_layout_breadcrumbs_alignment'] = thegem_check_array_value(array('left', 'center', 'right'), $page_data['page_layout_breadcrumbs_alignment'], 'left');
 	$page_data['page_layout_breadcrumbs_bottom_spacing'] = sanitize_text_field($page_data['page_layout_breadcrumbs_bottom_spacing']);
 	$page_data['page_layout_breadcrumbs_shop_category'] = $page_data['page_layout_breadcrumbs_shop_category'] ? 1 : 0;
-	$page_data['delay_js_execution'] = $page_data['delay_js_execution'] ? 1 : 0;
+	$page_data['delay_js_execution_desktop'] = $page_data['delay_js_execution_desktop'] ? 1 : 0;
 	$page_data['disable_cache'] = $page_data['disable_cache'] ? 1 : 0;
 
 	return apply_filters('thegem_admin_page_data', $page_data, $post_id, $item_data, $type);
@@ -1212,6 +1268,10 @@ function thegem_get_sanitize_admin_post_data($post_id = 0, $item_data = array())
 		'video_type' => 'youtube',
 		'video' => '',
 		'video_aspect_ratio' => '',
+		'video_play_on_mobile' => '',
+		'video_overlay' => '',
+		'video_poster' => '',
+		'video_start' => 'open_in_lightbox',
 		'quote_text' => '',
 		'quote_author' => '',
 		'quote_background' => '',
@@ -1341,15 +1401,18 @@ function thegem_get_sanitize_product_video_data($item_data) {
 function thegem_get_sanitize_product_page_data($post_id = 0, $item_data = array()) {
 	$post_item_data = array(
 		'product_layout_settings' => 'default',
-
 		'product_layout_source' => thegem_get_option('product_layout_source'),
 		'product_builder_template' => thegem_get_option('product_builder_template'),
-
 		'product_gallery' => thegem_get_option('product_gallery'),
 		'product_gallery_type' => thegem_get_option('product_gallery_type'),
+		'product_gallery_thumb_on_mobile' => thegem_get_option('product_gallery_thumb_on_mobile'),
+		'product_gallery_thumb_position' => thegem_get_option('product_gallery_thumb_position'),
 		'product_gallery_column_position' => thegem_get_option('product_gallery_column_position'),
 		'product_gallery_column_width' => thegem_get_option('product_gallery_column_width'),
 		'product_gallery_show_image' => thegem_get_option('product_gallery_show_image'),
+		'product_gallery_image_ratio' => thegem_get_option('product_gallery_image_ratio'),
+		'product_gallery_grid_image_size' => thegem_get_option('product_gallery_grid_image_size'),
+		'product_gallery_grid_image_ratio' => thegem_get_option('product_gallery_grid_image_ratio'),
 		'product_gallery_zoom' => thegem_get_option('product_gallery_zoom'),
 		'product_gallery_lightbox' => thegem_get_option('product_gallery_lightbox'),
 		'product_gallery_labels' => thegem_get_option('product_gallery_labels'),
@@ -1363,7 +1426,6 @@ function thegem_get_sanitize_product_page_data($post_id = 0, $item_data = array(
 		'product_gallery_grid_gaps_hide' => thegem_get_option('product_gallery_grid_gaps_hide'),
 		'product_gallery_grid_top_margin' => thegem_get_option('product_gallery_grid_top_margin'),
 		'product_gallery_video_autoplay' => thegem_get_option('product_gallery_video_autoplay'),
-
 		'product_page_layout' => thegem_get_option('product_page_layout'),
 		'product_page_layout_style' => thegem_get_option('product_page_layout_style'),
 		'product_page_layout_centered' => thegem_get_option('product_page_layout_centered'),
@@ -1461,6 +1523,8 @@ function thegem_get_sanitize_product_page_data($post_id = 0, $item_data = array(
 		'product_page_elements_related_columns_tablet' => thegem_get_option('product_page_elements_related_columns_tablet'),
 		'product_page_elements_related_columns_mobile' => thegem_get_option('product_page_elements_related_columns_mobile'),
 		'product_page_elements_related_columns_100' => thegem_get_option('product_page_elements_related_columns_100'),
+		'product_page_additional_tabs' => 'default',
+		'product_page_additional_tabs_data' => !empty(thegem_get_option('product_page_additional_tabs')) ? thegem_get_option('product_page_additional_tabs_data') : '',
 	);
 
 	if(is_array($item_data) && !empty($item_data)) {
@@ -1476,9 +1540,14 @@ function thegem_get_sanitize_product_page_data($post_id = 0, $item_data = array(
 
 	$post_item_data['product_gallery'] = thegem_check_array_value(array('enabled', 'disabled', 'legacy', 'native'), $post_item_data['product_gallery'], 'enabled');
 	$post_item_data['product_gallery_type'] = thegem_check_array_value(array('horizontal', 'vertical', 'dots', 'none', 'grid'), $post_item_data['product_gallery_type'], 'horizontal');
+	$post_item_data['product_gallery_thumb_on_mobile'] = $post_item_data['product_gallery_thumb_on_mobile'] ? 1 : 0;
+	$post_item_data['product_gallery_thumb_position'] = thegem_check_array_value(array('left', 'right'), $post_item_data['product_gallery_thumb_position'], 'left');
 	$post_item_data['product_gallery_column_position'] = thegem_check_array_value(array('left', 'right'), $post_item_data['product_gallery_column_position'], 'left');
 	$post_item_data['product_gallery_column_width'] = sanitize_text_field($post_item_data['product_gallery_column_width']);
 	$post_item_data['product_gallery_show_image'] = thegem_check_array_value(array('click', 'hover'), $post_item_data['product_gallery_show_image'], 'hover');
+	$post_item_data['product_gallery_image_ratio'] = sanitize_text_field($post_item_data['product_gallery_image_ratio']);
+	$post_item_data['product_gallery_grid_image_size'] = thegem_check_array_value(array('default', 'full'), $post_item_data['product_gallery_grid_image_size'], 'default');
+	$post_item_data['product_gallery_grid_image_ratio'] = sanitize_text_field($post_item_data['product_gallery_grid_image_ratio']);
 	$post_item_data['product_gallery_zoom'] = $post_item_data['product_gallery_zoom'] ? 1 : 0;
 	$post_item_data['product_gallery_lightbox'] = $post_item_data['product_gallery_lightbox'] ? 1 : 0;
 	$post_item_data['product_gallery_labels'] = $post_item_data['product_gallery_labels'] ? 1 : 0;
@@ -1492,7 +1561,7 @@ function thegem_get_sanitize_product_page_data($post_id = 0, $item_data = array(
 	$post_item_data['product_gallery_grid_gaps_hide'] = $post_item_data['product_gallery_grid_gaps_hide'] ? 1 : 0;
 	$post_item_data['product_gallery_grid_top_margin'] = sanitize_text_field($post_item_data['product_gallery_grid_top_margin']);
 	$post_item_data['product_gallery_video_autoplay'] = $post_item_data['product_gallery_video_autoplay'] ? 1 : 0;
-	
+
 	$post_item_data['product_page_layout'] = thegem_check_array_value(array('default', 'legacy'), $post_item_data['product_page_layout'], 'default');
 	$post_item_data['product_page_layout_style'] = sanitize_text_field($post_item_data['product_page_layout_style']);
 	$post_item_data['product_page_layout_centered'] = $post_item_data['product_page_layout_centered'] ? 1 : 0;
@@ -1622,7 +1691,7 @@ function thegem_get_sanitize_product_archive_data($term_id = 0, $item_data = arr
 
 function thegem_get_output_product_archive_data($term_id) {
 	$output_data = thegem_get_sanitize_product_archive_data($term_id);
-	if($output_data['product_archive_layout_source'] == 'default' || !get_term_meta($term_id , 'thegem_taxonomy_custom_page_options', true)) {
+	if($output_data['product_archive_layout_source'] == 'default') {
 		$output_data['product_archive_layout_source'] = thegem_get_option('product_archive_layout_source');
 		$output_data['product_archive_builder_template'] = thegem_get_option('product_archive_builder_template');
 	}
@@ -1631,6 +1700,7 @@ function thegem_get_output_product_archive_data($term_id) {
 
 function thegem_get_sanitize_blog_archive_data($term_id = 0, $item_data = array()) {
 	$post_item_data = array(
+		'blog_archive_layout_settings' => 'default',
 		'blog_archive_layout_source' => 'default',
 		'blog_archive_builder_template' => thegem_get_option('blog_builder_template'),
 	);
@@ -1641,6 +1711,7 @@ function thegem_get_sanitize_blog_archive_data($term_id = 0, $item_data = array(
 		$post_item_data = thegem_get_post_data($post_item_data, 'blog_archive_page', $term_id, 'term');
 	}
 
+	$post_item_data['blog_archive_layout_settings'] = thegem_check_array_value(array('default', 'custom'), $post_item_data['blog_archive_layout_settings'], 'default');
 	$post_item_data['blog_archive_layout_source'] = thegem_check_array_value(array('default', 'builder'), $post_item_data['blog_archive_layout_source'], 'default');
 	$post_item_data['blog_archive_builder_template'] = strval(intval($post_item_data['blog_archive_builder_template']) >= 0 ? intval($post_item_data['blog_archive_builder_template']) : 0);
 
@@ -1649,10 +1720,137 @@ function thegem_get_sanitize_blog_archive_data($term_id = 0, $item_data = array(
 
 function thegem_get_output_blog_archive_data($term_id) {
 	$output_data = thegem_get_sanitize_blog_archive_data($term_id);
-	if($output_data['blog_archive_layout_source'] == 'default' || !get_term_meta($term_id , 'thegem_taxonomy_custom_page_options', true)) {
+	if($output_data['blog_archive_layout_settings'] == 'default') {
 		$output_data['blog_archive_layout_source'] = thegem_get_option('blog_archive_layout_source');
 		$output_data['blog_archive_builder_template'] = thegem_get_option('blog_archive_builder_template');
 	}
+	return $output_data;
+}
+
+function thegem_get_sanitize_cpt_archive_data($term_id = 0, $item_data = array()) {
+	$term_data = array(
+		'archive_layout_settings' => 'default',
+		'archive_layout_source' => 'default',
+		'archive_builder_template' => 0,
+	);
+
+	if(is_array($item_data) && !empty($item_data)) {
+		$term_data = array_merge($term_data, $item_data);
+	} elseif($term_id != 0) {
+		$term_page_data = thegem_get_post_data(array(), 'page', $term_id, 'term');
+		if(isset($term_page_data['custom_archive_item_data']) && is_array($term_page_data['custom_archive_item_data'])) {
+			if (isset($term_page_data['custom_archive_item_data']['layout_source'])) {
+				$term_data['archive_layout_source'] = $term_page_data['custom_archive_item_data']['layout_source'];
+			}
+			if (isset($term_page_data['custom_archive_item_data']['builder_template'])) {
+				$term_data['archive_builder_template'] = $term_page_data['custom_archive_item_data']['builder_template'];
+			}
+		}
+	}
+
+	$term_data['archive_layout_settings'] = thegem_check_array_value(array('default', 'custom'), $term_data['archive_layout_settings'], 'default');
+	$term_data['archive_layout_source'] = thegem_check_array_value(array('default', 'builder'), $term_data['archive_layout_source'], 'default');
+	$term_data['archive_builder_template'] = strval(intval($term_data['archive_builder_template']) >= 0 ? intval($term_data['archive_builder_template']) : 0);
+
+	return $term_data;
+}
+
+function thegem_get_output_cpt_archive_data($term_id, $post_type_name) {
+	$output_data = thegem_get_sanitize_cpt_archive_data($term_id);
+
+	if ($output_data['archive_layout_settings'] == 'default') {
+		$to_data = array();
+
+		if ($term_id != 0) {
+			$term = get_term($term_id);
+
+			if (!is_wp_error($term)) {
+				$tax = get_taxonomy($term->taxonomy);
+				if (!empty($tax->object_type) && !empty($tax->object_type[0])) {
+					$post_type_name = $tax->object_type[0];
+				}
+			}
+		}
+
+		if (!empty($post_type_name) && in_array($post_type_name, thegem_get_available_po_custom_post_types())) {
+			$to_data = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings($post_type_name . '_archive'), 'cpt_archive');
+		}
+
+		if (!empty($to_data)) {
+			$output_data['archive_layout_source'] = $to_data['archive_layout_source'];
+			$output_data['archive_builder_template'] = $to_data['archive_builder_template'];
+			$output_data['archive_layout_type'] = $to_data['archive_layout_type'];
+		}
+	}
+	return $output_data;
+}
+
+function thegem_get_sanitize_admin_page_item_data($post_id = 0, $item_data = array()) {
+	$post_item_data = apply_filters('thegem_page_item_data_defaults', array(
+		'page_layout_settings' => 'default',
+		'page_layout_source' => 'default',
+		'page_builder_template' => 0,
+	), $post_id, $item_data);
+
+	if(is_array($item_data) && !empty($item_data)) {
+		$post_item_data = array_merge($post_item_data, $item_data);
+	} elseif($post_id != 0) {
+		$post_page_data = thegem_get_post_data(array(), 'page', $post_id);
+		if(isset($post_page_data['page_item_data']) && is_array($post_page_data['page_item_data'])) {
+			$post_item_data = array_merge($post_item_data, $post_page_data['page_item_data']);
+		}
+	}
+
+	$post_item_data['page_layout_settings'] = thegem_check_array_value(array('default', 'custom'), $post_item_data['page_layout_settings'], 'default');
+	$post_item_data['page_layout_source'] = thegem_check_array_value(array('default', 'builder'), $post_item_data['page_layout_source'], 'default');
+	$post_item_data['page_builder_template'] = strval(intval($post_item_data['page_builder_template']) >= 0 ? intval($post_item_data['page_builder_template']) : 0);
+
+	return $post_item_data;
+}
+
+function thegem_get_sanitize_page_item_data($post_id = 0, $item_data = array()) {
+	$output_data = thegem_get_sanitize_admin_page_item_data($post_id, $item_data);
+	if($output_data['page_layout_settings'] == 'default') {
+		$output_data['page_layout_source'] = thegem_get_option('page_layout_source');
+		$output_data['page_builder_template'] = thegem_get_option('page_builder_template');
+	}
+
+	return $output_data;
+}
+
+function thegem_get_sanitize_admin_cpt_item_data($post_id = 0, $item_data = array()) {
+	$post_item_data = apply_filters('thegem_cpt_item_data_defaults', array(
+		'layout_settings' => 'default',
+		'layout_source' => 'default',
+		'builder_template' => 0,
+	), $post_id, $item_data);
+
+	if(is_array($item_data) && !empty($item_data)) {
+		$post_item_data = array_merge($post_item_data, $item_data);
+	} elseif($post_id != 0) {
+		$post_page_data = thegem_get_post_data(array(), 'page', $post_id);
+		if(isset($post_page_data['custom_post_item_data']) && is_array($post_page_data['custom_post_item_data'])) {
+			$post_item_data = array_merge($post_item_data, $post_page_data['custom_post_item_data']);
+		}
+	}
+
+	$post_item_data['layout_settings'] = thegem_check_array_value(array('default', 'custom'), $post_item_data['layout_settings'], 'default');
+	$post_item_data['layout_source'] = thegem_check_array_value(array('default', 'builder'), $post_item_data['layout_source'], 'default');
+	$post_item_data['builder_template'] = strval(intval($post_item_data['builder_template']) >= 0 ? intval($post_item_data['builder_template']) : 0);
+
+	return $post_item_data;
+}
+
+function thegem_get_sanitize_cpt_item_data($post_id = 0, $item_data = array()) {
+	$output_data = thegem_get_sanitize_admin_cpt_item_data($post_id, $item_data);
+
+	$cpt = get_post_type($post_id);
+	$to_data = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings($cpt), 'default');
+	if($output_data['layout_settings'] == 'default' && !empty($to_data)) {
+		$output_data['layout_source'] = $to_data['post_layout_source'];
+		$output_data['builder_template'] = $to_data['post_builder_template'];
+	}
+
 	return $output_data;
 }
 
@@ -1706,22 +1904,20 @@ function thegem_get_popup_data() {
 
 	if(is_tax() || is_category() || is_tag()) {
 		$thegem_term_id = get_queried_object()->term_id;
-		if(get_term_meta($thegem_term_id , 'thegem_taxonomy_custom_page_options', true)) {
-			$thegem_popups_params = get_term_meta($thegem_term_id, 'thegem_popups_data', true);
-			if(empty($thegem_popups_params) || empty($thegem_popups_params['popups_layout_source']) || $thegem_popups_params['popups_layout_source'] === 'default') {
-				if(is_tax('product_cat') || is_tax('product_tag')) {
-					$thegem_popups_params = get_option('thegem_popups_product_categories');
-					$thegem_popups_layout_source = thegem_get_option('popups_layout_source_product_categories');
-				} else {
-					$thegem_popups_params = get_option('thegem_popups_blog');
-					$thegem_popups_layout_source = thegem_get_option('popups_layout_source_blog');
-				}
+		$thegem_popups_params = get_term_meta($thegem_term_id, 'thegem_popups_data', true);
+		if(empty($thegem_popups_params) || empty($thegem_popups_params['popups_layout_source']) || $thegem_popups_params['popups_layout_source'] === 'default') {
+			if(is_tax('product_cat') || is_tax('product_tag')) {
+				$thegem_popups_params = get_option('thegem_popups_product_categories');
+				$thegem_popups_layout_source = thegem_get_option('popups_layout_source_product_categories');
 			} else {
-				$popup_data = array();
-				$popup_data_ready = true;
-				if($thegem_popups_params['popups_layout_source'] === 'custom' && !empty($thegem_popups_params['thegemPopups'])) {
-					$popup_data = $thegem_popups_params['thegemPopups'];
-				}
+				$thegem_popups_params = get_option('thegem_popups_blog');
+				$thegem_popups_layout_source = thegem_get_option('popups_layout_source_blog');
+			}
+		} else {
+			$popup_data = array();
+			$popup_data_ready = true;
+			if($thegem_popups_params['popups_layout_source'] === 'custom' && !empty($thegem_popups_params['thegemPopups'])) {
+				$popup_data = $thegem_popups_params['thegemPopups'];
 			}
 		}
 	}

@@ -9,10 +9,19 @@ class TGM_PageSpeed {
     }
 
     private static function activateComponents() {
-        self::activateLazyItemsComponent();
+        if(thegem_get_option('page_speed_image_load') == 'js') {
+            self::activateLazyItemsComponent();
+        }
+        if(thegem_get_option('page_speed_image_load') == 'native') {
+            self::activateNativeLazyItemsComponent();
+        }
     }
 
     private static function activateLazyItemsComponent() {
         $lazyItems = new TGM_PageSpeed_Lazy_Items();
+    }
+
+    private static function activateNativeLazyItemsComponent() {
+        $lazyItems = new TGM_PageSpeed_Native_Lazy_Items();
     }
 }

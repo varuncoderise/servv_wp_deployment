@@ -9,9 +9,9 @@
 	Donate link: https://monzillamedia.com/donate.html
 	Contributors: specialk
 	Requires at least: 4.6
-	Tested up to: 6.2
-	Stable tag: 20230227
-	Version:    20230227
+	Tested up to: 6.4
+	Stable tag: 20231026
+	Version:    20231026
 	Requires PHP: 5.6.20
 	Text Domain: head-meta-data
 	Domain Path: /languages
@@ -38,15 +38,15 @@
 if (!defined('ABSPATH')) die();
 
 $hmd_wp_vers = '4.6';
-$hmd_version = '20230227';
+$hmd_version = '20231026';
 $hmd_plugin  = esc_html__('Head Meta Data', 'head-meta-data');
 $hmd_options = get_option('hmd_options');
-$hmd_path    = plugin_basename(__FILE__); // 'head-meta-data/head-meta-data.php';
+$hmd_path    = plugin_basename(__FILE__); // head-meta-data/head-meta-data.php
 $hmd_homeurl = 'https://perishablepress.com/head-metadata-plus/';
 
 function hmd_i18n_init() {
-	
-	load_plugin_textdomain('head-meta-data', false, dirname(plugin_basename(__FILE__)) .'/languages/');
+	global $hmd_path;
+	load_plugin_textdomain('head-meta-data', false, dirname($hmd_path) .'/languages/');
 	
 }
 add_action('init', 'hmd_i18n_init');
@@ -305,8 +305,8 @@ function hmd_latest_post_date($format) {
 
 function hmd_plugin_action_links($links, $file) {
 	global $hmd_path;
-	if ($file == $hmd_path && (current_user_can('manage_options'))) {
-		$hmd_links = '<a href="' . get_admin_url() . 'options-general.php?page=' . $hmd_path . '">' . esc_html__('Settings', 'head-meta-data') .'</a>';
+	if ($file === $hmd_path && (current_user_can('manage_options'))) {
+		$hmd_links = '<a href="'. admin_url('options-general.php?page=head-meta-data') .'">'. esc_html__('Settings', 'head-meta-data') .'</a>';
 		array_unshift($links, $hmd_links);
 	}
 	return $links;
@@ -314,7 +314,8 @@ function hmd_plugin_action_links($links, $file) {
 add_filter ('plugin_action_links', 'hmd_plugin_action_links', 10, 2);
 
 function add_hmd_links($links, $file) {
-	if ($file == plugin_basename(__FILE__)) {
+	global $hmd_path;
+	if ($file === $hmd_path) {
 		
 		$home_href  = 'https://perishablepress.com/head-metadata-plus/';
 		$home_title = esc_attr__('Plugin Homepage', 'head-meta-data');
@@ -504,19 +505,33 @@ function hmd_validate_options($input) {
 
 function hmd_add_options_page() {
 	global $hmd_plugin;
-	add_options_page($hmd_plugin, $hmd_plugin, 'manage_options', __FILE__, 'hmd_render_form');
+	// add_options_page($page_title, $menu_title, $capability, $menu_slug, $callback, $position)
+	add_options_page($hmd_plugin, $hmd_plugin, 'manage_options', 'head-meta-data', 'hmd_render_form');
 }
 add_action ('admin_menu', 'hmd_add_options_page');
 
 function hmd_render_form() {
-	global $hmd_plugin, $hmd_options, $hmd_path, $hmd_homeurl, $hmd_version; ?>
+	global $hmd_plugin, $hmd_options, $hmd_homeurl, $hmd_version; ?>
 
 	<style type="text/css">
 		#mm-plugin-options .mm-panel-overview {
-			padding: 0 15px 15px 140px; 
+			box-sizing: border-box; width: 100%; overflow: hidden; position: relative; padding: 0 15px 15px 140px; 
 			background-image: url(<?php echo plugins_url(); ?>/head-meta-data/hmd-logo.jpg);
 			background-repeat: no-repeat; background-position: 15px 0; background-size: 120px 88px;
 			}
+		.mm-panel-overview .main { width: 100%; }
+		.mm-panel-overview .info { 
+			position: absolute; width: 30%; bottom: 0; right: 0;
+			background-color: #FDF2D2; background-image: linear-gradient(to right, #FDF2D2, #fff);
+			}
+		@media (max-width: 880px) {
+			.mm-panel-overview .main { width: 60%; }
+		}
+		@media (max-width: 680px) {
+			.mm-panel-overview .main, .mm-panel-overview .info { width: 100%; float: none; position: static; }
+			.mm-panel-overview .info { padding: 5px 15px 5px 0; }
+		}
+		
 		#mm-plugin-options .mm-panel-toggle { margin: 5px 0; }
 		#mm-plugin-options .mm-credit-info { margin: -10px 0 10px 5px; font-size: 12px; }
 		#mm-plugin-options .button-primary { margin: 0 0 15px 15px; }
@@ -533,7 +548,7 @@ function hmd_render_form() {
 		#mm-plugin-options h1 small { line-height: 12px; font-size: 12px; color: #bbb; }
 		#mm-plugin-options h2 { margin: 0; padding: 12px 0 12px 15px; font-size: 16px; cursor: pointer; }
 		#mm-plugin-options h3 { margin: 20px 15px; font-size: 14px; }
-		#mm-plugin-options p { margin-left: 15px; }
+		.wrap form p { margin-left: 15px; }
 		#mm-plugin-options ul { margin: 15px 15px 20px 40px; line-height: 16px; }
 		#mm-plugin-options li { margin: 8px 0; list-style-type: disc; }
 		
@@ -558,6 +573,9 @@ function hmd_render_form() {
 			border: 1px solid #efefef; background-color: #fffeee; 
 			}
 		
+		.wp-admin .notice code { line-height: 1; font-size: 12px; }
+		.wp-admin .hmd-dismiss-notice { float: right; }
+		
 		@media (max-width: 1000px) {
 			#mm-plugin-options input[type=text] { width: 80%; }
 			#mm-plugin-options textarea { width: 90%; }
@@ -569,11 +587,14 @@ function hmd_render_form() {
 			#mm-plugin-options input[type=text], 
 			#mm-plugin-options textarea { width: 98%; }
 		}
+		@media (max-width: 1100px) {
+			.wp-admin .hmd-dismiss-notice { float: none; }
+		}
 	</style>
 
 	<div id="mm-plugin-options" class="wrap">
-		<h1><?php echo $hmd_plugin; ?> <small><?php echo 'v' . $hmd_version; ?></small></h1>
-		<div class="mm-panel-toggle"><a href="<?php get_admin_url() . 'options-general.php?page=' . $hmd_path; ?>"><?php esc_html_e('Toggle all panels', 'head-meta-data'); ?></a></div>
+		<h1><?php echo $hmd_plugin; ?> <small><?php echo 'v'. $hmd_version; ?></small></h1>
+		<div class="mm-panel-toggle"><a href="<?php echo admin_url('options-general.php?page=head-meta-data'); ?>"><?php esc_html_e('Toggle all panels', 'head-meta-data'); ?></a></div>
 
 		<form method="post" action="options.php">
 			<?php $hmd_options = get_option('hmd_options'); settings_fields('hmd_plugin_options'); ?>
@@ -585,20 +606,25 @@ function hmd_render_form() {
 						<h2><?php esc_html_e('Overview', 'head-meta-data'); ?></h2>
 						<div class="toggle<?php if (isset($_GET["settings-updated"])) { echo ' default-hidden'; } ?>">
 							<div class="mm-panel-overview">
-								<p>
-									<strong><?php echo $hmd_plugin; ?></strong> <?php esc_html_e('(HMD) adds a custom set of', 'head-meta-data'); ?> 
-									<code>&lt;meta&gt;</code> <?php esc_html_e('tags to the', 'head-meta-data'); ?> 
-									<code>&lt;head&gt;</code> <?php esc_html_e('section of all posts and pages.', 'head-meta-data'); ?>
-								</p>
-								<ul>
-									<li><a id="mm-panel-primary-link" href="#mm-panel-primary"><?php esc_html_e('Plugin Settings', 'head-meta-data'); ?></a></li>
-									<li><a id="mm-panel-secondary-link" href="#mm-panel-secondary"><?php esc_html_e('Live Preview', 'head-meta-data'); ?></a></li>
-									<li><a target="_blank" rel="noopener noreferrer" href="https://wordpress.org/plugins/head-meta-data/"><?php esc_html_e('Plugin Homepage', 'head-meta-data'); ?></a></li>
-								</ul>
-								<p>
-									<?php esc_html_e('If you like this plugin, please', 'head-meta-data'); ?> 
-									<a target="_blank" rel="noopener noreferrer" href="https://wordpress.org/support/plugin/head-meta-data/reviews/?rate=5#new-post" title="<?php esc_attr_e('THANK YOU for your support!', 'head-meta-data'); ?>"><?php esc_html_e('give it a 5-star rating', 'head-meta-data'); ?>&nbsp;&raquo;</a>
-								</p>
+								<div class="main">
+									<p>
+										<strong><?php echo $hmd_plugin; ?></strong> <?php esc_html_e('(HMD) adds a custom set of', 'head-meta-data'); ?> 
+										<code>&lt;meta&gt;</code> <?php esc_html_e('tags to the', 'head-meta-data'); ?> 
+										<code>&lt;head&gt;</code> <?php esc_html_e('section of all posts and pages.', 'head-meta-data'); ?>
+									</p>
+									<ul>
+										<li><a id="mm-panel-primary-link" href="#mm-panel-primary"><?php esc_html_e('Plugin Settings', 'head-meta-data'); ?></a></li>
+										<li><a id="mm-panel-secondary-link" href="#mm-panel-secondary"><?php esc_html_e('Live Preview', 'head-meta-data'); ?></a></li>
+										<li><a target="_blank" rel="noopener noreferrer" href="https://wordpress.org/plugins/head-meta-data/"><?php esc_html_e('Plugin Homepage', 'head-meta-data'); ?></a></li>
+									</ul>
+									<p>
+										<?php esc_html_e('If you like this plugin, please', 'head-meta-data'); ?> 
+										<a target="_blank" rel="noopener noreferrer" href="https://wordpress.org/support/plugin/head-meta-data/reviews/?rate=5#new-post" title="<?php esc_attr_e('THANK YOU for your support!', 'head-meta-data'); ?>"><?php esc_html_e('give it a 5-star rating', 'head-meta-data'); ?>&nbsp;&raquo;</a>
+									</p>
+								</div>
+								<div class="info">
+									<p>🔥 <?php esc_html_e('Pro version coming soon!', 'head-meta-data'); ?></p>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -837,3 +863,109 @@ function hmd_render_form() {
 	</script>
 
 <?php }
+
+function hmd_admin_notice() {
+	
+	if (hmd_get_current_screen_id() === 'settings_page_head-meta-data') {
+		
+		if (!hmd_check_date_expired() && !hmd_dismiss_notice_check()) {
+			
+			?>
+			
+			<div class="notice notice-success">
+				<p>
+					<strong><?php esc_html_e('Fall Sale!', 'head-meta-data'); ?></strong> 
+					<?php esc_html_e('Save 25% on our', 'head-meta-data'); ?> 
+					<a target="_blank" rel="noopener noreferrer" href="https://plugin-planet.com/"><?php esc_html_e('Pro WordPress plugins', 'head-meta-data'); ?></a> 
+					<?php esc_html_e('and', 'head-meta-data'); ?> 
+					<a target="_blank" rel="noopener noreferrer" href="https://books.perishablepress.com/"><?php esc_html_e('books', 'head-meta-data'); ?></a>. 
+					<?php esc_html_e('Apply code', 'head-meta-data'); ?> <code>SEASONS</code> <?php esc_html_e('at checkout. Sale ends 12/30/23.', 'head-meta-data'); ?> 
+					<?php echo hmd_dismiss_notice_link(); ?>
+				</p>
+			</div>
+			
+			<?php
+			
+		}
+		
+	}
+	
+}
+add_action('admin_notices', 'hmd_admin_notice');
+
+function hmd_dismiss_notice_activate() {
+	
+	delete_option('head-meta-data-dismiss-notice');
+	
+}
+register_activation_hook(__FILE__, 'hmd_dismiss_notice_activate');
+
+function hmd_dismiss_notice_version() {
+	
+	global $hmd_wp_vers;
+	
+	$version_current = $hmd_wp_vers;
+	
+	$version_previous = get_option('head-meta-data-dismiss-notice');
+	
+	$version_previous = ($version_previous) ? $version_previous : $version_current;
+	
+	if (version_compare($version_current, $version_previous, '>')) {
+		
+		delete_option('head-meta-data-dismiss-notice');
+		
+	}
+	
+}
+add_action('admin_init', 'hmd_dismiss_notice_version');
+
+function hmd_dismiss_notice_check() {
+	
+	$check = get_option('head-meta-data-dismiss-notice');
+	
+	return ($check) ? true : false;
+	
+}
+
+function hmd_dismiss_notice_save() {
+	
+	if (isset($_GET['dismiss-notice-verify']) && wp_verify_nonce($_GET['dismiss-notice-verify'], 'hmd_dismiss_notice')) {
+		
+		if (!current_user_can('manage_options')) exit;
+		
+		global $hmd_wp_vers;
+		
+		$result = update_option('head-meta-data-dismiss-notice', $hmd_wp_vers, false);
+		
+		$result = $result ? 'true' : 'false';
+		
+		$location = admin_url('options-general.php?page=head-meta-data&dismiss-notice='. $result);
+		
+		wp_redirect($location);
+		
+		exit;
+		
+	}
+	
+}
+add_action('admin_init', 'hmd_dismiss_notice_save');
+
+function hmd_dismiss_notice_link() {
+	
+	$nonce = wp_create_nonce('hmd_dismiss_notice');
+	
+	$href  = add_query_arg(array('dismiss-notice-verify' => $nonce), admin_url('options-general.php?page=head-meta-data'));
+	
+	$label = esc_html__('Dismiss', 'head-meta-data');
+	
+	echo '<a class="hmd-dismiss-notice" href="'. esc_url($href) .'">'. esc_html($label) .'</a>';
+	
+}
+
+function hmd_check_date_expired() {
+	
+	$expires = apply_filters('hmd_check_date_expired', '2023-12-30');
+	
+	return (new DateTime() > new DateTime($expires)) ? true : false;
+	
+}

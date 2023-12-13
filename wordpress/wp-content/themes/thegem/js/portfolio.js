@@ -174,7 +174,7 @@
 				$portfolio.data('current-page', page);
 				init_prev_next_navigator_buttons($portfolio);
 				$portfolio.itemsAnimations('instance').reinitItems($('.portfolio-set .portfolio-item', $portfolio));
-				$('.portfolio-set', $portfolio).isotope({ filter: '.paginator-page-' + page });
+				$('.portfolio-set', $portfolio).thegem_isotope({ filter: '.paginator-page-' + page });
 				$("html, body").animate({ scrollTop: $portfolio.offset().top - 200 }, 600);
 				return false;
 			});
@@ -188,7 +188,7 @@
 				init_portfolio_pages($portfolio);
 				$portfolio.itemsAnimations('instance').reinitItems($('.portfolio-set .portfolio-item', $portfolio));
 				var current_page = $portfolio.data('current-page');
-				$('.portfolio-set', $portfolio).isotope({
+				$('.portfolio-set', $portfolio).thegem_isotope({
 					filter: '.paginator-page-' + current_page
 				});
 			});
@@ -227,7 +227,7 @@
 						sortOptions = get_portfolio_sorting_data($portfolio);
 
 					$portfolio.itemsAnimations('instance').reinitItems($('.portfolio-set .portfolio-item', $portfolio));
-					$('.portfolio-set', $portfolio).isotope({
+					$('.portfolio-set', $portfolio).thegem_isotope({
 						filter: '.paginator-page-' + current_page,
 						sortBy: sortOptions.sortBy,
 						sortAscending: sortOptions.sortAscending
@@ -320,7 +320,7 @@
 								$set.html('');
 							}
 
-							$set.isotope('insert', $inserted_data);
+							$set.thegem_isotope('insert', $inserted_data);
 							$portfolio.itemsAnimations('instance').show($inserted_data);
 
 							if (window.wp !== undefined && window.wp.mediaelement !== undefined) {
@@ -409,10 +409,10 @@
 							if (current_page == 1) {
 								$portfolio.itemsAnimations('instance').clear();
 								$set.html('');
-								$set.isotope('reloadItems');
+								$set.thegem_isotope('reloadItems');
 							}
 
-							$set.isotope('insert', $inserted_data);
+							$set.thegem_isotope('insert', $inserted_data);
 							init_circular_overlay($portfolio, $set);
 							$portfolio.itemsAnimations('instance').show($inserted_data);
 
@@ -522,7 +522,7 @@
 								$set.html('');
 							}
 
-							$set.isotope('insert', $inserted_data);
+							$set.thegem_isotope('insert', $inserted_data);
 							init_circular_overlay($portfolio, $set);
 							$portfolio.itemsAnimations('instance').show($inserted_data);
 
@@ -644,7 +644,7 @@
 				filterValue += '.paginator-page-' + $portfolio.data('current-page');
 
 				$portfolio.itemsAnimations('instance').reinitItems($('.portfolio-set .portfolio-item', $portfolio));
-				$('.portfolio-set', $portfolio).isotope({
+				$('.portfolio-set', $portfolio).thegem_isotope({
 					filter: filterValue
 				});
 			} else {
@@ -858,7 +858,7 @@
 						if ($set.closest('.fullwidth-block').size() > 0) {
 							$set.closest('.fullwidth-block').bind('fullwidthUpdate', function() {
 								if ($set.data('isotope')) {
-									$set.isotope('layout');
+									$set.thegem_isotope('layout');
 									return false;
 								}
 							});
@@ -866,7 +866,7 @@
 							if ($set.closest('.vc_row[data-vc-stretch-content="true"]').length > 0) {
 								$set.closest('.vc_row[data-vc-stretch-content="true"]').bind('VCRowFullwidthUpdate', function() {
 									if ($set.data('isotope')) {
-										$set.isotope('layout');
+										$set.thegem_isotope('layout');
 										return false;
 									}
 								});
@@ -905,7 +905,7 @@
 							}
 
 							if (needLayout && $set.data('isotope')) {
-								$set.isotope('layout');
+								$set.thegem_isotope('layout');
 							}
 						}
 
@@ -916,7 +916,7 @@
 								fixPortfolioWithDoubleItems($portfolio, onlyDoubleItems);
 
 								if ($set.data('isotope')) {
-									$set.isotope('layout');
+									$set.thegem_isotope('layout');
 								}
 							}
 						}
@@ -932,20 +932,20 @@
 							//}, 0);
 						}
 					})
-					.isotope(isotope_options);
+					.thegem_isotope(isotope_options);
 
 				if (!window.gemSettings.lasyDisabled) {
 					var elems = $('.portfolio-item:visible', $set);
 					var items = [];
 					for (var i = 0; i < elems.length; i++)
-						items.push($set.isotope('getItem', elems[i]));
-					$set.isotope('reveal', items);
+						items.push($set.thegem_isotope('getItem', elems[i]));
+					$set.thegem_isotope('reveal', items);
 				}
 
 				if ($set.closest('.gem_tab').size() > 0) {
 					$set.closest('.gem_tab').bind('tab-update', function() {
 						if ($set.data('isotope')) {
-							$set.isotope('layout');
+							$set.thegem_isotope('layout');
 						}
 					});
 				}
@@ -953,7 +953,7 @@
 				if (isNewsGrid) {
 					$($set).on('gallery-inited', '.gem-simple-gallery', function() {
 						if ($set.data('isotope')) {
-							$set.isotope('layout');
+							$set.thegem_isotope('layout');
 						}
 					});
 				}
@@ -962,7 +962,7 @@
 					var $tab = $(this).data('vc.accordion').getTarget();
 					if($tab.find($set).length) {
 						if ($set.data('isotope')) {
-							$set.isotope('layout');
+							$set.thegem_isotope('layout');
 						}
 					}
 				});
@@ -971,7 +971,7 @@
 					var $tab = $(this).data('vc.accordion').getTarget();
 					if($tab.find($set).length) {
 						if ($set.data('isotope')) {
-							$set.isotope('layout');
+							$set.thegem_isotope('layout');
 						}
 					}
 				});
@@ -1021,7 +1021,7 @@
 					$(window).on('load', function() {
 						if ($set.data('isotope')) {
 							setTimeout(function() {
-								$set.isotope('layout');
+								$set.thegem_isotope('layout');
 							}, 200);
 						}
 					});

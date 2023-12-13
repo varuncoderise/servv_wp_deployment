@@ -79,6 +79,21 @@ function thegem_get_single_posts_list() {
 	return $posts;
 }
 
+function thegem_get_portfolios_list() {
+	$portfolios = array('' => __('Default', 'thegem'));
+	$portfolios_list = get_posts([
+		'post_type' => 'thegem_pf_item',
+		'numberposts' => 100,
+		'orderby' => 'date',
+		'order' => 'DESC',
+		'post_status'  => 'publish',
+	]);
+	foreach ($portfolios_list as $portfolio) {
+		$portfolios[$portfolio->ID] = $portfolio->post_title . ' (ID = ' . $portfolio->ID . ')';
+	}
+	return $portfolios;
+}
+
 function thegem_get_products_list() {
 	$products = array('' => __('Latest Product', 'thegem'));
 	if(! defined( 'WC_PLUGIN_FILE' )) return $products;
@@ -242,12 +257,17 @@ function thegem_first_install_settings() {
 		'blogger_active' => '',
 		'blogger_link' => '#',
 		'body_color' => '#5f727f',
+		'body_custom_responsive_fonts' => '1',
 		'body_font_family' => 'Source Sans Pro',
 		'body_font_sets' => '',
 		'body_font_size' => '16',
+		'body_font_size_tablet' => '16',
+		'body_font_size_mobile' => '16',
 		'body_font_style' => 'regular',
 		'body_letter_spacing' => '0',
 		'body_line_height' => '25',
+		'body_line_height_tablet' => '25',
+		'body_line_height_mobile' => '25',
 		'body_text_transform' => '',
 		'box_border_color' => '#dfe5e8',
 		'breadcrumbs_active_color' => '#E7FF89FF',
@@ -280,6 +300,7 @@ function thegem_first_install_settings() {
 		'cart_table_header_background_color' => '#B6C6C9FF',
 		'cart_table_header_color' => '#FFFFFFFF',
 		'catalog_view' => '',
+		'categories_collapsible' => '0',
 		'checkout_step_background_active_color' => '#FFD453FF',
 		'checkout_step_background_color' => '#E9F0EFFF',
 		'checkout_step_title_active_color' => '#3C3950FF',
@@ -372,7 +393,7 @@ function thegem_first_install_settings() {
 		'disable_fixed_header' => '0',
 		'disable_og_tags' => '1',
 		'disable_scroll_top_button' => '0',
-		'disable_smooth_scroll' => '0',
+		'disable_smooth_scroll' => '1',
 		'disable_uppercase_font' => '',
 		'discord_active' => '',
 		'discord_link' => '#',
@@ -477,10 +498,10 @@ function thegem_first_install_settings() {
 		'gallery_title_bold_line_height' => '31',
 		'gallery_title_bold_text_transform' => '',
 		'gallery_title_color' => '#ffffff',
-		'gallery_title_font_family' => 'Montserrat UltraLight',
-		'gallery_title_font_sets' => '',
+		'gallery_title_font_family' => 'Montserrat',
+		'gallery_title_font_sets' => 'latin,latin-ext',
 		'gallery_title_font_size' => '24',
-		'gallery_title_font_style' => 'regular',
+		'gallery_title_font_style' => '200',
 		'gallery_title_letter_spacing' => '',
 		'gallery_title_line_height' => '30',
 		'gallery_title_text_transform' => '',
@@ -587,8 +608,8 @@ function thegem_first_install_settings() {
 		'header_source' => 'default',
 		'header_builder_sticky_desktop' => '0',
 		'header_builder_sticky_mobile' => '0',
-        'header_builder_sticky_hide_desktop' => '0',
-        'header_builder_sticky_hide_mobile' => '1',
+		'header_builder_sticky_hide_desktop' => '0',
+		'header_builder_sticky_hide_mobile' => '1',
 		'header_builder_sticky_opacity' => '80',
 		'header_builder_light_color' => '#FFFFFF',
 		'header_builder_light_color_hover' => '',
@@ -607,10 +628,10 @@ function thegem_first_install_settings() {
 		'icons_symbol_color' => '#91a0ac',
 		'instagram_active' => '1',
 		'instagram_link' => '#',
-		'light_title_font_family' => 'Montserrat UltraLight',
-		'light_title_font_sets' => '',
+		'light_title_font_family' => 'Montserrat',
+		'light_title_font_sets' => 'latin,latin-ext',
 		'light_title_font_size' => '',
-		'light_title_font_style' => 'regular',
+		'light_title_font_style' => '200',
 		'light_title_letter_spacing' => '',
 		'light_title_line_height' => '',
 		'light_title_text_transform' => '',
@@ -745,6 +766,8 @@ function thegem_first_install_settings() {
 		'mobile_menu_line_height' => '20',
 		'mobile_menu_social_icon_color' => '',
 		'mobile_menu_text_transform' => 'none',
+		'mobile_menu_show_this_page_text' => '',
+		'mobile_menu_back_text' => '',
 		'myspace_active' => '',
 		'myspace_link' => '#',
 		'news_rewrite_slug' => '',
@@ -847,11 +870,16 @@ function thegem_first_install_settings() {
 		'product_archive_columns_desktop' => '4x',
 		'product_archive_columns_tablet' => '3x',
 		'product_archive_columns_mobile' => '2x',
+		'product_archive_columns_desktop_list' => '2x',
+		'product_archive_columns_tablet_list' => '2x',
 		'product_archive_columns_100' => '5',
 		'product_archive_size_desktop' => '42',
 		'product_archive_size_tablet' => '42',
 		'product_archive_size_mobile' => '42',
-		'product_archive_image_aspect_ratio' => 'portrait',
+		'product_archive_image_size' => 'default',
+		'product_archive_image_ratio' => '1',
+		'product_archive_image_ratio_default' => '',
+    	'product_archive_image_aspect_ratio' => 'portrait',
 		'product_archive_preset_type' => 'below',
 		'product_archive_preset_below' => 'default-cart-button',
 		'product_archive_preset_on_image' => '',
@@ -901,11 +929,15 @@ function thegem_first_install_settings() {
 		'product_archive_filters_type' => 'disabled',
 		'product_archive_filters_ajax' => '0',
 		'product_archive_scroll_to_top' => '1',
+		'product_archive_items_list_max_height' => '',
+		'product_archive_items_list_max_height_tablet' => '',
+		'product_archive_items_list_max_height_mobile' => '',
 		'product_archive_remove_attr_counts' => '0',
 		'product_archive_filters_style' => 'standard',
 		'product_archive_filters_style_native' => 'sidebar',
 		'product_archive_filter_by_categories' => '1',
 		'product_archive_filter_by_categories_hierarchy' => '0',
+		'product_archive_filter_by_categories_collapsible' => '0',
 		'product_archive_filter_by_categories_count' => '0',
 		'product_archive_filter_by_categories_title' => 'Categories',
 		'product_archive_filter_by_categories_order_by' => 'name',
@@ -923,6 +955,15 @@ function thegem_first_install_settings() {
 		'product_archive_filter_by_status_stock_text' => 'In Stock',
 		'product_archive_filter_by_status_count' => '0',
 		'product_archive_filter_by_search' => '0',
+		'product_archive_filter_by_categories_show_title' => '1',
+		'product_archive_filter_by_categories_display_type' => 'list',
+		'product_archive_filter_by_categories_display_dropdown_open' => 'hover',
+		'product_archive_filter_by_price_show_title' => '1',
+		'product_archive_filter_by_price_display_type' => 'list',
+		'product_archive_filter_by_price_display_dropdown_open' => 'hover',
+		'product_archive_filter_by_status_show_title' => '1',
+		'product_archive_filter_by_status_display_type' => 'list',
+		'product_archive_filter_by_status_display_dropdown_open' => 'hover',
 		'product_archive_filters_text_labels_all_text' => 'Show All',
 		'product_archive_filters_text_labels_clear_text' => 'Clear Filters',
 		'product_archive_filters_text_labels_search_text' => 'Search by Product',
@@ -940,9 +981,12 @@ function thegem_first_install_settings() {
 		'product_archive_animation_effect' => 'move-up',
 		'product_archive_ignore_highlights' => '1',
 		'product_archive_skeleton_loader' => '0',
+		'product_archive_ajax_preloader_type' => 'default',
 		'product_archive_featured_only' => '0',
 		'product_archive_sale_only' => '0',
+		'product_archive_stock_only' => '0',
 		'product_archive_social_sharing' => '0',
+		'product_archive_cart_hook' => '1',
 		'product_archive_customize_styles' => '0',
 		'product_archive_image_hover_effect_image' => 'fade',
 		'product_archive_image_hover_effect_page' => 'fade',
@@ -967,9 +1011,14 @@ function thegem_first_install_settings() {
 		'product_archive_stay_visible' => '4000',
 		'product_gallery' => 'enabled',
 		'product_gallery_type' => 'horizontal',
+		'product_gallery_thumb_on_mobile' => '0',
+		'product_gallery_thumb_position' => 'left',
 		'product_gallery_column_position' => 'left',
 		'product_gallery_column_width' => '50',
 		'product_gallery_show_image' => 'hover',
+		'product_gallery_image_ratio' => '',
+		'product_gallery_grid_image_size' => 'default',
+		'product_gallery_grid_image_ratio' => '',
 		'product_gallery_zoom' => '1',
 		'product_gallery_lightbox' => '1',
 		'product_gallery_labels' => '1',
@@ -1166,6 +1215,8 @@ function thegem_first_install_settings() {
 		'product_page_elements_related_columns_tablet' => '3x',
 		'product_page_elements_related_columns_mobile' => '2x',
 		'product_page_elements_related_columns_100' => '5',
+		'product_page_additional_tabs' => '0',
+		'product_page_additional_tabs_data' => '',
 		'product_hide_social_sharing' => '0',
 		'cart_elements_cross_sells' => '1',
 		'cart_elements_cross_sells_columns_100' => '5',
@@ -1242,10 +1293,10 @@ function thegem_first_install_settings() {
 		'product_title_listing_line_height' => '25',
 		'product_title_listing_text_transform' => '',
 		'product_title_page_color' => '#3c3950',
-		'product_title_page_font_family' => 'Montserrat UltraLight',
+		'product_title_page_font_family' => 'Montserrat',
 		'product_title_page_font_sets' => 'latin,latin-ext',
 		'product_title_page_font_size' => '28',
-		'product_title_page_font_style' => 'regular',
+		'product_title_page_font_style' => '200',
 		'product_title_page_letter_spacing' => '1.7',
 		'product_title_page_line_height' => '42',
 		'product_title_page_text_transform' => 'uppercase',
@@ -1275,10 +1326,10 @@ function thegem_first_install_settings() {
 		'quickfinder_title_letter_spacing' => '',
 		'quickfinder_title_line_height' => '38',
 		'quickfinder_title_text_transform' => '',
-		'quickfinder_title_thin_font_family' => 'Montserrat UltraLight',
+		'quickfinder_title_thin_font_family' => 'Montserrat',
 		'quickfinder_title_thin_font_sets' => 'latin,latin-ext',
 		'quickfinder_title_thin_font_size' => '24',
-		'quickfinder_title_thin_font_style' => 'regular',
+		'quickfinder_title_thin_font_style' => '200',
 		'quickfinder_title_thin_letter_spacing' => '',
 		'quickfinder_title_thin_line_height' => '38',
 		'quickfinder_title_thin_text_transform' => '',
@@ -1375,10 +1426,10 @@ function thegem_first_install_settings() {
 		'tabs_title_letter_spacing' => '0.7',
 		'tabs_title_line_height' => '25',
 		'tabs_title_text_transform' => 'uppercase',
-		'tabs_title_thin_font_family' => 'Montserrat UltraLight',
+		'tabs_title_thin_font_family' => 'Montserrat',
 		'tabs_title_thin_font_sets' => 'latin,latin-ext',
 		'tabs_title_thin_font_size' => '14',
-		'tabs_title_thin_font_style' => 'regular',
+		'tabs_title_thin_font_style' => '200',
 		'tabs_title_thin_letter_spacing' => '0.7',
 		'tabs_title_thin_line_height' => '25',
 		'tabs_title_thin_text_transform' => 'uppercase',
@@ -1618,14 +1669,19 @@ function thegem_first_install_settings() {
 		'blog_layout_gaps_desktop' => '42',
 		'blog_layout_gaps_tablet' => '42',
 		'blog_layout_gaps_mobile' => '42',
+		'blog_layout_image_size' => 'default',
+		'blog_layout_image_ratio_full' => '1',
+		'blog_layout_image_ratio_default' => '',
 		'blog_layout_sorting' => '0',
 		'blog_layout_hover_effect' => 'default',
 		'blog_layout_icon_on_hover' => '1',
 		'blog_layout_caption_position' => 'bellow',
 		'blog_layout_caption_featured_image' => '1',
 		'blog_layout_caption_title' => '1',
-		'blog_layout_caption_title_preset' => 'h6',
+		'blog_layout_caption_title_preset' => 'h5',
+		'blog_layout_caption_truncate_titles' => '',
 		'blog_layout_caption_description' => '1',
+		'blog_layout_caption_truncate_description' => '',
 		'blog_layout_caption_date' => '1',
 		'blog_layout_caption_categories' => '1',
 		'blog_layout_caption_author' => '1',
@@ -1661,6 +1717,7 @@ function thegem_first_install_settings() {
 		'blog_layout_animation_effect' => 'move-up',
 		'blog_layout_ignore_highlights' => '1',
 		'blog_layout_skeleton_loader' => '0',
+		'blog_layout_ajax_preloader_type' => 'default',
 		'search_layout_type' => 'grid',
 		'search_layout_type_grid' => 'justified',
 		'search_layout_skin' => 'alternative',
@@ -1672,6 +1729,9 @@ function thegem_first_install_settings() {
 		'search_layout_gaps_desktop' => '42',
 		'search_layout_gaps_tablet' => '42',
 		'search_layout_gaps_mobile' => '42',
+		'search_layout_image_size' => 'default',
+		'search_layout_image_ratio_full' => '1',
+		'search_layout_image_ratio_default' => '',
 		'search_layout_sorting' => '0',
 		'search_layout_hover_effect' => 'default',
 		'search_layout_icon_on_hover' => '1',
@@ -1728,6 +1788,11 @@ function thegem_first_install_settings() {
 		'title_excerpt_font_preset_transform' => '',
 		'caching_plugin' => 'wp_super_cache',
 		'delay_js_execution' => '1',
+		'mini_cart_type' => 'dropdown',
+		'mini_cart_sidebar_title' => 'Shopping Cart',
+		'mini_cart_sidebar_quantity' => '1',
+		'mini_cart_sidebar_view_cart_btn' => '1',
+		'mini_cart_sidebar_infotext' => '',
 	));
 }
 
@@ -1766,8 +1831,8 @@ function thegem_version_update_options() {
 			'product_title_listing_font_sets' => 'latin,latin-ext',
 			'product_title_listing_font_size' => '16',
 			'product_title_listing_line_height' => '25',
-			'product_title_page_font_family' => 'Montserrat UltraLight',
-			'product_title_page_font_style' => 'regular',
+			'product_title_page_font_family' => 'Montserrat',
+			'product_title_page_font_style' => '200',
 			'product_title_page_font_sets' => 'latin,latin-ext',
 			'product_title_page_font_size' => '28',
 			'product_title_page_line_height' => '42',
@@ -2027,6 +2092,8 @@ function thegem_version_update_options() {
 			'product_archive_columns_desktop' => '4x',
 			'product_archive_columns_tablet' => '3x',
 			'product_archive_columns_mobile' => '2x',
+			'product_archive_columns_desktop_list' => '2x',
+			'product_archive_columns_tablet_list' => '2x',
 			'product_archive_columns_100' => '5',
 			'product_archive_size_desktop' => '42',
 			'product_archive_size_tablet' => '42',
@@ -2368,7 +2435,7 @@ function thegem_version_update_options() {
 			'blog_layout_caption_position' => 'bellow',
 			'blog_layout_caption_featured_image' => '1',
 			'blog_layout_caption_title' => '1',
-			'blog_layout_caption_title_preset' => 'h6',
+			'blog_layout_caption_title_preset' => 'h5',
 			'blog_layout_caption_description' => '1',
 			'blog_layout_caption_date' => '1',
 			'blog_layout_caption_categories' => '1',
@@ -2475,6 +2542,49 @@ function thegem_version_update_options() {
 			'caching_plugin' => get_option('thegem_enabled_wprocket_autoptimize') ? 'wp_rocket' : 'wp_super_cache',
 			'delay_js_execution' => '1',
 			'deprecated_top_margin' => '1',
+		),
+		'5.8.0' => array(
+			'page_speed_image_load' => thegem_get_option('pagespeed_lazy_images_desktop_enable') || thegem_get_option('pagespeed_lazy_images_mobile_enable') ? 'js' : 'disabled',
+			'mini_cart_type' => 'dropdown',
+			'mini_cart_sidebar_title' => 'Shopping Cart',
+			'mini_cart_sidebar_view_cart_btn' => '1',
+			'mini_cart_sidebar_infotext' => '',
+			'global_settings_apply_search_header' => thegem_get_option('global_settings_apply_search'),
+			'global_settings_apply_search_title' => thegem_get_option('global_settings_apply_search'),
+			'global_settings_apply_search_content' => thegem_get_option('global_settings_apply_search'),
+			'global_settings_apply_search_footer' => thegem_get_option('global_settings_apply_search'),
+			'global_settings_apply_search_extras' => thegem_get_option('global_settings_apply_search'),
+			'product_archive_image_size' => 'default',
+			'product_archive_image_ratio' => '1',
+			'product_archive_image_ratio_default' => '',
+			'blog_layout_caption_truncate_titles' => '',
+			'blog_layout_caption_truncate_description' => '',
+			'product_archive_stock_only' => '0',
+			'product_archive_ajax_preloader_type' => 'default',
+			'blog_layout_ajax_preloader_type' => 'default',
+			'product_archive_filter_by_categories_collapsible' => '0',
+			'categories_collapsible' => '0',
+			'product_archive_items_list_max_height' => '',
+			'product_archive_items_list_max_height_tablet' => '',
+			'product_archive_items_list_max_height_mobile' => '',
+			'product_archive_filter_by_categories_show_title' => '1',
+			'product_archive_filter_by_categories_display_type' => 'list',
+			'product_archive_filter_by_categories_display_dropdown_open' => 'hover',
+			'product_archive_filter_by_price_show_title' => '1',
+			'product_archive_filter_by_price_display_type' => 'list',
+			'product_archive_filter_by_price_display_dropdown_open' => 'hover',
+			'product_archive_filter_by_status_show_title' => '1',
+			'product_archive_filter_by_status_display_type' => 'list',
+			'product_archive_filter_by_status_display_dropdown_open' => 'hover',
+		),
+		'5.9.1' => array(
+			'product_archive_cart_hook' => '1',
+			'search_layout_image_size' => 'default',
+			'search_layout_image_ratio_full' => '1',
+			'search_layout_image_ratio_default' => '',
+		),
+		'5.9.3' => array(
+			'woocommerce_activate_images_sizes' => thegem_get_option('product_page_layout') === 'default' && thegem_get_option('product_gallery') === 'enabled' && thegem_get_option('product_archive_type') === 'grid' ? '' : '1',
 		),
 	));
 	$theme_options = get_option('thegem_theme_options');
@@ -2869,10 +2979,10 @@ function thegem_migrate_new_options() {
 if (!function_exists('thegem_translated_options')) {
 	function thegem_translated_options() {
 		return apply_filters('thegem_translated_options', array(
-			'footer_html', 'top_area_button_text', 'top_area_button_link', 'contacts_address', 'contacts_phone', 'contacts_fax', 'contacts_email', 'contacts_website', 'top_area_contacts_address', 'top_area_contacts_phone', 'top_area_contacts_fax', 'top_area_contacts_email', 'top_area_contacts_website', 'custom_footer', 'header_builder', 'post_builder_template',
+			'footer_html', 'top_area_button_text', 'top_area_button_link', 'contacts_address', 'contacts_phone', 'contacts_fax', 'contacts_email', 'contacts_website', 'top_area_contacts_address', 'top_area_contacts_phone', 'top_area_contacts_fax', 'top_area_contacts_email', 'top_area_contacts_website', 'custom_footer', 'header_builder', 'post_builder_template', 'logo', 'logo_light', 'small_logo', 'small_logo_light', 'portfolio_archive_page',
 			'product_archive_quick_view_text', 'product_archive_cart_button_text', 'product_archive_select_options_button_text', 'product_archive_more_button_text', 'product_archive_filter_by_categories_title', 'product_archive_filter_by_price_title', 'product_archive_filter_by_status_title', 'product_archive_filter_by_status_sale_text', 'product_archive_filter_by_status_stock_text', 'product_archive_filters_text_labels_all_text', 'product_archive_filters_text_labels_clear_text', 'product_archive_filters_text_labels_search_text', 'product_archive_filter_buttons_hidden_show_text', 'product_archive_filter_buttons_hidden_sidebar_title', 'product_archive_filter_buttons_hidden_filter_by_text', 'product_archive_added_cart_text', 'product_archive_added_wishlist_text', 'product_archive_removed_wishlist_text', 'product_archive_view_cart_button_text', 'product_archive_checkout_button_text', 'product_archive_view_wishlist_button_text', 'product_archive_not_found_text',
 			'product_page_desc_review_description_title', 'product_page_desc_review_additional_info_title', 'product_page_desc_review_reviews_title', 'product_page_button_add_to_cart_text', 'product_page_button_clear_attributes_text', 'product_page_elements_reviews_text', 'product_page_elements_sku_title', 'product_page_elements_categories_title', 'product_page_elements_tags_title', 'product_page_elements_share_title', 'product_page_elements_upsell_title', 'product_page_elements_related_title',
-			'cart_empty_title', 'cart_empty_text', 'product_builder_template', 'product_archive_builder_template', 'cart_builder_template', 'checkout_builder_template', 'search_layout_mixed_grids_title', 'search_layout_mixed_grids_show_all', 'product_archive_filter_by_attribute_data', 'size_guide_text'
+			'cart_empty_title', 'cart_empty_text', 'cart_elements_cross_sells_title', 'product_builder_template', 'product_archive_builder_template', 'cart_builder_template', 'cart_empty_builder_template', 'checkout_builder_template', 'search_layout_mixed_grids_title', 'search_layout_mixed_grids_show_all', 'product_archive_filter_by_attribute_data', 'size_guide_text', 'mini_cart_sidebar_title', 'mini_cart_sidebar_infotext', 'product_page_additional_tabs_data', 'blog_layout_caption_read_more_text', 'website_search_page_title', 'website_search_page_excerpt', 'mobile_menu_show_this_page_text', 'mobile_menu_back_text'
 		));
 	}
 }
@@ -3140,7 +3250,15 @@ function thegem_activation_notice() {
 add_action('admin_notices', 'thegem_activation_notice');
 
 function thegem_theme_options_get_page_settings($type) {
-	$page_data = thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_'.$type), $type);
+	$data_type = $type;
+	$cpt = str_replace('_archive', '', $data_type);
+	if($data_type !== $cpt && in_array($cpt, thegem_get_available_po_custom_post_types())) {
+		$data_type = 'cpt_archive';
+	}
+	if(in_array($data_type, thegem_get_available_po_custom_post_types())) {
+		$data_type = 'cpt';
+	}
+	$page_data = thegem_get_sanitize_options_page_data(get_option('thegem_options_page_settings_'.$type), $data_type);
 	return array_map('stripslashes', $page_data);
 }
 
@@ -3241,6 +3359,7 @@ function thegem_get_sanitize_options_page_data($data, $type = 'default') {
 		'header_builder_sticky_opacity' => thegem_get_option('header_builder_sticky_opacity'),
 		'header_builder_light_color' => thegem_get_option('header_builder_light_color'),
 		'header_builder_light_color_hover' => thegem_get_option('header_builder_light_color_hover'),
+		'content_area_options' => '0',
 		'content_padding_top' => '135',
 		'content_padding_top_tablet' => '',
 		'content_padding_top_mobile' => '',
@@ -3272,6 +3391,8 @@ function thegem_get_sanitize_options_page_data($data, $type = 'default') {
 		'effects_parallax_footer' => '',
 		'effects_hide_header' => '0',
 		'effects_hide_footer' => !thegem_get_option('footer'),
+		'effects_no_bottom_margin' => false,
+		'effects_no_top_margin' => false,
 		'enable_page_preloader' => thegem_get_option('preloader'),
 		'sidebar_show' => '0',
 		'sidebar_position' => 'left',
@@ -3293,6 +3414,87 @@ function thegem_get_sanitize_options_page_data($data, $type = 'default') {
 		$page_data['title_show'] = '0';
 		$page_data['content_padding_top'] = '0';
 		$page_data['sidebar_show'] = '0';
+	}
+
+	if($type == 'cpt') {
+		$page_data['post_layout_source'] = 'default';
+		$page_data['post_builder_template'] = '0';
+	}
+
+	if($type == 'cpt_archive') {
+		$page_data = array_merge($page_data, array(
+			'archive_layout_source' => 'default',
+			'archive_builder_template' => '',
+			'archive_builder_preview' => '',
+			'archive_layout_type' => 'list',
+			'archive_layout_type_grid' => 'justified',
+			'archive_layout_sorting_default_orderby' => 'default',
+			'archive_layout_sorting_default_order' => 'default',
+			'archive_layout_skin' => 'alternative',
+			'archive_layout_columns_desktop' => '3x',
+			'archive_layout_columns_tablet' => '3x',
+			'archive_layout_columns_mobile' => '2x',
+			'archive_layout_columns_100' => '5',
+			'archive_layout_gaps_desktop' => '42',
+			'archive_layout_gaps_tablet' => '42',
+			'archive_layout_gaps_mobile' => '42',
+			'archive_layout_image_size' => 'default',
+			'archive_layout_image_ratio_full' => '1',
+			'archive_layout_image_ratio_default' => '',
+			'archive_layout_sorting' => '0',
+			'archive_layout_hover_effect' => 'default',
+			'archive_layout_icon_on_hover' => '1',
+			'archive_layout_caption_position' => 'bellow',
+			'archive_layout_caption_featured_image' => '1',
+			'archive_layout_caption_title' => '1',
+			'archive_layout_caption_title_preset' => 'h5',
+			'archive_layout_caption_truncate_titles' => '',
+			'archive_layout_caption_description' => '1',
+			'archive_layout_caption_truncate_description' => '',
+			'archive_layout_caption_date' => '1',
+			'archive_layout_caption_categories' => '1',
+			'archive_layout_caption_author' => '1',
+			'archive_layout_caption_author_avatar' => '1',
+			'archive_layout_caption_comments' => '1',
+			'archive_layout_caption_likes' => '1',
+			'archive_layout_caption_socials' => '1',
+			'archive_layout_caption_read_more' => '',
+			'archive_layout_caption_read_more_text' => 'Read More',
+			'archive_layout_caption_content_alignment_desktop' => 'left',
+			'archive_layout_caption_content_alignment_tablet' => 'left',
+			'archive_layout_caption_content_alignment_mobile' => 'left',
+			'archive_layout_caption_container_preset' => 'transparent',
+			'archive_layout_caption_bottom_border' => '1',
+			'archive_layout_pagination' => '1',
+			'archive_layout_pagination_items_per_page' => '12',
+			'archive_layout_pagination_items_per_page_desktop' => '12',
+			'archive_layout_pagination_items_per_page_tablet' => '12',
+			'archive_layout_pagination_items_per_page_mobile' => '12',
+			'archive_layout_pagination_type' => 'normal',
+			'archive_layout_load_more_text' => 'Load More',
+			'archive_layout_load_more_icon' => '',
+			'archive_layout_load_more_icon_pack' => '',
+			'archive_layout_load_more_stretch' => '',
+			'archive_layout_load_more_separator' => '',
+			'archive_layout_load_more_spacing_desktop' => '100',
+			'archive_layout_load_more_spacing_tablet' => '100',
+			'archive_layout_load_more_spacing_mobile' => '100',
+			'archive_layout_load_more_btn_type' => 'flat',
+			'archive_layout_load_more_btn_size' => 'small',
+			'archive_layout_load_more_btn_size_desktop' => 'small',
+			'archive_layout_load_more_btn_size_tablet' => 'small',
+			'archive_layout_load_more_btn_size_mobile' => 'small',
+			'archive_layout_loading_animation' => '0',
+			'archive_layout_animation_effect' => 'move-up',
+			'archive_layout_ignore_highlights' => '1',
+			'archive_layout_skeleton_loader' => '0',
+			'archive_layout_ajax_preloader_type' => 'default',
+			'archive_skin_source' => '',
+			'archive_item_builder_template' => '',
+			'archive_items_equal_height_disabled' => '',
+			'archive_list_builder_gaps_desktop' => '42',
+			'archive_list_builder_gaps_tablet' => '42',
+		));
 	}
 
 	if(is_array($data)) {
@@ -3522,6 +3724,7 @@ function thegem_get_options_group_by_key($key) {
 		case 'header_builder_light_color_hover':
 		case 'effects_hide_header':
 			$option_group = 'header'; break;
+		case 'content_area_options':
 		case 'content_padding_top':
 		case 'content_padding_top_tablet':
 		case 'content_padding_top_mobile':
@@ -3670,6 +3873,7 @@ function thegem_get_options_by_group($group) {
 			'effects_hide_header',
 		),
 		'content' => array(
+			'content_area_options',
 			'content_padding_top',
 			'content_padding_top_tablet',
 			'content_padding_top_mobile',
@@ -3696,13 +3900,13 @@ function thegem_get_options_by_group($group) {
 			'sidebar_show',
 			'sidebar_position',
 			'sidebar_sticky',
-            'page_layout_breadcrumbs',
-            'page_layout_breadcrumbs_default_color',
-            'page_layout_breadcrumbs_active_color',
-            'page_layout_breadcrumbs_hover_color',
-            'page_layout_breadcrumbs_alignment',
-            'page_layout_breadcrumbs_bottom_spacing',
-            'page_layout_breadcrumbs_shop_category',
+			'page_layout_breadcrumbs',
+			'page_layout_breadcrumbs_default_color',
+			'page_layout_breadcrumbs_active_color',
+			'page_layout_breadcrumbs_hover_color',
+			'page_layout_breadcrumbs_alignment',
+			'page_layout_breadcrumbs_bottom_spacing',
+			'page_layout_breadcrumbs_shop_category',
 		),
 		'footer' => array(
 			'footer_custom_show',
@@ -3988,21 +4192,22 @@ add_action('vc_post_custom_css', 'thegem_header_preview_hide_vc_styles');
 
 function thegem_apply_options_page_settings($type, $options, $offset = null, $workEndTime = null, $group = '') {
 	if (!$workEndTime) {
-		$workEndTime = time() + 20;
+		$workEndTime = time() + 10;
 	}
 
 	if (!$offset) {
 		$offset = 0;
 	}
 
-	$workChunkSize = 50;
+	$workChunkSize = 20;
 
-	if(in_array($type, array('page', 'post', 'thegem_pf_item', 'product'))) {
+	if(in_array($type, array('page', 'post', 'thegem_pf_item', 'product')) || (in_array($type, thegem_get_available_po_custom_post_types(), true))) {
 		$posts = get_posts(array(
 			'numberposts' => $workChunkSize,
 			'post_type' => $type,
 			'orderby' => 'ID',
-			'offset' => $offset
+			'offset' => $offset,
+			'fields' => 'ids'
 		));
 
 		if (empty($posts)) {
@@ -4010,55 +4215,35 @@ function thegem_apply_options_page_settings($type, $options, $offset = null, $wo
 		}
 
 		foreach($posts as $post) {
-			$meta = thegem_get_sanitize_admin_page_data($post->ID);
+			$meta = thegem_get_sanitize_admin_page_data($post);
 			$meta = thegem_update_page_data_from_options($meta, $options);
-			update_post_meta($post->ID, 'thegem_page_data', $meta);
+			update_post_meta($post, 'thegem_page_data', $meta);
 			if($type == 'post' && $group == 'appearance') {
-				$meta = thegem_get_sanitize_admin_post_elements_data($post->ID);
+				$meta = thegem_get_sanitize_admin_post_elements_data($post);
 				$meta = thegem_update_post_page_elements_data_from_options($meta);
-				update_post_meta($post->ID, 'thegem_post_page_elements_data', $meta);
-				$meta = thegem_get_sanitize_admin_post_data($post->ID);
+				update_post_meta($post, 'thegem_post_page_elements_data', $meta);
+				$meta = thegem_get_sanitize_admin_post_data($post);
 				$meta['show_featured_content'] = 'default';
-				update_post_meta($post->ID, 'thegem_post_general_item_data', $meta);
+				update_post_meta($post, 'thegem_post_general_item_data', $meta);
 			}
 			if($type == 'post' && $group == 'layout') {
-				$meta = thegem_get_sanitize_admin_post_data($post->ID);
+				$meta = thegem_get_sanitize_admin_post_data($post);
 				$meta['post_layout_settings'] = 'default';
 				$meta['post_layout_source'] = thegem_get_option('post_layout_source');
 				$meta['post_builder_template'] = thegem_get_option('post_builder_template');
-				update_post_meta($post->ID, 'thegem_post_general_item_data', $meta);
+				update_post_meta($post, 'thegem_post_general_item_data', $meta);
 			}
 			if($type == 'thegem_pf_item' && $group == 'appearance') {
-				$meta = thegem_get_sanitize_pf_item_elements_data($post->ID);
+				$meta = thegem_get_sanitize_pf_item_elements_data($post);
 				$meta = thegem_update_pf_item_page_elements_data_from_options($meta);
-				update_post_meta($post->ID, 'thegem_pf_item_page_elements_data', $meta);
+				update_post_meta($post, 'thegem_pf_item_page_elements_data', $meta);
 			}
 
-			$offset++;
-			if (time()>=$workEndTime) {
-				return $offset;
+			if($type == 'product' && $group == 'product_layout') {
+				$meta = thegem_get_sanitize_product_page_data($post);
+				$meta = thegem_update_product_page_elements_data_from_options($meta);
+				update_post_meta($post, 'thegem_product_page_data', $meta);
 			}
-		}
-
-		unset($posts);
-	}
-
-	if($type == 'product_layout') {
-		$posts = get_posts(array(
-			'numberposts' => $workChunkSize,
-			'post_type' => 'product',
-			'orderby' => 'ID',
-			'offset' => $offset
-		));
-
-		if (empty($posts)) {
-			return false;
-		}
-
-		foreach($posts as $post) {
-			$meta = thegem_get_sanitize_product_page_data($post->ID);
-			$meta = thegem_update_product_page_elements_data_from_options($meta);
-			update_post_meta($post->ID, 'thegem_product_page_data', $meta);
 
 			$offset++;
 			if (time()>=$workEndTime) {
@@ -4161,6 +4346,9 @@ function thegem_update_page_data_from_options($data, $options) {
 				$data[$option] = 'default';
 				break;
 			case 'effects_hide_footer':
+				$data[$option] = 'default';
+				break;
+			case 'content_area_options':
 				$data[$option] = 'default';
 				break;
 			case 'sidebar_show':

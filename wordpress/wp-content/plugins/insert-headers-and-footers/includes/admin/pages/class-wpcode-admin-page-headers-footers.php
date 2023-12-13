@@ -10,6 +10,8 @@
  */
 class WPCode_Admin_Page_Headers_Footers extends WPCode_Admin_Page {
 
+	use WPCode_Revisions_Display_Lite;
+
 	/**
 	 * The page slug to be used when adding the submenu.
 	 *
@@ -39,6 +41,13 @@ class WPCode_Admin_Page_Headers_Footers extends WPCode_Admin_Page {
 	private $nonce_name = 'insert-headers-and-footers_nonce';
 
 	/**
+	 * The capability required to view this page.
+	 *
+	 * @var string
+	 */
+	protected $capability = 'wpcode_edit_html_snippets';
+
+	/**
 	 * Call this just to set the page title translatable.
 	 */
 	public function __construct() {
@@ -47,6 +56,8 @@ class WPCode_Admin_Page_Headers_Footers extends WPCode_Admin_Page {
 		}
 		$this->page_title = __( 'Header & Footer', 'insert-headers-and-footers' );
 		parent::__construct();
+
+		add_action( 'wpcode_admin_page_content_wpcode-headers-footers', array( $this, 'revisions_box' ), 260 );
 	}
 
 	/**
@@ -56,10 +67,16 @@ class WPCode_Admin_Page_Headers_Footers extends WPCode_Admin_Page {
 	 */
 	public function add_page() {
 		if ( $this->settings_submenu ) {
-			add_options_page( $this->menu_title, $this->page_title, 'wpcode_edit_snippets', $this->page_slug, array(
-				wpcode()->admin_page_loader,
-				'admin_menu_page'
-			) );
+			add_options_page(
+				$this->menu_title,
+				$this->page_title,
+				'wpcode_edit_snippets',
+				$this->page_slug,
+				array(
+					wpcode()->admin_page_loader,
+					'admin_menu_page',
+				)
+			);
 
 			return;
 		}
@@ -72,7 +89,7 @@ class WPCode_Admin_Page_Headers_Footers extends WPCode_Admin_Page {
 	 * @return void
 	 */
 	public function page_hooks() {
-		$this->can_edit = current_user_can( 'unfiltered_html' );
+		$this->can_edit = current_user_can( 'unfiltered_html', 'wpcode-editor' );
 		add_action( 'admin_init', array( $this, 'submit_listener' ) );
 		$this->process_message();
 	}
@@ -147,11 +164,11 @@ class WPCode_Admin_Page_Headers_Footers extends WPCode_Admin_Page {
 			esc_html__( 'These scripts will be printed above the closing %s tag.', 'insert-headers-and-footers' ),
 			'<code>&lt;/body&gt;</code>'
 		);
-		$this->textarea_field( 'ihaf_insert_header', __( 'Header', 'insert-headers-and-footers' ), $header_desc );
+		$this->textarea_field( 'header', __( 'Header', 'insert-headers-and-footers' ), $header_desc );
 		if ( $this->body_supported() ) {
-			$this->textarea_field( 'ihaf_insert_body', __( 'Body', 'insert-headers-and-footers' ), $body_desc );
+			$this->textarea_field( 'body', __( 'Body', 'insert-headers-and-footers' ), $body_desc );
 		}
-		$this->textarea_field( 'ihaf_insert_footer', __( 'Footer', 'insert-headers-and-footers' ), $footer_desc );
+		$this->textarea_field( 'footer', __( 'Footer', 'insert-headers-and-footers' ), $footer_desc );
 		wp_nonce_field( $this->action, $this->nonce_name );
 	}
 
@@ -174,11 +191,12 @@ class WPCode_Admin_Page_Headers_Footers extends WPCode_Admin_Page {
 	 * @return void
 	 */
 	public function textarea_field( $option, $title, $desc ) {
-		$value = esc_html( wp_unslash( get_option( $option ) ) );
+		$value = wp_unslash( get_option( 'ihaf_insert_' . $option ) );
 		?>
-		<div class="wpcode-code-textarea">
-			<h2><label for="<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $title ); ?></label></h2>
-			<textarea name="<?php echo esc_attr( $option ); ?>" id="<?php echo esc_attr( $option ); ?>" class="widefat" rows="8" <?php disabled( ! current_user_can( 'unfiltered_html' ) ); ?>><?php echo $value; ?></textarea>
+		<div class="wpcode-code-textarea" id="wpcode-global-<?php echo esc_attr( $option ); ?>">
+			<h2><label for="ihaf_insert_<?php echo esc_attr( $option ); ?>"><?php echo esc_html( $title ); ?></label>
+			</h2>
+			<textarea name="ihaf_insert_<?php echo esc_attr( $option ); ?>" id="ihaf_insert_<?php echo esc_attr( $option ); ?>" class="widefat" rows="8" <?php disabled( ! current_user_can( 'unfiltered_html', 'wpcode-editor' ) ); ?>><?php echo esc_html( $value ); ?></textarea>
 			<p>
 				<?php echo wp_kses( $desc, array( 'code' => array() ) ); ?>
 			</p>
@@ -289,5 +307,35 @@ class WPCode_Admin_Page_Headers_Footers extends WPCode_Admin_Page {
 		}
 
 		return str_replace( 'admin.php', 'options-general.php', $url );
+	}
+
+	/**
+	 * Add the revisions box.
+	 *
+	 * @return void
+	 */
+	public function revisions_box() {
+		$html = $this->code_revisions_list_with_notice(
+			esc_html__( 'Code Revisions is a Pro Feature', 'insert-headers-and-footers' ),
+			sprintf(
+				'<p>%s</p>',
+				esc_html__( 'Upgrade to WPCode Pro today and start tracking revisions and see exactly who, when and which changes were made to global Headers & Footers scripts.', 'insert-headers-and-footers' )
+			),
+			array(
+				'text' => esc_html__( 'Upgrade to Pro and Unlock Revisions', 'insert-headers-and-footers' ),
+				'url'  => wpcode_utm_url( 'https://wpcode.com/lite/', 'headers-footers', 'revisions', 'upgrade-to-pro' ),
+			),
+			array(
+				'text' => esc_html__( 'Learn more about all the features', 'insert-headers-and-footers' ),
+				'url'  => wpcode_utm_url( 'https://wpcode.com/lite/', 'headers-footers', 'revisions', 'features' ),
+			)
+		);
+
+		$this->metabox(
+			__( 'Code Revisions', 'wpcode-premium' ),
+			$html,
+			__( 'Easily switch back to a previous version of your global scripts.', 'wpcode-premium' )
+		);
+
 	}
 }

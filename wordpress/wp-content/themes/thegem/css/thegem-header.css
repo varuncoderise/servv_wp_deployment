@@ -1155,6 +1155,19 @@ body.admin-bar #page.vertical-header #site-header-wrapper {
 #site-header:not(.shrink) #primary-navigation.hamburger-active .hamburger-minicart:hover > a {
 	color: #ffffff;
 }
+.header-layout-fullwidth_hamburger #primary-menu.no-responsive.hamburger-with-template {
+	padding: 0;
+	overflow-y: auto;
+}
+.header-layout-fullwidth_hamburger #primary-menu.no-responsive.hamburger-with-template > li {
+	display: none;
+}
+.header-layout-fullwidth_hamburger #primary-menu.no-responsive.hamburger-with-template > li.menu-item-type-template {
+	display: block !important;
+	padding: 0 21px;
+	font-size: var(--thegem-to-body-font-size);
+	white-space: normal;
+}
 
 body #wpadminbar {
 	font-style: normal;
@@ -1884,6 +1897,21 @@ body.admin-bar .page-additional-menu.mobile-menu-layout-overlay .primary-navigat
 
 .header-layout-overlay #primary-navigation.overlay-active:not(.close) .hamburger-minicart {
 	opacity: 0;
+}
+
+.header-layout-overlay #primary-menu.no-responsive.hamburger-with-template {
+	padding: 0;
+	overflow-y: auto;
+}
+.header-layout-overlay #primary-menu.no-responsive.hamburger-with-template > li {
+	display: none;
+}
+.header-layout-overlay #primary-menu.no-responsive.hamburger-with-template > li.menu-item-type-template {
+	display: block !important;
+	padding: 0 21px;
+	text-align: left;
+	font-size: var(--thegem-to-body-font-size);
+	white-space: normal;
 }
 
 .mobile-menu-layout-overlay .primary-navigation.responsive li.menu-item-parent > a:after,
@@ -3413,6 +3441,7 @@ body.one-pager #site-header.fixed.shrink .header-style-4 #primary-menu.no-respon
 	background: rgba(0, 0, 0, 0);
 	border: 0;
 	cursor: pointer;
+	font-size: 0;
 }
 .minisearch .sf-submit:hover{
 	background: transparent;
@@ -3443,27 +3472,6 @@ body.one-pager #site-header.fixed.shrink .header-style-4 #primary-menu.no-respon
 }
 
 /* FULLSCREEN SEARCH */
-
-@media (min-width:1025px) {
-	.platform-Windows.fullscreen-search-opened .header-background,
-	.platform-Windows.fullscreen-search-opened .top-area,
-	.platform-Windows.fullscreen-search-opened .block-content {
-		padding-right: 17px;
-	}
-
-	.fullscreen-search #page-title,
-	.fullscreen-search .breadcrumbs-container {
-		padding-right: 17px;
-	}
-
-	.fullscreen-search #page-title {
-		width: calc(100% + 17px);
-	}
-
-	.platform-Windows.fullscreen-search-opened #page-title {
-		width: 100%;
-	}
-}
 
 @media (min-width: 980px) {
 	#primary-menu > li.menu-item-fullscreen-search .minisearch {
@@ -3893,8 +3901,6 @@ body.fullscreen-search-opened {
 	top: 100px;
 	left: initial;
 	right: 50%;
-	margin-right: -40px;
-	margin-left: -40px;
 }
 
 .thegem-fullscreen-search .preloader-new + .result-sections {

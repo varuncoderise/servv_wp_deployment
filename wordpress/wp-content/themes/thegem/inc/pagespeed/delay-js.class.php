@@ -41,12 +41,20 @@ class TheGem_DelayJS {
 		ob_start(array($this, 'obCallback'));
 	}
 
+	public function endBuffer() {
+		ob_end_clean();
+	}
+
 	private function initHooks() {
 
 		if (did_action('init') > 0) {
 			$this->init();
 		} else {
 			add_action('init', array($this, 'init'), 9999);
+		}
+
+		if(defined( 'WPSEO_FILE' )) {
+			add_action('rest_api_init', array($this, 'endBuffer'));
 		}
 
 		add_action('wp_head', array($this, 'printHeadScripts'), 0);
@@ -59,7 +67,7 @@ class TheGem_DelayJS {
 		return $buffer;
 	}
 
-	private function parseHTML( $html ): string {
+	private function parseHTML( $html ) {
 		$replaced_html = preg_replace_callback(
 			'/<\s*script\s*(?<attr>[^>]*?)?>(?<content>.*?)?<\s*\/\s*script\s*>/ims',
 			[
@@ -76,8 +84,15 @@ class TheGem_DelayJS {
 		return $replaced_html;
 	}
 
-	public function replace_scripts( $matches ): string {
+	public function replace_scripts( $matches ) {
 		$excluded = apply_filters('thegem_delay_js_exclusions', array('autoptimize_', '\/jquery-?([0-9.]){0,10}\.(min\.|slim\.|slim\.min\.)?js','revslider','layerslider','\(','\{','\/recaptcha\/api\.js','odometer.js'));
+		$to_excluded = thegem_get_option('excluded_js_files_area');
+		if(!empty($to_excluded)) {
+			$to_excluded = array_values(array_filter(explode(PHP_EOL, $to_excluded)));
+			if(is_array($to_excluded)) {
+				$excluded = array_merge($excluded, $to_excluded);
+			}
+		}
 		foreach ( $excluded as $pattern ) {
 			if ( preg_match( "#{$pattern}#i", $matches[0] ) ) {
 				return $matches[0];

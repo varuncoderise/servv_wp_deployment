@@ -32,6 +32,20 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 	protected $nonce_name = 'wpcode-settings_nonce';
 
 	/**
+	 * The view to be loaded by default.
+	 *
+	 * @var string
+	 */
+	public $view = 'general';
+
+	/**
+	 * The capability required to view this page.
+	 *
+	 * @var string
+	 */
+	protected $capability = 'wpcode_manage_settings';
+
+	/**
 	 * Call this just to set the page title translatable.
 	 */
 	public function __construct() {
@@ -40,12 +54,37 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 	}
 
 	/**
+	 * Setup page-specific views.
+	 *
+	 * @return void
+	 */
+	protected function setup_views() {
+		$this->views = array(
+			'general' => __( 'General Settings', 'insert-headers-and-footers' ),
+			'access'  => __( 'Access Control', 'insert-headers-and-footers' ),
+		);
+	}
+
+	/**
 	 * Register hook on admin init just for this page.
 	 *
 	 * @return void
 	 */
 	public function page_hooks() {
+		$this->process_message();
 		add_action( 'admin_init', array( $this, 'submit_listener' ) );
+		add_filter( 'wpcode_admin_js_data', array( $this, 'add_connect_strings' ) );
+	}
+
+	/**
+	 * Handle the message after the settings are saved with a redirect.
+	 *
+	 * @return void
+	 */
+	public function process_message() {
+		if ( isset( $_GET['message'] ) && 1 === absint( $_GET['message'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$this->set_success_message( __( 'Settings Saved.', 'insert-headers-and-footers' ) );
+		}
 	}
 
 	/**
@@ -67,7 +106,19 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 	 * @return void
 	 */
 	public function output_content() {
+		if ( method_exists( $this, 'output_view_' . $this->view ) ) {
+			call_user_func( array( $this, 'output_view_' . $this->view ) );
+		}
+	}
+
+	/**
+	 * The Settings page output.
+	 *
+	 * @return void
+	 */
+	public function output_view_general() {
 		$header_and_footers = wpcode()->settings->get_option( 'headers_footers_mode' );
+		$usage_tracking     = wpcode()->settings->get_option( 'usage_tracking' );
 
 		$description = __( 'This allows you to disable all Code Snippets functionality and have a single "Headers & Footers" item under the settings menu.', 'insert-headers-and-footers' );
 
@@ -77,6 +128,11 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 			__( '%1$sNOTE:%2$s Please use this setting with caution. It will disable all custom snippets that you add using the new snippet management interface.', 'insert-headers-and-footers' ),
 			'<strong>',
 			'</strong>'
+		);
+
+		$this->metabox_row(
+			__( 'License Key', 'insert-headers-and-footers' ),
+			$this->get_license_key_input()
 		);
 
 		$this->metabox_row(
@@ -91,7 +147,51 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 
 		$this->common_settings();
 
+		$this->metabox_row(
+			__( 'Allow Usage Tracking', 'insert-headers-and-footers' ),
+			$this->get_checkbox_toggle(
+				$usage_tracking,
+				'usage_tracking',
+				esc_html__( 'By allowing us to track usage data, we can better help you, as we will know which WordPress configurations, themes, and plugins we should test.', 'insert-headers-and-footers' )
+			),
+			'usage_tracking'
+		);
+
+		$this->uninstall_setting();
+
 		wp_nonce_field( $this->action, $this->nonce_name );
+
+		?>
+		<button class="wpcode-button" type="submit">
+			<?php esc_html_e( 'Save Changes', 'insert-headers-and-footers' ); ?>
+		</button>
+		<?php
+	}
+
+	/**
+	 * Output the uninstall setting.
+	 *
+	 * @return void
+	 */
+	public function uninstall_setting() {
+		$uninstall_description = esc_html__( 'Remove ALL WPCode data upon plugin deletion.', 'insert-headers-and-footers' );
+
+		$uninstall_description .= '<br />';
+		$uninstall_description .= sprintf(
+			'<strong style="color: #DF2A35">%s</strong>',
+			esc_html__( 'All WPCode snippets & scripts will be unrecoverable.', 'insert-headers-and-footers' )
+		);
+
+		$this->metabox_row(
+			__( 'Delete All Data on Uninstall', 'insert-headers-and-footers' ),
+			$this->get_checkbox_toggle(
+				wpcode()->settings->get_option( 'uninstall_data', false ),
+				'wpcode-uninstall-data',
+				$uninstall_description,
+				1
+			),
+			'wpcode-admin-bar-info'
+		);
 	}
 
 	/**
@@ -126,6 +226,17 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 			),
 			'wpcode-error-logging'
 		);
+
+		$this->metabox_row(
+			__( 'Admin Bar Info', 'insert-headers-and-footers' ),
+			$this->get_checkbox_toggle(
+				wpcode()->settings->get_option( 'admin_bar_info', true ),
+				'wpcode-admin-bar-info',
+				esc_html__( 'Enable the admin bar menu that shows info about which snippets & scripts are loaded on the current page.', 'insert-headers-and-footers' ),
+				1
+			),
+			'wpcode-admin-bar-info'
+		);
 	}
 
 	/**
@@ -153,21 +264,31 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 	}
 
 	/**
-	 * For this page we output a title and the save button.
+	 * For this page we output a menu.
 	 *
 	 * @return void
 	 */
 	public function output_header_bottom() {
 		?>
 		<div class="wpcode-column">
-			<h1><?php esc_html_e( 'Settings', 'insert-headers-and-footers' ); ?></h1>
+			<ul class="wpcode-admin-tabs">
+				<?php
+				foreach ( $this->views as $slug => $label ) {
+					if ( 'importer' === $slug ) {
+						continue;
+					}
+					$class = $this->view === $slug ? 'active' : '';
+					?>
+					<li>
+						<a href="<?php echo esc_url( $this->get_view_link( $slug ) ); ?>" class="<?php echo esc_attr( $class ); ?>"><?php echo esc_html( $label ); ?></a>
+					</li>
+				<?php } ?>
+			</ul>
 		</div>
 		<div class="wpcode-column">
-			<button class="wpcode-button" type="submit">
-				<?php esc_html_e( 'Save Changes', 'insert-headers-and-footers' ); ?>
-			</button>
 		</div>
 		<?php
+
 	}
 
 	/**
@@ -186,6 +307,9 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 			'editor_height_auto'   => isset( $_POST['editor_height_auto'] ),
 			'editor_height'        => isset( $_POST['editor_height'] ) ? absint( $_POST['editor_height'] ) : 300,
 			'error_logging'        => isset( $_POST['wpcode-error-logging'] ),
+			'usage_tracking'       => isset( $_POST['usage_tracking'] ),
+			'admin_bar_info'       => isset( $_POST['wpcode-admin-bar-info'] ),
+			'uninstall_data'       => isset( $_POST['wpcode-uninstall-data'] ),
 		);
 
 		wpcode()->settings->bulk_update_options( $settings );
@@ -203,7 +327,15 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 			exit;
 		}
 
-		$this->set_success_message( __( 'Settings Saved.', 'insert-headers-and-footers' ) );
+		wp_safe_redirect(
+			add_query_arg(
+				array(
+					'message' => 1,
+				),
+				$this->get_page_action_url()
+			)
+		);
+		exit;
 	}
 
 	/**
@@ -232,5 +364,199 @@ class WPCode_Admin_Page_Settings extends WPCode_Admin_Page {
 		$html .= '</p>';
 
 		return $html;
+	}
+
+	/**
+	 * Get the license key input.
+	 *
+	 * @return string
+	 */
+	public function get_license_key_input() {
+		ob_start();
+		?>
+		<div class="wpcode-metabox-form">
+			<p><?php esc_html_e( 'You\'re using WPCode Lite - no license needed. Enjoy!', 'insert-headers-and-footers' ); ?>
+				<img draggable="false" role="img" class="emoji" alt="🙂" src="https://s.w.org/images/core/emoji/14.0.0/svg/1f642.svg">
+			</p>
+			<p>
+				<?php
+				printf(
+				// Translators: %1$s - Opening anchor tag, do not translate. %2$s - Closing anchor tag, do not translate.
+					esc_html__( 'To unlock more features consider %1$supgrading to PRO%2$s.', 'insert-headers-and-footers' ),
+					'<strong><a href="' . esc_url( wpcode_utm_url( 'https://wpcode.com/lite/', 'settings-license', 'upgrading-to-pro' ) ) . '" target="_blank" rel="noopener noreferrer">',
+					'</a></strong>'
+				)
+				?>
+			</p>
+			<hr>
+			<p><?php esc_html_e( 'Already purchased? Simply enter your license key below to enable WPCode PRO!', 'insert-headers-and-footers' ); ?></p>
+			<p>
+				<input type="password" class="wpcode-input-text" id="wpcode-settings-upgrade-license-key" placeholder="<?php esc_attr_e( 'Paste license key here', 'insert-headers-and-footers' ); ?>" value="">
+				<button type="button" class="wpcode-button" id="wpcode-settings-connect-btn">
+					<?php esc_html_e( 'Verify Key', 'insert-headers-and-footers' ); ?>
+				</button>
+			</p>
+		</div>
+		<?php
+
+		return ob_get_clean();
+	}
+
+	/**
+	 * Add the strings for the connect page to the JS object.
+	 *
+	 * @param array $data The localized data we already have.
+	 *
+	 * @return array
+	 */
+	public function add_connect_strings( $data ) {
+		$data['oops']                = esc_html__( 'Oops!', 'insert-headers-and-footers' );
+		$data['ok']                  = esc_html__( 'OK', 'insert-headers-and-footers' );
+		$data['almost_done']         = esc_html__( 'Almost Done', 'insert-headers-and-footers' );
+		$data['plugin_activate_btn'] = esc_html__( 'Activate', 'insert-headers-and-footers' );
+		$data['server_error']        = esc_html__( 'Unfortunately there was a server connection error.', 'insert-headers-and-footers' );
+
+		return $data;
+	}
+
+	/**
+	 * Output the form for the access management tab.
+	 *
+	 * @return void
+	 */
+	public function output_view_access() {
+		echo '<div class="wpcode-blur-area">';
+		$this->access_view_content();
+		echo '</div>';
+		echo $this->get_access_overlay();
+	}
+
+	/**
+	 * The access management tab content.
+	 *
+	 * @return void
+	 */
+	public function access_view_content() {
+		?>
+		<h2><?php esc_html_e( 'Access Control', 'insert-headers-and-footers' ); ?></h2>
+		<p>
+			<?php
+			printf(
+			// Translators: %1$s - Opening anchor tag. %2$s - Closing anchor tag.
+				esc_html__( 'Select the user roles that are allowed to manage different types of snippets or parts of WPCode. By default, all permissions are provided only to administrator users. Please see our %1$sAccess Control documentation%2$s for more details.', 'insert-headers-and-footers' ),
+				'<a href="' . esc_url( wpcode_utm_url( 'https://wpcode.com/docs/access-control/', 'settings-access-controls', 'access-controls-documentation' ) ) . '" target="_blank" rel="noopener noreferrer">',
+				'</a>'
+			);
+			?>
+		</p>
+		<hr/>
+		<?php
+		$capabilities = $this->get_capabilites();
+
+		foreach ( $capabilities as $capability => $capability_data ) {
+			$selected_roles = wpcode()->settings->get_option( $capability, array() );
+			$this->metabox_row(
+				$capability_data['label'],
+				$this->get_roles_dropdown( $selected_roles, 'wpcode_capability_' . $capability ) .
+				'<p class="description">' . esc_html( $capability_data['description'] ) . '</p>'
+			);
+		}
+
+		$this->php_setting();
+
+		?>
+		<button class="wpcode-button" type="submit">
+			<?php esc_html_e( 'Save Changes', 'insert-headers-and-footers' ); ?>
+		</button>
+		<?php
+	}
+
+	/**
+	 * Access control overlay.
+	 *
+	 * @return string
+	 */
+	public function get_access_overlay() {
+		$text = sprintf(
+		// translators: %1$s and %2$s are <u> tags.
+			'<p>' . esc_html__( 'Improve the way you and your team manage your snippets with the WPCode Access Control settings. Enable other users on your site to manage different types of snippets or configure Conversion Pixels settings and update configuration files. This feature is available on the %1$sWPCode Pro%2$s plan or higher.', 'insert-headers-and-footers' ) . '</p>',
+			'<u>',
+			'</u>'
+		);
+
+		return self::get_upsell_box(
+			esc_html__( 'Access Control is a PRO Feature', 'insert-headers-and-footers' ),
+			$text,
+			array(
+				'text' => esc_html__( 'Upgrade to WPCode PRO', 'insert-headers-and-footers' ),
+				'url'  => esc_url( wpcode_utm_url( 'https://wpcode.com/lite/', 'settings', 'tab-' . $this->view, 'upgrade-to-pro' ) ),
+			),
+			array(),
+			array(
+				esc_html__( 'Save time and improve website management with your team', 'insert-headers-and-footers' ),
+				esc_html__( 'Delegate snippet management to other users with full control', 'insert-headers-and-footers' ),
+				esc_html__( 'Enable other users to set up ads & 3rd party services', 'insert-headers-and-footers' ),
+				esc_html__( 'Choose if PHP snippets should be enabled on the site', 'insert-headers-and-footers' ),
+			)
+		);
+	}
+
+	/**
+	 * Output the PHP disable setting.
+	 *
+	 * @return void
+	 */
+	public function php_setting() {
+		?>
+		<h2><?php esc_html_e( 'PHP Snippets', 'insert-headers-and-footers' ); ?></h2>
+		<?php
+		$this->metabox_row(
+			esc_html__( 'Disable PHP snippets', 'insert-headers-and-footers' ),
+			$this->get_checkbox_toggle(
+				boolval( wpcode()->settings->get_option( 'completely_disable_php' ) ),
+				'completely_disable_php',
+				esc_html__( 'This option will completely disable PHP snippets execution and the option to edit or add new PHP snippets.', 'insert-headers-and-footers' )
+			),
+			'wpcode_disable_php'
+		);
+	}
+
+	/**
+	 * Get the custom capabilities.
+	 *
+	 * @return array[]
+	 */
+	public function get_capabilites() {
+		return wpcode_custom_capabilities();
+	}
+
+	/**
+	 * Get a dropdown with the user roles.
+	 *
+	 * @param array  $selected The roles that are selected.
+	 * @param string $name The name of the select.
+	 * @param string $id The ID of the select, defaults to the name.
+	 *
+	 * @return string
+	 */
+	public function get_roles_dropdown( $selected, $name, $id = '' ) {
+		if ( empty( $id ) ) {
+			$id = $name;
+		}
+		$user_roles = wp_roles()->roles;
+		$dropdown   = '<select name="' . esc_attr( $name ) . '[]" id="' . esc_attr( $id ) . '" class="wpcode-select2" multiple>';
+		foreach ( $user_roles as $key => $user_role ) {
+			if ( ! isset( $user_role['name'] ) ) {
+				continue;
+			}
+			$check_role = is_multisite() ? 'superadmin' : 'administrator';
+			if ( $check_role === $key ) {
+				continue;
+			}
+			$dropdown .= '<option value="' . esc_attr( $key ) . '" ' . selected( in_array( $key, $selected, true ), true, false ) . '>' . esc_html( $user_role['name'] ) . '</option>';
+		}
+		$dropdown .= '</select>';
+
+		return $dropdown;
 	}
 }

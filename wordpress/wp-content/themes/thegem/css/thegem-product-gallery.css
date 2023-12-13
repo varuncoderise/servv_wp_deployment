@@ -93,6 +93,22 @@
     color: #00ADEF;
 }
 
+.product-gallery.image-aspect-ratio .product-gallery-slider-item .image-inner,
+.product-gallery__grid.image-aspect-ratio .product-gallery__grid-item .image-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.product-gallery.image-aspect-ratio .product-gallery-slider-item .image-inner img,
+.product-gallery__grid.image-aspect-ratio .product-gallery__grid-item .image-inner img {
+    height: 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
 /*thumbs active item*/
 .product-gallery-thumbs .product-gallery-thumb-item{
     position: relative;
@@ -243,10 +259,14 @@
 .product-gallery .owl-dots{
     display: flex;
     flex: auto;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin-top: 10px;
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .product-gallery .owl-dots .owl-dot{
     padding: 10px !important;
@@ -275,18 +295,25 @@
     left: 0;
     height: auto;
     width: 100%;
-
-    z-index: 0;
     margin: 50% 0 0 -50%;
     padding: 0;
     order: 0;
+    z-index: 0;
 }
 .product-gallery.vertical .product-gallery-thumbs .product-gallery-thumb-item{
-    transform: rotate3d(0, 0, 1, -90deg); translate3d(0,0,0);
+    transform: rotate3d(0, 0, 1, -90deg) translate3d(0,0,0);
 }
 .product-gallery.vertical .product-gallery-slider{
     width: 100%;
     z-index: 10;
+}
+
+/*rtl huck*/
+body.rtl .product-gallery.vertical {
+    align-items: flex-end;
+}
+body.rtl .product-gallery.vertical .product-gallery-thumbs-wrap{
+    top: -30px;
 }
 
 /*Labels*/
@@ -534,7 +561,7 @@
 }
 .product-gallery-slider-wrap:hover .product-gallery-fancy.show{
     visibility: visible;
-    opacity: 1;
+    opacity: 1 !important;
     transition: all 0.3s linear;
 }
 .fancybox-video {
@@ -572,8 +599,13 @@
     width: 100%;
     height: 100%;
 }
-.product-gallery__grid .product-gallery__grid-item .fancy-product-gallery:hover > .product-gallery-fancy.show{
+.product-gallery__grid .product-gallery__grid-item .fancy-product-gallery:hover .product-gallery-fancy.show{
     opacity: 1 !important;
+}
+
+.product-gallery .fancy-product-gallery img,
+.product-gallery__grid .fancy-product-gallery img{
+    pointer-events: none;
 }
 
 @media (max-width: 821px){

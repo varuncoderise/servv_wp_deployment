@@ -174,7 +174,7 @@
 	}
 }
 
-.portfolio-style-justified.news-grid .post-featured-content,
+.portfolio-style-justified.news-grid:not(.full-image) .post-featured-content,
 .portfolio-style-creative.news-grid .post-featured-content,
 .portfolio-style-metro.news-grid .portfolio-item.format-video .post-featured-content,
 .portfolio-style-metro.news-grid .portfolio-item.format-audio .post-featured-content,
@@ -185,6 +185,19 @@
 	top: 0;
 	bottom: 0;
 	height: auto !important;
+}
+
+.portfolio.news-grid .format-audio .post-featured-content {
+	height: auto;
+	background: transparent;
+}
+
+.portfolio.news-grid .format-audio .post-featured-content audio {
+	height: 54px;
+}
+
+.portfolio.news-grid .format-audio .post-featured-content audio::-webkit-media-controls-panel {
+	background-color: var(--styled-bg-color, #f0f3f2);
 }
 
 .portfolio-style-justified.news-grid .post-featured-content .video-block,
@@ -371,11 +384,11 @@
 	min-height: 0;
 }
 
-.news-grid.portfolio:not(.columns-1) .portfolio-item.post-hide-categories .wrap > .caption .title > div {
+.news-grid.portfolio:not(.columns-1) .portfolio-item.post-hide-categories .wrap > .caption .title > span {
 	margin-bottom: 0;
 }
 
-.news-grid.portfolio:not(.columns-1) .portfolio-item.post-hide-date .wrap > .caption .title > div {
+.news-grid.portfolio:not(.columns-1) .portfolio-item.post-hide-date .wrap > .caption .title > span {
 	margin-top: 0;
 }
 
@@ -388,7 +401,7 @@
 	margin-top: 0;
 }
 
-.news-grid .portfolio-item:not(.double-item-style-alternative) .caption .title > div {
+.news-grid .portfolio-item:not(.double-item-style-alternative) .caption .title > span {
 	margin: 6px 0 8px;
 }
 
@@ -458,7 +471,7 @@
 	margin-bottom: 0 !important;
 }
 
-.news-grid .portfolio-item .image .links .caption .title > div {
+.news-grid .portfolio-item .image .links .caption .title > span {
 	margin: 0;
 }
 
@@ -828,7 +841,7 @@
 .version-new.news-grid .portfolio-item .image .links .caption .author {
 	display: inline-block;
 	vertical-align: middle;
-	margin-bottom: 17px;
+	margin-bottom: 12px;
 	line-height: 20px;
 }
 
@@ -855,18 +868,26 @@
 	border-radius: 50%;
 }
 
+.news-grid .portfolio-item .image .links .caption .author .author-name a {
+	color: inherit;
+}
+
+.news-grid .portfolio-item .image .links .caption .author .author-name a:hover {
+	text-decoration: underline;
+}
+
 .version-new.news-grid .portfolio-item .caption .title,
-.version-new.news-grid .portfolio-item .caption .title > div {
+.version-new.news-grid .portfolio-item .caption .title > span {
 	text-transform: none;
 }
 
 .news-grid .portfolio-item .caption .title,
-.news-grid .portfolio-item .caption .title > div {
+.news-grid .portfolio-item .caption .title > span {
 	white-space: normal;
-	overflow: visible;
+	/*overflow: visible;*/
 }
 
-.version-new.news-grid .portfolio-item .caption .title > div {
+.version-new.news-grid .portfolio-item .caption .title > span {
 	margin: 0;
 }
 
@@ -876,11 +897,19 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	padding: 0;
-	margin: 18px 0 0 0;
+	margin: 13px 0 0 0;
 }
 
 .version-new.news-grid .portfolio-item .image .links .caption .description {
-	max-height: 63px;
+	max-height: initial;
+}
+
+.version-new.news-grid .portfolio-item .image .links .caption .description .subtitle span {
+	white-space: initial;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
 .version-new.news-grid .portfolio-item .caption .description p {
@@ -888,9 +917,30 @@
 	margin: 0;
 }
 
+.version-new.news-grid .portfolio-item .details.layout-vertical .details-item:first-child {
+	padding-top: 0;
+}
+
+.version-new.news-grid .portfolio-item .details.layout-vertical .details-item:last-child {
+	padding-bottom: 0;
+}
+
+.version-new.news-grid .portfolio-item .wrap > .caption .details,
+.version-new.news-grid .portfolio-item .wrap > .caption .read-more-button {
+	margin-top: 18px;
+}
+
+.version-default.news-grid .portfolio-item .wrap > .caption .read-more-button {
+	margin-top: 15px;
+}
+
+.version-new.news-grid .portfolio-item .wrap > .caption .details.top-position {
+	margin: 4px 0 12px 0;
+}
+
 .version-new.news-grid.portfolio:not(.columns-1) .portfolio-item .wrap > .caption {
 	position: relative;
-	padding: 35px 38px 60px 38px;
+	padding: 30px 38px 55px 38px;
 }
 
 .version-new.news-grid .portfolio-item .wrap > .caption .grid-post-meta {
@@ -2327,8 +2377,7 @@ h3.search-grid-title:before, h3.search-grid-title:after {
 	align-self: center;
 }
 .portfolio-grid.news-grid.list-style .portfolio-set .portfolio-item .wrap > .image .image-inner {
-	height: 0;
-	padding-bottom: 80%;
+	aspect-ratio: 1.25;
 }
 .portfolio-grid.news-grid.list-style .portfolio-set .portfolio-item .wrap > .image .links .caption .info {
 	left: 0;
@@ -2477,7 +2526,8 @@ h3.search-grid-title:before, h3.search-grid-title:after {
 		padding-left: 0;
 	}
 }
-.portfolio-grid.news-grid.list-style.caption-position-left .portfolio-item .wrap {
+.portfolio-grid.news-grid.list-style.caption-position-left .portfolio-item .wrap,
+.portfolio-grid.news-grid.list-style.caption-position-left .portfolio-item .wrap .details.layout-inline {
 	flex-direction: row-reverse;
 }
 .portfolio-grid.news-grid.list-style.caption-position-left .portfolio-item .wrap > .caption {
@@ -2488,7 +2538,8 @@ h3.search-grid-title:before, h3.search-grid-title:after {
 	right: 0;
 }
 @media (max-width: 767px) {
-	.portfolio-grid.news-grid.list-style.caption-position-zigzag .portfolio-item:nth-child(even) .wrap {
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag .portfolio-item:nth-child(even) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag .portfolio-item:nth-child(even) .wrap .details.layout-inline {
 		flex-direction: row-reverse;
 	}
 	.portfolio-grid.news-grid.list-style.caption-position-zigzag .portfolio-item:nth-child(even) .wrap > .caption {
@@ -2500,7 +2551,8 @@ h3.search-grid-title:before, h3.search-grid-title:after {
 	}
 }
 @media (min-width: 768px) and (max-width: 991px) {
-	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-tablet-1 .portfolio-item:nth-child(even) .wrap {
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-tablet-1 .portfolio-item:nth-child(even) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-tablet-1 .portfolio-item:nth-child(even) .wrap .details.layout-inline {
 		flex-direction: row-reverse;
 	}
 	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-tablet-1 .portfolio-item:nth-child(even) .wrap > .caption {
@@ -2512,7 +2564,8 @@ h3.search-grid-title:before, h3.search-grid-title:after {
 	}
 }
 @media (min-width: 992px) {
-	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-1 .portfolio-item:nth-child(even) .wrap {
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-1 .portfolio-item:nth-child(even) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-1 .portfolio-item:nth-child(even) .wrap .details.layout-inline {
 		flex-direction: row-reverse;
 	}
 	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-1 .portfolio-item:nth-child(even) .wrap > .caption {
@@ -2522,7 +2575,10 @@ h3.search-grid-title:before, h3.search-grid-title:after {
 		left: initial;
 		right: 0;
 	}
-	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-2 .portfolio-item:nth-child(4n+3) .wrap, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-2 .portfolio-item:nth-child(4n+4) .wrap {
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-2 .portfolio-item:nth-child(4n+3) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-2 .portfolio-item:nth-child(4n+4) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-2 .portfolio-item:nth-child(4n+3) .wrap .details.layout-inline,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-2 .portfolio-item:nth-child(4n+4) .wrap .details.layout-inline {
 		flex-direction: row-reverse;
 	}
 	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-2 .portfolio-item:nth-child(4n+3) .wrap > .caption, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-2 .portfolio-item:nth-child(4n+4) .wrap > .caption {
@@ -2532,17 +2588,31 @@ h3.search-grid-title:before, h3.search-grid-title:after {
 		left: initial;
 		right: 0;
 	}
-	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+4) .wrap, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+5) .wrap, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+6) .wrap {
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+4) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+5) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+6) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+4) .wrap .details.layout-inline,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+5) .wrap .details.layout-inline,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+6) .wrap .details.layout-inline {
 		flex-direction: row-reverse;
 	}
-	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+4) .wrap > .caption, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+5) .wrap > .caption, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+6) .wrap > .caption {
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+4) .wrap > .caption,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+5) .wrap > .caption, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+6) .wrap > .caption {
 		text-align: right;
 	}
-	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+4) .wrap > .image .links .caption .info, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+5) .wrap > .image .links .caption .info, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+6) .wrap > .image .links .caption .info {
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+4) .wrap > .image .links .caption .info,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+5) .wrap > .image .links .caption .info, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-3 .portfolio-item:nth-child(6n+6) .wrap > .image .links .caption .info {
 		left: initial;
 		right: 0;
 	}
-	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+5) .wrap, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+6) .wrap, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+7) .wrap, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+8) .wrap {
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+5) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+6) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+7) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+8) .wrap,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+5) .wrap .details.layout-inline,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+6) .wrap .details.layout-inline,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+7) .wrap .details.layout-inline,
+	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+8) .wrap .details.layout-inline {
 		flex-direction: row-reverse;
 	}
 	.portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+5) .wrap > .caption, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+6) .wrap > .caption, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+7) .wrap > .caption, .portfolio-grid.news-grid.list-style.caption-position-zigzag.columns-4 .portfolio-item:nth-child(8n+8) .wrap > .caption {

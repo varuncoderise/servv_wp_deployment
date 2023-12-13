@@ -15,24 +15,7 @@
 			return;
 		}
 
-		if ($(this).hasClass('layout-type-carousel')) {
-
-			var $galleryElement = $('.categories-set', $widgetItem);
-
-			//Init preview slider
-			var $previewItems = $('.products-category-item', $galleryElement);
-			var $galleryPreview;
-
-			var $galleryPreviewWrap = $('<div class="extended-products-carousel-wrap"/>').appendTo($galleryElement);
-
-			$galleryPreview = $('<div class="extended-products-carousel owl-carousel"/>').appendTo($galleryElement);
-			if ($widgetItem.attr("data-dots") === '1') {
-				$galleryPreview.addClass('dots');
-			}
-
-			$galleryPreview.appendTo($galleryPreviewWrap);
-			$previewItems.appendTo($galleryPreview);
-		} else {
+		if (!$(this).hasClass('layout-type-carousel')) {
 			var $gridElement = $('.categories-set', $widgetItem);
 			$gridElement.closest('.portfolio-preloader-wrapper').prev('.preloader').remove();
 
@@ -79,96 +62,93 @@
 			}
 		}
 
-		var $carouselItem = $(this);
-		var $galleryElement = $('.categories-set', $carouselItem);
+		var $portfolio = $(this);
+		var $galleryElement = $('.categories-set', $portfolio);
 
-		$galleryElement.thegemPreloader(function () {
-			var isTouch = window.gemSettings.isTouch,
-				autoplay = true,
-				animationSpeed = $carouselItem.attr("data-autoscroll-speed"),
-				slideBy = 'page',
-				animationEffect = $carouselItem.attr("data-sliding-animation"),
-				isArrows = $carouselItem.attr("data-arrows") === '1',
-				isDots = $carouselItem.attr("data-dots") === '1',
-				isLoop = $carouselItem.attr("data-loop") === '1',
-				$galleryPreviewCarousel = $('.extended-products-carousel', $galleryElement);
+		var isTouch = window.gemSettings.isTouch,
+			autoplay = true,
+			animationSpeed = $portfolio.attr("data-autoscroll-speed"),
+			slideBy = 'page',
+			animationEffect = $portfolio.attr("data-sliding-animation"),
+			isArrows = $portfolio.attr("data-arrows") === '1',
+			isDots = $portfolio.attr("data-dots") === '1',
+			isLoop = $portfolio.attr("data-loop") === '1',
+			$carouselItem = $('.extended-carousel-item', $galleryElement);
 
-			if (animationSpeed == '0') {
-				autoplay = false
-			}
+		if (animationSpeed == '0') {
+			autoplay = false
+		}
 
-			if (animationEffect == 'one-by-one') {
-				slideBy = 1
-			}
+		if (animationEffect == 'one-by-one') {
+			slideBy = 1
+		}
 
-			//Init preview carousel
-			$galleryPreviewCarousel.owlCarousel({
-				loop: isLoop,
-				items: 1,
-				rewind: false,
-				mouseDrag: true,
-				autoplay: autoplay,
-				autoplayTimeout: animationSpeed,
-				slideTransition: 'ease',
-				slideBy: slideBy,
-				dots: isDots,
-				nav: isArrows,
-				responsive: {
-					0: {
-						items: $carouselItem.data('columns-mobile'),
-						margin: $carouselItem.hasClass("item-separator") ? 0 : $carouselItem.data("margin-mobile"),
-					},
-					768: {
-						items: $carouselItem.data('columns-tablet'),
-						margin: $carouselItem.hasClass("item-separator") ? 0 : $carouselItem.data("margin-tablet"),
-					},
-					992: {
-						items: $carouselItem.data('columns-desktop'),
-						margin: $carouselItem.hasClass("item-separator") ? 0 : $carouselItem.data("margin-desktop"),
-					},
+		//Init preview carousel
+		$carouselItem.owlCarousel({
+			loop: isLoop,
+			items: 1,
+			rewind: false,
+			mouseDrag: true,
+			autoplay: autoplay,
+			autoplayTimeout: animationSpeed,
+			slideTransition: 'ease',
+			slideBy: slideBy,
+			dots: isDots,
+			nav: isArrows,
+			responsive: {
+				0: {
+					items: $portfolio.data('columns-mobile'),
+					margin: $portfolio.hasClass("item-separator") ? 0 : $portfolio.data("margin-mobile"),
 				},
-				onInitialized: function () {
-					changedArrows();
-
-					$galleryElement.closest('.portfolio-preloader-wrapper').prev('.preloader').remove();
-					if ($carouselItem.hasClass('loading-animation')) {
-						var itemsAnimations = $carouselItem.itemsAnimations({
-							itemSelector: '.products-category-item',
-							scrollMonitor: true
-						});
-						itemsAnimations.show();
-					}
-
-					if (window.tgpLazyItems !== undefined) {
-						window.tgpLazyItems.scrollHandle();
-					}
+				768: {
+					items: $portfolio.data('columns-tablet'),
+					margin: $portfolio.hasClass("item-separator") ? 0 : $portfolio.data("margin-tablet"),
 				},
-				onChange: function () {
-					if (window.tgpLazyItems !== undefined) {
-						window.tgpLazyItems.scrollHandle();
-					}
+				992: {
+					items: $portfolio.data('columns-desktop'),
+					margin: $portfolio.hasClass("item-separator") ? 0 : $portfolio.data("margin-desktop"),
+				},
+			},
+			onInitialized: function () {
+				changedArrows();
+
+				$galleryElement.closest('.portfolio-preloader-wrapper').prev('.preloader').remove();
+				if ($portfolio.hasClass('loading-animation')) {
+					var itemsAnimations = $portfolio.itemsAnimations({
+						itemSelector: '.products-category-item',
+						scrollMonitor: true
+					});
+					itemsAnimations.show();
 				}
-			});
 
-			// Changed arrows
-			function changedArrows() {
-				$('.slider-prev-icon', $carouselItem).appendTo($('.owl-nav .owl-prev', $galleryElement));
-				$('.slider-next-icon', $carouselItem).appendTo($('.owl-nav .owl-next', $galleryElement));
-
-				var dotsHeight = $('.owl-dots', $carouselItem).outerHeight() + parseInt($('.owl-dots', $carouselItem).css('marginTop'));
-				$('.owl-nav .owl-prev', $galleryElement).css('top', 'calc(50% - '+dotsHeight+'px/2)');
-				$('.owl-nav .owl-next', $galleryElement).css('top', 'calc(50% - '+dotsHeight+'px/2)');
+				if (window.tgpLazyItems !== undefined) {
+					window.tgpLazyItems.scrollHandle();
+				}
+			},
+			onChange: function () {
+				if (window.tgpLazyItems !== undefined) {
+					window.tgpLazyItems.scrollHandle();
+				}
 			}
-
-			// Resize and orientation changes
-			window.addEventListener("resize", function () {
-				isTouch = window.gemSettings.isTouch;
-
-				$galleryPreviewCarousel.trigger('refresh.owl.carousel');
-
-			}, false);
-
 		});
+
+		// Changed arrows
+		function changedArrows() {
+			$('.slider-prev-icon', $portfolio).appendTo($('.owl-nav .owl-prev', $galleryElement));
+			$('.slider-next-icon', $portfolio).appendTo($('.owl-nav .owl-next', $galleryElement));
+
+			var dotsHeight = $('.owl-dots', $portfolio).outerHeight() + parseInt($('.owl-dots', $portfolio).css('marginTop'));
+			$('.owl-nav .owl-prev', $galleryElement).css('top', 'calc(50% - '+dotsHeight+'px/2)');
+			$('.owl-nav .owl-next', $galleryElement).css('top', 'calc(50% - '+dotsHeight+'px/2)');
+		}
+
+		// Resize and orientation changes
+		window.addEventListener("resize", function () {
+			isTouch = window.gemSettings.isTouch;
+
+			$carouselItem.trigger('refresh.owl.carousel');
+
+		}, false);
 	}
 
 	$.fn.initCategoriesGalleries = function () {

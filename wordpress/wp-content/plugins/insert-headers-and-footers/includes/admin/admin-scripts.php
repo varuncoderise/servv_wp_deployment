@@ -1,7 +1,13 @@
 <?php
 /**
  * Load scripts for the admin area.
+ *
+ * @package WPCode
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 add_action( 'admin_enqueue_scripts', 'wpcode_admin_scripts' );
 add_filter( 'admin_body_class', 'wpcode_admin_body_class' );
@@ -25,7 +31,7 @@ function wpcode_admin_scripts() {
 		return;
 	}
 
-	$asset = include_once $admin_asset_file;
+	$asset = require $admin_asset_file;
 
 	wp_enqueue_style( 'wpcode-admin-css', WPCODE_PLUGIN_URL . 'build/admin.css', null, $asset['version'] );
 
@@ -41,6 +47,14 @@ function wpcode_admin_scripts() {
 				'code_type_options' => wpcode()->execute->get_code_type_options(),
 				'please_wait'       => __( 'Please wait.', 'insert-headers-and-footers' ),
 				'ok'                => __( 'OK', 'insert-headers-and-footers' ),
+				'testing_mode'      => array(
+					'title'           => __( 'Testing Mode is a Premium Feature', 'insert-headers-and-footers' ),
+					'text'            => __( 'Upgrade to PRO today and make changes to your snippets, Header & Footer scripts or Page Scripts without affecting your live site. You choose when and what to publish to your visitors.', 'insert-headers-and-footers' ),
+					'button_text'     => __( 'Upgrade to PRO', 'insert-headers-and-footers' ),
+					'link'            => wpcode_utm_url( 'https://wpcode.com/lite/', 'testing-mode', $current_screen->id ),
+					'learn_more_text' => __( 'Learn more about Testing Mode', 'insert-headers-and-footers' ),
+					'learn_more_link' => wpcode_utm_url( 'https://wpcode.com/docs/testing-mode/', 'testing-mode-learn-more', $current_screen->id ),
+				),
 			)
 		)
 	);
@@ -52,6 +66,8 @@ function wpcode_admin_scripts() {
 
 /**
  * Scripts needed outside the WPCode admin area (e.g. metabox).
+ *
+ * @param string $version The version of the scripts to load. Default is 'lite'.
  *
  * @return void
  */
@@ -73,7 +89,7 @@ function wpcode_admin_scripts_global( $version = 'lite' ) {
 		return;
 	}
 
-	$asset = include_once $admin_asset_file;
+	$asset = require $admin_asset_file;
 
 	wp_enqueue_style( 'wpcode-admin-global-css', WPCODE_PLUGIN_URL . "build/admin-global-{$version}.css", null, $asset['version'] );
 

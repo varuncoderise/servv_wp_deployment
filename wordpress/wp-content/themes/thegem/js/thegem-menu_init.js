@@ -191,7 +191,7 @@ getMobileMenuType();
 		isHamburgerMenu = $('.header-main').hasClass('header-layout-fullwidth_hamburger'),
 		isPerspectiveMenu = $('#thegem-perspective').length > 0;
 
-	$(window).resize(function() {
+	$(window).on('resize', function() {
 		window.updateGemClientSize(false);
 		window.updateGemInnerSize();
 	});
@@ -371,12 +371,9 @@ getMobileMenuType();
 		return window.gemOptions.clientWidth > 1600;
 	}
 
-	$('#primary-menu > li.megamenu-enable').hover(
-		function() {
+	$('#primary-menu > li.megamenu-enable').on('mouseenter', function() {
 			fix_megamenu_position(this);
-		},
-		function() {}
-	);
+	});
 
 	$('#primary-menu > li.megamenu-enable:hover').each(function() {
 		fix_megamenu_position(this);
@@ -590,12 +587,9 @@ getMobileMenuType();
 		}
 		$item.addClass('megamenu-template-item-inited');
 
-		$(this).hover(
-			function() {
+		$(this).on('mouseenter', function() {
 				fix_megamenu_template_position(this);
-			},
-			function() {}
-		);
+		});
 	});
 
 	function fix_megamenu_template_position(elem, containerWidthCallback) {
@@ -732,7 +726,7 @@ getMobileMenuType();
 			window.thegemWasDesktop = true;
 
 			if (window.gemMobileMenuType == 'overlay' && !$('.header-layout-overlay').length && $('.menu-overlay').hasClass('active')) {
-				$('.mobile-menu-layout-overlay .menu-toggle').click();
+				$('.mobile-menu-layout-overlay .menu-toggle').trigger('click');
 			}
 
 			$('#primary-navigation').addClass('without-transition');
@@ -809,7 +803,7 @@ getMobileMenuType();
 			});
 		};
 
-		$(window).resize(function() {
+		$(window).on('resize', function() {
 			if (isResponsiveMenuVisible() && $('#primary-menu').hasClass('dl-menuopen')) {
 				setTimeout(updateMobileMenuPosition, 50);
 			} else {
@@ -839,9 +833,8 @@ getMobileMenuType();
 	}
 	primary_menu_reinit();
 
-	$('#primary-menu > li').hover(
-		function() {
-			var $items = $('ul:not(.minicart ul), .minicart, .minisearch', this);
+	$('#primary-menu > li').on( 'mouseenter', function() {
+			var $items = $('ul:not(.minicart ul):not(.woocommerce-mini-cart), .minicart, .minisearch, .hidden-sidebar', this);
 			$items.removeClass('invert vertical-invert');
 
 			if (!$(this).hasClass('megamenu-enable') && !$(this).hasClass('megamenu-template-enable')) {
@@ -925,9 +918,7 @@ getMobileMenuType();
 					}
 				}
 			});
-		},
-		function() {}
-	);
+	});
 
 	function getLevelULByPrimaryMenu(item) {
 		var parentUL = $(item).parent('li').parent('ul');
@@ -941,14 +932,14 @@ getMobileMenuType();
 		return level;
 	}
 
-	$('.hamburger-toggle').click(function(e) {
+	$('.hamburger-toggle').on('click', function(e) {
 		e.preventDefault();
 		$(this).closest('#primary-navigation').toggleClass('hamburger-active');
 		$('.hamburger-overlay').toggleClass('active');
 	});
 
-	$('.overlay-toggle, .mobile-menu-layout-overlay .menu-toggle').click(function(e) {
-		var $element = this;
+	$('.overlay-toggle, .mobile-menu-layout-overlay .menu-toggle').on('click', function(e) {
+		var $element = $(this);
 		e.preventDefault();
 		if($('.menu-overlay').hasClass('active')) {
 			$('.menu-overlay').removeClass('active');
@@ -972,11 +963,11 @@ getMobileMenuType();
 			$('.menu-overlay').addClass('active');
 			$(document).on('keydown.overlay-close', function(event) {
 				if (event.keyCode == 27) {
-					$element.click();
+					$element.trigger('click');
 				}
 			});
 			$('#primary-menu').on('click.overlay-close', 'li:not(.menu-item-search)', function() {
-				$element.click();
+				$element.trigger('click');
 			});
 		}
 	});
@@ -994,7 +985,7 @@ getMobileMenuType();
 		return window.pageYOffset || document.documentElement.scrollTop;
 	}
 
-	$('.mobile-menu-layout-slide-horizontal .menu-toggle, .mobile-menu-layout-slide-vertical .menu-toggle, .mobile-menu-slide-wrapper .mobile-menu-slide-close').click(function(e) {
+	$('.mobile-menu-layout-slide-horizontal .menu-toggle, .mobile-menu-layout-slide-vertical .menu-toggle, .mobile-menu-slide-wrapper .mobile-menu-slide-close').on('click', function(e) {
 		if (!isResponsiveMenuVisible()) {
 			return;
 		}
@@ -1033,7 +1024,7 @@ getMobileMenuType();
 		window.gemResponsiveMenuClicked = null;
 	}
 
-	$('.mobile-menu-layout-slide-horizontal .primary-navigation #primary-menu .menu-item-parent-toggle, .mobile-menu-layout-slide-vertical .primary-navigation #primary-menu .menu-item-parent-toggle').on('click', function(e) {
+	$(document).on('click', '.mobile-menu-layout-slide-horizontal .primary-navigation #primary-menu .menu-item-parent-toggle, .mobile-menu-layout-slide-vertical .primary-navigation #primary-menu .menu-item-parent-toggle', function(e) {
 		if (!isResponsiveMenuVisible()) {
 			return;
 		}
@@ -1095,13 +1086,13 @@ getMobileMenuType();
 		}
 	});
 
-	$('.vertical-toggle').click(function(e) {
+	$('.vertical-toggle').on('click', function(e) {
 		e.preventDefault();
 		$(this).closest('#site-header-wrapper').toggleClass('vertical-active');
 	});
 
 	$(function() {
-		$(window).resize(function() {
+		$(window).on('resize', function() {
 			if (window.menuResizeTimeoutHandler) {
 				clearTimeout(window.menuResizeTimeoutHandler);
 			}
@@ -1185,7 +1176,7 @@ getMobileMenuType();
 		});
 
 		$('#thegem-perspective .perspective-menu-close').on(clickEventName, function(event) {
-			$perspective.click();
+			$perspective.trigger('click');
 			event.preventDefault();
 			event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);
 		});
@@ -1209,7 +1200,7 @@ getMobileMenuType();
 				});
 				$(window).scrollTop(pageScrollTop);
 				$page.scrollTop(0);
-				$(window).resize();
+				$(window).trigger('resize');
 				//$(window).trigger('perspective-modalview-closed');
 			};
 

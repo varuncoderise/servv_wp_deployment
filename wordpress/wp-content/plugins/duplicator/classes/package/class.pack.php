@@ -242,9 +242,11 @@ class DUP_Package
         $fileCount = count($this->Archive->Files);
         $fullCount = $dirCount + $fileCount;
 
+        $report['ARC']['USize']                     = $this->Archive->Size;
         $report['ARC']['Size']                      = DUP_Util::byteSize($this->Archive->Size) or "unknown";
         $report['ARC']['DirCount']                  = number_format($dirCount);
         $report['ARC']['FileCount']                 = number_format($fileCount);
+        $report['ARC']['UFullCount']                = $fullCount;
         $report['ARC']['FullCount']                 = number_format($fullCount);
         $report['ARC']['WarnFileCount']             = count($this->Archive->FilterInfo->Files->Warning);
         $report['ARC']['WarnDirCount']              = count($this->Archive->FilterInfo->Dirs->Warning);
@@ -327,6 +329,8 @@ class DUP_Package
         fwrite($fp, SnapJson::jsonEncodePPrint($report));
         fclose($fp);
 
+        do_action('duplicator_after_scan_report', $this, $report);
+
         return $report;
     }
 
@@ -376,6 +380,7 @@ class DUP_Package
 
         //FILTER_VALIDATE_DOMAIN throws notice message on PHP 5.6
         if (defined('FILTER_VALIDATE_DOMAIN')) {
+            // phpcs:ignore PHPCompatibility.Constants.NewConstants.filter_validate_domainFound
             $validator->filter_var($this->Installer->OptsDBHost, FILTER_VALIDATE_DOMAIN, array(
                         'valkey' => 'OptsDBHost' ,
                         'errmsg' => __('MySQL Server Host: <b>%1$s</b> isn\'t a valid host', 'duplicator'),
@@ -904,8 +909,7 @@ class DUP_Package
             $error_message = 'ERROR: Installer file not complete.  The end of file marker was not found.  Please try to re-create the package.';
 
             $this->BuildProgress->set_failed($error_message);
-            $this->Status = DUP_PackageStatus::ERROR;
-            $this->update();
+            $this->setStatus(DUP_PackageStatus::ERROR);
             DUP_Log::error($error_message, '', Dup_ErrorBehavior::LogOnly);
             return;
         }
@@ -918,7 +922,6 @@ class DUP_Package
         if ($this->Archive->file_count != -1) {
             $zip_easy_size = DUP_Util::byteSize($this->Archive->Size);
             if (!($this->Archive->Size)) {
-                //$this->BuildProgress->failed = true;
                 $error_message = "ERROR: The archive file contains no size.";
 
                 $this->BuildProgress->set_failed($error_message);
@@ -936,8 +939,6 @@ class DUP_Package
             } else {
                 $error_message = sprintf(__("Can't find Scanfile %s. Please ensure there no non-English characters in the package or schedule name.", 'duplicator'), $scan_filepath);
 
-                //$this->BuildProgress->failed = true;
-                //$this->setStatus(DUP_PackageStatus::ERROR);
                 $this->BuildProgress->set_failed($error_message);
                 $this->setStatus(DUP_PackageStatus::ERROR);
 
@@ -987,9 +988,7 @@ class DUP_Package
                     if (($warning_ratio < 0.90) || ($warning_ratio > 1.01)) {
                         $error_message = sprintf('ERROR: File count in archive vs expected suggests a bad archive (%1$d vs %2$d).', $this->Archive->file_count, $expected_filecount);
                         $this->BuildProgress->set_failed($error_message);
-                        $this->Status = DUP_PackageStatus::ERROR;
-                        $this->update();
-
+                        $this->setStatus(DUP_PackageStatus::ERROR);
                         DUP_Log::error($error_message, '');
                         return;
                     }
@@ -1027,8 +1026,7 @@ class DUP_Package
                 }
 
                 $this->BuildProgress->set_failed($consistency_error);
-                $this->Status = DUP_PackageStatus::ERROR;
-                $this->update();
+                $this->setStatus(DUP_PackageStatus::ERROR);
 
                 DUP_LOG::trace($consistency_error);
                 DUP_Log::error($consistency_error, '');
@@ -1208,6 +1206,10 @@ class DUP_Package
             }
 
             $file_name = basename($glob_full_path);
+            if ($file_name === 'index.php') {
+                continue;
+            }
+
             // skip all active packages
             foreach ($active_files as $c_nameHash) {
                 if (strpos($file_name, $c_nameHash) === 0) {
@@ -1428,17 +1430,12 @@ class DUP_Package
             $name = sanitize_file_name($name);
             $name = substr(trim($name), 0, 40);
 
-            if (isset($post['filter-dirs'])) {
-                $post_filter_dirs = sanitize_text_field($post['filter-dirs']);
-                $filter_dirs      = $this->Archive->parseDirectoryFilter($post_filter_dirs);
+            if (isset($post['filter-paths'])) {
+                $post_filter_paths = sanitize_text_field($post['filter-paths']);
+                $filter_dirs       = $this->Archive->parseDirectoryFilter($post_filter_paths);
+                $filter_files      = $this->Archive->parseFileFilter($post_filter_paths);
             } else {
-                $filter_dirs = '';
-            }
-
-            if (isset($post['filter-files'])) {
-                $post_filter_files = sanitize_text_field($post['filter-files']);
-                $filter_files      = $this->Archive->parseFileFilter($post_filter_files);
-            } else {
+                $filter_dirs  = '';
                 $filter_files = '';
             }
 
@@ -1480,10 +1477,10 @@ class DUP_Package
             //ARCHIVE
             $this->Archive->Format       = 'ZIP';
             $this->Archive->FilterOn     = isset($post['filter-on']) ? 1 : 0;
-            $this->Archive->ExportOnlyDB = isset($post['export-onlydb']) ? 1 : 0;
+            $this->Archive->ExportOnlyDB = $post['auto-select-components'] === 'database' ? 1 : 0;
             $this->Archive->FilterDirs   = sanitize_textarea_field($filter_dirs);
             $this->Archive->FilterFiles  = sanitize_textarea_field($filter_files);
-            $this->Archive->FilterExts   = str_replace(array('.', ' '), '', $filter_exts);
+            $this->Archive->FilterExts   = $filter_exts;
             //INSTALLER
             $this->Installer->OptsDBHost      = sanitize_text_field($post['dbhost']);
             $this->Installer->OptsDBPort      = sanitize_text_field($post['dbport']);
@@ -1561,11 +1558,20 @@ class DUP_Package
      */
     public function setStatus($status)
     {
-        if (!isset($status)) {
+        if (!is_numeric($status) || $status < -6 || $status > 100) {
             DUP_Log::error("Package SetStatus did not receive a proper code.");
         }
+
+        // execute hooks only if status has changed
+        $doHook = ($this->Status !== $status);
+        if ($doHook) {
+            do_action('duplicator_package_before_set_status', $this, $status);
+        }
         $this->Status = $status;
-        $this->update();
+        $this->update(); // alwais update package
+        if ($doHook) {
+            do_action('duplicator_package_after_set_status', $this, $status);
+        }
     }
 
     /**
@@ -1599,6 +1605,7 @@ class DUP_Package
     {
         try {
             if (function_exists('random_bytes') && DUP_Util::PHP53()) {
+                // phpcs:ignore PHPCompatibility.FunctionUse.NewFunctions.random_bytesFound
                 return bin2hex(random_bytes(8)) . mt_rand(1000, 9999) . '_' . date("YmdHis");
             } else {
                 return strtolower(md5(uniqid(rand(), true))) . '_' . date("YmdHis");
@@ -1687,6 +1694,9 @@ class DUP_Package
              //Delete all files now
             $dir = DUP_Settings::getSsdirTmpPath() . "/*";
             foreach (glob($dir) as $file) {
+                if (basename($file) === 'index.php') {
+                    continue;
+                }
                 @unlink($file);
             }
         } else {
@@ -1883,5 +1893,23 @@ class DUP_Package
             default:
                 return $delta;
         }
+    }
+
+    /**
+     * Get the number of complete packages
+     *
+     * @return int
+     */
+    public static function getNumCompletePackages()
+    {
+        $ids = self::get_ids_by_status(
+            array(
+                array(
+                    'op'     => '>=',
+                    'status' => DUP_PackageStatus::COMPLETE,
+                ),
+            )
+        );
+        return count($ids);
     }
 }

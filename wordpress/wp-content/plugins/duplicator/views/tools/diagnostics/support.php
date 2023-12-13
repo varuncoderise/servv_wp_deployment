@@ -1,4 +1,7 @@
 <?php
+
+use Duplicator\Installer\Utils\LinkManager;
+
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 ?>
 <style>
@@ -48,25 +51,28 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
                 <div><?php esc_html_e('Knowledgebase', 'duplicator') ?></div>
             </div>
             <div class="dup-support-hlp-txt">
-<?php esc_html_e('Complete Online Documentation', 'duplicator'); ?><br/>
+                <?php esc_html_e('Complete Online Documentation', 'duplicator'); ?>
+                <br/>
                 <select id="dup-support-kb-lnks" style="margin-top:18px; font-size:16px; min-width: 170px">
-                    <option disabled selected> <?php esc_html_e('Choose A Section', 'duplicator') ?> </option>
-                    <option value="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=problem_resolution&utm_content=support_qs"><?php esc_html_e(
-                        'Quick Start',
-                        'duplicator'
-                    ) ?></option>
-                    <option value="https://snapcreek.com/duplicator/docs/guide/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=problem_resolution&utm_content=support_guide"><?php esc_html_e(
-                        'User Guide',
-                        'duplicator'
-                    ) ?></option>
-                    <option value="https://snapcreek.com/duplicator/docs/faqs-tech/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=problem_resolution&utm_content=support_FAQs"><?php esc_html_e(
-                        'FAQs',
-                        'duplicator'
-                    ) ?></option>
-                    <option value="https://snapcreek.com/duplicator/docs/changelog/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=problem_resolution&utm_content=support_changelog&lite"><?php esc_html_e(
-                        'Change Log',
-                        'duplicator'
-                    ) ?></option>
+                    <option disabled selected>
+                        <?php esc_html_e('Choose A Section', 'duplicator') ?>
+                    </option>
+                    <option 
+                        value="<?php echo esc_url(LinkManager::getCategoryUrl(LinkManager::QUICK_START_CAT, 'tools_support', 'Quick Start')); ?>
+                    ">
+                        <?php esc_html_e('Quick Start', 'duplicator') ?>
+                    </option>
+                    <option value="<?php echo esc_url(LinkManager::getDocUrl('', 'tools_support', 'User Guide')); ?>">
+                        <?php esc_html_e('User Guide', 'duplicator'); ?>
+                    </option>
+                    <option 
+                        value="<?php echo esc_url(LinkManager::getCategoryUrl(LinkManager::TROUBLESHOOTING_CAT, 'tools_support', 'FAQs')); ?>
+                    ">
+                        <?php esc_html_e('FAQs', 'duplicator'); ?>
+                    </option>
+                    <option value="<?php echo esc_url(LinkManager::getDocUrl('changelog', 'tools_support', 'Change Log')); ?>">
+                        <?php esc_html_e('Change Log', 'duplicator') ?>
+                    </option>
                 </select>
             </div>
         </div>
@@ -81,7 +87,7 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 <?php esc_html_e("Having a problem with your back up or migrations? Upgrade to get our Premium Support.", 'duplicator'); ?>
                 <br/>
                 <div class="dup-support-txts-links" style="margin:10px 0 10px 0">
-                    <a href="<?php echo esc_url(\Duplicator\Libs\Upsell::getCampaignUrl('duplicator_tools-support_tab', 'Upgrade Now')); ?>" target="_blank" class="dup-btn dup-btn-md dup-btn-green" >
+                    <a href="<?php echo esc_url(\Duplicator\Utils\Upsell::getCampaignUrl('duplicator_tools-support_tab', 'Upgrade Now')); ?>" target="_blank" class="dup-btn dup-btn-md dup-btn-green" >
 <?php esc_html_e('Upgrade Now', 'duplicator') ?>
                     </a> <br/>
                 </div>

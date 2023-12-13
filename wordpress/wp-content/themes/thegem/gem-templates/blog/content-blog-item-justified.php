@@ -13,8 +13,9 @@
 	$thegem_classes = array();
 	$thegem_sources = array();
 	$has_content_gallery = get_post_format(get_the_ID()) == 'gallery';
-
-	if(is_sticky() && !is_paged()) {
+	$is_sticky = is_sticky() && empty($params['ignore_sticky']) && !is_paged();
+	
+	if ($is_sticky) {
 		$thegem_classes = array_merge($thegem_classes, array('sticky'));
 		$thegem_featured_content = thegem_get_post_featured_content(get_the_ID(), 'thegem-blog-justified-sticky');
 	} else {
@@ -56,23 +57,23 @@
 	}
 
 	if ($blog_style == 'justified-2x'){
-		if (is_sticky() && !is_paged())
+		if ($is_sticky)
 			$thegem_classes = array_merge($thegem_classes, array('col-lg-12', 'col-md-12', 'col-sm-12', 'col-xs-12', 'inline-column'));
 		else
 			$thegem_classes = array_merge($thegem_classes, array('col-lg-6', 'col-md-6', 'col-sm-6', 'col-xs-12', 'inline-column'));
 	} elseif ($blog_style == 'justified-3x'){
-		if (is_sticky() && !is_paged())
+		if ($is_sticky)
 			$thegem_classes = array_merge($thegem_classes, array('col-lg-8', 'col-md-8', 'col-sm-6', 'col-xs-12', 'inline-column'));
 		else
 			$thegem_classes = array_merge($thegem_classes, array('col-lg-4', 'col-md-4', 'col-sm-6', 'col-xs-6', 'inline-column'));
 	} elseif ($blog_style == 'justified-4x'){
-		if (is_sticky() && !is_paged())
+		if ($is_sticky)
 			$thegem_classes = array_merge($thegem_classes, array('col-lg-6', 'col-md-6', 'col-sm-12', 'col-xs-12', 'inline-column'));
 		else
 			$thegem_classes = array_merge($thegem_classes, array('col-lg-3', 'col-md-3', 'col-sm-6', 'col-xs-6', 'inline-column'));
 	}
 
-	if(is_sticky() && !is_paged() && empty($thegem_featured_content)) {
+	if($is_sticky && empty($thegem_featured_content)) {
 		$thegem_classes[] = 'no-image';
 	}
 
@@ -90,7 +91,7 @@
 	<?php else : ?>
 		<div class="post-content-wrapper" style="<?php echo (!empty($item_colors['background_color']) ? 'background-color: '.esc_attr($item_colors['background_color']).';' : ''); ?><?php echo (!empty($item_colors['border_color']) ? 'border-color: '.esc_attr($item_colors['border_color']).';' : ''); ?>">
 		<?php
-			if(!is_single() && is_sticky() && !is_paged()) {
+			if(!is_single() && $is_sticky) {
 				echo '<div class="sticky-label">&#xe61a;</div>';
 			}
 		?>
@@ -121,9 +122,9 @@
 			</div>
 			<div class="info clearfix">
                 <?php if(!$params['hide_social_sharing']) : ?>
-                <div class="post-footer-sharing"><?php thegem_button(array('icon' => 'share', 'size' => (is_sticky() && !is_paged() ? 'medium' : 'tiny'), 'background_color' => (!empty($item_colors['sharing_button_color']) ? $item_colors['sharing_button_color'] : ''), 'text_color' => (!empty($item_colors['sharing_button_icon_color']) ? $item_colors['sharing_button_icon_color'] : '')), 1); ?><div class="sharing-popup"><?php thegem_socials_sharing(); ?><svg class="sharing-styled-arrow"><use xlink:href="<?php echo esc_url(THEGEM_THEME_URI . '/css/post-arrow.svg'); ?>#dec-post-arrow"></use></svg></div></div>
+                <div class="post-footer-sharing"><?php thegem_button(array('icon' => 'share', 'size' => ($is_sticky ? 'medium' : 'tiny'), 'background_color' => (!empty($item_colors['sharing_button_color']) ? $item_colors['sharing_button_color'] : ''), 'text_color' => (!empty($item_colors['sharing_button_icon_color']) ? $item_colors['sharing_button_icon_color'] : '')), 1); ?><div class="sharing-popup"><?php thegem_socials_sharing(); ?><svg class="sharing-styled-arrow"><use xlink:href="<?php echo esc_url(THEGEM_THEME_URI . '/css/post-arrow.svg'); ?>#dec-post-arrow"></use></svg></div></div>
                 <?php endif; ?>
-                <div class="post-read-more"><?php thegem_button(array('href' => get_the_permalink(), 'style' => 'outline', 'text' => __('Read More', 'thegem'), 'size' => (is_sticky() && !is_paged() ? 'medium' : 'tiny')), 1); ?></div>
+                <div class="post-read-more"><?php thegem_button(array('href' => get_the_permalink(), 'style' => 'outline', 'text' => __('Read More', 'thegem'), 'size' => ($is_sticky ? 'medium' : 'tiny')), 1); ?></div>
 			</div>
 		</div>
 	</div>

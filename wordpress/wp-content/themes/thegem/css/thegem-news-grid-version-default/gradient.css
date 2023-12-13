@@ -102,7 +102,8 @@
 	transition: opacity 0.3s 0.12s, top 0.3s 0.12s;
 }
 
-.version-default.news-grid.hover-default-gradient .portfolio-item .image .links .caption .description {
+.version-default.news-grid.hover-default-gradient .portfolio-item .image .links .caption .description,
+.version-default.news-grid.hover-default-gradient .portfolio-item .image .links .caption .details {
 	opacity: 0;
 	top: 200px;
 	position: relative;
@@ -141,7 +142,8 @@
 	transition: opacity 0.3s, top 0.3s;
 }
 
-.version-default.news-grid.hover-default-gradient .portfolio-item:hover .image .links .caption .description {
+.version-default.news-grid.hover-default-gradient .portfolio-item:hover .image .links .caption .description,
+.version-default.news-grid.hover-default-gradient .portfolio-item:hover .image .links .caption .details {
 	opacity: 1;
 	top: 0;
     -webkit-transition: opacity 0.3s 0.04s, top 0.3s 0.04s;
@@ -230,6 +232,10 @@
 
 .version-default.news-grid.hover-default-gradient .portfolio-item .image .links .caption .description {
 	margin-top: 11px;
+}
+
+.version-default.news-grid.hover-default-gradient .portfolio-item .image .links .caption .details:not(:empty) {
+	margin-top: 10px;
 }
 
 .version-default.news-grid.hover-default-gradient .portfolio-item .image .links .caption .info {

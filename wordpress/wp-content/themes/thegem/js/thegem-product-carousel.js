@@ -10,27 +10,7 @@
 		}
 
 		var $portfolio = $(this);
-
-		$portfolio.find('.extended-products-grid-carousel-item').each(function () {
-			var $carouselItem = $(this);
-			var $galleryElement = $('.portfolio-set', $carouselItem);
-
-			tabsMinHeight($portfolio);
-
-			//Init preview slider
-			var $previewItems = $('.portfolio-item', $galleryElement);
-			var $galleryPreview;
-
-			var $galleryPreviewWrap = $('<div class="extended-products-carousel-wrap"/>').appendTo($galleryElement);
-
-			$galleryPreview = $('<div class="extended-products-carousel owl-carousel"/>').appendTo($galleryElement);
-			if ($portfolio.attr("data-dots") === '1') {
-				$galleryPreview.addClass('dots');
-			}
-
-			$galleryPreview.appendTo($galleryPreviewWrap);
-			$previewItems.appendTo($galleryPreview);
-		});
+		tabsMinHeight($portfolio);
 
 		if ($('.portfolio-filter-tabs', $portfolio).length) {
 			$('.portfolio-filter-tabs-content', $portfolio).css('min-height', $('.portfolio-filter-tabs-content', $portfolio).height());
@@ -63,106 +43,103 @@
 	function updateProductGallery($portfolio) {
 
 		$portfolio.find('.extended-products-grid-carousel-item').each(function () {
-			var $carouselItem = $(this);
-			var $galleryElement = $('.portfolio-set', $carouselItem);
+			var $tabItem = $(this);
+			var $galleryElement = $('.portfolio-set', $tabItem);
 
-			$galleryElement.thegemPreloader(function () {
-				var isTouch = window.gemSettings.isTouch,
-					autoplay = true,
-					animationSpeed = $portfolio.attr("data-autoscroll-speed"),
-					slideBy = 'page',
-					animationEffect = $portfolio.attr("data-sliding-animation"),
-					isArrows = $portfolio.attr("data-arrows") === '1',
-					isDots = $portfolio.attr("data-dots") === '1',
-					isLoop = $portfolio.attr("data-loop") === '1',
-					$galleryPreviewCarousel = $('.extended-products-carousel', $galleryElement);
+			var isTouch = window.gemSettings.isTouch,
+				autoplay = true,
+				animationSpeed = $portfolio.attr("data-autoscroll-speed"),
+				slideBy = 'page',
+				animationEffect = $portfolio.attr("data-sliding-animation"),
+				isArrows = $portfolio.attr("data-arrows") === '1',
+				isDots = $portfolio.attr("data-dots") === '1',
+				isLoop = $portfolio.attr("data-loop") === '1',
+				$carouselItem = $('.extended-carousel-item', $galleryElement);
 
-				if (animationSpeed == '0') {
-					autoplay = false
-				}
+			if (animationSpeed == '0') {
+				autoplay = false
+			}
 
-				if (animationEffect == 'one-by-one') {
-					slideBy = 1
-				}
+			if (animationEffect == 'one-by-one') {
+				slideBy = 1
+			}
 
-				//Init preview carousel
-				$galleryPreviewCarousel.owlCarousel({
-					loop: isLoop,
-					items: 1,
-					rewind: false,
-					mouseDrag: true,
-					autoplay: autoplay,
-					autoplayTimeout: animationSpeed,
-					slideTransition: 'ease',
-					slideBy: slideBy,
-					dots: isDots,
-					nav: isArrows,
-					responsive: {
-						0: {
-							items: $portfolio.data('columns-mobile'),
-							margin: $portfolio.hasClass("item-separator") ? 0 : $portfolio.data("margin-mobile"),
-						},
-						768: {
-							items: $portfolio.data('columns-tablet'),
-							margin: $portfolio.hasClass("item-separator") ? 0 : $portfolio.data("margin-tablet"),
-						},
-						992: {
-							items: $portfolio.data('columns-desktop'),
-							margin: $portfolio.hasClass("item-separator") ? 0 : $portfolio.data("margin-desktop"),
-						},
+			//Init preview carousel
+			$carouselItem.owlCarousel({
+				loop: isLoop,
+				items: 1,
+				rewind: false,
+				mouseDrag: true,
+				autoplay: autoplay,
+				autoplayTimeout: animationSpeed,
+				slideTransition: 'ease',
+				slideBy: slideBy,
+				dots: isDots,
+				nav: isArrows,
+				responsive: {
+					0: {
+						items: $portfolio.data('columns-mobile'),
+						margin: $portfolio.hasClass("item-separator") ? 0 : $portfolio.data("margin-mobile"),
 					},
-					onRefreshed: function () {
-						if ($portfolio.hasClass('loading-animation') && $portfolio.hasClass('animation-update')) {
-							$portfolio.removeClass('animation-update');
-							if ($portfolio.itemsAnimations('instance').getAnimationName() != 'disabled') {
-								$portfolio.itemsAnimations('instance').reinitItems($('.portfolio-item', $carouselItem));
-								$portfolio.itemsAnimations('instance').show($('.portfolio-item', $carouselItem));
-							}
-						}
+					768: {
+						items: $portfolio.data('columns-tablet'),
+						margin: $portfolio.hasClass("item-separator") ? 0 : $portfolio.data("margin-tablet"),
 					},
-					onInitialized: function () {
-						$carouselItem.addClass('inited');
-						changedArrows();
-
-						$galleryElement.closest('.portfolio-preloader-wrapper').prev('.preloader').remove();
-
-						if ($('.portfolio-filter-tabs', $portfolio).length) {
-							tabsMinHeight($portfolio);
-						}
-
-						if ($portfolio.find('.extended-products-grid-carousel-item').length == $portfolio.find('.extended-products-grid-carousel-item.inited').length) {
-							$portfolio.initExtendedProductsGrids();
-						}
+					992: {
+						items: $portfolio.data('columns-desktop'),
+						margin: $portfolio.hasClass("item-separator") ? 0 : $portfolio.data("margin-desktop"),
 					},
-					onChange: function () {
-						if (window.tgpLazyItems !== undefined) {
-							window.tgpLazyItems.scrollHandle();
+				},
+				onRefreshed: function () {
+					if ($portfolio.hasClass('loading-animation') && $portfolio.hasClass('animation-update')) {
+						$portfolio.removeClass('animation-update');
+						if ($portfolio.itemsAnimations('instance').getAnimationName() != 'disabled') {
+							$portfolio.itemsAnimations('instance').reinitItems($('.portfolio-item', $carouselItem));
+							$portfolio.itemsAnimations('instance').show($('.portfolio-item', $carouselItem));
 						}
 					}
-				});
+				},
+				onInitialized: function () {
+					$tabItem.addClass('inited');
+					changedArrows();
 
-				// Changed arrows
-				function changedArrows() {
-					$('.slider-prev-icon', $carouselItem).appendTo($('.owl-nav .owl-prev', $galleryElement));
-					$('.slider-next-icon', $carouselItem).appendTo($('.owl-nav .owl-next', $galleryElement));
-
-					var dotsHeight = $('.owl-dots', $carouselItem).outerHeight() + parseInt($('.owl-dots', $carouselItem).css('marginTop'));
-					$('.owl-nav .owl-prev', $galleryElement).css('top', 'calc(50% - '+dotsHeight+'px/2)');
-					$('.owl-nav .owl-next', $galleryElement).css('top', 'calc(50% - '+dotsHeight+'px/2)');
-				}
-
-				// Resize and orientation changes
-				window.addEventListener("resize", function () {
-					isTouch = window.gemSettings.isTouch;
-
-					$galleryPreviewCarousel.trigger('refresh.owl.carousel');
+					$galleryElement.closest('.portfolio-preloader-wrapper').prev('.preloader').remove();
 
 					if ($('.portfolio-filter-tabs', $portfolio).length) {
 						tabsMinHeight($portfolio);
 					}
-				}, false);
 
+					if ($portfolio.find('.extended-products-grid-carousel-item').length == $portfolio.find('.extended-products-grid-carousel-item.inited').length) {
+						$portfolio.initExtendedPortfolioGrids();
+					}
+				},
+				onChange: function () {
+					if (window.tgpLazyItems !== undefined) {
+						window.tgpLazyItems.scrollHandle();
+					}
+				}
 			});
+
+			// Changed arrows
+			function changedArrows() {
+				$('.slider-prev-icon', $tabItem).appendTo($('.owl-nav .owl-prev', $galleryElement));
+				$('.slider-next-icon', $tabItem).appendTo($('.owl-nav .owl-next', $galleryElement));
+
+				var dotsHeight = $('.owl-dots', $tabItem).outerHeight() + parseInt($('.owl-dots', $tabItem).css('marginTop'));
+				$('.owl-nav .owl-prev', $galleryElement).css('top', 'calc(50% - '+dotsHeight+'px/2)');
+				$('.owl-nav .owl-next', $galleryElement).css('top', 'calc(50% - '+dotsHeight+'px/2)');
+			}
+
+			// Resize and orientation changes
+			window.addEventListener("resize", function () {
+				isTouch = window.gemSettings.isTouch;
+
+				$carouselItem.trigger('refresh.owl.carousel');
+
+				if ($('.portfolio-filter-tabs', $portfolio).length) {
+					tabsMinHeight($portfolio);
+				}
+			}, false);
 		})
 	}
 
@@ -180,12 +157,22 @@
 		setTimeout(function () {
 			$portfolio.addClass('ready');
 		}, 500);
-		$(this).each(initProductGallery);
+		function initGallery() {
+			$portfolio.each(initProductGallery);
+		}
+		waitForFunction(initGallery);
 	};
 
+	function waitForFunction(runFunction){
+		if (typeof owlCarousel === undefined || typeof initExtendedPortfolioGrids === undefined) {
+			setTimeout( waitForFunction(runFunction), 100);
+			return;
+		}
+		runFunction();
+	}
 
 	$(document).ready(function () {
-		$('body:not(.elementor-editor-active) .extended-products-grid-carousel').initProductGalleries();
+		$('body:not(.vc_editor) .extended-products-grid-carousel').initProductGalleries();
 	});
 
 })(jQuery);

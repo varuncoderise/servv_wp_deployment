@@ -122,9 +122,21 @@ if (!empty($product_tabs)): ?>
 								<span><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></span>
 							</div>
 							<div id="thegem-<?php echo esc_attr( $key ); ?>" class="thegem-accordion__item-body" style="<?php if($is_first) { echo 'display: block'; $is_first = false; } ?>">
-								<?php if ( isset( $product_tab['callback'] ) ) {
-									call_user_func( $product_tab['callback'], $key, $product_tab );
-								}?>
+								<?php
+                                    if ( isset( $product_tab['callback'] ) ) {
+                                        call_user_func( $product_tab['callback'], $key, $product_tab );
+                                    }
+								
+                                    if(isset($product_tab['type']) && $product_tab['type'] == 'additional_tab') {
+                                        if (!empty($product_tab['text_content'])) {
+                                            echo $product_tab['text_content'];
+                                        }
+                                        
+                                        if (!empty($product_tab['section_content'])) {
+	                                        echo $product_tab['section_content'];
+                                        }
+                                    }
+                                ?>
 							</div>
 						</div>
 					<?php endforeach; ?>
@@ -140,9 +152,21 @@ if (!empty($product_tabs)): ?>
 							<span><?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?></span>
 						</div>
 						<div id="thegem-<?php echo esc_attr( $key ); ?>" class="thegem-accordion__item-body" style="<?php if($is_first) { echo 'display: block;'; $is_first = false; } ?>">
-							<?php if ( isset( $product_tab['callback'] ) ) {
-								call_user_func( $product_tab['callback'], $key, $product_tab );
-							}?>
+							<?php
+                                if ( isset( $product_tab['callback'] ) ) {
+                                    call_user_func( $product_tab['callback'], $key, $product_tab );
+                                }
+							
+                                if(isset($product_tab['type']) && $product_tab['type'] == 'additional_tab') {
+                                    if (!empty($product_tab['text_content'])) {
+                                        echo $product_tab['text_content'];
+                                    }
+                                    
+                                    if (!empty($product_tab['section_content'])) {
+                                        echo $product_tab['section_content'];
+                                    }
+                                }
+                            ?>
 						</div>
 					</div>
 				<?php endforeach; ?>
@@ -152,7 +176,7 @@ if (!empty($product_tabs)): ?>
 		<?php if (!empty($product_tabs) && $page_layout != 'legacy' && $desc_review_layout == 'one_by_one'): ?>
 			<div class="thegem-one-by-one <?=!$isSidebar ? 'fullwidth-block' : null?>" <?php if (!$isSidebar): ?>style="width: 100vw; left: calc(50% - 50vw);"<?php endif;?>>
 				<?php foreach ( $product_tabs as $key => $product_tab ): ?>
-					<div id="thegem-<?php echo esc_attr( $key ); ?>" class="thegem-one-by-one__item <?=!$isColorBack ? 'thegem-one-by-one__item--separator' : null?>" <?php if (esc_attr($desc_review_back[$key]) != ''): ?>style="background-color: <?=esc_attr($desc_review_back[$key])?>;"<?php endif;?>>
+					<div id="thegem-<?php echo esc_attr( $key ); ?>" class="thegem-one-by-one__item <?=!$isColorBack ? 'thegem-one-by-one__item--separator' : null?>" <?php if (!empty($desc_review_back[$key])): ?>style="background-color: <?=esc_attr($desc_review_back[$key])?>;"<?php endif;?>>
 						<div class="<?=!$isSidebar ? 'container' : 'thegem-one-by-one__container'?>">
 							<?php if ($key != 'reviews'): ?>
 								<div class="thegem-one-by-one__item-title">
@@ -160,9 +184,21 @@ if (!empty($product_tabs)): ?>
 								</div>
 							<?php endif; ?>
 							<div class="thegem-one-by-one__item-body">
-								<?php if ( isset( $product_tab['callback'] ) ) {
-									call_user_func( $product_tab['callback'], $key, $product_tab );
-								}?>
+								<?php
+                                    if ( isset( $product_tab['callback'] ) ) {
+                                        call_user_func( $product_tab['callback'], $key, $product_tab );
+                                    }
+								
+                                    if(isset($product_tab['type']) && $product_tab['type'] == 'additional_tab') {
+                                        if (!empty($product_tab['text_content'])) {
+                                            echo $product_tab['text_content'];
+                                        }
+                                        
+                                        if (!empty($product_tab['section_content'])) {
+                                            echo $product_tab['section_content'];
+                                        }
+                                    }
+                                ?>
 							</div>
 						</div>
 					</div>

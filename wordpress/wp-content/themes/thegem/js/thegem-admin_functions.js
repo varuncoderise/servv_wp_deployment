@@ -409,6 +409,12 @@ function filters_style_callback() {
 		if (filters_style.val() == 'sidebar') {
 			sorting_bottom_spacing.val(40);
 		}
+		if (filters_style.val() == 'sidebar' || filters_style.val() == 'hidden') {
+			jQuery(".vc_column.hide_standard").show();
+		} else {
+			jQuery(".vc_column.hide_standard").hide();
+		}
+
 	}
 	filters_style.on('change', changeStyleEvent);
 }
@@ -444,6 +450,8 @@ function news_grid_style_callback() {
 	var portfolio_layout = jQuery('select[name="layout_type"]', this.$content);
 	var columns_desktop = jQuery('select[name="columns_desktop_creative"]', this.$content);
 	var columns_100 = jQuery('select[name="columns_100_creative"]', this.$content);
+	var thegem_elementor_preset = jQuery('select[name="thegem_elementor_preset"]', this.$content);
+	var thegem_elementor_preset_val = thegem_elementor_preset.val();
 
 	function changeColumnsEvent() {
 		jQuery('.layout_scheme', this.$content).addClass('vc_dependent-hidden');
@@ -461,10 +469,22 @@ function news_grid_style_callback() {
 
 	changeColumnsEvent();
 
+	function changeSkinEvent() {
+		if (thegem_elementor_preset.val() !== thegem_elementor_preset_val) {
+			thegem_elementor_preset_val = thegem_elementor_preset.val();
+			if (thegem_elementor_preset.val() == 'alternative') {
+				jQuery('select[name="portfolio_background_style"]', this.$content).val('transparent').trigger('change');
+			} else {
+				jQuery('select[name="portfolio_background_style"]', this.$content).val('white').trigger('change');
+			}
+		}
+	}
+
 	portfolio_layout.on('change', changeColumnsEvent);
 	layout_type.on('change', changeColumnsEvent);
 	columns_desktop.on('change', changeColumnsEvent);
 	columns_100.on('change', changeColumnsEvent);
+	thegem_elementor_preset.on('change', changeSkinEvent);
 }
 
 function thegem_templates_infotext_presets_callback() {
@@ -495,6 +515,9 @@ function thegem_templates_infotext_presets_callback() {
 					{ name: 'subtitle', val: '', type: 'textarea' },
 					{ name: 'subtitle_desktop_spacing_top', val: '', type: 'input' },
 					{ name: 'description', val: '+1 916-85-2235', type: 'textarea' },
+					{ name: 'title_source', val: 'custom_text', type: 'select' },
+					{ name: 'subtitle_source', val: 'custom_text', type: 'select' },
+					{ name: 'description_source', val: 'custom_text', type: 'select' },
 				];
 				break;
 			case 'highlighted':
@@ -516,6 +539,9 @@ function thegem_templates_infotext_presets_callback() {
 					{ name: 'subtitle', val: '+123 4567 890', type: 'textarea' },
 					{ name: 'subtitle_desktop_spacing_top', val: '-7', type: 'input' },
 					{ name: 'description', val: '', type: 'textarea' },
+					{ name: 'title_source', val: 'custom_text', type: 'select' },
+					{ name: 'subtitle_source', val: 'custom_text', type: 'select' },
+					{ name: 'description_source', val: 'custom_text', type: 'select' },
 				];
 				break;
 			case 'classic':
@@ -537,6 +563,9 @@ function thegem_templates_infotext_presets_callback() {
 					{ name: 'subtitle', val: '', type: 'textarea' },
 					{ name: 'subtitle_desktop_spacing_top', val: '', type: 'input' },
 					{ name: 'description', val: 'Free shipping on all orders over $99', type: 'textarea' },
+					{ name: 'title_source', val: 'custom_text', type: 'select' },
+					{ name: 'subtitle_source', val: 'custom_text', type: 'select' },
+					{ name: 'description_source', val: 'custom_text', type: 'select' },
 				];
 				break;
 			case 'right_icon_classic':
@@ -558,6 +587,9 @@ function thegem_templates_infotext_presets_callback() {
 					{ name: 'subtitle', val: '', type: 'textarea' },
 					{ name: 'subtitle_desktop_spacing_top', val: '', type: 'input' },
 					{ name: 'description', val: '', type: 'textarea' },
+					{ name: 'title_source', val: 'custom_text', type: 'select' },
+					{ name: 'subtitle_source', val: 'custom_text', type: 'select' },
+					{ name: 'description_source', val: 'custom_text', type: 'select' },
 				];
 				break;
 			case 'right_icon_tiny':
@@ -579,6 +611,9 @@ function thegem_templates_infotext_presets_callback() {
 					{ name: 'subtitle', val: '', type: 'textarea' },
 					{ name: 'subtitle_desktop_spacing_top', val: '', type: 'input' },
 					{ name: 'description', val: 'Contact Us', type: 'textarea' },
+					{ name: 'title_source', val: 'custom_text', type: 'select' },
+					{ name: 'subtitle_source', val: 'custom_text', type: 'select' },
+					{ name: 'description_source', val: 'custom_text', type: 'select' },
 				];
 				break;
 		}
@@ -1110,13 +1145,250 @@ function thegem_te_post_info_callback() {
 		const typeValue = $type.val();
 
 		if (typeValue === 'modern') {
-			jQuery("div[data-vc-shortcode-param-name='style_delim_head_categories']").show();
+			jQuery("div[data-vc-shortcode-param-name='style_delim_head_terms']").show();
 		} else {
-			jQuery("div[data-vc-shortcode-param-name='style_delim_head_categories']").hide();
+			jQuery("div[data-vc-shortcode-param-name='style_delim_head_terms']").hide();
 		}
 	}
 
 	$type.on('change', changeTypeEvent).trigger('change');
+}
+
+function thegem_te_portfolio_gallery_callback() {
+	const $type = jQuery('select[name="type"]', this.$content);
+
+	function changeTypeEvent() {
+		const typeValue = $type.val();
+
+		if (typeValue === 'carousel') {
+			jQuery("div[data-vc-shortcode-param-name='delimiter_heading_number_of_image']").hide();
+			jQuery("div[data-vc-shortcode-param-name='layout_delim_head_arrows']").show();
+			jQuery("div[data-vc-shortcode-param-name='layout_delim_head_dots']").show();
+		} else {
+			jQuery("div[data-vc-shortcode-param-name='delimiter_heading_number_of_image']").show();
+			jQuery("div[data-vc-shortcode-param-name='layout_delim_head_arrows']").hide();
+			jQuery("div[data-vc-shortcode-param-name='layout_delim_head_dots']").hide();
+		}
+	}
+
+	$type.on('change', changeTypeEvent).trigger('change');
+}
+
+function grid_filter_type_callback() {
+	const $filter_type = jQuery('select[name="filter_type"]', this.$content);
+	const $filter_style = jQuery('select[name="filter_style"]', this.$content);
+	const $filters_style = jQuery('select[name="filters_style"]', this.$content);
+
+	function changeFilterTypeEvent() {
+		if ($filter_type.val() === 'default') {
+			jQuery(".vc_column.default_filter").show();
+			jQuery(".vc_column.extended_filter").hide();
+			if ($filter_style.val() === 'buttons') {
+				jQuery(".vc_column.extended_sorting").hide();
+			} else {
+				jQuery(".vc_column.extended_sorting").show();
+			}
+		} else {
+			jQuery(".vc_column.default_filter").hide();
+			jQuery(".vc_column.extended_filter").show();
+			jQuery(".vc_column.extended_sorting").show();
+		}
+	}
+	function changeFilterStyleEvent() {
+		if ($filter_type.val() === 'extended' || $filter_style.val() !== 'buttons') {
+			jQuery(".vc_column.extended_sorting").show();
+		} else {
+			jQuery(".vc_column.extended_sorting").hide();
+		}
+	}
+	function changeFiltersStyleEvent() {
+		if ($filters_style.val() !== 'standard') {
+			jQuery(".vc_column.hide_standard").show();
+		} else {
+			jQuery(".vc_column.hide_standard").hide();
+		}
+	}
+
+	$filter_type.on('change', changeFilterTypeEvent).trigger('change');
+	$filter_style.on('change', changeFilterStyleEvent).trigger('change');
+	$filters_style.on('change', changeFiltersStyleEvent).trigger('change');
+}
+
+function additional_meta_callback() {
+	let $additional_meta_type = jQuery('select[name="additional_meta_type"]', this.$content);
+	const $additional_meta_taxonomies = jQuery('select[name="additional_meta_taxonomies"]', this.$content);
+
+	function changeMetaType() {
+		if ($additional_meta_type.val() !== 'taxonomies' || $additional_meta_taxonomies.val() == 'thegem_portfolios') {
+			jQuery(".vc_column.taxonomies_behavior").hide();
+			jQuery(".vc_column.meta_behavior").show();
+		} else {
+			jQuery(".vc_column.taxonomies_behavior").show();
+			jQuery(".vc_column.meta_behavior").hide();
+		}
+	}
+
+	$additional_meta_type.on('change', changeMetaType).trigger('change');
+	$additional_meta_taxonomies.on('change', changeMetaType).trigger('change');
+}
+
+function readmore_button_callback() {
+	let $display_titles = jQuery('select[name="portfolio_display_titles"]', this.$content);
+	let $grid_version = jQuery('select[name="thegem_elementor_preset"]', this.$content);
+	let $portfolio_layout = jQuery('select[name="portfolio_layout"]', this.$content);
+	if (!$display_titles.length) {
+		$display_titles = jQuery('select[name="news_grid_display_titles"]', this.$content);
+		$grid_version = jQuery('select[name="news_grid_version"]', this.$content);
+	}
+	const $show_readmore_button = jQuery('input[name="show_readmore_button"]', this.$content);
+
+	function buttonEvent() {
+		if ($grid_version.val() === 'list') {
+			$show_readmore_button.prop("checked", true).trigger('change');
+		}
+		if (($portfolio_layout.length && $portfolio_layout.val() == '1x') ||
+			($grid_version.val() !== 'list' && $display_titles.val() !== 'page')) {
+			jQuery(".vc_column.readmore_button").hide();
+		} else {
+			jQuery(".vc_column.readmore_button").show();
+		}
+	}
+
+	if ($portfolio_layout.length) {
+		$portfolio_layout.bind('change', buttonEvent).trigger('change');
+	}
+	$display_titles.bind('change', buttonEvent).trigger('change');
+	$grid_version.bind('change', buttonEvent).trigger('change');
+}
+
+function show_details_callback() {
+	let $display_titles = jQuery('select[name="portfolio_display_titles"]', this.$content);
+	if (!$display_titles.length) {
+		$display_titles = jQuery('select[name="news_grid_display_titles"]', this.$content);
+	}
+	const $details_layout = jQuery('select[name="details_layout"]', this.$content);
+
+	function changeDisplayTitles() {
+		if (jQuery(this).val() !== 'page') {
+			$details_layout.val('inline').trigger('change');
+			$details_layout.closest('.vc_column').hide();
+			jQuery(".vc_column.position_below").hide();
+		} else {
+			$details_layout.closest('.vc_column').show();
+			jQuery(".vc_column.position_below").show();
+		}
+	}
+
+	function changeDetailsLayout() {
+		if ($details_layout.val() === 'inline' || $display_titles.val() !== 'page') {
+			jQuery(".vc_column.vertical_details").hide();
+			jQuery(".vc_column.inline_details").show();
+		} else {
+			jQuery(".vc_column.vertical_details").show();
+			jQuery(".vc_column.inline_details").hide();
+		}
+	}
+
+	$display_titles.on('change', changeDisplayTitles).trigger('change');
+	$details_layout.on('change', changeDetailsLayout).trigger('change');
+}
+
+function image_size_callback() {
+	const $image_size = jQuery('select[name="image_size"]', this.$content);
+	let $layout_type = jQuery('select[name="layout_type"]', this.$content);
+	if (!$layout_type.length) {
+		$layout_type = jQuery('select[name="news_grid_version"]', this.$content);
+	}
+	let $layout = jQuery('select[name="layout"]', this.$content);
+	if (!$layout.length) {
+		$layout = jQuery('select[name="news_grid_style"]', this.$content);
+	}
+
+	function imageSizeVisibility() {
+		if ($layout_type.val() === 'list' || $layout.val() === 'justified') {
+			jQuery(".vc_column.image_size").show();
+		} else {
+			$image_size.val('default').trigger('change');
+			jQuery(".vc_column.image_size").hide();
+		}
+	}
+
+	$layout_type.on('change', imageSizeVisibility).trigger('change');
+	$layout.on('change', imageSizeVisibility).trigger('change');
+}
+
+function portfolio_skin_callback() {
+	const $skin = jQuery('select[name="thegem_elementor_preset"]', this.$content);
+	const $layout_type = jQuery('select[name="layout_type"]', this.$content);
+	const $portfolio_layout = jQuery('select[name="portfolio_layout"]', this.$content);
+
+	function changeSkinEvent() {
+		if ($skin.val() === 'default') {
+			jQuery(".vc_column.alternative_skin").addClass('skin-hidden').hide();
+			jQuery(".vc_column.default_skin").removeClass('skin-hidden');
+			jQuery(".vc_column.default_skin:not(.layout-hidden)").show();
+		} else {
+			jQuery(".vc_column.default_skin").addClass('skin-hidden').hide();
+			jQuery(".vc_column.alternative_skin").removeClass('skin-hidden');
+			jQuery(".vc_column.alternative_skin:not(.layout-hidden)").show();
+		}
+	}
+
+	function changePortfolioLayoutEvent() {
+		if ($portfolio_layout.val() === '1x' && $layout_type.val() === 'grid') {
+			jQuery(".vc_column.hide_on_list").addClass('layout-hidden').hide();
+		} else {
+			jQuery(".vc_column.hide_on_list").removeClass('layout-hidden');
+			jQuery(".vc_column.hide_on_list:not(.skin-hidden)").show();
+		}
+	}
+
+	$skin.on('change', changeSkinEvent).trigger('change');
+	$portfolio_layout.on('change', changePortfolioLayoutEvent).trigger('change');
+	$layout_type.on('change', changePortfolioLayoutEvent).trigger('change');
+}
+
+function order_callback() {
+	const $order_by = jQuery('select[name="order_by"]', this.$content);
+	const $order = jQuery('select[name="order"]', this.$content);
+	const $filter_type = jQuery('select[name="filter_type"]', this.$content);
+	const $filter_style = jQuery('select[name="filter_style"]', this.$content);
+
+	function changeOrderEvent() {
+		if (jQuery(this).val() !== 'default' && $filter_type.val() === 'default' && $filter_style.val() === 'buttons') {
+			jQuery('[name="news_grid_sorting"]', this.$content).prop( "checked", false ).trigger('change');
+			jQuery('[name="portfolio_sorting"]', this.$content).prop( "checked", false ).trigger('change');
+		}
+	}
+
+	if ($filter_type.length && $filter_style.length) {
+		$order_by.on('change', changeOrderEvent).trigger('change');
+		$order.on('change', changeOrderEvent).trigger('change');
+	}
+}
+
+function source_type_callback() {
+	const $source_type = jQuery('input[name="source_type"]', this.$content);
+	const $query_type = jQuery('select[name="query_type"]', this.$content);
+
+	if ($source_type.val() !== '') {
+		if ($source_type.val() === 'custom') {
+			$query_type.val('post').trigger('change')
+		} else {
+			$query_type.val($source_type.val()).trigger('change')
+		}
+		$source_type.val('');
+	}
+}
+
+function hide_button_callback() {
+	const $hide_button = jQuery('input[name="hide_button"]', this.$content);
+	const $show_readmore_button = jQuery('input[name="show_readmore_button"]', this.$content);
+
+	if ($hide_button.val() === '1') {
+		$show_readmore_button.prop( "checked", false ).trigger('change');
+		$hide_button.val('');
+	}
 }
 
 (function($){

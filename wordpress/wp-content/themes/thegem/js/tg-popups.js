@@ -120,7 +120,7 @@
 
 			} else if (trigger['trigger_type'] == 'on_click') {
 
-				$('#' + trigger['unique_id']).on('click', function(e){
+				$('#' + trigger['unique_id'] + ', .' + trigger['unique_id']).on('click', function(e){
 					e.preventDefault();
 					showPopup();
 				});

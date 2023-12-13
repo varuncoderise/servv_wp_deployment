@@ -175,7 +175,8 @@
 }
 
 .version-default.news-grid.hover-default-default .portfolio-item .image .links .caption .author,
-.version-default.news-grid.hover-default-default .portfolio-item .image .links .caption .description {
+.version-default.news-grid.hover-default-default .portfolio-item .image .links .caption .description,
+.version-default.news-grid.hover-default-default .portfolio-item .image .links .caption .details {
 	opacity: 0;
 	-webkit-transform: translateY(50px);
 	transform: translateY(50px);
@@ -185,7 +186,8 @@
 }
 
 .version-default.news-grid.hover-default-default .portfolio-item:hover .image .links .caption .author,
-.version-default.news-grid.hover-default-default .portfolio-item:hover .image .links .caption .description {
+.version-default.news-grid.hover-default-default .portfolio-item:hover .image .links .caption .description,
+.version-default.news-grid.hover-default-default .portfolio-item:hover .image .links .caption .details {
 	opacity: 1;
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
@@ -222,7 +224,8 @@
 	margin-top: 10px;
 }
 
-.version-default.news-grid.hover-default-default .portfolio-item .image .links .caption .description {
+.version-default.news-grid.hover-default-default .portfolio-item .image .links .caption .description,
+.version-default.news-grid.hover-default-default .portfolio-item .image .links .caption .details {
 	margin-top: 7px;
 }
 

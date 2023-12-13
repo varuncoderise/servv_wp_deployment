@@ -54,6 +54,10 @@ class TheGem_Edit_Mega_Menu_Walker extends Walker_Nav_Menu_Edit {
 						<label for="edit-thegem-mobile-clickable-<?php echo esc_attr($item_id); ?>">
 							<input id="edit-thegem-mobile-clickable-<?php echo esc_attr($item_id); ?>" type="checkbox" class="thegem-edit-thegem-mobile-clickable" name="thegem_mobile_clickable[<?php echo esc_attr($item_id); ?>]" <?php checked( $item->thegem_mobile_clickable ); ?>/>
 							<?php esc_html_e( 'Make clickable on mobile', 'thegem' ); ?>
+                            <br>
+                            <span class="description">
+								<?php esc_html_e( 'Activates page loading on mobiles by clicking on this menu item.', 'thegem' ); ?>
+							</span>
 						</label>
 					</p>
 				</div>

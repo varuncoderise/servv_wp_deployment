@@ -214,10 +214,15 @@
     margin: 0 60px;
     color: #ffffff;
     line-height: normal;
+    text-align: left;
     z-index: 1;
 }
 
-.gem-featured-posts-slide-item>div:last-child {
+.gem-featured-posts-slide-item > * {
+    color: inherit;
+}
+
+.gem-featured-posts-slide-item > *:last-child {
     margin-bottom: 0;
 }
 
@@ -239,6 +244,10 @@
     text-transform: uppercase;
 }
 
+.gem-featured-post-title div {
+    display: inline-block;
+}
+
 .style-new .gem-featured-post-title {
     text-transform: none;
 }
@@ -247,29 +256,46 @@
     margin-bottom: 25px;
 }
 
-.style-default .gem-featured-post-meta-categories {
+.gem-featured-post-excerpt div {
+    display: inline-block;
+}
+
+.gem-featured-post-excerpt p:last-child {
+    margin-bottom: 0;
+}
+
+.gem-featured-posts-slider .details {
+    margin-bottom: 25px;
+}
+
+.gem-featured-posts-slider .details span {
+    color: inherit;
+}
+
+.gem-featured-posts-slider.style-default .set {
     margin-bottom: 45px;
 }
 
-.gem-featured-post-meta-categories span {
+.gem-featured-posts-slider .set {
     color: #00bcd4;
     font-weight: normal;
     font-size: 14px;
     display: inline-block;
 }
 
-.gem-featured-post-meta-categories span a {
+.gem-featured-posts-slider .set a {
     color: inherit;
 }
 
-.style-new .gem-featured-post-meta-categories span {
+.gem-featured-posts-slider.style-new .set {
+    width: fit-content;
     background-color: #000000;
     color: #ffffff;
-    line-height: 24px;
+    line-height: 1.7;
     padding: 0 10px;
 }
 
-.style-new .gem-featured-post-meta-categories span a:hover {
+.gem-featured-posts-slider.style-new .set a:hover {
     text-decoration: underline;
 }
 
@@ -332,7 +358,7 @@
     }
 
     .gem-featured-post-meta-author,
-    .style-default .gem-featured-post-meta-categories,
+    .gem-featured-posts-slider.style-default .set,
     .style-new .gem-featured-post-date {
         margin-bottom: 25px;
     }

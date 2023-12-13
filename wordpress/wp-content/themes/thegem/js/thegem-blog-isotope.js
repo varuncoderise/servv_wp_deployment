@@ -16,7 +16,7 @@
 			$('.post-image img.img-responsive', $blog).removeAttr('srcset');
 		}
 
-		window.thegemBlogImagesLoaded($blog, 'article img', function() {
+		window.thegemBlogImagesLoaded($blog, 'article:not(.format-gallery) img, article.format-gallery .gem-gallery-item:first-child img', function() {
 			$blog.prev('.preloader').remove();
 
 			var itemsAnimations = $blog.itemsAnimations({
@@ -49,7 +49,7 @@
 						itemsAnimations.show();
 					}
 				})
-				.isotope({
+				.thegem_isotope({
 					itemSelector: 'article',
 					layoutMode: 'masonry',
 					masonry: {
@@ -61,7 +61,7 @@
 			if ($blog.hasClass('fullwidth-block')) {
 				$blog.bind('fullwidthUpdate', function() {
 					if ($blog.data('isotope')) {
-						$blog.isotope('layout');
+						$blog.thegem_isotope('layout');
 						return false;
 					}
 				});
@@ -70,7 +70,7 @@
 			if ($('#page').hasClass('vertical-header') && $blog.hasClass('blog-style-timeline_new')) {
 				if ($blog.data('isotope')) {
 					setTimeout(function () {
-						$blog.isotope('layout');
+						$blog.thegem_isotope('layout');
 					}, 1);
 				}
 			}

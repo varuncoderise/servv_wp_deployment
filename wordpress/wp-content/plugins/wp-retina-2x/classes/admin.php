@@ -55,6 +55,7 @@ class Meow_WR2X_Admin extends MeowCommon_Admin {
 			//'image_sizes' => $this->core->get_image_sizes( ARRAY_A ),
 
 			'options' => $this->core->get_all_options(),
+			'image_size_names' => get_intermediate_image_sizes(),
 		] ) );
 
 		wp_enqueue_script( 'wr2x_perfect_images-index' );

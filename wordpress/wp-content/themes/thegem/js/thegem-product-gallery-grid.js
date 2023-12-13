@@ -34,6 +34,7 @@
 
                 setTimeout(() => {
                     $topElements.css('opacity', 1);
+                    $('.product-grid-gallery-skeleton.skeleton--video').remove();
                 });
 
                 if (isTouch || isMobile) {

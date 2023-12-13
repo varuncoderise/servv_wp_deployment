@@ -56,7 +56,9 @@
 	function finishAjaxRequestActions($blog, $inserted_data, is_scroll, $pagination, next_page, $loading_marker) {
 		$inserted_data.buildSimpleGalleries();
 		$inserted_data.updateSimpleGalleries();
-		window.wp.mediaelement.initialize();
+		if (window.wp !== undefined && window.wp.mediaelement !== undefined) {
+			window.wp.mediaelement.initialize();
+		}
 		$blog.itemsAnimations('instance').show($inserted_data);
 
 		if ($blog.hasClass('blog-style-justified-2x') || $blog.hasClass('blog-style-justified-3x') || $blog.hasClass('blog-style-justified-4x')) {
@@ -65,12 +67,14 @@
 			});
 		}
 
-		if (is_scroll) {
-			$pagination.removeClass('active').html('');
-		} else {
-			$loading_marker.remove();
-			if (next_page == 0) {
-				$pagination.hide();
+		if (!$blog.hasClass('pagination-normal')) {
+			if (is_scroll) {
+				$pagination.removeClass('active').html('');
+			} else {
+				$loading_marker.remove();
+				if (next_page == 0) {
+					$pagination.hide();
+				}
 			}
 		}
 		$blog
@@ -79,7 +83,11 @@
 	}
 
 	window.thegemBlogLoadMoreRequest = function($blog, $pagination, is_scroll) {
-		var data = thegem_blog_ajax;
+		var widget_settings_id = $blog.data('style-uid') ? $blog.data('style-uid') : '';
+		var data = $.extend(true, {}, window['thegem_blog_ajax_' + widget_settings_id]);
+		if ($.isEmptyObject(data)) {
+			data = $.extend(true, {}, window['thegem_blog_ajax']);
+		}
 
 		var is_processing_request = $blog.data('request-process') || false;
 		if (is_processing_request) {
@@ -97,7 +105,9 @@
 		data['data']['paged'] = paged;
 		data['action'] = 'blog_load_more';
 		$blog.data('request-process', true);
-		if (is_scroll) {
+		if ($blog.hasClass('pagination-normal')) {
+			$blog.prepend('<div class="preloader-spin-new"></div>');
+		} else if (is_scroll) {
 			$pagination.addClass('active').html('<div class="loading"><div class="preloader-spin"></div></div>');
 		} else {
 			var $loading_marker = $('<div class="loading"><div class="preloader-spin"></div></div>');
@@ -107,7 +117,7 @@
 		$.ajax({
 			type: 'post',
 			dataType: 'json',
-			url: thegem_blog_ajax.url,
+			url: data.url,
 			data: data,
 			success: function(response) {
 				if (response.status == 'success') {
@@ -116,9 +126,12 @@
 						current_page = $newItems.data('page'),
 						next_page = $newItems.data('next-page');
 
-					if ($blog.hasClass('blog-style-masonry') || $blog.hasClass('blog-style-timeline_new')) {
+					if ($blog.hasClass('pagination-normal')) {
+						$blog.html($inserted_data);
+						finishAjaxRequestActions($blog, $inserted_data, is_scroll, $pagination, next_page, $loading_marker);
+					} else if ($blog.hasClass('blog-style-masonry') || $blog.hasClass('blog-style-timeline_new')) {
 						window.thegemBlogImagesLoaded($newItems, 'article img', function() {
-							$blog.isotope('insert', $inserted_data);
+							$blog.thegem_isotope('insert', $inserted_data);
 							finishAjaxRequestActions($blog, $inserted_data, is_scroll, $pagination, next_page, $loading_marker);
 						});
 					} else {

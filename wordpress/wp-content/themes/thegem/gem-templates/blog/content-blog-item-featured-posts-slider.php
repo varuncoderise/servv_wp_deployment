@@ -9,45 +9,6 @@
     <?php }
 } ?>
 
-<?php if (!function_exists('thegem_featured_post_categories')) {
-    function thegem_featured_post_categories($params) {
-        $style = '';
-        if (!empty($params['post_categories_color']) && $params['style']=='new') {
-            $style = 'style="background-color: '.esc_attr($params['post_categories_color']).'"';
-        }
-
-        if (!empty($params['post_categories_color']) && $params['style']=='default') {
-            $style = 'style="color: '.esc_attr($params['post_categories_color']).'"';
-        }
-        ?>
-
-        <span <?php if (!empty($style)) { echo $style; }?>><?php the_category(', ') ?></span>
-    <?php }
-} ?>
-
-<?php if (!function_exists('thegem_featured_post_title_class')) {
-    function thegem_featured_post_title_class($params) {
-        $class = [];
-
-        switch ($params['title_style']) {
-            case 'small':
-                $class[]='title-h4';
-                break;
-            case 'normal':
-                $class[]='title-h2';
-                break;
-            case 'big':
-                $class[]='title-h1';
-                break;
-            case 'large':
-                $class[]='title-xlarge';
-                break;
-        }
-
-        return implode(' ', $class);
-    }
-} ?>
-
 <?php if (!function_exists('thegem_featured_post_background_color')) {
     function thegem_featured_post_background_color($color, $opacity = null) {
         $rgb_color = hex_to_rgb($color);
@@ -59,10 +20,9 @@
 
         return false;
     }
-}?>
+}
 
-<?php
-
+$thegem_post_data = thegem_get_sanitize_page_title_data(get_the_ID());
 $thegem_size = 'thegem-featured-post-slide';
 
 if ($params['layout']!='container' ) {
@@ -97,27 +57,57 @@ $article_style = implode(';', $article_style);
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php if (!empty($article_style)) echo 'style="'.$article_style.'"'; ?> data-background="<?php echo $background; ?>">
+<article id="post-<?php the_ID(); ?>" class="slide-item portfolio-item" <?php if (!empty($article_style)) echo 'style="'.$article_style.'"'; ?> data-background="<?php echo $background; ?>">
     <?php if ($params['use_background_overlay']): ?>
         <div class="gem-featured-posts-slide-overlay" style="background-color: <?php echo thegem_featured_post_background_color($params['overlay_color'], $params['overlay_opacity']) ?>"></div>
     <?php endif; ?>
     <div class="gem-featured-posts-slide-item">
         <?php if ($params['style'] == 'default' && !$params['hide_date']): ?><div class="gem-featured-post-date" <?php if (!empty($params['post_date_color'])) { echo 'style="color: '.esc_attr($params['post_date_color']).'"'; } ?>><?php echo get_the_date('F d, Y'); ?></div><?php endif; ?>
-        <?php if ($params['style'] == 'new' && !$params['hide_categories']): ?><div class="gem-featured-post-meta-categories"><?php thegem_featured_post_categories($params); ?></div><?php endif; ?>
+        <?php if ($params['style'] == 'new'):
+            thegem_get_additional_meta($params);
+        endif; ?>
 
-        <?php if (get_the_title()): ?>
-            <div class="gem-featured-post-title <?php echo thegem_featured_post_title_class($params); ?>" <?php if (!empty($params['post_title_color'])) { echo 'style="color: '.esc_attr($params['post_title_color']).'"'; } ?>><?php the_title(); ?></div>
+        <?php if (get_the_title()):
+            $title_tag = isset($params['title_tag']) ? $params['title_tag'] : 'div';
+            $title_class = '';
+            if (isset($params['title_preset']) && $params['title_preset'] != 'default') {
+                $title_class = $params['title_preset'];
+            }
+            if (isset($params['title_font_weight'])) {
+                $title_class .= ' ' . $params['title_font_weight'];
+            } ?>
+            <<?php echo $title_tag; ?> class="gem-featured-post-title <?php echo $title_class; ?>" <?php if (!empty($params['post_title_color'])) { echo 'style="color: '.esc_attr($params['post_title_color']).'"'; } ?>><?php the_title(); ?></<?php echo $title_tag; ?>>
         <?php endif; ?>
 
-        <?php if (get_the_excerpt() && !$params['hide_excerpt']): ?>
-            <div class="gem-featured-post-excerpt styled-subtitle" <?php if (!empty($params['post_excerpt_color'])) { echo 'style="color: '.esc_attr($params['post_excerpt_color']).'"'; } ?>><?php the_excerpt(); ?></div>
-        <?php endif; ?>
+        <?php if (get_the_excerpt() && !$params['hide_excerpt']):
+            $description_preset = '';
+            if (isset($params['description_preset']) && $params['description_preset'] != 'default') {
+                $description_preset = $params['description_preset'];
+            }  ?>
+            <div class="gem-featured-post-excerpt styled-subtitle <?php echo $description_preset; ?>" <?php if (!empty($params['post_excerpt_color'])) { echo 'style="color: '.esc_attr($params['post_excerpt_color']).'"'; } ?>>
+				<div>
+					<?php if ( !has_excerpt() && !empty( $thegem_post_data['title_excerpt'] ) ): ?>
+						<?php echo $thegem_post_data['title_excerpt']; ?>
+					<?php else: ?>
+						<?php echo preg_replace('%&#x[a-fA-F0-9]+;%', '', apply_filters('the_excerpt', get_the_excerpt())); ?>
+					<?php endif; ?>
+				</div>
+			</div>
+        <?php endif;
 
-        <?php if ($params['style'] == 'default' && !$params['hide_categories']): ?><div class="gem-featured-post-meta-categories"><?php thegem_featured_post_categories($params); ?></div><?php endif; ?>
+        thegem_get_details_custom_fields($params); ?>
+
+        <?php if ($params['style'] == 'default'):
+            thegem_get_additional_meta($params);
+        endif; ?>
         <?php if ($params['style'] == 'new' && !$params['hide_date']): ?><div class="gem-featured-post-date" <?php if (!empty($params['post_date_color'])) { echo 'style="color: '.esc_attr($params['post_date_color']).'"'; } ?>><?php echo get_the_date('F d, Y'); ?></div><?php endif; ?>
         <?php if (!$params['hide_author']): ?><div class="gem-featured-post-meta-author" <?php if (!empty($params['post_author_color'])) { echo 'style="color: '.esc_attr($params['post_author_color']).'"'; } ?>><?php thegem_featured_post_author($params['hide_author_avatar']); ?></div><?php endif; ?>
 
-        <?php if (!$params['hide_button']): ?><div class="gem-featured-post-btn-box"><?php thegem_button(array_merge($params['button'], array('tag' => 'a', 'href' => get_the_permalink())), 1) ?></div><?php endif; ?>
+        <?php if ($params['show_readmore_button']):
+            $link = !isset($params['readmore_button_link']) || $params['readmore_button_link'] == 'default' ? get_the_permalink() : $params['readmore_button_custom_link'];
+            $id = isset($params['readmore_button_id']) ? $params['readmore_button_id'] : ''; ?>
+            <div class="gem-featured-post-btn-box"><?php thegem_button(array_merge($params['button'], array('id' => $id, 'tag' => 'a', 'href' => $link)), 1) ?></div>
+        <?php endif; ?>
     </div>
 </article>
 

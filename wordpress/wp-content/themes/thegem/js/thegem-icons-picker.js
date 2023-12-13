@@ -23,7 +23,6 @@
 					window.thegemThemeOptions.init();
 
 					var realNameIcon = $(e.target).parent().find('input').attr('name').replace(/_(thegem_header|[^_]*)$/, '_');
-					//console.log(realNameIcon);
 
 					var packs = [];
 
@@ -51,12 +50,27 @@
 						['wishlist_added_icon_pack','wishlist_added_icon_'],
 						['signin_icon_pack','signin_icon_'],
 						['signout_icon_pack','signout_icon_'],
+						['arrows_prev_icon_pack','arrows_prev_icon_'],
+						['arrows_next_icon_pack','arrows_next_icon_'],
 						['info_content_author_icon_pack','info_content_author_icon_'],
 						['info_content_date_icon_pack','info_content_date_icon_'],
 						['info_content_time_icon_pack','info_content_time_icon_'],
 						['info_content_comments_icon_pack','info_content_comments_icon_'],
-						['info_content_likes_icon_pack','info_content_likes_icon_'],
+						['info_content_likes_icon_pack','info_content_likes_icon_']
 					];
+
+					// pf custom meta icons select
+					const custom_pair = $el[0].name;
+					if (custom_pair !== undefined && custom_pair.length > 0){
+						const index = custom_pair.lastIndexOf('_');
+						const namePack = custom_pair.slice(0, index) + '_pack';
+						if (namePack != 'icon_pack') {
+							const pair = [namePack, custom_pair.slice(0, index) + '_'];
+							pairs.push(pair);
+						}
+					}
+
+					// console.log(pairs)
 
 					var namePack, nameIcon;
 					var parent = $el.closest(".wpb_el_type_thegem_icon").parent();
@@ -80,7 +94,7 @@
 							});
 							break;
 						}
-					}
+					}					
 				} else {
 					var width = $(window).width(),
 					H = $(window).height(),

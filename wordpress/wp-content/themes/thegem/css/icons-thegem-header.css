@@ -749,3 +749,12 @@
 .tgh-icon.windy-weather:before {
 	content: "\e9df";
 }
+.tgh-icon.tiktok:before {
+	content: "\e9e0";
+}
+.tgh-icon.tiktok-round:before {
+	content: "\e9e1";
+}
+.tgh-icon.tiktok-square:before {
+	content: "\e9e2";
+}

@@ -83,12 +83,7 @@ function thegem_register_required_plugins() {
 		array(
 			'name' => esc_html__('MailChimp for WordPress', 'thegem'),
 			'slug' => 'mailchimp-for-wp',
-			'source' => esc_url('http://democontent.codex-themes.com/plugins/thegem/recommended/mailchimp-for-wp.zip'),
 			'required' => false,
-			'version' => '',
-			'force_activation' => false,
-			'force_deactivation' => false,
-			'external_url' => '',
 		),
 		array(
 			'name' => esc_html__('Easy Forms for MailChimp by YIKES', 'thegem'),
@@ -466,6 +461,41 @@ function thegem_pre_set_site_transient_update_plugins( $transient ) {
 		}
 	}
 
+	$response = wp_remote_get('http://democontent.codex-themes.com/plugins/thegem/required/js_composer.json', array('timeout' => 5));
+
+	if ( is_wp_error( $response ) ) {
+		return $transient;
+	}
+
+	$body = wp_remote_retrieve_body($response);
+	$data = json_decode($body, 1);
+	if ( ! isset( $data['new_version'] ) ) {
+		return $transient;
+	}
+	$new_version = $data['new_version'];
+
+	$js_composer_data = new stdClass;
+
+	if(isset($transient->response['js_composer/js_composer.php'])) {
+		$js_composer_data = $transient->response['js_composer/js_composer.php'];
+		unset($transient->response['js_composer/js_composer.php']);
+	} elseif(isset($transient->no_update['js_composer/js_composer.php'])) {
+		$js_composer_data = $transient->no_update['js_composer/js_composer.php'];
+		unset($transient->no_update['js_composer/js_composer.php']);
+	}
+
+	if(defined( 'WPB_VC_VERSION' ) && isset($js_composer_data->new_version)) {
+		if ( version_compare( WPB_VC_VERSION, $new_version, '<' ) ) {
+			$js_composer_data->new_version = $new_version;
+			$js_composer_data->package = $data['package'];
+			$transient->response['js_composer/js_composer.php'] = $js_composer_data;
+		} else {
+			$js_composer_data->new_version = $new_version;
+			$js_composer_data->package = $data['package'];
+			$transient->no_update['js_composer/js_composer.php'] = $js_composer_data;
+		}
+	}
+
 	return $transient;
 }
 add_filter('pre_set_site_transient_update_plugins', 'thegem_pre_set_site_transient_update_plugins', 15, 3);
@@ -549,7 +579,7 @@ function thegem_plugins_update_latest_version_notice() {
 
 	if(thegem_is_plugin_active('thegem-elements/thegem-elements.php')) {
 		$plugin_data = get_plugin_data(trailingslashit(WP_PLUGIN_DIR).'thegem-elements/thegem-elements.php');
-		if(version_compare($plugin_data['Version'], '5.7.0', '<')) {
+		if(version_compare($plugin_data['Version'], '5.9.3', '<')) {
 			echo '<div class="thegem-update-notice-new notice notice-error" style="display: flex; align-items: center;">';
 			echo '<p style="margin: 5px 15px 0 10px;"><img src=" '.THEGEM_THEME_URI . '/images/alert-icon.svg'.' " width="40px" alt="thegem-blocks-logo"></p>';
 			echo '<p><b style="display: block; font-size: 14px; padding-bottom: 5px">'.__('IMPORTANT:', 'thegem').'</b>'.__('Please update <strong>«TheGem Theme Elements»</strong> plugin to the latest version.', 'thegem').'</p>';
@@ -560,7 +590,7 @@ function thegem_plugins_update_latest_version_notice() {
 
 	if(thegem_is_plugin_active('thegem-importer/thegem-importer.php')) {
 		$plugin_data = get_plugin_data(trailingslashit(WP_PLUGIN_DIR).'thegem-importer/thegem-importer.php');
-		if(version_compare($plugin_data['Version'], '5.6.0', '<')) {
+		if(version_compare($plugin_data['Version'], '5.9.3', '<')) {
 			echo '<div class="thegem-update-notice-new notice notice-error" style="display: flex; align-items: center;">';
 			echo '<p style="margin: 5px 15px 0 10px;"><img src=" '.THEGEM_THEME_URI . '/images/alert-icon.svg'.' " width="40px" alt="thegem-blocks-logo"></p>';
 			echo '<p><b style="display: block; font-size: 14px; padding-bottom: 5px">'.__('IMPORTANT:', 'thegem').'</b>'.__('Please update <strong>«TheGem Demo Import»</strong> plugin to the latest version.', 'thegem').'</p>';
@@ -637,7 +667,7 @@ function thegem_downgrade() {
 	$plugin_info = new stdClass();
 	$plugin_info->new_version = '';
 	$plugin_info->slug = 'thegem-elements';
-	$plugin_info->package = 'http://democontent.codex-themes.com/plugins/thegem/required/old/thegem-elements-5.2.1.zip';
+	$plugin_info->package = 'http://democontent.codex-themes.com/plugins/thegem/required/old/thegem-elements-5.7.2.zip';
 	$plugin_info->url = '';
 	$plugins_updates->response['thegem-elements/thegem-elements.php'] = $plugin_info;
 
@@ -661,7 +691,7 @@ function thegem_downgrade() {
 
 	$theme_updates = get_site_transient('update_themes');
 	$theme_updates->response['thegem'] = array(
-		'package' => 'http://democontent.codex-themes.com/plugins/thegem/theme/old/thegem-5.2.1.1.zip',
+		'package' => 'http://democontent.codex-themes.com/plugins/thegem/theme/old/thegem-5.7.2.zip',
 		'url' => '',
 		'new_version' => '',
 	);

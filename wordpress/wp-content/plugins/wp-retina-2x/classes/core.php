@@ -10,20 +10,31 @@ class Meow_WR2X_Core {
 	public $method = false;
 	public $retina_sizes = array();
 	public $disabled_sizes = array();
+	public $webp_sizes = array();
+	public $webp_retina_sizes = array();
 	public $lazy = false;
+	public $admin = null;
+	private $engine;
 
 	public function __construct() {
 		global $wr2x_core;
+		global $wr2x_engine;
 		if ( !empty( $wr2x_core ) ) {
 			return $wr2x_core;
 		}
+		if ( !empty( $wr2x_engine ) ) {
+			return $wr2x_engine;
+		}
 		$wr2x_core = $this;
+		$this->engine = new Meow_WR2X_Engine( $this );
+		$wr2x_engine = $this->engine;
+
 		$this->set_defaults();
 		$this->init();
 		//add_action( 'plugins_loaded', array( $this, 'init' ) );
 		include( trailingslashit( WR2X_PATH ) . 'classes/api.php' );
 		if ( class_exists( 'MeowPro_WR2X_Core' ) ) {
-			new MeowPro_WR2X_Core( $this );
+			new MeowPro_WR2X_Core( $this, $this->engine );
 		}
 	}
 
@@ -32,14 +43,20 @@ class Meow_WR2X_Core {
 		$this->method = $options["method"];
 		$this->retina_sizes = $options['retina_sizes'] ?? array();
 		$this->disabled_sizes = $options['disabled_sizes'] ?? array();
+		$this->webp_sizes = $options['webp_sizes'] ?? array();
+		$this->webp_retina_sizes = $options['webp_retina_sizes'] ?? array();
 		$this->lazy = $options["picturefill_lazysizes"] && class_exists( 'MeowPro_WR2X_Core' );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
-		add_filter( 'wp_generate_attachment_metadata', array( $this, 'wp_generate_attachment_metadata' ) );
-		add_action( 'delete_attachment', array( $this, 'delete_attachment' ) );
 		add_filter( 'generate_rewrite_rules', array( 'Meow_WR2X_Admin', 'generate_rewrite_rules' ) );
 		add_filter( 'retina_validate_src', array( $this, 'validate_src' ) );
 		add_filter( 'wp_calculate_image_srcset', array( $this, 'calculate_image_srcset' ), 1000, 5 );
-		add_filter( 'media_row_actions', array( $this, 'add_action_link'), 10, 2 );
+		add_filter( 'wp_calculate_image_srcset', array( $this, 'replace_jpg_with_webp_in_srcset' ), 1000, 5 );
+		add_action( 'after_setup_theme', array( $this, 'add_image_sizes' ) );
+
+		if ( $options['image_replace'] ) {
+			add_filter( 'media_row_actions', array( $this, 'add_action_link'), 10, 2 );
+		}
+
 		add_filter( 'attachment_fields_to_edit', array( $this, 'add_replace_image_button'), 10, 2 );
 		add_action( 'add_meta_boxes', array( $this, 'add_metabox' ) );
 
@@ -61,7 +78,7 @@ class Meow_WR2X_Core {
 		}
 
 		if ( MeowCommon_Helpers::is_rest() ) {
-			new Meow_WR2X_Rest( $this );
+			new Meow_WR2X_Rest( $this, $this->engine );
 			return;
 		}
 
@@ -136,18 +153,22 @@ class Meow_WR2X_Core {
 	}
 
 	function is_rest() {
-    if ( empty( $_SERVER[ 'REQUEST_URI' ] ) )
-    	return false;
-    $rest_prefix = trailingslashit( rest_get_url_prefix() );
-    return strpos( $_SERVER[ 'REQUEST_URI' ], $rest_prefix ) !== false ? true : false;
+		if ( empty( $_SERVER[ 'REQUEST_URI' ] ) )
+			return false;
+		$rest_prefix = trailingslashit( rest_get_url_prefix() );
+		return strpos( $_SERVER[ 'REQUEST_URI' ], $rest_prefix ) !== false ? true : false;
 	}
 
 	function add_action_link( $actions, $post ) {
-		$actions['action_link'] = '<span class="wr2x-action-link" data-id="' . $post->ID . '">Replace Image</span>';
+		$actions['wr2x-replace'] = '<span class="wr2x-action-link" data-id="' . $post->ID . '">Replace Image</span>';
 		return $actions;
 	}
 
 	function add_replace_image_button( $form_fields, $post ) {
+		$show_image_button = $this->get_option( 'image_replace' );
+		if ( !$show_image_button ) {
+			return $form_fields;
+		}
 		$form_fields['replace_image'] = array(
 			'value' => '',
 			'required' => false,
@@ -160,11 +181,23 @@ class Meow_WR2X_Core {
 	}
 
 	function add_metabox() {
+		// Show nothing if the contents of the meta box are all disabled.
+		$show_image_button = $this->get_option( 'image_replace' );
+		if ( !$show_image_button ) {
+			return;
+		}
 		add_meta_box( 'wr2x-metabox', 'Perfect Image', array( $this, 'render_metabox' ), 'attachment', 'side', 'default' );
 	}
 
 	function render_metabox( $post ) {
 		echo '<div id="wr2x-metabox-item" data-id="' . $post->ID . '"></div>';
+	}
+
+	function add_image_sizes() {
+		$custom_image_sizes = $this->get_option( 'custom_image_sizes' );
+		foreach ( $custom_image_sizes as $details ) {
+			add_image_size( $details['name'], $details['width'], $details['height'], $details['crop'] );
+		}
 	}
 
 	/**
@@ -471,6 +504,45 @@ class Meow_WR2X_Core {
 		return $retinized_srcset;
 	}
 
+	function replace_jpg_with_webp_in_srcset( $sources, $size, $image_src, $image_meta, $attachment_id ) {
+		if ( $this->get_option( 'disable_responsive' ) )
+			return null;
+		if ( empty( $sources ) || $this->get_option( 'webp_method' ) !== 'Responsive' ) {
+			return $sources;
+		}
+
+		$upload_dir = wp_upload_dir();
+		$pathinfo = pathinfo( $image_meta['file'] );
+		$sizes['original'] = $pathinfo['basename'];
+		foreach ( $image_meta['sizes'] as $size => $details ) {
+			$sizes[$size] = $details['file'];
+		}
+
+		$str_ends_with = function ( string $haystack, string $needle ) {
+			$needle_len = mb_strlen( $needle );
+			return ( $needle_len === 0 || 0 === substr_compare( $haystack, $needle, - $needle_len ) );
+		};
+
+		foreach ($sources as &$source) {
+			if ( preg_match('/\.jpg$|\.jpeg$/', $source['url']) ) {
+				$filename = null;
+				foreach ( $sizes as $key => $size_filename ) {
+					if ( $str_ends_with( $source['url'], $size_filename ) ) {
+						$filename = $size_filename;
+						unset( $sizes[$key] );
+						break;
+					}
+				}
+				if ( !$filename || !file_exists( trailingslashit( $upload_dir['basedir'] ) . trailingslashit( $pathinfo['dirname'] ) . $filename . $this->webp_extension() ) ) {
+					continue;
+				}
+				$webp_url = $source['url'] . $this->webp_extension();
+				$source['url'] = $webp_url;
+			}
+		}
+		return $sources;
+	}
+
 	/**
 	 *
 	 * ISSUES CALCULATION AND FUNCTIONS
@@ -485,15 +557,19 @@ class Meow_WR2X_Core {
 	}
 
 	// UPDATE THE ISSUE STATUS OF THIS ATTACHMENT
-	function update_issue_status( $attachmentId, $issues = null, $info = null ) {
+	function update_issue_status( $attachmentId, $issues = null, $info = null, $webp_info = null, $webp_retina_info = null ) {
 		if ( $this->is_ignore( $attachmentId ) )
 			return;
 		if ( $issues == null )
 			$issues = $this->get_issues();
 		if ( $info == null )
 			$info = $this->retina_info( $attachmentId );
+		if ( $webp_info == null )
+			$webp_info = $this->webp_info( $attachmentId );
+		if ( $webp_retina_info == null )
+			$webp_retina_info = $this->webp_retina_info( $attachmentId );
 		$consideredIssue = in_array( $attachmentId, $issues );
-		$realIssue = $this->info_has_issues( $info );
+		$realIssue = ( $this->info_has_issues( $info ) || $this->info_has_issues( $webp_info ) || $this->info_has_issues( $webp_retina_info ) );
 		if ( $consideredIssue && !$realIssue )
 			$this->remove_issue( $attachmentId );
 		else if ( !$consideredIssue && $realIssue )
@@ -531,7 +607,8 @@ class Meow_WR2X_Core {
 			AND ( post_mime_type = 'image/jpeg' OR
 				post_mime_type = 'image/jpg' OR
 				post_mime_type = 'image/png' OR
-				post_mime_type = 'image/gif' )
+				post_mime_type = 'image/gif' OR
+				post_mime_type = 'image/webp' )
 		" );
 		$ignored = $this->get_ignores();
 		$issues = array();
@@ -540,7 +617,9 @@ class Meow_WR2X_Core {
 				continue;
 			}
 			$info = $this->retina_info( $id );
-			if ( $this->info_has_issues( $info ) )
+			$webp_info = $this->webp_info( $id );
+			$webp_retina_info = $this->webp_retina_info( $id );
+			if ( $this->info_has_issues( $info ) || $this->info_has_issues( $webp_info ) || $this->info_has_issues( $webp_retina_info ) )
 				array_push( $issues, $id );
 		}
 		//set_transient( 'wr2x_ignores', array() );
@@ -557,7 +636,8 @@ class Meow_WR2X_Core {
 			AND ( post_mime_type = 'image/jpeg' OR
 				post_mime_type = 'image/jpg' OR
 				post_mime_type = 'image/png' OR
-				post_mime_type = 'image/gif' )
+				post_mime_type = 'image/gif' OR
+				post_mime_type = 'image/webp' )
 		", ( '%' . $search . '%' ) ) );
 		$ignored = $this->get_ignores();
 		$issues = array();
@@ -566,7 +646,9 @@ class Meow_WR2X_Core {
 				continue;
 			}
 			$info = $this->retina_info( $id );
-			if ( $this->info_has_issues( $info ) )
+			$webp_info = $this->webp_info( $id );
+			$webp_retina_info = $this->webp_retina_info( $id );
+			if ( $this->info_has_issues( $info ) || $this->info_has_issues( $webp_info ) || $this->info_has_issues( $webp_retina_info ) )
 				array_push( $issues, $id );
 
 		}
@@ -665,7 +747,8 @@ class Meow_WR2X_Core {
 			AND ( post_mime_type = 'image/jpeg' OR
 				post_mime_type = 'image/jpg' OR
 				post_mime_type = 'image/png' OR
-				post_mime_type = 'image/gif' )
+				post_mime_type = 'image/gif' OR
+				post_mime_type = 'image/webp' )
 			AND NOT EXISTS ( SELECT meta_id FROM $wpdb->postmeta WHERE post_id = p.ID AND meta_key = '_wr2x_optimize' )
 		" );
 		$ignored = $this->get_ignores();
@@ -691,7 +774,8 @@ class Meow_WR2X_Core {
 			AND ( post_mime_type = 'image/jpeg' OR
 				post_mime_type = 'image/jpg' OR
 				post_mime_type = 'image/png' OR
-				post_mime_type = 'image/gif' )
+				post_mime_type = 'image/gif' OR
+				post_mime_type = 'image/webp' )
 			AND NOT EXISTS ( SELECT meta_id FROM $wpdb->postmeta WHERE post_id = p.ID AND meta_key = '_wr2x_optimize' )
 		", ( '%' . $search . '%' ) ) );
 		$ignored = $this->get_ignores();
@@ -746,8 +830,12 @@ class Meow_WR2X_Core {
 		$entry->ID = $mediaId;
 		$entry->post_title = get_the_title( $mediaId );
 		$entry->metadata = wp_get_attachment_metadata( $mediaId, true );
+		$entry->metadata = $this->postprocess_metadata( $entry->metadata );
 		$entry->info = $this->retina_info( $mediaId, ARRAY_A );
+		$entry->webp_info = $this->webp_info( $mediaId, ARRAY_A );
+		$entry->webp_retina_info = $this->webp_retina_info( $mediaId, ARRAY_A );
 		$entry->thumbnail_url = wp_get_attachment_thumb_url( $mediaId );
+		$entry->url = wp_get_attachment_url( $mediaId );
 		$attached_file = get_attached_file( $mediaId );
 		$entry->filesize = $attached_file ? size_format( filesize( $attached_file ), 2 ) : 0;
 		$version = get_post_meta( $mediaId, '_media_version', true );
@@ -943,12 +1031,6 @@ class Meow_WR2X_Core {
 		return $result;
 	}
 
-	/**
-	 *
-	 * WP RETINA 2X CORE
-	 *
-	 */
-
 	// Get WordPress upload directory
 	function get_upload_root() {
 		$uploads = wp_upload_dir();
@@ -965,67 +1047,13 @@ class Meow_WR2X_Core {
 		return ABSPATH;
 	}
 
-	// Resize the image
-	function resize( $file_path, $width, $height, $crop, $newfile, $customCrop = false ) {
-		$crop_params = $crop == '1' ? true : $crop;
-		$orig_size = getimagesize( $file_path );
-		$image_src = array ();
-		$image_src[0] = $file_path;
-		$image_src[1] = $orig_size[0];
-		$image_src[2] = $orig_size[1];
-		$file_info = pathinfo( $file_path );
-		$newfile_info = pathinfo( $newfile );
-		$extension = '.' . $newfile_info['extension'];
-		$no_ext_path = $file_info['dirname'] . '/' . $file_info['filename'];
-		$cropped_img_path = $no_ext_path . '-' . $width . 'x' . $height . "-tmp" . $extension;
-		$image = wp_get_image_editor( $file_path );
-
-		if ( is_wp_error( $image ) ) {
-			$this->log( "Resize failure: " . $image->get_error_message() );
-			error_log( "Resize failure: " . $image->get_error_message() );
-			return null;
-		}
-
-		// Resize or use Custom Crop
-		if ( !$customCrop )
-			$image->resize( $width, $height, $crop_params );
-		else
-			$image->crop( $customCrop['x'] * $customCrop['scale'], $customCrop['y'] * $customCrop['scale'], $customCrop['w'] * $customCrop['scale'], $customCrop['h'] * $customCrop['scale'], $width, $height, false );
-
-		// Quality
-		$quality = $this->get_option( 'quality' );
-		if ( empty( $quality ) ) {
-			$quality = apply_filters( 'jpeg_quality', 75 );
-		}
-		$image->set_quality( $quality );
-
-		$saved = $image->save( $cropped_img_path );
-		if ( is_wp_error( $saved ) ) {
-			$error = $saved->get_error_message();
-			trigger_error( "Retina: Could not create/resize image " . $file_path . " to " . $newfile . ": " . $error , E_WARNING );
-			error_log( "Retina: Could not create/resize image " . $file_path . " to " . $newfile . ":" . $error );
-			return null;
-		}
-		if ( rename( $saved['path'], $newfile ) )
-			$cropped_img_path = $newfile;
-		else {
-			trigger_error( "Retina: Could not move " . $saved['path'] . " to " . $newfile . "." , E_WARNING );
-			error_log( "Retina: Could not move " . $saved['path'] . " to " . $newfile . "." );
-			return null;
-		}
-		$new_img_size = getimagesize( $cropped_img_path );
-		$new_img = str_replace( basename( $image_src[0] ), basename( $cropped_img_path ), $image_src[0] );
-		$vt_image = array ( 'url' => $new_img, 'width' => $new_img_size[0], 'height' => $new_img_size[1] );
-		return $vt_image;
-	}
-
 	// Return the retina file if there is any (system path)
 	function get_retina( $file ) {
 		$pathinfo = pathinfo( $file ) ;
 		if ( empty( $pathinfo ) || !isset( $pathinfo['dirname'] ) ) {
 			if ( empty( $file ) ) {
-				$this->log( "An empty filename was given to $this->get_retina()." );
-				error_log( "An empty filename was given to $this->get_retina()." );
+				$this->log( "An empty filename was given to \$this->get_retina()." );
+				error_log( "An empty filename was given to \$this->get_retina()." );
 			}
 			else {
 				$this->log( "Pathinfo is null for " . $file . "." );
@@ -1038,6 +1066,55 @@ class Meow_WR2X_Core {
 		if ( file_exists( $retina_file ) )
 			return $retina_file;
 		$this->log( "Retina file at '{$retina_file}' does not exist." );
+		return null;
+	}
+
+	// Return the webp file if there is any (system path)
+	function get_webp( $file ) {
+		$pathinfo = pathinfo( $file ) ;
+		if ( empty( $pathinfo ) || !isset( $pathinfo['dirname'] ) ) {
+			if ( empty( $file ) ) {
+				$this->log( "An empty filename was given to \$this->get_webp()." );
+				error_log( "An empty filename was given to \$this->get_webp()." );
+			}
+			else {
+				$this->log( "Pathinfo is null for " . $file . "." );
+				error_log( "Pathinfo is null for " . $file . "." );
+			}
+			return null;
+		}
+		$webp_file = trailingslashit( $pathinfo['dirname'] )
+			. $pathinfo['filename']
+			. ( isset( $pathinfo['extension'] ) ? "." . $pathinfo['extension'] : "" )
+			. $this->webp_extension();
+		if ( file_exists( $webp_file ) )
+			return $webp_file;
+		$this->log( "WebP file at '{$webp_file}' does not exist." );
+		return null;
+	}
+
+	// Return the webp retina file if there is any (system path)
+	function get_webp_retina( $file ) {
+		$pathinfo = pathinfo( $file ) ;
+		if ( empty( $pathinfo ) || !isset( $pathinfo['dirname'] ) ) {
+			if ( empty( $file ) ) {
+				$this->log( "An empty filename was given to \$this->get_webp_retina()." );
+				error_log( "An empty filename was given to \$this->get_webp_retina()." );
+			}
+			else {
+				$this->log( "Pathinfo is null for " . $file . "." );
+				error_log( "Pathinfo is null for " . $file . "." );
+			}
+			return null;
+		}
+		$webp_retina_file = trailingslashit( $pathinfo['dirname'] )
+			. $pathinfo['filename']
+			. $this->retina_extension()
+			. ( isset( $pathinfo['extension'] ) ? $pathinfo['extension'] : "" )
+			. $this->webp_extension();
+		if ( file_exists( $webp_retina_file ) )
+			return $webp_retina_file;
+		$this->log( "WebP Retina file at '{$webp_retina_file}' does not exist." );
 		return null;
 	}
 
@@ -1134,7 +1211,7 @@ class Meow_WR2X_Core {
 
 		// CDN Domain
 		if ( !empty( $wr2x_easyio_domain ) ) {
-			$cdn_domain = "${wr2x_easyio_domain}";
+			$cdn_domain = "{$wr2x_easyio_domain}";
 			if ( $this->get_option( 'easyio_lossless', false ) ) {
 				$cdn_params['lossy'] = 0;
 			}
@@ -1205,13 +1282,30 @@ class Meow_WR2X_Core {
 				$needs_update = true;
 				$retina = false;
 			}
+			$webp = in_array( $s, $this->webp_sizes );
+			if ( !$enabled && $webp ) {
+				$this->webp_sizes = array_diff( $this->webp_sizes, array( $s ) );
+				$options['webp_sizes'] = $this->webp_sizes;
+				$needs_update = true;
+				$webp = false;
+			}
+			$webp_retina = in_array( $s, $this->webp_retina_sizes );
+			if ( (!$enabled || !$retina) && $webp_retina ) {
+				$this->webp_retina_sizes = array_diff( $this->webp_retina_sizes, array( $s ) );
+				$options['webp_retina_sizes'] = $this->webp_retina_sizes;
+				$needs_update = true;
+				$webp_retina = false;
+			}
 
 			$sizes[$s] = array( 
 				'width' => $width, 
 				'height' => $height, 
 				'crop' => $crop,
 				'enabled' => $enabled,
+				'retina_enabled' => $enabled && $retina,
 				'retina' => $retina,
+				'webp' => $webp,
+				'webp_retina' => $webp_retina,
 				'name' => $s,
 				'shortname' => Meow_WR2X_Core::size_shortname( $s )
 			);
@@ -1221,15 +1315,28 @@ class Meow_WR2X_Core {
 		$disabled_to_add = array();
 		foreach ( $this->disabled_sizes as $size ) {
 			$retina = in_array( $size, $this->retina_sizes );
+			$webp = in_array( $size, $this->webp_sizes );
+			$webp_retina = in_array( $size, $this->webp_retina_sizes );
 			if ( $retina ) {
 				$retina_sizes = array_diff( $this->retina_sizes, array( $size ) );
 				$options['retina_sizes'] = $retina_sizes;
+				$needs_update = true;
+			}
+			if ( $webp ) {
+				$webp_sizes = array_diff( $this->webp_sizes, array( $size ) );
+				$options['webp_sizes'] = $webp_sizes;
+				$needs_update = true;
+			}
+			if ( $webp_retina ) {
+				$webp_retina_sizes = array_diff( $this->webp_retina_sizes, array( $size ) );
+				$options['webp_retina_sizes'] = $webp_retina_sizes;
 				$needs_update = true;
 			}
 			if ( !array_key_exists( $size, $sizes ) ) {
 				$disabled_to_add[$size] = array( 
 					'enabled' => false,
 					'retina' => false,
+					'webp' => false,
 					'name' => $size,
 					'shortname' => Meow_WR2X_Core::size_shortname( $size )
 				);
@@ -1244,7 +1351,7 @@ class Meow_WR2X_Core {
 
 		if ( $output_type === ARRAY_A ) {
 			return array_values( $sizes );
-		} 
+		}
 
 		return $sizes;
 	}
@@ -1302,13 +1409,36 @@ class Meow_WR2X_Core {
 		return !!$debug;
 	}
 
-	function log( $data, $isExtra = false ) {
-		if ( !$this->is_debug() )
-			return;
-		$fh = fopen( trailingslashit( dirname(__FILE__) ) . 'wp-retina-2x.log', 'a' );
+	function get_logs_path() {
+		$path = $this->get_option( 'logs_path' );
+		if ( $path && file_exists( $path ) ) {
+			return $path;
+		}
+		$uploads_dir = wp_upload_dir();
+		$path = trailingslashit( $uploads_dir['basedir'] ) . WR2X_PREFIX . "_" . $this->random_ascii_chars() . ".log";
+		if ( !file_exists( $path ) ) {
+			touch( $path );
+		}
+		$options = $this->get_all_options();
+		$options['logs_path'] = $path;
+		$this->update_options( $options );
+		return $path;
+	}
+
+	function log( $data = null ) {
+		if ( !$this->is_debug() ) { return false; }
+		$log_file_path = $this->get_logs_path();
+		$fh = @fopen( $log_file_path, 'a' );
+		if ( !$fh ) { return false; }
 		$date = date( "Y-m-d H:i:s" );
-		fwrite( $fh, "$date: {$data}\n" );
+		if ( is_null( $data ) ) {
+			fwrite( $fh, "\n" );
+		}
+		else {
+			fwrite( $fh, "$date: {$data}\n" );
+		}
 		fclose( $fh );
+		return true;
 	}
 
 	// Based on http://wordpress.stackexchange.com/questions/6645/turn-a-url-into-an-attachment-post-id
@@ -1331,6 +1461,10 @@ class Meow_WR2X_Core {
 	// Return the retina extension followed by a dot
 	function retina_extension() {
 		return '@2x.';
+	}
+
+	function webp_extension() {
+		return '.webp';
 	}
 
 	function is_image_meta( $meta ) {
@@ -1360,6 +1494,13 @@ class Meow_WR2X_Core {
 			return $result;
 		$original_width = $meta['width'];
 		$original_height = $meta['height'];
+		// Check if the full-size-retina version of the generation source exists. If it exists, use its dimensions.
+		$uploads = wp_upload_dir();
+		if ( $retina = $this->get_retina( $uploads['basedir'] . '/' . $meta['file'] ) ) {
+			$dim = getimagesize( $retina );
+			$original_width  = $dim[0];
+			$original_height = $dim[1];
+		}
 		$sizes = $this->get_image_sizes();
 		$originalfile = get_attached_file( $id );
 		$pathinfo_fullsize = pathinfo( $originalfile );
@@ -1369,7 +1510,7 @@ class Meow_WR2X_Core {
 		if ( $sizes ) {
 			foreach ( $sizes as $name => $attr ) {
 				$validSize = !empty( $attr['width'] ) || !empty( $attr['height'] );
-				if ( !$validSize || !$attr['retina'] ) {
+				if ( !$validSize ) {
 					$result[$name] = 'IGNORED';
 					continue;
 				}
@@ -1432,196 +1573,177 @@ class Meow_WR2X_Core {
 		return $result;
 	}
 
-	function delete_attachment( $attach_id, $deleteFullSize = true ) {
-		$meta = wp_get_attachment_metadata( $attach_id );
-		$this->delete_images( $meta, $deleteFullSize );
-		$this->remove_issue( $attach_id );
-	}
-
-	function wp_generate_attachment_metadata( $meta ) {
-		if ( $this->get_option( "auto_generate" ) == true )
-			if ( $this->is_image_meta( $meta ) )
-				$this->generate_images( $meta );
-			return $meta;
-	}
-
-	/**
-	 * @param mixed[] $meta
-	 * int       width
-	 * int       height
-	 * string    file
-	 * mixed[][] sizes
-	 */
-	function generate_images( $meta ) {
-		global $_wp_additional_image_sizes;
-		$sizes = $this->get_image_sizes();
-		if ( !isset( $meta['file'] ) ) return;
-
-		$uploads = wp_upload_dir();
-
-		// Check if the full-size-retina version of the generation source exists.
-		// If it exists, replace the file path and its dimensions
-		if ( $retina = $this->get_retina( $uploads['basedir'] . '/' . $meta['file'] ) ) {
-			$meta['file'] = substr( $retina, strlen( $uploads['basedir'] ) + 1 );
-			$dim = getimagesize( $retina );
-			$meta['width']  = $dim[0];
-			$meta['height'] = $dim[1];
-		}
-
-		$originalfile = $meta['file'];
-		$pathinfo = pathinfo( $originalfile );
-		$original_basename = $pathinfo['basename'];
-		$basepath = trailingslashit( $uploads['basedir'] ) . $pathinfo['dirname'];
-
-		// $ignore = $this->get_option( "ignore_sizes" );
-		// if ( empty( $ignore ) )
-		// 	$ignore = array();
-		// $ignore = array_keys( $ignore );
-		$issue = false;
-		$id = $this->get_attachment_id( $meta['file'] );
-
-		/**
-		 * @param $id ID of the attachment whose retina image is to be generated
-		 */
-		do_action( 'wr2x_before_generate_retina', $id );
-
-		$this->log("* GENERATE RETINA FOR ATTACHMENT '{$meta['file']}'");
-		$this->log( "Full-Size is {$original_basename}." );
-
-		foreach ( $sizes as $name => $attr ) {
-			$normal_file = "";
-			if ( !$attr['retina'] ) {
-				$this->log( "Retina for {$name} ignored (settings)." );
-				continue;
-			}
-			// Is the file related to this size there?
-			$pathinfo = null;
-			$retina_file = null;
-
-			if ( isset( $meta['sizes'][$name] ) && isset( $meta['sizes'][$name]['file'] ) ) {
-				$normal_file = trailingslashit( $basepath ) . $meta['sizes'][$name]['file'];
-				$pathinfo = pathinfo( $normal_file ) ;
-				$retina_file = trailingslashit( $pathinfo['dirname'] ) . $pathinfo['filename'] . $this->retina_extension() . $pathinfo['extension'];
-			}
-
-			if ( $retina_file && file_exists( $retina_file ) ) {
-				$this->log( "Base for {$name} is '{$normal_file }'." );
-				$this->log( "Retina for {$name} already exists: '$retina_file'." );
-				continue;
-			}
-			if ( $retina_file ) {
-				$originalfile = trailingslashit( $pathinfo['dirname'] ) . $original_basename;
-
-				if ( !file_exists( $originalfile ) ) {
-					$this->log( "[ERROR] Original file '{$originalfile}' cannot be found." );
-					return $meta;
-				}
-
-				// Maybe that new image is exactly the size of the original image.
-				// In that case, let's make a copy of it.
-				if ( $meta['sizes'][$name]['width'] * 2 == $meta['width'] && $meta['sizes'][$name]['height'] * 2 == $meta['height'] ) {
-					copy ( $originalfile, $retina_file );
-					$this->log( "Retina for {$name} created: '{$retina_file}' (as a copy of the full-size)." );
-				}
-				// Otherwise let's resize (if the original size is big enough).
-				else if ( $this->are_dimensions_ok( $meta['width'], $meta['height'], $meta['sizes'][$name]['width'] * 2, $meta['sizes'][$name]['height'] * 2 ) ) {
-					// Change proposed by Nicscott01, slighlty modified by Jordy (+isset)
-					// (https://wordpress.org/support/topic/issue-with-crop-position?replies=4#post-6200271)
-					$crop = isset( $_wp_additional_image_sizes[$name] ) ? $_wp_additional_image_sizes[$name]['crop'] : true;
-					$customCrop = apply_filters( 'wr2x_custom_crop', null, $id, $name );
-
-					// // Support for Manual Image Crop
-					// // If the size of the image was manually cropped, let's keep it.
-					// if ( class_exists( 'ManualImageCrop' ) && isset( $meta['micSelectedArea'] ) && isset( $meta['micSelectedArea'][$name] ) && isset( $meta['micSelectedArea'][$name]['scale'] ) ) {
-					// 	$customCrop = $meta['micSelectedArea'][$name];
-					// }
-
-					$image = $this->resize( $originalfile, $meta['sizes'][$name]['width'] * 2,
-						$meta['sizes'][$name]['height'] * 2, $crop, $retina_file, $customCrop );
-				}
-				if ( !file_exists( $retina_file ) ) {
-					$is_ok = apply_filters( "wr2x_last_chance_generate", false, $id, $retina_file,
-						$meta['sizes'][$name]['width'] * 2, $meta['sizes'][$name]['height'] * 2 );
-					if ( !$is_ok ) {
-						$this->log( "[ERROR] Retina for {$name} could not be created. Full-Size is " . $meta['width'] . "x" . $meta['height'] . " but Retina requires a file of at least " . $meta['sizes'][$name]['width'] * 2 . "x" . $meta['sizes'][$name]['height'] * 2 . "." );
-						$issue = true;
-					}
-				}
-				else {
-					do_action( 'wr2x_retina_file_added', $id, $retina_file, $name );
-					$this->log( "Retina for {$name} created: '{$retina_file}'." );
-				}
-			} else {
-				if ( empty( $normal_file ) )
-					$this->log( "[ERROR] Base file for '{$name}' does not exist." );
-				else
-					$this->log( "[ERROR] Base file for '{$name}' cannot be found here: '{$normal_file}'." );
-			}
-		}
-
-		// Checks attachment ID + issues
-		if ( !$id )
-			return $meta;
-		if ( $issue )
-			$this->add_issue( $id );
-		else
-			$this->remove_issue( $id );
-
-		/**
-		 * @param $id ID of the attachment whose retina image has been generated
-		 */
-		do_action( 'wr2x_generate_retina', $id );
-
-		return $meta;
-	}
-
-	function delete_images( $meta, $deleteFullSize = false ) {
+	function webp_info( $id, $output_type = OBJECT  ) {
+		$result = array();
+		$meta = wp_get_attachment_metadata( $id );
 		if ( !$this->is_image_meta( $meta ) )
-			return $meta;
-		$sizes = $meta['sizes'];
-		if ( !$sizes || !is_array( $sizes ) )
-			return $meta;
-		$this->log("* DELETE RETINA FOR ATTACHMENT '{$meta['file']}'");
-		$originalfile = $meta['file'];
-		$id = $this->get_attachment_id( $originalfile );
-		$pathinfo = pathinfo( $originalfile );
-		$uploads = wp_upload_dir();
-		$basepath = trailingslashit( $uploads['basedir'] ) . $pathinfo['dirname'];
-		foreach ( $sizes as $name => $attr ) {
-			$pathinfo = pathinfo( $attr['file'] );
-			$retina_file = $pathinfo['filename'] . $this->retina_extension() . $pathinfo['extension'];
-			if ( file_exists( trailingslashit( $basepath ) . $retina_file ) ) {
-				$fullpath = trailingslashit( $basepath ) . $retina_file;
-				unlink( $fullpath );
-				do_action( 'wr2x_retina_file_removed', $id, $retina_file );
-				$this->log("Deleted '$fullpath'.");
+			return $result;
+		$original_width = $meta['width'];
+		$original_height = $meta['height'];
+		$sizes = $this->get_image_sizes();
+		$originalfile = get_attached_file( $id );
+		$pathinfo_fullsize = pathinfo( $originalfile );
+		$basepath = $pathinfo_fullsize['dirname'];
+
+		// Image Sizes
+		if ( $sizes ) {
+			foreach ( $sizes as $name => $attr ) {
+				$validSize = !empty( $attr['width'] ) || !empty( $attr['height'] );
+				if ( !$validSize ) {
+					$result[$name] = 'IGNORED';
+					continue;
+				}
+
+				// Check if the file related to this size is present
+				$pathinfo = null;
+				$webp_file = null;
+
+				if ( isset( $meta['sizes'][$name]['width'] )
+					&& isset( $meta['sizes'][$name]['height'])
+					&& isset($meta['sizes'][$name])
+					&& isset($meta['sizes'][$name]['file'])
+					&& file_exists( trailingslashit( $basepath ) . $meta['sizes'][$name]['file'] )
+				) {
+					$normal_file = trailingslashit( $basepath ) . $meta['sizes'][$name]['file'];
+					$pathinfo = pathinfo( $normal_file ) ;
+					
+					$new_webp_ext = $pathinfo['extension'] === 'webp' ? '' : $this->webp_extension();
+					$webp_file = trailingslashit( $pathinfo['dirname'] ) . $pathinfo['filename'] . '.' . $pathinfo['extension'] . $new_webp_ext;
+				}
+				// None of the file exist
+				else {
+					$result[$name] = 'MISSING';
+					continue;
+				}
+
+				// The WebP file exists
+				if ( $webp_file && file_exists( $webp_file ) ) {
+					$result[$name] = 'EXISTS';
+				}
+				else if ( $webp_file ) {
+					// The size file exists
+					$result[$name] = 'PENDING';
+				}
 			}
 		}
-		// Remove full-size if there is any
-		if ( $deleteFullSize ) {
-			$pathinfo = pathinfo( $originalfile );
-			$retina_file = $pathinfo[ 'filename' ] . $this->retina_extension() . $pathinfo[ 'extension' ];
-			if ( file_exists( trailingslashit( $basepath ) . $retina_file ) ) {
-				$fullpath = trailingslashit( $basepath ) . $retina_file;
-				unlink( $fullpath );
-				do_action( 'wr2x_retina_file_removed', $id, $retina_file );
-				$this->log( "Deleted '$fullpath'." );
+
+		// Full-Size (if required in the settings)
+		$fullsize_required = $this->get_option( "webp_full_size" ) && class_exists( 'MeowPro_WR2X_Core' );
+		$webp_file = trailingslashit( $pathinfo_fullsize['dirname'] ) . $pathinfo_fullsize['filename'] . '.' . $pathinfo_fullsize['extension'] . $this->webp_extension();
+		if ( $webp_file && file_exists( $webp_file ) )
+			$result['full-size'] = 'EXISTS';
+		else if ( $fullsize_required && $webp_file )
+			$result['full-size'] = array( 'width' => $original_width, 'height' => $original_height );
+
+		if ( $output_type === ARRAY_A ) {
+			$new_results = array();
+			foreach ( $result as $key => $value ) {
+				array_push( $new_results, array(
+					'name' => $key,
+					'shortname' => self::size_shortname( $key ),
+					'status' => is_array( $value ) ? 'CANNOT' : $value,
+					'required' => is_array( $value ) ? $value : null
+					)
+				);
 			}
+			return $new_results;
 		}
-		return $meta;
+
+		return $result;
 	}
 
-	// This is called by functions in the REST API
-	// TODO: However, this function seems to be what delete_images does above, 
-	// so maybe we could optimize and avoid code redundancy.
-	function delete_retina_fullsize( $mediaId ) {
-		$originalfile = get_attached_file( $mediaId );
-		$pathinfo = pathinfo( $originalfile );
-		$retina_file = trailingslashit( $pathinfo['dirname'] ) . $pathinfo['filename'] . $this->retina_extension() . $pathinfo['extension'];
-		if ( $retina_file && file_exists( $retina_file ) ) {
-			return unlink( $retina_file );
+	function webp_retina_info( $id, $output_type = OBJECT  ) {
+		$result = array();
+		$meta = wp_get_attachment_metadata( $id );
+		if ( !$this->is_image_meta( $meta ) )
+			return $result;
+		$original_width = $meta['width'];
+		$original_height = $meta['height'];
+		// Check if the full-size-retina version of the generation source exists. If it exists, use its dimensions.
+		$uploads = wp_upload_dir();
+		if ( $retina = $this->get_retina( $uploads['basedir'] . '/' . $meta['file'] ) ) {
+			$dim = getimagesize( $retina );
+			$original_width  = $dim[0];
+			$original_height = $dim[1];
 		}
-		return false;
+		$sizes = $this->get_image_sizes();
+		$originalfile = get_attached_file( $id );
+		$pathinfo_fullsize = pathinfo( $originalfile );
+		$basepath = $pathinfo_fullsize['dirname'];
+
+		// Image Sizes
+		if ( $sizes ) {
+			foreach ( $sizes as $name => $attr ) {
+				$validSize = !empty( $attr['width'] ) || !empty( $attr['height'] );
+				if ( !$validSize ) {
+					$result[$name] = 'IGNORED';
+					continue;
+				}
+
+				// Check if the file related to this size is present
+				$pathinfo = null;
+				$webp_retina_file = null;
+
+				if ( isset( $meta['sizes'][$name]['width'] )
+					&& isset( $meta['sizes'][$name]['height'])
+					&& isset($meta['sizes'][$name])
+					&& isset($meta['sizes'][$name]['file'])
+					&& file_exists( trailingslashit( $basepath ) . $meta['sizes'][$name]['file'] )
+				) {
+					$normal_file = trailingslashit( $basepath ) . $meta['sizes'][$name]['file'];
+					$pathinfo = pathinfo( $normal_file ) ;
+					$new_webp_ext = $pathinfo['extension'] === 'webp' ? '' : $this->webp_extension();
+					$webp_retina_file = trailingslashit( $pathinfo['dirname'] ) . $pathinfo['filename'] . $this->retina_extension() . $pathinfo['extension'] . $new_webp_ext;
+				}
+				// None of the file exist
+				else {
+					$result[$name] = 'MISSING';
+					continue;
+				}
+
+				// The WebP Retina file exists
+				if ( $webp_retina_file && file_exists( $webp_retina_file ) ) {
+					$result[$name] = 'EXISTS';
+					continue;
+				}
+				else if ( $webp_retina_file ) {
+					// The size file exists
+					$result[$name] = 'PENDING';
+				}
+
+				// The retina file exists
+				$required_width = $meta['sizes'][$name]['width'] * 2;
+				$required_height = $meta['sizes'][$name]['height'] * 2;
+				if ( !$this->are_dimensions_ok( $original_width, $original_height, $required_width, $required_height ) ) {
+					$result[$name] = array( 'width' => $required_width, 'height' => $required_height );
+				}
+			}
+		}
+
+		// Full-Size (if required in the settings)
+		$fullsize_required = $this->get_option( "full_size" ) && class_exists( 'MeowPro_WR2X_Core' );
+		$retina_file = trailingslashit( $pathinfo_fullsize['dirname'] ) . $pathinfo_fullsize['filename'] . 
+			$this->retina_extension() . $pathinfo_fullsize['extension'];
+		if ( $retina_file && file_exists( $retina_file ) )
+			$result['full-size'] = 'EXISTS';
+		else if ( $fullsize_required && $retina_file )
+			$result['full-size'] = array( 'width' => $original_width * 2, 'height' => $original_height * 2 );
+
+		if ( $output_type === ARRAY_A ) {
+			$new_results = array();
+			foreach ( $result as $key => $value ) {
+				array_push( $new_results, array(
+					'name' => $key,
+					'shortname' => self::size_shortname( $key ),
+					'status' => is_array( $value ) ? 'CANNOT' : $value,
+					'required' => is_array( $value ) ? $value : null
+					)
+				);
+			}
+			return $new_results;
+		}
+
+		return $result;
 	}
 
 	/**
@@ -1723,19 +1845,24 @@ class Meow_WR2X_Core {
 	function list_options() {
 		return array(
 			'method' => 'none',
+			'webp_method' => 'none',
 			'retina_sizes' => [],
 			'disabled_sizes' => [],
+			'webp_sizes' => [],
+			'webp_retina_sizes' => [],
 			'picturefill_lazysizes' => false,
 			'big_image_size_threshold' => false,
 			'hide_retina_dashboard' => false,
 			'hide_retina_column' => true,
 			'hide_optimize' => true,
 			'auto_generate' => false,
+			'webp_auto_generate' => false,
 			'ignore_sizes' => [],
 			'picturefill_keep_src' => false,
 			'picturefill_css_background' => false,
 			'disable_responsive' => false,
 			'full_size' => false,
+			'webp_full_size' => false,
 			'quality' => 75,
 			'over_http_check' => false,
 			'easyio_domain' => '',
@@ -1748,7 +1875,10 @@ class Meow_WR2X_Core {
 			'module_retina_enabled' => true,
 			'module_optimize_enabled' => true,
 			'module_ui_enabled' => true,
+			'module_webp_enabled' => true,
 			'gif_thumbnails_disabled' => false,
+			'logs_path' => null,
+			'custom_image_sizes' => [],
 		);
 	}
 
@@ -1757,7 +1887,9 @@ class Meow_WR2X_Core {
 		$options = get_option( $this->option_name, null );
 		$options = $this->check_options( $options );
 		foreach ( $options as $option => $value ) {
-			if ($option === 'retina_sizes' || $option === 'disabled_sizes') {
+			if ($option === 'retina_sizes' || $option === 'disabled_sizes'
+				|| $option === 'webp_sizes' || $option === 'webp_retina_sizes'
+			) {
 				$options[$option] = array_values( $value );
 				continue;
 			}
@@ -1773,8 +1905,10 @@ class Meow_WR2X_Core {
 		$hasChanges = false;
 		foreach ( $plugin_options as $option => $default ) {
 			// The option already exists
-			if ( isset( $options[$option] ) ) {
+			if ( array_key_exists( $option, $options ) ) {
 				continue;
+			}else{
+				error_log( '[PERFECT IMAGES] ⚙️ Option does not exist: ' . $option . '. Adding it.' );
 			}
 			// The option does not exist, so we need to add it.
 			// Let's use the old value if any, or the default value.
@@ -1808,6 +1942,8 @@ class Meow_WR2X_Core {
 		$this->method = $options["method"];
 		$this->retina_sizes = $options['retina_sizes'] ?? array();
 		$this->disabled_sizes = $options['disabled_sizes'] ?? array();
+		$this->webp_sizes = $options['webp_sizes'] ?? array();
+		$this->webp_retina_sizes = $options['webp_retina_sizes'] ?? array();
 		$this->lazy = $options["picturefill_lazysizes"] && class_exists( 'MeowPro_WR2X_Core' );
 
 		$options['sizes'] = $this->get_image_sizes( ARRAY_A, $options );
@@ -1817,6 +1953,77 @@ class Meow_WR2X_Core {
 	}
 
 	// #endregion
+
+	// Custom Image Sizes
+	function get_custom_image_size_changes ( $old_options, $new_options ) {
+		$get_diff_one = function ( $name, $options ) {
+			return array_slice( array_filter( $options, function( $option ) use ( $name ) {
+				return $option['name'] === $name;
+			}), 0, 1 )[0];
+		};
+
+		// Add or delete
+		if ( count( $new_options ) !== count( $old_options ) ) {
+			$old_option_names = array_column( $old_options, 'name' );
+			$new_option_names = array_column( $new_options, 'name' );
+			return ( count( $new_option_names ) > count( $old_option_names ) )
+				? [
+					'type' => 'add',
+					'value' => $get_diff_one(
+						array_slice( array_diff( $new_option_names, $old_option_names ), 0, 1 )[0],
+						$new_options
+					)
+				]
+				:  [
+					'type' => 'delete',
+					'value' => $get_diff_one(
+						array_slice( array_diff( $old_option_names, $new_option_names ), 0, 1 )[0],
+						$old_options
+					)
+				];
+		}
+		// Update or no change
+		$diff_keys = ['width', 'height', 'crop'];
+		foreach ( $diff_keys as $diff_key ) {
+			$new_values = array_column( $new_options, $diff_key, 'name' );
+			$old_values = array_column( $old_options, $diff_key, 'name' );
+			$diff_values = array_diff( $new_values, $old_values );
+			if ( !empty( $diff_values ) ) {
+				return [
+					'type' => 'update',
+					'value' => $get_diff_one( array_keys( $diff_values )[0], $new_options )
+				];
+			}
+		}
+		return null;
+	}
+
+	function register_custom_image_size ( $type, $name, $width, $height, $crop ) {
+		if ( $type === 'delete' ) {
+			if ( !remove_image_size( $name ) ) {
+				throw new Exception( "Could not remove image size '{$name}'." );
+			}
+			return;
+		}
+		if ( in_array( $crop, ['yes', 'no'] ) ) {
+			$crop = $crop === 'yes';
+		} else {
+			$crop = explode( '-', $crop );
+		}
+		add_image_size( $name, $width, $height, $crop );
+	}
+
+	private function random_ascii_chars( $length = 8 ) {
+		$characters = array_merge( range( 'A', 'Z' ), range( 'a', 'z' ), range( '0', '9' ) );
+		$characters_length = count( $characters );
+		$random_string = '';
+
+		for ($i = 0; $i < $length; $i++) {
+			$random_string .= $characters[rand(0, $characters_length - 1)];
+		}
+
+		return $random_string;
+	}
 
 }
 

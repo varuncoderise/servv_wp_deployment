@@ -5,10 +5,21 @@
  * @package wpcode
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Class WPCode_Auto_Insert_Archive.
  */
 class WPCode_Auto_Insert_Archive extends WPCode_Auto_Insert_Type {
+
+	/**
+	 * The category of this type.
+	 *
+	 * @var string
+	 */
+	public $category = 'page';
 
 	/**
 	 * Load the available options and labels.
@@ -18,11 +29,26 @@ class WPCode_Auto_Insert_Archive extends WPCode_Auto_Insert_Type {
 	public function init() {
 		$this->label     = __( 'Categories, Archives, Tags, Taxonomies', 'insert-headers-and-footers' );
 		$this->locations = array(
-			'before_excerpt'      => __( 'Insert Before Excerpt', 'insert-headers-and-footers' ),
-			'after_excerpt'       => __( 'Insert After Excerpt', 'insert-headers-and-footers' ),
-			'between_posts'       => __( 'Between Posts', 'insert-headers-and-footers' ),
-			'archive_before_post' => __( 'Before Post', 'insert-headers-and-footers' ),
-			'archive_after_post'  => __( 'After Post', 'insert-headers-and-footers' ),
+			'before_excerpt'      => array(
+				'label'       => __( 'Insert Before Excerpt', 'insert-headers-and-footers' ),
+				'description' => __( 'Insert snippet above post summary.', 'insert-headers-and-footers' ),
+			),
+			'after_excerpt'       => array(
+				'label'       => __( 'Insert After Excerpt', 'insert-headers-and-footers' ),
+				'description' => __( 'Insert snippet below post summary.', 'insert-headers-and-footers' ),
+			),
+			'between_posts'       => array(
+				'label'       => __( 'Between Posts', 'insert-headers-and-footers' ),
+				'description' => __( 'Insert snippet between multiple posts.', 'insert-headers-and-footers' ),
+			),
+			'archive_before_post' => array(
+				'label'       => __( 'Before Post', 'insert-headers-and-footers' ),
+				'description' => __( 'Insert snippet at the beginning of a post.', 'insert-headers-and-footers' ),
+			),
+			'archive_after_post'  => array(
+				'label'       => __( 'After Post', 'insert-headers-and-footers' ),
+				'description' => __( 'Insert snippet at the end of a post.', 'insert-headers-and-footers' ),
+			),
 		);
 	}
 
@@ -119,7 +145,7 @@ class WPCode_Auto_Insert_Archive extends WPCode_Auto_Insert_Type {
 		foreach ( $snippets as $snippet ) {
 			$insert_number = $snippet->get_auto_insert_number();
 			if ( $query->current_post === $insert_number - 1 ) {
-				echo wpcode()->execute->get_snippet_output( $snippet );
+				echo wpcode()->execute->get_snippet_output( $snippet ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
 
@@ -128,7 +154,7 @@ class WPCode_Auto_Insert_Archive extends WPCode_Auto_Insert_Type {
 		foreach ( $snippets as $snippet ) {
 			$insert_number = $snippet->get_auto_insert_number();
 			if ( $query->current_post === $insert_number ) {
-				echo wpcode()->execute->get_snippet_output( $snippet );
+				echo wpcode()->execute->get_snippet_output( $snippet ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
 	}

@@ -102,7 +102,7 @@ function head_meta_data_wp_resources() {
 			<p><strong><?php esc_html_e('Please Donate', 'head-meta-data') ?></strong></p>
 			<p><?php echo $donate; ?></p>
 			<ul>
-				<li><a target="_blank" rel="noopener noreferrer" href="https://monzillamedia.com/donate.html" title="<?php echo $title3; ?>"><?php esc_html_e('Make a donation', 'head-meta-data') ?>&nbsp;&raquo;</a></li>
+				<li><a target="_blank" rel="noopener noreferrer" href="<?php echo $url3; ?>" title="<?php echo $title3; ?>"><?php esc_html_e('Make a donation&nbsp;&raquo;', 'head-meta-data') ?></a></li>
 			</ul>
 		</div>
 	</div>

@@ -12,7 +12,7 @@
  *
  * @see https://github.com/vendidero/woocommerce-germanized/wiki/Overriding-Germanized-Templates
  * @package Germanized/Templates
- * @version 2.4.2
+ * @version 2.5.0
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -53,7 +53,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					'value' => esc_attr( $order_button_text ),
 					'type' => 'submit',
 					'data-value' => esc_attr( $order_button_text ),
-					'class' => 'gem-button-tablet-size-small'
+					'class' => 'gem-button-tablet-size-small' . esc_attr( wc_gzd_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_gzd_wp_theme_get_element_class_name( 'button' ) : '' )
 				)
 			), true);
 		?>
@@ -65,3 +65,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 	</div>
 </div>
+
+<?php do_action( 'woocommerce_gzd_review_order_after_submit' ); ?>

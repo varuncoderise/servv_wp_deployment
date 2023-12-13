@@ -12,7 +12,8 @@
 
 	$thegem_classes = array();
 
-	if(is_sticky() && !is_paged()) {
+	$is_sticky = is_sticky() && empty($params['ignore_sticky']) && !is_paged();
+	if ($is_sticky) {
 		$thegem_classes = array_merge($thegem_classes, array('sticky', 'default-background'));
 	}
 
@@ -27,7 +28,7 @@
 		<div class="item-post-container">
 			<div class="post-item clearfix" style="<?php echo (!empty($item_colors['background_color']) ? 'background-color: '.esc_attr($item_colors['background_color']).';' : ''); ?><?php echo (!empty($item_colors['border_color']) ? 'border-color: '.esc_attr($item_colors['border_color']).';' : ''); ?>">
 				<?php
-					if(!is_single() && is_sticky()) {
+					if(!is_single() && $is_sticky) {
 						echo '<div class="sticky-label">&#xe61a;</div>';
 					}
 				?>
@@ -51,7 +52,7 @@
 				</svg>
 				<div class="post-text-wrap">
 					<div class="post-title">
-						<?php the_title('<'.(is_sticky() && !is_paged() ? 'h2' : 'h3').' class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark"'.(!empty($item_colors['post_title_color']) ? ' style="color: '.esc_attr($item_colors['post_title_color']).'"' : '').(!empty($item_colors['post_title_hover_color']) ? ' onmouseenter="jQuery(this).data(\'color\', this.style.color);this.style.color=\''.esc_attr($item_colors['post_title_hover_color']).'\';" onmouseleave="this.style.color=jQuery(this).data(\'color\');"' : '').'><span class="light">', '</span></a></'.(is_sticky() && !is_paged() ? 'h2' : 'h3').'>'); ?>
+						<?php the_title('<'.($is_sticky ? 'h2' : 'h3').' class="entry-title"><a href="' . esc_url(get_permalink()) . '" rel="bookmark"'.(!empty($item_colors['post_title_color']) ? ' style="color: '.esc_attr($item_colors['post_title_color']).'"' : '').(!empty($item_colors['post_title_hover_color']) ? ' onmouseenter="jQuery(this).data(\'color\', this.style.color);this.style.color=\''.esc_attr($item_colors['post_title_hover_color']).'\';" onmouseleave="this.style.color=jQuery(this).data(\'color\');"' : '').'><span class="light">', '</span></a></'.($is_sticky ? 'h2' : 'h3').'>'); ?>
 					</div>
 					<div class="post-content"<?php echo (!empty($item_colors['post_excerpt_color']) ? ' style="color: '.esc_attr($item_colors['post_excerpt_color']).'"' : ''); ?>>
 						<div class="summary">
@@ -64,27 +65,35 @@
 					</div>
 					<div class="post-misc">
 						<div class="post-author">
-							<span class="post-meta-author"><?php printf( esc_html__( "By %s", "thegem" ), get_the_author_link() );?></span>
+							<?php if (!$params['hide_author']) : ?>
+								<span class="post-meta-author"><?php printf( esc_html__( "By %s", "thegem" ), get_the_author_link() );?></span>
+							<?php endif ?>
 							<?php if($thegem_categories): ?>
 								<span class="post-meta-categories"><?php echo esc_html__( "in ", "thegem" ) . implode('<span class="sep"></span>', $thegem_categories_list); ?></span>
 							<?php endif ?>
 						</div>
 						<div class="post-soc-info">
-							<span class="post-comments">
-								<?php if(comments_open()): ?>
+							<?php if (comments_open() && !$params['hide_comments']): ?>
+								<span class="post-comments">
 									<span class="comments-link"><?php comments_popup_link(0, 1, '%'); ?></span>
-								<?php endif; ?>
-								<?php if(comments_open() && function_exists('zilla_likes')): ?><span class="sep"></span><?php endif; ?>
-							</span>
-							<span class="post-likes">
-								<?php if( function_exists('zilla_likes') ) { echo '<span class="post-meta-likes">';zilla_likes();echo '</span>'; } ?>
-							</span>
+									<?php if (!$params['hide_likes'] && function_exists('zilla_likes')): ?>
+										<span class="sep"></span>
+									<?php endif; ?>
+								</span>
+							<?php endif ?>
+							<?php if (!$params['hide_likes'] && function_exists('zilla_likes')): ?>
+								<span class="post-likes">
+									<span class="post-meta-likes">
+										<?php zilla_likes(); ?>
+									</span>
+								</span>
+							<?php endif ?>
 						</div>
 						<div class="post-links">
                             <?php if(!$params['hide_social_sharing']) : ?>
-                            <div class="post-footer-sharing"><?php thegem_button(array('icon' => 'share', 'size' => (is_sticky() && !is_paged() ? '' : 'tiny'), 'background_color' => (!empty($item_colors['sharing_button_color']) ? $item_colors['sharing_button_color'] : ''), 'text_color' => (!empty($item_colors['sharing_button_icon_color']) ? $item_colors['sharing_button_icon_color'] : '')), 1); ?><div class="sharing-popup"><?php thegem_socials_sharing(); ?><svg class="sharing-styled-arrow"><use xlink:href="<?php echo esc_url(THEGEM_THEME_URI . '/css/post-arrow.svg'); ?>#dec-post-arrow"></use></svg></div></div>
+                            <div class="post-footer-sharing"><?php thegem_button(array('icon' => 'share', 'size' => ($is_sticky ? '' : 'tiny'), 'background_color' => (!empty($item_colors['sharing_button_color']) ? $item_colors['sharing_button_color'] : ''), 'text_color' => (!empty($item_colors['sharing_button_icon_color']) ? $item_colors['sharing_button_icon_color'] : '')), 1); ?><div class="sharing-popup"><?php thegem_socials_sharing(); ?><svg class="sharing-styled-arrow"><use xlink:href="<?php echo esc_url(THEGEM_THEME_URI . '/css/post-arrow.svg'); ?>#dec-post-arrow"></use></svg></div></div>
                             <?php endif; ?>
-                            <div class="post-read-more"><?php thegem_button(array('href' => get_the_permalink(), 'style' => 'outline', 'text' => __('Read More', 'thegem'), 'size' => (is_sticky() && !is_paged() ? '' : 'tiny')), 1); ?></div>
+                            <div class="post-read-more"><?php thegem_button(array('href' => get_the_permalink(), 'style' => 'outline', 'text' => __('Read More', 'thegem'), 'size' => ($is_sticky ? '' : 'tiny')), 1); ?></div>
 						</div>
 					</div>
 				</div>

@@ -33,14 +33,8 @@ class TheGem_Dummy_WP_Image_Editor extends WP_Image_Editor {
 	}
 
 	public function get_size() {
-		$implementation = $this->get_image_editor_implementation();
 
-		if (stripos($implementation, 'Imagick') !== false) {
-			$imagick = new Imagick($this->file);
-			return $imagick->getImageGeometry();
-		}
-
-		if (stripos($implementation, 'GD') !== false) {
+		if (function_exists('getimagesize')) {
 			$size = @getimagesize( $this->file );
 			if (!$size) {
 				return false;
@@ -49,6 +43,13 @@ class TheGem_Dummy_WP_Image_Editor extends WP_Image_Editor {
 				'width' => $size[0],
 				'height' => $size[1]
 			);
+		}
+
+		$implementation = $this->get_image_editor_implementation();
+
+		if (stripos($implementation, 'Imagick') !== false) {
+			$imagick = new Imagick($this->file);
+			return $imagick->getImageGeometry();
 		}
 
 		$image_editor = wp_get_image_editor($this->file);

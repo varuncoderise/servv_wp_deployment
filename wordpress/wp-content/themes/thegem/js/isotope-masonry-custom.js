@@ -23,7 +23,7 @@
   } else {
     // browser global
     factory(
-      window.Isotope.LayoutMode,
+      window.ThegemIsotope.LayoutMode,
       window.Masonry
     );
   }
@@ -64,15 +64,15 @@ function extend( a, b ) {
   var measureColumns = MasonryMode.prototype.measureColumns;
   MasonryMode.prototype.measureColumns = function() {
     // set items, used if measuring first item
-    this.items = this.isotope.filteredItems;
+    this.items = this.thegem_isotope.filteredItems;
     measureColumns.call( this );
   };
 
   // HACK copy over isOriginLeft/Top options
   var _manageStamp = MasonryMode.prototype._manageStamp;
   MasonryMode.prototype._manageStamp = function() {
-    this.options.isOriginLeft = this.isotope.options.isOriginLeft;
-    this.options.isOriginTop = this.isotope.options.isOriginTop;
+    this.options.isOriginLeft = this.thegem_isotope.options.isOriginLeft;
+    this.options.isOriginTop = this.thegem_isotope.options.isOriginTop;
     _manageStamp.apply( this, arguments );
   };
 
@@ -84,25 +84,28 @@ function extend( a, b ) {
       var self = this;
       var container = this.options.isFitWidth ? this.element.parentNode : this.element;
       var $set = $(container);
+      if (!$(this.thegem_isotope.options.itemImageWrapperSelector, $set).length) return;
 
       var max_heigth = 0;
-      var padding = parseFloat($(self.isotope.options.itemSelector, $set).first().css('padding-top'));
+      var padding = parseFloat($(self.thegem_isotope.options.itemSelector, $set).first().css('padding-top'));
+      var wrap_border = parseFloat($(self.thegem_isotope.options.itemSelector, $set).first().find('.wrap').css('border-width'));
+      var wrap_padding = parseFloat($(self.thegem_isotope.options.itemSelector, $set).first().find('.wrap').css('padding-top'));
 
-      $(self.isotope.options.itemSelector + ' ' + self.isotope.options.itemImageWrapperSelector, $set).css('height', '');
-      $(self.isotope.options.itemSelector + ' ' + self.isotope.options.itemImageWrapperSelector + ' img', $set).css('height', '');
+      $(self.thegem_isotope.options.itemSelector + ' ' + self.thegem_isotope.options.itemImageWrapperSelector, $set).css('height', '');
+      $(self.thegem_isotope.options.itemSelector + ' ' + self.thegem_isotope.options.itemImageWrapperSelector + ' img', $set).css('height', '');
 
       var caption = 0;
-      if (self.isotope.options.gridType === 'portfolio') {
-          if ($(self.isotope.options.itemSelector, $set).first().find('.wrap > .caption').is(':visible')) {
-              caption = parseInt($(self.isotope.options.itemSelector, $set).first().find('.wrap > .caption').outerHeight());
+      if (self.thegem_isotope.options.gridType === 'portfolio') {
+          if ($(self.thegem_isotope.options.itemSelector, $set).first().find('.wrap > .caption').is(':visible')) {
+              caption = parseInt($(self.thegem_isotope.options.itemSelector, $set).first().find('.wrap > .caption').outerHeight());
           }
       }
 
       var fix_caption = false;
-      var $items = $(self.isotope.options.itemSelector, $set).not('.double-item-squared, .double-item-vertical, .double-item-horizontal');
+      var $items = $(self.thegem_isotope.options.itemSelector, $set).not('.double-item-squared, .double-item-vertical, .double-item-horizontal');
 
       if ($items.length == 0) {
-          $items = $(self.isotope.options.itemSelector, $set).not('.double-item-squared, .double-item-vertical');
+          $items = $(self.thegem_isotope.options.itemSelector, $set).not('.double-item-squared, .double-item-vertical');
       }
 
       if ($items.length == 0) {
@@ -110,7 +113,7 @@ function extend( a, b ) {
       }
 
       $items.each(function() {
-          var height = parseFloat(getStyle($(self.isotope.options.itemImageWrapperSelector, this)[0]).height);
+          var height = parseFloat(getStyle($(self.thegem_isotope.options.itemImageWrapperSelector, this)[0]).height);
           var diff = height - parseInt(height);
 
           if (isNaN(height)) {
@@ -139,36 +142,18 @@ function extend( a, b ) {
           caption += 1;
       }
 
-      $(self.isotope.options.itemImageWrapperSelector + ' img', $set).css('height', max_heigth);
-      //$(self.isotope.options.itemSelector + '.double-item-horizontal ' + self.isotope.options.itemImageWrapperSelector + ', ' + self.isotope.options.itemSelector + '.double-item-vertical ' + self.isotope.options.itemImageWrapperSelector, $set).css('height', '');
-      $(self.isotope.options.itemSelector + '.double-item ' + self.isotope.options.itemImageWrapperSelector, $set).css('height', '');
-      $(self.isotope.options.itemSelector + '.double-item ' + self.isotope.options.itemImageWrapperSelector + ' img', $set).css('height', '');
+      $(self.thegem_isotope.options.itemImageWrapperSelector, $set).css('height', max_heigth);
+      $(self.thegem_isotope.options.itemSelector + '.double-item:not(.double-item-horizontal) ' + self.thegem_isotope.options.itemImageWrapperSelector, $set).css('height', '');
 
       if (!max_heigth) {
           return;
       }
 
-      $(self.isotope.options.itemSelector + '.double-item-horizontal', $set).each(function() {
-          var height = $(self.isotope.options.itemImageWrapperSelector, this).height();
-          if (height > max_heigth) {
-              $(self.isotope.options.itemImageWrapperSelector, this).height(max_heigth);
-          } else if (height < max_heigth && $(window).width() > 767) {
-              $(self.isotope.options.itemImageWrapperSelector + ' img', this).height(max_heigth).width('auto');
-          }
-      });
-
       var setWidth = $set.outerWidth();
 
-      $(self.isotope.options.itemSelector + '.double-item-vertical' + ', ' + self.isotope.options.itemSelector + '.double-item-squared', $set).each(function() {
-          var height = $(self.isotope.options.itemImageWrapperSelector, this).height();
-          var calc_height = 2 * max_heigth + 2 * padding + caption;
-          if (height > calc_height) {
-              $(self.isotope.options.itemImageWrapperSelector, this).height(calc_height);
-          } else if (height < calc_height && $(window).width() > 767) {
-              if ($(this).outerWidth() < setWidth) {
-                  $(self.isotope.options.itemImageWrapperSelector + ' img', this).height(calc_height);
-              }
-          }
+      $(self.thegem_isotope.options.itemSelector + '.double-item-vertical' + ', ' + self.thegem_isotope.options.itemSelector + '.double-item-squared', $set).each(function() {
+          var calc_height = 2 * (max_heigth + padding + wrap_border + wrap_padding) + caption;
+          $(self.thegem_isotope.options.itemImageWrapperSelector, this).css('height', calc_height);
       });
   }
 
@@ -177,7 +162,7 @@ function extend( a, b ) {
         container = this.options.isFitWidth ? this.element.parentNode : this.element,
         $set = $(container);
 
-      $(this.isotope.options.itemSelector + ' .wrap > .caption', $set).css('height', '');
+      $(this.thegem_isotope.options.itemSelector + ' .wrap > .caption', $set).css('height', '');
 
       for (var index = 1; index <= rowsData.count; index++) {
           var maxCaptionHeight = 0;
@@ -245,7 +230,7 @@ function extend( a, b ) {
                   rowsData[ rowIndex ].items[ itemIndex ].rowSpan == rowsData[ rowIndex ].items[ itemIndex ].rowIndex*/
               ) {
                   var $element = $(rowsData[ rowIndex ].items[ itemIndex ].item.element);
-                  var height = Math.round($(self.isotope.options.itemImageWrapperSelector, $element).height());
+                  var height = Math.round($(self.thegem_isotope.options.itemImageWrapperSelector, $element).height());
 
                   if (minHeight == -1 || height < minHeight) {
                       minHeight = height;
@@ -271,7 +256,7 @@ function extend( a, b ) {
               }
 
               var $element = $(rowsData[ rowIndex ].items[ itemIndex ].item.element);
-              var height = $(self.isotope.options.itemImageWrapperSelector, $element).height();
+              var height = $(self.thegem_isotope.options.itemImageWrapperSelector, $element).height();
 
               if (minHeight == -1 || height < minHeight) {
                   minHeight = height;
@@ -286,15 +271,15 @@ function extend( a, b ) {
       var self = this,
         container = this.options.isFitWidth ? this.element.parentNode : this.element,
         $set = $(container),
-        padding = parseFloat($(self.isotope.options.itemSelector, $set).first().css('padding-top'));
+        padding = parseFloat($(self.thegem_isotope.options.itemSelector, $set).first().css('padding-top'));
 
-      $(self.isotope.options.itemSelector + ' ' + self.isotope.options.itemImageWrapperSelector, $set).css('height', '');
-      $(self.isotope.options.itemSelector + ' ' + self.isotope.options.itemImageWrapperSelector + ' img', $set).css('height', '');
+      $(self.thegem_isotope.options.itemSelector + ' ' + self.thegem_isotope.options.itemImageWrapperSelector, $set).css('height', '');
+      $(self.thegem_isotope.options.itemSelector + ' ' + self.thegem_isotope.options.itemImageWrapperSelector + ' img', $set).css('height', '');
 
-      var $items = $(self.isotope.options.itemSelector, $set).not('.double-item-squared, .double-item-vertical, .double-item-horizontal');
+      var $items = $(self.thegem_isotope.options.itemSelector, $set).not('.double-item-squared, .double-item-vertical, .double-item-horizontal');
 
       if ($items.length == 0) {
-          $items = $(self.isotope.options.itemSelector, $set).not('.double-item-squared, .double-item-vertical');
+          $items = $(self.thegem_isotope.options.itemSelector, $set).not('.double-item-squared, .double-item-vertical');
       }
 
       if ($items.length == 0) {
@@ -303,7 +288,7 @@ function extend( a, b ) {
 
       var maxNormalImageHeight = 0;
       $items.each(function() {
-          var height = parseFloat(getStyle($(self.isotope.options.itemImageWrapperSelector, this)[0]).height);
+          var height = parseFloat(getStyle($(self.thegem_isotope.options.itemImageWrapperSelector, this)[0]).height);
           var diff = height - parseInt(height);
 
           if (isNaN(height)) {
@@ -335,11 +320,11 @@ function extend( a, b ) {
           for (var itemIndex = 0; itemIndex < rowsData[ index ].items.length; itemIndex++) {
 
               var $element = $(rowsData[ index ].items[ itemIndex ].item.element);
-              var height = $(self.isotope.options.itemImageWrapperSelector, $element).height();
+              var height = $(self.thegem_isotope.options.itemImageWrapperSelector, $element).height();
 
               if ((rowsData[ index ].items[ itemIndex ].rowSpan == 1 && rowsData[ index ].items[ itemIndex ].colSpan == 1) || rowsData[ index ].items[ itemIndex ].rowSpan != rowsData[ index ].items[ itemIndex ].rowIndex) {
                   if ($(window).width() > 767 && (rowsData[ index ].items[ itemIndex ].rowSpan == 1 && rowsData[ index ].items[ itemIndex ].colSpan == 1)) {
-                      $(self.isotope.options.itemImageWrapperSelector + ' img', $element).height(maxNormalImageHeight);
+                      $(self.thegem_isotope.options.itemImageWrapperSelector + ' img', $element).height(maxNormalImageHeight);
                   }
                   continue;
               }
@@ -361,24 +346,24 @@ function extend( a, b ) {
                       var minImageHeight = this.getRowDoubleMinImageHeight(rowsData, index);
 
                       if (height > minImageHeight) {
-                          $(self.isotope.options.itemImageWrapperSelector, $element).height(minImageHeight);
+                          $(self.thegem_isotope.options.itemImageWrapperSelector, $element).height(minImageHeight);
                       }
 
                       continue;
                   }
 
                   if (height > calcHeight) {
-                      $(self.isotope.options.itemImageWrapperSelector, $element).height(calcHeight);
+                      $(self.thegem_isotope.options.itemImageWrapperSelector, $element).height(calcHeight);
                   } else if (height < calcHeight) {
                       if (rowsData[ index ].items[ itemIndex ].item.size.width < self.containerWidth) {
-                          $(self.isotope.options.itemImageWrapperSelector + ' img', $element).height(calcHeight);
+                          $(self.thegem_isotope.options.itemImageWrapperSelector + ' img', $element).height(calcHeight);
                       }
                   }
               } else if (rowsData[ index ].items[ itemIndex ].colSpan > 1) {
                   if (height > maxNormalImageHeight) {
-                      $(self.isotope.options.itemImageWrapperSelector, $element).height(maxNormalImageHeight);
+                      $(self.thegem_isotope.options.itemImageWrapperSelector, $element).height(maxNormalImageHeight);
                   } else if (height < maxNormalImageHeight && $(window).width() > 767) {
-                      $(self.isotope.options.itemImageWrapperSelector + ' img', $element).height(maxNormalImageHeight).width('auto');
+                      $(self.thegem_isotope.options.itemImageWrapperSelector + ' img', $element).height(maxNormalImageHeight).width('auto');
                   }
               }
           }
@@ -390,7 +375,7 @@ function extend( a, b ) {
       container = this.options.isFitWidth ? this.element.parentNode : this.element,
       $set = $(container);
 
-      $(self.isotope.options.itemSelector + '.format-quote ' + self.isotope.options.itemImageWrapperSelector + ' img', $set).css('height', '');
+      $(self.thegem_isotope.options.itemSelector + '.format-quote ' + self.thegem_isotope.options.itemImageWrapperSelector + ' img', $set).css('height', '');
 
       for (var index = 1; index <= rowsData.count; index++) {
           if (rowsData[ index ] === undefined) {
@@ -481,16 +466,16 @@ function extend( a, b ) {
   MasonryMode.prototype._resetLayout = function() {
       _resetLayout.apply( this, arguments );
 
-      if (this.isotope.options.gridType == 'news' || this.isotope.options.fixCaption) {
+      if (this.thegem_isotope.options.gridType == 'news' || this.thegem_isotope.options.fixCaption) {
           var rowsData = this.buildRowsData();
       }
 
-      if (this.isotope.options.fixCaption) {
+      if (this.thegem_isotope.options.fixCaption) {
           this.fixItemsCaptionHeight(rowsData);
       }
 
-      if (this.isotope.options.fixHeightDoubleItems) {
-          if (this.isotope.options.gridType == 'news' && this.itemsHasCaption()) {
+      if (this.thegem_isotope.options.fixHeightDoubleItems) {
+          if (this.thegem_isotope.options.gridType == 'news' && this.itemsHasCaption()) {
               this.fixItemsImageHeight(rowsData);
               this.fixQuoteItemsHeight(rowsData);
           } else {

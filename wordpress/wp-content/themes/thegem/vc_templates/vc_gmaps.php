@@ -9,7 +9,6 @@ extract( shortcode_atts( array(
 	'type' => 'm', //depreceated from 4.0.2
 	'bubble' => '', //depreceated from 4.0.2
 	'el_class' => '',
-	'disable_scroll' => '',
 	'style' => '',
 	'hide_title' => '',
 ), $atts ) );
@@ -54,16 +53,13 @@ $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'wpb_gmaps_widge
 		if($width && intval($width) > 0) {
 			$css_style .= 'width: '.$width.';';
 		}
-		if($disable_scroll) {
-			$frame_css_style .= 'pointer-events: none;';
-		}
 		if($size && intval($size) > 0) {
 			$frame_css_style .= 'height: '.$size.';';
 		}
 		$return_html = '<div class="gem-gmaps gem-wrapbox gem-wrapbox-style-'.$classes.'" style="'.$css_style.'">'.
 			'<div class="gem-wrapbox-inner">'.
 			($style == '11' ? '<div class="gmaps_round">' : '').
-			'<div class="gem-gmaps-hide"><iframe style="'.$frame_css_style.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' . esc_url($link . '&amp;t=' . $type . '&amp;z=' . $zoom . '&amp;output=embed' . $bubble) . '" class="gem-wrapbox-element"></iframe>'.($disable_scroll ? '<a class="map-locker" href="javascript:void(0);"></a>' : '').'</div>'.
+			'<div class="gem-gmaps-hide"><iframe style="'.$frame_css_style.'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' . esc_url($link . '&amp;t=' . $type . '&amp;z=' . $zoom . '&amp;output=embed' . $bubble) . '" class="gem-wrapbox-element"></iframe></div>'.
 			($style == '11' ? '</div>' : '').
 			'</div>'.
 			'</div>';
@@ -85,12 +81,9 @@ $css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'wpb_gmaps_widge
 		<div class="wpb_map_wraper <?php if ($hide_title) echo 'hide_title'?>">
 			<?php
 			if ( preg_match( '/^\<iframe/', $link ) ) {
-				if($disable_scroll) {
-					$link = preg_replace( '/^\<iframe/', '<iframe style="pointer-events: none;"', $link ).'<a class="map-locker" href="javascript:void(0);"></a>';
-				}
 					$return_html = $link;
 				} else {
-					$return_html = '<iframe width="100%" height="' . $size . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' . esc_url($link . '&amp;t=' . $type . '&amp;z=' . $zoom . '&amp;output=embed' . $bubble) . '"'.($disable_scroll ? ' style="pointer-events: none;"' : '').'></iframe>'.($disable_scroll ? '<a class="map-locker" href="javascript:void(0);"></a>' : '');
+					$return_html = '<iframe width="100%" height="' . $size . '" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' . esc_url($link . '&amp;t=' . $type . '&amp;z=' . $zoom . '&amp;output=embed' . $bubble) . '"'.'></iframe>';
 			}
 
 				if (class_exists('TheGemGdpr')) {

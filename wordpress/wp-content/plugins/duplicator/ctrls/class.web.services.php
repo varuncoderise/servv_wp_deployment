@@ -1,6 +1,7 @@
 <?php
 
 use Duplicator\Libs\Snap\SnapUtil;
+use Duplicator\Views\AdminNotices;
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
@@ -112,15 +113,15 @@ class DUP_Web_Services
             DUP_Util::hasCapability('export', DUP_Util::SECURE_ISSUE_THROW);
 
             if (!$isValid) {
-                throw new Exception(__("Invalid request"));
+                throw new Exception(__('Invalid request.', 'duplicator'));
             }
 
             if (($package = DUP_Package::getByID($packageId)) == null) {
-                throw new Exception(__("Invalid request."));
+                throw new Exception(__('Invalid request.', 'duplicator'));
             }
 
             if ($hash !== $package->Hash) {
-                throw new Exception(__("Invalid request."));
+                throw new Exception(__('Invalid request.', 'duplicator'));
             }
 
             $fileName     = $package->getInstDownloadName();
@@ -134,7 +135,7 @@ class DUP_Web_Services
 
             // Process download
             if (!file_exists($filepath)) {
-                throw new Exception(__("INVALID REQUEST: File not found, please check the backup folder for file."));
+                throw new Exception(__('INVALID REQUEST: File not found, please check the backup folder for file.', 'duplicator'));
             }
 
             // Clean output buffer
@@ -218,12 +219,12 @@ class DUP_Web_Services
 
             $noticeToDismiss = filter_input(INPUT_POST, 'notice', FILTER_UNSAFE_RAW);
             switch ($noticeToDismiss) {
-                case DUP_UI_Notice::OPTION_KEY_ACTIVATE_PLUGINS_AFTER_INSTALL:
-                case DUP_UI_Notice::OPTION_KEY_NEW_NOTICE_TEMPLATE:
+                case AdminNotices::OPTION_KEY_ACTIVATE_PLUGINS_AFTER_INSTALL:
+                case AdminNotices::OPTION_KEY_NEW_NOTICE_TEMPLATE:
                     delete_option($noticeToDismiss);
                     break;
-                case DUP_UI_Notice::OPTION_KEY_IS_ENABLE_NOTICE_DISMISSED:
-                case DUP_UI_Notice::OPTION_KEY_IS_MU_NOTICE_DISMISSED:
+                case AdminNotices::OPTION_KEY_IS_ENABLE_NOTICE_DISMISSED:
+                case AdminNotices::OPTION_KEY_IS_MU_NOTICE_DISMISSED:
                     update_option($noticeToDismiss, true);
                     break;
                 default:

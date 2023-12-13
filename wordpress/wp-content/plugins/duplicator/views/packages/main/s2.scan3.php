@@ -1,6 +1,7 @@
 <?php
 
-use Duplicator\Libs\Upsell;
+use Duplicator\Installer\Utils\LinkManager;
+use Duplicator\Utils\Upsell;
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
     /*IDE Helper*/
@@ -17,6 +18,7 @@ $archive_type_label     =  DUP_Settings::Get('archive_build_mode') == DUP_Archiv
 $archive_type_extension =  DUP_Settings::Get('archive_build_mode') == DUP_Archive_Build_Mode::ZipArchive ? "zip" : "daf";
 $duparchive_max_limit   = DUP_Util::readableByteSize(DUPLICATOR_MAX_DUPARCHIVE_SIZE);
 $skip_archive_scan      = DUP_Settings::Get('skip_archive_scan');
+$dbbuild_mode           = DUP_DB::getBuildMode();
 ?>
 
 <!-- ================================================================
@@ -49,7 +51,7 @@ ARCHIVE -->
             data-tooltip="<?php esc_attr_e('This size includes only files BEFORE compression is applied. It does not include the size of the '
                         . 'database script or any applied filters.  Once complete the package size will be smaller than this number.', 'duplicator'); ?>"></i>
 
-        <div class="dup-data-size-uncompressed"><?php esc_html_e("uncompressed"); ?></div>
+        <div class="dup-data-size-uncompressed"><?php esc_html_e('uncompressed', 'duplicator'); ?></div>
     </div>
 </div>
 
@@ -99,30 +101,55 @@ TOTAL SIZE -->
         ?>
         <div id="size-more-details">
             <?php
-                echo "<b>" . esc_html__('Overview', 'duplicator') . ":</b><br/>";
-                $dup_byte_size = '<b>' . DUP_Util::byteSize(DUPLICATOR_SCAN_SIZE_DEFAULT) . '</b>';
-                printf(esc_html__('This notice is triggered at [%s] and can be ignored on most hosts.  If during the build process you see a "Host Build Interrupt" message then this '
-                    . 'host has strict processing limits.  Below are some options you can take to overcome constraints set up on this host.', 'duplicator'), $dup_byte_size);
-                echo '<br/><br/>';
-
-                echo "<b>" . esc_html__('Timeout Options', 'duplicator') . ":</b><br/>";
-                echo '<ul>';
-                echo '<li>' . esc_html__('Apply the "Quick Filters" below or click the back button to apply on previous page.', 'duplicator') . '</li>';
-                echo '<li>' . esc_html__('See the FAQ link to adjust this hosts timeout limits: ', 'duplicator') .
-                    "&nbsp;<a href='https://snapcreek.com/duplicator/docs/faqs-tech/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=problem_resolution&utm_content=pkg_s2scan3_tolimits#faq-trouble-100-q' target='_blank'>" .
-                    esc_html__('What can I try for Timeout Issues?', 'duplicator') . '</a></li>';
-                echo '<li>' . esc_html__('Consider trying multi-threaded support in ', 'duplicator');
-                echo "<a href='" . esc_url(Upsell::getCampaignUrl(array('utm_medium' => 'package-build-scan', 'utm_content' => 'Multi Threaded Get Pro')))  . "' target='_blank'>" . esc_html__('Duplicator Pro.', 'duplicator') . "</a>";
-                echo '</li>';
-                echo '</ul>';
-
-                $hlptxt = sprintf(
-                    __('Files over %1$s are listed below. Larger files such as movies or zipped content can cause timeout issues on some budget hosts.  If you are having '
-                    . 'issues creating a package try excluding the directory paths below or go back to Step 1 and add them.', 'duplicator'),
-                    DUP_Util::byteSize(DUPLICATOR_SCAN_WARNFILESIZE)
-                );
+            printf(
+                _x(
+                    'This notice is triggered at [%s] and can be ignored on most hosts.  If during the build process you see a "Host Build Interrupt"'
+                    . ' message then this host has strict processing limits.  Below are some options you can take to overcome constraints '
+                    . 'set up on this host.',
+                    '%s size in bytes',
+                    'duplicator'
+                ),
+                '<b>' . DUP_Util::byteSize(DUPLICATOR_SCAN_SIZE_DEFAULT) . '</b>'
+            );
             ?>
+            <br/><br/>
+            <b><?php esc_html_e('Timeout Options', 'duplicator') ?>":</b>
+            <br/>
+            <ul>
+                <li><?php esc_html_e('Apply the "Quick Filters" below or click the back button to apply on previous page.', 'duplicator'); ?> </li>
+                <li>
+                    <?php
+                    printf(
+                        _x(
+                            'See the FAQ link to adjust this hosts timeout limits: %1$sWhat can I try for Timeout Issues?%2$s',
+                            '%1$s and %2$s are <a> tags',
+                            'duplicator'
+                        ),
+                        '<a href="' . esc_url(LinkManager::getDocUrl('how-to-handle-server-timeout-issues', 'scan3', 'timeout issues')) . '" target="_blank">',
+                        '</a>'
+                    );
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    printf(
+                        _x(
+                            'Consider trying multi-threaded support in %1$sDuplicator Pro%2$s.',
+                            '%1$s and %2$s are <a> tags',
+                            'duplicator'
+                        ),
+                        '<a href="' . esc_url(Upsell::getCampaignUrl(array('utm_medium' => 'package-build-scan', 'utm_content' => 'Multi Threaded Get Pro')))  . '" target="_blank">',
+                        '</a>'
+                    );
+                    ?>
+                </li>
+            </ul>
         </div>
+        <?php $hlptxt = sprintf(
+            __('Files over %1$s are listed below. Larger files such as movies or zipped content can cause timeout issues on some budget hosts.  If you are having '
+            . 'issues creating a package try excluding the directory paths below or go back to Step 1 and add them.', 'duplicator'),
+            DUP_Util::byteSize(DUPLICATOR_SCAN_WARNFILESIZE)
+        ); ?>
         <script id="hb-files-large" type="text/x-handlebars-template">
             <div class="container">
                 <div class="hdrs">
@@ -228,16 +255,16 @@ ADDON SITES -->
                         </div>
                         {{/each}}
                     {{else}}
-                    <?php esc_html_e('No add on sites found.'); ?>
+                    <?php esc_html_e('No add on sites found.', 'duplicator'); ?>
                     {{/if}}
                 </div>
             </div>
             <div class="apply-btn">
                 <div class="apply-warn">
-                    <?php esc_html_e('*Checking a directory will exclude all items in that path recursively.'); ?>
+                    <?php esc_html_e('*Checking a directory will exclude all items in that path recursively.', 'duplicator'); ?>
                 </div>
                 <button type="button" class="button-small duplicator-quick-filter-btn" disabled="disabled" onclick="Duplicator.Pack.applyFilters(this, 'addon')">
-                    <i class="fa fa-filter fa-sm"></i> <?php esc_html_e('Add Filters &amp; Rescan');?>
+                    <i class="fa fa-filter fa-sm"></i> <?php esc_html_e('Add Filters &amp; Rescan', 'duplicator');?>
                 </button>
             </div>
         </script>
@@ -325,36 +352,36 @@ FILE NAME CHECKS -->
 UNREADABLE FILES -->
 <div id="scan-unreadable-items" class="scan-item">
     <div class='title' onclick="Duplicator.Pack.toggleScanItem(this);">
-        <div class="text"><i class="fa fa-caret-right"></i> <?php esc_html_e('Read Checks');?></div>
+        <div class="text"><i class="fa fa-caret-right"></i> <?php esc_html_e('Read Checks', 'duplicator');?></div>
         <div id="data-arc-status-unreadablefiles"></div>
     </div>
     <div class="info">
         <?php
         esc_html_e('PHP is unable to read the following items and they will NOT be included in the package.  Please work with your host to adjust the permissions or resolve the '
-            . 'symbolic-link(s) shown in the lists below.  If these items are not needed then this notice can be ignored.');
+            . 'symbolic-link(s) shown in the lists below.  If these items are not needed then this notice can be ignored.', 'duplicator');
         ?>
         <script id="unreadable-files" type="text/x-handlebars-template">
             <div class="container">
                 <div class="data">
-                    <b><?php esc_html_e('Unreadable Items:');?></b> <br/>
+                    <b><?php esc_html_e('Unreadable Items:', 'duplicator');?></b> <br/>
                     <div class="directory">
                         {{#if ARC.UnreadableItems}}
                             {{#each ARC.UnreadableItems as |uitem|}}
                                 <i class="fa fa-lock fa-xs"></i> {{uitem}} <br/>
                             {{/each}}
                         {{else}}
-                            <i><?php esc_html_e('No unreadable items found.');?><br/></i>
+                            <i><?php esc_html_e('No unreadable items found.', 'duplicator');?><br/></i>
                         {{/if}}
                     </div>
 
-                    <b><?php esc_html_e('Recursive Links:');?> </b> <br/>
+                    <b><?php esc_html_e('Recursive Links:', 'duplicator');?> </b> <br/>
                     <div class="directory">
                         {{#if  ARC.RecursiveLinks}}
                             {{#each ARC.RecursiveLinks as |link|}}
                                 <i class="fa fa-lock fa-xs"></i> {{link}} <br/>
                             {{/each}}
                         {{else}}
-                            <i><?php esc_html_e('No recursive sym-links found.');?><br/></i>
+                            <i><?php esc_html_e('No recursive sym-links found.', 'duplicator');?><br/></i>
                         {{/if}}
                     </div>
                 </div>
@@ -389,7 +416,7 @@ DATABASE -->
                 data-tooltip="<?php esc_attr_e('The database size represents only the included tables. The process for gathering the size uses the query SHOW TABLE STATUS.  '
                     . 'The overall size of the database file can impact the final size of the package.', 'duplicator'); ?>"></i>
 
-            <div class="dup-data-size-uncompressed"><?php esc_html_e("uncompressed"); ?></div>
+            <div class="dup-data-size-uncompressed"><?php esc_html_e('uncompressed', 'duplicator'); ?></div>
 
         </div>
     </div>
@@ -510,7 +537,7 @@ DATABASE -->
                 data-tooltip-title="<?php esc_attr_e("Total Size:", 'duplicator'); ?>"
                 data-tooltip="<?php esc_attr_e('The total size of the site (files plus  database).', 'duplicator'); ?>"></i>
 
-            <div class="dup-data-size-uncompressed"><?php esc_html_e("uncompressed"); ?></div>
+            <div class="dup-data-size-uncompressed"><?php esc_html_e('uncompressed', 'duplicator'); ?></div>
 
         </div>
     </div>
@@ -545,11 +572,15 @@ DATABASE -->
             echo '</div>';
             echo '<br/>';
 
-            $lnk = '<a href="https://snapcreek.com/duplicator/docs/quick-start' .
-                '?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=da_size_two_part&utm_campaign=duplicator_pro#quick-060-q" target="_blank">' .
-                esc_html__('covered here.', 'duplicator') .
-                '</a>';
-            printf(__("- Perform a two part install %s", 'duplicator'), $lnk);
+            printf(
+                _x(
+                    '- Perform a two part install as %1$sdescribed in the documentation%2$s.',
+                    '%1$s and %2$s represent opening and closing anchor tags',
+                    'duplicator'
+                ),
+                '<a href="' . esc_url(LinkManager::getDocUrl('two-part-install', 'scan_step')) . '">',
+                '</a>'
+            );
             echo '<br/><br/>';
 
             $lnk = '<a href="admin.php?page=duplicator-settings&tab=package" target="_blank">' . esc_html__('ZipArchive Engine', 'duplicator') . '</a>';
@@ -564,6 +595,89 @@ DATABASE -->
             ?>
         </div>
     </div>
+    <?php if ($dbbuild_mode == DUP_DB::BUILD_MODE_MYSQLDUMP) { ?>
+        <div class="scan-item" id="mysqldump-limit-result"></div>
+        <script id="hb-mysqldump-limit-result" type="text/x-handlebars-template">
+            <div class="title" onclick="Duplicator.Pack.toggleScanItem(this);">
+                <div class="text">
+                    <i class="fa fa-caret-right"></i> <?php esc_html_e('Mysqldump memory check', 'duplicator'); ?>
+                </div>
+                <div id="data-db-status-mysqldump-limit">
+                    {{#if DB.Status.mysqlDumpMemoryCheck}}
+                        <div class="badge badge-pass"><?php esc_html_e('Good', 'duplicator'); ?></div>
+                    {{else}}
+                        <div class="badge badge-warn"><?php esc_html_e('Notice', 'duplicator'); ?></div>
+                    {{/if}}
+                </div>
+            </div>
+            {{#if DB.Status.mysqlDumpMemoryCheck}}
+                <div class="info">
+                    <p class="green">
+                        <?php esc_html_e('The database size is within the allowed mysqldump size limit.', 'duplicator'); ?>
+                    </p>
+                    <?php
+                    printf(
+                        _x(
+                            'If you encounter any issues with mysqldump please change the setting SQL Mode to PHP Code.'
+                            . ' You can do that by opening %1$sDuplicator Pro > Settings > Packages.%2$s',
+                            '1$s and 2$s represent opening and closing anchor tags',
+                            'duplicator'
+                        ),
+                        '<a href="?page=duplicator-settings&tab=package" target="_blank">',
+                        '</a>'
+                    );
+                    ?>
+                </div>
+            {{else}}
+                <div class="info" style="display:block;">
+                    <p class="red">
+                        <?php esc_html_e('The database size exceeds the allowed mysqldump size limit.', 'duplicator'); ?>
+                    </p>
+                    <?php
+                    esc_html_e(
+                        'The database size is larger than the PHP memory_limit value.'
+                        . ' This can lead into issues when building a package, during which the system can run out of memory.'
+                        . ' To fix this issue please consider doing one of the below mentioned recommendations.',
+                        'duplicator'
+                    );
+                    ?>
+                    <hr size="1" />
+                    <p>
+                        <b><?php _e('RECOMMENDATIONS:', 'duplicator'); ?></b>
+                    </p>
+                    <ul class="dup-pro-simple-style-disc" >
+                        <li>
+                            <?php
+                                printf(
+                                    _x(
+                                        'Please change the setting SQL Mode to PHP Code.'
+                                        . ' You can do that by opening %1$sDuplicator Pro > Settings > Packages.%2$s',
+                                        '%1$s and %2$s represent opening and closing anchor tags',
+                                        'duplicator'
+                                    ),
+                                    '<a href="?page=duplicator-settings&tab=package" target="_blank">',
+                                    '</a>'
+                                );
+                            ?>
+                        </li>
+                        <li>
+                            <?php
+                                printf(
+                                    _x(
+                                        'If you want to build the package with mysqldump, increase the PHP <b>memory_limit</b> ' .
+                                        'value in your php.ini file to at least %1$s.',
+                                        '%1$s represents the memory limit value (e.g. 256MB)',
+                                        'duplicator'
+                                    ),
+                                    '<b><span id="data-db-size3">{{DB.Status.requiredMysqlDumpLimit}}</span></b>'
+                                );
+                            ?>
+                        </li>
+                    </ul>
+                </div>
+            {{/if}}
+        </script>
+    <?php } ?>
 
     <?php
         echo '<div class="dup-pro-support">&nbsp;';
@@ -943,6 +1057,14 @@ jQuery(document).ready(function($)
             var templateScript = Handlebars.compile(template);
             var html = templateScript(data);
             $('#triggers-result').html(html);
+        }
+
+        //MYSQLDUMP LIMIT
+        if ($("#hb-mysqldump-limit-result").length) {
+            var template = $('#hb-mysqldump-limit-result').html();
+            var templateScript = Handlebars.compile(template);
+            var html = templateScript(data);
+            $('#mysqldump-limit-result').html(html);
         }
 
         Duplicator.UI.loadQtip();

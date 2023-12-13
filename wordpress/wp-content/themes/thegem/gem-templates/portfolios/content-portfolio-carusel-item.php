@@ -60,7 +60,7 @@ $thegem_self_video = '';
 <div style="padding: <?php echo intval($gap_size); ?>px;" <?php post_class($thegem_classes); ?> <?php if($params['effects_enabled']): ?>data-ll-effect="move-up"<?php endif; ?> data-sort-date="<?php echo get_the_date('U'); ?>">
 	<div class="wrap clearfix" style="border-bottom-color: <?php echo esc_attr($params['bottom_border_color']) ?>">
 		<div <?php post_class($thegem_image_classes); ?>>
-			<div class="image-inner">
+			<div class="image-inner <?php echo !has_post_thumbnail() ? 'without-image' : ''; ?>">
 				<?php if (has_post_thumbnail() && !empty($thegem_small_image_url)) : ?>
 					<img src="<?php echo esc_url($thegem_small_image_url[0]); ?>" width="<?php echo esc_attr($thegem_small_image_url[1]); ?>" height="<?php echo esc_attr($thegem_small_image_url[2]); ?>" alt="<?php the_title(); ?>" />
 				<?php endif; ?>

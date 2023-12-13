@@ -39,6 +39,8 @@ if ($thegem_page_data['sidebar']['sidebar_sticky']) {
 	wp_enqueue_script('thegem-sticky');
 }
 
+$post_type_name = 'post';
+
 ?>
 
 <div id="main-content" class="main-content">
@@ -50,12 +52,12 @@ if(thegem_get_option('home_content_enabled')) :
 	thegem_home_content_builder();
 
 else :
-
+	echo thegem_page_title();
 	$archive_template_id = thegem_blog_archive_template();
 	if ( $archive_template_id && defined('WPB_VC_VERSION') ) { ?>
 		<div class="block-content">
 			<div class="fullwidth-content">
-				<div class="thegem-template-wrapper thegem-template-blog-archive thegem-template-single-product thegem-template-<?php the_ID(); ?>">
+				<div class="thegem-template-wrapper thegem-template-blog-archive thegem-template-<?php echo esc_attr($archive_template_id); ?>">
 					<?php
 					$template_custom_css = get_post_meta($archive_template_id, '_wpb_shortcodes_custom_css', true) . get_post_meta($archive_template_id, '_wpb_post_custom_css', true);
 					if($template_custom_css) {

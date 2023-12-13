@@ -70,4 +70,4 @@ $output .= $this->getTemplateVariable( 'tabs-list-right' );
 $output .= '</div>';
 $output .= '</div>';
 
-return $output;
+return do_shortcode($output);

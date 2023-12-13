@@ -3,7 +3,7 @@
 Plugin Name: MC4WP: Mailchimp for WordPress
 Plugin URI: https://www.mc4wp.com/#utm_source=wp-plugin&utm_medium=mailchimp-for-wp&utm_campaign=plugins-page
 Description: Mailchimp for WordPress by ibericode. Adds various highly effective sign-up methods to your site.
-Version: 4.8.12
+Version: 4.9.10
 Author: ibericode
 Author URI: https://ibericode.com/
 Text Domain: mailchimp-for-wp
@@ -11,7 +11,7 @@ Domain Path: /languages
 License: GPL v3
 
 Mailchimp for WordPress
-Copyright (C) 2012-2022, Danny van Kooten, hi@dannyvankooten.com
+Copyright (C) 2012-2023, Danny van Kooten, hi@dannyvankooten.com
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) or exit;
 
 /** @ignore */
 function _mc4wp_load_plugin() {
-	 global $mc4wp;
+	global $mc4wp;
 
 	// don't run if Mailchimp for WP Pro 2.x is activated
 	if ( defined( 'MC4WP_VERSION' ) ) {
@@ -45,7 +45,7 @@ function _mc4wp_load_plugin() {
 	}
 
 	// bootstrap the core plugin
-	define( 'MC4WP_VERSION', '4.8.12' );
+	define( 'MC4WP_VERSION', '4.9.10' );
 	define( 'MC4WP_PLUGIN_DIR', __DIR__ );
 	define( 'MC4WP_PLUGIN_FILE', __FILE__ );
 
@@ -70,17 +70,14 @@ function _mc4wp_load_plugin() {
 	$mc4wp['log'] = 'mc4wp_get_debug_log';
 
 	// forms
-	$mc4wp['forms'] = new MC4WP_Form_Manager();
-	$mc4wp['forms']->add_hooks();
+	$form_manager = new MC4WP_Form_Manager();
+	$form_manager->add_hooks();
+	$mc4wp['forms'] = $form_manager;
 
 	// integration core
-	$mc4wp['integrations'] = new MC4WP_Integration_Manager();
-	$mc4wp['integrations']->add_hooks();
-
-	// Doing cron? Load Usage Tracking class.
-	if ( isset( $_GET['doing_wp_cron'] ) || ( defined( 'DOING_CRON' ) && DOING_CRON ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
-		MC4WP_Usage_Tracking::instance()->add_hooks();
-	}
+	$integration_manager = new MC4WP_Integration_Manager();
+	$integration_manager->add_hooks();
+	$mc4wp['integrations'] = $integration_manager;
 
 	// Initialize admin section of plugin
 	if ( is_admin() ) {
@@ -107,7 +104,7 @@ function _mc4wp_load_plugin() {
 
 function _mc4wp_on_plugin_activation() {
 	// schedule the action hook to refresh the stored Mailchimp lists on a daily basis
-	$time_string = sprintf( 'tomorrow %d:%d%d am', rand( 0, 7 ), rand( 0, 5 ), rand( 0, 9 ) );
+	$time_string = sprintf( 'tomorrow %d:%d am', rand( 0, 7 ), rand( 0, 59 ) );
 	wp_schedule_event( strtotime( $time_string ), 'daily', 'mc4wp_refresh_mailchimp_lists' );
 }
 

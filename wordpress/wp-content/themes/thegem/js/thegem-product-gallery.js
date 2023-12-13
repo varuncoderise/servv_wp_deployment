@@ -66,6 +66,7 @@
                 itemClass = '.owl-item',
                 itemClassActive = '.owl-item.active',
                 isVertical = $galleryElement.attr("data-thumb") === 'vertical',
+                isThumbsOnMobile = $galleryElement.attr("data-thumb-on-mobile") === '1',
                 isDots = $galleryElement.attr("data-thumb") === 'dots',
                 isThumb = $galleryElement.attr("data-thumb") !== 'none',
                 isHover = $galleryElement.attr("data-type") === 'hover',
@@ -128,7 +129,7 @@
                 onInitialized: function () {
                     initApiVideos();
 
-                    if (isVertical && isTrueCount && !isMobile && !isDots) {
+                    if (isVertical && isTrueCount && !(isMobile && !isThumbsOnMobile) && !isDots) {
                         initVerticalGallery();
                     } else {
                         resizeVerticalGallery();
@@ -168,7 +169,7 @@
                 onInitialized: function (el) {
                     setCurrentThumb(el);
 
-                    if (isVertical && isTrueCount && !isMobile && !isDots) {
+                    if (isVertical && isTrueCount && !(isMobile && !isThumbsOnMobile) && !isDots) {
                         initVerticalGallery();
                     } else {
                         resizeVerticalGallery();
@@ -274,9 +275,8 @@
                     thumbWrapWidth = $galleryThumbsWrap.width();
                 }
 
-                $galleryElement.css('padding-left', Math.round(thumbWidth + 15));
                 if (isAutoHeight) {
-                    $galleryElement.css('height', thumbWrapWidth-30).css('overflow', 'hidden');
+                    $galleryElement.css('height', 'auto').css('overflow', '');
                 } else {
                     $galleryElement.css('min-height', thumbWrapWidth-30);
                 }
@@ -284,11 +284,23 @@
                 var translate = Math.round(-thumbWidth/2) + 'px';
                 $galleryThumbsWrap.css('transform', 'rotate3d(0, 0, 1, 90deg) translate('+translate+','+translate+') translate3d(0,0,0)');
 
+                // Thumbs right position
+                if ($galleryElement.data("thumb-position") == 'right') {
+                    $galleryElement.css('padding-right', Math.round(thumbWidth + 15));
+
+                    setTimeout(() => {
+                        const previewWrapWidth = $galleryPreviewWrap.width();
+                        $galleryThumbsWrap.css({'left': previewWrapWidth + 15});
+                    }, 250)
+                } else {
+                    $galleryElement.css('padding-left', Math.round(thumbWidth + 15));
+                }
+
                 $galleryPreviewCarousel.trigger('refresh.owl.carousel');
             }
 
             function resizeVerticalGallery() {
-                $galleryElement.css('padding-left', '0');
+                $galleryElement.css('padding', '0');
                 $galleryThumbsWrap.css('transform', 'rotate() translate(0,0) translate3d(0,0,0)');
                 $galleryPreviewCarousel.trigger('refresh.owl.carousel');
             }
@@ -506,7 +518,7 @@
 
             // Hide thumbs if mobile device OR thumb-type = dots
             function hideThumbsOnMobile() {
-                if (!isTrueCount || isDots || isMobile || (!isVertical && isTabletPortrait)) {
+                if (!isTrueCount || isDots || (isMobile && !isThumbsOnMobile) || (!isVertical && isTabletPortrait)) {
                     $galleryThumbsCarousel.hide();
                     $('.owl-dots', $galleryPreviewCarousel).show();
                 } else {
@@ -531,7 +543,7 @@
                     isTabletPortrait = false;
                 }
 
-                if (isVertical && isTrueCount && !isMobile && !isDots) {
+                if (isVertical && isTrueCount && !(isMobile && !isThumbsOnMobile) && !isDots) {
                     initVerticalGallery();
                 } else {
                     resizeVerticalGallery();

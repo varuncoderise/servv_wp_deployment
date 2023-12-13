@@ -36,7 +36,11 @@
 .thegem-menu-custom ul.nav-menu-custom li {
   margin: 0;
 }
-.thegem-menu-custom ul.nav-menu-custom li a, .thegem-menu-custom ul.nav-menu-custom li > span {
+.thegem-menu-custom ul.nav-menu-custom li.default-colors {
+  color: #3c3950;
+}
+.thegem-menu-custom ul.nav-menu-custom li a,
+.thegem-menu-custom ul.nav-menu-custom li > span {
   display: flex !important;
   align-items: center;
   padding: 0.5em 0.7em;
@@ -87,13 +91,16 @@
   background-color: var(--thegem-to-box-border-color);
   z-index: 2;
 }
-.thegem-menu-custom.thegem-menu-custom--horizontal ul.nav-menu-custom li a{
+.thegem-menu-custom.thegem-menu-custom--horizontal ul.nav-menu-custom li a,
+.thegem-menu-custom.thegem-menu-custom--horizontal ul.nav-menu-custom li > span {
   margin: 0;
 }
-.thegem-menu-custom.thegem-menu-custom--horizontal.thegem-menu-custom--flex-start ul.nav-menu-custom li:first-child a{
+.thegem-menu-custom.thegem-menu-custom--horizontal.thegem-menu-custom--left ul.nav-menu-custom li:first-child a,
+.thegem-menu-custom.thegem-menu-custom--horizontal.thegem-menu-custom--left ul.nav-menu-custom li:first-child > span {
   margin-left: -0.7em;
 }
-.thegem-menu-custom.thegem-menu-custom--horizontal.thegem-menu-custom--flex-end ul.nav-menu-custom li:last-child a{
+.thegem-menu-custom.thegem-menu-custom--horizontal.thegem-menu-custom--right ul.nav-menu-custom li:last-child a,
+.thegem-menu-custom.thegem-menu-custom--horizontal.thegem-menu-custom--right ul.nav-menu-custom li:last-child > span {
   margin-right: -0.7em;
 }
 .thegem-menu-custom.menu-indicator ul.nav-menu-custom li a i.indicator{

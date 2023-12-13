@@ -990,12 +990,17 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 				$css .= ( ! empty( $social['align'] ) ? 'text-align:' . $social['align'] . ';' : null );
 				$css .= '}';
 
+				$css .= "#{$layoutID}.tss-wrapper .single-item-wrapper .author-social span.dashicons.dashicons-twitter:before {";
+				$css .= ( ! empty( $social['color'] ) ? 'background:' . $social['color'] . ';' : null );
+				$css .= '}';
+
 				$css .= "#{$layoutID}.tss-wrapper .author-social .dashicons-skype:before,
 						#{$layoutID}.tss-wrapper .author-social .dashicons-telegram:before {";
 				$css .= ( ! empty( $social['color'] ) ? 'background-color:' . $social['color'] . ';' : null );
 				$css .= '}';
 
 				$css .= "#{$layoutID}.tss-wrapper .author-social .dashicons-skype:before,
+						#{$layoutID}.tss-wrapper .author-social .dashicons-twitter:before,
 						#{$layoutID}.tss-wrapper .author-social .dashicons-telegram:before {";
 				$css .= ( ! empty( $social['size'] ) ? 'width:' . $social['size'] . 'px;' : null );
 				$css .= ( ! empty( $social['size'] ) ? 'height:' . $social['size'] . 'px;' : null );

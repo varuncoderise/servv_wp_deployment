@@ -13,14 +13,16 @@
 		if(is_tax('product_cat') || is_tax('product_tag')) {
 			$thegem_header_params = $thegem_effects_params = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings('product_categories'), 'product_category');
 		} else {
-			$thegem_header_params = $thegem_effects_params = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings('blog'), 'blog');
+			if(is_post_type_archive() && in_array(get_queried_object()->name, thegem_get_available_po_custom_post_types())) {
+				$thegem_header_params = $thegem_effects_params = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings(get_queried_object()->name.'_archive'), 'cpt_archive');
+			} else {
+				$thegem_header_params = $thegem_effects_params = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings('blog'), 'blog');
+			}
 		}
 	}
 	if(is_tax() || is_category() || is_tag()) {
 		$thegem_term_id = get_queried_object()->term_id;
-		if(get_term_meta($thegem_term_id , 'thegem_taxonomy_custom_page_options', true)) {
-			$thegem_header_params = $thegem_effects_params = thegem_get_output_page_settings($thegem_term_id, array(), 'term');
-		}
+		$thegem_header_params = $thegem_effects_params = thegem_get_output_page_settings($thegem_term_id, array(), 'term');
 	}
 	if (is_search()) {
 		$thegem_header_params = $thegem_effects_params = thegem_get_output_page_settings(0, thegem_theme_options_get_page_settings('search'), 'search');

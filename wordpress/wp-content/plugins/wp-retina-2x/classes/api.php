@@ -28,14 +28,14 @@ function wr2x_get_retina( $file ) {
 
 // Generate the retina images for the given meta of a media
 function wr2x_generate_images( $meta ) {
-  global $wr2x_core;
-  return $wr2x_core->generate_images( $meta );
+  global $wr2x_engine;
+  return $wr2x_engine->generate_retina_images( $meta );
 }
 
 // Delete the Retina files for this attachment
 function wr2x_delete_attachment( $attach_id, $deleteFullSize = true ) {
-  global $wr2x_core;
-  return $wr2x_core->delete_attachment( $attach_id, $deleteFullSize );
+  global $wr2x_engine;
+  return $wr2x_engine->delete_retina_attachment( $attach_id, $deleteFullSize );
 }
 
 function wr2x_get_pathinfo_from_image_src( $image_src ) {

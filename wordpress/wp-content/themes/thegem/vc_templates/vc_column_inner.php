@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this WPBakeryShortCode_VC_Column_Inner
  */
 $el_class = $width = $el_id = $css = $offset = '';
-$element_css = $output = $uniqid = $uniqInnerClass = '';
+$element_css = $output = $before_output = $uniqid = $uniqInnerClass = '';
 $disable_custom_paddings_mobile = $disable_custom_paddings_tablet = $z_index = '';
 $template_flex = ! empty($atts['template_flex']);
 $visible_element_users = !empty($atts['visible_element_users']) ? $atts['visible_element_users'] : '';
@@ -61,11 +61,21 @@ if ($disable_custom_paddings_mobile) {
 	$css_classes[] = 'disable-custom-paggings-mobile';
 }
 
+if (!empty($thegem_content_alignment)) {
+	$css_classes[] = 'gem-content-alignment-'.$thegem_content_alignment;
+}
+
 if ($z_index !== '') {
 	$element_css .= '.'.esc_attr($uniqid).'.wpb_column {z-index: '.intval($atts['z_index']).';}';
 }
 
 $wrapper_attributes = array();
+
+if(!empty($thegem_background_overlay)) {
+	$before_output .= '<div class="gem-vc-background-overlay"></div>';
+	$css_classes[] = 'gem-vc-background-overlay-container';
+	$element_css .= thegem_vc_background_overlay_css($atts, $uniqid);
+}
 
 if(!empty($interactions_enabled)) {
 	$wrapper_attributes[] = interactions_data_attr($atts);
@@ -184,6 +194,7 @@ if ( ! empty( $el_id ) ) {
 	$wrapper_attributes[] = 'id="' . esc_attr( $el_id ) . '"';
 }
 $output .= '<div ' . implode( ' ', $wrapper_attributes ) . '>';
+$output .= $before_output;
 $output .= '<div class="vc_column-inner '.esc_attr($uniqInnerClass).' ' . esc_attr( trim( vc_shortcode_custom_css_class( $css ) ) ) . '"'.$data_sticky.'>';
 if(!empty($element_css) || !empty($flex_css)) {
 	$output .= '<style>'. $element_css . PHP_EOL . $flex_css .'</style>';

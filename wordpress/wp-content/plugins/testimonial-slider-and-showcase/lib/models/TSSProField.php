@@ -36,6 +36,7 @@ if ( ! class_exists( 'TSSProField' ) ) :
 		private $blank;
 		private $required;
 		private $frontEnd;
+		private $descriptionAdv;
 
 		function __construct() {
 		}

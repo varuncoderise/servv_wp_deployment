@@ -17,10 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @var $this WPBakeryShortCode_VC_Column
  */
 $el_class = $el_id = $width = $parallax_speed_bg = $parallax_speed_video = $parallax = $parallax_image = $video_bg = $video_bg_url = $video_bg_parallax = $css = $offset = $css_animation = '';
-$output = '';
+$output = $before_output = '';
 $disable_custom_paddings_mobile = $disable_custom_paddings_tablet = $z_index = '';
 $background_style = $background_position_horizontal = $background_position_vertical = '';
-$element_css = $output = $uniqid = $uniqInnerClass = '';
+$element_css = $output = $uniqid = $uniqInnerClass = $editor_attr = '';
 $template_flex = ! empty($atts['template_flex']);
 $visible_element_users = !empty($atts['visible_element_users']) ? $atts['visible_element_users'] : '';
 $flex_atts = $atts;
@@ -65,6 +65,10 @@ if ($disable_custom_paddings_tablet) {
 }
 if ($disable_custom_paddings_mobile) {
 	$css_classes[] = 'disable-custom-paggings-mobile';
+}
+
+if (!empty($thegem_content_alignment)) {
+	$css_classes[] = 'gem-content-alignment-'.$thegem_content_alignment;
 }
 
 if ($z_index !== '') {
@@ -151,6 +155,12 @@ $data_sticky = '';
 if (!empty($el_sticky) && isset($el_sticky_offset)) {
 	wp_enqueue_script( 'thegem-stickyColumn' );
 	$data_sticky .= ' data-sticky-offset="' . esc_attr(intval($el_sticky_offset)) . '"';
+}
+
+if(!empty($thegem_background_overlay)) {
+	$before_output .= '<div class="gem-vc-background-overlay"></div>';
+	$css_classes[] = 'gem-vc-background-overlay-container';
+	$element_css .= thegem_vc_background_overlay_css($atts, $uniqid);
 }
 
 if(!empty($interactions_enabled)) {
@@ -273,6 +283,10 @@ if(!empty($thegem_enable_shadow)) {
 	. '}';
 }
 
+if(function_exists('thegem_data_editor_attribute')) {
+	$editor_attr = thegem_data_editor_attribute($uniqid.'-editor');
+}
+
 if (isset($output_not_consent) && !empty($output_not_consent)) {
 	foreach ($wrapper_attributes as $k=>$wrapper_attribute) {
 		preg_match('%(data-vc-video-bg|data-vc-parallax-image).*%', $wrapper_attribute, $matches);
@@ -285,9 +299,10 @@ $output .= '<div ' . implode( ' ', $wrapper_attributes ) . '>';
 	$output .= $output_not_consent;
 
 } else {
-	$output .= '<div ' . implode( ' ', $wrapper_attributes ) . '>';
+	$output .= '<div ' . implode( ' ', $wrapper_attributes ) . ' ' . $editor_attr . '>';
 }
 
+$output .= $before_output;
 $output .= '<div class="vc_column-inner '.esc_attr($uniqInnerClass).' ' . esc_attr( trim( vc_shortcode_custom_css_class( $css ) ) ) . '"'.$data_sticky.'>';
 if(!empty($element_css) || !empty($flex_css)) {
 	$output .= '<style>'. $element_css . PHP_EOL . $flex_css .'</style>';

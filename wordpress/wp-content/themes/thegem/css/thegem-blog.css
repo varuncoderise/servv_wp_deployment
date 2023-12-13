@@ -1521,3 +1521,17 @@ body .blog.blog-style-classic-tiny {
 .blog-style-compact-tiny-3 .post-meta a {
 	color: #ffffff;
 }
+
+.blog.pagination-normal {
+	position: relative;
+}
+
+.blog .preloader-spin-new ~ * {
+	opacity: 0.6;
+}
+
+.blog + .gem-pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

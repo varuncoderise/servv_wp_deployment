@@ -55,6 +55,7 @@ class DUP_DatabaseInfo
     public $tablesSizeOnDisk = 0;
     /** @var array */
     public $tablesList = array();
+
     /**
      * Gets the server variable lower_case_table_names
      *
@@ -63,7 +64,7 @@ class DUP_DatabaseInfo
      * 2 store=exact;       compare=insensitive (works only on case INsensitive file systems )
      * default is 0/Linux ; 1/Windows
      */
-    public $varLowerCaseTables = false;
+    public $lowerCaseTableNames = 0;
     /**
      * The database engine (MySQL/MariaDB/Percona)
      *
@@ -152,6 +153,10 @@ class DUP_DatabaseInfo
 class DUP_Database
 {
     const TABLE_CREATION_END_MARKER = "/***** TABLE CREATION END *****/\n";
+    /**
+     * The mysqldump allowed size difference (50MB) to memory limit in bytes. Run musqldump only on DBs smaller than memory_limit minus this value.
+     */
+    const MYSQLDUMP_ALLOWED_SIZE_DIFFERENCE = 52428800;
 
     //PUBLIC
     public $Type = 'MySQL';
@@ -163,7 +168,10 @@ class DUP_Database
     public $Name;
     public $Compatible;
     public $Comments;
-/**
+     /** @var null|bool */
+     public $sameNameTableExists = null;
+
+    /**
      *
      * @var DUP_DatabaseInfo
      */
@@ -179,12 +187,11 @@ class DUP_Database
      */
     public function __construct($package)
     {
-        $this->Package                  = $package;
-        $this->EOFMarker                = "";
-        $package_zip_flush              = DUP_Settings::Get('package_zip_flush');
-        $this->networkFlush             = empty($package_zip_flush) ? false : $package_zip_flush;
-        $this->info                     = new DUP_DatabaseInfo();
-        $this->info->varLowerCaseTables = DUP_Util::isWindows() ? 1 : 0;
+        $this->Package      = $package;
+        $this->EOFMarker    = "";
+        $package_zip_flush  = DUP_Settings::Get('package_zip_flush');
+        $this->networkFlush = empty($package_zip_flush) ? false : $package_zip_flush;
+        $this->info         = new DUP_DatabaseInfo();
     }
 
     /**
@@ -236,8 +243,7 @@ class DUP_Database
             if ($sql_file_size < 1350) {
                 $error_message = "SQL file size too low.";
                 $package->BuildProgress->set_failed($error_message);
-                $package->Status = DUP_PackageStatus::ERROR;
-                $package->Update();
+                $package->setStatus(DUP_PackageStatus::ERROR);
                 DUP_Log::error($error_message, "File does not look complete.  Check permission on file and parent directory at [{$this->tempDbPath}]", $errorBehavior);
                 do_action('duplicator_lite_build_database_fail', $package);
             } else {
@@ -337,13 +343,16 @@ class DUP_Database
 
         $this->setInfoObj($filteredTables);
         $this->info->addTriggers();
-        $info['Status']['DB_Case']     = preg_match('/[A-Z]/', $wpdb->dbname) ? 'Warn' : 'Good';
-        $info['Status']['DB_Rows']     = ($info['Rows'] > DUPLICATOR_SCAN_DB_ALL_ROWS) ? 'Warn' : 'Good';
-        $info['Status']['DB_Size']     = ($info['Size'] > DUPLICATOR_SCAN_DB_ALL_SIZE) ? 'Warn' : 'Good';
-        $info['Status']['TBL_Case']    = ($tblCaseFound) ? 'Warn' : 'Good';
-        $info['Status']['TBL_Rows']    = ($tblRowsFound) ? 'Warn' : 'Good';
-        $info['Status']['TBL_Size']    = ($tblSizeFound) ? 'Warn' : 'Good';
-        $info['Status']['Triggers']    = count($this->info->triggerList) > 0 ? 'Warn' : 'Good';
+        $info['Status']['DB_Case']                = preg_match('/[A-Z]/', $wpdb->dbname) ? 'Warn' : 'Good';
+        $info['Status']['DB_Rows']                = ($info['Rows'] > DUPLICATOR_SCAN_DB_ALL_ROWS) ? 'Warn' : 'Good';
+        $info['Status']['DB_Size']                = ($info['Size'] > DUPLICATOR_SCAN_DB_ALL_SIZE) ? 'Warn' : 'Good';
+        $info['Status']['TBL_Case']               = ($tblCaseFound) ? 'Warn' : 'Good';
+        $info['Status']['TBL_Rows']               = ($tblRowsFound) ? 'Warn' : 'Good';
+        $info['Status']['TBL_Size']               = ($tblSizeFound) ? 'Warn' : 'Good';
+        $info['Status']['Triggers']               = count($this->info->triggerList) > 0 ? 'Warn' : 'Good';
+        $info['Status']['mysqlDumpMemoryCheck']   = self::mysqldumpMemoryCheck($info['Size']);
+        $info['Status']['requiredMysqlDumpLimit'] = DUP_Util::byteSize(self::requiredMysqlDumpLimit($info['Size']));
+
         $info['RawSize']               = $info['Size'];
         $info['TableList']             = $info['TableList'] or "unknown";
         $info['TableCount']            = $tblCount;
@@ -371,15 +380,15 @@ class DUP_Database
     public function setInfoObj($filteredTables)
     {
         global $wpdb;
-        $this->info->buildMode          = DUP_DB::getBuildMode();
-        $this->info->version            = DUP_DB::getVersion();
-        $this->info->versionComment     = DUP_DB::getVariable('version_comment');
-        $this->info->varLowerCaseTables = DUP_DB::getVariable('lower_case_table_names');
-        $this->info->name               = $wpdb->dbname;
-        $this->info->isNameUpperCase    = preg_match('/[A-Z]/', $wpdb->dbname) ? 1 : 0;
-        $this->info->charSetList        = DUP_DB::getTableCharSetList($filteredTables);
-        $this->info->collationList      = DUP_DB::getTableCollationList($filteredTables);
-        $this->info->engineList         = DUP_DB::getTableEngineList($filteredTables);
+        $this->info->buildMode           = DUP_DB::getBuildMode();
+        $this->info->version             = DUP_DB::getVersion();
+        $this->info->versionComment      = DUP_DB::getVariable('version_comment');
+        $this->info->lowerCaseTableNames = DUP_DB::getLowerCaseTableNames();
+        $this->info->name                = $wpdb->dbname;
+        $this->info->isNameUpperCase     = preg_match('/[A-Z]/', $wpdb->dbname) ? 1 : 0;
+        $this->info->charSetList         = DUP_DB::getTableCharSetList($filteredTables);
+        $this->info->collationList       = DUP_DB::getTableCollationList($filteredTables);
+        $this->info->engineList          = DUP_DB::getTableEngineList($filteredTables);
     }
 
     /**
@@ -600,6 +609,36 @@ class DUP_Database
         }
 
         return true;
+    }
+
+    /**
+     * Checks if database size is within the mysqldump size limit
+     *
+     * @param int $dbSize Size of the database to check
+     *
+     * @return bool Returns true if DB size is within the mysqldump size limit, otherwise false
+     */
+    protected static function mysqldumpMemoryCheck($dbSize)
+    {
+        if (($mem = SnapUtil::phpIniGet('memory_limit', false)) === false) {
+            $mem = 0;
+        } else {
+            $mem = SnapUtil::convertToBytes($mem);
+        }
+
+        return (self::requiredMysqlDumpLimit($dbSize) <= $mem);
+    }
+
+    /**
+     * Return mysql required limit
+     *
+     * @param int $dbSize Size of the database to check
+     *
+     * @return int
+     */
+    protected static function requiredMysqlDumpLimit($dbSize)
+    {
+        return $dbSize + self::MYSQLDUMP_ALLOWED_SIZE_DIFFERENCE;
     }
 
     /**

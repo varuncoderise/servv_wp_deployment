@@ -26,8 +26,7 @@
             productScripts.descriptionTabs();
             productScripts.productVariables();
             productScripts.productRating();
-
-            if (!isExternalProduct && !isGroupedProduct && !isSubscriptionProduct && isAjaxLoad) {
+            if (isAjaxLoad) {
                 productScripts.ajaxAddToCart();
             }
             productScripts.ajaxAddToWishlist();
@@ -61,6 +60,14 @@
                         })
                     });
                 };
+
+                const vcFullWidthRowFix = () => {
+                    const $elements = $('[data-vc-full-width="true"]', $wrapper);
+
+                    $elements.each(function () {
+                        $(this).trigger('VCRowFullwidthUpdate').trigger('resize')
+                    })
+                }
 
                 // Tabs navigate item click
                 $tabsNavItems.each((i, item) => {
@@ -104,6 +111,8 @@
                         if (window.tgpLazyItems !== undefined) {
                             window.tgpLazyItems.scrollHandle();
                         }
+
+                        vcFullWidthRowFix()
                     });
                 });
 
@@ -112,6 +121,13 @@
                     $(item).on('click', (e) => {
                         const $self = $(e.currentTarget);
                         const currentAttrValue = '.' + $self.data('id');
+
+                        if ($(window).width() < 768) {
+                            setTimeout(() => {
+                                const topPosition = $self.offset().top;
+                                window.scrollTo({top: topPosition});
+                            }, 250);
+                        }
 
                         if ($self.is('.product-accordion__item--active')) {
                             $self.removeClass(activeClassAcc).next().slideUp(300);
@@ -211,7 +227,7 @@
             // Combobox init
             const comboboxInit = () => {
                 if (!isComboboxInit) {
-                    combobox();
+                    setTimeout(() => combobox(), 250)
                     isComboboxInit = true;
                 }
             };
@@ -222,8 +238,42 @@
                 $(".thegem-combobox-wrap").find(".thegem-combobox:last-of-type").remove();
             };
 
+            // Update data from current variation
+            const updateProductDataFromVariations = (form) => {
+                const $skuWrap = $(".thegem-te-product-sku .product-sku__list")
+                const defaultSku = $(".thegem-te-product-sku .product-sku").data('sku')
+                const $weightWrap = $(".thegem-te-product-tabs .woocommerce-product-attributes-item--weight .woocommerce-product-attributes-item__value")
+                const defaultWeight = $weightWrap.html()
+                const $dimensionsWrap = $(".thegem-te-product-tabs .woocommerce-product-attributes-item--dimensions .woocommerce-product-attributes-item__value")
+                const defaultDimensions = $dimensionsWrap.html()
+
+                $(form).on('change', function () {
+                    const $self = $(this);
+                    const variationID = $('input[name=variation_id]', $self).val()
+                    const variations = JSON.parse($self.attr("data-product_variations"));
+
+                    if(variations && (variationID && variationID !== undefined)) {
+                        for(const i in variations) {
+                            if ( variations[i].variation_id == variationID){
+                                const sku = variations[i].sku;
+                                const weight = variations[i].weight_html;
+                                const dimensions = variations[i].dimensions_html;
+
+                                $skuWrap.html(sku);
+                                $weightWrap.html(weight);
+                                $dimensionsWrap.html(dimensions);
+                            }
+                        }
+                    } else {
+                        $skuWrap.html(defaultSku);
+                        $weightWrap.html(defaultWeight);
+                        $dimensionsWrap.html(defaultDimensions);
+                    }
+                })
+            }
+
             // Variations each
-            $variationForm.each(function () {
+            $variationForm.each(function (i, form) {
                 let $clearSelection = $('.product-page__reset-variations');
 
                 setTimeout(() => {
@@ -231,6 +281,8 @@
                 }, 1000);
 
                 comboboxInit();
+
+                updateProductDataFromVariations(form);
             });
 
             // Quantity custom buttons
@@ -240,7 +292,7 @@
 
             // Variations reset event
             $reset.on('click', function () {
-                $variationForm.each(function () {
+                $variationForm.each(function (i, form) {
                     $(this).on('change', '.variations select', function () {
                         comboboxRefresh();
 
@@ -248,6 +300,13 @@
                         $combobox.find('.thegem-combobox__trigger').text(text);
                     });
                 });
+            });
+
+            $variationForm.on('woocommerce_update_variation_values', function() {
+                comboboxRefresh();
+
+                let text = $('.thegem-combobox__options-item').eq(0).text();
+                $combobox.find('.thegem-combobox__trigger').text(text);
             });
 
             // Huck for double submit form
@@ -292,33 +351,29 @@
                 e.preventDefault();
                 $('.thegem-popup-notification').removeClass('show');
 
-                const $thisButton = $(this),
-                    $form = $thisButton.closest('form.cart'),
-                    id = $thisButton.val(),
-                    productQty = $form.find('input[name=quantity]').val() || 1,
-                    productId = $form.find('input[name=product_id]').val() || id,
-                    variationId = $form.find('input[name=variation_id]').val() || 0;
-
-                const item = {};
-                $form.find('select[name^=attribute]').each(function () {
-                    let attribute = $(this).attr("name");
-                    let attributeVal = $(this).val();
-
-                    item[attribute] = attributeVal;
+                const $thisButton = $(this);
+                const $form = $thisButton.closest('form');
+                const data = {};
+                $form.serializeArray().forEach(el => {
+                    data[el.name] = el.value
                 });
+                data['action'] = 'thegem_ajax_add_to_cart';
+                data['product_id'] = data.product_id ? data.product_id : $thisButton.val();
+                data['add-to-cart'] = data['add-to-cart'] ? data['add-to-cart'] : data.product_id;
 
-                const data = {
-                    action: 'woocommerce_ajax_add_to_cart',
-                    product_id: productId,
-                    product_sku: '',
-                    quantity: productQty,
-                    variation_id: variationId,
-                    variation: item,
-                };
+                // Check empty and out stock variation
+                let variation_check = true
+                const variationId = $form.find('input[name=variation_id]').val() || 0
 
-                if ($form.find('input[name=variation_id]').length > 0 && variationId == 0) {
-                    return false;
+                if ($form.find('input[name=variation_id]').length > 0 && $form.data('product_variations')) {
+                    $form.data('product_variations').forEach(variation => {
+                        if ( variationId == 0 || (variation.variation_id == variationId && !variation.is_in_stock)) {
+                            variation_check = false
+                        }
+                    })
                 }
+
+                if (!variation_check) return false;
 
                 $(document.body).trigger('adding_to_cart', [$thisButton, data]);
 

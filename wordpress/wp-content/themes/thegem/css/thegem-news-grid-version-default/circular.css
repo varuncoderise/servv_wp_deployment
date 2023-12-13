@@ -126,7 +126,8 @@
 	transition: opacity 0.3s 0.15s, transform 0.3s 0.15s;
 }
 
-.version-default.news-grid.hover-default-circular .portfolio-item .image .links .caption .description {
+.version-default.news-grid.hover-default-circular .portfolio-item .image .links .caption .description,
+.version-default.news-grid.hover-default-circular .portfolio-item .image .links .caption .details {
 	opacity: 0;
 	transform: translateX(100%);
 	position: relative;
@@ -150,7 +151,8 @@
 	transition: opacity 0.3s 0.08s, transform 0.3s 0.08s;
 }
 
-.version-default.news-grid.hover-default-circular .portfolio-item:hover .image .links .caption .description {
+.version-default.news-grid.hover-default-circular .portfolio-item:hover .image .links .caption .description,
+.version-default.news-grid.hover-default-circular .portfolio-item:hover .image .links .caption .details {
 	opacity: 1;
 	transform: translateX(0);
     -webkit-transition: opacity 0.3s 0.04s, transform 0.3s 0.04s;

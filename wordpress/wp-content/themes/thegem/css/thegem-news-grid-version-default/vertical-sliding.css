@@ -260,6 +260,10 @@
 	margin: 16px 0 0 0;
 }
 
+.version-default.news-grid.hover-default-vertical-sliding .portfolio-item .image .links .caption .details:not(:empty) {
+	margin-top: 10px;
+}
+
 .version-default.news-grid.hover-default-vertical-sliding .portfolio-item .image .links .caption .post-date {
 	margin: 0;
 	padding-top: 16px;

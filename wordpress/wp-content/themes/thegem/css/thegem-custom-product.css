@@ -97,6 +97,11 @@
     padding: 0;
     margin: 0;
 }
+.thegem-te-product-attribute .product-attributes.light{
+    font-family: var(--thegem-to-light-title-font-family);
+    font-style: var(--thegem-to-light-title-font-style);
+    font-weight: var(--thegem-to-light-title-font-weight);
+}
 
 /* Product Rating */
 .thegem-te-product-rating{
@@ -1037,18 +1042,17 @@
     color: var(--thegem-to-h6-color);
 }
 @media only screen and (max-width: 430px){
-    .thegem-te-product-tabs table.woocommerce-product-attributes tr,
-    .thegem-te-product-additional-info table.woocommerce-product-attributes tr{
-        display: flex;
-        flex-wrap: wrap;
+    .thegem-te-product-tabs table.woocommerce-product-attributes th,
+    .thegem-te-product-additional-info table.woocommerce-product-attributes th{
+        white-space: normal;
+        width: 40%;
+        padding-right: 0;
     }
     .thegem-te-product-tabs table.woocommerce-product-attributes td,
     .thegem-te-product-additional-info table.woocommerce-product-attributes td{
-        width: auto;
-    }
-    .thegem-te-product-tabs table.woocommerce-product-attributes th,
-    .thegem-te-product-additional-info table.woocommerce-product-attributes th{
-        min-width: 40%;
+        width: 60%;
+        text-align: right;
+        padding-left: 10%;
     }
 }
 
@@ -1492,6 +1496,9 @@
     flex-wrap: wrap;
     align-items: flex-end;
 }
+.thegem-te-product-add-to-cart form.cart .single_variation_wrap .woocommerce-variation .woocommerce-variation-description {
+    width: 100%;
+}
 .thegem-te-product-add-to-cart form.cart .single_variation_wrap .woocommerce-variation-add-to-cart{
     position: relative;
     display: flex;
@@ -1775,7 +1782,7 @@
 .thegem-te-product-add-to-cart form.cart .quantity button,
 .thegem-te-product-add-to-cart form.cart .quantity input{
     position: relative;
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     width: 40px;
@@ -1849,7 +1856,8 @@
     margin-left: 15px;
 }
 .thegem-te-product-add-to-cart form.cart .add_to_wishlist,
-.thegem-te-product-add-to-cart form.cart .remove_from_wishlist{
+.thegem-te-product-add-to-cart form.cart .remove_from_wishlist,
+.thegem-te-product-add-to-cart form.cart .yith-wcwl-wishlistexistsbrowse .gem-button {
     width: auto !important;
     margin: 0 !important;
     background: transparent !important;
@@ -2041,6 +2049,7 @@
     left: 0;
     right: 0;
     min-width: 100%;
+    max-height: 200px;
     margin: 0;
     border-radius: 3px;
     border-top: 0;
@@ -2049,8 +2058,18 @@
     visibility: hidden;
     pointer-events: none;
     transform: translateY(-15px);
-    overflow: hidden;
+    overflow-x: hidden;
     z-index: 0;
+}
+.thegem-te-product-add-to-cart .thegem-combobox-wrap .thegem-combobox__options::-webkit-scrollbar {
+    width: 4px;
+}
+.thegem-te-product-add-to-cart .thegem-combobox-wrap .thegem-combobox__options::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.thegem-te-product-add-to-cart .thegem-combobox-wrap .thegem-combobox__options::-webkit-scrollbar-thumb {
+    background-color: rgba(223, 229, 232, 1);
+    border-radius: 4px;
 }
 .thegem-te-product-add-to-cart .thegem-combobox-wrap .thegem-combobox.opened .thegem-combobox__options {
     opacity: 1;
@@ -2070,6 +2089,38 @@
 }
 .thegem-te-product-add-to-cart .thegem-combobox-wrap .thegem-combobox__options-item.selection{
     color: var(--thegem-to-main-bg-color);
+}
+
+/* Out of stock notify button */
+.thegem-te-product-add-to-cart button.wc_bis_send_form{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    height: 40px;
+    line-height: 36px;
+    padding: 0 17px;
+    -o-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    margin: 0 !important;
+    font-size: 14px;
+    font-family: var(--thegem-to-button-font-family);
+    font-weight: var(--thegem-to-button-font-weight);
+    text-transform: var(--thegem-to-button-text-transform);
+    letter-spacing: var(--thegem-to-button-letter-spacing);
+    font-style: normal;
+    border: 2px solid;
+    color: var(--thegem-to-product-page-btn-add-to-cart-text-color, var(--thegem-to-button-basic-color)) !important;
+    background-color: var(--thegem-to-product-page-btn-add-to-cart-background-color, var(--thegem-to-styled-color1)) !important;
+    border-radius: var(--thegem-to-product-page-btn-add-to-cart-border-radius, 3px) !important;
+    border-color: var(--thegem-to-product-page-btn-add-to-cart-border-color, var(--thegem-to-styled-color1)) !important;
+}
+.thegem-te-product-add-to-cart button.wc_bis_send_form:hover{
+    color: var(--thegem-to-product-page-btn-add-to-cart-text-color-hover, var(--thegem-to-button-basic-color-hover)) !important;
+    background-color: var(--thegem-to-product-page-btn-add-to-cart-background-color-hover, var(--thegem-to-button-basic-background-color-hover)) !important;
+    border-color: var(--thegem-to-product-page-btn-add-to-cart-border-color-hover, var(--thegem-to-button-basic-background-color-hover)) !important;
 }
 
 /* Product Add to Wishlist */

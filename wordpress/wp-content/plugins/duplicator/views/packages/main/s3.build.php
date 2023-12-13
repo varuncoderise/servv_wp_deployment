@@ -1,12 +1,14 @@
 <?php
 
-use Duplicator\Libs\Upsell;
+use Duplicator\Installer\Utils\LinkManager;
+use Duplicator\Utils\Upsell;
 use Duplicator\Views\EducationElements;
+use Duplicator\Views\AdminNotices;
 
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 //Nonce Check
 if (!isset($_POST['dup_form_opts_nonce_field']) || !wp_verify_nonce(sanitize_text_field($_POST['dup_form_opts_nonce_field']), 'dup_form_opts')) {
-    DUP_UI_Notice::redirect('admin.php?page=duplicator&tab=new1&_wpnonce=' . wp_create_nonce('new1-package'));
+    AdminNotices::redirect('admin.php?page=duplicator&tab=new1&_wpnonce=' . wp_create_nonce('new1-package'));
 }
 require_once(DUPLICATOR_PLUGIN_PATH . 'classes/package/duparchive/class.pack.archive.duparchive.php');
 
@@ -14,15 +16,6 @@ $retry_nonuce           = wp_create_nonce('new1-package');
 $zip_build_nonce        = wp_create_nonce('duplicator_package_build');
 $duparchive_build_nonce = wp_create_nonce('duplicator_duparchive_package_build');
 $active_package_present = true;
-
-//Help support Duplicator
-$atext0  = "<a target='_blank' href='" . esc_url(\Duplicator\Core\Notifications\Review::getReviewUrl()) . "'>";
-$atext0 .= __('Help review the plugin', 'duplicator') . '!</a>';
-
-//Get even more power & features with Duplicator Pro
-$atext1  = __('Want more power?  Try', 'duplicator');
-$atext1 .= "&nbsp;<a target='_blank' href='https://snapcreek.com/duplicator/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_build_more_power&utm_campaign=duplicator_pro'>";
-$atext1 .= __('Duplicator Pro', 'duplicator') . '</a>!';
 
 if (DUP_Settings::Get('installer_name_mode') == DUP_Settings::INSTALLER_NAME_MODE_SIMPLE) {
     $txtInstallHelpMsg = __("When clicking the Installer download button, the 'Save as' dialog will default the name to 'installer.php'. "
@@ -32,10 +25,6 @@ if (DUP_Settings::Get('installer_name_mode') == DUP_Settings::INSTALLER_NAME_MOD
         . "This is the secure and recommended option.  For more information goto: Settings ❯ Packages Tab ❯ Installer Name Option.  To quickly copy the hashed "
         . "installer name, to your clipboard use the copy icon link.", 'duplicator');
 }
-
-$rand_txt    = array();
-$rand_txt[0] = $atext0;
-
 ?>
 
 <style>
@@ -77,7 +66,7 @@ $rand_txt[0] = $atext0;
     div.dup-howto-exe-title a {text-decoration:none; outline:none; box-shadow:none}
     div.dup-howto-exe small {font-weight:normal; display:block; margin-top:-2px; font-style:italic; font-size:12px; color:#444 }
     div.dup-howto-exe a {margin-top:8px; display:inline-block}
-    div.dup-howto-exe-info {display:none; border:1px dotted #b5b5b5; padding:20px; margin:auto; width:500px; background-color:#F0F0F1; border-radius:4px;}
+    div.dup-howto-exe-info {display:block; border:1px dotted #b5b5b5; padding:20px; margin:auto; width:500px; background-color:#F0F0F1; border-radius:4px;}
     div.dup-howto-exe-info a i {display:inline-block; margin:0 2px 0 2px}
     div.dup-howto-exe-area {display: flex; justify-content: center;}
     div.dup-howto-exe-txt {text-align: left; font-size:16px}
@@ -242,11 +231,8 @@ TOOL BAR:STEPS -->
             ?>
 
             <div class="dup-howto-exe">
-                <div class="dup-howto-exe-title" onclick="Duplicator.Pack.ToggleHelpInstall(this)">
-                    <a href="javascript:void(0)">
-                        <i class="far fa-plus-square"></i>
-                        <?php esc_html_e('How to install this package?', 'duplicator'); ?>
-                    </a>
+                <div class="dup-howto-exe-title">
+                    <?php esc_html_e('How to install this package?', 'duplicator'); ?>
                 </div>
                 <div class="dup-howto-exe-info">
                     <div class="dup-howto-exe-area">
@@ -254,10 +240,7 @@ TOOL BAR:STEPS -->
 
                             <!-- CLASSIC -->
                             <i class="far fa-save fa-sm fa-fw"></i>
-                            <a 
-                                href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help1_bwording2&utm_campaign=duplicator_free#quick-040-q" 
-                                target="_blank"
-                            >
+                            <a href="<?php echo esc_url(LinkManager::getDocUrl('classic-install', 'build_success', 'Classic Install')); ?>" target="_blank">
                                 <?php esc_html_e('Install to Empty Directory ', 'duplicator'); ?>
                             </a>
                             <sup class="modes">
@@ -273,10 +256,7 @@ TOOL BAR:STEPS -->
 
                             <!-- OVERWRITE -->
                             <i class="far fa-window-close fa-sm fa-fw"></i>
-                            <a 
-                                href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help2_bwording2&utm_campaign=duplicator_free#quick-043-q" 
-                                target="_blank"
-                            >
+                            <a href="<?php echo esc_url(LinkManager::getDocUrl('overwrite-install', 'build_success', 'Overwrite Install')); ?>" target="_blank">
                                 <?php esc_html_e('Overwrite Site', 'duplicator'); ?>
                             </a>
                             <sup class="modes">
@@ -290,10 +270,7 @@ TOOL BAR:STEPS -->
 
                             <!-- IMPORT -->
                             <i class="fas fa-arrow-alt-circle-down fa-sm fa-fw"></i>
-                            <a 
-                                href="https://snapcreek.com/duplicator/docs/quick-start/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=package_built_install_help3_bwording2&utm_campaign=duplicator_free#quick-045-q" 
-                                target="_blank"
-                            >
+                            <a href="<?php echo esc_url(LinkManager::getDocUrl('import-install', 'build_success', 'Import Install')); ?>" target="_blank">
                                 <?php esc_html_e('Import Archive and Overwrite Site', 'duplicator'); ?>
                             </a>
                             <sup class="modes">
@@ -306,9 +283,10 @@ TOOL BAR:STEPS -->
                     </div>
                 </div>
             </div>
-
             <p class="get-pro<?php echo EducationElements::userIsSubscribed() ? ' subscribed' : ''; ?>">
-                <?php echo $rand_txt[array_rand($rand_txt, 1)]; ?>
+                <a target="_blank" href="<?php echo esc_url(\Duplicator\Core\Notifications\Review::getReviewUrl()); ?>">
+                    <?php esc_html_e('Help review the plugin!', 'duplicator'); ?>
+                </a>
             </p>
             <?php do_action('duplicator_build_success_footer'); ?>
         </div>
@@ -342,7 +320,7 @@ TOOL BAR:STEPS -->
                         <a href="<?php echo esc_url(Upsell::getCampaignUrl('package-build-complete', 'Build Failed Get Pro')); ?>" target="_blank">
                             Duplicator Pro,
                         </a>
-                        <?php esc_html_e(' which is capable of migrating sites much larger than 500MB.'); ?>
+                        <?php esc_html_e(' which is capable of migrating sites much larger than 500MB.', 'duplicator'); ?>
                     </div><br/>
 
                     <b><i class="far fa-file-alt fa-sm"></i> <?php esc_html_e('Overview', 'duplicator'); ?></b><br/>
@@ -359,7 +337,9 @@ TOOL BAR:STEPS -->
                     <small style="font-style:italic">
                         <?php esc_html_e('Note:The DupArchive engine will generate an archive.daf file. This file is very similar to a .zip except that it can only be extracted by the '
                             . 'installer.php file or the', 'duplicator'); ?>
-                        <a href="https://snapcreek.com/duplicator/docs/faqs-tech/#faq-trouble-052-q" target="_blank"><?php esc_html_e('commandline extraction tool'); ?></a>.
+                        <a href="<?php echo esc_url(LinkManager::getDocUrl('how-to-work-with-daf-files-and-the-duparchive-extraction-tool', 'backup_step_3_fail', 'DupArchive Extraction Tool')); ?>" target="_blank">
+                            <?php esc_html_e('commandline extraction tool', 'duplicator'); ?>
+                        </a>.
                     </small>
                 </div>
             </div>
@@ -391,7 +371,7 @@ TOOL BAR:STEPS -->
                         <?php
                         printf(
                             '<b><i class="fa fa-folder-o"></i> %s %s</b> <br/> %s',
-                            esc_html__('Build Folder:'),
+                            esc_html__('Build Folder:', 'duplicator'),
                             DUP_Settings::getSsdirTmpPath(),
                             __("On some servers the build will continue to run in the background. To validate if a build is still running; open the 'tmp' folder above and see "
                                 . "if the archive file is growing in size or check the main packages screen to see if the package completed. If it is not then your server "
@@ -421,16 +401,17 @@ TOOL BAR:STEPS -->
                         <li><?php esc_html_e('Click the button below to go back to Step 1.', 'duplicator'); ?></li>
                         <li><?php esc_html_e('On Step 1 the "Archive Only the Database" checkbox will be auto checked.', 'duplicator'); ?></li>
                         <li>
-                            <?php esc_html_e('Complete the package build and follow the ', 'duplicator'); ?>
                             <?php
-                            printf(
-                                '%s "<a href="%s" target="faq">%s</a>".',
-                                '',
-                                'https://snapcreek.com/duplicator/docs/quick-start/' .
-                                '?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=host_interupt_2partlink2&utm_campaign=build_issues#quick-060-q',
-                                esc_html__('Quick Start Two-Part Install Instructions', 'duplicator')
-                            );
-                            ?>
+                                printf(
+                                    esc_html_x(
+                                        'Complete the package build and follow the %1$sQuick Start Two-Part Install Instructions%2$s',
+                                        '1: opening link, 2: closing link',
+                                        'duplicator'
+                                    ),
+                                    '<a href="' . esc_url(LinkManager::getDocUrl('two-part-install', 'backup_step_3_fail', 'Two-Part Install')) . '" target="_blank">',
+                                    '</a>'
+                                );
+                                ?>
                         </li>
                     </ol>
 
@@ -458,7 +439,10 @@ TOOL BAR:STEPS -->
                                                 ?><br/><br/>
 
                     <div style="text-align:center; margin:10px; font-size:16px; font-weight:bold">
-                        <a href="https://snapcreek.com/duplicator/docs/faqs-tech/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_content=host_interupt_diagnosebtn&utm_campaign=build_issues#faq-trouble-100-q" target="_blank">
+                        <a 
+                            href="<?php echo esc_url(LinkManager::getDocUrl('how-to-handle-server-timeout-issues', 'backup_step_3_fail', 'Server Timeout')); ?>"
+                            target="_blank"
+                        >
                             [<?php esc_html_e('Diagnose Server Setup', 'duplicator'); ?>]
                         </a>
                     </div>
@@ -854,19 +838,6 @@ jQuery(document).ready(function ($) {
             $btn.removeAttr("disabled");
         } else {
             $btn.attr("disabled", true);
-        }
-    };
-
-    Duplicator.Pack.ToggleHelpInstall = function (div) {
-        var $div    = $(div);
-        var $icon   = $div.find('i.far')
-        var $info   = $('div.dup-howto-exe-info');
-        if ($icon.hasClass('fa-plus-square')) {
-            $icon.attr('class', 'far fa-minus-square');
-            $info.show();
-        } else {
-            $icon.attr('class', 'far fa-plus-square');
-            $info.hide();
         }
     };
 

@@ -151,7 +151,8 @@
 	transition: color 0.3s;
 }
 
-.version-default.hover-default-zooming-blur .portfolio-item .image .links .caption .description {
+.version-default.hover-default-zooming-blur .portfolio-item .image .links .caption .description,
+.version-default.hover-default-zooming-blur .portfolio-item .image .links .caption .details {
 	display: none;
 	opacity: 0;
 	-webkit-transition: opacity 0.3s;
@@ -163,7 +164,13 @@
 	opacity: 1;
 }
 
-.version-default.hover-default-zooming-blur .portfolio-item:hover .image.format-video.has-post-thumbnail .links .caption .description {
+.version-default.hover-default-zooming-blur .portfolio-item:hover .image .links .caption .details {
+	display: flex;
+	opacity: 1;
+}
+
+.version-default.hover-default-zooming-blur .portfolio-item:hover .image.format-video.has-post-thumbnail .links .caption .description,
+.version-default.hover-default-zooming-blur .portfolio-item:hover .image.format-video.has-post-thumbnail .links .caption .details {
 	display: none;
 	opacity: 0;
 }
@@ -235,6 +242,10 @@
 .version-default.news-grid.hover-default-zooming-blur .portfolio-item .image .links .caption .description {
 	margin: 0;
 	margin-top: 11px;
+}
+
+.version-default.news-grid.hover-default-zooming-blur .portfolio-item .image .links .caption .details:not(:empty) {
+	margin-top: 10px;
 }
 
 .version-default.news-grid.hover-default-zooming-blur .portfolio-item .image .links .caption .info {

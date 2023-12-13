@@ -1,3 +1,4 @@
+(function() {
 class BaseLoader {
 	constructor() {
 		this.isInserted = false;
@@ -319,3 +320,4 @@ let videos = document.getElementsByClassName("background-video-container"), i;
 for (i = 0; i < videos.length; i++) {
 	new video(videos[i]);
 }
+})();

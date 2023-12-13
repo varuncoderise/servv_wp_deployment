@@ -55,7 +55,7 @@ if ( $related_products ) : ?>
 			<?php endif; ?>
 		<?php endif; ?>
 
-		<?php if ( thegem_get_option('product_archive_type') != 'grid' ) : ?>
+		<?php if ( thegem_get_option('product_archive_type') == 'legacy' ) : ?>
 			<?php woocommerce_product_loop_start(); ?>
 
 				<?php foreach ( $related_products as $related_product ) : ?>

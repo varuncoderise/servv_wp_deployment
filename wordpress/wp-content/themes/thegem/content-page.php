@@ -161,7 +161,20 @@ if (!$fullpage_enabled) {
 									$thegem_categories_list[] = '<span class="gem-date-color">' . $thegem_category->name . '</span>';
 								}
 							}
-							?>
+       
+							$meta_data = json_decode(thegem_get_option('portfolio_project_details_data'), true);
+							$project_details_output = array();
+                            if (!empty($meta_data)) {
+                                foreach($meta_data as $meta) {
+                                    $key = '_thegem_cf_' . str_replace('-', '_', sanitize_title($meta['title']));
+	                                $meta_value = get_post_meta(get_the_ID(), $key, true);
+                                 
+	                                if (!empty($meta_value)) {
+		                                $project_details_output[] = '<div class="details-item">' . esc_html($meta['title']) . ': ' . $meta_value . '</div>';
+	                                }
+                                }
+                            }
+                        ?>
 
 							<div class="post-meta date-color">
 								<div class="entry-meta single-post-meta clearfix gem-post-date">
@@ -194,6 +207,13 @@ if (!$fullpage_enabled) {
 											echo '</span>';
 										} ?>
 									</div>
+                                    <?php if (!empty($project_details_output)): ?>
+                                        <div class="post-meta-bottom">
+                                            <div class="details">
+                                                <?= implode(' <span class="sep"></span> ', $project_details_output); ?>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
 									<?php echo ($fullpage_enabled ? '</div>' : null); //end div for fullpage ?>
 								</div><!-- .entry-meta -->
 							</div>

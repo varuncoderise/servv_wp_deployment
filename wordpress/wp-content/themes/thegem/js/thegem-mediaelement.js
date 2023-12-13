@@ -45,7 +45,7 @@
 			};
 
 			// Only initialize new media elements.
-			$( '.wp-audio-shortcode, .wp-video-shortcode, .video-block video, .audio-block audio' )
+			$( '.wp-audio-shortcode, .wp-video-shortcode, .video-block video' )
 				.not( '.mejs-container' )
 				.filter(function () {
 					return ! $( this ).parent().hasClass( '.mejs-mediaelement' );

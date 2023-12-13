@@ -1,9 +1,11 @@
 <?php
 
+
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 use Duplicator\Core\MigrationMng;
-use Duplicator\Utils\CachesPurge\CachesPurge;
+use Duplicator\Installer\Utils\LinkManager;
+use Duplicator\Views\AdminNotices;
 
 ?>
 <div class="dpro-diagnostic-action-installer">
@@ -50,7 +52,7 @@ use Duplicator\Utils\CachesPurge\CachesPurge;
         </p>
         <?php
     } else {
-        delete_option(DUP_UI_Notice::OPTION_KEY_MIGRATION_SUCCESS_NOTICE);
+        delete_option(AdminNotices::OPTION_KEY_MIGRATION_SUCCESS_NOTICE);
     }
     ?>
     <div style="font-style: italic; max-width:900px; padding:10px 0 25px 0;">
@@ -65,12 +67,14 @@ use Duplicator\Utils\CachesPurge\CachesPurge;
             );
             ?><br>
             <?php
-            _e(
-                'For more details please visit '
-                . 'the FAQ link <a href="https://snapcreek.com/duplicator/docs/faqs-tech/#faq-installer-295-q" target="_blank">'
-                . 'Which files need to be removed after an install?'
-                . '</a>',
-                'duplicator'
+            printf(
+                _x(
+                    'For more details please visit the FAQ link %1$sWhich files need to be removed after an install?%2$s',
+                    '%1$s and %2$s are <a> tags',
+                    'duplicator'
+                ),
+                '<a href="' . esc_url(LinkManager::getDocUrl('which-files-need-to-be-removed-after-an-install', 'migration-notice')) . '" target="_blank">',
+                '</a>'
             );
             ?>
         </p>

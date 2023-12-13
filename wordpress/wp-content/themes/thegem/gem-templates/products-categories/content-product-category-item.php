@@ -24,7 +24,7 @@ $thegem_sources = $thegem_sizes[1]; ?>
 				</div>
 				<?php
 				if ($params['caption_position'] == 'below') { ?>
-					<a class="category-link" href="<?php echo esc_url(get_term_link($category->term_id, 'product_cat')) ?>"></a>
+					<a class="category-link" href="<?php echo $category->term_id > 0 ? esc_url(get_term_link($category->term_id, 'product_cat')) : '#'; ?>"></a>
 				<?php } ?>
 			</div>
 			<a class="category-overlay" href="<?php echo $category->term_id > 0 ? esc_url(get_term_link($category->term_id, 'product_cat')) : '#'; ?>">
@@ -37,7 +37,7 @@ $thegem_sources = $thegem_sizes[1]; ?>
 						<?php if ($params['product_counts'] !== 'hidden') { ?>
 							<div class="category-count visible-<?php echo $params['product_counts']; ?>">
 								<div class="category-count-inside">
-									<?php echo sprintf(esc_html(_n('%s product', '%s products', $category->count, 'thegem')), $category->count); ?>
+									<?php echo sprintf(esc_html(_n('%s ' . $params['product_singular_text'] , '%s ' . $params['product_plural_text'], $category->count, 'thegem')), $category->count); ?>
 								</div>
 							</div>
 						<?php } ?>

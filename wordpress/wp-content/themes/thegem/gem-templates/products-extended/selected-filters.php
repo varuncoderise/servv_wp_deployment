@@ -4,21 +4,38 @@
 	<div class="portfolio-selected-filter-item clear-filters">
 		<?php echo esc_html($params['filters_text_labels_clear_text']); ?>
 	</div>
-	<?php if (isset($_GET[$grid_uid . '-category']) || isset($_GET['category'])) { ?>
+	<?php if (isset($_GET[$grid_uid_url . 'category'])) { ?>
 		<div class="portfolio-selected-filter-item category"
 			 data-filter="<?php echo esc_attr($active_cat); ?>"><?php $category = get_term_by('slug', $active_cat, 'product_cat');
 			echo esc_html($category->name); ?> <i class="delete-filter"></i></div>
 	<?php }
-	if ($has_attr_url) {
-		foreach ($attributes_current as $key => $value) {
-			foreach ($value as $attr_value) { ?>
-				<div class="portfolio-selected-filter-item attribute" data-attr="<?php echo esc_attr($key); ?>"
-					 data-filter="<?php echo esc_attr($attr_value); ?>"><?php $category = get_term_by('slug', $attr_value, 'pa_' . $key);
-					echo esc_html($category->name); ?><i class="delete-filter"></i></div>
-			<?php }
+	if (!empty($attributes_filter)) {
+		foreach ($attributes_filter as $key => $value) {
+			if (strpos($key, "__range") > 0) {
+				$key = str_replace("__range","", $key); ?>
+				<div class="portfolio-selected-filter-item price" data-attr="<?php echo esc_attr($key); ?>">
+					<?php echo('<div>' . $value[0] . ' - ' . $value[1] . '</div>'); ?>
+					<i class="delete-filter"></i>
+				</div>
+			<?php } else {
+				foreach ($value as $attr_value) { ?>
+					<div class="portfolio-selected-filter-item attribute" data-attr="<?php echo esc_attr($key); ?>"
+						 data-filter="<?php echo esc_attr($attr_value); ?>">
+						<?php if (strpos($key, 'tax_') === 0) {
+							$term = get_term_by('slug', $attr_value,  str_replace("tax_","", $key));
+							echo esc_html($term->name);
+						} else if (strpos($key, 'meta_') === 0) {
+							echo esc_html($attr_value);
+						} else {
+							$term = get_term_by('slug', $attr_value, 'pa_' . $key);
+							echo esc_html($term->name);
+						} ?><i class="delete-filter"></i>
+					</div>
+				<?php }
+			}
 		}
 	}
-	if (isset($_GET[$grid_uid . '-status']) || isset($_GET['status'])) {
+	if (isset($_GET[$grid_uid_url . 'status'])) {
 		if (in_array('sale', $status_current)) { ?>
 			<div class="portfolio-selected-filter-item status" data-filter="sale"><?php echo esc_html($params['filter_by_status_sale_text']); ?><i
 						class="delete-filter"></i></div>
@@ -29,7 +46,7 @@
 			<?php
 		}
 	}
-	if (isset($_GET[$grid_uid . '-min_price']) || isset($_GET[$grid_uid . '-max_price']) || isset($_GET['min_price']) || isset($_GET['max_price'])) {
+	if (isset($_GET[$grid_uid_url . 'min_price']) || isset($_GET[$grid_uid_url . 'max_price'])) {
 		$currency_pos = get_option('woocommerce_currency_pos');
 		$space = '';
 		$min_price = number_format($current_min_price, 0, get_option('woocommerce_price_decimal_sep') ,get_option('woocommerce_price_thousand_sep'));
@@ -49,7 +66,7 @@
 			<i class="delete-filter"></i></div>
 		<?php
 	}
-	if (isset($_GET[$grid_uid . '-s']) || isset($_GET['s'])) { ?>
+	if (isset($_GET[$grid_uid_url . 's'])) { ?>
 		<div class="portfolio-selected-filter-item search"><?php echo esc_html($search_current); ?><i class="delete-filter"></i></div>
 	<?php } ?>
 </div>

@@ -42,6 +42,19 @@ if ( ! class_exists( 'TSSPro' ) ) {
 		 * @var array
 		 */
 		public $preSettings;
+		public  $options;
+		public  $incPath;
+		public  $proPath;
+		public  $functionsPath;
+		public  $classesPath;
+		public  $widgetsPath;
+		public  $viewsPath;
+		public  $templatePath;
+		public  $proTemplatesPath;
+		public  $post_type_slug;
+		public  $modelsPath ;
+		public  $assetsUrl ;
+		public  $objects ;
 
 		/**
 		 * Instance

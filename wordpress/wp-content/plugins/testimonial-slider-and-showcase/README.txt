@@ -3,8 +3,8 @@ Contributors: techlabpro1
 Donate link:
 Tags: testimonials slider, testimonial, testimonials,testimonial slider, testimonial showcase, responsive testimonial, testimonial plugin
 Requires at least: 4.5
-Tested up to: 6.1
-Stable tag: 2.3.1
+Tested up to: 6.4
+Stable tag: 2.3.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,9 +12,9 @@ Best Testimonial Slider and Showcase plugin for WordPress website. Testimonials 
 
 == Description ==
 
-👉 [Demo](https://www.radiustheme.com/demo/plugins/testimonial-slider/) | [Documentation](https://www.radiustheme.com/docs/testimonial-slider/getting-started/installation/) | [Get Pro](https://www.radiustheme.com/downloads/wp-testimonial-slider-showcase-pro-wordpress/) 👈
-
 Best Testimonial Slider and Showcase plugin for WordPress website. It is a developer and user-friendly testimonial plugin that facilitates easy management of customer testimonials. Since it is fully responsive, it ensures that your testimonials appear in beautiful layouts on all devices.
+
+👉 [ShortCode Demo](https://www.radiustheme.com/demo/plugins/testimonial-slider/) | [Elementor Demo](https://www.radiustheme.com/demo/plugins/testimonial-slider/elementor-grid-layout-1/) | [Documentation](https://www.radiustheme.com/docs/testimonial-slider/getting-started/installation/) | [Get Pro](https://www.radiustheme.com/downloads/wp-testimonial-slider-showcase-pro-wordpress/) 👈
 
 This testimonial slider plugin is 100% customizable and allows you to generate shortcodes easily. You can summon the shortcodes onto any post or page on which you need to showcase testimonials in slider or grid view. It offers many variations of the grid and slider layouts.
 
@@ -185,6 +185,21 @@ The following are the fields that this plugin allows you to have on your testimo
 06. Styles
 
 == Changelog ==
+
+= 2.3.5 (November 20, 2023) =
+* Added: WordPress 6.4 version compatible
+* Added: Twitter new icon
+
+
+= 2.3.4 (September 5, 2023) =
+* Added: WordPress 6.3 version compatible
+* Added: PHP 8.2.0 version compatible
+
+= 2.3.3 (June 1, 2023) =
+* Fixed: Some Css issue & responsive issue
+
+= 2.3.2 (April 17, 2023) =
+* Fixed: Some Css issue & responsive issue
 
 = 2.3.1 (March 13, 2023) =
 * Fixed: Elementor slider compatibility issue.

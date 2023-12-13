@@ -109,6 +109,26 @@
                 }
             }
 
+            if ($('.extended-portfolio-grid', destination.item).length) {
+                $('.extended-portfolio-grid', destination.item).each(function (index, item) {
+                    if (item.className.indexOf('item-animation') !== -1) {
+                        setTimeout(function () {
+                            $(item).itemsAnimations('instance').animate($('.portfolio-set .portfolio-item', $(item)));
+                        });
+                    }
+                });
+            }
+
+            if ($('.gem-gallery-grid', destination.item).length) {
+                $('.gem-gallery-grid', destination.item).each(function (index, item) {
+                    if (item.className.indexOf('item-animation') !== -1) {
+                        setTimeout(function () {
+                            $(item).itemsAnimations('instance').animate($('.gallery-set .gallery-item', $(item)));
+                        });
+                    }
+                });
+            }
+
             if (!$(destination.item).hasClass('fp-section-initialized')) {
                 if ($('.gem-clients-grid-carousel', destination.item).length > 0 && isEnabledParallax) {
                     setTimeout(function() {
@@ -166,23 +186,6 @@
                 $('.vc_progress_bar:not(".vc_progress_bar-initialized")', destination.item).each(function (index, item) {
                     $(item).addClass('vc_progress_bar-initialized');
                     window.vc_progress_bar();
-                });
-
-                $('.portfolio:not(.portfolio-slider), .news-grid', destination.item).each(function(index, item) {
-                    var $portfolio = $(item);
-                    $portfolio.itemsAnimations('instance').reinitItems($('.portfolio-set .portfolio-item', $portfolio));
-                    $('.portfolio-set', $portfolio).isotope();
-                });
-                
-                $('.gem-gallery-grid', destination.item).each(function(index, item) {
-                    var $galleryGrid = $(item);
-                    var $items = $('.gallery-set .gallery-item', $galleryGrid)
-                    $galleryGrid.itemsAnimations('instance').reinitItems($items);
-                    $('.gallery-set', $galleryGrid).isotope();
-
-                    setTimeout(function () {
-                        $galleryGrid.itemsAnimations('instance').show($items);
-                    }, 300);
                 });
 
                 if ($('.gem-testimonials', destination.item).length) {

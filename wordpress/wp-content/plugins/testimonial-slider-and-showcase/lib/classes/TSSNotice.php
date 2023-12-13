@@ -20,9 +20,9 @@ if ( ! class_exists( 'TSSNotice' ) ):
 		 */
 		public function __construct() {
 			$current      = time();
-			$black_friday = mktime( 0, 0, 0, 11, 22, 2021 ) <= $current && $current <= mktime( 0, 0, 0, 12, 6, 2021 );
+			$black_friday = mktime( 0, 0, 0, 11, 20, 2023 ) <= $current && $current <= mktime( 0, 0, 0, 1, 5, 2024 );
 
-			if ( $black_friday ) {
+			if (  $black_friday ) {
 				add_action( 'admin_init', [ $this, 'black_friday_notice' ] );
 			} else {
 				register_activation_hook( TSS_PLUGIN_ACTIVE_FILE_NAME, [ $this, 'rttss_activation_time' ] );
@@ -37,7 +37,8 @@ if ( ! class_exists( 'TSSNotice' ) ):
 		 * @return void
 		 */
 		public static function black_friday_notice() {
-			if ( '1' !== get_option( 'rttss_bf_2021' ) ) {
+
+			if ( '1' !== get_option( 'rttss_bf_2021' ) && ! function_exists('rttsp')) {
 				if ( ! isset( $GLOBALS['rt_tss_2021_notice'] ) ) {
 					$GLOBALS['rt_tss_2021_notice'] = 'rttss_bf_2021';
 					self::notice();
@@ -68,12 +69,11 @@ if ( ! class_exists( 'TSSNotice' ) ):
 					<div class="notice notice-info is-dismissible" data-rttss-dismissable="rttss_bf_2021"
 						style="display:grid;grid-template-columns: 100px auto;padding-top: 25px; padding-bottom: 22px;">
 						<img alt="<?php echo esc_attr( $plugin_name ); ?>"
-							src="<?php echo esc_url( TSSPro()->assetsUrl ) . 'images/icon-128x128.png'; ?>" width="74px"
+							src="<?php echo esc_url( TSSPro()->assetsUrl ) . 'images/icon-128x128.gif'; ?>" width="74px"
 							height="74px" style="grid-row: 1 / 4; align-self: center;justify-self: center"/>
-						<h3 style="margin:0;"><?php echo sprintf( '%s Black Friday Deal!!', esc_html( $plugin_name ) ); ?></h3>
-						<p style="margin:0 0 2px;">Don't miss out on our biggest sale of the year! Get your
-							<b><?php echo esc_html( $plugin_name ); ?> plan</b> with <b>UPTO 50% OFF</b>! Limited time offer expires on
-							December 5.
+						<h3 style="margin:0;"><?php echo sprintf( '%s Black Friday Sale 2023!!', esc_html( $plugin_name ) ); ?></h3>
+						<p style="margin:0 0 2px;"><?php echo esc_html__( "🚀 Exciting News: $plugin_name Black Friday sale is now live!", 'testimonial-slider-showcase' ); ?>
+                            Get the plugin today and enjoy discounts up to <b> 50%.</b>
 						</p>
 						<p style="margin:0;">
 							<a class="button button-primary" href="<?php echo esc_url( $download_link ); ?>" target="_blank">Buy Now</a>

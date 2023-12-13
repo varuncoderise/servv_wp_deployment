@@ -12,7 +12,7 @@
 .product-quick-view__wrapper .woo-modal-product > .woocommerce .product{
     padding: 0;
     overflow: hidden;
-    background-color: #FFFFFF;
+    background-color: var(--thegem-to-main-bg-image-color, var(--thegem-to-main-bg-color));
 }
 .product-quick-view__wrapper .single-product-content{
     position: relative;
@@ -434,6 +434,7 @@
     left: 0;
     right: 0;
     min-width: 100%;
+    max-height: 200px;
     margin: 0;
     border-radius: 3px;
     border-top: 0;
@@ -442,8 +443,18 @@
     visibility: hidden;
     pointer-events: none;
     transform: translateY(-15px);
-    overflow: hidden;
+    overflow-x: hidden;
     z-index: 0;
+}
+.product-quick-view__wrapper .thegem-combobox-wrap .thegem-combobox__options::-webkit-scrollbar {
+    width: 4px;
+}
+.product-quick-view__wrapper .thegem-combobox-wrap .thegem-combobox__options::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+.product-quick-view__wrapper .thegem-combobox-wrap .thegem-combobox__options::-webkit-scrollbar-thumb {
+    background-color: rgba(223, 229, 232, 1);
+    border-radius: 4px;
 }
 .product-quick-view__wrapper .thegem-combobox-wrap .thegem-combobox.opened .thegem-combobox__options {
     opacity: 1;

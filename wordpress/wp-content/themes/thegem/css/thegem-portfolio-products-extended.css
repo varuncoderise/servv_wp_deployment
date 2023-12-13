@@ -389,6 +389,7 @@
 }
 
 .portfolio.extended-products-grid.extended-products-grid .product-bottom a.icon,
+.portfolio.extended-products-grid.extended-products-grid .product-bottom .icon a,
 .portfolio.extended-products-grid.extended-products-grid .product-bottom a.add_to_wishlist {
   display: block;
   height: auto;
@@ -407,20 +408,24 @@
 }
 
 .portfolio.extended-products-grid.extended-products-grid .product-bottom a.icon svg,
-.portfolio.extended-products-grid .portfolio-item .image .overlay .links a.icon svg {
+.portfolio.extended-products-grid.extended-products-grid .product-bottom .icon a svg,
+.portfolio.extended-products-grid .portfolio-item .image .overlay .links a.icon svg,
+.portfolio.extended-products-grid .portfolio-item .image .overlay .links .icon a svg {
   fill: currentColor;
   width: 16px;
   height: 16px;
 }
 
-.portfolio.extended-products-grid.extended-products-grid .product-bottom a.icon i {
+.portfolio.extended-products-grid.extended-products-grid .product-bottom a.icon i,
+.portfolio.extended-products-grid.extended-products-grid .product-bottom .icon a i {
   font-size: 16px;
   vertical-align: top;
   line-height: inherit;
 }
 
 .portfolio.extended-products-grid.extended-products-grid .product-bottom a.icon i.default,
-.portfolio.extended-products-grid.extended-products-grid a.type_button i.default {
+.portfolio.extended-products-grid.extended-products-grid .product-bottom .icon a i.default,
+.portfolio.extended-products-grid.extended-products-grid .cart.type_button i.default {
   font-style: normal;
   font-family: "thegem-icons";
   font-weight: normal;
@@ -428,7 +433,7 @@
 }
 
 .portfolio.extended-products-grid.extended-products-grid .product-bottom .bottom-product-link:before,
-.portfolio.extended-products-grid.extended-products-grid .product-bottom .add_to_cart_button:before,
+.portfolio.extended-products-grid.extended-products-grid .product-bottom .cart .button:before,
 .portfolio.extended-products-grid.extended-products-grid .product-bottom .add_to_wishlist:before,
 .extended-products-grid.extended-products-grid .product-bottom .yith-wcwl-wishlistexistsbrowse a:before {
   content: none !important;
@@ -438,7 +443,7 @@
   content: "\e628";
 }
 
-.portfolio.extended-products-grid .product-bottom .add_to_cart_button i.default:before {
+.portfolio.extended-products-grid .product-bottom .cart i.default:before {
   content: "\e660";
 }
 
@@ -463,11 +468,13 @@
   display: block;
 }
 
-.portfolio.extended-products-grid .portfolio-item .image .overlay .links .portfolio-icons.product-bottom a.icon i {
+.portfolio.extended-products-grid .portfolio-item .image .overlay .links .portfolio-icons.product-bottom a.icon i,
+.portfolio.extended-products-grid .portfolio-item .image .overlay .links .portfolio-icons.product-bottom .icon a i {
   color: inherit;
 }
 
-.portfolio.extended-products-grid.hover-gradient .portfolio-item .image .overlay .links a.icon:before {
+.portfolio.extended-products-grid.hover-gradient .portfolio-item .image .overlay .links a.icon:before,
+.portfolio.extended-products-grid.hover-gradient .portfolio-item .image .overlay .links .icon a:before {
   background-color: transparent;
 }
 
@@ -491,157 +498,6 @@
   display: none !important;
 }
 
-.portfolio.extended-products-grid .with-filter-sidebar .portfolio-top-panel {
-  display: block;
-  margin: 0 0 35px;
-}
-.portfolio.extended-products-grid .portfolio-top-panel {
-  display: block;
-  margin: 0 0 20px;
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-box-pack: space-between;
-  -ms-flex-pack: space-between;
-  justify-content: space-between;
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left {
-  min-width: initial;
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-@media (min-width: 992px) {
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left.center .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item {
-    margin-right: 5px;
-    margin-left: 5px;
-  }
-}
-@media (min-width: 992px) and (min-width: 768px) {
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left.center .portfolio-filters-list.single-filter.style-standard .portfolio-filter-item .portfolio-filter-item-list ul {
-    justify-content: center;
-  }
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left.center .portfolio-filters-list.single-filter.style-standard .portfolio-filter-item .portfolio-filter-item-list ul li {
-    margin: 0 15px 13px 15px;
-  }
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left.right {
-  margin-left: auto;
-}
-@media (min-width: 992px) {
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left.right .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item {
-    margin-right: 0;
-    margin-left: 10px;
-  }
-}
-@media (min-width: 992px) and (min-width: 768px) {
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left.right .portfolio-filters-list.single-filter.style-standard .portfolio-filter-item .portfolio-filter-item-list ul {
-    justify-content: flex-end;
-  }
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left.right .portfolio-filters-list.single-filter.style-standard:not(.has-right-panel) .portfolio-filter-item .portfolio-filter-item-list ul li {
-    margin: 0 0 13px 30px;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left .portfolio-filters-list.style-standard .portfolio-filters-area .portfolio-filters-area-scrollable,
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-row .portfolio-top-panel-left .portfolio-filters-list.style-standard .portfolio-filters-area .portfolio-filters-area-scrollable .widget-area {
-    flex-wrap: wrap;
-    flex-direction: row;
-  }
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  flex: none;
-  margin-left: 10px;
-}
-@media (max-width: 930px) {
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right > span {
-    display: none;
-  }
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter {
-  position: relative;
-  padding-left: 5px;
-  z-index: 5;
-}
-@media (max-width: 930px) {
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter:not(.mobile-visible) {
-    display: none;
-  }
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-form {
-  display: none;
-  position: absolute;
-  top: 50%;
-  right: 37px;
-  transform: translateY(-50%);
-  padding: 20px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter input {
-  width: 220px;
-  padding: 5px 18px;
-  box-sizing: border-box;
-}
-@media (min-width: 768px) {
-  .portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter input {
-    width: 350px;
-  }
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter.active .portfolio-search-filter-form {
-  display: block;
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button {
-  display: block;
-  position: relative;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.portfolio.extended-products-grid .portfolio-top-panel .portfolio-top-panel-right .portfolio-search-filter .portfolio-search-filter-button:before {
-  content: "\e67b";
-  font-style: normal;
-  font-family: "thegem-icons";
-  font-weight: normal;
-  font-size: 14px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotateY(180deg);
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-}
-@media (min-width: 992px) {
-  .portfolio.extended-products-grid .portfolio-top-panel.sidebar-filter > .portfolio-selected-filters {
-    display: none;
-  }
-  .portfolio.extended-products-grid .portfolio-top-panel.sidebar-filter .portfolio-selected-filters .portfolio-selected-filter-item {
-    margin: 0 10px 10px 0;
-  }
-  .portfolio.extended-products-grid .portfolio-top-panel.sidebar-filter.selected-only {
-    margin-bottom: 0;
-  }
-  .portfolio.extended-products-grid .portfolio-top-panel.sidebar-filter.selected-only .portfolio-selected-filters .portfolio-selected-filter-item {
-    margin-bottom: 20px;
-  }
-}
-@media (max-width: 999px) {
-  .portfolio.extended-products-grid .portfolio-top-panel.sidebar-filter .portfolio-top-panel-left .portfolio-selected-filters {
-    display: none;
-  }
-}
 .portfolio.extended-products-grid .portfolio-set {
   margin-top: 0;
   margin-bottom: 0;
@@ -656,7 +512,7 @@
   .portfolio.extended-products-grid .portfolio-item.product.columns-desktop-5 {
     width: 20%;
   }
-  .portfolio.extended-products-grid .portfolio-item.product.columns-desktop-5.double-item-squared {
+  .portfolio.extended-products-grid .portfolio-item.product.columns-desktop-5:is(.double-item-squared, .double-item-horizontal) {
     width: 40%;
   }
 }
@@ -668,6 +524,7 @@
   margin-top: 5px;
 }
 .portfolio.extended-products-grid .portfolio-item.product .actions {
+  width: -moz-available;
   width: -webkit-fill-available;
   margin: 0 -2px;
   line-height: 1.2;
@@ -697,6 +554,7 @@
   -o-transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
+  overflow: visible;
 }
 .portfolio.extended-products-grid .portfolio-item.product .image .image-inner {
   height: 100%;
@@ -722,7 +580,7 @@
 .portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon {
   margin: 0 10px 0 0;
 }
-.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons a.icon {
+.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons .icon a {
   position: relative;
   width: 20px;
   height: 20px;
@@ -742,15 +600,15 @@
   justify-content: center;
   flex: none;
 }
-.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons a.icon:before {
+.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons a.icon:before, .portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons .icon a:before {
   content: none !important;
 }
-.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons a.icon i {
+.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons .icon a i {
   font-size: 20px;
   line-height: initial;
   transition: none;
 }
-.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons a.icon svg {
+.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .portfolio-icons .icon a svg {
   width: 20px;
   height: 20px;
 }
@@ -811,7 +669,7 @@
 .portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .caption a.added_to_cart {
   display: none !important;
 }
-.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .caption a.add_to_cart_button.type_button {
+.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .caption .cart.type_button .button {
   width: fit-content;
   width: -webkit-fit-content;
   height: auto;
@@ -827,12 +685,12 @@
   transform: none;
   transition: all 0.3s;
 }
-.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .caption a.add_to_cart_button.type_button i {
+.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .caption .cart.type_button .button i {
   color: currentColor;
   margin-right: 5px;
   font-size: 16px;
 }
-.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .caption a.add_to_cart_button.type_button.loading {
+.portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .caption .cart.type_button .button.loading {
   position: initial;
 }
 .portfolio.extended-products-grid .portfolio-item.product .image .overlay .links .caption .actions > * {
@@ -899,7 +757,7 @@
 .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .yith-wcwl-add-to-wishlist, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .post-footer-sharing {
   margin: 0;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icon a {
   width: 39px;
   height: 39px;
   line-height: initial;
@@ -915,34 +773,34 @@
   align-items: center;
   justify-content: center;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon:hover {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon:hover, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icon a:hover {
   transition: all 0.3s;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon .icon {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon .icon, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icon a .icon {
   margin: 0;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon i {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon i, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icon a i {
   display: inline-block;
   font-size: 16px;
   color: inherit;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon svg {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon svg, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icon a svg {
   width: 16px;
   height: 16px;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon.delete_item ~ * {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.icon.delete_item ~ *, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icon a.delete_item ~ * {
   display: none;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:first-child, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:first-child a.icon {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:first-child, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:first-child a.icon, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:first-child .icon a {
   margin-left: 0 !important;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:last-child, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:last-child a.icon {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:last-child, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:last-child a.icon, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption > *:last-child .icon a {
   margin-right: 0 !important;
 }
 .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption a.added_to_cart {
   display: none !important;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .add_to_cart_button.type_button {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .cart.type_button .button {
   width: auto !important;
   height: auto !important;
   font-size: 14px;
@@ -960,23 +818,23 @@
   transition: all 0.3s;
 }
 @media (min-width: 992px) {
-  .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .add_to_cart_button.type_button {
+  .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .cart.type_button .button {
     padding: 5px 15px 6px 15px;
   }
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .add_to_cart_button.type_button i {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .cart.type_button .button i {
   color: currentColor;
   font-size: 16px;
   line-height: 1;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .add_to_cart_button.type_button .space {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .cart.type_button .button .space {
   display: inline-block;
   width: 7px;
 }
 .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .delete_item:before, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .yith-wcwl-wishlistaddedbrowse a:before {
   content: none;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .add_to_cart_button.product_type_variable i.default:before {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .cart.variable-type-button i.default:before {
   content: "\e661";
 }
 .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .added_to_cart:before {
@@ -995,7 +853,7 @@
 .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icons-top .icon {
   margin: 0;
 }
-.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icons-top a.icon {
+.portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icons-top a.icon, .portfolio.extended-products-grid .portfolio-item.product .wrap .product-bottom.on-page-caption .icons-top .icon a {
   width: 32px;
   height: 32px;
 }
@@ -1069,6 +927,7 @@
 .portfolio.extended-products-grid .portfolio-item.product .caption .product-price .price del .amount {
   font-size: 0.89em;
   opacity: 0.5;
+  line-height: 1;
 }
 .portfolio.extended-products-grid .portfolio-item.product .caption .hide-separator .empty-rating, .portfolio.extended-products-grid .portfolio-item.product .caption .hide-separator .product-rating-empty {
   display: none;
@@ -1261,16 +1120,16 @@
   margin: 10px 10px 10px 10px;
 }
 @media (min-width: 992px) {
-  .portfolio.extended-products-grid .portfolio-item.product.bigger .image .overlay .links .portfolio-icons a.icon {
+  .portfolio.extended-products-grid .portfolio-item.product.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid .portfolio-item.product.bigger .image .overlay .links .portfolio-icons .icon a {
     width: 45px;
     height: 45px;
     line-height: 45px;
     margin: 0 30px 0 0;
   }
-  .portfolio.extended-products-grid .portfolio-item.product.bigger .image .overlay .links .portfolio-icons a.icon i {
+  .portfolio.extended-products-grid .portfolio-item.product.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid .portfolio-item.product.bigger .image .overlay .links .portfolio-icons .icon a i {
     font-size: 45px;
   }
-  .portfolio.extended-products-grid .portfolio-item.product.bigger .image .overlay .links .portfolio-icons a.icon svg {
+  .portfolio.extended-products-grid .portfolio-item.product.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid .portfolio-item.product.bigger .image .overlay .links .portfolio-icons .icon a svg {
     width: 45px;
     height: 45px;
   }
@@ -1404,7 +1263,7 @@
 .portfolio.extended-products-grid.caption-container-preset-dark .portfolio-item .image .overlay .links-wrapper .links .caption .product-price .price {
   color: #ffffff;
 }
-.portfolio.extended-products-grid.caption-container-preset-dark .portfolio-item .image .overlay .links-wrapper .links .caption a.add_to_cart_button.type_button {
+.portfolio.extended-products-grid.caption-container-preset-dark .portfolio-item .image .overlay .links-wrapper .links .caption .cart.type_button .button {
   color: #ffffff;
   border-color: #ffffff;
   background-color: transparent;
@@ -1520,7 +1379,7 @@
   background: transparent;
   border-color: #212227;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.product .image .overlay .links .caption a.type_button:not(:hover), .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.product .image .overlay .links .caption a.type_button:not(:hover), .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.product .image .overlay .links .caption a.type_button:not(:hover), .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.product .image .overlay .links .caption a.type_button:not(:hover), .portfolio.extended-products-grid.caption-position-hover.hover-default .portfolio-item.product .image .overlay .links .caption a.type_button:not(:hover) {
+.portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.product .image .overlay .links .caption .cart.type_button .button:not(:hover), .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.product .image .overlay .links .caption .cart.type_button .button:not(:hover), .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.product .image .overlay .links .caption .cart.type_button .button:not(:hover), .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.product .image .overlay .links .caption .cart.type_button .button:not(:hover), .portfolio.extended-products-grid.caption-position-hover.hover-default .portfolio-item.product .image .overlay .links .caption .cart.type_button .button:not(:hover) {
   color: #ffffff;
   border-color: #ffffff;
 }
@@ -1532,10 +1391,10 @@
 .portfolio.extended-products-grid.caption-position-hover:not(.hover-zooming-blur):not(.hover-slide):not(.hover-fade) .portfolio-item .image .links .caption .product-price .price {
   color: #ffffff;
 }
-.portfolio.extended-products-grid.caption-position-hover:not(.hover-zooming-blur):not(.hover-slide):not(.hover-fade) .portfolio-item .image .links .caption a.add_to_cart_button.type_button:not(:hover) {
+.portfolio.extended-products-grid.caption-position-hover:not(.hover-zooming-blur):not(.hover-slide):not(.hover-fade) .portfolio-item .image .links .caption .cart.type_button .button:not(:hover) {
   background-color: transparent;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-default .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-default .portfolio-item .image .overlay .links .portfolio-icons a.icon {
+.portfolio.extended-products-grid.caption-position-hover.hover-default .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-default .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-default .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-default .portfolio-item .image .overlay .links .portfolio-icons .icon a {
   color: #ffffff;
   background: initial;
 }
@@ -1560,7 +1419,7 @@
 .portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon {
   margin: 0 4px 0 0;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon {
+.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .icon a {
   width: 32px !important;
   height: 32px !important;
   line-height: 32px !important;
@@ -1577,18 +1436,18 @@
   align-items: center;
   justify-content: center;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon i {
+.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .icon a i {
   font-size: 16px !important;
   line-height: initial;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon svg {
+.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .icon a svg {
   width: 16px;
   height: 16px;
 }
 .portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.added_to_cart, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.added_to_cart, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons a.added_to_cart, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons a.added_to_cart {
   display: none !important;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .add_to_cart_button.type_button, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .add_to_cart_button.type_button, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .add_to_cart_button.type_button, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .add_to_cart_button.type_button {
+.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .cart.type_button .button, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .cart.type_button .button, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .cart.type_button .button, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .cart.type_button .button {
   width: auto;
   height: auto;
   color: #212227;
@@ -1605,7 +1464,7 @@
   -ms-flex-align: center;
   align-items: center;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .add_to_cart_button.type_button i, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .add_to_cart_button.type_button i, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .add_to_cart_button.type_button i, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .add_to_cart_button.type_button i {
+.portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .cart.type_button .button i, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .cart.type_button .button i, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .cart.type_button .button i, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .cart.type_button .button i {
   margin-right: 5px;
 }
 .portfolio.extended-products-grid.caption-position-hover.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .portfolio-sharing-pane, .portfolio.extended-products-grid.caption-position-hover.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .portfolio-sharing-pane, .portfolio.extended-products-grid.caption-position-image.hover-slide .portfolio-item .image .overlay .links .portfolio-icons .portfolio-sharing-pane, .portfolio.extended-products-grid.caption-position-image.hover-fade .portfolio-item .image .overlay .links .portfolio-icons .portfolio-sharing-pane {
@@ -1675,7 +1534,7 @@
 .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons .portfolio-icons-inner > .icon {
   margin: 0 10px 0 0;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon {
+.portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons .icon a {
   position: initial;
   width: 16px;
   height: 16px;
@@ -1685,10 +1544,10 @@
   padding: 0;
   margin: 0;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon i {
+.portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons .icon a i {
   font-size: 16px;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon svg {
+.portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item .image .overlay .links .portfolio-icons .icon a svg {
   width: 16px;
   height: 16px;
 }
@@ -1717,16 +1576,16 @@
   .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .overlay-line:after, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .overlay-line:after, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .overlay-line:after, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .overlay-line:after, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .overlay-line:after, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .overlay-line:after {
     height: 2px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon {
+  .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a {
     width: 35px;
     height: 35px;
     line-height: 35px;
     margin: 0 14px 0 0;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i {
+  .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i {
     font-size: 35px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg {
+  .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-vertical-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-horizontal-sliding .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-circular .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg {
     width: 35px;
     height: 35px;
   }
@@ -1741,7 +1600,7 @@
   margin: 0 4px 0 0;
   visibility: visible;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon {
+.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons .icon a {
   width: 32px;
   height: 32px;
   line-height: 32px;
@@ -1749,10 +1608,10 @@
   margin: 0;
   border-radius: 50%;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon i {
+.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons .icon a i {
   font-size: 16px;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon svg {
+.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .portfolio-icons .icon a svg {
   width: 16px;
   height: 16px;
 }
@@ -1763,16 +1622,16 @@
   .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner {
     margin-right: -10px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a {
     width: 65px;
     height: 65px;
     line-height: 65px;
     margin: 0 10px 0 0;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i {
     font-size: 30px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg {
     width: 30px;
     height: 30px;
   }
@@ -1781,15 +1640,15 @@
   }
 }
 @media (max-width: 767px) {
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a {
     width: 26px;
     height: 26px;
     line-height: 26px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon i {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a i {
     font-size: 13px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg {
     width: 13px;
     height: 13px;
   }
@@ -1798,30 +1657,30 @@
   .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner {
     margin-right: -8px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a {
     width: 52px;
     height: 52px;
     line-height: 52px;
     margin: 0 8px 0 0;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i {
     font-size: 26px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-mobile-2x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg {
     width: 26px;
     height: 26px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a {
     width: 26px;
     height: 26px;
     line-height: 26px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon i {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a i {
     font-size: 13px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg {
     width: 13px;
     height: 13px;
   }
@@ -1830,30 +1689,30 @@
   .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner {
     margin-right: -8px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a {
     width: 52px;
     height: 52px;
     line-height: 52px;
     margin: 0 8px 0 0;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i {
     font-size: 26px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-tablet-4x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg {
     width: 26px;
     height: 26px;
   }
 }
 @media (min-width: 992px) {
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a {
     width: 26px;
     height: 26px;
     line-height: 26px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon i {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a i {
     font-size: 13px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item .image .overlay .links .portfolio-icons .icon a svg {
     width: 13px;
     height: 13px;
   }
@@ -1862,16 +1721,16 @@
   .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .portfolio-icons-inner {
     margin-right: -8px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a {
     width: 52px;
     height: 52px;
     line-height: 52px;
     margin: 0 8px 0 0;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon i, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a i {
     font-size: 26px;
   }
-  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg {
+  .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-hover.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6x .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-5 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons a.icon svg, .portfolio.extended-products-grid.caption-position-image.hover-gradient.columns-desktop-6 .portfolio-item.bigger .image .overlay .links .portfolio-icons .icon a svg {
     width: 26px;
     height: 26px;
   }
@@ -1882,10 +1741,10 @@
 .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .caption .title, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .caption .title {
   margin-bottom: 5px;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .caption a.add_to_cart_button.type_button, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .caption a.add_to_cart_button.type_button {
+.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .caption .cart.type_button .button, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .caption .cart.type_button .button {
   margin-left: auto;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .caption a.add_to_cart_button.type_button:not(:hover), .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .caption a.add_to_cart_button.type_button:not(:hover) {
+.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .caption .cart.type_button .button:not(:hover), .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .caption .cart.type_button .button:not(:hover) {
   color: #212227;
   background-color: transparent;
   border-color: #212227;
@@ -1893,7 +1752,7 @@
 .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .caption .product-price .price, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .caption .categories, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .caption .product-price .price, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .caption .categories {
   color: #393d50;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links a.icon {
+.portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-zooming-blur .portfolio-item .image .overlay .links .icon a, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-image.hover-zooming-blur .portfolio-item .image .overlay .links .icon a {
   color: #ffffff;
   background-color: #393d50;
 }
@@ -1908,7 +1767,7 @@
 .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .caption, .portfolio.extended-products-grid.caption-position-hover.hover-disabled .portfolio-item .image .overlay .links .caption, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .caption, .portfolio.extended-products-grid.caption-position-image.hover-disabled .portfolio-item .image .overlay .links .caption {
   padding: 10px;
 }
-.portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links a.icon:hover, .portfolio.extended-products-grid.caption-position-hover.hover-disabled .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-disabled .portfolio-item .image .overlay .links a.icon:hover, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links a.icon:hover, .portfolio.extended-products-grid.caption-position-image.hover-disabled .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-image.hover-disabled .portfolio-item .image .overlay .links a.icon:hover {
+.portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links a.icon:hover, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-gradient .portfolio-item .image .overlay .links .icon a:hover, .portfolio.extended-products-grid.caption-position-hover.hover-disabled .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-hover.hover-disabled .portfolio-item .image .overlay .links a.icon:hover, .portfolio.extended-products-grid.caption-position-hover.hover-disabled .portfolio-item .image .overlay .links .icon a, .portfolio.extended-products-grid.caption-position-hover.hover-disabled .portfolio-item .image .overlay .links .icon a:hover, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links a.icon:hover, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .icon a, .portfolio.extended-products-grid.caption-position-image.hover-gradient .portfolio-item .image .overlay .links .icon a:hover, .portfolio.extended-products-grid.caption-position-image.hover-disabled .portfolio-item .image .overlay .links a.icon, .portfolio.extended-products-grid.caption-position-image.hover-disabled .portfolio-item .image .overlay .links a.icon:hover, .portfolio.extended-products-grid.caption-position-image.hover-disabled .portfolio-item .image .overlay .links .icon a, .portfolio.extended-products-grid.caption-position-image.hover-disabled .portfolio-item .image .overlay .links .icon a:hover {
   background-color: rgba(255, 255, 255, 0.8);
   color: #393d50;
 }
@@ -1934,16 +1793,16 @@
     padding: 35px;
   }
 }
-.portfolio.extended-products-grid.hover-default .portfolio-item .image .overlay .links .caption a.add_to_cart_button.type_button {
+.portfolio.extended-products-grid.hover-default .portfolio-item .image .overlay .links .caption .cart.type_button .button {
   margin-left: auto;
 }
 .portfolio.extended-products-grid.hover-default .portfolio-item .caption .quick-view-button i.default:before, .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .quick-view-button i.default:before {
   content: "\e677";
 }
-.portfolio.extended-products-grid.hover-default .portfolio-item .caption .add_to_cart_button i.default:before, .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .add_to_cart_button i.default:before {
+.portfolio.extended-products-grid.hover-default .portfolio-item .caption .cart i.default:before, .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .cart i.default:before {
   content: "\e660";
 }
-.portfolio.extended-products-grid.hover-default .portfolio-item .caption .add_to_cart_button.product_type_variable i.default:before, .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .add_to_cart_button.product_type_variable i.default:before {
+.portfolio.extended-products-grid.hover-default .portfolio-item .caption .cart.variable-type-button i.default:before, .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .cart.variable-type-button i.default:before {
   content: "\e661";
 }
 .portfolio.extended-products-grid.hover-default .portfolio-item .caption .bottom-product-link i.default:before, .portfolio.extended-products-grid.hover-default .image .portfolio-icons.product-bottom .bottom-product-link i.default:before {
@@ -1966,10 +1825,10 @@
 .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .quick-view-button i.default:before, .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .quick-view-button i.default:before {
   content: "\e678";
 }
-.portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .add_to_cart_button i.default:before, .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .add_to_cart_button i.default:before {
+.portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .cart i.default:before, .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .cart i.default:before {
   content: "\e660";
 }
-.portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .add_to_cart_button.product_type_variable i.default:before, .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .add_to_cart_button.product_type_variable i.default:before {
+.portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .cart.variable-type-button i.default:before, .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .cart.variable-type-button i.default:before {
   content: "\e661";
 }
 .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .caption .bottom-product-link i.default:before, .portfolio.extended-products-grid:not(.hover-default) .portfolio-item .image .portfolio-icons.product-bottom .bottom-product-link i.default:before {
@@ -2002,7 +1861,7 @@
 .portfolio.extended-products-grid:not(.hover-default).caption-alignment-center .portfolio-item.product .image .overlay .links .caption .product-info {
   flex-direction: column;
 }
-.portfolio.extended-products-grid:not(.hover-default).caption-alignment-center .portfolio-item.product .image .overlay .links .caption .product-info .product-price, .portfolio.extended-products-grid:not(.hover-default).caption-alignment-center .portfolio-item.product .image .overlay .links .caption .product-info a.add_to_cart_button.type_button {
+.portfolio.extended-products-grid:not(.hover-default).caption-alignment-center .portfolio-item.product .image .overlay .links .caption .product-info .product-price, .portfolio.extended-products-grid:not(.hover-default).caption-alignment-center .portfolio-item.product .image .overlay .links .caption .product-info .cart.type_button .button {
   margin-right: auto;
   margin-left: auto;
 }
@@ -2029,7 +1888,7 @@
 .portfolio.extended-products-grid:not(.hover-default).caption-alignment-right .portfolio-item.product .image .overlay .links .caption .product-info {
   flex-direction: row-reverse;
 }
-.portfolio.extended-products-grid:not(.hover-default).caption-alignment-right .portfolio-item.product .image .overlay .links .caption .product-info .product-price, .portfolio.extended-products-grid:not(.hover-default).caption-alignment-right .portfolio-item.product .image .overlay .links .caption .product-info a.add_to_cart_button.type_button {
+.portfolio.extended-products-grid:not(.hover-default).caption-alignment-right .portfolio-item.product .image .overlay .links .caption .product-info .product-price, .portfolio.extended-products-grid:not(.hover-default).caption-alignment-right .portfolio-item.product .image .overlay .links .caption .product-info .cart.type_button .button {
   margin-right: 0;
   margin-left: auto;
 }
@@ -2211,12 +2070,12 @@
   }
 }
 @media (min-width: 992px) {
-  .portfolio.extended-products-grid.columns-desktop-6x .portfolio-item.product .wrap > .caption .product-bottom .add_to_cart_button.type_button i, .portfolio.extended-products-grid.columns-desktop-6x .portfolio-item.product .wrap > .caption .product-bottom .add_to_cart_button.type_button .space {
+  .portfolio.extended-products-grid.columns-desktop-6x .portfolio-item.product .wrap > .caption .product-bottom .cart.type_button .button i, .portfolio.extended-products-grid.columns-desktop-6x .portfolio-item.product .wrap > .caption .product-bottom .cart.type_button .button .space {
     display: none;
   }
 }
 @media (min-width: 992px) and (max-width: 1300px) {
-  .portfolio.extended-products-grid.columns-desktop-6 .portfolio-item.product .wrap > .caption .product-bottom .add_to_cart_button.type_button i, .portfolio.extended-products-grid.columns-desktop-6 .portfolio-item.product .wrap > .caption .product-bottom .add_to_cart_button.type_button .space {
+  .portfolio.extended-products-grid.columns-desktop-6 .portfolio-item.product .wrap > .caption .product-bottom .cart.type_button .button i, .portfolio.extended-products-grid.columns-desktop-6 .portfolio-item.product .wrap > .caption .product-bottom .cart.type_button .button .space {
     display: none;
   }
 }
@@ -2232,7 +2091,7 @@
 .portfolio.extended-products-grid.disable-isotope.caption-position-page .wrap .caption {
   flex: auto;
 }
-.portfolio.extended-products-grid.disable-isotope.caption-position-page .not-found .wrap {
+.portfolio.extended-products-grid.disable-isotope.caption-position-page .not-found .found-wrap {
   flex-direction: row !important;
 }
 .portfolio.extended-products-grid.disable-isotope .image {
@@ -2242,11 +2101,17 @@
 }
 .portfolio.extended-products-grid.disable-isotope .image .image-inner {
   width: 100%;
-  padding-top: 100%;
+  aspect-ratio: 1;
   overflow: hidden;
 }
 .portfolio.extended-products-grid.disable-isotope.aspect-ratio-portrait .image .image-inner {
-  padding-top: 125%;
+  aspect-ratio: 0.8;
+}
+.portfolio.extended-products-grid.full-image .portfolio-item .image .image-inner {
+  aspect-ratio: initial;
+}
+.portfolio.extended-products-grid.full-image .portfolio-item .image .image-inner picture img {
+  position: initial;
 }
 .portfolio.extended-products-grid.portfolio.item-separator .portfolio-item:before, .portfolio.extended-products-grid.portfolio.item-separator .portfolio-item:after {
   opacity: 1;
@@ -2266,944 +2131,8 @@
   position: relative;
 }
 
-.portfolio-sorting-select {
-  position: relative;
-  width: fit-content;
-  width: -webkit-fit-content;
-  margin-left: auto;
-  padding-bottom: 5px;
-  margin-bottom: -5px;
-  z-index: 5;
-}
-.portfolio-sorting-select div.portfolio-sorting-select-current {
-  position: relative;
-  width: fit-content;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 16px;
-  line-height: 1;
-  text-align: left;
-  padding: 3px 11px 4px 15px;
-  color: inherit;
-  border: 1px solid currentColor;
-  border-radius: 13px;
-  cursor: pointer;
-}
-.portfolio-sorting-select div.portfolio-sorting-select-current span.portfolio-sorting-select-current-arrow {
-  transition: all 0.3s;
-}
-.portfolio-sorting-select div.portfolio-sorting-select-current span.portfolio-sorting-select-current-arrow:before {
-  display: block;
-  content: "\e602";
-  font-style: normal;
-  font-family: "thegem-icons";
-  font-weight: normal;
-  -webkit-font-smoothing: initial;
-}
-@media (max-width: 500px) {
-  .portfolio-sorting-select div.portfolio-sorting-select-current .portfolio-sorting-select-name .portfolio-sorting-select-name-by {
-    display: none;
-  }
-  .portfolio-sorting-select div.portfolio-sorting-select-current .portfolio-sorting-select-name .portfolio-sorting-select-name-type {
-    text-transform: capitalize;
-  }
-}
-.portfolio-sorting-select.active div.portfolio-sorting-select-current span.portfolio-sorting-select-current-arrow {
-  transform: rotate(180deg);
-}
-.portfolio-sorting-select.active ul {
-  display: block;
-}
-.portfolio-sorting-select ul {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  list-style: none;
-  margin: 0;
-  padding: 30px;
-  box-shadow: 0px 0px 23px 0px rgba(0, 0, 0, 0.05);
-}
-.portfolio-sorting-select ul li {
-  max-width: 170px;
-  width: max-content;
-  width: -webkit-max-content;
-  color: inherit;
-  font-size: 16px;
-  line-height: 1.2;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-@media (min-width: 992px) {
-  .portfolio-sorting-select ul li {
-    max-width: 240px;
-  }
-}
-.portfolio-sorting-select ul li:not(:last-child) {
-  margin-bottom: 5px;
-}
-
-.portfolio-search-filter {
-  position: relative;
-}
-.portfolio-search-filter input {
-  border: none;
-  padding: 7px 33px 7px 18px;
-  border-radius: 17px;
-  line-height: 1;
-}
-.portfolio-search-filter input::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: currentColor;
-  opacity: 0.8;
-}
-.portfolio-search-filter input::-moz-placeholder {
-  /* Firefox 19+ */
-  color: currentColor;
-  opacity: 0.8;
-}
-.portfolio-search-filter input:-ms-input-placeholder {
-  /* IE 10+ */
-  color: currentColor;
-  opacity: 0.8;
-}
-.portfolio-search-filter input:-moz-placeholder {
-  /* Firefox 18- */
-  color: currentColor;
-  opacity: 0.8;
-}
-.portfolio-search-filter .portfolio-search-filter-button {
-  position: relative;
-  font-size: 0;
-  letter-spacing: 0;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  cursor: pointer;
-}
-.portfolio-search-filter .portfolio-search-filter-button:before {
-  content: "\e67b";
-  font-size: 16px;
-  font-style: normal;
-  font-family: "thegem-icons";
-  font-weight: normal;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) rotateY(180deg);
-}
-
-#main.over-header {
-  z-index: initial;
-}
-
-.portfolio-filters-list {
-  margin: 0 !important;
-}
-.portfolio-filters-list .portfolio-show-filters-button {
-  position: relative;
-  width: fit-content;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: row-reverse;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  font-size: 16px;
-  line-height: 1;
-  text-align: left;
-  padding: 3px 15px 4px 13px;
-  color: inherit;
-  border: 1px solid currentColor;
-  border-radius: 13px;
-  cursor: pointer;
-  z-index: 5;
-}
-.portfolio-filters-list .portfolio-show-filters-button .portfolio-show-filters-button-icon {
-  margin-right: 0.2em;
-  font-style: normal;
-  font-family: "thegem-icons";
-  font-weight: normal;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  transform: translateY(2px);
-}
-.portfolio-filters-list .portfolio-show-filters-button .portfolio-show-filters-button-icon:before {
-  content: "\e669";
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filters-area {
-    position: relative;
-    margin-bottom: -5px;
-    z-index: 5;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item {
-    position: relative;
-    margin-right: 10px;
-    padding-bottom: 5px;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .widget-title {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 3px 11px 4px 16px;
-    color: inherit;
-    border: 1px solid currentColor;
-    border-radius: 13px;
-    line-height: 1;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: inherit;
-    letter-spacing: inherit;
-    text-transform: initial;
-    margin: 0;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .widget-title:after {
-    content: none;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .widget-title span.widget-title-arrow {
-    transition: all 0.3s;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .widget-title span.widget-title-arrow:before {
-    display: block;
-    content: "\e602";
-    font-style: normal;
-    font-family: "thegem-icons";
-    font-weight: normal;
-    -webkit-font-smoothing: initial;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .widget-title .widget-title-by {
-    display: none;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    display: none;
-    width: max-content;
-    width: -webkit-max-content;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
-    z-index: 2;
-    max-width: 260px;
-    max-height: 500px;
-    overflow: auto;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list::-webkit-scrollbar {
-    width: 4px;
-    background-color: transparent;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list::-webkit-scrollbar-thumb {
-    background-color: #dfe5e8;
-    border-radius: 2px;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list ul {
-    padding: 25px 28px;
-    margin: 0;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list ul ul {
-    padding: 0 0 0 20px;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list .price-range-slider {
-    padding: 10px;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list .price-range-slider .slider-amount {
-    min-width: 200px;
-    text-align: center;
-    padding: 5px;
-    transition: all 0.3s;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item .portfolio-filter-item-list .price-range-slider .slider-amount .slider-amount-text {
-    display: none;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item:hover .widget-title span.widget-title-arrow {
-    transform: rotate(180deg);
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item:hover .portfolio-filter-item-list {
-    display: block;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item.attribute .portfolio-filter-item-list ul, .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item.status .portfolio-filter-item-list ul {
-    padding: 25px 28px 25px 20px;
-  }
-  .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item.attribute.attribute-type-label .portfolio-filter-item-list ul, .portfolio-filters-list.style-standard:not(.single-filter) .portfolio-filter-item.status.attribute-type-label .portfolio-filter-item-list ul {
-    padding: 25px 15px 17px 20px;
-  }
-  .portfolio-filters-list.style-standard .portfolio-selected-filters {
-    display: none;
-  }
-}
-@media (min-width: 992px) and (min-width: 992px) {
-  .portfolio-filters-list.style-standard .widget {
-    display: none;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-standard h2, .portfolio-filters-list.style-standard .portfolio-show-filters-button, .portfolio-filters-list.style-standard .portfolio-close-filters, .portfolio-filters-list.style-sidebar h2, .portfolio-filters-list.style-sidebar .portfolio-show-filters-button, .portfolio-filters-list.style-sidebar .portfolio-close-filters {
-    display: none;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-standard .portfolio-search-filter {
-    display: none;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-sidebar .portfolio-filters-outer {
-    padding-right: 42px;
-  }
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item {
-    width: 100%;
-    padding: 25px 0;
-    margin: 0;
-  }
-}
-@media (min-width: 992px) and (min-width: 992px) {
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item {
-    padding: 25px 0;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item:first-child {
-    border: none;
-    padding-top: 0;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item .widget-title {
-    margin: 0 0 20px 0;
-    cursor: default;
-  }
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item .widget-title .widget-title-arrow {
-    display: none;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item.portfolio-selected-filters {
-    padding-top: 15px;
-    order: 11;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item .portfolio-filter-item-list ul {
-    padding: 0;
-    margin: 0;
-  }
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item .portfolio-filter-item-list ul ul {
-    padding: 0 0 0 20px;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-search-filter {
-    margin: 25px 0 30px 0;
-    width: 100%;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item.portfolio-selected-filters.hide-on-sidebar {
-    display: none;
-  }
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  left: 0;
-  top: 0;
-  z-index: -1;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer:before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: rgba(33, 35, 49, 0.5);
-  opacity: 0;
-  transition: all 0.3s;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer.close-animation {
-  z-index: 1001;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer.visible {
-  display: block;
-  z-index: 1001;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer.visible:before {
-  opacity: 1;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer.visible .portfolio-close-filters {
-  opacity: 1;
-  transition: all 0.3s linear 0.3s;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer.visible .portfolio-filters-area {
-  left: 0;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer .portfolio-filters-area {
-  position: relative;
-  float: left;
-  left: -100%;
-  top: 0;
-  width: 350px;
-  max-width: 75%;
-  min-width: 250px;
-  height: 100%;
-  padding: 5px;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  transition: all 0.3s;
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-hidden .portfolio-filters-outer .portfolio-filters-area {
-    width: 480px;
-  }
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer .portfolio-filters-area.shadowed {
-  box-shadow: 0px 0px 23px 0px rgba(0, 0, 0, 0.05);
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable {
-  padding: 20px 30px;
-  height: 100%;
-  overflow: auto;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable::-webkit-scrollbar {
-  width: 4px;
-  background-color: transparent;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable::-webkit-scrollbar-thumb {
-  background-color: #dfe5e8;
-  border-radius: 2px;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-area-scrollable .portfolio-filter-item {
-  padding: 25px 10px;
-  margin: 0;
-  width: 100%;
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.style-hidden .portfolio-filters-area-scrollable .portfolio-filter-item {
-    padding: 25px 30px;
-  }
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-area-scrollable .portfolio-filter-item .widget-title {
-  margin: 0 0 20px 0;
-  cursor: default;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-area-scrollable .portfolio-filter-item .widget-title .widget-title-arrow {
-  display: none;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-area-scrollable .portfolio-filter-item.portfolio-selected-filters {
-  padding-top: 15px;
-  order: 11;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-area-scrollable .portfolio-filter-item .portfolio-filter-item-list ul {
-  padding: 0;
-}
-.portfolio-filters-list.style-hidden .portfolio-filters-area-scrollable .portfolio-filter-item .portfolio-filter-item-list ul ul {
-  padding: 0 0 0 20px;
-}
-@media (max-width: 991px) {
-  .portfolio-filters-list.style-standard .portfolio-filters-outer, .portfolio-filters-list.style-sidebar .portfolio-filters-outer {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    left: 0;
-    top: 0;
-    z-index: -1;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer:before, .portfolio-filters-list.style-sidebar .portfolio-filters-outer:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: rgba(33, 35, 49, 0.5);
-    opacity: 0;
-    transition: all 0.3s;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer.close-animation, .portfolio-filters-list.style-sidebar .portfolio-filters-outer.close-animation {
-    z-index: 1001;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer.visible, .portfolio-filters-list.style-sidebar .portfolio-filters-outer.visible {
-    display: block;
-    z-index: 1001;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer.visible:before, .portfolio-filters-list.style-sidebar .portfolio-filters-outer.visible:before {
-    opacity: 1;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer.visible .portfolio-close-filters, .portfolio-filters-list.style-sidebar .portfolio-filters-outer.visible .portfolio-close-filters {
-    opacity: 1;
-    transition: all 0.3s linear 0.3s;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer.visible .portfolio-filters-area, .portfolio-filters-list.style-sidebar .portfolio-filters-outer.visible .portfolio-filters-area {
-    left: 0;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer .portfolio-filters-area, .portfolio-filters-list.style-sidebar .portfolio-filters-outer .portfolio-filters-area {
-    position: relative;
-    float: left;
-    left: -100%;
-    top: 0;
-    width: 350px;
-    max-width: 75%;
-    min-width: 250px;
-    height: 100%;
-    padding: 5px;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    transition: all 0.3s;
-  }
-}
-@media (max-width: 991px) and (min-width: 992px) {
-  .portfolio-filters-list.style-standard .portfolio-filters-outer .portfolio-filters-area, .portfolio-filters-list.style-sidebar .portfolio-filters-outer .portfolio-filters-area {
-    width: 480px;
-  }
-}
-@media (max-width: 991px) {
-  .portfolio-filters-list.style-standard .portfolio-filters-outer .portfolio-filters-area.shadowed, .portfolio-filters-list.style-sidebar .portfolio-filters-outer .portfolio-filters-area.shadowed {
-    box-shadow: 0px 0px 23px 0px rgba(0, 0, 0, 0.05);
-  }
-}
-@media (max-width: 991px) {
-  .portfolio-filters-list.style-standard .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable, .portfolio-filters-list.style-sidebar .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable {
-    padding: 20px 30px;
-    height: 100%;
-    overflow: auto;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable::-webkit-scrollbar-track, .portfolio-filters-list.style-sidebar .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable::-webkit-scrollbar, .portfolio-filters-list.style-sidebar .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable::-webkit-scrollbar {
-    width: 4px;
-    background-color: transparent;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable::-webkit-scrollbar-thumb, .portfolio-filters-list.style-sidebar .portfolio-filters-outer .portfolio-filters-area .portfolio-filters-area-scrollable::-webkit-scrollbar-thumb {
-    background-color: #dfe5e8;
-    border-radius: 2px;
-  }
-}
-@media (max-width: 991px) {
-  .portfolio-filters-list.style-standard .portfolio-filters-area-scrollable .portfolio-filter-item, .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item {
-    padding: 25px 10px;
-    margin: 0;
-    width: 100%;
-  }
-}
-@media (max-width: 991px) and (min-width: 992px) {
-  .portfolio-filters-list.style-standard .portfolio-filters-area-scrollable .portfolio-filter-item, .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item {
-    padding: 25px 30px;
-  }
-}
-@media (max-width: 991px) {
-  .portfolio-filters-list.style-standard .portfolio-filters-area-scrollable .portfolio-filter-item .widget-title, .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item .widget-title {
-    margin: 0 0 20px 0;
-    cursor: default;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-area-scrollable .portfolio-filter-item .widget-title .widget-title-arrow, .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item .widget-title .widget-title-arrow {
-    display: none;
-  }
-}
-@media (max-width: 991px) {
-  .portfolio-filters-list.style-standard .portfolio-filters-area-scrollable .portfolio-filter-item.portfolio-selected-filters, .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item.portfolio-selected-filters {
-    padding-top: 15px;
-    order: 11;
-  }
-}
-@media (max-width: 991px) {
-  .portfolio-filters-list.style-standard .portfolio-filters-area-scrollable .portfolio-filter-item .portfolio-filter-item-list ul, .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item .portfolio-filter-item-list ul {
-    padding: 0;
-  }
-  .portfolio-filters-list.style-standard .portfolio-filters-area-scrollable .portfolio-filter-item .portfolio-filter-item-list ul ul, .portfolio-filters-list.style-sidebar .portfolio-filters-area-scrollable .portfolio-filter-item .portfolio-filter-item-list ul ul {
-    padding: 0 0 0 20px;
-  }
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list.single-filter.style-standard .portfolio-filter-item .widget-title {
-    display: none;
-  }
-  .portfolio-filters-list.single-filter.style-standard .portfolio-filter-item .portfolio-filter-item-list ul {
-    padding: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-  }
-  .portfolio-filters-list.single-filter.style-standard .portfolio-filter-item .portfolio-filter-item-list ul li {
-    margin: 0 30px 13px 0;
-    line-height: 1;
-  }
-  .portfolio-filters-list.single-filter.style-standard .portfolio-filter-item .portfolio-filter-item-list ul li a span.count {
-    margin-left: 10px;
-  }
-}
-.portfolio-filters-list .portfolio-close-filters {
-  float: left;
-  position: relative;
-  top: 10px;
-  left: -40px;
-  color: #99a9b5;
-  font-size: 30px;
-  cursor: pointer;
-  opacity: 0;
-  transition: all 0.3s;
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list .portfolio-close-filters {
-    color: #ffffff;
-    top: 15px;
-    left: 15px;
-    padding: 5px;
-  }
-  .portfolio-filters-list .portfolio-close-filters:hover:after {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    -moz-transform: scale(1);
-    transform: scale(1);
-    opacity: 0.075;
-  }
-}
-.portfolio-filters-list .portfolio-close-filters:before {
-  content: "\e619";
-  font-style: normal;
-  font-family: "thegem-icons";
-  font-weight: normal;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  line-height: 1;
-  display: block;
-  transform: translate(-0.5px, -0.5px);
-}
-.portfolio-filters-list .portfolio-close-filters:after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  border-radius: 50%;
-  background: #FFFFFF;
-  -webkit-transform: scale(0.7);
-  -ms-transform: scale(0.7);
-  -moz-transform: scale(0.7);
-  transform: scale(0.7);
-  transition: transform 200ms cubic-bezier(0.345, 0.115, 0.135, 1.42), opacity 150ms ease-out;
-  box-shadow: 0 4px 20px rgba(34, 34, 34, 0.15);
-  opacity: 0;
-}
-.portfolio-filters-list .portfolio-filters-area .portfolio-filters-area-scrollable, .portfolio-filters-list .portfolio-filters-area .portfolio-filters-area-scrollable .widget-area {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  max-width: 100%;
-}
-.portfolio-filters-list .portfolio-filters-area h2 {
-  width: 100%;
-  text-transform: initial;
-  padding: 0 10px 25px 10px;
-  margin: 0;
-  cursor: default;
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list .portfolio-filters-area h2 {
-    padding: 0 25px 25px 25px;
-  }
-}
-.portfolio-filters-list .portfolio-filter-item ul {
-  list-style: none;
-}
-.portfolio-filters-list .portfolio-filter-item ul li a {
-  flex: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-between;
-  -ms-flex-pack: space-between;
-  justify-content: space-between;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  color: inherit;
-  word-break: break-word;
-}
-.portfolio-filters-list .portfolio-filter-item ul li a span.color {
-  flex: none;
-}
-.portfolio-filters-list .portfolio-filter-item ul li a span.count {
-  flex: none;
-  margin-left: 20px;
-  display: block;
-  color: inherit;
-  font-size: 14px;
-  padding: 2px 8px;
-  line-height: 1;
-  border-radius: 11px;
-  transition: background-color 0.3s;
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list .portfolio-filter-item ul li a span.count {
-    margin-left: 45px;
-  }
-}
-.portfolio-filters-list .portfolio-filter-item ul li a:not(.disable):hover span.count, .portfolio-filters-list .portfolio-filter-item ul li a:not(.disable):hover + span.count {
-  color: #FFFFFF;
-}
-.portfolio-filters-list .portfolio-filter-item ul li a.active span.count {
-  color: #FFFFFF;
-}
-.portfolio-filters-list .portfolio-filter-item ul li a.disable {
-  opacity: 0.5;
-  cursor: default;
-}
-.portfolio-filters-list .portfolio-filter-item ul li ul {
-  padding: 0 0 0 20px;
-}
-.portfolio-filters-list .portfolio-filter-item .price-range-slider .slider-range {
-  position: relative;
-  border: none;
-  height: 4px;
-  width: 90%;
-  margin: 20px auto 30px auto;
-}
-.portfolio-filters-list .portfolio-filter-item .price-range-slider .slider-range .ui-slider-range {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  z-index: 1;
-}
-.portfolio-filters-list .portfolio-filter-item .price-range-slider .slider-range .ui-slider-handle {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  margin: 0;
-  z-index: 2;
-}
-.portfolio-filters-list .portfolio-filter-item .price-range-slider .slider-range .ui-slider-handle:focus {
-  outline: none;
-}
-.portfolio-filters-list .portfolio-filter-item .price-range-slider .slider-range .ui-slider-handle + span:focus {
-  outline: none;
-}
-.portfolio-filters-list .portfolio-filter-item .price-range-slider .slider-amount {
-  padding: 0;
-}
-.portfolio-filters-list .portfolio-filter-item .price-range-slider .slider-amount .slider-amount-value {
-  font-size: 1.1em;
-}
-.portfolio-filters-list .portfolio-filter-item.multiple ul li a, .portfolio-filters-list .portfolio-filter-item.woocommerce ul li a {
-  position: relative;
-  padding-left: 1.2em;
-  text-transform: inherit;
-  font-weight: inherit;
-  font-family: inherit;
-  font-size: inherit;
-}
-.portfolio-filters-list .portfolio-filter-item.multiple ul li a:before, .portfolio-filters-list .portfolio-filter-item.woocommerce ul li a:before {
-  content: none;
-  color: currentColor;
-}
-.portfolio-filters-list .portfolio-filter-item.multiple ul li a.active:before, .portfolio-filters-list .portfolio-filter-item.multiple ul li.chosen a:before, .portfolio-filters-list .portfolio-filter-item.woocommerce ul li a.active:before, .portfolio-filters-list .portfolio-filter-item.woocommerce ul li.chosen a:before {
-  content: "\e646";
-  font-family: "thegem-icons";
-  font-weight: normal;
-  font-style: normal;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-}
-.portfolio-filters-list .portfolio-filter-item.single .portfolio-filter-item-list ul li a {
-  position: relative;
-  padding-left: 1.2em;
-}
-.portfolio-filters-list .portfolio-filter-item.single .portfolio-filter-item-list ul li a:before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 50%;
-  box-sizing: border-box;
-}
-.portfolio-filters-list .portfolio-filter-item.single .portfolio-filter-item-list ul li a.active:before {
-  border-color: currentColor;
-}
-.portfolio-filters-list .portfolio-filter-item.single .portfolio-filter-item-list ul li a.active:after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  position: absolute;
-  left: 4px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: currentColor;
-  border-radius: 50%;
-  box-sizing: border-box;
-}
-.portfolio-filters-list .portfolio-filters-area .portfolio-search-filter {
-  margin: 25px 0 30px 0;
-}
-.portfolio-filters-list .portfolio-filters-area .portfolio-search-filter input {
-  width: 100%;
-  box-sizing: border-box;
-}
-.portfolio-filters-list .portfolio-filters-area .portfolio-search-filter .portfolio-search-filter-button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 40px;
-  height: 100%;
-}
-@media (min-width: 992px) {
-  .portfolio-filters-list .portfolio-filters-area .portfolio-search-filter {
-    margin: 25px 25px 30px 25px;
-  }
-}
-
 .portfolio.extended-products-grid.fullwidth-columns .portfolio-filters-list.style-sidebar .portfolio-filters-outer {
   padding-right: 0;
-}
-
-@media (max-width: 999px) {
-  .with-filter-sidebar .filter-sidebar.left {
-    float: left;
-  }
-}
-@media (min-width: 992px) {
-  .with-filter-sidebar {
-    display: flex;
-  }
-  .with-filter-sidebar .filter-sidebar {
-    width: 25%;
-    max-width: 350px;
-  }
-  .with-filter-sidebar .content {
-    flex: 1;
-  }
-}
-
-@media (min-width: 992px) {
-  .panel-sidebar-position-right .with-filter-sidebar {
-    flex-direction: row-reverse;
-  }
-}
-@media (min-width: 992px) {
-  .panel-sidebar-position-right .portfolio-filters-list.style-sidebar .portfolio-filters-outer {
-    padding-right: 0;
-    padding-left: 45px;
-  }
-}
-
-.portfolio-top-panel > .portfolio-selected-filters.center {
-  justify-content: center;
-}
-.portfolio-top-panel > .portfolio-selected-filters.center .portfolio-selected-filter-item {
-  margin: 10px 5px 0 5px;
-}
-.portfolio-top-panel > .portfolio-selected-filters.right {
-  justify-content: flex-end;
-}
-.portfolio-top-panel > .portfolio-selected-filters.right .portfolio-selected-filter-item {
-  margin: 10px 0 0 10px;
-}
-
-.portfolio-selected-filters {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-align: flex-end;
-  -ms-flex-align: flex-end;
-  align-items: flex-end;
-  clear: both;
-  z-index: 4;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item {
-  margin: 10px 10px 0 0;
-  padding: 2px 10px 3px 10px;
-  line-height: 1.1;
-  border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: default;
-  transition: all 0.3s;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item.clear-filters {
-  cursor: pointer;
-  margin-top: 15px;
-  order: 1;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item.clear-filters:last-child {
-  display: none;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item.category {
-  order: 2;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item.attribute {
-  order: 3;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item.price {
-  order: 4;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item.status {
-  order: 5;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item.search {
-  order: 6;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item i.delete-filter {
-  font-style: normal;
-  font-family: "thegem-icons";
-  font-weight: normal;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  font-variant: normal;
-  text-rendering: auto;
-  font-size: 1.1em;
-  line-height: 1;
-  margin-right: -3px;
-  cursor: pointer;
-}
-.portfolio-selected-filters .portfolio-selected-filter-item i.delete-filter:before {
-  content: "\e619";
 }
 
 .thegem-popup-notification {
@@ -3300,98 +2229,6 @@
   -webkit-user-select: none;
   -webkit-appearance: none;
   transition: all 0.3s;
-}
-
-.preloader-new ~ * .portfolio-set {
-  opacity: 0.6;
-}
-
-@media (max-width: 767px) {
-  .portfolio.filters-opened .preloader-new {
-    background-color: rgba(153, 169, 181, 0.7);
-    background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
-    background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
-    -webkit-background-size: 40px 40px;
-    -moz-background-size: 40px 40px;
-    -o-background-size: 40px 40px;
-    background-size: 40px 40px;
-    -webkit-animation: progress-bar-stripes 2s linear infinite;
-    -moz-animation: progress-bar-stripes 2s linear infinite;
-    -ms-animation: progress-bar-stripes 2s linear infinite;
-    -o-animation: progress-bar-stripes 2s linear infinite;
-    animation: progress-bar-stripes 2s linear infinite;
-  }
-  .portfolio.filters-opened .preloader-new .preloader-spin {
-    display: none;
-  }
-  @-webkit-keyframes progress-bar-stripes {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 40px 0;
-    }
-  }
-  @-moz-keyframes progress-bar-stripes {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 40px 0;
-    }
-  }
-  @-ms-keyframes progress-bar-stripes {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 40px 0;
-    }
-  }
-  @-o-keyframes progress-bar-stripes {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 40px 0;
-    }
-  }
-  @keyframes progress-bar-stripes {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 40px 0;
-    }
-  }
-}
-
-.portfolio.extended-products-grid .portfolio-item.not-found {
-  width: 100% !important;
-  text-align: left;
-  border: none;
-}
-.portfolio.extended-products-grid .portfolio-item.not-found .wrap {
-  display: flex;
-  align-items: baseline;
-}
-.portfolio.extended-products-grid .portfolio-item.not-found .wrap:before {
-  content: "\e67a";
-  font-style: normal;
-  font-family: "thegem-icons";
-  font-weight: normal;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  margin-right: 10px;
-  position: initial;
-  opacity: 1 !important;
 }
 
 @media (max-width: 767px) {
@@ -3625,7 +2462,7 @@
 .portfolio.extended-products-grid.portfolio-preset-below-rectangle-button-02 .portfolio-item .wrap > .caption {
   padding: 0px 20px 20px 0px;
 }
-.portfolio.extended-products-grid.portfolio-preset-below-rectangle-button-02 .portfolio-item .wrap > .caption .add_to_cart_button.type_button {
+.portfolio.extended-products-grid.portfolio-preset-below-rectangle-button-02 .portfolio-item .wrap > .caption .cart.type_button .button {
   padding: 10px 16px 10px 16px !important;
 }
 .portfolio.extended-products-grid.portfolio-preset-below-rectangle-button-02 .portfolio-item .wrap > .caption .categories {
@@ -3850,14 +2687,6 @@
   padding: 0;
 }
 
-.preloader-new .preloader-spin {
-  top: 100px;
-  left: initial;
-  right: 50%;
-  margin-right: -40px;
-  margin-left: -40px;
-}
-
 /* List Style */
 .portfolio.extended-products-grid.list-style .portfolio-set {
   display: grid;
@@ -3883,6 +2712,10 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .portfolio.extended-products-grid.list-style.columns-tablet-1x .portfolio-set.sub-categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .portfolio.extended-products-grid.list-style.columns-tablet-1x .portfolio-set .portfolio-item .wrap > .caption {
     padding: 18px 20px 13px 20px;
   }
@@ -3906,6 +2739,10 @@
 @media (min-width: 992px) {
   .portfolio.extended-products-grid.list-style.columns-desktop-1x .portfolio-set {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portfolio.extended-products-grid.list-style.columns-desktop-1x .portfolio-set.sub-categories {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .portfolio.extended-products-grid.list-style.columns-desktop-1x .portfolio-set .portfolio-item .wrap > .caption {
@@ -3956,12 +2793,12 @@
   width: auto !important;
 }
 
-.portfolio.extended-products-grid.list-style .portfolio-set .portfolio-item .wrap {
+.portfolio.extended-products-grid.list-style .portfolio-set:not(.sub-categories) .portfolio-item .wrap {
   display: block;
 }
 
 @media (min-width: 768px) {
-  .portfolio.extended-products-grid.list-style .portfolio-set .portfolio-item .wrap {
+  .portfolio.extended-products-grid.list-style .portfolio-set:not(.sub-categories) .portfolio-item .wrap {
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -4077,7 +2914,7 @@
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .portfolio.extended-products-grid.list-style.columns-tablet-2x .portfolio-item .wrap {
+  .portfolio.extended-products-grid.list-style.columns-tablet-2x .portfolio-set .portfolio-item .wrap {
     display: block;
   }
 
@@ -4161,7 +2998,7 @@
   margin-left: 0;
 }
 
-.portfolio.extended-products-grid.list-style.caption-position-list-left .portfolio-item .wrap,
+.portfolio.extended-products-grid.list-style.caption-position-list-left .portfolio-set .portfolio-item .wrap,
 .portfolio.extended-products-grid.list-style.caption-layout-list-inline.caption-position-list-left .portfolio-item .wrap > .caption {
   flex-direction: row-reverse;
 }
@@ -4463,8 +3300,8 @@
 }
 /* List Style End */
 /* Swatches Style */
-.portfolio.extended-products-grid .portfolio-item.product.product-type-variable .wrap .product-bottom a.add_to_cart_button.product_type_simple,
-.portfolio.extended-products-grid .portfolio-item.product.product-type-variable .image .overlay .links .portfolio-icons .portfolio-icons-inner a.add_to_cart_button.product_type_simple {
+.portfolio.extended-products-grid .portfolio-item.product.product-type-variable .wrap .product-bottom .cart.simple-type-button,
+.portfolio.extended-products-grid .portfolio-item.product.product-type-variable .image .overlay .links .portfolio-icons .portfolio-icons-inner .cart.simple-type-button {
   display: none;
 }
 .portfolio.extended-products-grid .product-variations {
@@ -4473,13 +3310,15 @@
 .portfolio.extended-products-grid .product-variations .variations {
   line-height: 1;
   margin-top: 17px;
-  margin-bottom: -12px;
 }
 .portfolio.extended-products-grid .product-variations .single_variation_wrap {
   display: none !important;
 }
 .portfolio.extended-products-grid .product-variations .blockUI {
   display: none !important;
+}
+.portfolio.extended-products-grid .product-variations.simple .gem-attribute-selector:not(.type-color) li {
+  pointer-events: none;
 }
 .portfolio.extended-products-grid .gem-attribute-selector {
   padding: 0;

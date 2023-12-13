@@ -360,3 +360,15 @@
 body .lazy-loading.lazy-loading-start-animation .lazy-loading-item-clip .quickfinder-animation {
   display: none;
 }
+
+.quickfinder.quickfinder-equal-height{
+	display: flex;
+	flex-wrap: wrap;
+}
+.quickfinder.quickfinder-equal-height .quickfinder-item,
+.quickfinder.quickfinder-equal-height .quickfinder-item .quickfinder-item-box{
+	min-height: 100%;
+}
+.quickfinder.quickfinder-equal-height .quickfinder-item .quickfinder-item-inner{
+	min-height: 100%;
+}
