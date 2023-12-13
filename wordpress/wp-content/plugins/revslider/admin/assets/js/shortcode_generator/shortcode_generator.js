@@ -182,7 +182,9 @@ RVS.SC = RVS.SC === undefined ? {} : RVS.SC;
 					var obj = {slidertitle: RVS.SC.BLOCK.slidertitle, alias: RVS.SC.BLOCK.alias, modal: RVS.SC.BLOCK.modal ,  content: RVS.SC.BLOCK.content , zindex: RVS.SC.BLOCK.zindex , wrapperid: RVS.SC.BLOCK.wrapperid};					
 					revslider_react.setState(obj);						
 					revslider_react.props.setAttributes(obj);
-					revslider_react.forceUpdate();
+					setTimeout(function(){
+						revslider_react.forceUpdate();
+					  }, 500);
 				break;
 				case 'divi':
 					revslider_divi.props._onChange(revslider_divi.props.name, RVS.SC.BLOCK.content);
@@ -223,6 +225,7 @@ RVS.SC = RVS.SC === undefined ? {} : RVS.SC;
 			RVS.F.openObjectLibrary({types: ['modules'], filter: 'all', selected: ['modules'], success: successObj});
 			
 			var folder = RVS.F.getCookie('rs6_wizard_folder');
+			
 			if(folder && folder !== -1 && folder !== '-1' && ((RVS.LIB.OBJ !==undefined && RVS.LIB.OBJ.items!==undefined && RVS.LIB.OBJ.items.modules!==undefined))) RVS.F.changeOLIBToFolder(folder);		
 			
 		},

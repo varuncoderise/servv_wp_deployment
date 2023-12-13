@@ -4,12 +4,8 @@
     position: relative;
 }
 
-.thegem-heading.thegem-heading-animate {
+.thegem-heading.thegem-heading-animate:not(.thegem-heading-animated ) {
     opacity: 0 !important;
-}
-
-.thegem-heading.thegem-heading-animated {
-    opacity: 1 !important;
 }
 
 .thegem-heading .thegem-heading-line-wrap {

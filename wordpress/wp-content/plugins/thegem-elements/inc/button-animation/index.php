@@ -42,7 +42,7 @@ class TheGemButtonAnimation {
     public function init() {
         if (is_singular() && has_shortcode($content = get_the_content(null, false, get_the_id()), 'gem_button')) {
             if (preg_match_all('/effects_enabled_name=\"(.+?)\"/', $content, $animationMatch)) {
-                $this->activeAnimations = $animationMatch[1] ?? [];
+                $this->activeAnimations = isset($animationMatch[1]) ? $animationMatch[1] : [];
 
                 if (!empty($this->activeAnimations)) {
                     $this->includeAssets();

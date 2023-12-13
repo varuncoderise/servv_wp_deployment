@@ -6,7 +6,7 @@ $user_consents = isset($_COOKIE[TheGemGdpr::COOKIE_NAME_CONSENTS]) ? json_decode
 ?>
 <div class="gdpr-privacy-preferences">
 	<div class="gdpr-privacy-preferences-box">
-		<button class="btn-gdpr-privacy-preferences-close" type="button"></button>
+		<button class="btn-gdpr-privacy-preferences-close" type="button"><?php _e('Close', 'thegem'); ?></button>
 		<form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 			<input type="hidden" name="action" value="thegem_gdpr_update_privacy_preferences">
 			<?php wp_nonce_field('thegem_gdpr_update_privacy_preferences', 'update-privacy-preferences-nonce' ); ?>

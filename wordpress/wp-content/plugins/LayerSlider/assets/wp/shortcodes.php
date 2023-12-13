@@ -304,7 +304,7 @@ class LS_Shortcode {
 
 		// Override firstSlide if it is specified in embed params
 		if( ! empty( $embed['firstslide'] ) ) {
-			$output['init'] = str_replace('[firstSlide]', $embed['firstslide'], $output['init']);
+			$output['init'] = str_replace('[firstSlide]', esc_js( $embed['firstslide'] ), $output['init']);
 		}
 
 		// Filter to override the printed JavaScript init code

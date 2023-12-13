@@ -163,14 +163,14 @@ $template = str_replace( ' class="ls-wp-container fitvidsignore"', '', $template
 	// Add images
 	$images = $zip->getImagesForSlider( $slider['data'] );
 	$images = $zip->getFSPaths( $images );
-	$zip->addImage( $images, $name, 'images' );
+	$zip->addImage( $images, $name, 'images', true );
 
 	// Add slider HTML file
 	$zip->addFileFromString( "$name/slider.html", $template);
 
 	// Add instructions
 	$zip->addFile( LS_ROOT_PATH.'/templates/html-export/INSTRUCTIONS.html', "$name/" );
-	$zip->addImage( LS_ROOT_PATH.'/templates/html-export/ls-instructions.png', "$name", 'images');
+	$zip->addImage( LS_ROOT_PATH.'/templates/html-export/ls-instructions.png', "$name", 'images', true);
 
 
 

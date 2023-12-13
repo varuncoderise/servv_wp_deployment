@@ -34,7 +34,7 @@ class Vc_Settings {
 	/**
 	 * @var string
 	 */
-	protected static $field_prefix = 'wpb_js_';
+	public static $field_prefix = 'wpb_js_';
 	/**
 	 * @var string
 	 */
@@ -120,11 +120,12 @@ class Vc_Settings {
 			if ( ! vc_is_as_theme() || apply_filters( 'vc_settings_page_show_design_tabs', false ) ) {
 				$this->tabs['vc-color'] = esc_html__( 'Design Options', 'js_composer' );
 				$this->tabs['vc-custom_css'] = esc_html__( 'Custom CSS', 'js_composer' );
+				$this->tabs['vc-custom_js'] = esc_html__( 'Custom JS', 'js_composer' );
 			}
 		}
 
 		if ( ! vc_is_network_plugin() || ( vc_is_network_plugin() && is_network_admin() ) ) {
-			if ( ! vc_is_updater_disabled() ) {
+			if ( ! vc_is_updater_disabled() && ! wpb_check_wordpress_com_env() ) {
 				$this->tabs['vc-updater'] = esc_html__( 'Product License', 'js_composer' );
 			}
 		}
@@ -366,6 +367,26 @@ class Vc_Settings {
 		) );
 
 		/**
+		 * Tab: Custom Header JS
+		 */
+		$tab = 'custom_js';
+		$this->addSection( $tab );
+		$this->addField( $tab, esc_html__( 'JavaScript in <head>', 'js_composer' ), 'custom_js_header', array(
+			$this,
+			'sanitize_custom_js_header_callback',
+		), array(
+			$this,
+			'custom_js_header_field_callback',
+		) );
+		$this->addField( $tab, esc_html__( 'JavaScript before </body>', 'js_composer' ), 'custom_js_footer', array(
+			$this,
+			'sanitize_custom_js_footer_callback',
+		), array(
+			$this,
+			'custom_js_footer_field_callback',
+		) );
+
+		/**
 		 * Custom Tabs
 		 */
 		foreach ( $this->getTabs() as $tab => $title ) {
@@ -495,7 +516,7 @@ class Vc_Settings {
 	}
 
 	/**
-	 *
+	 * Output custom css editor field.
 	 */
 	public function custom_css_field_callback() {
 		$value = get_option( self::$field_prefix . 'custom_css' );
@@ -503,9 +524,39 @@ class Vc_Settings {
 			$value = '';
 		}
 
-		echo '<textarea name="' . esc_attr( self::$field_prefix ) . 'custom_css' . '" class="wpb_csseditor custom_css" style="display:none">' . esc_textarea( $value ) . '</textarea>';
-		echo '<pre id="wpb_csseditor" class="wpb_content_element custom_css" >' . esc_textarea( $value ) . '</pre>';
+		echo '<textarea name="' . esc_attr( self::$field_prefix ) . 'custom_css' . '" class="wpb_code_editor custom_code" style="display:none">' . esc_textarea( $value ) . '</textarea>';
+		echo '<pre id="wpb_css_editor" class="wpb_content_element custom_code" >' . esc_textarea( $value ) . '</pre>';
 		echo '<p class="description indicator-hint">' . esc_html__( 'Add custom CSS code to the plugin without modifying files.', 'js_composer' ) . '</p>';
+	}
+
+	/**
+	 * Output custom js editor field for header tag.
+	 */
+	public function custom_js_header_field_callback() {
+		$value = get_option( self::$field_prefix . 'custom_js_header' );
+		if ( empty( $value ) ) {
+			$value = '';
+		}
+
+		echo '<p>' . esc_html( '<script>' ) . '</p>';
+		echo '<textarea name="' . esc_attr( self::$field_prefix ) . 'custom_js_header' . '" class="wpb_code_editor custom_code" data-code-type="html" style="display:none">' . esc_textarea( $value ) . '</textarea>';
+		echo '<pre id="wpb_js_header_editor" class="wpb_content_element custom_code">' . esc_textarea( $value ) . '</pre>';
+		echo '<p>' . esc_html( '</script>' ) . '</p>';
+	}
+
+	/**
+	 * Output custom js editor field for footer tag.
+	 */
+	public function custom_js_footer_field_callback() {
+		$value = get_option( self::$field_prefix . 'custom_js_footer' );
+		if ( empty( $value ) ) {
+			$value = '';
+		}
+
+		echo '<p>' . esc_html( '<script>' ) . '</p>';
+		echo '<textarea name="' . esc_attr( self::$field_prefix ) . 'custom_js_footer' . '" class="wpb_code_editor custom_code" data-code-type="html" style="display:none">' . esc_textarea( $value ) . '</textarea>';
+		echo '<pre id="wpb_js_footer_editor" class="wpb_content_element custom_code">' . esc_textarea( $value ) . '</pre>';
+		echo '<p>' . esc_html( '</script>' ) . '</p>';
 	}
 
 	/**
@@ -538,8 +589,8 @@ class Vc_Settings {
 				?>
 				<label>
 					<input type="checkbox"<?php echo esc_attr( $checked ); ?> value="<?php echo esc_attr( $pt ); ?>"
-						   id="wpb_js_gf_subsets_<?php echo esc_attr( $pt ); ?>"
-						   name="<?php echo esc_attr( self::$field_prefix . 'google_fonts_subsets' ); ?>[]">
+						id="wpb_js_gf_subsets_<?php echo esc_attr( $pt ); ?>"
+						name="<?php echo esc_attr( self::$field_prefix . 'google_fonts_subsets' ); ?>[]">
 					<?php echo esc_html( $pt ); ?>
 				</label><br>
 				<?php
@@ -643,7 +694,7 @@ class Vc_Settings {
 		?>
 		<label>
 			<input type="checkbox"<?php echo( $checked ? ' checked' : '' ); ?> value="1"
-				   id="wpb_js_<?php echo esc_attr( $field ); ?>" name="<?php echo esc_attr( self::$field_prefix . $field ); ?>">
+				id="wpb_js_<?php echo esc_attr( $field ); ?>" name="<?php echo esc_attr( self::$field_prefix . $field ); ?>">
 			<?php esc_html_e( 'Enable', 'js_composer' ); ?>
 		</label><br/>
 		<p class="description indicator-hint"><?php esc_html_e( 'Enable the use of custom design options (Note: when checked - custom css file will be used).', 'js_composer' ); ?></p>
@@ -792,6 +843,24 @@ class Vc_Settings {
 	 */
 	public function sanitize_custom_css_callback( $css ) {
 		return wp_strip_all_tags( $css );
+	}
+
+	/**
+	 * @param $js
+	 *
+	 * @return mixed
+	 */
+	public function sanitize_custom_js_header_callback( $js ) {
+		return $js;
+	}
+
+	/**
+	 * @param $js
+	 *
+	 * @return mixed
+	 */
+	public function sanitize_custom_js_footer_callback( $js ) {
+		return $js;
 	}
 
 	/**
@@ -1036,7 +1105,7 @@ class Vc_Settings {
 		$js_composer_upload_dir = self::uploadDir();
 		if ( ! $wp_filesystem->is_dir( $js_composer_upload_dir ) ) {
 			if ( ! $wp_filesystem->mkdir( $js_composer_upload_dir, 0777 ) ) {
-				add_settings_error( self::$field_prefix . $option, $wp_filesystem->errors->get_error_code(), sprintf( esc_html__( '%s could not be created. Not available to create js_composer directory in uploads directory (%s).', 'js_composer' ), $filename, $js_composer_upload_dir ), 'error' );
+				add_settings_error( self::$field_prefix . $option, $wp_filesystem->errors->get_error_code(), sprintf( esc_html__( '%1$s could not be created. Not available to create js_composer directory in uploads directory (%2$s).', 'js_composer' ), $filename, $js_composer_upload_dir ), 'error' );
 
 				return false;
 			}

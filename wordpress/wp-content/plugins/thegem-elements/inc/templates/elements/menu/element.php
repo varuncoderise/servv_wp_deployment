@@ -23,8 +23,8 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 		wp_localize_script('thegem-te-menu', 'thegem_menu_data', array(
 			'ajax_url' => esc_url(admin_url('admin-ajax.php')),
 			'ajax_nonce' => wp_create_nonce('ajax_security'),
-			'backLabel' => esc_html__('Back', 'thegem'),
-			'showCurrentLabel' => esc_html__('Show this page', 'thegem')
+			'backLabel' => !empty(thegem_get_option('mobile_menu_back_text')) ? thegem_get_option('mobile_menu_back_text') : esc_html__('Back', 'thegem'),
+			'showCurrentLabel' => !empty(thegem_get_option('mobile_menu_show_this_page_text')) ? thegem_get_option('mobile_menu_show_this_page_text') : esc_html__('Show this page', 'thegem'),
 		));
 		wp_register_script('thegem-te-menu-editor', THEGEM_TE_MENU_URL . '/js/menu-editor.js', array('jquery'), false, true);
 	}
@@ -32,7 +32,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 	public function get_name() {
 		return 'thegem_te_menu';
 	}
-	
+
 	public function thegem_templates_menu_first_level_link_class( $classes, $item, $args ) {
 		if(isset($args->first_level_link_class) && $item->menu_item_parent == 0) {
 			$classes['class'] = $args->first_level_link_class;
@@ -102,6 +102,8 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 			'menu_layout_tablet_portrait' => 'mobile',
 			'menu_layout_mobile' => 'default',
 			'menu_layout_mobile_effect' => '1',
+			'menu_layout_tablet_breakpoint' => '',
+			'menu_layout_mobile_breakpoint' => '',
 			'hamburger_overlay_menu_source' => 'default',
 			'hamburger_overlay_template' => '',
 			'overlay_template_container' => '',
@@ -281,7 +283,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 			$menu_type = $params['menu_layout_desktop'];
 		}
 		$menu_mobile_type = $params['menu_layout_mobile'];
-		
+
 		//Search Widget Init
 		$menu_widget = $menu_mobile_widget = '';
 		if ($params['menu_layout_desktop'] == 'hamburger' || $params['menu_layout_desktop'] == 'overlay' || $params['is_mobile']) {
@@ -319,16 +321,16 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 			$params['menu_class'] .= ' nav-menu--split';
 			$output_logo = $output_logo_style = '';
 			$echo = false;
-			
+
 			if ($params['split_layout_type'] == 'full') {
 				$params['menu_class'] .= ' fullwidth-logo';
 			}
-			
+
 			if ($params['split_logo_absolute']) {
 				$params['menu_class'] .= ' absolute';
 				$output_logo_style = 'opacity: 0';
 			}
-			
+
 			if (empty($params['use_light']) && isset($params['split_logo']) && $params['split_logo'] == 'desktop_logo_dark') {
 				$output_logo = thegem_get_logo_img(esc_url(thegem_get_option('logo')), intval(thegem_get_option('logo_width')), 'tgp-exclude default', $echo);
 			}
@@ -341,7 +343,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 			if((empty($params['use_light']) && isset($params['split_logo']) && $params['split_logo'] == 'mobile_logo_light') || ($params['split_logo'] == 'mobile_logo_dark' && !empty($params['use_light']))) {
 				$output_logo = thegem_get_logo_img(esc_url(thegem_get_option('small_logo_light')), intval(thegem_get_option('small_logo_width')), 'tgp-exclude small light', $echo);
 			}
-			
+
 			add_filter('wp_nav_menu_items', 'thegem_add_menu_item_split_logo', 10, 2);
 		} else {
 			remove_filter('wp_nav_menu_items', 'thegem_add_menu_item_split_logo', 10, 2);
@@ -370,11 +372,23 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 
 		// Editor Fix
 		$custom_css .= $shortcode. '.' . esc_attr($uniqid.$editor_suffix) . '{width: fit-content; min-height: auto !important;}';
-		
+
+		// Breakpoints
+		$desktop_breakpoint = 1212;
+		$tablet_breakpoint = 980;
+		if (isset($params['menu_layout_tablet_breakpoint']) && !empty($params['menu_layout_tablet_breakpoint'])){
+			$tablet_breakpoint = intval($params['menu_layout_tablet_breakpoint']);
+		}
+
+		$mobile_breakpoint = 768;
+		if (isset($params['menu_layout_mobile_breakpoint']) && !empty($params['menu_layout_mobile_breakpoint'])){
+			$mobile_breakpoint = intval($params['menu_layout_mobile_breakpoint']);
+		}
+
 		// Horizontal menu stretch
 		if ($params['is_desktop_default'] && ($params['desktop_menu_stretch'] || $params['tablet_landscape_menu_stretch'] || $params['tablet_portrait_menu_stretch'] || $params['split_layout_type'] == 'full')) {
 			$params['menu_class'] .= ' nav-menu--stretch';
-			
+
 			if ($params['desktop_menu_stretch'] || ($params['menu_layout_desktop'] == 'split' && $params['split_layout_type'] == 'full')) {
 				$custom_css .= $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . '{width: 100% !important;}';
 				$custom_css .= $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: 100% !important;}';
@@ -383,21 +397,21 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 				$custom_css .= $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: fit-content !important;}';
 			}
 			if (($params['tablet_landscape_menu_stretch'] && $params['menu_layout_tablet_landscape'] == 'default') || ($params['menu_layout_desktop'] == 'split' && $params['split_layout_type'] == 'full' && $params['menu_layout_tablet_landscape'] == 'default')) {
-				$custom_css .= '@media screen and (max-width: 1212px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . '{width: 100% !important; }}';
-				$custom_css .= '@media screen and (max-width: 1212px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: 100% !important; }}';
+				$custom_css .= '@media screen and (max-width: '.$desktop_breakpoint.'px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . '{width: 100% !important; }}';
+				$custom_css .= '@media screen and (max-width: '.$desktop_breakpoint.'px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: 100% !important; }}';
 			} else {
-				$custom_css .= '@media screen and (max-width: 1212px) {'.$shortcode. '.' . esc_attr($uniqid.$editor_suffix) . '{width: fit-content !important; }}';
-				$custom_css .= '@media screen and (max-width: 1212px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: fit-content !important; }}';
+				$custom_css .= '@media screen and (max-width: '.$desktop_breakpoint.'px) {'.$shortcode. '.' . esc_attr($uniqid.$editor_suffix) . '{width: fit-content !important; }}';
+				$custom_css .= '@media screen and (max-width: '.$desktop_breakpoint.'px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: fit-content !important; }}';
 			}
 			if (($params['tablet_portrait_menu_stretch'] && $params['menu_layout_tablet_portrait'] == 'default') || ($params['menu_layout_desktop'] == 'split' && $params['split_layout_type'] == 'full' && $params['menu_layout_tablet_portrait'] == 'default')) {
-				$custom_css .= '@media screen and (max-width: 979px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . '{width: 100% !important; }}';
-				$custom_css .= '@media screen and (max-width: 979px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: 100% !important; }}';
+				$custom_css .= '@media screen and (max-width: '.($tablet_breakpoint - 1).'px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . '{width: 100% !important; }}';
+				$custom_css .= '@media screen and (max-width: '.($tablet_breakpoint - 1).'px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: 100% !important; }}';
 			} else {
-				$custom_css .= '@media screen and (max-width: 979px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . '{width: fit-content !important; }}';
-				$custom_css .= '@media screen and (max-width: 979px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: fit-content !important; }}';
+				$custom_css .= '@media screen and (max-width: '.($tablet_breakpoint - 1).'px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . '{width: fit-content !important; }}';
+				$custom_css .= '@media screen and (max-width: '.($tablet_breakpoint - 1).'px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: fit-content !important; }}';
 			}
-			$custom_css .= '@media screen and (max-width: 767px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . '{width: fit-content !important; }}';
-			$custom_css .= '@media screen and (max-width: 767px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: fit-content !important; }}';
+			$custom_css .= '@media screen and (max-width: '.($mobile_breakpoint - 1).'px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . '{width: fit-content !important; }}';
+			$custom_css .= '@media screen and (max-width: '.($mobile_breakpoint - 1).'px) {'. $shortcode . '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu {width: fit-content !important; }}';
 		}
 
 		// Horizontal menu spacing
@@ -417,7 +431,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 		if (!empty($params['submenu_icon_margin'])) {
 			$custom_css .= $shortcode. '.' . esc_attr($uniqid.$editor_suffix) . ' .thegem-te-menu .nav-menu.submenu-icon > li.menu-item-has-children > a i {margin-left: ' . $params['submenu_icon_margin'] . 'px;}';
 		}
-		
+
 		// Split Menu zIndex Fix
 		if ($params['menu_layout_desktop'] == 'split' && $params['split_logo_absolute']) {
 			$custom_css .= '@media screen and (min-width: 768px) {'. $shortcode. '.' . esc_attr($uniqid.$editor_suffix) . '{z-index: 0 !important;}}';
@@ -467,7 +481,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 		}
 		if (!empty($params['pointer_color_menu_item_active'])) {
 			$custom_css .= $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-framed nav.desktop-view ul.nav-menu > li.menu-item-active > a:before, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-framed nav.desktop-view ul.nav-menu > li.menu-item-current > a:before, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-framed nav.desktop-view ul.nav-menu > li.menu-item-active > a:after, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-framed nav.desktop-view ul.nav-menu > li.menu-item-current > a:after  {border-color: ' . $params['pointer_color_menu_item_active'] . ';}';
-			$custom_css .= $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-lined nav.desktop-view ul.nav-menu > li.menu-item-active > a:before, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . ' .style-active-lined nav.desktop-view ul.nav-menu > li.menu-item-current > a:before, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . ' .style-active-lined nav.desktop-view ul.nav-menu > li.menu-item-active > a:after, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . ' .style-active-lined nav.desktop-view ul.nav-menu > li.menu-item-current > a:after, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . ' .style-active-background.style-active-type-background-underline nav.desktop-view ul.nav-menu > li.menu-item-active > a:after, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . ' .style-active-background.style-active-type-background-underline nav.desktop-view ul.nav-menu > li.menu-item-current > a:after  {background-color: ' . $params['pointer_color_menu_item_active'] . ';}';
+			$custom_css .= $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-lined nav.desktop-view ul.nav-menu > li.menu-item-active > a:before, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-lined nav.desktop-view ul.nav-menu > li.menu-item-current > a:before, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-lined nav.desktop-view ul.nav-menu > li.menu-item-active > a:after, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-lined nav.desktop-view ul.nav-menu > li.menu-item-current > a:after, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-background.style-active-type-background-underline nav.desktop-view ul.nav-menu > li.menu-item-active > a:after, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-active-background.style-active-type-background-underline nav.desktop-view ul.nav-menu > li.menu-item-current > a:after  {background-color: ' . $params['pointer_color_menu_item_active'] . ';}';
 		}
 		if (!empty($params['pointer_width_menu_item_hover'])) {
 			$custom_css .= $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-hover-framed nav.desktop-view ul.nav-menu > li:not(.menu-item-active):not(.menu-item-current) > a:before, ' . $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . '.style-hover-framed nav.desktop-view ul.nav-menu > li:not(.menu-item-active):not(.menu-item-current) > a:after  {border-width: ' . $params['pointer_width_menu_item_hover'] . 'px;}';
@@ -718,8 +732,8 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 			}
 			$pointer_classes .= ' style-active-type-'.$params['menu_pointer_style_active'];
 		}
-		
-        
+
+
         // Menu level 1 link preset classes
 		$menu_level_1_link_classes = implode(' ', array($params['menu_lvl_1_text_style'], $params['menu_lvl_1_font_weight']));
 		add_filter( 'nav_menu_link_attributes', array($this, 'thegem_templates_menu_first_level_link_class'), 10, 3);
@@ -731,7 +745,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 			$custom_css .= $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . ' nav.desktop-view ul.nav-menu > li > a {text-transform: ' . $params['menu_lvl_1_text_transform'] . ' !important;}';
 			$custom_css .= $shortcode . '.' . esc_attr($uniqid . $editor_suffix) . ' nav.desktop-view ul.nav-menu > li > a ~ span {text-transform: ' . $params['menu_lvl_1_text_transform'] . ' !important;}';
 		}
-		
+
 		// Horizontal Menu Absolute Fix
 		if ($params['menu_layout_desktop'] == 'default' && !empty($params['desktop_absolute'])){
 			$custom_css .= $shortcode. '.' . esc_attr($uniqid.$editor_suffix) . '{width: max-content !important;}';
@@ -745,14 +759,17 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 			<nav id="<?=esc_attr($uniqid)?>" class="desktop-view thegem-te-menu__<?=$menu_type?> thegem-te-menu-mobile__<?=$menu_mobile_type?> <?=$menu_widget?> <?=$menu_mobile_widget?> <?php echo esc_attr($different_source) ?>"
 				 data-tablet-landscape="<?=$params['menu_layout_tablet_landscape']?>"
 				 data-tablet-portrait="<?=$params['menu_layout_tablet_portrait']?>"
+				 data-desktop-breakpoint="<?= $desktop_breakpoint ?>"
+				 data-tablet-breakpoint="<?= $tablet_breakpoint ?>"
+				 data-mobile-breakpoint="<?= $mobile_breakpoint ?>"
 				 role="navigation">
 
 				<script type="text/javascript">
 					(function ($) {
-						const tabletLandscapeMaxWidth = 1212;
-						const tabletLandscapeMinWidth = 980;
-						const tabletPortraitMaxWidth = 979;
-						const tabletPortraitMinWidth = 768;
+						const tabletLandscapeMaxWidth = <?= $desktop_breakpoint ?>;
+						const tabletLandscapeMinWidth = <?= $tablet_breakpoint ?>;
+						const tabletPortraitMaxWidth = <?= $tablet_breakpoint - 1 ?>;
+						const tabletPortraitMinWidth = <?= $mobile_breakpoint ?>;
 						let viewportWidth = $(window).width();
 						let menu = $('#<?=esc_attr($uniqid)?>');
 						if (menu.data("tablet-landscape") === 'default' && viewportWidth >= tabletLandscapeMinWidth && viewportWidth <= tabletLandscapeMaxWidth) {
@@ -766,21 +783,24 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 						}
 					})(jQuery);
 				</script>
-			 
+
 				<?php if ($params['is_mobile_default'] || $params['is_mobile_sliding']): ?>
 					<button class="menu-toggle dl-trigger<?=thegem_te_delay_class()?>">
+						<?php esc_html_e('Menu', 'thegem'); ?>
 						<span class="menu-line-1"></span><span class="menu-line-2"></span><span class="menu-line-3"></span>
 					</button>
 				<?php endif; ?>
 
 				<?php if ($params['is_hamburger']): ?>
 					<button class="menu-toggle hamburger-toggle <?=$params['hamburger_icon_size']?><?=thegem_te_delay_class()?>">
+						<?php esc_html_e('Menu', 'thegem'); ?>
 						<span class="menu-line-1"></span><span class="menu-line-2"></span><span class="menu-line-3"></span>
 					</button>
 				<?php endif; ?>
 
 				<?php if ($params['is_overlay']): ?>
 					<button class="menu-toggle overlay-toggle <?=$params['hamburger_icon_size']?><?=thegem_te_delay_class()?>">
+						<?php esc_html_e('Menu', 'thegem'); ?>
 						<span class="menu-line-1"></span><span class="menu-line-2"></span><span class="menu-line-3"></span>
 					</button>
 				<?php endif; ?>
@@ -788,6 +808,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 				<?php if ($params['is_hamburger']): ?>
 					<div class="hamburger-menu-back">
 						<button class="hamburger-toggle-close <?=$params['hamburger_icon_size']?>">
+							<?php esc_html_e('Close', 'thegem'); ?>
 							<span class="menu-line-1"></span><span class="menu-line-2"></span><span class="menu-line-3"></span>
 						</button>
 					</div>
@@ -796,6 +817,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 				<?php if ($params['is_overlay']): ?> <!--Overlay menu start-->
 					<div class="overlay-menu-back">
 						<button class="overlay-toggle-close <?=$params['hamburger_icon_size']?>">
+							<?php esc_html_e('Close', 'thegem'); ?>
 							<span class="menu-line-1"></span><span class="menu-line-2"></span><span class="menu-line-3"></span>
 						</button>
 					</div>
@@ -808,7 +830,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 				<?php if ($params['is_mobile_sliding']): ?><!--Mobile sliding start-->
 					<div class="mobile-menu-slide-back"></div>
 					<div class="mobile-menu-slide-wrapper">
-						<button class="mobile-menu-slide-close"></button>
+						<button class="mobile-menu-slide-close"><?php esc_html_e('Close', 'thegem'); ?></button>
 				<?php endif; ?>
 
 				<?php
@@ -860,7 +882,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 				remove_filter('wp_nav_menu_items', 'thegem_add_menu_item_split_logo', 10, 2);
 				remove_filter('nav_menu_link_attributes', array($this, 'thegem_templates_menu_first_level_link_class'), 10, 3);
                 ?>
-    
+
 				<?php if ($params['is_mobile_sliding']): ?>
 					</div>
 				<?php endif; ?><!--Mobile sliding end-->
@@ -891,39 +913,39 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 						}
 					});
 				})(jQuery);
-				
+
 				<?php if($params['split_logo_absolute']) { ?>
 					(function ($) {
-						
+
 						function fullwidth_block_update($item) {
 							var $page = $('#page'),
 								pageOffset = $page.offset(),
 								pagePaddingLeft = $page.css('padding-left'),
 								pageWidth = $page.width();
-	
+
 							var $prevElement = $item.prev(),
 								extra_padding = 0;
 							if ($prevElement.length == 0 || $prevElement.hasClass('logo-fullwidth-block')) {
 								$prevElement = $item.parent();
 								extra_padding = parseInt($prevElement.css('padding-left'));
 							}
-	
+
 							var offsetKey = window.gemSettings.isRTL ? 'right' : 'left';
 							var cssData = {
 								width: pageWidth
 							};
 							cssData[offsetKey] = pageOffset.left - ($prevElement.length ? $prevElement.offset().left : 0) + parseInt(pagePaddingLeft) - extra_padding;
-	
+
 							$item.css(cssData);
 						}
-	
+
 						let $fullwidth = $(".thegem-te-menu.<?=esc_attr($uniqid)?> .nav-menu > .menu-item-type-split-logo > .logo-fullwidth-block");
 						let $logo = $fullwidth.find('.site-logo');
-	
+
 						setTimeout(function () {
 							fullwidth_block_update($fullwidth);
 							$logo.css('opacity', '1');
-	
+
 							let resizeTimer;
 							$(window).on('resize', function () {
 								clearTimeout(resizeTimer);
@@ -932,13 +954,13 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 								}, 500);
 							});
 						}, 250);
-						
+
 					})(jQuery);
 				<?php } ?>
-				
+
 			</script>
 		<?php endif; ?>
-		
+
 		<?php else : ?>
 			<div class="bordered-box centered-box styled-subtitle">
 				<?php echo esc_html__('Please select Menu Source', 'thegem') ?>
@@ -956,7 +978,7 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 		$return_html = $css_output.$return_html;
 		return $return_html;
 	}
-	
+
 	public function shortcode_settings() {
 		return array(
 			'name' => __('Menu', 'thegem'),
@@ -1057,6 +1079,22 @@ class TheGem_Template_Element_Menu extends TheGem_Template_Element {
 						'std' => 'mobile',
 						'edit_field_class' => 'vc_column vc_col-sm-6',
 						'group' => __('General', 'thegem')
+					),
+					array(
+						'type' => 'textfield',
+						'heading' => __('Tablet Breakpoint', 'thegem'),
+						'param_name' => 'menu_layout_tablet_breakpoint',
+						'std' => '',
+						'edit_field_class' => 'vc_column vc_col-sm-6',
+						'group' => __('General', 'thegem'),
+					),
+					array(
+						'type' => 'textfield',
+						'heading' => __('Mobile Breakpoint', 'thegem'),
+						'param_name' => 'menu_layout_mobile_breakpoint',
+						'std' => '',
+						'edit_field_class' => 'vc_column vc_col-sm-6',
+						'group' => __('General', 'thegem'),
 					),
 					array(
 						'type' => 'dropdown',

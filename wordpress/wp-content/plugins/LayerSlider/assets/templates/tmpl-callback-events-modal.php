@@ -46,6 +46,7 @@
 		<lse-li>slideTimelineDidUpdate</lse-li>
 		<lse-li>slideTimelineDidStart</lse-li>
 		<lse-li>slideTimelineDidComplete</lse-li>
+		<lse-li>slideTimelineDidReverseComplete</lse-li>
 
 
 
@@ -279,6 +280,7 @@
 }</textarea>
 					</lse-b>
 				</lse-b>
+
 
 				<lse-b class="lse-callback-box">
 					<lse-h3 class="lse-callback-header">

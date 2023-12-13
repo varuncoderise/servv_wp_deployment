@@ -340,6 +340,40 @@ class RevSliderFunctions extends RevSliderData {
 		
 		return $url;
 	}
+
+
+	/**
+	 * gets a temporary path where files can be stored
+	 **/
+	public function get_temp_path($path = 'rstemp'){
+		if(function_exists('sys_get_temp_dir')){
+			$temp = sys_get_temp_dir();
+			if(@is_dir($temp) && wp_is_writable($temp)){
+				$dir = trailingslashit($temp).$path.'/';
+				if(!is_dir($dir)) @mkdir($dir, 0777, true);
+				return $dir;
+			}
+		}
+	
+		$temp = ini_get('upload_tmp_dir');
+		if(@is_dir($temp) && wp_is_writable($temp)){
+			$dir = trailingslashit($temp).$path.'/';
+			if(!is_dir($dir)) @mkdir($dir, 0777, true);
+			return trailingslashit($temp).$path.'/';
+		}
+
+		$temp_dir	= get_temp_dir();
+		if(wp_is_writable($temp_dir)){
+			$dir		= trailingslashit($temp_dir).$path.'/';
+			if(!is_dir($dir)) @mkdir($dir, 0777, true);
+		}else{
+			$upload_dir = wp_upload_dir();
+			$dir		= $upload_dir['basedir'].'/'.$path.'/';
+			if(!is_dir($dir)) @mkdir($dir, 0777, true);
+		}
+
+		return $dir;
+	}
 	
 	
 	/**
@@ -690,8 +724,7 @@ class RevSliderFunctions extends RevSliderData {
 	public function import_media_raw($name, $id, $bitmap){
 		if(intval($id) === 0) return __('Invalid id given', 'revslider');
 		
-		$ul_dir	 = wp_upload_dir();
-		$path = $ul_dir['basedir'].'/rstemp/';
+		$path = $this->get_temp_path('rstemp');
 		
 		if(preg_match('/^data:image\/(\w+);base64,/', $bitmap, $type)){
 			$data = substr($bitmap, strpos($bitmap, ',') + 1);
@@ -718,9 +751,6 @@ class RevSliderFunctions extends RevSliderData {
 			return __('Image has invalid data', 'revslider');
 		}
 		
-		if(!is_dir($path)){
-			mkdir($path, 0777, true);
-		}
 		$return = file_put_contents($path.$name, $data);
 		if($return === false) return __('Image could not be saved', 'revslider');
 
@@ -752,6 +782,11 @@ class RevSliderFunctions extends RevSliderData {
 		$_s_dir = false;
 		
 		if(@fclose(@fopen($file_url, 'r'))){ //make sure the file actually exists
+			$path_info = pathinfo($file_url);
+			if(!isset($path_info['extension'])) return $return;
+			$pi = strtolower($path_info['extension']);
+			if(in_array($pi, $this->bad_extensions)) return $return;
+
 			$save_dir	= $ul_dir['basedir'].'/'.$s_dir;
 			$_atc_id	= $this->get_image_id_by_url($s_dir);
 			$atc_id		= ($_atc_id === false || $_atc_id === NULL) ? $this->get_image_id_by_basename($filename) : $_atc_id;
@@ -950,62 +985,63 @@ class RevSliderFunctions extends RevSliderData {
 		
 		if(!empty($revslider_fonts['queue'])){
 			foreach($revslider_fonts['queue'] as $f_n => $f_s){
-				if($f_n !== ''){
-					$_variants = $this->get_val($f_s, 'variants', array());
-					$_subsets = $this->get_val($f_s, 'subsets', array());
-					if(!empty($_variants) || !empty($_subsets)){
-						if(!isset($revslider_fonts['loaded'][$f_n])) $revslider_fonts['loaded'][$f_n] = array();
-						if(!isset($revslider_fonts['loaded'][$f_n]['variants'])) $revslider_fonts['loaded'][$f_n]['variants'] = array();
-						if(!isset($revslider_fonts['loaded'][$f_n]['subsets'])) $revslider_fonts['loaded'][$f_n]['subsets'] = array();
+				if(empty($f_n)) continue;
+				if(isset($f_s['url']) && !empty($f_s['url'])) continue; //ignore custom
+			
+				$_variants = $this->get_val($f_s, 'variants', array());
+				$_subsets = $this->get_val($f_s, 'subsets', array());
+				if(!empty($_variants) || !empty($_subsets)){
+					if(!isset($revslider_fonts['loaded'][$f_n])) $revslider_fonts['loaded'][$f_n] = array();
+					if(!isset($revslider_fonts['loaded'][$f_n]['variants'])) $revslider_fonts['loaded'][$f_n]['variants'] = array();
+					if(!isset($revslider_fonts['loaded'][$f_n]['subsets'])) $revslider_fonts['loaded'][$f_n]['subsets'] = array();
+					
+					if(strpos($f_n, 'href=') === false){
+						$t_tcf = '';
 						
-						if(strpos($f_n, 'href=') === false){
-							$t_tcf = '';
-							
-							if($font_first == false) $t_tcf .= '%7C'; //'|';
-							$t_tcf .= urlencode($f_n).':';
-							
-							if(!empty($_variants)){
-								$mgfirst = true;
-								foreach($f_s['variants'] as $mgvk => $mgvv){
-									if(in_array($mgvv, $revslider_fonts['loaded'][$f_n]['variants'], true)) continue;
-									
-									$revslider_fonts['loaded'][$f_n]['variants'][] = $mgvv;
-									
-									if(!$mgfirst) $t_tcf .= urlencode(',');
-									$t_tcf .= urlencode($mgvv);
-									$mgfirst = false;
-								} 
+						if($font_first == false) $t_tcf .= '%7C'; //'|';
+						$t_tcf .= urlencode($f_n).':';
+						
+						if(!empty($_variants)){
+							$mgfirst = true;
+							foreach($f_s['variants'] as $mgvk => $mgvv){
+								if(in_array($mgvv, $revslider_fonts['loaded'][$f_n]['variants'], true)) continue;
 								
-								//we did not add any variants, so dont add the font
-								if($mgfirst === true) continue;
-							}
+								$revslider_fonts['loaded'][$f_n]['variants'][] = $mgvv;
+								
+								if(!$mgfirst) $t_tcf .= urlencode(',');
+								$t_tcf .= urlencode($mgvv);
+								$mgfirst = false;
+							} 
 							
-							$fonts[$f_n] = $t_tcf; //we do not want to add the subsets
-							
-							if(!empty($_subsets)){
-								$mgfirst = true;
-								foreach($f_s['subsets'] as $ssk => $ssv){
-									if(in_array($mgvv, $revslider_fonts['loaded'][$f_n]['subsets'], true)) continue;
-									
-									$revslider_fonts['loaded'][$f_n]['subsets'][] = $ssv;
-									
-									if($mgfirst) $t_tcf .= urlencode('&subset=');
-									if(!$mgfirst) $t_tcf .= urlencode(',');
-									$t_tcf .= urlencode($ssv);
-									$mgfirst = false;
-								}
-							}
-							
-							$tcf .= $t_tcf;
-						}else{
-							//$f_n = $this->$this->remove_http($f_n);
-							$tcf2 .= html_entity_decode(stripslashes($f_n));
-							
-							$fonts[$f_n] = $tcf2;
+							//we did not add any variants, so dont add the font
+							if($mgfirst === true) continue;
 						}
+						
+						$fonts[$f_n] = $t_tcf; //we do not want to add the subsets
+						
+						if(!empty($_subsets)){
+							$mgfirst = true;
+							foreach($f_s['subsets'] as $ssk => $ssv){
+								if(in_array($mgvv, $revslider_fonts['loaded'][$f_n]['subsets'], true)) continue;
+								
+								$revslider_fonts['loaded'][$f_n]['subsets'][] = $ssv;
+								
+								if($mgfirst) $t_tcf .= urlencode('&subset=');
+								if(!$mgfirst) $t_tcf .= urlencode(',');
+								$t_tcf .= urlencode($ssv);
+								$mgfirst = false;
+							}
+						}
+						
+						$tcf .= $t_tcf;
+					}else{
+						//$f_n = $this->$this->remove_http($f_n);
+						$tcf2 .= html_entity_decode(stripslashes($f_n));
+						
+						$fonts[$f_n] = $tcf2;
 					}
-					$font_first = false;
 				}
+				$font_first = false;
 			}
 		}
 		
@@ -1242,7 +1278,7 @@ class RevSliderFunctions extends RevSliderData {
 	 * get the client browser with version
 	 **/
 	public function get_browser(){
-		$u_agent	= $_SERVER['HTTP_USER_AGENT'];
+		$u_agent	= $this->get_val($_SERVER, 'HTTP_USER_AGENT');
 		$bname		= 'Unknown';
 		$platform	= 'Unknown';
 		$version	= '';
@@ -1290,11 +1326,11 @@ class RevSliderFunctions extends RevSliderData {
 		if (!preg_match_all($pattern, $u_agent, $matches)){ /* */ }
 		// see how many we have
 		$i			= count($matches['browser']);
-		$version	= $matches['version'][0];
+		$version	= $this->get_val($matches, array('version', 0));
 		if ($i != 1) {
 			//we will have two since we are not using the 'other' argument yet
 			//see if the version is before or after the name
-			$version = (strripos($u_agent, 'Version') < strripos($u_agent,$ub)) ? $matches['version'][0] : $matches['version'][1];
+			$version = (strripos($u_agent, 'Version') < strripos($u_agent,$ub)) ? $version : $this->get_val($matches, array('version', 1));
 		}
 
 		// check if we have a number
@@ -1759,28 +1795,28 @@ class RevSliderFunctions extends RevSliderData {
 
 		$gs = $this->get_global_settings();
 
-		if(in_array($this->get_val($gs, 'fontdownload', 'off'), array('preload', 'off'))){
-					$font_face = "@font-face {
+		if($this->get_val($gs, 'fontdownload', 'off') === 'off'){
+			$font_face = "@font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;  
   src: url(//fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');
 }";
-				}else{
-					$font_face = "@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;  
-  
-  src: local('Material Icons'),
-    	local('MaterialIcons-Regular'),
-  		url(".RS_PLUGIN_URL."public/assets/fonts/material/MaterialIcons-Regular.woff2) format('woff2'),
-  		url(".RS_PLUGIN_URL."public/assets/fonts/material/MaterialIcons-Regular.woff) format('woff'),  
-		url(".RS_PLUGIN_URL."public/assets/fonts/material/MaterialIcons-Regular.ttf) format('truetype');
-}";
-				}
+		}else{
+			$font_face = "@font-face {
+font-family: 'Material Icons';
+font-style: normal;
+font-weight: 400;  
 
-				$rs_material_icons_css = "/* 
+src: local('Material Icons'),
+local('MaterialIcons-Regular'),
+  url(".RS_PLUGIN_URL."public/assets/fonts/material/MaterialIcons-Regular.woff2) format('woff2'),
+  url(".RS_PLUGIN_URL."public/assets/fonts/material/MaterialIcons-Regular.woff) format('woff'),  
+url(".RS_PLUGIN_URL."public/assets/fonts/material/MaterialIcons-Regular.ttf) format('truetype');
+}";
+		}
+
+		$rs_material_icons_css = "/* 
 ICON SET 
 */
 ".$font_face."
@@ -1805,5 +1841,50 @@ rs-module .material-icons {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
 }";
+	}
+
+	/**
+	 * open and checks a zip file for filetypes
+	 **/
+	public function check_bad_files($zip_file, $extensions_allowed = false){
+		if(class_exists('ZipArchive')){
+			$zip = new ZipArchive;
+			$success = $zip->open($zip_file);
+			
+			if($success !== true) $this->throw_error(__("Can't open zip file", 'revslider'));
+
+			for($i = 0; $i < $zip->numFiles; $i++){
+				$path_info = pathinfo($zip->getNameIndex($i));
+				if(!isset($path_info['extension'])) continue;
+			
+				$pi = strtolower($path_info['extension']);
+				if($extensions_allowed !== false){
+					if(!in_array($pi, $extensions_allowed)) $this->throw_error(__("zip file contains illegal files", 'revslider'));
+				}else{
+					if(in_array($pi, $this->bad_extensions)) $this->throw_error(__("zip file contains illegal files", 'revslider'));
+				}
+			}
+		}else{ //fallback to pclzip
+			require_once(ABSPATH . 'wp-admin/includes/class-pclzip.php');
+			
+			$pclzip = new PclZip($zip_file);
+			
+			$content = $pclzip->listContent();
+			if(is_array($content) && !empty($content)){
+				foreach($content as $file){
+					if(!isset($file['filename'])) continue;
+
+					$path_info = pathinfo($file['filename']);
+					if(!isset($path_info['extension'])) continue;
+
+					$pi = strtolower($path_info['extension']);
+					if($extensions_allowed !== false){
+						if(!in_array($pi, $extensions_allowed)) $this->throw_error(__("zip file contains illegal files", 'revslider'));
+					}else{
+						if(in_array($pi, $this->bad_extensions)) $this->throw_error(__("zip file contains illegal files", 'revslider'));
+					}
+				}
+			}
+		}
 	}
 }

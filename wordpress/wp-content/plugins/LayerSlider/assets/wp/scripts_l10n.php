@@ -30,25 +30,61 @@ $l10n_ls = [
 	'okUnderstand' 	=> _x('Okay, I understand', 'Button label', 'LayerSlider'),
 	'cancel' 		=> _x('CANCEL', 'Button label', 'LayerSlider'),
 
+	'small' 		=> _x('Small', 'Asset size', 'LayerSlider'),
+	'medium' 		=> _x('Medium', 'Asset size', 'LayerSlider'),
+	'large' 		=> _x('Large', 'Asset size', 'LayerSlider'),
+	'extraLarge' 	=> _x('Extra Large', 'Asset size', 'LayerSlider'),
+	'original' 		=> _x('Original', 'Asset size', 'LayerSlider'),
+	'scalable_a' 	=> _x('Scalable (Auto Size)', 'Asset size', 'LayerSlider'),
+	'scalable_o' 	=> _x('Scalable (Original Size)', 'Asset size', 'LayerSlider'),
+
 	// Notifications
-	'notifyProjectSaved' 	=> __('Project saved as draft', 'LayerSlider'),
-	'notifyProjectPublished' => __('Published & changes are now live', 'LayerSlider'),
-	'notifyPresetSaved' 	=> __('Transition preset saved', 'LayerSlider'),
-	'notifyCaptureSlide' 	=> __('Capturing slide. This might take a moment ...', 'LayerSlider'),
-	'notifyPixieSave'		=> __('Saving image. This might take a moment ...'),
-	'notifySettingsSaved' 	=> __('Settings saved'),
-	'notifyGoogleFontsMissing' => __('Some fonts might be missing since you disabled Google Fonts.', 'LayerSlider'),
-	'notifyMissingPopup' 	=> __('This is a Popup project, which requires license registration to use.', 'LayerSlider'),
-	'notifyMissingPopupMT' 	=> __('Register your LayerSlider license to use Popups.', 'LayerSlider'),
-	'notifyMissingScene' 	=> __('This is a Sticky or Scroll Scene project, which requires license registration to use on front-end pages.', 'LayerSlider'),
-	'notifyScrollSceneSlides' 	=> __('This is a Scroll Scene project, which will display and animate the first slide only.', 'LayerSlider'),
-	'notifyPremiumTemplate' => __('This is a premium template or a project based on it, which requires license registration to use on front-end pages.', 'LayerSlider'),
-	'notifyPremiumTemplateMT' => __('Register your LayerSlider license to use premium templates.', 'LayerSlider'),
+	'notifyProjectSaved' 			=> __('Project saved as draft', 'LayerSlider'),
+	'notifyProjectPublished' 		=> __('Published & changes are now live', 'LayerSlider'),
+	'notifyPresetSaved' 			=> __('Transition preset saved', 'LayerSlider'),
+	'notifyCaptureSlide' 			=> __('Capturing slide. This might take a moment ...', 'LayerSlider'),
+	'notifyPixieSave'				=> __('Saving image. This might take a moment ...'),
+	'notifySettingsSaved' 			=> __('Settings saved'),
+	'notifyGoogleFontsMissing' 		=> __('Some fonts might be missing since you disabled Google Fonts.', 'LayerSlider'),
+	'notifyMissingPopup' 			=> __('This is a Popup project, which requires license registration to use.', 'LayerSlider'),
+	'notifyMissingPopupMT' 			=> __('Register your LayerSlider license to use Popups.', 'LayerSlider'),
+	'notifyMissingScene' 			=> __('This is a Sticky or Scroll Scene project, which requires license registration to use on front-end pages.', 'LayerSlider'),
+	'notifyScrollSceneSlides' 		=> __('This is a Scroll Scene project, which will display and animate the first slide only.', 'LayerSlider'),
+	'notifyMissingEndingTr' 		=> __('Missing Ending Transitions can lead to overlapping layers.', 'LayerSlider'),
+	'confirmMissingEndingTrFix' 		=> sprintf(__('To avoid overlapping issues, %sEnding Transition%s will be enabled on layers missing both Ending Transition and Ending Text Transition. You should manually save the project after the changes have been applied.', 'LayerSlider'), '<b>', '</b>'),
+	'confirmMissingEndingTrDismiss' 	=> __('Are you sure you want to dismiss this notification without fixing potential issues?', 'LayerSlider'),
+	'notifyMissingEndingTrMore' 	=> __('Learn More', 'LayerSlider'),
+	'notifyMissingEndingTrFix' 		=> __('Fix Problem', 'LayerSlider'),
+	'notifyPremiumTemplate' 		=> __('This is a premium template or a project based on it, which requires license registration to use on front-end pages.', 'LayerSlider'),
+	'notifyPremiumTemplateMT' 		=> __('Register your LayerSlider license to use premium templates.', 'LayerSlider'),
 
 	// Modules
 	'moduleDLErrorTitle' 	=> __('Download Error', 'LayerSlider'),
 	'moduleDLImageEditor' 	=> __('Downloading Image Editor ...', 'LayerSlider'),
 	'moduleDLIcons' 		=> __('Downloading Icons ...', 'LayerSlider'),
+	'moduleDLAssets' 		=> __('Downloading Assets ...', 'LayerSlider'),
+
+	'assetsDLErrorTitle' 	=> __('Download Error', 'LayerSlider'),
+	'assetsDLAsset' 		=> __('Downloading Asset ...'),
+	'assetsDLAssetFail' 	=> __('Download Failed. Retrying... (%1$s/%2$s)'),
+
+	'assetsDefaultInspectorTitles' => [
+		'objects' 	=> __('Object Details', 'LayerSlider'),
+		'photos' 	=> __('Photo Details', 'LayerSlider'),
+		'videos' 	=> __('Video Details', 'LayerSlider'),
+		'other' 	=> __('Asset Details', 'LayerSlider')
+	],
+
+	'assetsSearchObjectsPH' => __('Search 9000+ objects', 'LayerSlider'),
+	'assetsSearchPhotosPH' 	=> __('Search millions of royalty-free stock photos', 'LayerSlider'),
+	'assetsSearchVideosPH' 	=> __('Search millions of royalty-free stock videos', 'LayerSlider'),
+	'assetsAPIErrorTitle' 	=> __('Something went wrong', 'LayerSlider'),
+	'assetsAPIErrorText' 	=> __('It seems the remote API is experiencing a temporary outage, and we couldn’t load the assets you’re looking for. Please try again in a few minutes.', 'LayerSlider'),
+	'assetsServerErrorTitle'=> __('Something went wrong', 'LayerSlider'),
+	'assetsServerErrorText' => sprintf(__('It seems there is a server issue that prevented LayerSlider from accessing the assets you’re looking for. Please check %sSystem Status%s for potential errors, try to temporarily disable themes/plugins to rule out incompatibility issues, or contact your hosting provider to resolve server configuration problems.', 'LayerSlider'), '<a href="'.admin_url( 'admin.php?page=layerslider&section=system-status' ).'" target="_blank">', '</a>'),
+	'assetsDLServerErrorTitle'=> __('Something went wrong', 'LayerSlider'),
+	'assetsDLServerErrorText' => sprintf(__('It seems there is a server issue that prevented LayerSlider from downloading the selected asset. Please check %sSystem Status%s for potential errors, try to temporarily disable themes/plugins to rule out incompatibility issues, or contact your hosting provider to resolve server configuration problems.', 'LayerSlider'), '<a href="'.admin_url( 'admin.php?page=layerslider&section=system-status' ).'" target="_blank">', '</a>'),
+
 
 	// Activation
 	'activationErrorTitle' 	=> __('Something went wrong ...', 'LayerSlider'),
@@ -118,6 +154,10 @@ $l10n_ls = [
 		'SLIDE_THUMBNAIL' 		=> [
 			'title' => __('Slide thumbnail', 'LayerSlider'),
 			'icon' 	=> lsGetSVGIcon('image')
+		],
+		'LAYER_SELECT' 			=> [
+			'title' => __('Select layer', 'LayerSlider'),
+			'icon' => lsGetSVGIcon('square-dashed')
 		],
 		'LAYER_NEW' 			=> [
 			'title' => __('New layer', 'LayerSlider'),
@@ -232,7 +272,7 @@ $l10n_ls = [
 			'icon' 	=> lsGetSVGIcon('shapes')
 		],
 		'MODIFY_OBJECT' => [
-			'title' => __('Modify Object', 'LayerSlider'),
+			'title' => __('Modify SVG', 'LayerSlider'),
 			'icon' 	=> lsGetSVGIcon('stars')
 		],
 		'LAYER_APPLY_TRANSITION' 	=> [
@@ -254,6 +294,7 @@ $l10n_ls = [
 	'SBLayerCopyTitle' 			=> __('Layer #%d copy', 'LayerSlider'),
 
 	// Search
+	'SBSearchTitle' 			=> __('Search', 'LayerSlider'),
 	'SBSearchSlide' 			=> __('Slide', 'LayerSlider'),
 	'SBSearchLayers' 			=> __('Layers', 'LayerSlider'),
 
@@ -266,6 +307,7 @@ $l10n_ls = [
 	'SBPreviewTextPlaceholder' 	=> __('Text Layer', 'LayerSlider'),
 	'SBPreviewHTMLPlaceholder' 	=> __('HTML Layer', 'LayerSlider'),
 	'SBPreviewButtonPlaceholder' => __('Button', 'LayerSlider'),
+	'SBPreviewAudioPlaceholder' => __('Embedded Audio', 'LayerSlider'),
 	'SBPreviewPostPlaceholder' 	=> __('Howdy, [author]', 'LayerSlider'),
 	'SBPreviewSlide' 			=> __('Preview Slide', 'LayerSlider'),
 	'SBPreviewSlideExit' 		=> __('Stop Preview', 'LayerSlider'),
@@ -273,6 +315,7 @@ $l10n_ls = [
 	'SBStaticUntil' 			=> __('Until the end of Slide #%d', 'LayerSlider'),
 	'SBPasteLayerError'			=> __('There’s nothing to paste. Copy a layer first!', 'LayerSlider'),
 	'SBPasteError' 				=> __('There is nothing to paste! Copy layer style or transition options first.', 'LayerSlider'),
+	'SBCPPasteError' 			=> __('There is nothing to paste! Copy a color or gradient first.', 'LayerSlider'),
 	'SBRemoveSlideTitle' 		=> __('Remove selected slide?', 'LayerSlider'),
 	'SBRemoveSlideTitleName' 	=> __('Remove slide "%s"?', 'LayerSlider'),
 	'SBRemoveSlideText' 		=> __('Are you sure you want to remove this slide? You can’t undo this action.', 'LayerSlider'),
@@ -289,6 +332,7 @@ $l10n_ls = [
 
 	'SBMediaLibraryImage' 		=> __('Pick an image to use it in LayerSlider', 'LayerSlider'),
 	'SBMediaLibraryMedia'		=> __('Choose video or audio files', 'LayerSlider'),
+	'SBMediaLibraryAVError' 	=> __('Please select only video or audio sources without mixing them together.', 'LayerSlider'),
 	'SBUploadError' 			=> __('Upload error. Please verify that the uploaded items have the correct file extension and they are supported by WordPress.', 'LayerSlider'),
 	'SBUploadErrorMessage' 		=> __('Upload error. Please verify that the uploaded items have the correct file extension and they are supported by WordPress. Your server thrown the following error: %s', 'LayerSlider'),
 	'SBInvalidFormat' 			=> __('Invalid format', 'LayerSlider'),
@@ -320,11 +364,11 @@ $l10n_ls = [
 	'SBLayerTypeHTML' 			=> __('HTML', 'LayerSlider'),
 	'SBLayerTypePost' 			=> __('Dynamic', 'LayerSlider'),
 	'SBLayerTypeShape' 			=> __('Shape', 'LayerSlider'),
-	'SBLayerTypeSVG' 			=> __('Object', 'LayerSlider'),
+	'SBLayerTypeSVG' 			=> __('SVG', 'LayerSlider'),
 
 	'SBInvalidSVGSource' 		=> __('The entered SVG code doesn’t seem to be valid.', 'LayerSlider'),
-	'SBInsertObjectTitle' 		=> __('Insert Object', 'LayerSlider'),
-	'SBModifyObjectTitle' 		=> __('Modify Object', 'LayerSlider'),
+	'SBInsertObjectTitle' 		=> __('Insert SVG', 'LayerSlider'),
+	'SBModifyObjectTitle' 		=> __('Modify SVG', 'LayerSlider'),
 
 	'SBInsertShapeTitle' 		=> __('Insert Shape', 'LayerSlider'),
 	'SBModifyShapeTitle' 		=> __('Modify Shape', 'LayerSlider'),

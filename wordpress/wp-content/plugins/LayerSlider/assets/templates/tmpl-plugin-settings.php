@@ -42,6 +42,11 @@ $googleFonts = get_option( 'ls-google-fonts', [] );
 			</kmw-menuitem>
 
 			<kmw-menuitem>
+				<?= lsGetSVGIcon('puzzle-piece', false, false, 'kmw-icon') ?>
+				<kmw-menutext><?= __('Integrations', 'LayerSlider') ?></kmw-menutext>
+			</kmw-menuitem>
+
+			<kmw-menuitem>
 				<?= lsGetSVGIcon('tachometer-alt-fast', false, false, 'kmw-icon') ?>
 				<kmw-menutext><?= __('Performance', 'LayerSlider') ?></kmw-menutext>
 			</kmw-menuitem>
@@ -196,6 +201,45 @@ $googleFonts = get_option( 'ls-google-fonts', [] );
 				</div>
 
 
+				<!-- Integrations -->
+				<div>
+					<ls-h5><?= __('WPML / Polylang', 'LayerSlider') ?></ls-h5>
+					<table class="ls-settings-table">
+						<tr>
+							<td><?= __('String Translation', 'LayerSlider') ?></td>
+							<td><?= lsGetSwitchOptionField('wpml_string_translation', true ) ?></td>
+							<td><?= sprintf(__('When enabled, LayerSlider will automatically register the strings used in your projects to be translated on multilingual sites. %sPolylang doesn’t support an “untranslated” state for strings.%s If you use Polylang instead of WPML, you should either actively maintain translations or consider disabling this option to avoid issues where your projects’ content doesn’t reflect the changes made in the editor.', 'LayerSlider'), '<br><br><b>', '</b>') ?></td>
+						</tr>
+						<tr>
+							<td><?= __('Media Translation', 'LayerSlider') ?></td>
+							<td><?= lsGetSwitchOptionField('wpml_media_translation', true ) ?></td>
+							<td><?= __('Media Translation allows you to translate images. You can provide language-specific alternative versions of the images in your Media Library, and LayerSlider will automatically show the right one. Consider disabling this feature if you use Media Translation on your site but don’t want images in your projects to be changed.', 'LayerSlider') ?></td>
+						</tr>
+					</table>
+
+					<ls-h5><?= __('Page Builders', 'LayerSlider') ?></ls-h5>
+					<table class="ls-settings-table">
+						<tr>
+							<td><?= __('Enable TinyMCE helper', 'LayerSlider') ?></td>
+							<td><?= lsGetSwitchOptionField('tinymce_helper', true ) ?></td>
+							<td><?= __('Allows the LayerSlider helper utility for the classic WordPress page editor, which makes it easy to insert projects into your pages. Disable only if you’re experiencing issues with the editor.', 'LayerSlider') ?></td>
+						</tr>
+
+						<tr>
+							<td><?= __('Enable Gutenberg block', 'LayerSlider') ?></td>
+							<td><?= lsGetSwitchOptionField('gutenberg_block', true ) ?></td>
+							<td><?= __('Allows the LayerSlider block for  WordPress’s new Gutenberg page editor, which makes it easy to insert projects into your pages. Disable only if you’re experiencing issues with the editor.', 'LayerSlider') ?></td>
+						</tr>
+
+						<tr>
+							<td><?= __('Enable Elementor widget', 'LayerSlider') ?></td>
+							<td><?= lsGetSwitchOptionField('elementor_widget', true ) ?></td>
+							<td><?= __('Allows the LayerSlider widget for Elementor, which makes it easy to insert projects into your pages. Disable only if you’re experiencing issues with the editor.', 'LayerSlider') ?></td>
+						</tr>
+					</table>
+				</div>
+
+
 				<!-- Performance -->
 				<div>
 					<table class="ls-settings-table">
@@ -331,24 +375,6 @@ $googleFonts = get_option( 'ls-google-fonts', [] );
 							<td><?= __('Enable “Play By Scroll”', 'LayerSlider') ?></td>
 							<td><?= lsGetSwitchOptionField('enable_play_by_scroll', false) ?></td>
 							<td><?= __('“Play By Scroll” is a discontinued feature replaced by Scroll Scene. Sliders using “Play By Scroll” remain working as expected, but we’re hiding this feature by default due to its deprecation and eventual removal from LayerSlider.', 'LayerSlider') ?></td>
-						</tr>
-
-						<tr>
-							<td><?= __('Enable TinyMCE helper', 'LayerSlider') ?></td>
-							<td><?= lsGetSwitchOptionField('tinymce_helper', true ) ?></td>
-							<td><?= __('Allows the LayerSlider helper utility for the classic WordPress page editor, which makes it easy to insert projects into your pages. Disable only if you’re experiencing issues with the editor.', 'LayerSlider') ?></td>
-						</tr>
-
-						<tr>
-							<td><?= __('Enable Gutenberg block', 'LayerSlider') ?></td>
-							<td><?= lsGetSwitchOptionField('gutenberg_block', true ) ?></td>
-							<td><?= __('Allows the LayerSlider block for  WordPress’s new Gutenberg page editor, which makes it easy to insert projects into your pages. Disable only if you’re experiencing issues with the editor.', 'LayerSlider') ?></td>
-						</tr>
-
-						<tr>
-							<td><?= __('Enable Elementor widget', 'LayerSlider') ?></td>
-							<td><?= lsGetSwitchOptionField('elementor_widget', true ) ?></td>
-							<td><?= __('Allows the LayerSlider widget for Elementor, which makes it easy to insert projects into your pages. Disable only if you’re experiencing issues with the editor.', 'LayerSlider') ?></td>
 						</tr>
 
 						<tr>

@@ -1,14 +1,14 @@
 <?php
 
 class TheGem_Template_Element_Blog_Archive_Breadcrumbs extends TheGem_Blog_Archive_Template_Element {
-	
+
 	public function __construct() {
 	}
-	
+
 	public function get_name() {
 		return 'thegem_te_blog_archive_breadcrumbs';
 	}
-	
+
 	public function shortcode_output($atts, $content = '') {
 		// General params
 		$params = shortcode_atts(array_merge(array(
@@ -19,21 +19,21 @@ class TheGem_Template_Element_Blog_Archive_Breadcrumbs extends TheGem_Blog_Archi
 		),
 			thegem_templates_extra_options_extract()
 		), $atts, 'thegem_te_blog_archive_breadcrumbs');
-		
+
 		// Init Design Options Params
 		$uniqid = uniqid('thegem-custom-').rand(1,9999);
-		
+
 		// Init Breadcrumbs
 		ob_start();
 		$term = thegem_templates_blog_archive_source();
-  
+
 		if (empty($term)) {
 			ob_end_clean();
 			return thegem_templates_close_blog_archive($this->get_name(), $this->shortcode_settings(), '');
 		}
-		
+
 		?>
-		
+
 		<div <?php if (!empty($params['element_id'])): ?>id="<?=esc_attr($params['element_id']); ?>"<?php endif;?>
 		     class="thegem-te-blog-archive-breadcrumbs <?= esc_attr($params['element_class']); ?> <?= esc_attr($uniqid); ?>">
 
@@ -41,12 +41,12 @@ class TheGem_Template_Element_Blog_Archive_Breadcrumbs extends TheGem_Blog_Archi
 				<?= gem_breadcrumbs(true) ?>
             </div>
 		</div>
-		
+
 		<?php
 		//Custom Styles
 		$customize = '.thegem-te-blog-archive-breadcrumbs.'.$uniqid;
 		$custom_css = '';
-		
+
 		if (!empty($params['alignment'])) {
 			$custom_css .= $customize.' .blog-breadcrumbs {justify-content: ' . $params['alignment'] . '; text-align: ' . $params['alignment'] . ';}';
 			$custom_css .= $customize.' .blog-breadcrumbs ul {justify-content: ' . $params['alignment'] . '; text-align: ' . $params['alignment'] . ';}';
@@ -61,29 +61,29 @@ class TheGem_Template_Element_Blog_Archive_Breadcrumbs extends TheGem_Blog_Archi
 		if (!empty($params['color_active'])) {
 			$custom_css .= $customize.' .blog-breadcrumbs ul li:last-child {color: ' . $params['color_active'] . ';}';
 		}
-		
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
-		
+
 		// Print custom css
 		$css_output = '';
 		if(!empty($custom_css)) {
 			$css_output = '<style>'.$custom_css.'</style>';
 		}
-		
+
 		$return_html = $css_output.$return_html;
 		return thegem_templates_close_blog_archive($this->get_name(), $this->shortcode_settings(), $return_html);
 	}
-	
+
 	public function shortcode_settings() {
-		
+
 		return array(
 			'name' => __('Archive Breadcrumbs', 'thegem'),
 			'base' => 'thegem_te_blog_archive_breadcrumbs',
 			'icon' => 'thegem-icon-wpb-ui-element-blog-breadcrumbs',
-			'category' => __('Archive Blog Builder', 'thegem'),
-			'description' => __('Archive Breadcrumbs (Archive Blog Builder)', 'thegem'),
+			'category' => __('Archive Builder', 'thegem'),
+			'description' => __('Archive Breadcrumbs (Archive Builder)', 'thegem'),
 			'params' => array_merge(
-			
+
 			    /* General - Layout */
 				array(
 					array(
@@ -129,7 +129,7 @@ class TheGem_Template_Element_Blog_Archive_Breadcrumbs extends TheGem_Blog_Archi
 						'group' => 'General'
 					),
 				),
-				
+
 				/* Extra Options */
 				thegem_set_elements_extra_options()
 			),

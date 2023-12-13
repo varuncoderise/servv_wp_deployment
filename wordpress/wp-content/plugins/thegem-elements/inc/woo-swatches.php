@@ -5,17 +5,100 @@ function thegem_add_product_attribute_color( $attrs ) {
 		$attrs,
 		array(
 			'color' => __( 'Color Swatches', 'thegem' ),
+			'image' => __( 'Image Swatches', 'thegem' ),
 			'label' => __( 'Label Swatches', 'thegem' ),
 		)
 	);
 }
 add_filter( 'product_attributes_type_selector', 'thegem_add_product_attribute_color', 10, 1 );
 
+function thegem_woocommerce_after_add_attribute_fields() {
+?>
+<div class="form-field" style="display: none;">
+	<label for="thegem_attribute_image_tooltip_type"><?php esc_html_e( 'Tooltip type', 'thegem' ); ?></label>
+	<select name="thegem_attribute_image_tooltip_type" id="thegem_attribute_image_tooltip_type">
+		<option value="image"><?php esc_html_e( 'Image', 'thegem' ); ?></option>
+		<option value="text"><?php esc_html_e( 'Text', 'thegem' ); ?></option>
+	</select>
+	<script type="text/javascript">
+	jQuery( document ).on( 'change', '#attribute_type', function( event ) {
+		if(jQuery(this).val() === 'image') {
+			jQuery('#thegem_attribute_image_tooltip_type').closest('.form-field').show();
+		} else {
+			jQuery('#thegem_attribute_image_tooltip_type').closest('.form-field').hide();
+		}
+	});
+	jQuery('#attribute_type').trigger('change');
+	</script>
+</div>
+<?php
+}
+add_action( 'woocommerce_after_add_attribute_fields', 'thegem_woocommerce_after_add_attribute_fields');
+
+function thegem_woocommerce_after_edit_attribute_fields() {
+	global $wpdb;
+	$edit = isset( $_GET['edit'] ) ? absint( $_GET['edit'] ) : 0;
+
+	$attribute_to_edit = $wpdb->get_row(
+		$wpdb->prepare(
+			"
+			SELECT attribute_type, attribute_label, attribute_name, attribute_orderby, attribute_public
+			FROM {$wpdb->prefix}woocommerce_attribute_taxonomies WHERE attribute_id = %d
+			",
+			$edit
+		)
+	);
+	$att_name = $attribute_to_edit->attribute_name;
+
+	$tooltip_type = get_option('thegem_attribute_'.$att_name.'_image_tooltip_type');
+?>
+<tr class="form-field" style="display: none;">
+	<th scope="row" valign="top">
+		<label for="thegem_attribute_image_tooltip_type"><?php esc_html_e( 'Tooltip type', 'thegem' ); ?></label>
+	</th>
+	<td>
+		<select name="thegem_attribute_image_tooltip_type" id="thegem_attribute_image_tooltip_type">
+			<option value="image" <?php selected( $tooltip_type, 'image' ); ?>><?php esc_html_e( 'Image', 'thegem' ); ?></option>
+			<option value="text" <?php selected( $tooltip_type, 'text' ); ?>><?php esc_html_e( 'Text', 'thegem' ); ?></option>
+		</select>
+		<script type="text/javascript">
+		jQuery( document ).on( 'change', '#attribute_type', function( event ) {
+			if(jQuery(this).val() === 'image') {
+				jQuery('#thegem_attribute_image_tooltip_type').closest('.form-field').show();
+			} else {
+				jQuery('#thegem_attribute_image_tooltip_type').closest('.form-field').hide();
+			}
+		});
+		jQuery('#attribute_type').trigger('change');
+		</script>
+	</td>
+</tr>
+<?php
+}
+add_action( 'woocommerce_after_edit_attribute_fields', 'thegem_woocommerce_after_edit_attribute_fields');
+
+function thegem_woocommerce_attribute_image_save($id, $data, $old_slug = false) {
+	if(!empty($old_slug)) {
+		delete_option('thegem_attribute_'.$old_slug.'_image_tooltip_type');
+	}
+	if($data['attribute_type'] === 'image') {
+		$type = isset( $_POST['thegem_attribute_image_tooltip_type'] ) && $_POST['thegem_attribute_image_tooltip_type'] === 'text' ? 'text' : 'image';
+		update_option('thegem_attribute_'.$data['attribute_name'].'_image_tooltip_type', $type);
+	}
+}
+add_action( 'woocommerce_attribute_added', 'thegem_woocommerce_attribute_image_save', 10, 2);
+add_action( 'woocommerce_attribute_updated', 'thegem_woocommerce_attribute_image_save', 10, 3);
+
+function thegem_woocommerce_attribute_image_delete($id, $name, $taxonomy) {
+	delete_option('thegem_attribute_'.$name.'_image_tooltip_type');
+}
+add_action( 'woocommerce_attribute_deleted', 'thegem_woocommerce_attribute_image_delete', 10, 3 );
+
 function thegem_init_swatches( $attrs ) {
 	if ( thegem_is_plugin_active('woocommerce/woocommerce.php') && $attribute_taxonomies = wc_get_attribute_taxonomies() ) {
 		$added_action = false;
 		foreach ( $attribute_taxonomies as $tax ) {
-			if ( 'color' === $tax->attribute_type || 'label' === $tax->attribute_type ) {
+			if ( 'color' === $tax->attribute_type || 'image' === $tax->attribute_type || 'label' === $tax->attribute_type ) {
 				add_action( wc_attribute_taxonomy_name( $tax->attribute_name ) . '_add_form_fields', 'thegem_add_product_attribute_' . $tax->attribute_type . '_fields', 100, 1 );
 				add_action( wc_attribute_taxonomy_name( $tax->attribute_name ) . '_edit_form_fields', 'thegem_edit_product_attribute_' . $tax->attribute_type . '_fields', 100, 2 );
 
@@ -40,6 +123,9 @@ function thegem_save_product_extra_attribute_values( $term_id, $tt_id, $taxonomy
 			if ( 'color' === $tax->attribute_type && $taxonomy === wc_attribute_taxonomy_name( $tax->attribute_name )) {
 				update_term_meta( $term_id, 'thegem_color', $_POST[ 'thegem_color' ]);
 			}
+			if ( 'image' === $tax->attribute_type && $taxonomy === wc_attribute_taxonomy_name( $tax->attribute_name )) {
+				update_term_meta( $term_id, 'thegem_image', $_POST[ 'thegem_image' ]);
+			}
 			if ( 'label' === $tax->attribute_type && $taxonomy === wc_attribute_taxonomy_name( $tax->attribute_name )) {
 				update_term_meta( $term_id, 'thegem_label', $_POST[ 'thegem_label' ]);
 			}
@@ -55,6 +141,9 @@ function thegem_delete_product_extra_attribute_values( $term_id, $tt_id, $taxono
 			if ( 'color' === $tax->attribute_type && $taxonomy === wc_attribute_taxonomy_name( $tax->attribute_name ) ) {
 				delete_term_meta( $term_id, 'thegem_color' );
 			}
+			if ( 'image' === $tax->attribute_type && $taxonomy === wc_attribute_taxonomy_name( $tax->attribute_name ) ) {
+				delete_term_meta( $term_id, 'thegem_image' );
+			}
 			if ( 'label' === $tax->attribute_type && $taxonomy === wc_attribute_taxonomy_name( $tax->attribute_name ) ) {
 				delete_term_meta( $term_id, 'thegem_label' );
 			}
@@ -66,6 +155,12 @@ function thegem_get_product_attribute_color_field() {
 	return array(
 		'name'  => 'thegem_color',
 		'title' => __( 'Color', 'thegem' ),
+	);
+}
+function thegem_get_product_attribute_image_field() {
+	return array(
+		'name'  => 'thegem_image',
+		'title' => __( 'Image', 'thegem' ),
 	);
 }
 function thegem_get_product_attribute_label_field() {
@@ -80,14 +175,10 @@ function thegem_add_product_attribute_color_fields( $taxonomy ) {
 	wp_enqueue_script('color-picker');
 	wp_enqueue_style('color-picker');
 ?>
-<table class="form-field">
-	<tr class="form-field">
-		<th scope="row" valign="top"><label for="thegem_color"><?php esc_html_e( 'Color', 'thegem' ); ?></label></th>
-		<td class="thegem-meta-color">
+<div class="form-field thegem-term-color-wrap">
+	<label for="thegem_color"><?php esc_html_e( 'Color', 'thegem' ); ?></label>
 			<input type="text" id="thegem_color" name="thegem_color" value="" class="color-select" style="width: auto;" />
-		</td>
-	</tr>
-</table>
+</div>
 <?php
 }
 
@@ -105,25 +196,181 @@ function thegem_edit_product_attribute_color_fields( $tag, $taxonomy ) {
 <?php
 }
 
-function thegem_add_product_attribute_label_fields( $taxonomy ) {
+function thegem_add_product_attribute_image_fields( $taxonomy ) {
+
 ?>
 <table class="form-field">
 	<tr class="form-field">
-		<th scope="row" valign="top"><label for="thegem_label"><?php esc_html_e( 'Label', 'thegem' ); ?></label></th>
-		<td class="thegem-meta-color">
-			<input type="text" id="thegem_label" name="thegem_label" value="" size="50%" class="text" />
+		<th scope="row" valign="top"><label for="thegem_image"><?php esc_html_e( 'Image', 'thegem' ); ?></label></th>
+		<td class="thegem-meta-image">
+			<div id="thegem_attribute_image" style="float: left; margin-right: 10px;"><img src="<?php echo esc_url( wc_placeholder_img_src() ); ?>" width="60px" height="60px" /></div>
+			<div style="line-height: 60px;">
+				<button type="button" class="upload_image_button button"><?php esc_html_e( 'Upload/Add image', 'woocommerce' ); ?></button>
+				<button type="button" class="remove_image_button button"><?php esc_html_e( 'Remove image', 'woocommerce' ); ?></button>
+			</div>
+			<input type="hidden" id="thegem_image" name="thegem_image" value="" />
+			<script type="text/javascript">
+
+				// Only show the "remove image" button when needed
+				if ( ! jQuery( '#thegem_image' ).val() ) {
+					jQuery( '.remove_image_button' ).hide();
+				}
+
+				// Uploading files
+				var file_frame;
+
+				jQuery( document ).on( 'click', '.upload_image_button', function( event ) {
+
+					event.preventDefault();
+
+					// If the media frame already exists, reopen it.
+					if ( file_frame ) {
+						file_frame.open();
+						return;
+					}
+
+					// Create the media frame.
+					file_frame = wp.media.frames.downloadable_file = wp.media({
+						title: '<?php esc_html_e( 'Choose an image', 'woocommerce' ); ?>',
+						button: {
+							text: '<?php esc_html_e( 'Use image', 'woocommerce' ); ?>'
+						},
+						multiple: false
+					});
+
+					// When an image is selected, run a callback.
+					file_frame.on( 'select', function() {
+						var attachment           = file_frame.state().get( 'selection' ).first().toJSON();
+						var attachment_thumbnail = attachment.sizes.thumbnail || attachment.sizes.full;
+
+						jQuery( '#thegem_image' ).val( attachment.id );
+						jQuery( '#thegem_attribute_image' ).find( 'img' ).attr( 'src', attachment_thumbnail.url );
+						jQuery( '.remove_image_button' ).show();
+					});
+
+					// Finally, open the modal.
+					file_frame.open();
+				});
+
+				jQuery( document ).on( 'click', '.remove_image_button', function() {
+					jQuery( '#thegem_attribute_image' ).find( 'img' ).attr( 'src', '<?php echo esc_js( wc_placeholder_img_src() ); ?>' );
+					jQuery( '#thegem_image' ).val( '' );
+					jQuery( '.remove_image_button' ).hide();
+					return false;
+				});
+
+				jQuery( document ).ajaxComplete( function( event, request, options ) {
+					if ( request && 4 === request.readyState && 200 === request.status
+						&& options.data && 0 <= options.data.indexOf( 'action=add-tag' ) ) {
+
+						var res = wpAjax.parseAjaxResponse( request.responseXML, 'ajax-response' );
+						if ( ! res || res.errors ) {
+							return;
+						}
+						// Clear Thumbnail fields on submit
+						jQuery( '#thegem_attribute_image' ).find( 'img' ).attr( 'src', '<?php echo esc_js( wc_placeholder_img_src() ); ?>' );
+						jQuery( '#thegem_image' ).val( '' );
+						jQuery( '.remove_image_button' ).hide();
+						// Clear Display type field on submit
+						jQuery( '#display_type' ).val( '' );
+						return;
+					}
+				} );
+
+			</script>
 		</td>
 	</tr>
 </table>
 <?php
 }
 
+function thegem_edit_product_attribute_image_fields( $tag, $taxonomy ) {
+	$value = absint(get_term_meta( $tag->term_id, 'thegem_image', true ));
+	$image = wc_placeholder_img_src();
+	if ( $value ) {
+		$image = wp_get_attachment_thumb_url( $value );
+	}
+?>
+<tr class="form-field">
+	<th scope="row" valign="top"><label for="thegem_image"><?php esc_html_e( 'Image', 'thegem' ); ?></label></th>
+	<td class="thegem-meta-image">
+		<input type="hidden" id="thegem_image" name="thegem_image" value="<?php echo esc_attr($value); ?>" />
+		<div id="thegem_attribute_image" style="float: left; margin-right: 10px;"><img src="<?php echo esc_url( $image ); ?>" width="60px" height="60px" /></div>
+		<div style="line-height: 60px;">
+			<button type="button" class="upload_image_button button"><?php esc_html_e( 'Upload/Add image', 'woocommerce' ); ?></button>
+			<button type="button" class="remove_image_button button"><?php esc_html_e( 'Remove image', 'woocommerce' ); ?></button>
+		</div>
+		<script type="text/javascript">
+
+			// Only show the "remove image" button when needed
+			if ( '0' === jQuery( '#thegem_image' ).val() ) {
+				jQuery( '.remove_image_button' ).hide();
+			}
+
+			// Uploading files
+			var file_frame;
+
+			jQuery( document ).on( 'click', '.upload_image_button', function( event ) {
+
+				event.preventDefault();
+
+				// If the media frame already exists, reopen it.
+				if ( file_frame ) {
+					file_frame.open();
+					return;
+				}
+
+				// Create the media frame.
+				file_frame = wp.media.frames.downloadable_file = wp.media({
+					title: '<?php esc_html_e( 'Choose an image', 'woocommerce' ); ?>',
+					button: {
+						text: '<?php esc_html_e( 'Use image', 'woocommerce' ); ?>'
+					},
+					multiple: false
+				});
+
+				// When an image is selected, run a callback.
+				file_frame.on( 'select', function() {
+					var attachment           = file_frame.state().get( 'selection' ).first().toJSON();
+					var attachment_thumbnail = attachment.sizes.thumbnail || attachment.sizes.full;
+
+					jQuery( '#thegem_image' ).val( attachment.id );
+					jQuery( '#thegem_attribute_image' ).find( 'img' ).attr( 'src', attachment_thumbnail.url );
+					jQuery( '.remove_image_button' ).show();
+				});
+
+				// Finally, open the modal.
+				file_frame.open();
+			});
+
+			jQuery( document ).on( 'click', '.remove_image_button', function() {
+				jQuery( '#thegem_attribute_image' ).find( 'img' ).attr( 'src', '<?php echo esc_js( wc_placeholder_img_src() ); ?>' );
+				jQuery( '#thegem_image' ).val( '' );
+				jQuery( '.remove_image_button' ).hide();
+				return false;
+			});
+
+		</script>
+	</td>
+</tr>
+<?php
+}
+
+function thegem_add_product_attribute_label_fields( $taxonomy ) {
+?>
+<div class="form-field">
+	<label for="thegem_label"><?php esc_html_e( 'Label', 'thegem' ); ?></label>
+	<input type="text" id="thegem_label" name="thegem_label" value="" size="50%" class="text" />
+</div>
+<?php
+}
+
 function thegem_edit_product_attribute_label_fields( $tag, $taxonomy ) {
 	$value = get_term_meta( $tag->term_id, 'thegem_label', true );
 ?>
-<tr class="form-field">
+<tr class="form-field thegem-term-label-wrap">
 	<th scope="row" valign="top"><label for="thegem_label"><?php esc_html_e( 'Label', 'thegem' ); ?></label></th>
-	<td class="thegem-meta-color">
+	<td class="thegem-meta-label">
 		<input type="text" id="thegem_label" name="thegem_label" value="<?php echo esc_attr($value); ?>" class="text" />
 	</td>
 </tr>
@@ -132,7 +379,7 @@ function thegem_edit_product_attribute_label_fields( $tag, $taxonomy ) {
 
 function thegem_variation_attribute_options_html( $html, $args ) {
 	$attribute_data = wc_get_attribute(wc_attribute_taxonomy_id_by_name($args['attribute']));
-	if(!empty($attribute_data) && ($attribute_data->type == 'color' || $attribute_data->type == 'label')) {
+	if(!empty($attribute_data) && ($attribute_data->type == 'color' || $attribute_data->type == 'image' || $attribute_data->type == 'label')) {
 		// Get selected value.
 		if ( false === $args['selected'] && $args['attribute'] && $args['product'] instanceof WC_Product ) {
 			$selected_key = 'attribute_' . sanitize_title( $args['attribute'] );
@@ -175,6 +422,23 @@ function thegem_variation_attribute_options_html( $html, $args ) {
 						if ($attribute_data->type == 'color') {
 							$color = get_term_meta( $term->term_id, 'thegem_color', true );
 							$html .= '<span class="color"' . (!empty($color) ? ' style="background-color: ' . esc_attr($color).';"' : '') . '></span>';
+						} elseif ($attribute_data->type == 'image') {
+							$attribute_slug = preg_replace( '/^pa\_/', '', $attribute_data->slug );
+							$tooltip_type = get_option('thegem_attribute_'.$attribute_slug.'_image_tooltip_type');
+							$image = absint(get_term_meta( $term->term_id, 'thegem_image', true ));
+							$image_thumb = $image_hover = wc_placeholder_img_src();
+							if ( $image ) {
+								$image_thumb_data = thegem_generate_thumbnail_src($image, 'thegem-post-thumb-medium');
+								$image_thumb = $image_thumb_data[0];
+								if($tooltip_type !== 'text') {
+									$image_hover_data = thegem_generate_thumbnail_src($image, 'thegem-blog-timeline');
+									$image_hover = $image_hover_data[0];
+							}
+							}
+							$html .= '<span class="image"' . (!empty($image) ? ' style="background-image: url(' . esc_attr($image_thumb).');"' : '') . '></span>';
+							if($tooltip_type !== 'text') {
+								$html .= '<span class="image-hover"><img src="'.$image_hover.'" alt="#"/></span>';
+							}
 						} else {
 							$label = get_term_meta( $term->term_id, 'thegem_label', true );
 							$label = empty($label) ? $term->name : $label;
@@ -194,7 +458,7 @@ function thegem_variation_attribute_options_html( $html, $args ) {
 add_filter( 'woocommerce_dropdown_variation_attribute_options_html', 'thegem_variation_attribute_options_html', 10, 2 );
 
 function thegem_woocommerce_product_option_terms( $attribute_taxonomy, $i, $attribute ) {
-	if ( 'color' !== $attribute_taxonomy->attribute_type && 'label' !== $attribute_taxonomy->attribute_type ) {
+	if ( 'color' !== $attribute_taxonomy->attribute_type && 'image' !== $attribute_taxonomy->attribute_type && 'label' !== $attribute_taxonomy->attribute_type ) {
 		return;
 	}
 ?>

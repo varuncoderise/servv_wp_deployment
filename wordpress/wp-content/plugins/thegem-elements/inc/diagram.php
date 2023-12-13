@@ -224,7 +224,7 @@ function thegem_diagram_shortcode($atts, $content) {
 	$return_html .= '<div class="diagram-wrapper '.$style.'">';
 	ob_start();
 	thegem_build_diagram($title, $summary, $type, $skills, false, $effects_enabled, $effects_enabled_delay, $style, $background, $title_color, $summary_color, $line_color);
-	$return_html .= trim(preg_replace('/\s\s+/', '', ob_get_clean()));
+	$return_html .= trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
 	$return_html .= '</div>';
 	$return_html .= "</div>";
 	return $return_html;

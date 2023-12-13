@@ -63,7 +63,7 @@ class TheGemHeadingAnimation {
             static::ANIMATION_LETTERS_SCALE_OUT=>30
         ];
 
-        return $data[$animation] ?? 0;
+        return isset($data[$animation]) ? $data[$animation] : 0;
     }
 
     public function init() {
@@ -96,7 +96,7 @@ class TheGemHeadingAnimation {
 
             if (preg_match_all('/heading_animation_type="advanced"/', $content, $animationTypeMatch)) {
                 preg_match_all('/heading_animation=\"(.+?)\"/', $content, $animationMatch);
-                $this->activeAnimations = $animationMatch[1] ?? [];
+                $this->activeAnimations = isset($animationMatch[1]) ? $animationMatch[1] : [];
 
                 if (count($animationTypeMatch[0]) != count($this->activeAnimations)) {
                     $this->activeAnimations[] = static::getDefaultAnimation();
@@ -148,11 +148,11 @@ class TheGemHeadingAnimation {
             if ($js = file_get_contents(plugin_dir_path(__FILE__).'assets/js/main.js')) {
 
                 if ($this->isPrepareAnimation()) {
-                    $js .= file_get_contents(plugin_dir_path(__FILE__).'assets/js/prepare-animation.js') ?? '';
+                    $js .= file_get_contents(plugin_dir_path(__FILE__).'assets/js/prepare-animation.js') ? file_get_contents(plugin_dir_path(__FILE__).'assets/js/prepare-animation.js') : '';
                 }
 
                 if ($this->rotatingTextEnabled) {
-                    $js .= file_get_contents(plugin_dir_path(__FILE__).'assets/js/rotating.js') ?? '';
+                    $js .= file_get_contents(plugin_dir_path(__FILE__).'assets/js/rotating.js') ? file_get_contents(plugin_dir_path(__FILE__).'assets/js/rotating.js') : '';
                 }
 
                 $js = preg_replace('/(\s{2,})/', '', $js);

@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: Slider Revolution
-Plugin URI: https://www.sliderrevolution.com/
+Plugin URI: https://www.sliderrevolution.com/?utm_source=admin&utm_medium=button&utm_campaign=srusers&utm_content=info
 Description: Slider Revolution - More than just a WordPress Slider
 Author: ThemePunch
 Text Domain: revslider
 Domain Path: /languages
-Version: 6.6.11
-Author URI: https://themepunch.com/
+Version: 6.6.18
+Author URI: https://themepunch.com/?utm_source=admin&utm_medium=button&utm_campaign=srusers&utm_content=info
 */
 
 // If this file is called directly, abort.
@@ -17,7 +17,7 @@ if(class_exists('RevSliderFront')){
 	die('ERROR: It looks like you have more than one instance of Slider Revolution installed. Please remove additional instances for this plugin to work again.');
 }
 
-define('RS_REVISION',			'6.6.11');
+define('RS_REVISION',			'6.6.18');
 define('RS_PLUGIN_PATH',		plugin_dir_path(__FILE__));
 define('RS_PLUGIN_SLUG_PATH',	plugin_basename(__FILE__));
 define('RS_PLUGIN_FILE_PATH',	__FILE__);
@@ -25,7 +25,7 @@ define('RS_PLUGIN_SLUG',		apply_filters('set_revslider_slug', 'revslider'));
 define('RS_PLUGIN_URL',			get_rs_plugin_url());
 define('RS_PLUGIN_URL_CLEAN',	str_replace(array('http://', 'https://'), '//', RS_PLUGIN_URL));
 define('RS_DEMO',				false);
-define('RS_TP_TOOLS',			'6.6.11'); //holds the version of the tp-tools script, load only the latest!
+define('RS_TP_TOOLS',			'6.6.18'); //holds the version of the tp-tools script, load only the latest!
 
 global $revslider_fonts;
 global $revslider_is_preview_mode;
@@ -88,6 +88,10 @@ try{
 		//do not render in elementor preview iframe
 		if (isset($_GET['elementor-preview'])) return false;
 
+		//do not render on saving a post/page
+		global $revslider_save_post;
+		if($revslider_save_post) return false;
+		
 		//skip shortcode generation if any of these functions found in backtrace 
 		//function can be provided as array item without key
 		//or as 'class' => 'function'
@@ -131,6 +135,7 @@ try{
 			$args,
 			'rev_slider'
 		);
+		$sc_attr = array_map('wp_kses_post', $sc_attr);
 
 		$slider_alias = ($sc_attr['alias'] != '') ? $sc_attr['alias'] : $output->get_val($args, 0); //backwards compatibility
 
@@ -159,7 +164,7 @@ try{
 		ob_end_clean();
 
 		if(!empty($sc_attr['zindex'])){
-			$content = '<div class="wp-block-themepunch-revslider" style="z-index:'.$sc_attr['zindex'].';">' .$content. '</div>';
+			$content = '<div class="wp-block-themepunch-revslider" style="z-index:'.esc_attr($sc_attr['zindex']).';">' .$content. '</div>';
 		}
 
 		if(!empty($slider)){

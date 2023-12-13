@@ -1,14 +1,14 @@
 <?php
 
 class TheGem_Template_Element_Blog_Archive_Title extends TheGem_Blog_Archive_Template_Element {
-	
+
 	public function __construct() {
 	}
-	
+
 	public function get_name() {
 		return 'thegem_te_blog_archive_title';
 	}
-	
+
 	public function shortcode_output($atts, $content = '') {
 		// General params
 		$params = shortcode_atts(array_merge(array(
@@ -21,7 +21,7 @@ class TheGem_Template_Element_Blog_Archive_Title extends TheGem_Blog_Archive_Tem
 			'text_letter_spacing' => '',
 			'text_transform' => '',
 			'text_color' => '',
-   
+
 			'use_custom_font_size' => '0',
 			'custom_font_size' => '',
 			'custom_line_height' => '',
@@ -39,37 +39,44 @@ class TheGem_Template_Element_Blog_Archive_Title extends TheGem_Blog_Archive_Tem
 		),
 			thegem_templates_extra_options_extract()
 		), $atts, 'thegem_te_blog_archive_title');
-		
+
 		// Init Design Options Params
 		$uniqid = uniqid('thegem-custom-').rand(1,9999);
-		
-		
+
+
 		// Init Title
 		ob_start();
 		$term = thegem_templates_blog_archive_source();
-		
-		if (empty($term) || empty($term->name)) {
+
+		if ((empty($term) || empty($term->name)) && !is_search()) {
 			ob_end_clean();
 			return thegem_templates_close_blog_archive($this->get_name(), $this->shortcode_settings(), '');
 		}
-		
+
+		$title = '';
+		if(is_search()) {
+			$title = thegem_get_option('website_search_page_title') ? thegem_get_option('website_search_page_title') : thegem_title('', false);
+		} else {
+			$title = $term->name;
+		}
+
 		$text_styled_class = implode(' ', array($params['text_style'], $params['text_font_weight']));
-		
+
 		?>
 
         <div <?php if (!empty($params['element_id'])): ?>id="<?=esc_attr($params['element_id']); ?>"<?php endif;?>
              class="thegem-te-blog-archive-title <?= esc_attr($params['element_class']); ?> <?= esc_attr($uniqid); ?>">
 
             <<?= $params['text_tag'] ?> class="blog-title <?= $text_styled_class ?>">
-                <?= $term->name ?>
+                <?= $title ?>
             </<?= $params['text_tag'] ?>>
         </div>
-		
+
 		<?php
 		//Custom Styles
 		$customize = '.thegem-te-blog-archive-title.'.$uniqid;
 		$custom_css = '';
-		
+
 		// Layout Styles
 		if (!empty($params['alignment'])) {
 			$custom_css .= $customize.' {justify-content: ' . $params['alignment'] . '; text-align: ' . $params['alignment'] . ';}';
@@ -77,7 +84,7 @@ class TheGem_Template_Element_Blog_Archive_Title extends TheGem_Blog_Archive_Tem
 		if (!empty($params['max_width'])) {
 			$custom_css .= $customize.' .blog-title {max-width: ' . $params['max_width'] . 'px;}';
 		}
-		
+
 		// Text Styles
 		if ($params['text_letter_spacing'] != '') {
 			$custom_css .= $customize.' .blog-title {letter-spacing: ' . $params['text_letter_spacing'] . 'px;}';
@@ -88,7 +95,7 @@ class TheGem_Template_Element_Blog_Archive_Title extends TheGem_Blog_Archive_Tem
 		if (!empty($params['text_color'])) {
 			$custom_css .= $customize.' .blog-title {color: ' . $params['text_color'] . ';}';
 		}
-		
+
 		// Custom Font Styles
 		if (!empty($params['use_custom_font_size'])) {
 			if (!empty($params['custom_font_size'])) {
@@ -140,24 +147,24 @@ class TheGem_Template_Element_Blog_Archive_Title extends TheGem_Blog_Archive_Tem
 			$font = thegem_font_parse($params['custom_google_fonts']);
 			$custom_css .= $customize.' .blog-title .light, '.$customize.' .blog-title {'.esc_attr($font).'}';
 		}
-  
-		
+
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
-		
+
 		// Print custom css
 		$css_output = '';
 		if(!empty($custom_css)) {
 			$css_output = '<style>'.$custom_css.'</style>';
 		}
-		
+
 		$return_html = $css_output.$return_html;
 		return thegem_templates_close_blog_archive($this->get_name(), $this->shortcode_settings(), $return_html);
 	}
-	
+
 	public function set_layout_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('General', 'thegem'),
@@ -271,14 +278,14 @@ class TheGem_Template_Element_Blog_Archive_Title extends TheGem_Blog_Archive_Tem
 			'description' => __('To style default blog title typography go to <a href="'.get_site_url().'/wp-admin/admin.php?page=thegem-theme-options#/typography/headings-and-body" target="_blank">Theme Options → Typography</a>.', 'thegem'),
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
- 
+
 	public function set_custom_font_params() {
 		$result = array();
 		$group = __('Style', 'thegem');
-  
+
 		$result[] = array(
             'type' => 'checkbox',
             'heading' => __('Use custom font size?', 'thegem'),
@@ -432,26 +439,26 @@ class TheGem_Template_Element_Blog_Archive_Title extends TheGem_Blog_Archive_Tem
             ),
             'group' => $group
         );
-		
+
 		return $result;
 	}
-	
+
 	public function shortcode_settings() {
-		
+
 		return array(
-			'name' => __('Archive Blog Title', 'thegem'),
+			'name' => __('Archive Title', 'thegem'),
 			'base' => 'thegem_te_blog_archive_title',
 			'icon' => 'thegem-icon-wpb-ui-element-blog-title',
-			'category' => __('Archive Blog Builder', 'thegem'),
-			'description' => __('Archive Title (Archive Blog Builder)', 'thegem'),
+			'category' => __('Archive Builder', 'thegem'),
+			'description' => __('Archive Title (Archive Builder)', 'thegem'),
 			'params' => array_merge(
-			
+
 			    /* General - Layout */
 				$this->set_layout_params(),
-                
+
                 /* Style - Custom Style */
 				$this->set_custom_font_params(),
-				
+
 				/* Extra Options */
 				thegem_set_elements_extra_options()
 			),

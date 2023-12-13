@@ -535,7 +535,7 @@ class KM_UpdatesV3 {
 	public function attemptAutoActivation() {
 
 		// Bail out if there's no bundled license identifier
-		if( ! defined('LS_LICENSE_ID') || empty( LS_LICENSE_ID ) ) {
+		if( ! defined('LS_LICENSE_ID') || ! LS_LICENSE_ID ) {
 			return false;
 		}
 

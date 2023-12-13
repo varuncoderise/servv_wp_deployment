@@ -3,7 +3,7 @@
  * Plugin Name: TheGem Blocks
  * Plugin URI: https://codex-themes.com/thegem/blocks-landing/
  * Description: TheGem Blocks is a plugin bundled with TheGem theme providing an access to the premium collection of pre-designed page sections like hero, about, services etc. Speed up your workflow. Create unique layouts. Mix & match on the fly.
- * Version: 1.1.5
+ * Version: 1.1.7
  * Author: Codex Themes
  * Author URI: http://codex-themes.com/thegem/
  */

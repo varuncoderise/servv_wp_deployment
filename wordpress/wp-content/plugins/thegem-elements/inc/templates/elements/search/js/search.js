@@ -43,8 +43,10 @@
 
 			const ajaxSearch = (query) => {
 
-				const postTypes = $fullscreenSearch.data('post-types');
-				const postTypesPpp = $fullscreenSearch.data('post-types-ppp');
+				const postTypes = $fullscreenSearch.data('post-types'),
+					postTypesPpp = $fullscreenSearch.data('post-types-ppp'),
+					resultTitle = $fullscreenSearch.data('result-title'),
+					showAllText = $fullscreenSearch.data('show-all');
 
 				if (!$fullscreenSearchInput.hasClass('styled')) {
 					let styles = $fullscreenSearchInput.data('styles');
@@ -68,6 +70,8 @@
 						search: query,
 						post_types: postTypes,
 						post_types_ppp: postTypesPpp,
+						result_title: resultTitle,
+						show_all_text: showAllText,
 					},
 					beforeSend: function () {
 						if (localCache.exist(query)) {
@@ -117,6 +121,9 @@
 				$fullscreenSearchResults.find('.preloader-new').remove();
 				$fullscreenSearchResults.find('.result-sections').html('');
 
+				let scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+				$('.header-background, .top-area, .block-content, #page-title').css('padding-right', scrollbarWidth);
+
 				$('body').toggleClass('fullscreen-search-opened');
 			});
 
@@ -151,6 +158,7 @@
 				e.preventDefault();
 				$buttonSearch.removeClass('active');
 				$fullscreenSearch.removeClass('active');
+				$('.header-background, .top-area, .block-content, #page-title').css('padding-right', 0);
 				$('body').removeClass('fullscreen-search-opened');
 				if (ajaxActive) {
 					ajax.abort();

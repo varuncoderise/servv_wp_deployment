@@ -236,7 +236,7 @@ class TheGem_Template_Element_Socials extends TheGem_Template_Element {
 								'heading' => __( 'Social', 'thegem' ),
 								'param_name' => 'social',
 								'value' => array_flip(apply_filters('thegem_socials_icons_list', array(
-									'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter', 'instagram' => 'Instagram',
+									'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter (X)', 'instagram' => 'Instagram',
 									'pinterest' => 'Pinterest', 'stumbleupon' => 'StumbleUpon', 'rss' => 'RSS',
 									'vimeo' => 'Vimeo', 'youtube' => 'YouTube', 'flickr' => 'Flickr', 'tumblr' => 'Tumblr',
 									'wordpress' => 'WordPress', 'dribbble' => 'Dribbble', 'deviantart' => 'DeviantArt', 'share' => 'Share',

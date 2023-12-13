@@ -27,6 +27,12 @@ if(isset($slides['properties']['props']['sliderStyle'])) {
 	$sliderStyleAttr[] = $slides['properties']['props']['sliderStyle'];
 }
 
+// Border radius
+$borderRadius = ! empty( $slides['properties']['props']['borderRadius'] ) ? $slides['properties']['props']['borderRadius'] : '';
+if( ! empty( $borderRadius ) && $borderRadius !== '0px' && $borderRadius !== '0%' && $borderRadius !== '0' ) {
+	$sliderStyleAttr[] = 'border-radius:'.layerslider_check_unit($borderRadius).';overflow: hidden !important;';
+}
+
 // Gutenberg Margin Options
 if( ! empty( $embed['marginTop'] ) ) { $sliderStyleAttr[] = 'margin-top: '.layerslider_check_unit( $embed['marginTop'] ).';'; }
 if( ! empty( $embed['marginRight'] ) ) { $sliderStyleAttr[] = 'margin-right: '.layerslider_check_unit( $embed['marginRight'] ).';'; }
@@ -297,11 +303,16 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 		$lsMarkup[] = '<div class="ls-slide"'.$slideId.' '.$slideAttrs.'>';
 
 		// Add slide background
-		if( ! empty($slide['props']['background'])) {
+		if( ! empty( $slide['props']['background'] ) && ls_assets_cond( $slide['props'], 'background') ) {
 			$lsBG = '';
 			$alt = '';
 
 			if( ! empty($slide['props']['backgroundId'])) {
+
+				if( has_filter('wpml_object_id') && get_option('ls_wpml_media_translation', true ) ) {
+					$slide['props']['backgroundId'] = apply_filters('wpml_object_id', $slide['props']['backgroundId'], 'attachment', true );
+				}
+
 				$lsBG = ls_get_markup_image( $slide['props']['backgroundId'], ['class' => 'ls-bg'] );
 
 			} elseif($slide['props']['background'] == '[image-url]') {
@@ -337,10 +348,15 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 
 		// Add slide thumbnail
 		if(!isset($slides['properties']['attrs']['thumbnailNavigation']) || $slides['properties']['attrs']['thumbnailNavigation'] != 'disabled') {
-			if(!empty($slide['props']['thumbnail'])) {
+			if( ! empty( $slide['props']['thumbnail'] ) && ls_assets_cond( $slide['props'], 'thumbnail') ) {
 
 				$lsTN = '';
 				if( ! empty($slide['props']['thumbnailId']) ) {
+
+					if( has_filter('wpml_object_id') && get_option('ls_wpml_media_translation', true ) ) {
+						$slide['props']['thumbnailId'] = apply_filters('wpml_object_id', $slide['props']['thumbnailId'], 'attachment', true );
+					}
+
 					$lsTN = ls_get_markup_image( $slide['props']['thumbnailId'], ['class' => 'ls-tn'] );
 				}
 
@@ -365,7 +381,12 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 				$svgIB = false;
 
 				// Skip this layer?
-				if(!empty($layer['props']['skip'])) { continue; }
+				if( ! empty( $layer['props']['skip'] ) ) {
+					$skip = ls_normalize_hide_layer_value( $layer['props']['skip'] );
+					if( $skip === 'all' ) {
+						continue;
+					}
+				}
 
 				unset($layerAttributes);
 				unset($innerAttributes);
@@ -386,6 +407,7 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 
 				// Premium layer content checks
 				if( ! $GLOBALS['lsIsActivatedSite'] ) {
+
 					if( $layer['props']['media'] === 'shape' ) {
 						continue;
 					}
@@ -393,10 +415,16 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 					if( $layer['props']['media'] === 'icon' && ! empty( $layer['props']['html'] ) && strpos( $layer['props']['html'], '<svg' ) !== false ) {
 						continue;
 					}
+
+					if( in_array( $layer['props']['media'], ['text', 'media', 'button', 'shape', 'icon', 'svg', 'html', 'post'] ) ) {
+						if( ! ls_assets_cond( $layer['props'] ) ) {
+							continue;
+						}
+					}
 				}
 
 				// WPML support
-				if( has_filter( 'wpml_translate_single_string' ) ) {
+				if( has_filter( 'wpml_translate_single_string' ) && get_option('ls_wpml_string_translation', true ) ) {
 
 					// Check 'createdWith' property to decide which WPML implementation
 					// should we use. This property was added in v6.5.5 along with the
@@ -465,6 +493,42 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 					$layer['props']['post_text_length'] = !empty($layer['props']['post_text_length']) ? $layer['props']['post_text_length'] : 0;
 					$layer['props']['html'] = $postContent->getWithFormat($layer['props']['html'], $layer['props']['post_text_length']);
 					$layer['props']['html'] = do_shortcode($layer['props']['html']);
+				}
+
+
+				// Handle media uploads
+				if( $layer['props']['media'] === 'media' && isset( $layer['props']['mediaAttachments'] ) ) {
+
+					// Make sure to empty the layer's HTML in case of using uploaded media
+					$layer['props']['html'] = '';
+
+					if( ! empty( $layer['props']['mediaAttachments'] ) ) {
+
+						$mediaHTML = '';
+						$mediaType = $layer['props']['mediaAttachments'][0]['type'];
+
+						if( $mediaType === 'video' ) {
+							$mediaHTML .= '<video width="640" height="360" preload="metadata" controls>';
+						} else {
+							$mediaHTML .= '<audio preload="metadata" controls>';
+						}
+
+						foreach( $layer['props']['mediaAttachments'] as $item ) {
+
+							if( has_filter('wpml_object_id') && get_option('ls_wpml_media_translation', true ) ) {
+								$item['id'] = apply_filters('wpml_object_id', $item['id'], 'attachment', true );
+							}
+
+							$mediaURL = wp_get_attachment_url( $item['id'] );
+							$mediaURL = ! empty( $mediaURL ) ? $mediaURL : $item['url'];
+							$mediaHTML .= '<source src="'.$mediaURL.'" type="'.$item['mime'].'">';
+						}
+
+
+						$mediaHTML .= '</'.$mediaType.'>';
+
+						$layer['props']['html'] = $mediaHTML;
+					}
 				}
 
 				// Should wrap layer? Test for a single HTML element
@@ -563,25 +627,33 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 				$layerIMG = false;
 				if( $layer['props']['type'] === 'img' || $layer['props']['media'] === 'img' ) {
 
-					if( ! empty($layer['props']['imageId'])) {
-						$layerIMG = ls_get_markup_image( (int)$layer['props']['imageId'], ['class' => 'ls-l'] );
+					if( ! empty( $layer['props']['image'] ) && ls_assets_cond( $layer['props'], 'image') ) {
 
-					} elseif($layer['props']['image'] == '[image-url]') {
+						if( ! empty($layer['props']['imageId'])) {
 
-						if(is_object($postContent->post)) {
-							$attchID = get_post_thumbnail_id($postContent->post->ID);
-							$layerIMG = ls_get_markup_image( $attchID, ['class' => 'ls-l'] );
+							if( has_filter('wpml_object_id') && get_option('ls_wpml_media_translation', true ) ) {
+								$layer['props']['imageId'] = apply_filters('wpml_object_id', $layer['props']['imageId'], 'attachment', true );
+							}
+
+							$layerIMG = ls_get_markup_image( (int)$layer['props']['imageId'], ['class' => 'ls-l'] );
+
+						} elseif($layer['props']['image'] == '[image-url]') {
+
+							if(is_object($postContent->post)) {
+								$attchID = get_post_thumbnail_id($postContent->post->ID);
+								$layerIMG = ls_get_markup_image( $attchID, ['class' => 'ls-l'] );
+							} else {
+								$layerIMG = '<img src="'.$postContent->getWithFormat($layer['props']['image']).'">';
+							}
+
 						} else {
-							$layerIMG = '<img src="'.$postContent->getWithFormat($layer['props']['image']).'">';
+
+							$layerIMG = '<img src="'.$layer['props']['image'].'">';
+
+							if(!empty($layer['props']['alt'])) {
+							$innerAttributes['alt'] = $layer['props']['alt']; }
+								else { 	$innerAttributes['alt'] = ''; }
 						}
-
-					} elseif( ! empty( $layer['props']['image'] ) ) {
-
-						$layerIMG = '<img src="'.$layer['props']['image'].'">';
-
-						if(!empty($layer['props']['alt'])) {
-						$innerAttributes['alt'] = $layer['props']['alt']; }
-							else { 	$innerAttributes['alt'] = ''; }
 					}
 				}
 
@@ -690,10 +762,18 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 
 				if( ! empty( $layer['props']['posterId'] ) ) {
 
+					if( has_filter('wpml_object_id') && get_option('ls_wpml_media_translation', true ) ) {
+						$layer['props']['posterId'] = apply_filters('wpml_object_id', $layer['props']['posterId'], 'attachment', true );
+					}
+
 					$poster = wp_get_attachment_image_src( $layer['props']['posterId'], 'full', false );
 					$poster = ! empty( $poster[0] ) ? $poster[0]: '';
 
 					$layer['attrs']['poster'] = $poster;
+
+					if( ! ls_assets_cond( $layer['attrs'], 'poster') ) {
+						unset( $layer['attrs']['poster'] );
+					}
 				}
 
 
@@ -705,9 +785,13 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 					$innerAttributes['style'] .= preg_replace('/\s\s+/', ' ', $layer['props']['style']);
 				}
 
-				if( ! empty( $layer['props']['layerBackground']) ) {
+				if( ! empty( $layer['props']['layerBackground'] ) && ls_assets_cond( $layer['props'], 'layerBackground') ) {
 
 					if( ! empty( $layer['props']['layerBackgroundId'] ) ) {
+
+						if( has_filter('wpml_object_id') && get_option('ls_wpml_media_translation', true ) ) {
+							$layer['props']['layerBackgroundId'] = apply_filters('wpml_object_id', $layer['props']['layerBackgroundId'], 'attachment', true );
+						}
 
 						$layerBG = wp_get_attachment_image_src( $layer['props']['layerBackgroundId'], 'full', false );
 						$layerBG = ! empty( $layerBG[0] ) ? $layerBG[0]: '';
@@ -869,7 +953,7 @@ if(!empty($slider['slides']) && is_array($slider['slides'])) {
 			$slide['props']['linkUrl'] = do_shortcode( $slide['props']['linkUrl'] );
 
 			// Fallback WPML support for older sliders
-			if( has_filter( 'wpml_translate_single_string' ) ) {
+			if( has_filter( 'wpml_translate_single_string' ) && get_option('ls_wpml_string_translation', true ) ) {
 
 				// Don't try to modify the URL if it's auto-generated
 				if( empty( $slide['props']['linkId'] ) && $slide['props']['linkUrl'] !== '[post-url]' ) {

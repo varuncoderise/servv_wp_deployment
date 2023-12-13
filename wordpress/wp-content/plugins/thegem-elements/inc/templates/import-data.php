@@ -458,7 +458,7 @@ $templates = array (
 		'mark' => '',
 		'pic' => 'Default-11-Multi-Purpose.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/default-11-multi-purpose/',
-		'content' => '[vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643722483439{border-top-width: 5px !important;padding-top: 0px !important;padding-bottom: 0px !important;background-color: #f4f6f7 !important;border-top-color: #00bcd4 !important;border-top-style: solid !important;}" mobile_padding_top="10" mobile_padding_bottom="10" tablet_padding_top="10" tablet_padding_bottom="10"][vc_column tablet_align_horizontal="center" mobile_align_horizontal="center" offset="vc_col-xs-12"][thegem_te_divider desktop_padding_right="15" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][thegem_te_infotext icon_thegem_header="e621" description="Free Global Shipping – Orders Over 100$ USD" desktop_horizontal="start" mobile_horizontal="unset"][thegem_te_socials colored="custom" socials="%5B%7B%22social%22%3A%22facebook%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3AFacebook%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22twitter%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3ATwitter%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22instagram%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3AInstagram%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22vimeo%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22youtube%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22pinterest%22%2C%22url%22%3A%22%23%22%7D%5D" mobile_disable="1" color="#99a9b5"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Contact%20Us%20%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Delivery%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Help%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643722359503{border-top-width: 1px !important;padding-top: 25px !important;padding-bottom: 25px !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_logo desktop_horizontal="start"][thegem_te_search_form post_type_products="" form_width_desktop="400" form_width_tablet="310" form_width_mobile="310" form_height="34" desktop_disable="1" mobile_disable="1"][thegem_te_menu menu_source="thegem-menudemo" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" tablet_padding_left="15" mobile_padding_left="10"][thegem_te_menu menu_source="thegem-menu-minidemo" menu_layout_desktop="hamburger" ver="5.3" desktop_padding_left="25" tablet_disable="1" mobile_disable="1"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" el_disable_tablet="1" el_disable_mobile="1" css=".vc_custom_1643722635823{background-color: #f4f6f7 !important;}"][vc_column offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_disable="1" tablet_padding_right="10" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Offer%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2399a9b5%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown tablet_disable="1" mobile_disable="1" eventdate="08-03-2022" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#3c3950" color_text="#99a9b5" color_border="#dfe5e8"][thegem_te_button text="Get Now" font_type="body" no_uppercase="1" corner="50" icon_pack="elegant" desktop_horizontal="start" desktop_padding_left="30" tablet_disable="1" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#3c3950" hover_background_color="#00bcd4"][thegem_te_search_form post_type_products="" form_width_desktop="400" form_width_tablet="310" form_width_mobile="310" form_height="34"][/vc_column][/vc_row]',
+		'content' => '[vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643722483439{border-top-width: 5px !important;padding-top: 0px !important;padding-bottom: 0px !important;background-color: #f4f6f7 !important;border-top-color: #00bcd4 !important;border-top-style: solid !important;}" mobile_padding_top="10" mobile_padding_bottom="10" tablet_padding_top="10" tablet_padding_bottom="10"][vc_column tablet_align_horizontal="center" mobile_align_horizontal="center" offset="vc_col-xs-12"][thegem_te_divider desktop_padding_right="15" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][thegem_te_infotext icon_thegem_header="e621" description="Free Global Shipping – Orders Over 100$ USD" desktop_horizontal="start" mobile_horizontal="unset"][thegem_te_socials colored="custom" socials="%5B%7B%22social%22%3A%22facebook%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3AFacebook%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22twitter%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3ATwitter%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22instagram%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3AInstagram%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22vimeo%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22youtube%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22pinterest%22%2C%22url%22%3A%22%23%22%7D%5D" mobile_disable="1" color="#99a9b5"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Contact%20Us%20%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Delivery%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Help%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643722359503{border-top-width: 1px !important;padding-top: 25px !important;padding-bottom: 25px !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_logo desktop_horizontal="start"][thegem_te_search_form post_type_products="" form_width_desktop="400" form_width_tablet="310" form_width_mobile="310" form_height="34" desktop_disable="1" mobile_disable="1"][thegem_te_menu menu_source="thegem-menudemo" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" tablet_padding_left="15" mobile_padding_left="10"][thegem_te_menu menu_source="thegem-menu-minidemo" menu_layout_desktop="hamburger" ver="5.3" desktop_padding_left="25" tablet_disable="1" mobile_disable="1"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" el_disable_tablet="1" el_disable_mobile="1" css=".vc_custom_1643722635823{background-color: #f4f6f7 !important;}"][vc_column offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_disable="1" tablet_padding_right="10" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Offer%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2399a9b5%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown tablet_disable="1" mobile_disable="1" eventdate="20-03-2023" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#3c3950" color_text="#99a9b5" color_border="#dfe5e8"][thegem_te_button text="Get Now" font_type="body" no_uppercase="1" corner="50" icon_pack="elegant" desktop_horizontal="start" desktop_padding_left="30" tablet_disable="1" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#3c3950" hover_background_color="#00bcd4"][thegem_te_search_form post_type_products="" form_width_desktop="400" form_width_tablet="310" form_width_mobile="310" form_height="34"][/vc_column][/vc_row]',
 		'categories' => array (
 			'multipurpose' => 'Multipurpose',
 		),
@@ -672,7 +672,7 @@ $templates = array (
 		'mark' => '',
 		'pic' => 'Shop-Classic-12.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/shop-classic-12/',
-		'content' => '[vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643722483439{border-top-width: 5px !important;padding-top: 0px !important;padding-bottom: 0px !important;background-color: #f4f6f7 !important;border-top-color: #00bcd4 !important;border-top-style: solid !important;}" mobile_padding_top="10" mobile_padding_bottom="10" tablet_padding_top="10" tablet_padding_bottom="10"][vc_column tablet_align_horizontal="center" mobile_align_horizontal="center" offset="vc_col-xs-12"][thegem_te_divider desktop_padding_right="15" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][thegem_te_infotext icon_thegem_header="e621" description="Free Global Shipping – Orders Over 100$ USD" desktop_horizontal="start" mobile_horizontal="unset"][thegem_te_socials colored="custom" socials="%5B%7B%22social%22%3A%22facebook%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3AFacebook%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22twitter%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3ATwitter%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22instagram%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3AInstagram%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22vimeo%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22youtube%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22pinterest%22%2C%22url%22%3A%22%23%22%7D%5D" mobile_disable="1" color="#99a9b5"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Contact%20Us%20%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Delivery%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Help%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643722359503{border-top-width: 1px !important;padding-top: 25px !important;padding-bottom: 25px !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_logo desktop_horizontal="start" tablet_order="1"][thegem_te_account desktop_disable="1"][thegem_te_wishlist desktop_disable="1" desktop_padding_left="15" desktop_padding_right="15" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][thegem_te_cart minicart_spacing="20" desktop_disable="1"][thegem_te_search_form form_width_desktop="310" form_width_tablet="310" form_width_mobile="310" form_height="34" desktop_disable="1" desktop_padding_right="35" tablet_order="2" tablet_padding_right="10" mobile_disable="1"][thegem_te_menu menu_source="thegem-menudemo" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" tablet_padding_left="10" mobile_padding_left="10"][thegem_te_menu menu_source="thegem-menu-minidemo" menu_layout_desktop="hamburger" ver="5.3" desktop_padding_left="25" tablet_disable="1" mobile_disable="1"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" el_disable_tablet="1" el_disable_mobile="1" css=".vc_custom_1643722635823{background-color: #f4f6f7 !important;}"][vc_column offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_disable="1" tablet_padding_right="10" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Sale%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2399a9b5%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown tablet_disable="1" mobile_disable="1" eventdate="21-06-2022" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#3c3950" color_text="#99a9b5" color_border="#dfe5e8"][thegem_te_button text="Shop Now" font_type="body" no_uppercase="1" corner="50" icon_pack="elegant" desktop_horizontal="start" desktop_padding_left="30" tablet_disable="1" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#3c3950" hover_background_color="#00bcd4"][thegem_te_search_form form_width_desktop="310" form_width_tablet="310" form_width_mobile="310" form_height="34" desktop_padding_right="35"][thegem_te_account][thegem_te_wishlist desktop_padding_left="15" desktop_padding_right="15" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][thegem_te_cart minicart_spacing="20"][/vc_column][/vc_row]',
+		'content' => '[vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643722483439{border-top-width: 5px !important;padding-top: 0px !important;padding-bottom: 0px !important;background-color: #f4f6f7 !important;border-top-color: #00bcd4 !important;border-top-style: solid !important;}" mobile_padding_top="10" mobile_padding_bottom="10" tablet_padding_top="10" tablet_padding_bottom="10"][vc_column tablet_align_horizontal="center" mobile_align_horizontal="center" offset="vc_col-xs-12"][thegem_te_divider desktop_padding_right="15" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][thegem_te_infotext icon_thegem_header="e621" description="Free Global Shipping – Orders Over 100$ USD" desktop_horizontal="start" mobile_horizontal="unset"][thegem_te_socials colored="custom" socials="%5B%7B%22social%22%3A%22facebook%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3AFacebook%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22twitter%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3ATwitter%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22instagram%22%2C%22url%22%3A%22url%3A%2523%7Ctitle%3AInstagram%7Ctarget%3A_blank%22%7D%2C%7B%22social%22%3A%22vimeo%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22youtube%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22pinterest%22%2C%22url%22%3A%22%23%22%7D%5D" mobile_disable="1" color="#99a9b5"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Contact%20Us%20%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Delivery%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" desktop_padding_right="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Help%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D" heading_link="url:%23"][thegem_te_divider desktop_padding_left="10" tablet_disable="1" tablet_padding_left="20" tablet_padding_right="20" mobile_disable="1" color="#dfe5e8"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643722359503{border-top-width: 1px !important;padding-top: 25px !important;padding-bottom: 25px !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_logo desktop_horizontal="start" tablet_order="1"][thegem_te_account desktop_disable="1"][thegem_te_wishlist desktop_disable="1" desktop_padding_left="15" desktop_padding_right="15" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][thegem_te_cart minicart_spacing="20" desktop_disable="1"][thegem_te_search_form form_width_desktop="310" form_width_tablet="310" form_width_mobile="310" form_height="34" desktop_disable="1" desktop_padding_right="35" tablet_order="2" tablet_padding_right="10" mobile_disable="1"][thegem_te_menu menu_source="thegem-menudemo" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" tablet_padding_left="10" mobile_padding_left="10"][thegem_te_menu menu_source="thegem-menu-minidemo" menu_layout_desktop="hamburger" ver="5.3" desktop_padding_left="25" tablet_disable="1" mobile_disable="1"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" el_disable_tablet="1" el_disable_mobile="1" css=".vc_custom_1643722635823{background-color: #f4f6f7 !important;}"][vc_column offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_disable="1" tablet_padding_right="10" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Sale%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2399a9b5%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown tablet_disable="1" mobile_disable="1" eventdate="21-03-2023" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#3c3950" color_text="#99a9b5" color_border="#dfe5e8"][thegem_te_button text="Shop Now" font_type="body" no_uppercase="1" corner="50" icon_pack="elegant" desktop_horizontal="start" desktop_padding_left="30" tablet_disable="1" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#3c3950" hover_background_color="#00bcd4"][thegem_te_search_form form_width_desktop="310" form_width_tablet="310" form_width_mobile="310" form_height="34" desktop_padding_right="35"][thegem_te_account][thegem_te_wishlist desktop_padding_left="15" desktop_padding_right="15" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][thegem_te_cart minicart_spacing="20"][/vc_column][/vc_row]',
 		'categories' => array (
 			'shop' => 'Shop',
 		),
@@ -752,7 +752,7 @@ $templates = array (
 		'mark' => '',
 		'pic' => 'Shop-Creative-05.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/shop-creative-05/',
-		'content' => '[vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643637696967{padding-top: 0px !important;padding-bottom: 0px !important;background-color: #3c3950 !important;}" mobile_padding_top="10" mobile_padding_bottom="10"][vc_column desktop_align_horizontal="center" offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_padding_right="10" text_content="%5B%7B%22heading_text%22%3A%22Sale%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2399a9b5%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown eventdate="21-06-2022" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#ffffff" color_text="#99a9b5" color_border="#5f5c6e"][thegem_te_button text="Shop Now" font_type="body" no_uppercase="1" corner="3" icon_pack="elegant" desktop_padding_left="30" tablet_padding_left="30" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#00bcd4" hover_background_color="#99a9b5"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" thegem_shadow_color="rgba(0,0,0,0.15)" thegem_enable_shadow="true" css=".vc_custom_1643798588274{padding-top: 35px !important;padding-bottom: 35px !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_logo desktop_disable="1" tablet_order="1" tablet_horizontal="start"][thegem_te_menu menu_source="thegem-menudemo" menu_layout_desktop="split" split_after_item="4" split_logo_absolute="1" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" tablet_order="4"][thegem_te_search desktop_padding_left="25" desktop_padding_right="15" tablet_order="2"][thegem_te_cart minicart_spacing="20" tablet_order="3" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][/vc_column][/vc_row]',
+		'content' => '[vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643637696967{padding-top: 0px !important;padding-bottom: 0px !important;background-color: #3c3950 !important;}" mobile_padding_top="10" mobile_padding_bottom="10"][vc_column desktop_align_horizontal="center" offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_padding_right="10" text_content="%5B%7B%22heading_text%22%3A%22Sale%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2399a9b5%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown eventdate="21-03-2023" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#ffffff" color_text="#99a9b5" color_border="#5f5c6e"][thegem_te_button text="Shop Now" font_type="body" no_uppercase="1" corner="3" icon_pack="elegant" desktop_padding_left="30" tablet_padding_left="30" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#00bcd4" hover_background_color="#99a9b5"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" thegem_shadow_color="rgba(0,0,0,0.15)" thegem_enable_shadow="true" css=".vc_custom_1643798588274{padding-top: 35px !important;padding-bottom: 35px !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_logo desktop_disable="1" tablet_order="1" tablet_horizontal="start"][thegem_te_menu menu_source="thegem-menudemo" menu_layout_desktop="split" split_after_item="4" split_logo_absolute="1" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" tablet_order="4"][thegem_te_search desktop_padding_left="25" desktop_padding_right="15" tablet_order="2"][thegem_te_cart minicart_spacing="20" tablet_order="3" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][/vc_column][/vc_row]',
 		'categories' => array (
 			'shop' => 'Shop',
 		),
@@ -768,7 +768,7 @@ $templates = array (
 		'mark' => '',
 		'pic' => 'Shop-Creative-06.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/shop-creative-06/',
-		'content' => '[vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" el_disable_tablet="1" el_disable_mobile="1" css=".vc_custom_1643638430734{padding-top: 30px !important;padding-bottom: 0px !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_account][thegem_te_search desktop_horizontal="start" desktop_padding_left="15"][thegem_te_wishlist desktop_padding_right="15"][thegem_te_cart minicart_spacing="20"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643798471978{padding-top: 25px !important;padding-bottom: 25px !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_account desktop_disable="1" tablet_order="1"][thegem_te_search desktop_disable="1" desktop_horizontal="start" desktop_padding_left="15" tablet_order="2" tablet_horizontal="start" tablet_padding_left="15" mobile_padding_left="10"][thegem_te_logo desktop_disable="1" tablet_order="3" tablet_horizontal="center" tablet_absolute="1" mobile_absolute="1"][thegem_te_wishlist desktop_disable="1" desktop_padding_right="15" tablet_order="4" tablet_padding_right="15" mobile_disable="1" mobile_padding_right="10"][thegem_te_cart minicart_spacing="20" desktop_disable="1" tablet_order="5" tablet_padding_left="10" tablet_padding_right="15" mobile_padding_right="10"][thegem_te_menu menu_source="thegem-menudemo" menu_layout_desktop="split" split_after_item="3" split_logo_absolute="1" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" tablet_order="6" mobile_padding_left="10"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643637844735{padding-top: 0px !important;padding-bottom: 0px !important;background-color: #f4f6f7 !important;}" mobile_padding_top="10" mobile_padding_bottom="10"][vc_column desktop_align_horizontal="center" offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_padding_right="10" text_content="%5B%7B%22heading_text%22%3A%22Sale%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%2299a9b5%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown weight_number="thin" eventdate="20-06-2022" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#3c3950" color_text="#99a9b5" color_border="#dfe5e8"][thegem_te_button text="Shop Now" font_type="body" no_uppercase="1" corner="3" icon_pack="elegant" desktop_padding_left="30" tablet_padding_left="30" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#3c3950" hover_background_color="#00bcd4"][/vc_column][/vc_row]',
+		'content' => '[vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" el_disable_tablet="1" el_disable_mobile="1" css=".vc_custom_1643638430734{padding-top: 30px !important;padding-bottom: 0px !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_account][thegem_te_search desktop_horizontal="start" desktop_padding_left="15"][thegem_te_wishlist desktop_padding_right="15"][thegem_te_cart minicart_spacing="20"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643798471978{padding-top: 25px !important;padding-bottom: 25px !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_account desktop_disable="1" tablet_order="1"][thegem_te_search desktop_disable="1" desktop_horizontal="start" desktop_padding_left="15" tablet_order="2" tablet_horizontal="start" tablet_padding_left="15" mobile_padding_left="10"][thegem_te_logo desktop_disable="1" tablet_order="3" tablet_horizontal="center" tablet_absolute="1" mobile_absolute="1"][thegem_te_wishlist desktop_disable="1" desktop_padding_right="15" tablet_order="4" tablet_padding_right="15" mobile_disable="1" mobile_padding_right="10"][thegem_te_cart minicart_spacing="20" desktop_disable="1" tablet_order="5" tablet_padding_left="10" tablet_padding_right="15" mobile_padding_right="10"][thegem_te_menu menu_source="thegem-menudemo" menu_layout_desktop="split" split_after_item="3" split_logo_absolute="1" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" tablet_order="6" mobile_padding_left="10"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1643637844735{padding-top: 0px !important;padding-bottom: 0px !important;background-color: #f4f6f7 !important;}" mobile_padding_top="10" mobile_padding_bottom="10"][vc_column desktop_align_horizontal="center" offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_padding_right="10" text_content="%5B%7B%22heading_text%22%3A%22Sale%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%2299a9b5%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown weight_number="thin" eventdate="20-03-2023" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#3c3950" color_text="#99a9b5" color_border="#dfe5e8"][thegem_te_button text="Shop Now" font_type="body" no_uppercase="1" corner="3" icon_pack="elegant" desktop_padding_left="30" tablet_padding_left="30" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#3c3950" hover_background_color="#00bcd4"][/vc_column][/vc_row]',
 		'categories' => array (
 			'shop' => 'Shop',
 		),
@@ -881,7 +881,7 @@ $templates = array (
 		'mark' => '',
 		'pic' => 'Shop-Extended-05.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/shop-extended-05/',
-		'content' => '[vc_row full_width="stretch_row_content" equal_height="yes" content_placement="middle" css=".vc_custom_1643705647952{border-top-width: 5px !important;padding-top: 0px !important;padding-bottom: 0px !important;background-color: #f4f6f7 !important;border-top-color: #00bcd4 !important;border-top-style: solid !important;}" mobile_padding_top="10"][vc_column tablet_align_horizontal="center" offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_horizontal="start" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Free%20Global%20Shipping%20%E2%80%93%20Orders%20Over%20100%24%20USD%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_padding_right="10" text_content="%5B%7B%22heading_text%22%3A%22Sale%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown weight_number="thin" eventdate="08-03-2022" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#3c3950" color_text="#5f727f" color_border="#dfe5e8"][thegem_te_button text="Shop Now" font_type="body" no_uppercase="1" corner="3" icon_pack="elegant" desktop_padding_left="30" tablet_padding_left="30" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#00bcd4" hover_background_color="#3c3950"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" equal_height="yes" content_placement="middle" el_disable_mobile="1" thegem_shadow_color="rgba(0,0,0,0.15)" thegem_enable_shadow="true" css=".vc_custom_1643705777888{padding-top: 33px !important;padding-bottom: 33px !important;}"][vc_column desktop_align_horizontal="center" offset="vc_col-xs-12"][thegem_te_search_form form_width_desktop="310" form_width_tablet="250" form_width_mobile="310" form_height="34" desktop_horizontal="start" mobile_disable="1"][thegem_te_logo desktop_horizontal="center" desktop_absolute="1" tablet_horizontal="center" tablet_absolute="1"][thegem_te_wishlist][thegem_te_cart minicart_spacing="20" desktop_padding_left="15" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" equal_height="yes" content_placement="middle" css=".vc_custom_1643705322970{padding-top: 13px !important;padding-bottom: 13px !important;background-color: #f4f6f7 !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_logo desktop_disable="1" tablet_disable="1" mobile_horizontal="start"][thegem_te_cart minicart_spacing="20" desktop_disable="1" desktop_padding_left="15" tablet_disable="1" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][thegem_te_wishlist desktop_disable="1" tablet_disable="1" mobile_padding_left="10" mobile_padding_right="10"][thegem_te_menu menu_source="thegem-menudemo" menu_layout_tablet_portrait="default" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" desktop_horizontal="center" mobile_horizontal="unset" mobile_padding_left="10"][/vc_column][/vc_row]',
+		'content' => '[vc_row full_width="stretch_row_content" equal_height="yes" content_placement="middle" css=".vc_custom_1643705647952{border-top-width: 5px !important;padding-top: 0px !important;padding-bottom: 0px !important;background-color: #f4f6f7 !important;border-top-color: #00bcd4 !important;border-top-style: solid !important;}" mobile_padding_top="10"][vc_column tablet_align_horizontal="center" offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_horizontal="start" tablet_disable="1" mobile_disable="1" text_content="%5B%7B%22heading_text%22%3A%22Free%20Global%20Shipping%20%E2%80%93%20Orders%20Over%20100%24%20USD%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" desktop_padding_right="10" tablet_padding_right="10" text_content="%5B%7B%22heading_text%22%3A%22Sale%20ends%20in%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%235f727f%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%7D%5D"][thegem_te_countdown weight_number="thin" eventdate="20-03-2023" days_label="Days" hours_label="Hrs" minutes_label="Min" seconds_label="Sec" color_number="#3c3950" color_text="#5f727f" color_border="#dfe5e8"][thegem_te_button text="Shop Now" font_type="body" no_uppercase="1" corner="3" icon_pack="elegant" desktop_padding_left="30" tablet_padding_left="30" mobile_disable="1" link="url:%23" text_color="#ffffff" background_color="#00bcd4" hover_background_color="#3c3950"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" equal_height="yes" content_placement="middle" el_disable_mobile="1" thegem_shadow_color="rgba(0,0,0,0.15)" thegem_enable_shadow="true" css=".vc_custom_1643705777888{padding-top: 33px !important;padding-bottom: 33px !important;}"][vc_column desktop_align_horizontal="center" offset="vc_col-xs-12"][thegem_te_search_form form_width_desktop="310" form_width_tablet="250" form_width_mobile="310" form_height="34" desktop_horizontal="start" mobile_disable="1"][thegem_te_logo desktop_horizontal="center" desktop_absolute="1" tablet_horizontal="center" tablet_absolute="1"][thegem_te_wishlist][thegem_te_cart minicart_spacing="20" desktop_padding_left="15" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" equal_height="yes" content_placement="middle" css=".vc_custom_1643705322970{padding-top: 13px !important;padding-bottom: 13px !important;background-color: #f4f6f7 !important;}"][vc_column offset="vc_col-xs-12"][thegem_te_logo desktop_disable="1" tablet_disable="1" mobile_horizontal="start"][thegem_te_cart minicart_spacing="20" desktop_disable="1" desktop_padding_left="15" tablet_disable="1" tablet_padding_left="10" tablet_padding_right="10" mobile_padding_left="10" mobile_padding_right="10"][thegem_te_wishlist desktop_disable="1" tablet_disable="1" mobile_padding_left="10" mobile_padding_right="10"][thegem_te_menu menu_source="thegem-menudemo" menu_layout_tablet_portrait="default" dropdown_spacing="20" dropdown_spacing_mobile="20" ver="5.3" desktop_horizontal="center" mobile_horizontal="unset" mobile_padding_left="10"][/vc_column][/vc_row]',
 		'categories' => array (
 			'shop' => 'Shop',
 		),
@@ -4781,7 +4781,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 		'mark' => '',
 		'pic' => 'single-post-preview-new-18.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/single-post-18/',
-		'content' => '[vc_row full_width="stretch_row" background_position_desktop="center top" thegem_featured_image_for_bg_active="true" css=".vc_custom_1668158771892{margin-bottom: 0px !important;background-image: url({{IMG_URL=8872}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column css=".vc_custom_1668177250693{padding-top: 450px !important;padding-bottom: 350px !important;}" tablet_padding_top="200" tablet_padding_bottom="200" mobile_padding_top="150" mobile_padding_bottom="150"][/vc_column][/vc_row][vc_row css=".vc_custom_1669023470503{margin-right: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;}" z_index="20" tablet_margin_top="70" custom_css_code="JTIwJTdCJTBBJTIwJTIwJTIwJTIwb3ZlcmZsb3clM0ElMjB2aXNpYmxlJTIwJTIxaW1wb3J0YW50JTNCJTBBJTdE"][vc_column thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="70" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1668177099105{margin-top: -380px !important;padding-right: 42px !important;padding-left: 42px !important;background-color: #ffffff !important;}" mobile_padding_left="21" mobile_padding_right="21" tablet_margin_top="-200" mobile_margin_top="-150"][vc_row_inner css=".vc_custom_1666356395749{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1666356446062{padding-top: 0px !important;padding-right: 100px !important;padding-left: 100px !important;}" tablet_padding_left="21" tablet_padding_right="21"][gem_divider margin_top="30"][thegem_te_post_info skin="modern" list_alignment="center" list_spacing_desktop="15" info_content="%5B%7B%22type%22%3A%22author%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22by%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_format%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][gem_divider margin_top="55"][thegem_te_post_title alignment="center" text_style="title-h1" text_transform="none" text_letter_spacing="0" max_width="1000"][gem_divider margin_top="45"][thegem_te_post_info skin="modern" list_alignment="center" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][gem_divider margin_top="50"][/vc_column_inner][/vc_row_inner][thegem_te_post_content][vc_row_inner css=".vc_custom_1666356698425{margin-bottom: 0px !important;}"][vc_column_inner width="1/6"][/vc_column_inner][vc_column_inner width="2/3"][gem_divider margin_top="95"][thegem_te_post_author alignment="center"][gem_divider margin_top="55"][thegem_te_post_tags alignment="center" title=""][gem_divider margin_top="40"][gem_social_sharing alignment="center" icons_size="custom" icons_size_custom="22" reddit="" viber="" xing=""][gem_divider margin_top="75" tablet_margin_top="65" mobile_margin_top="65"][/vc_column_inner][vc_column_inner width="1/6"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row full_width="stretch_row" css=".vc_custom_1669023752166{margin-top: -100px !important;margin-bottom: 0px !important;padding-bottom: 180px !important;background-color: #f5f7f6 !important;}" custom_css_code="JTQwbWVkaWElMjAlMjhtYXgtd2lkdGglM0ElMjAxMTk5cHglMjklMjBhbmQlMjAlMjhtaW4td2lkdGglM0E3NjhweCUyOSUyMCU3QiUwQSUyMCU3QiUyMG1hcmdpbi10b3AlM0EtMTAwcHglMjAlMjFpbXBvcnRhbnQlM0IlMEElN0QlMEElN0QlMEElMjAlN0IlMEElMjAlMjAlMjAlMjBvdmVyZmxvdyUzQSUyMHZpc2libGUlMjAlMjFpbXBvcnRhbnQlM0IlMEElN0Q=" mobile_margin_top="-70"][vc_column css=".vc_custom_1666794248109{padding-top: 0px !important;padding-right: 0px !important;padding-left: 0px !important;}" mobile_padding_top="50"][gem_divider margin_top="75" tablet_margin_top="65" mobile_margin_top="65"][thegem_te_post_navigation][gem_divider margin_top="65" tablet_margin_top="55" mobile_margin_top="55"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Posts%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="65" tablet_margin_top="45" mobile_margin_top="45"][gem_news_grid portfolio_uid="grid_a450b19" source_type="related" related_by_categories="1" related_by_tags="" related_by_author="" news_grid_version="new" news_grid_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" news_grid_display_titles="hover" news_grid_hide_categories="1" news_grid_hide_author_avatar="1" news_grid_hide_author="1" news_grid_hide_comments="1" news_grid_disable_socials="1" blog_show_description="" news_grid_items_per_page="3" news_grid_pagination="disable" news_grid_gaps_size="18" news_grid_gaps_size_tablet="18" news_grid_gaps_size_mobile="18" news_grid_hover="circular" news_grid_title_preset="title-h5" news_grid_title_transform="none" new_default_highlights="1" exclude_blog_posts="" news_grid_image_height="284" news_grid_title_letter_spacing="0"][/vc_column][/vc_row][vc_row full_width="stretch_row" css=".vc_custom_1669023427151{margin-bottom: 100px !important;background-color: #ffffff !important;}" custom_css_code="JTIwJTdCJTBBJTIwJTIwJTIwJTIwb3ZlcmZsb3clM0ElMjB2aXNpYmxlJTIwJTIxaW1wb3J0YW50JTNCJTBBJTdE"][vc_column css=".vc_custom_1666793651718{padding-top: 0px !important;background-color: #ffffff !important;}"][gem_divider margin_top="-100"][vc_row_inner thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="70" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1666794340205{padding-top: 55px !important;padding-bottom: 80px !important;background-color: #ffffff !important;}" mobile_padding_top="0" mobile_padding_bottom="20"][vc_column_inner width="1/6"][/vc_column_inner][vc_column_inner width="2/3"][thegem_te_post_comments send_btn_size="medium" send_btn_border_radius="0" title_letter_spacing="0"][/vc_column_inner][vc_column_inner width="1/6"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'content' => '[vc_row full_width="stretch_row" background_position_desktop="center top" thegem_featured_image_for_bg_active="true" css=".vc_custom_1669729766283{margin-bottom: 0px !important;background-image: url({{IMG_URL=8872}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column css=".vc_custom_1668177250693{padding-top: 450px !important;padding-bottom: 350px !important;}" tablet_padding_top="200" tablet_padding_bottom="200" mobile_padding_top="150" mobile_padding_bottom="150"][/vc_column][/vc_row][vc_row css=".vc_custom_1669023470503{margin-right: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;}" z_index="20" tablet_margin_top="70" custom_css_code="JTIwJTdCJTBBJTIwJTIwJTIwJTIwb3ZlcmZsb3clM0ElMjB2aXNpYmxlJTIwJTIxaW1wb3J0YW50JTNCJTBBJTdE"][vc_column thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="70" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1668177099105{margin-top: -380px !important;padding-right: 42px !important;padding-left: 42px !important;background-color: #ffffff !important;}" mobile_padding_left="21" mobile_padding_right="21" tablet_margin_top="-200" mobile_margin_top="-150"][vc_row_inner css=".vc_custom_1666356395749{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1666356446062{padding-top: 0px !important;padding-right: 100px !important;padding-left: 100px !important;}" tablet_padding_left="21" tablet_padding_right="21"][gem_divider margin_top="30"][thegem_te_post_info skin="modern" list_alignment="center" list_spacing_desktop="15" info_content="%5B%7B%22type%22%3A%22author%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22by%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_format%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][gem_divider margin_top="55"][thegem_te_post_title alignment="center" text_style="title-h1" text_transform="none" text_letter_spacing="0" max_width="1000"][gem_divider margin_top="45"][thegem_te_post_info skin="modern" list_alignment="center" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][gem_divider margin_top="50"][/vc_column_inner][/vc_row_inner][thegem_te_post_content][vc_row_inner css=".vc_custom_1666356698425{margin-bottom: 0px !important;}"][vc_column_inner width="1/6"][/vc_column_inner][vc_column_inner width="2/3"][gem_divider margin_top="95"][thegem_te_post_author alignment="center"][gem_divider margin_top="55"][thegem_te_post_tags alignment="center" title=""][gem_divider margin_top="40"][gem_social_sharing alignment="center" icons_size="custom" icons_size_custom="22" reddit="" viber="" xing=""][gem_divider margin_top="75" tablet_margin_top="65" mobile_margin_top="65"][/vc_column_inner][vc_column_inner width="1/6"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row full_width="stretch_row" css=".vc_custom_1669023752166{margin-top: -100px !important;margin-bottom: 0px !important;padding-bottom: 180px !important;background-color: #f5f7f6 !important;}" custom_css_code="JTQwbWVkaWElMjAlMjhtYXgtd2lkdGglM0ElMjAxMTk5cHglMjklMjBhbmQlMjAlMjhtaW4td2lkdGglM0E3NjhweCUyOSUyMCU3QiUwQSUyMCU3QiUyMG1hcmdpbi10b3AlM0EtMTAwcHglMjAlMjFpbXBvcnRhbnQlM0IlMEElN0QlMEElN0QlMEElMjAlN0IlMEElMjAlMjAlMjAlMjBvdmVyZmxvdyUzQSUyMHZpc2libGUlMjAlMjFpbXBvcnRhbnQlM0IlMEElN0Q=" mobile_margin_top="-70"][vc_column css=".vc_custom_1666794248109{padding-top: 0px !important;padding-right: 0px !important;padding-left: 0px !important;}" mobile_padding_top="50"][gem_divider margin_top="75" tablet_margin_top="65" mobile_margin_top="65"][thegem_te_post_navigation][gem_divider margin_top="65" tablet_margin_top="55" mobile_margin_top="55"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Posts%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="65" tablet_margin_top="45" mobile_margin_top="45"][gem_news_grid portfolio_uid="grid_a450b19" source_type="related" related_by_categories="1" related_by_tags="" related_by_author="" news_grid_version="new" news_grid_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" news_grid_display_titles="hover" news_grid_hide_categories="1" news_grid_hide_author_avatar="1" news_grid_hide_author="1" news_grid_hide_comments="1" news_grid_disable_socials="1" blog_show_description="" news_grid_items_per_page="3" news_grid_pagination="disable" news_grid_gaps_size="18" news_grid_gaps_size_tablet="18" news_grid_gaps_size_mobile="18" news_grid_hover="circular" news_grid_title_preset="title-h5" news_grid_title_transform="none" new_default_highlights="1" exclude_blog_posts="" news_grid_image_height="284" news_grid_title_letter_spacing="0"][/vc_column][/vc_row][vc_row full_width="stretch_row" css=".vc_custom_1669023427151{margin-bottom: 100px !important;background-color: #ffffff !important;}" custom_css_code="JTIwJTdCJTBBJTIwJTIwJTIwJTIwb3ZlcmZsb3clM0ElMjB2aXNpYmxlJTIwJTIxaW1wb3J0YW50JTNCJTBBJTdE"][vc_column css=".vc_custom_1666793651718{padding-top: 0px !important;background-color: #ffffff !important;}"][gem_divider margin_top="-100"][vc_row_inner thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="70" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1666794340205{padding-top: 55px !important;padding-bottom: 80px !important;background-color: #ffffff !important;}" mobile_padding_top="0" mobile_padding_bottom="20"][vc_column_inner width="1/6"][/vc_column_inner][vc_column_inner width="2/3"][thegem_te_post_comments send_btn_size="medium" send_btn_border_radius="0" title_letter_spacing="0"][/vc_column_inner][vc_column_inner width="1/6"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
 		'categories' => array (
 			'clean-minimal' => 'Clean &amp; Minimal',
 		),
@@ -4964,11 +4964,20 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 		'mark' => '',
 		'pic' => 'single-post-preview-new-29.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/single-post-29/',
-		'content' => '[vc_row full_width="stretch_row" equal_height="yes" css=".vc_custom_1668235231219{margin-bottom: 0px !important;background-image: url({{IMG_URL=9024}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column width="1/2" css=".vc_custom_1667304120238{padding-top: 45px !important;padding-right: 90px !important;padding-left: 90px !important;background-color: #d21c39 !important;}" tablet_padding_left="30" tablet_padding_right="30" tablet_padding_top="90"][vc_row_inner][vc_column_inner width="1/3" offset="vc_col-xs-6"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" text_content="%5B%7B%22heading_text%22%3A%22Author%3A%20%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][thegem_te_post_info layout="vertical" list_divider="" text_style="title-main-menu" text_transform="none" info_content="%5B%7B%22type%22%3A%22author%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22%20%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/3" offset="vc_col-xs-6"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" text_content="%5B%7B%22heading_text%22%3A%22Post%20Date%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][thegem_te_post_info layout="vertical" list_divider="" text_style="title-main-menu" text_transform="none" info_content="%5B%7B%22type%22%3A%22date%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22%20%22%2C%22author_link%22%3A%221%22%2C%22date_format%22%3A%224%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/3" mobile_padding_top="30" offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" text_content="%5B%7B%22heading_text%22%3A%22Category%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][thegem_te_post_info layout="vertical" list_divider="" text_style="title-main-menu" text_transform="none" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22author_label%22%3A%22%20%22%2C%22author_link%22%3A%221%22%2C%22date_format%22%3A%224%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][/vc_column_inner][/vc_row_inner][gem_divider margin_top="80" mobile_margin_top="40"][thegem_te_post_title text_transform="none" text_color="#ffffff" text_letter_spacing="0"][gem_divider margin_top="60"][thegem_te_post_excerpt text_style="styled-subtitle" text_color="#ffffff"][gem_divider margin_top="75" mobile_margin_top="60"][gem_social_sharing icons_type="round" linkedin="" reddit="" whatsapp="" viber="" xing="" icons_width="28" icons_height="28" icons_color="#d21c39" icons_background_color="#ffffff" icons_border_color="#ffffff"][gem_divider margin_top="95" mobile_margin_top="70"][/vc_column][vc_column width="1/2" background_position_desktop="center center" thegem_featured_image_for_bg_active="true" css=".vc_custom_1668235248877{background-image: url({{IMG_URL=9025}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][gem_divider margin_top="400"][/vc_column][/vc_row][vc_row equal_height="yes" content_placement="middle" css=".vc_custom_1666695004436{padding-top: 30px !important;padding-bottom: 30px !important;}" mobile_padding_bottom="10"][vc_column width="1/2"][thegem_te_post_breadcrumbs][/vc_column][vc_column width="1/2" offset="vc_hidden-xs"][thegem_te_post_info list_alignment="right" info_content="%5B%7B%22type%22%3A%22comments%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_label%22%3A%22Comments%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22likes%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_label%22%3A%22Likes%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][/vc_row][vc_row el_disable_desktop="1" el_disable_tablet="1" css=".vc_custom_1666695327877{margin-bottom: 30px !important;}"][vc_column][thegem_te_post_info info_content="%5B%7B%22type%22%3A%22comments%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_label%22%3A%22Comments%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22likes%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_label%22%3A%22Likes%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][/vc_row][vc_row css=".vc_custom_1666690998310{margin-bottom: 30px !important;}"][vc_column][thegem_te_post_content][/vc_column][/vc_row][vc_row][vc_column][thegem_te_post_tags title=""][gem_divider margin_top="50"][thegem_te_post_author][gem_divider margin_top="55" mobile_margin_top="40"][thegem_te_post_navigation arrows="" max_width="370"][gem_divider margin_top="60" color="#dfe5e8" margin_bottom="60" mobile_margin_top="40" mobile_margin_bottom="40"][/vc_column][/vc_row][vc_row css=".vc_custom_1666694201561{margin-bottom: 80px !important;}"][vc_column][gem_heading heading_tag="h2" heading_div_style="" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Posts%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1666695051455{margin-bottom: 55px !important;}" mobile_margin_bottom="30"][gem_news_grid portfolio_uid="grid_3e3819d" source_type="related" related_by_categories="1" related_by_tags="" related_by_author="" news_grid_version="list" columns_desktop_list="2x" columns_tablet_list="2x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" caption_position_list="zigzag" news_grid_hide_author_avatar="1" news_grid_hide_comments="1" news_grid_disable_socials="1" blog_show_readmore_button="" blog_show_divider="" news_grid_items_per_page="4" news_grid_pagination="disable" news_grid_gaps_size="42" news_grid_gaps_size_tablet="42" news_grid_gaps_size_mobile="42" news_grid_background_style="gray" new_default_highlights="1" exclude_blog_posts="" news_grid_truncate_description="2" item_background_color_list="#f5f7f6"][gem_divider margin_top="35"][thegem_te_post_comments title_font_style="title-h2" title_letter_spacing="0"][/vc_column][/vc_row]',
+		'content' => '[vc_row full_width="stretch_row" equal_height="yes" css=".vc_custom_1668235231219{margin-bottom: 0px !important;background-image: url({{IMG_URL=9024}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column width="1/2" css=".vc_custom_1669275027739{padding-top: 45px !important;padding-right: 90px !important;padding-left: 90px !important;background-color: #d21c39 !important;}" tablet_padding_left="30" tablet_padding_right="30" tablet_padding_top="90" el_class="padding-on-laptop"][vc_row_inner][vc_column_inner width="1/3" offset="vc_col-xs-6"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" text_content="%5B%7B%22heading_text%22%3A%22Author%3A%20%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][thegem_te_post_info layout="vertical" list_divider="" text_style="title-main-menu" text_transform="none" info_content="%5B%7B%22type%22%3A%22author%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22%20%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/3" offset="vc_col-xs-6"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" text_content="%5B%7B%22heading_text%22%3A%22Post%20Date%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][thegem_te_post_info layout="vertical" list_divider="" text_style="title-main-menu" text_transform="none" info_content="%5B%7B%22type%22%3A%22date%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22%20%22%2C%22author_link%22%3A%221%22%2C%22date_format%22%3A%224%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/3" mobile_padding_top="30" offset="vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" text_content="%5B%7B%22heading_text%22%3A%22Category%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][thegem_te_post_info layout="vertical" list_divider="" text_style="title-main-menu" text_transform="none" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22author_label%22%3A%22%20%22%2C%22author_link%22%3A%221%22%2C%22date_format%22%3A%224%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][/vc_column_inner][/vc_row_inner][gem_divider margin_top="80" mobile_margin_top="40" class_name="divider-on-laptop"][thegem_te_post_title text_transform="none" text_color="#ffffff" text_letter_spacing="0"][gem_divider margin_top="60"][thegem_te_post_excerpt text_style="styled-subtitle" text_color="#ffffff"][gem_divider margin_top="75" mobile_margin_top="60"][gem_social_sharing icons_type="round" linkedin="" reddit="" whatsapp="" viber="" xing="" icons_width="28" icons_height="28" icons_color="#d21c39" icons_background_color="#ffffff" icons_border_color="#ffffff"][gem_divider margin_top="95" mobile_margin_top="70"][/vc_column][vc_column width="1/2" background_position_desktop="center center" thegem_featured_image_for_bg_active="true" css=".vc_custom_1668235248877{background-image: url({{IMG_URL=9025}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][gem_divider margin_top="400"][/vc_column][/vc_row][vc_row equal_height="yes" content_placement="middle" css=".vc_custom_1666695004436{padding-top: 30px !important;padding-bottom: 30px !important;}" mobile_padding_bottom="10"][vc_column width="1/2"][thegem_te_post_breadcrumbs][/vc_column][vc_column width="1/2" offset="vc_hidden-xs"][thegem_te_post_info list_alignment="right" info_content="%5B%7B%22type%22%3A%22comments%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_label%22%3A%22Comments%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22likes%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_label%22%3A%22Likes%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][/vc_row][vc_row el_disable_desktop="1" el_disable_tablet="1" css=".vc_custom_1666695327877{margin-bottom: 30px !important;}"][vc_column][thegem_te_post_info info_content="%5B%7B%22type%22%3A%22comments%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_label%22%3A%22Comments%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22likes%22%2C%22cats_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon%22%3A%22default%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_label%22%3A%22Likes%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][/vc_row][vc_row css=".vc_custom_1666690998310{margin-bottom: 30px !important;}"][vc_column][thegem_te_post_content][/vc_column][/vc_row][vc_row][vc_column][thegem_te_post_tags title=""][gem_divider margin_top="50"][thegem_te_post_author][gem_divider margin_top="55" mobile_margin_top="40"][thegem_te_post_navigation arrows="" max_width="370"][gem_divider margin_top="60" color="#dfe5e8" margin_bottom="60" mobile_margin_top="40" mobile_margin_bottom="40"][/vc_column][/vc_row][vc_row css=".vc_custom_1666694201561{margin-bottom: 80px !important;}"][vc_column][gem_heading heading_tag="h2" heading_div_style="" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Posts%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1666695051455{margin-bottom: 55px !important;}" mobile_margin_bottom="30"][gem_news_grid portfolio_uid="grid_3e3819d" source_type="related" related_by_categories="1" related_by_tags="" related_by_author="" news_grid_version="list" columns_desktop_list="2x" columns_tablet_list="2x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" caption_position_list="zigzag" news_grid_hide_author_avatar="1" news_grid_hide_comments="1" news_grid_disable_socials="1" blog_show_readmore_button="" blog_show_divider="" news_grid_items_per_page="4" news_grid_pagination="disable" news_grid_gaps_size="42" news_grid_gaps_size_tablet="42" news_grid_gaps_size_mobile="42" news_grid_background_style="gray" new_default_highlights="1" exclude_blog_posts="" news_grid_truncate_description="2" item_background_color_list="#f5f7f6"][gem_divider margin_top="35"][thegem_te_post_comments title_font_style="title-h2" title_letter_spacing="0"][/vc_column][/vc_row]',
 		'categories' => array (
 			'fullwidth' => 'Fullwidth',
 		),
-		'metas' => '',
+		'metas' => array (
+			'_wpb_post_custom_css' => '@media(max-width: 1450px) and (min-width: 1024px){
+		.padding-on-laptop>.vc_column-inner{
+				padding-top: 90px!important;
+		}
+		#page .divider-on-laptop {
+				margin-top: 40px!important;
+		}
+}',
+		),
 		'attachment_ids' => array (
 			0 => '9024',
 			1 => '9025',
@@ -4993,7 +5002,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	262 => array (
 		'id' => 7409,
 		'type' => 'blog-archive',
-		'title' => 'Modern 01 (Blog Category)',
+		'title' => 'Modern 01 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-01.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-01-blog-category/',
@@ -5012,7 +5021,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	263 => array (
 		'id' => 7410,
 		'type' => 'blog-archive',
-		'title' => 'Modern 02 (Blog Category)',
+		'title' => 'Modern 02 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-02.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-02-blog-category/',
@@ -5067,7 +5076,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	264 => array (
 		'id' => 7411,
 		'type' => 'blog-archive',
-		'title' => 'Modern 03 (Blog Category)',
+		'title' => 'Modern 03 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-03.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-03-blog-category/',
@@ -5088,7 +5097,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	265 => array (
 		'id' => 7412,
 		'type' => 'blog-archive',
-		'title' => 'Modern 04 (Blog Category)',
+		'title' => 'Modern 04 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-04.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-04-blog-category/',
@@ -5103,7 +5112,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	266 => array (
 		'id' => 7413,
 		'type' => 'blog-archive',
-		'title' => 'Modern 05 (Blog Category)',
+		'title' => 'Modern 05 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-05.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-05-blog-category/',
@@ -5119,7 +5128,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	267 => array (
 		'id' => 7414,
 		'type' => 'blog-archive',
-		'title' => 'Modern 06 (Blog Category)',
+		'title' => 'Modern 06 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-06.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-06-blog-category/',
@@ -5135,7 +5144,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	268 => array (
 		'id' => 7415,
 		'type' => 'blog-archive',
-		'title' => 'Modern 07 (Blog Category)',
+		'title' => 'Modern 07 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-07.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-07-blog-category/',
@@ -5156,7 +5165,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	269 => array (
 		'id' => 7416,
 		'type' => 'blog-archive',
-		'title' => 'Modern 08 (Blog Category)',
+		'title' => 'Modern 08 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-08.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-08-blog-category/',
@@ -5174,7 +5183,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	270 => array (
 		'id' => 7417,
 		'type' => 'blog-archive',
-		'title' => 'Modern 09 (Blog Category)',
+		'title' => 'Modern 09 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-09.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-09-blog-category/',
@@ -5193,7 +5202,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	271 => array (
 		'id' => 7418,
 		'type' => 'blog-archive',
-		'title' => 'Modern 10 (Blog Category)',
+		'title' => 'Modern 10 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-10.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-10-blog-category/',
@@ -5213,7 +5222,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	272 => array (
 		'id' => 7419,
 		'type' => 'blog-archive',
-		'title' => 'Modern 11 (Blog Category)',
+		'title' => 'Modern 11 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'modern-11.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/modern-11-blog-category/',
@@ -5228,7 +5237,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	273 => array (
 		'id' => 7429,
 		'type' => 'blog-archive',
-		'title' => 'Extended 01 (Blog Category)',
+		'title' => 'Extended 01 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-01.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-01-blog-category/',
@@ -5248,7 +5257,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	274 => array (
 		'id' => 7430,
 		'type' => 'blog-archive',
-		'title' => 'Extended 02 (Blog Category)',
+		'title' => 'Extended 02 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-02.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-02-blog-category/',
@@ -5263,7 +5272,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	275 => array (
 		'id' => 7431,
 		'type' => 'blog-archive',
-		'title' => 'Extended 03 (Blog Category)',
+		'title' => 'Extended 03 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-03.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-03-blog-category/',
@@ -5279,7 +5288,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	276 => array (
 		'id' => 7432,
 		'type' => 'blog-archive',
-		'title' => 'Extended 04 (Blog Category)',
+		'title' => 'Extended 04 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-04.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-04-blog-category/',
@@ -5299,7 +5308,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	277 => array (
 		'id' => 7433,
 		'type' => 'blog-archive',
-		'title' => 'Extended 05 (Blog Category)',
+		'title' => 'Extended 05 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-05.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-05-blog-category/',
@@ -5314,7 +5323,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	278 => array (
 		'id' => 7434,
 		'type' => 'blog-archive',
-		'title' => 'Extended 06 (Blog Category)',
+		'title' => 'Extended 06 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-06.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-06-blog-category/',
@@ -5365,7 +5374,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	279 => array (
 		'id' => 7435,
 		'type' => 'blog-archive',
-		'title' => 'Extended 07 (Blog Category)',
+		'title' => 'Extended 07 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-07.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-07-blog-category/',
@@ -5380,7 +5389,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	280 => array (
 		'id' => 7436,
 		'type' => 'blog-archive',
-		'title' => 'Extended 08 (Blog Category)',
+		'title' => 'Extended 08 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-08.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-08-blog-category/',
@@ -5399,7 +5408,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	281 => array (
 		'id' => 7437,
 		'type' => 'blog-archive',
-		'title' => 'Extended 09 (Blog Category)',
+		'title' => 'Extended 09 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-09.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-09-blog-category/',
@@ -5414,7 +5423,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	282 => array (
 		'id' => 7438,
 		'type' => 'blog-archive',
-		'title' => 'Extended 10 (Blog Category)',
+		'title' => 'Extended 10 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'extended-10.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/extended-10-blog-category/',
@@ -5431,7 +5440,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	283 => array (
 		'id' => 7444,
 		'type' => 'blog-archive',
-		'title' => 'With Highlights 01 (Blog Category)',
+		'title' => 'With Highlights 01 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'with-highlights-01.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/with-highlights-01-blog-category/',
@@ -5495,7 +5504,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	284 => array (
 		'id' => 7445,
 		'type' => 'blog-archive',
-		'title' => 'With Highlights 02 (Blog Category)',
+		'title' => 'With Highlights 02 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'with-highlights-02.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/with-highlights-02-blog-category/',
@@ -5511,7 +5520,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	285 => array (
 		'id' => 7446,
 		'type' => 'blog-archive',
-		'title' => 'With Highlights 03 (Blog Category)',
+		'title' => 'With Highlights 03 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'with-highlights-03.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/with-highlights-03-blog-category/',
@@ -5527,7 +5536,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	286 => array (
 		'id' => 7447,
 		'type' => 'blog-archive',
-		'title' => 'With Highlights 04 (Blog Category)',
+		'title' => 'With Highlights 04 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'with-highlights-04.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/with-highlights-04-blog-category/',
@@ -5543,7 +5552,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	287 => array (
 		'id' => 7448,
 		'type' => 'blog-archive',
-		'title' => 'With Highlights 05 (Blog Category)',
+		'title' => 'With Highlights 05 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'with-highlights-05.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/with-highlights-05-blog-category/',
@@ -5596,7 +5605,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 	288 => array (
 		'id' => 7449,
 		'type' => 'blog-archive',
-		'title' => 'With Highlights 06 (Blog Category)',
+		'title' => 'With Highlights 06 (Blog Archive)',
 		'mark' => '',
 		'pic' => 'with-highlights-06.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/with-highlights-06-blog-category/',
@@ -5620,8 +5629,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'lead-capture' => 'Lead Capture',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '835',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -5670,8 +5678,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'subscribe' => 'Subscribe',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '680',
 				'popup_width_tablet' => '680',
 				'popup_width_mobile' => '300',
@@ -5726,8 +5733,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'subscribe' => 'Subscribe',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '760',
 				'popup_width_tablet' => '90%',
 				'popup_width_mobile' => '300',
@@ -5779,8 +5785,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'subscribe' => 'Subscribe',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '530',
 				'popup_width_tablet' => '530',
 				'popup_width_mobile' => '300',
@@ -5828,8 +5833,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'subscribe' => 'Subscribe',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '585',
 				'popup_width_tablet' => '585',
 				'popup_width_mobile' => '90%',
@@ -5881,8 +5885,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '865',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -5924,15 +5927,14 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 		'mark' => '',
 		'pic' => 'popup-preview-new-7.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-07-discount/',
-		'content' => '[vc_row css=".vc_custom_1666166512087{padding-top: 35px !important;padding-bottom: 60px !important;background-image: url({{IMG_URL=8021}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="LmNvdW50ZG93bi1zdHlsZS0zJTIwLml0ZW0tY291bnQlMjAlN0IlMEElMjAlMjAlMjAlMjBtYXJnaW4tdG9wJTNBJTIwMjBweCUzQiUwQSU3RCUwQS5jb3VudGRvd24tc3R5bGUtMyUyMC53cmFwJTIwJTdCJTBBJTIwJTIwJTIwJTIwaGVpZ2h0JTNBJTIwMTAwcHglM0IlMEElMjAlMjAlMjAlMjBib3JkZXItcmFkaXVzJTNBJTIwNXB4JTNCJTBBJTdEJTBBLm9kb21ldGVyLWluc2lkZSUyMCU3QiUwQSUyMCUyMCUyMCUyMGZvbnQtc2l6ZSUzQSUyMDM2cHglM0IlMEElN0QlMEEuY291bnRkb3duLXN0eWxlLTMlMjAuaXRlbS10aXRsZSUyMCU3QiUwQSUyMCUyMCUyMCUyMGZvbnQtc2l6ZSUzQSUyMDE2cHglM0IlMEElMjAlMjAlMjAlMjBmb250LXdlaWdodCUzQSUyMDQwMCUzQiUwQSU3RCUwQS5jb3VudGRvd24tc3R5bGUtMyUyMC5pdGVtLWNvdW50JTIwJTdCJTBBJTIwJTIwJTIwJTIwbGluZS1oZWlnaHQlM0ElMjAzNXB4JTNCJTBBJTdEJTBBc3Bhbi5pdGVtLXRpdGxlLnN0eWxlZC1zdWJ0aXRsZSUyMCU3QiUwQSUyMCUyMCUyMCUyMG1hcmdpbi10b3AlM0ElMjAtNHB4JTNCJTBBJTdEJTBBJTQwbWVkaWElMjAlMjhtYXgtd2lkdGglM0ElMjA3NjhweCUyOSU3QiUwQS5jb3VudGRvd24tc3R5bGUtMyUyMC5jb3VudGRvd24taXRlbSUyMCU3QiUwQSUyMCUyMCUyMCUyMHdpZHRoJTNBJTIwMjUlMjUlMjAlMjFpbXBvcnRhbnQlM0IlMEElN0QlN0QlMEElNDBtZWRpYSUyMCUyOG1heC13aWR0aCUzQSUyMDQ4MHB4JTI5JTdCJTBBLmNvdW50ZG93bi1zdHlsZS0zJTIwLmNvdW50ZG93bi1pdGVtJTIwJTdCJTBBJTIwJTIwJTIwJTIwd2lkdGglM0ElMjA1MCUyNSUyMCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5jb3VudGRvd24tc3R5bGUtMyUyMC5jb3VudGRvd24taXRlbSUyMCU3QiUwQSUyMCUyMCUyMCUyMHBhZGRpbmclM0ElMjAxMHB4JTNCJTBBJTdEJTdEJTBB" mobile_padding_top="0" mobile_padding_bottom="40"][vc_column][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%2220%25off%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%2220%25%20off%20%26%20free%20shipping%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_heading heading_tag="div" heading_div_style="styled-subtitle" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22When%20you%20complete%20your%20order%20in...%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" css=".vc_custom_1665563310242{margin-top: 25px !important;margin-bottom: 20px !important;}" mobile_margin_top="15" mobile_margin_bottom="10"][vc_row_inner css=".vc_custom_1665563163307{margin-bottom: 0px !important;padding-right: 10% !important;padding-left: 10% !important;}" mobile_padding_left="0" mobile_padding_right="0"][vc_column_inner][gem_countdown eventdate="31-12-2022" color_number="#2d2f3d" color_text="#2d2f3d" color_background="#ffffff" color_border="#ffffff"][/vc_column_inner][/vc_row_inner][gem_button text="get my 20% off!" position="center" corner="5" size="large" icon_pack="elegant" link="url:%23" text_color="#f9d600" background_color="#2d2f3d" hover_text_color="#ffffff"][vc_column_text]
+		'content' => '[vc_row css=".vc_custom_1666166512087{padding-top: 35px !important;padding-bottom: 60px !important;background-image: url({{IMG_URL=8021}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="LmNvdW50ZG93bi1zdHlsZS0zJTIwLml0ZW0tY291bnQlMjAlN0IlMEElMjAlMjAlMjAlMjBtYXJnaW4tdG9wJTNBJTIwMjBweCUzQiUwQSU3RCUwQS5jb3VudGRvd24tc3R5bGUtMyUyMC53cmFwJTIwJTdCJTBBJTIwJTIwJTIwJTIwaGVpZ2h0JTNBJTIwMTAwcHglM0IlMEElMjAlMjAlMjAlMjBib3JkZXItcmFkaXVzJTNBJTIwNXB4JTNCJTBBJTdEJTBBLm9kb21ldGVyLWluc2lkZSUyMCU3QiUwQSUyMCUyMCUyMCUyMGZvbnQtc2l6ZSUzQSUyMDM2cHglM0IlMEElN0QlMEEuY291bnRkb3duLXN0eWxlLTMlMjAuaXRlbS10aXRsZSUyMCU3QiUwQSUyMCUyMCUyMCUyMGZvbnQtc2l6ZSUzQSUyMDE2cHglM0IlMEElMjAlMjAlMjAlMjBmb250LXdlaWdodCUzQSUyMDQwMCUzQiUwQSU3RCUwQS5jb3VudGRvd24tc3R5bGUtMyUyMC5pdGVtLWNvdW50JTIwJTdCJTBBJTIwJTIwJTIwJTIwbGluZS1oZWlnaHQlM0ElMjAzNXB4JTNCJTBBJTdEJTBBc3Bhbi5pdGVtLXRpdGxlLnN0eWxlZC1zdWJ0aXRsZSUyMCU3QiUwQSUyMCUyMCUyMCUyMG1hcmdpbi10b3AlM0ElMjAtNHB4JTNCJTBBJTdEJTBBJTQwbWVkaWElMjAlMjhtYXgtd2lkdGglM0ElMjA3NjhweCUyOSU3QiUwQS5jb3VudGRvd24tc3R5bGUtMyUyMC5jb3VudGRvd24taXRlbSUyMCU3QiUwQSUyMCUyMCUyMCUyMHdpZHRoJTNBJTIwMjUlMjUlMjAlMjFpbXBvcnRhbnQlM0IlMEElN0QlN0QlMEElNDBtZWRpYSUyMCUyOG1heC13aWR0aCUzQSUyMDQ4MHB4JTI5JTdCJTBBLmNvdW50ZG93bi1zdHlsZS0zJTIwLmNvdW50ZG93bi1pdGVtJTIwJTdCJTBBJTIwJTIwJTIwJTIwd2lkdGglM0ElMjA1MCUyNSUyMCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5jb3VudGRvd24tc3R5bGUtMyUyMC5jb3VudGRvd24taXRlbSUyMCU3QiUwQSUyMCUyMCUyMCUyMHBhZGRpbmclM0ElMjAxMHB4JTNCJTBBJTdEJTdEJTBB" mobile_padding_top="0" mobile_padding_bottom="40"][vc_column][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%2220%25off%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%2220%25%20off%20%26%20free%20shipping%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_heading heading_tag="div" heading_div_style="styled-subtitle" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22When%20you%20complete%20your%20order%20in...%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" css=".vc_custom_1665563310242{margin-top: 25px !important;margin-bottom: 20px !important;}" mobile_margin_top="15" mobile_margin_bottom="10"][vc_row_inner css=".vc_custom_1665563163307{margin-bottom: 0px !important;padding-right: 10% !important;padding-left: 10% !important;}" mobile_padding_left="0" mobile_padding_right="0"][vc_column_inner][gem_countdown eventdate="31-07-2023" color_number="#2d2f3d" color_text="#2d2f3d" color_background="#ffffff" color_border="#ffffff"][/vc_column_inner][/vc_row_inner][gem_button text="get my 20% off!" position="center" corner="5" size="large" icon_pack="elegant" link="url:%23" text_color="#f9d600" background_color="#2d2f3d" hover_text_color="#ffffff"][vc_column_text]
 <p class="close-fancybox" style="text-align: center;"><a href="#"><span style="color: #2d2f3d;"><u>No thanks, I’ll rather pay full price</u></span></a></p>
 [/vc_column_text][/vc_column][/vc_row]',
 		'categories' => array (
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '675',
 				'popup_width_tablet' => '675',
 				'popup_width_mobile' => '300',
@@ -5979,8 +5981,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '930',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6030,8 +6031,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '660',
 				'popup_width_tablet' => '660',
 				'popup_width_mobile' => '300',
@@ -6078,8 +6078,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '480',
 				'popup_width_tablet' => '480',
 				'popup_width_mobile' => '300',
@@ -6129,8 +6128,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '940',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6172,15 +6170,14 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 		'mark' => '',
 		'pic' => 'popup-prewiew-12.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-12-subscribe/',
-		'content' => '[vc_row css=".vc_custom_1669281031259{padding-top: 20px !important;padding-right: 20px !important;padding-bottom: 20px !important;padding-left: 20px !important;background-image: url({{IMG_URL=8096}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="JTQwbWVkaWElMjhtaW4td2lkdGglM0E3NjdweCUyOSU3QiUwQS55aWtlcy1lYXN5LW1jLWZvcm0lMjBsYWJlbC5sYWJlbC1pbmxpbmUlMjAlN0IlMEElMjAlMjAlMjAlMjB3aWR0aCUzQSUyMDY2JTI1JTNCJTBBJTIwJTIwJTIwJTIwcGFkZGluZy1yaWdodCUzQSUyMDAlM0IlMEElN0QlMEEueWlrZXMtZWFzeS1tYy1mb3JtJTIwLnN1Ym1pdC1idXR0b24taW5saW5lLWxhYmVsJTIwJTdCJTBBJTIwJTIwJTIwJTIwd2lkdGglM0ElMjAzNCUyNSUzQiUwQSUyMCUyMCUyMCUyMG1pbi13aWR0aCUzQSUyMDkwcHglM0IlMEElN0QlN0QlMEFpbnB1dC55aWtlcy1lYXN5LW1jLWVtYWlsJTIwJTdCJTBBJTIwJTIwJTIwJTIwbGluZS1oZWlnaHQlM0ElMjA1MHB4JTNCJTBBJTIwJTIwJTIwJTIwaGVpZ2h0JTNBJTIwNTBweCUzQiUwQSU3RCUwQS55aWtlcy1lYXN5LW1jLWZvcm0lMjAuc3VibWl0LWJ1dHRvbi1pbmxpbmUtbGFiZWwlMjAueWlrZXMtZWFzeS1tYy1zdWJtaXQtYnV0dG9uJTIwJTdCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLXJhZGl1cyUzQSUyMDAlM0IlMEElMjAlMjAlMjAlMjBiYWNrZ3JvdW5kLWNvbG9yJTNBJTIwJTIzZmY5NTJiJTNCJTBBJTIwJTIwJTIwJTIwY29sb3IlM0ElMjNmZmYlMjAlMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjBsaW5lLWhlaWdodCUzQSUyMDUwcHglM0IlMEElMjAlMjAlMjAlMjBoZWlnaHQlM0ElMjA1MHB4JTNCJTBBJTdEJTBBJTQwbWVkaWElMjAlMjhtYXgtd2lkdGglM0ElMjA2NTBweCUyOSU3QiUwQS55aWtlcy1lYXN5LW1jLWZvcm0lMjBsYWJlbC5sYWJlbC1pbmxpbmUlMjAlN0IlMEElMjAlMjAlMjAlMjBwYWRkaW5nLXJpZ2h0JTNBJTIwMCUyMCUyMWltcG9ydGFudCUzQiUwQSU3RCU3RCUwQS55aWtlcy1tYWlsY2hpbXAtY29udGFpbmVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwbWF4LXdpZHRoJTNBJTIwNDUwcHglM0IlMEElMjAlMjAlMjAlMjBtYXJnaW4lM0ElMjAwJTIwYXV0byUzQiUwQSU3RA=="][vc_column css=".vc_custom_1665150310408{padding-top: 0px !important;}"][vc_row_inner css=".vc_custom_1665571251028{border-top-width: 2px !important;border-right-width: 2px !important;border-bottom-width: 2px !important;border-left-width: 2px !important;padding-right: 10% !important;padding-left: 10% !important;border-left-color: rgba(255,255,255,0.21) !important;border-left-style: solid !important;border-right-color: rgba(255,255,255,0.21) !important;border-right-style: solid !important;border-top-color: rgba(255,255,255,0.21) !important;border-top-style: solid !important;border-bottom-color: rgba(255,255,255,0.21) !important;border-bottom-style: solid !important;}" mobile_padding_left="0" mobile_padding_right="0"][vc_column_inner css=".vc_custom_1667907827320{padding-top: 80px !important;padding-bottom: 90px !important;}" mobile_padding_top="40" mobile_padding_bottom="40"][gem_heading heading_tag="h2" heading_div_style="" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22hey%20you%2C%20sign%20up%20and%20connect%20to%20thegem!%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][vc_column_text css=".vc_custom_1667907615815{margin-top: 25px !important;margin-bottom: 40px !important;}"]
+		'content' => '[vc_row css=".vc_custom_1665571895515{padding-top: 20px !important;padding-right: 20px !important;padding-bottom: 20px !important;padding-left: 20px !important;background-image: url({{IMG_URL=8096}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="JTQwbWVkaWElMjhtaW4td2lkdGglM0E3NjdweCUyOSU3QiUwQS55aWtlcy1lYXN5LW1jLWZvcm0lMjBsYWJlbC5sYWJlbC1pbmxpbmUlMjAlN0IlMEElMjAlMjAlMjAlMjB3aWR0aCUzQSUyMDY2JTI1JTNCJTBBJTIwJTIwJTIwJTIwcGFkZGluZy1yaWdodCUzQSUyMDAlM0IlMEElN0QlMEEueWlrZXMtZWFzeS1tYy1mb3JtJTIwLnN1Ym1pdC1idXR0b24taW5saW5lLWxhYmVsJTIwJTdCJTBBJTIwJTIwJTIwJTIwd2lkdGglM0ElMjAzNCUyNSUzQiUwQSUyMCUyMCUyMCUyMG1pbi13aWR0aCUzQSUyMDkwcHglM0IlMEElN0QlN0QlMEFpbnB1dCUyM3lpa2VzLWVhc3ktbWMtZm9ybS0xLUVNQUlMJTIwJTdCJTBBJTIwJTIwJTIwJTIwbGluZS1oZWlnaHQlM0ElMjA1MHB4JTNCJTBBJTIwJTIwJTIwJTIwaGVpZ2h0JTNBJTIwNTBweCUzQiUwQSU3RCUwQS55aWtlcy1lYXN5LW1jLWZvcm0lMjAuc3VibWl0LWJ1dHRvbi1pbmxpbmUtbGFiZWwlMjAueWlrZXMtZWFzeS1tYy1zdWJtaXQtYnV0dG9uJTIwJTdCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLXJhZGl1cyUzQSUyMDAlM0IlMEElMjAlMjAlMjAlMjBiYWNrZ3JvdW5kLWNvbG9yJTNBJTIwJTIzZmY5NTJiJTNCJTBBJTIwJTIwJTIwJTIwY29sb3IlM0ElMjNmZmYlMjAlMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjBsaW5lLWhlaWdodCUzQSUyMDUwcHglM0IlMEElMjAlMjAlMjAlMjBoZWlnaHQlM0ElMjA1MHB4JTNCJTBBJTdEJTBBJTQwbWVkaWElMjAlMjhtYXgtd2lkdGglM0ElMjA2NTBweCUyOSU3QiUwQS55aWtlcy1lYXN5LW1jLWZvcm0lMjBsYWJlbC5sYWJlbC1pbmxpbmUlMjAlN0IlMEElMjAlMjAlMjAlMjBwYWRkaW5nLXJpZ2h0JTNBJTIwMCUyMCUyMWltcG9ydGFudCUzQiUwQSU3RCU3RCUwQS55aWtlcy1tYWlsY2hpbXAtY29udGFpbmVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwbWF4LXdpZHRoJTNBJTIwNDUwcHglM0IlMEElMjAlMjAlMjAlMjBtYXJnaW4lM0ElMjAwJTIwYXV0byUzQiUwQSU3RA=="][vc_column css=".vc_custom_1665150310408{padding-top: 0px !important;}"][vc_row_inner css=".vc_custom_1665571251028{border-top-width: 2px !important;border-right-width: 2px !important;border-bottom-width: 2px !important;border-left-width: 2px !important;padding-right: 10% !important;padding-left: 10% !important;border-left-color: rgba(255,255,255,0.21) !important;border-left-style: solid !important;border-right-color: rgba(255,255,255,0.21) !important;border-right-style: solid !important;border-top-color: rgba(255,255,255,0.21) !important;border-top-style: solid !important;border-bottom-color: rgba(255,255,255,0.21) !important;border-bottom-style: solid !important;}" mobile_padding_left="0" mobile_padding_right="0"][vc_column_inner css=".vc_custom_1667907827320{padding-top: 80px !important;padding-bottom: 90px !important;}" mobile_padding_top="40" mobile_padding_bottom="40"][gem_heading heading_tag="h2" heading_div_style="" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22hey%20you%2C%20sign%20up%20and%20connect%20to%20thegem!%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][vc_column_text css=".vc_custom_1667907615815{margin-top: 25px !important;margin-bottom: 40px !important;}"]
 <p style="text-align: center;"><span style="color: #ffffff;">Be the first to learn about our latest trends and get exclusive offers!</span></p>
 [/vc_column_text][yikes-mailchimp form="{{MF_ID=1}}" submit="subscribe"][gem_divider margin_top="15"][gem_social_sharing alignment="center" icons_type="round" tumblr="" linkedin="" reddit="" whatsapp="" xing="" icons_width="10" icons_height="10" icons_border_width="0" icons_background_color="#ffffff" icons_background_color_hover="#ff952b" icons_color="#3a3434"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
 		'categories' => array (
 			'subscribe' => 'Subscribe',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '760',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6232,8 +6229,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'subscribe' => 'Subscribe',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '940',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6280,8 +6276,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'subscribe' => 'Subscribe',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '860',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6329,8 +6324,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '645',
 				'popup_width_tablet' => '645',
 				'popup_width_mobile' => '300',
@@ -6377,8 +6371,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '945',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6425,8 +6418,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '920',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6474,8 +6466,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1170',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6525,8 +6516,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'subscribe' => 'Subscribe',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '480',
 				'popup_width_tablet' => '480',
 				'popup_width_mobile' => '300',
@@ -6578,8 +6568,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'lead-capture' => 'Lead Capture',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '955',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '320',
@@ -6632,8 +6621,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'lead-capture' => 'Lead Capture',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '940',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6683,8 +6671,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '355',
 				'popup_width_tablet' => '355',
 				'popup_width_mobile' => '300',
@@ -6731,8 +6718,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'lead-capture' => 'Lead Capture',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '720',
 				'popup_width_tablet' => '720',
 				'popup_width_mobile' => '300',
@@ -6782,8 +6768,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '575',
 				'popup_width_tablet' => '575',
 				'popup_width_mobile' => '300',
@@ -6830,8 +6815,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '345',
 				'popup_width_tablet' => '345',
 				'popup_width_mobile' => '300',
@@ -6878,8 +6862,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '350',
 				'popup_width_tablet' => '350',
 				'popup_width_mobile' => '300',
@@ -6925,8 +6908,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'lead-capture' => 'Lead Capture',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1070',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -6976,8 +6958,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '895',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7024,8 +7005,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'lead-capture' => 'Lead Capture',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '810',
 				'popup_width_tablet' => '650',
 				'popup_width_mobile' => '320',
@@ -7075,8 +7055,7 @@ sed do eiusmod tempor incididunt ut labore et[/vc_column_text][gem_divider margi
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '945',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '320',
@@ -7127,8 +7106,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'contact' => 'Contact',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1085',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7178,8 +7156,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'contact' => 'Contact',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1075',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7228,8 +7205,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'contact' => 'Contact',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '810',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7279,8 +7255,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '916',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7327,8 +7302,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '860',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '320',
@@ -7377,8 +7351,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'discount' => 'Discount',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1100',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7420,7 +7393,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		'mark' => '',
 		'pic' => 'popup-37-prewiew.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-37-lead-capture/',
-		'content' => '[vc_row full_width="stretch_row_content_no_spaces" full_height="yes" content_placement="middle" el_disable_tablet="1" el_disable_mobile="1" css=".vc_custom_1669381202623{margin-bottom: 0px !important;background-image: url({{IMG_URL=9593}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}" el_class="popup-row-1" custom_css_code="JTQwbWVkaWElMjhtYXgtd2lkdGglM0ExNjUwcHglMjklMjBhbmQlMjAlMjhtaW4td2lkdGglM0ElMjAxMjAwcHglMjklMjAlN0IlMEElMjAlMjAlMjAlMjAucG9wdXAtY29sJTIwLnZjX2NvbHVtbi1pbm5lciUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHBhZGRpbmctdG9wJTNBJTIwMTI1cHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjAlN0QlMEElN0QlMEElNDBtZWRpYSUyOG1heC13aWR0aCUzQTE5NTBweCUyOSUyMGFuZCUyMCUyOG1pbi13aWR0aCUzQTE2NTBweCUyOSU3QiUwQSUyMCUyMCUyMCUyMC5wb3B1cC1jb2wlMjAudmNfY29sdW1uLWlubmVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwcGFkZGluZy1sZWZ0JTNBJTIwNTBweCUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMCU3RCUwQSU3RCUwQSU0MG1lZGlhJTI4bWF4LXdpZHRoJTNBJTIwMTQwMHB4JTI5JTIwYW5kJTIwJTI4bWluLXdpZHRoJTNBJTIwMTIwMHB4JTI5JTIwJTdCJTBBJTIwJTIwJTIwJTIwLnBvcHVwLWNvbCUyMC52Y19jb2x1bW4taW5uZXIlMjAlN0IlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBwYWRkaW5nLXRvcCUzQSUyMDY1cHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBwYWRkaW5nLWxlZnQlM0ElMjAyNXB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdEJTBB"][vc_column width="1/3"][/vc_column][vc_column width="2/3" css=".vc_custom_1667911948024{padding-top: 150px !important;}" offset="vc_hidden-md vc_hidden-sm vc_hidden-xs" el_class="popup-col"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22would%20you%20like%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%2220%25%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23d1ff58%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%2C%7B%22heading_text%22%3A%22off%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1667912422493{padding-top: 10px !important;padding-bottom: 12px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22your%20first%20purchase%3F%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="35"][gem_button text="yes. get my 20% off" position="center" corner="20" icon_pack="elegant" link="url:%23" text_color="#252836" background_color="#b3e140" padding_left="94" padding_right="94" hover_background_color="#ffffff" letter_spacing="0.7"][gem_divider margin_top="-30"][gem_button text="no. i dont want to save money" position="center" corner="20" icon_pack="elegant" link="url:%23" text_color="#ffffff" background_color="#3c3e4a" padding_left="40" padding_right="40" hover_background_color="#ffffff" hover_text_color="#3c3e4a" letter_spacing="0.7" extra_class="close-fancybox"][/vc_column][/vc_row][vc_row full_height="yes" css=".vc_custom_1669381209303{margin-bottom: 0px !important;}" el_class="popup-row-2"][vc_column offset="vc_hidden-lg" css=".vc_custom_1667910454621{padding-top: 70px !important;padding-bottom: 70px !important;}"][vc_row_inner css=".vc_custom_1667910863567{margin-bottom: 0px !important;}"][vc_column_inner width="1/4" offset="vc_hidden-lg vc_hidden-sm vc_hidden-xs"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_hidden-lg vc_hidden-sm vc_hidden-xs" css=".vc_custom_1667910868532{padding-top: 0px !important;}"][gem_image position="centered" disable_lightbox="1" src="{{IMG_ID=9593}}"][/vc_column_inner][vc_column_inner width="1/4" offset="vc_hidden-lg vc_hidden-sm vc_hidden-xs"][/vc_column_inner][/vc_row_inner][vc_row_inner css=".vc_custom_1667910863567{margin-bottom: 0px !important;}"][vc_column_inner offset="vc_hidden-lg vc_hidden-md"][gem_image position="centered" disable_lightbox="1" src="{{IMG_ID=9593}}"][/vc_column_inner][/vc_row_inner][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22would%20you%20like%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%2220%25%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23b3e140%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%2C%7B%22heading_text%22%3A%22off%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1667899462643{padding-top: 10px !important;padding-bottom: 12px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22your%20first%20purchase%3F%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="35"][gem_button text="yes. get my 20% off" position="center" corner="20" icon_pack="elegant" link="url:%23" text_color="#252836" background_color="#b3e140" padding_left="94" padding_right="94" hover_background_color="#ffffff" letter_spacing="0.7" padding_left_mobile="74" padding_right_mobile="74"][gem_divider margin_top="-30"][gem_button text="no. i dont want to save money" position="center" corner="20" icon_pack="elegant" link="url:%23" text_color="#ffffff" background_color="#3c3e4a" padding_left="40" padding_right="40" hover_background_color="#ffffff" hover_text_color="#3c3e4a" letter_spacing="0.7" padding_left_mobile="20" padding_right_mobile="20" extra_class="close-fancybox"][/vc_column][/vc_row]',
+		'content' => '[vc_row full_width="stretch_row_content_no_spaces" full_height="yes" content_placement="middle" el_disable_tablet="1" el_disable_mobile="1" css=".vc_custom_1678452381002{margin-bottom: 0px !important;background-image: url({{IMG_URL=9593}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: contain !important;}" el_class="popup-row-1" custom_css_code="JTQwbWVkaWElMjhtYXgtd2lkdGglM0ExNjUwcHglMjklMjBhbmQlMjAlMjhtaW4td2lkdGglM0ElMjAxMjAwcHglMjklMjAlN0IlMEElMjAlMjAlMjAlMjAucG9wdXAtY29sJTIwLnZjX2NvbHVtbi1pbm5lciUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHBhZGRpbmctdG9wJTNBJTIwMTI1cHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjAlN0QlMEElN0QlMEElNDBtZWRpYSUyOG1heC13aWR0aCUzQTE5NTBweCUyOSUyMGFuZCUyMCUyOG1pbi13aWR0aCUzQTE2NTBweCUyOSU3QiUwQSUyMCUyMCUyMCUyMC5wb3B1cC1jb2wlMjAudmNfY29sdW1uLWlubmVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwcGFkZGluZy1sZWZ0JTNBJTIwNTBweCUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMCU3RCUwQSU3RCUwQSU0MG1lZGlhJTI4bWF4LXdpZHRoJTNBJTIwMTQwMHB4JTI5JTIwYW5kJTIwJTI4bWluLXdpZHRoJTNBJTIwMTIwMHB4JTI5JTIwJTdCJTBBJTIwJTIwJTIwJTIwLnBvcHVwLWNvbCUyMC52Y19jb2x1bW4taW5uZXIlMjAlN0IlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBwYWRkaW5nLXRvcCUzQSUyMDY1cHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBwYWRkaW5nLWxlZnQlM0ElMjAyNXB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdE"][vc_column width="1/3"][/vc_column][vc_column width="2/3" css=".vc_custom_1667911948024{padding-top: 150px !important;}" offset="vc_hidden-md vc_hidden-sm vc_hidden-xs" el_class="popup-col"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22would%20you%20like%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%2220%25%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23d1ff58%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%2C%7B%22heading_text%22%3A%22off%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1667912422493{padding-top: 10px !important;padding-bottom: 12px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22your%20first%20purchase%3F%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="35"][gem_button text="yes. get my 20% off" position="center" corner="20" icon_pack="elegant" link="url:%23" text_color="#252836" background_color="#b3e140" padding_left="94" padding_right="94" hover_background_color="#ffffff" letter_spacing="0.7"][gem_divider margin_top="-30"][gem_button text="no. i dont want to save money" position="center" corner="20" icon_pack="elegant" link="url:%23" text_color="#ffffff" background_color="#3c3e4a" padding_left="40" padding_right="40" hover_background_color="#ffffff" hover_text_color="#3c3e4a" letter_spacing="0.7" extra_class="close-fancybox"][/vc_column][/vc_row][vc_row full_height="yes" css=".vc_custom_1667911212823{margin-bottom: 0px !important;}" el_class="popup-row-2"][vc_column offset="vc_hidden-lg" css=".vc_custom_1667910454621{padding-top: 70px !important;padding-bottom: 70px !important;}"][vc_row_inner css=".vc_custom_1667910863567{margin-bottom: 0px !important;}"][vc_column_inner width="1/4" offset="vc_hidden-lg vc_hidden-sm vc_hidden-xs"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_hidden-lg vc_hidden-sm vc_hidden-xs" css=".vc_custom_1667910868532{padding-top: 0px !important;}"][gem_image position="centered" disable_lightbox="1" src="{{IMG_ID=9593}}"][/vc_column_inner][vc_column_inner width="1/4" offset="vc_hidden-lg vc_hidden-sm vc_hidden-xs"][/vc_column_inner][/vc_row_inner][vc_row_inner css=".vc_custom_1667910863567{margin-bottom: 0px !important;}"][vc_column_inner offset="vc_hidden-lg vc_hidden-md"][gem_image position="centered" disable_lightbox="1" src="{{IMG_ID=9593}}"][/vc_column_inner][/vc_row_inner][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22would%20you%20like%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%2220%25%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23b3e140%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%2C%7B%22heading_text%22%3A%22off%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1667899462643{padding-top: 10px !important;padding-bottom: 12px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22your%20first%20purchase%3F%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="35"][gem_button text="yes. get my 20% off" position="center" corner="20" icon_pack="elegant" link="url:%23" text_color="#252836" background_color="#b3e140" padding_left="94" padding_right="94" hover_background_color="#ffffff" letter_spacing="0.7" padding_left_mobile="74" padding_right_mobile="74"][gem_divider margin_top="-30"][gem_button text="no. i dont want to save money" position="center" corner="20" icon_pack="elegant" link="url:%23" text_color="#ffffff" background_color="#3c3e4a" padding_left="40" padding_right="40" hover_background_color="#ffffff" hover_text_color="#3c3e4a" letter_spacing="0.7" padding_left_mobile="20" padding_right_mobile="20" extra_class="close-fancybox"][/vc_column][/vc_row]',
 		'categories' => array (
 			'lead-capture' => 'Lead Capture',
 		),
@@ -7435,8 +7408,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 				display: none!important;
 		}
 }',
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '100%',
 				'popup_width_tablet' => '100%',
 				'popup_width_mobile' => '100%',
@@ -7478,13 +7450,12 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		'mark' => '',
 		'pic' => 'popup-38-preview.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-38-call-to-action/',
-		'content' => '[vc_row full_height="yes" content_placement="middle" css=".vc_custom_1669381279935{background-image: url({{IMG_URL=9594}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="LnRoZWdlbS1oZWFkaW5nJTIwJTdCJTBBJTIwJTIwJTIwJTIwbWFyZ2luJTNBJTIwMCUyMGF1dG8lMjFpbXBvcnRhbnQlM0IlMEElN0Q="][vc_column css=".vc_custom_1667908856110{padding-top: 90px !important;padding-bottom: 60px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22Don\'t%20you%20have%20account%20yet%3F%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="280" heading_letter_spacing="0"][gem_divider margin_top="25"][gem_heading heading_tag="div" heading_div_style="styled-subtitle" text_content="%5B%7B%22heading_text%22%3A%22Register%20now%20for%20free%20and%20turn%20your%20traffic%20into%20sales!%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="280"][gem_divider margin_top="15"][gem_button text="Create your account" position="center" style="outline" corner="0" size="medium" border="2" icon_pack="elegant" link="url:%23" text_color="#ffffff" hover_border_color="#ffffff" border_color="#ffffff" hover_text_color="#262938" hover_background_color="#ffffff" text_size="14" padding_left="45" padding_right="45"][/vc_column][/vc_row]',
+		'content' => '[vc_row full_height="yes" content_placement="middle" css=".vc_custom_1678452289869{background-image: url({{IMG_URL=9594}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="LnRoZWdlbS1oZWFkaW5nJTIwJTdCJTBBJTIwJTIwJTIwJTIwbWFyZ2luJTNBJTIwMCUyMGF1dG8lMjFpbXBvcnRhbnQlM0IlMEElN0Q="][vc_column css=".vc_custom_1667908856110{padding-top: 90px !important;padding-bottom: 60px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22Don\'t%20you%20have%20account%20yet%3F%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="280" heading_letter_spacing="0"][gem_divider margin_top="25"][gem_heading heading_tag="div" heading_div_style="styled-subtitle" text_content="%5B%7B%22heading_text%22%3A%22Register%20now%20for%20free%20and%20turn%20your%20traffic%20into%20sales!%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="280"][gem_divider margin_top="15"][gem_button text="Create your account" position="center" style="outline" corner="0" size="medium" border="2" icon_pack="elegant" link="url:%23" text_color="#ffffff" hover_border_color="#ffffff" border_color="#ffffff" hover_text_color="#262938" hover_background_color="#ffffff" text_size="14" padding_left="45" padding_right="45"][/vc_column][/vc_row]',
 		'categories' => array (
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '100%',
 				'popup_width_tablet' => '100%',
 				'popup_width_mobile' => '100%',
@@ -7526,13 +7497,12 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		'mark' => '',
 		'pic' => 'popup-39-preview.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-39-lead-capture/',
-		'content' => '[vc_row full_height="yes" content_placement="middle" background_position_tablet="left center" css=".vc_custom_1669381314145{background-image: url({{IMG_URL=9595}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" background_image_tablet="9597" background_image_mobile="9598" custom_css_code="JTQwbWVkaWElMjhtaW4td2lkdGglM0ElMjAxNDAwcHglMjklN0IlMEElMjAlMjAlMjAlMjAucG9wdXAtY29sdW1uJTIwLnZjX2NvbHVtbi1pbm5lciU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHBhZGRpbmctbGVmdCUzQSUyMDE5MHB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdE"][vc_column width="3/4" css=".vc_custom_1667907644136{padding-top: 40px !important;padding-bottom: 30px !important;}" el_class="popup-column" offset="vc_col-lg-6 vc_col-md-8 vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Grow%20Your%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23f2d75b%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Business%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1667902742223{padding-top: 10px !important;}"][gem_divider margin_top="45"][gem_heading heading_tag="div" heading_div_style="styled-subtitle" text_content="%5B%7B%22heading_text%22%3A%22I%E2%80%99m%20in%20the%20way.%20You%20look%20like%20someone%20who%20likes%20to%20try%20new%20marketing%20tactics%20once%20in%20a%20while.%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="450"][gem_divider margin_top="55"][gem_button text="Join now" position="left" corner="32" size="medium" icon_pack="elegant" link="url:%23" text_color="#ffffff" background_color="#7957e7" hover_background_color="#f2d75b" hover_text_color="#1f233b" padding_left="80" padding_right="80"][gem_divider margin_top="5"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" text_content="%5B%7B%22heading_text%22%3A%22*%20Lorem%20ipsum%20dolor%20sit%20amet%20consectetur%20eros%20massa.%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="45"][gem_socials style="rounded" colored="custom" icons_size="32" socials="%5B%7B%22social%22%3A%22twitter%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22facebook%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22linkedin%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22youtube%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22pinterest%22%2C%22url%22%3A%22%23%22%7D%5D" color="#ffffff"][/vc_column][vc_column width="1/4" offset="vc_col-lg-6 vc_col-md-4 vc_col-xs-12 vc_hidden-xs"][/vc_column][/vc_row]',
+		'content' => '[vc_row full_height="yes" content_placement="middle" background_position_tablet="left center" css=".vc_custom_1678452228651{background-image: url({{IMG_URL=9595}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" background_image_tablet="9597" background_image_mobile="9598" custom_css_code="JTQwbWVkaWElMjhtaW4td2lkdGglM0ElMjAxNDAwcHglMjklN0IlMEElMjAlMjAlMjAlMjAucG9wdXAtY29sdW1uJTIwLnZjX2NvbHVtbi1pbm5lciU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHBhZGRpbmctbGVmdCUzQSUyMDE5MHB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdE"][vc_column width="3/4" css=".vc_custom_1667907644136{padding-top: 40px !important;padding-bottom: 30px !important;}" el_class="popup-column" offset="vc_col-lg-6 vc_col-md-8 vc_col-xs-12"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Grow%20Your%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23f2d75b%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Business%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1667902742223{padding-top: 10px !important;}"][gem_divider margin_top="45"][gem_heading heading_tag="div" heading_div_style="styled-subtitle" text_content="%5B%7B%22heading_text%22%3A%22I%E2%80%99m%20in%20the%20way.%20You%20look%20like%20someone%20who%20likes%20to%20try%20new%20marketing%20tactics%20once%20in%20a%20while.%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="450"][gem_divider margin_top="55"][gem_button text="Join now" position="left" corner="32" size="medium" icon_pack="elegant" link="url:%23" text_color="#ffffff" background_color="#7957e7" hover_background_color="#f2d75b" hover_text_color="#1f233b" padding_left="80" padding_right="80"][gem_divider margin_top="5"][gem_heading heading_tag="div" heading_div_style="text-body-tiny" text_content="%5B%7B%22heading_text%22%3A%22*%20Lorem%20ipsum%20dolor%20sit%20amet%20consectetur%20eros%20massa.%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="45"][gem_socials style="rounded" colored="custom" icons_size="32" socials="%5B%7B%22social%22%3A%22twitter%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22facebook%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22linkedin%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22youtube%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22pinterest%22%2C%22url%22%3A%22%23%22%7D%5D" color="#ffffff"][/vc_column][vc_column width="1/4" offset="vc_col-lg-6 vc_col-md-4 vc_col-xs-12 vc_hidden-xs"][/vc_column][/vc_row]',
 		'categories' => array (
 			'lead-capture' => 'Lead Capture',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '100%',
 				'popup_width_tablet' => '100%',
 				'popup_width_mobile' => '100%',
@@ -7574,13 +7544,12 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		'mark' => '',
 		'pic' => 'popup-40-preview.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-40-welcome/',
-		'content' => '[vc_row css=".vc_custom_1669381339504{margin-bottom: 0px !important;background-image: url({{IMG_URL=9467}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="Lnlpa2VzLWVhc3ktbWMtZm9ybS0yNSUyMCU3QiUwQSUyMCUyMCUyMCUyMG1heC13aWR0aCUzQSUyMDMwMHB4JTNCJTBBJTIwJTIwJTIwJTIwbWFyZ2luJTNBJTIwMCUyMGF1dG8lM0IlMEElN0QlMEEueWlrZXMtZWFzeS1tYy1mb3JtLTI1JTIwLnlpa2VzLWVhc3ktbWMtZW1haWwlMjAlN0IlMEElMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMCUyM2ZmZmZmZiUyMWltcG9ydGFudCUzQiUwQSU3RCUwQSUzQSUzQXBsYWNlaG9sZGVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwY29sb3IlM0ElMjAlMjMxNDE0MTQlM0IlMEElN0QlMEEueWlrZXMtZWFzeS1tYy1mb3JtLTI1JTIwLnlpa2VzLWVhc3ktbWMtc3VibWl0LWJ1dHRvbiUyMCU3QiUwQSUyMCUyMCUyMCUyMGNvbG9yJTNBJTIwJTIzMjgyZDE3JTNCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLWNvbG9yJTNBJTIwJTIzMjgyZDE3JTNCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLXJhZGl1cyUzQSUyMDAlM0IlMEElN0QlMEEueWlrZXMtZWFzeS1tYy1mb3JtLTI1JTIwLnlpa2VzLWVhc3ktbWMtc3VibWl0LWJ1dHRvbiUzQWhvdmVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwY29sb3IlM0ElMjAlMjNmZmZmZmYlM0IlMEElMjAlMjAlMjAlMjBiYWNrZ3JvdW5kLWNvbG9yJTNBJTIwJTIzMjgyZDE3JTNCJTBBJTdE"][vc_column css=".vc_custom_1667915115153{padding-top: 190px !important;padding-bottom: 180px !important;}" mobile_padding_top="90" mobile_padding_bottom="95"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22Welcome%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1667913112247{padding-bottom: 10px !important;}"][gem_heading heading_tag="div" heading_div_style="main-menu-item" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22we%20want%20to%20give%20you%20a%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%2270%25%20off%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_heading heading_tag="div" heading_div_style="main-menu-item" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22Coupon%20code%20for%20you%5Cnfirst%20frame%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="30"][vc_column_text][yikes-mailchimp form="{{MF_ID=25}}"][/vc_column_text][gem_heading heading_tag="div" heading_div_style="text-body" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22No%20thanks%2C%20i%20want%20to%20pay%20full%20price%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_decoration%22%3A%221%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_text_color_hover="#749a00" extra_class="close-fancybox"][/vc_column][/vc_row]',
+		'content' => '[vc_row css=".vc_custom_1678452152034{margin-bottom: 0px !important;background-image: url({{IMG_URL=9467}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="Lnlpa2VzLWVhc3ktbWMtZm9ybS0yNSUyMCU3QiUwQSUyMCUyMCUyMCUyMG1heC13aWR0aCUzQSUyMDMwMHB4JTNCJTBBJTIwJTIwJTIwJTIwbWFyZ2luJTNBJTIwMCUyMGF1dG8lM0IlMEElN0QlMEEueWlrZXMtZWFzeS1tYy1mb3JtLTI1JTIwLnlpa2VzLWVhc3ktbWMtZW1haWwlMjAlN0IlMEElMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMCUyM2ZmZmZmZiUyMWltcG9ydGFudCUzQiUwQSU3RCUwQSUzQSUzQXBsYWNlaG9sZGVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwY29sb3IlM0ElMjAlMjMxNDE0MTQlM0IlMEElN0QlMEEueWlrZXMtZWFzeS1tYy1mb3JtLTI1JTIwLnlpa2VzLWVhc3ktbWMtc3VibWl0LWJ1dHRvbiUyMCU3QiUwQSUyMCUyMCUyMCUyMGNvbG9yJTNBJTIwJTIzMjgyZDE3JTNCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLWNvbG9yJTNBJTIwJTIzMjgyZDE3JTNCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLXJhZGl1cyUzQSUyMDAlM0IlMEElN0QlMEEueWlrZXMtZWFzeS1tYy1mb3JtLTI1JTIwLnlpa2VzLWVhc3ktbWMtc3VibWl0LWJ1dHRvbiUzQWhvdmVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwY29sb3IlM0ElMjAlMjNmZmZmZmYlM0IlMEElMjAlMjAlMjAlMjBiYWNrZ3JvdW5kLWNvbG9yJTNBJTIwJTIzMjgyZDE3JTNCJTBBJTdE"][vc_column css=".vc_custom_1667915115153{padding-top: 190px !important;padding-bottom: 180px !important;}" mobile_padding_top="90" mobile_padding_bottom="95"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22Welcome%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1667913112247{padding-bottom: 10px !important;}"][gem_heading heading_tag="div" heading_div_style="main-menu-item" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22we%20want%20to%20give%20you%20a%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%2270%25%20off%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_heading heading_tag="div" heading_div_style="main-menu-item" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22Coupon%20code%20for%20you%5Cnfirst%20frame%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="30"][vc_column_text][yikes-mailchimp form="{{MF_ID=25}}"][/vc_column_text][gem_heading heading_tag="div" heading_div_style="text-body" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22No%20thanks%2C%20i%20want%20to%20pay%20full%20price%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_decoration%22%3A%221%22%2C%22heading_text_color%22%3A%22%23141414%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_text_color_hover="#749a00" extra_class="close-fancybox"][/vc_column][/vc_row]',
 		'categories' => array (
 			'welcome' => 'Welcome',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '570',
 				'popup_width_tablet' => '570',
 				'popup_width_mobile' => '300',
@@ -7632,8 +7601,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'welcome' => 'Welcome',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '887',
 				'popup_width_tablet' => '600',
 				'popup_width_mobile' => '300',
@@ -7680,8 +7648,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'welcome' => 'Welcome',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '715',
 				'popup_width_tablet' => '600',
 				'popup_width_mobile' => '300',
@@ -7728,8 +7695,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'upsells' => 'Upsells',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1094',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7776,8 +7742,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'upsells' => 'Upsells',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '888',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7824,8 +7789,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'upsells' => 'Upsells',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1145',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7872,8 +7836,7 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 			'upsells' => 'Upsells',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1195',
 				'popup_width_tablet' => '700',
 				'popup_width_mobile' => '300',
@@ -7915,15 +7878,14 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		'mark' => '',
 		'pic' => 'popup-47-preview.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-47-contact/',
-		'content' => '[vc_row css=".vc_custom_1669380702262{margin-bottom: 0px !important;background-color: #23252b !important;}" custom_css_code="LnRpdGxlLWg2JTIwc3BhbiUyMGElMjBzcGFuJTNBaG92ZXIlN0IlMjAlMEElMjAlMjAlMjAlMjB0cmFuc2l0aW9uJTNBJTIwLjNzJTNCJTBBJTIwJTIwJTIwJTIwY29sb3IlM0ElMjAlMjMwMDhhZmYlMjFpbXBvcnRhbnQlM0IlMjAlMEElN0Q="][vc_column css=".vc_custom_1668076682589{padding-top: 30px !important;}"][gem_image position="centered" disable_lightbox="1" src="{{IMG_ID=9503}}"][gem_divider margin_top="40" mobile_margin_top="25"][gem_image position="centered" disable_lightbox="1" src="{{IMG_ID=9502}}"][gem_divider margin_top="45" mobile_margin_top="30"][gem_heading heading_tag="div" heading_div_style="text-body" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22Lorem%20ipsum%20dolor%20sit%20ametcon%20sectetur%20adipisicing%20elit%2C%20sed%20doiusmod%20tempor%20incidi%20labore%20et%20dolore.%20agna%20aliqua.%20Ut%20enim%20ad%20mini%20veniam%2C%20quis%20nostrud%20exercitation%20ullamco%20laboris%20nisi%20ut%20aliquip%20ex%20ea%20commodo%20consequat.%20Duis%20aute%20irure%20dolor%20in%20reprehenderit%20in%20voluptate%20velit%20esse%20cillum%20dolore%20eu%20fugiat%20nulla%20pariatur.%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%239faab3%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="400"][gem_divider margin_top="30" mobile_margin_top="20"][gem_button text="More about us" position="center" corner="0" icon_pack="elegant" link="url:%23" text_color="#ffffff" background_color="#008aff" hover_text_color="#23252b" hover_background_color="#ffffff" padding_left="30" padding_right="30"][gem_divider margin_top="50" mobile_margin_top="15"][vc_column_text css=".vc_custom_1668076356721{margin-bottom: 0px !important;}"]
+		'content' => '[vc_row css=".vc_custom_1678452059145{margin-bottom: 0px !important;background-color: #23252b !important;}" custom_css_code="LnRpdGxlLWg2JTIwc3BhbiUyMGElMjBzcGFuJTNBaG92ZXIlN0IlMjAlMEElMjAlMjAlMjAlMjB0cmFuc2l0aW9uJTNBJTIwLjNzJTNCJTBBJTIwJTIwJTIwJTIwY29sb3IlM0ElMjAlMjMwMDhhZmYlMjFpbXBvcnRhbnQlM0IlMjAlMEElN0Q="][vc_column css=".vc_custom_1668076682589{padding-top: 30px !important;}"][gem_image position="centered" disable_lightbox="1" src="{{IMG_ID=9503}}"][gem_divider margin_top="40" mobile_margin_top="25"][gem_image position="centered" disable_lightbox="1" src="{{IMG_ID=9502}}"][gem_divider margin_top="45" mobile_margin_top="30"][gem_heading heading_tag="div" heading_div_style="text-body" heading_align="center" text_content="%5B%7B%22heading_text%22%3A%22Lorem%20ipsum%20dolor%20sit%20ametcon%20sectetur%20adipisicing%20elit%2C%20sed%20doiusmod%20tempor%20incidi%20labore%20et%20dolore.%20agna%20aliqua.%20Ut%20enim%20ad%20mini%20veniam%2C%20quis%20nostrud%20exercitation%20ullamco%20laboris%20nisi%20ut%20aliquip%20ex%20ea%20commodo%20consequat.%20Duis%20aute%20irure%20dolor%20in%20reprehenderit%20in%20voluptate%20velit%20esse%20cillum%20dolore%20eu%20fugiat%20nulla%20pariatur.%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%239faab3%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="400"][gem_divider margin_top="30" mobile_margin_top="20"][gem_button text="More about us" position="center" corner="0" icon_pack="elegant" link="url:%23" text_color="#ffffff" background_color="#008aff" hover_text_color="#23252b" hover_background_color="#ffffff" padding_left="30" padding_right="30"][gem_divider margin_top="50" mobile_margin_top="15"][vc_column_text css=".vc_custom_1668076356721{margin-bottom: 0px !important;}"]
 <div class="title-h6" style="text-align: center;"><span style="color: #ffffff; text-transform: uppercase;"><a href="https://www.facebook.com/"><span style="color: #ffffff;">Facebook</span></a> – <a href="https://www.instagram.com/"><span style="color: #ffffff;">Instagram</span></a> – <a href="https://www.youtube.com/"><span style="color: #ffffff;">YouTube</span></a></span></div>
 [/vc_column_text][gem_divider margin_top="15"][gem_image position="centered" disable_lightbox="1" src="{{IMG_ID=9504}}"][/vc_column][/vc_row]',
 		'categories' => array (
 			'contact' => 'Contact',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '527',
 				'popup_width_tablet' => '527',
 				'popup_width_mobile' => '300',
@@ -7967,13 +7929,12 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		'mark' => '',
 		'pic' => 'popup-48-preview.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-48-contact/',
-		'content' => '[vc_row content_placement="middle" css=".vc_custom_1669380625860{margin-bottom: 0px !important;}" custom_css_code="JTQwbWVkaWElMjhtYXgtd2lkdGglM0ElMjA3NjdweCUyOSU3QiUwQSUyMCUyMCUyMCUyMC5oaWRlLWJvcmRlciUyMC52Y19jb2x1bW4taW5uZXIlMjAlN0IlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdE"][vc_column width="1/2" css=".vc_custom_1668085970608{padding-top: 0px !important;}" offset="vc_col-lg-7 vc_col-md-7" mobile_padding_left="21" mobile_padding_right="21"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Services%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2356cce9%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668088730974{margin-top: -18px !important;}"][gem_divider margin_top="45" mobile_margin_top="20"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Corporation%20Financing%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][gem_divider margin_top="30" mobile_margin_top="15"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Advanced%20Analytics%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][gem_divider margin_top="30" mobile_margin_top="15"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Chain%20Management%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][gem_divider margin_top="30" mobile_margin_top="15"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Business%20Consultion%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][gem_divider margin_top="30" mobile_margin_top="15"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Digital%20Marketing%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][/vc_column][vc_column width="1/2" css=".vc_custom_1668427767811{border-left-width: 1px !important;padding-top: 0px !important;padding-left: 90px !important;border-left-color: #5a5e69 !important;border-left-style: solid !important;}" tablet_padding_left="42" offset="vc_col-lg-5 vc_col-md-5" el_class="hide-border" mobile_padding_top="50" mobile_padding_left="21" mobile_padding_right="21"][gem_heading heading_tag="div" heading_div_style="title-h6" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Phone%3A%5Cn%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2357b9d1%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668083365479{margin-top: -8px !important;}"][gem_heading heading_tag="div" heading_div_style="styled-subtitle" text_content="%5B%7B%22heading_text%22%3A%22%2B1%20916-875-2235%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="50" mobile_margin_top="30"][gem_heading heading_tag="div" heading_div_style="title-h6" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Address%3A%5Cn%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2357b9d1%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668082602658{padding-bottom: 5px !important;}"][gem_heading heading_tag="div" heading_div_style="text-body" text_content="%5B%7B%22heading_text%22%3A%22908%20New%20Hampshire%20Avenue%20Northwest%20%23100%2C%20Washington%2C%2020037%2C%20United%20State%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="55" mobile_margin_top="35"][gem_heading heading_tag="div" heading_div_style="title-h6" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Email%3A%5Cn%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2357b9d1%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668082597320{padding-bottom: 5px !important;}"][gem_heading heading_tag="div" heading_div_style="text-body" text_content="%5B%7B%22heading_text%22%3A%22info%40domain.tld%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="55" mobile_margin_top="35"][gem_heading heading_tag="div" heading_div_style="title-h6" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Follow%20Us%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2357b9d1%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668081443614{padding-bottom: 25px !important;}"][gem_socials style="rounded" colored="custom" icons_size="32" socials="%5B%7B%22social%22%3A%22facebook%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22twitter%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22pinterest%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22instagram%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22youtube%22%2C%22url%22%3A%22%23%22%7D%5D" color="#ffffff"][/vc_column][/vc_row]',
+		'content' => '[vc_row content_placement="middle" css=".vc_custom_1678451969325{margin-bottom: 0px !important;}" custom_css_code="JTQwbWVkaWElMjhtYXgtd2lkdGglM0ElMjA3NjdweCUyOSU3QiUwQSUyMCUyMCUyMCUyMC5oaWRlLWJvcmRlciUyMC52Y19jb2x1bW4taW5uZXIlMjAlN0IlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdE"][vc_column width="1/2" css=".vc_custom_1668085970608{padding-top: 0px !important;}" offset="vc_col-lg-7 vc_col-md-7" mobile_padding_left="21" mobile_padding_right="21"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Services%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2356cce9%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668088730974{margin-top: -18px !important;}"][gem_divider margin_top="45" mobile_margin_top="20"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Corporation%20Financing%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][gem_divider margin_top="30" mobile_margin_top="15"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Advanced%20Analytics%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][gem_divider margin_top="30" mobile_margin_top="15"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Chain%20Management%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][gem_divider margin_top="30" mobile_margin_top="15"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Business%20Consultion%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][gem_divider margin_top="30" mobile_margin_top="15"][gem_heading heading_tag="div" heading_div_style="title-h3" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Digital%20Marketing%22%2C%22heading_text_weight%22%3A%22light%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_link="url:%23" heading_letter_spacing="0"][/vc_column][vc_column width="1/2" css=".vc_custom_1668427767811{border-left-width: 1px !important;padding-top: 0px !important;padding-left: 90px !important;border-left-color: #5a5e69 !important;border-left-style: solid !important;}" tablet_padding_left="42" offset="vc_col-lg-5 vc_col-md-5" el_class="hide-border" mobile_padding_top="50" mobile_padding_left="21" mobile_padding_right="21"][gem_heading heading_tag="div" heading_div_style="title-h6" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Phone%3A%5Cn%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2357b9d1%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668083365479{margin-top: -8px !important;}"][gem_heading heading_tag="div" heading_div_style="styled-subtitle" text_content="%5B%7B%22heading_text%22%3A%22%2B1%20916-875-2235%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="50" mobile_margin_top="30"][gem_heading heading_tag="div" heading_div_style="title-h6" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Address%3A%5Cn%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2357b9d1%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668082602658{padding-bottom: 5px !important;}"][gem_heading heading_tag="div" heading_div_style="text-body" text_content="%5B%7B%22heading_text%22%3A%22908%20New%20Hampshire%20Avenue%20Northwest%20%23100%2C%20Washington%2C%2020037%2C%20United%20State%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="55" mobile_margin_top="35"][gem_heading heading_tag="div" heading_div_style="title-h6" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Email%3A%5Cn%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2357b9d1%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668082597320{padding-bottom: 5px !important;}"][gem_heading heading_tag="div" heading_div_style="text-body" text_content="%5B%7B%22heading_text%22%3A%22info%40domain.tld%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D"][gem_divider margin_top="55" mobile_margin_top="35"][gem_heading heading_tag="div" heading_div_style="title-h6" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Follow%20Us%3A%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%2357b9d1%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668081443614{padding-bottom: 25px !important;}"][gem_socials style="rounded" colored="custom" icons_size="32" socials="%5B%7B%22social%22%3A%22facebook%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22twitter%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22pinterest%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22instagram%22%2C%22url%22%3A%22%23%22%7D%2C%7B%22social%22%3A%22youtube%22%2C%22url%22%3A%22%23%22%7D%5D" color="#ffffff"][/vc_column][/vc_row]',
 		'categories' => array (
 			'contact' => 'Contact',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1100',
 				'popup_width_tablet' => '650',
 				'popup_width_mobile' => '320',
@@ -8014,13 +7975,12 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		'mark' => '',
 		'pic' => 'popup-49-preview.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-49-call-to-action/',
-		'content' => '[vc_row css=".vc_custom_1669380543715{margin-bottom: 0px !important;background: #5544e1 url({{IMG_URL=9599}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;border-radius: 30px !important;}" custom_css_code="LnByaWNpbmctdGFibGUtc3R5bGUtNSUyMC5wcmljaW5nLXByaWNlJTIwJTdCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMCUyMzM2MmU5YyUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMGJvcmRlciUzQSUyMDJweCUyMHNvbGlkJTIwJTIzODY3Y2U3JTIxaW1wb3J0YW50JTNCJTBBJTdEJTBBLnByaWNpbmctdGFibGUtc3R5bGUtNSUyMC5wcmljaW5nLXByaWNlLXJvdyUyMCU3QiUwQSUyMCUyMCUyMCUyMG1pbi1oZWlnaHQlM0ElMjAxNzVweCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTUlMjAucHJpY2luZy1wcmljZS10aXRsZSUyMCU3QiUwQSUyMCUyMCUyMCUyMGZvbnQtZmFtaWx5JTNBJTIwJTI3TW9udHNlcnJhdCUyNyUzQiUwQSUyMCUyMCUyMCUyMGZvbnQtc2l6ZSUzQSUyMDM2cHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjBmb250LXdlaWdodCUzQSUyMDcwMCUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMHRleHQtdHJhbnNmb3JtJTNBJTIwbm9uZSUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMHBhZGRpbmctdG9wJTNBJTIwOTBweCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTUlMjAucHJpY2luZy1yb3clM0FudGgtY2hpbGQlMjhldmVuJTI5JTIwJTdCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMCUyMzQxMzliMCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTUlMjAucHJpY2luZy1yb3clM0FudGgtY2hpbGQlMjhvZGQlMjklMkMlMjAlMEEucHJpY2luZy10YWJsZS1zdHlsZS01JTIwLnByaWNpbmctZm9vdGVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMCUyMzM2MmU5YyUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTUlMjAucHJpY2luZy1jb2x1bW4lMjAlN0IlMEElMjAlMjAlMjAlMjBib3JkZXItcmFkaXVzJTNBJTIwMzBweCUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMG92ZXJmbG93JTNBJTIwaGlkZGVuJTNCJTBBJTdEJTBBZmlndXJlJTIwJTdCJTBBJTIwJTIwJTIwJTIwbWFyZ2luJTNBJTIwMCUzQiUwQSU3RCUwQSU0MG1lZGlhJTIwJTI4bWluLXdpZHRoJTNBJTIwOTkycHglMjklN0IlMEElMjAlMjAlMjAlMjAucHJpY2luZy10YWJsZSUyMC5jb2wtbWQtMyUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHdpZHRoJTNBJTIwNDMlMjUlM0IlMEElMjAlMjAlMjAlMjAlN0QlMEElN0Q=" el_class="pricing-popup"][vc_column css=".vc_custom_1668234791516{padding-top: 65px !important;padding-bottom: 35px !important;}" mobile_padding_bottom="15"][gem_heading heading_tag="div" heading_div_style="main-menu-item" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22Best%20Pricing%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="2.8"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Special%20Offers%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668090567593{padding-top: 15px !important;}"][gem_divider margin_top="30"][gem_pricing_table style="5"][gem_pricing_column][gem_pricing_price title="Basic" font_size_label="custom" backgroundcolor="#362e9c" currency="$" price="100" time="Per Month" price_color="#ff6b4e" time_color="#ffffff"][gem_pricing_row]<span style="color: #ffffff;">Ut mollis pellentesque tortor</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Nullam eu erat condimentum</span>[/gem_pricing_row][gem_pricing_row strike="1"]<span style="color: #8e83ea;">Orci varius natoque dolor</span>[/gem_pricing_row][gem_pricing_row strike="1"]<span style="color: #8e83ea;">Praesent euismod ac felis</span>[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Buy now" button_1_link="url:%23" button_1_text_color="#ff7e19" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#ff7e19" button_1_border_color="#ff7e19" button_1_hover_border_color="#ff7e19"][/gem_pricing_column][gem_pricing_column][gem_pricing_price title="Standart" font_size_label="custom" backgroundcolor="#362e9c" currency="$" price="200" time="Per Month" price_color="#56cce9" time_color="#ffffff"][gem_pricing_row]<span style="color: #ffffff;">Ut mollis pellentesque tortor</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Nullam eu erat condimentum</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Orci varius natoque dolor</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Praesent euismod ac felis</span>[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Buy now" button_1_link="url:%23" button_1_text_color="#56cce9" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#56cce9" button_1_border_color="#56cce9" button_1_hover_border_color="#56cce9"][/gem_pricing_column][/gem_pricing_table][/vc_column][/vc_row]',
+		'content' => '[vc_row css=".vc_custom_1678451783660{margin-bottom: 0px !important;background: #5544e1 url({{IMG_URL=9599}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;border-radius: 30px !important;}" custom_css_code="LnByaWNpbmctdGFibGUtc3R5bGUtNSUyMC5wcmljaW5nLXByaWNlJTIwJTdCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMCUyMzM2MmU5YyUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMGJvcmRlciUzQSUyMDJweCUyMHNvbGlkJTIwJTIzODY3Y2U3JTIxaW1wb3J0YW50JTNCJTBBJTdEJTBBLnByaWNpbmctdGFibGUtc3R5bGUtNSUyMC5wcmljaW5nLXByaWNlLXJvdyUyMCU3QiUwQSUyMCUyMCUyMCUyMG1pbi1oZWlnaHQlM0ElMjAxNzVweCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTUlMjAucHJpY2luZy1wcmljZS10aXRsZSUyMCU3QiUwQSUyMCUyMCUyMCUyMGZvbnQtZmFtaWx5JTNBJTIwJTI3TW9udHNlcnJhdCUyNyUzQiUwQSUyMCUyMCUyMCUyMGZvbnQtc2l6ZSUzQSUyMDM2cHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjBmb250LXdlaWdodCUzQSUyMDcwMCUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMHRleHQtdHJhbnNmb3JtJTNBJTIwbm9uZSUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMHBhZGRpbmctdG9wJTNBJTIwOTBweCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTUlMjAucHJpY2luZy1yb3clM0FudGgtY2hpbGQlMjhldmVuJTI5JTIwJTdCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMCUyMzQxMzliMCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTUlMjAucHJpY2luZy1yb3clM0FudGgtY2hpbGQlMjhvZGQlMjklMkMlMjAlMEEucHJpY2luZy10YWJsZS1zdHlsZS01JTIwLnByaWNpbmctZm9vdGVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMCUyMzM2MmU5YyUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTUlMjAucHJpY2luZy1jb2x1bW4lMjAlN0IlMEElMjAlMjAlMjAlMjBib3JkZXItcmFkaXVzJTNBJTIwMzBweCUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMG92ZXJmbG93JTNBJTIwaGlkZGVuJTNCJTBBJTdEJTBBZmlndXJlJTIwJTdCJTBBJTIwJTIwJTIwJTIwbWFyZ2luJTNBJTIwMCUzQiUwQSU3RCUwQSU0MG1lZGlhJTIwJTI4bWluLXdpZHRoJTNBJTIwOTkycHglMjklN0IlMEElMjAlMjAlMjAlMjAucHJpY2luZy10YWJsZSUyMC5jb2wtbWQtMyUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHdpZHRoJTNBJTIwNDMlMjUlM0IlMEElMjAlMjAlMjAlMjAlN0QlMEElN0Q="][vc_column css=".vc_custom_1668234791516{padding-top: 65px !important;padding-bottom: 35px !important;}" mobile_padding_bottom="15"][gem_heading heading_tag="div" heading_div_style="main-menu-item" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22Best%20Pricing%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="2.8"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Special%20Offers%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668090567593{padding-top: 15px !important;}"][gem_divider margin_top="30"][gem_pricing_table style="5"][gem_pricing_column][gem_pricing_price title="Basic" font_size_label="custom" backgroundcolor="#362e9c" currency="$" price="100" time="Per Month" price_color="#ff6b4e" time_color="#ffffff"][gem_pricing_row]<span style="color: #ffffff;">Ut mollis pellentesque tortor</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Nullam eu erat condimentum</span>[/gem_pricing_row][gem_pricing_row strike="1"]<span style="color: #8e83ea;">Orci varius natoque dolor</span>[/gem_pricing_row][gem_pricing_row strike="1"]<span style="color: #8e83ea;">Praesent euismod ac felis</span>[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Buy now" button_1_link="url:%23" button_1_text_color="#ff7e19" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#ff7e19" button_1_border_color="#ff7e19" button_1_hover_border_color="#ff7e19"][/gem_pricing_column][gem_pricing_column][gem_pricing_price title="Standart" font_size_label="custom" backgroundcolor="#362e9c" currency="$" price="200" time="Per Month" price_color="#56cce9" time_color="#ffffff"][gem_pricing_row]<span style="color: #ffffff;">Ut mollis pellentesque tortor</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Nullam eu erat condimentum</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Orci varius natoque dolor</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Praesent euismod ac felis</span>[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Buy now" button_1_link="url:%23" button_1_text_color="#56cce9" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#56cce9" button_1_border_color="#56cce9" button_1_hover_border_color="#56cce9"][/gem_pricing_column][/gem_pricing_table][/vc_column][/vc_row]',
 		'categories' => array (
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '798',
 				'popup_width_tablet' => '650',
 				'popup_width_mobile' => '320',
@@ -8062,13 +8022,12 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		'mark' => '',
 		'pic' => 'popup-50-preview.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-50-call-to-action/',
-		'content' => '[vc_row equal_height="yes" content_placement="middle" css=".vc_custom_1669380282079{margin-bottom: 0px !important;}" custom_css_code="LmdyZWVuLWxpbmUlMjAlN0IlMEElMjAlMjAlMjAlMjBwb3NpdGlvbiUzQSUyMGFic29sdXRlJTNCJTBBJTIwJTIwJTIwJTIwei1pbmRleCUzQSUyMC0xJTNCJTBBJTIwJTIwJTIwJTIwbWFyZ2luLXRvcCUzQSUyMC0xNXB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwbWFyZ2luLWxlZnQlM0ElMjAtMjBweCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQSU0MG1lZGlhJTI4bWF4LXdpZHRoJTNBJTIwNzY4cHglMjklN0IlMEElMjAlMjAlMjAlMjAuZ3JlZW4tbGluZSUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMG1hcmdpbi1yaWdodCUzQSUyMDE1cHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjAlN0QlMEElN0QlMEEucHJpY2luZy1jb2x1bW4td3JhcHBlciUyMCU3QiUwQSUyMCUyMCUyMCUyMG1pbi13aWR0aCUzQSUyMDMwNXB4JTNCJTBBJTdEJTBBLnByaWNpbmctdGFibGUtc3R5bGUtMiUyMC5wcmljaW5nLXByaWNlLXJvdyUyQyUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTIlMjAucHJpY2luZy1jb2x1bW4lMkMlMEEucHJpY2luZy10YWJsZS1zdHlsZS0yJTIwLnByaWNpbmctcm93JTNBbnRoLWNoaWxkJTI4b2RkJTI5JTIwJTdCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMHRyYW5zcGFyZW50JTNCJTBBJTIwJTIwJTIwJTIwbWFyZ2luLXRvcCUzQSUyMDAlMjFpbXBvcnRhbnQlM0IlMEElN0QlMEEucHJpY2luZy10YWJsZS1zdHlsZS0yJTIwLnByaWNpbmctcm93JTdCJTBBJTIwJTIwJTIwJTIwbWFyZ2luLWJvdHRvbSUzQSUyMDAlMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwdGV4dC1hbGlnbiUzQSUyMGxlZnQlM0IlMEElMjAlMjAlMjAlMjBwYWRkaW5nJTNBJTIwMTBweCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5wcmljaW5nLXByaWNlLXdyYXBwZXIlMkMlMEEucHJpY2luZy1wcmljZS1yb3clMjAlN0IlMEElMjAlMjAlMjAlMjB0ZXh0LWFsaWduJTNBJTIwbGVmdCUzQiUwQSU3RCUwQS5nZW0tYnV0dG9uLXBvc2l0aW9uLWNlbnRlciU3QiUwQSUyMCUyMCUyMCUyMHRleHQtYWxpZ24lM0ElMjBsZWZ0JTNCJTBBJTIwJTIwJTIwJTIwcGFkZGluZy1sZWZ0JTNBJTIwMTBweCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTIlMjAucHJpY2luZy1mb290ZXIlMjAlN0IlMEElMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTdEJTBBLnByaWNpbmctcHJpY2UtdGl0bGUlMjAlN0IlMEElMjAlMjAlMjAlMjBmb250LXNpemUlM0ElMjAyNHB4JTIxaW1wb3J0YW50JTNCJTBBJTdEJTBBLnByaWNpbmctdGFibGUtc3R5bGUtMiUyMC5wcmljaW5nLXJvdyUzQWJlZm9yZSUyMCU3QiUwQSUyMCUyMCUyMCUyMHZlcnRpY2FsLWFsaWduJTNBJTIwbWlkZGxlJTNCJTBBJTIwJTIwJTIwJTIwY29udGVudCUzQSUyMCUyNyU1Q2U2MTQlMjclM0IlMEElMjAlMjAlMjAlMjBjb2xvciUzQSUyMCUyMzcxZTZiNyUzQiUwQSUyMCUyMCUyMCUyMGZvbnQtZmFtaWx5JTNBJTIwdGhlZ2VtLWljb25zJTNCJTBBJTIwJTIwJTIwJTIwZm9udC1zdHlsZSUzQSUyMG5vcm1hbCUzQiUwQSUyMCUyMCUyMCUyMHRleHQtYWxpZ24lM0ElMjBjZW50ZXIlM0IlMEElMjAlMjAlMjAlMjBwYWRkaW5nLXJpZ2h0JTNBJTIwMTBweCUzQiUwQSU3RCUwQSU0MG1lZGlhJTI4bWF4LXdpZHRoJTNBJTIwNzY3cHglMjklN0IlMEElMjAlMjAlMjAlMjAucHJpY2luZy1jb2x1bW4td3JhcHBlciUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMG1pbi13aWR0aCUzQSUyMDI2MHB4JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdE"][vc_column width="1/2" css=".vc_custom_1668346195236{padding-top: 155px !important;padding-right: 65px !important;padding-bottom: 125px !important;padding-left: 65px !important;}" tablet_padding_top="85" tablet_padding_bottom="55" tablet_padding_left="42" tablet_padding_right="42"][vc_single_image image="{{IMG_ID=9562}}" img_size="full" alignment="center" el_class="green-line"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Subscribe%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668345170059{margin-bottom: -5px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_custom_font_size="1" heading_text_transform="lowercase" text_content="%5B%7B%22heading_text%22%3A%22to%20see%20more%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="30"][vc_column_text]<span style="color: #63717e;">Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua.</span>[/vc_column_text][gem_divider margin_top="40"][gem_button text="More plans" position="left" style="outline" corner="0" border="2" icon_pack="elegant" link="url:%23" text_color="#2d2f3d" border_color="#2d2f3d" hover_text_color="#ffffff" hover_background_color="#2d2f3d" hover_border_color="#2d2f3d" padding_left="35" padding_right="35"][/vc_column][vc_column width="1/2" css=".vc_custom_1668419806634{padding-top: 15px !important;background-color: #222432 !important;}"][gem_pricing_table style="2"][gem_pricing_column cols="3"][gem_pricing_price title="Full membership" font_size_label="custom" currency="$" price="19" time="Per Month" price_color="#71e6b7" title_color="#ffffff" time_color="#ffffff" font_size="50"][gem_pricing_row]<span style="color: #ffffff;">Orci varius natoque dolor</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Praesent euismod ac felis</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Nullam eu erat condimentum</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Donec quis est ac felis</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #63717e;">Mollis pellentesque erat</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #63717e;">Condimentum nullat</span>[/gem_pricing_row][gem_pricing_footer button_1_corner="0" button_1_icon_pack="elegant" button_1_text="Purchase now" button_1_link="url:%23" button_1_text_color="#2d2f3d" button_1_hover_text_color="#2d2f3d" button_1_background_color="#71e6b7" button_1_hover_background_color="#ffffff"][/gem_pricing_column][/gem_pricing_table][/vc_column][/vc_row]',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" css=".vc_custom_1678451230650{margin-bottom: 0px !important;}" custom_css_code="LmdyZWVuLWxpbmUlMjAlN0IlMEElMjAlMjAlMjAlMjBwb3NpdGlvbiUzQSUyMGFic29sdXRlJTNCJTBBJTIwJTIwJTIwJTIwei1pbmRleCUzQSUyMC0xJTNCJTBBJTIwJTIwJTIwJTIwbWFyZ2luLXRvcCUzQSUyMC0xNXB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwbWFyZ2luLWxlZnQlM0ElMjAtMjBweCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQSU0MG1lZGlhJTI4bWF4LXdpZHRoJTNBJTIwNzY4cHglMjklN0IlMEElMjAlMjAlMjAlMjAuZ3JlZW4tbGluZSUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMG1hcmdpbi1yaWdodCUzQSUyMDE1cHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjAlN0QlMEElN0QlMEEucHJpY2luZy1jb2x1bW4td3JhcHBlciUyMCU3QiUwQSUyMCUyMCUyMCUyMG1pbi13aWR0aCUzQSUyMDMwNXB4JTNCJTBBJTdEJTBBLnByaWNpbmctdGFibGUtc3R5bGUtMiUyMC5wcmljaW5nLXByaWNlLXJvdyUyQyUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTIlMjAucHJpY2luZy1jb2x1bW4lMkMlMEEucHJpY2luZy10YWJsZS1zdHlsZS0yJTIwLnByaWNpbmctcm93JTNBbnRoLWNoaWxkJTI4b2RkJTI5JTIwJTdCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMHRyYW5zcGFyZW50JTNCJTBBJTIwJTIwJTIwJTIwbWFyZ2luLXRvcCUzQSUyMDAlMjFpbXBvcnRhbnQlM0IlMEElN0QlMEEucHJpY2luZy10YWJsZS1zdHlsZS0yJTIwLnByaWNpbmctcm93JTdCJTBBJTIwJTIwJTIwJTIwbWFyZ2luLWJvdHRvbSUzQSUyMDAlMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwdGV4dC1hbGlnbiUzQSUyMGxlZnQlM0IlMEElMjAlMjAlMjAlMjBwYWRkaW5nJTNBJTIwMTBweCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQS5wcmljaW5nLXByaWNlLXdyYXBwZXIlMkMlMEEucHJpY2luZy1wcmljZS1yb3clMjAlN0IlMEElMjAlMjAlMjAlMjB0ZXh0LWFsaWduJTNBJTIwbGVmdCUzQiUwQSU3RCUwQS5nZW0tYnV0dG9uLXBvc2l0aW9uLWNlbnRlciU3QiUwQSUyMCUyMCUyMCUyMHRleHQtYWxpZ24lM0ElMjBsZWZ0JTNCJTBBJTIwJTIwJTIwJTIwcGFkZGluZy1sZWZ0JTNBJTIwMTBweCUzQiUwQSU3RCUwQS5wcmljaW5nLXRhYmxlLXN0eWxlLTIlMjAucHJpY2luZy1mb290ZXIlMjAlN0IlMEElMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTdEJTBBLnByaWNpbmctcHJpY2UtdGl0bGUlMjAlN0IlMEElMjAlMjAlMjAlMjBmb250LXNpemUlM0ElMjAyNHB4JTIxaW1wb3J0YW50JTNCJTBBJTdEJTBBLnByaWNpbmctdGFibGUtc3R5bGUtMiUyMC5wcmljaW5nLXJvdyUzQWJlZm9yZSUyMCU3QiUwQSUyMCUyMCUyMCUyMHZlcnRpY2FsLWFsaWduJTNBJTIwbWlkZGxlJTNCJTBBJTIwJTIwJTIwJTIwY29udGVudCUzQSUyMCUyNyU1Q2U2MTQlMjclM0IlMEElMjAlMjAlMjAlMjBjb2xvciUzQSUyMCUyMzcxZTZiNyUzQiUwQSUyMCUyMCUyMCUyMGZvbnQtZmFtaWx5JTNBJTIwdGhlZ2VtLWljb25zJTNCJTBBJTIwJTIwJTIwJTIwZm9udC1zdHlsZSUzQSUyMG5vcm1hbCUzQiUwQSUyMCUyMCUyMCUyMHRleHQtYWxpZ24lM0ElMjBjZW50ZXIlM0IlMEElMjAlMjAlMjAlMjBwYWRkaW5nLXJpZ2h0JTNBJTIwMTBweCUzQiUwQSU3RCUwQSU0MG1lZGlhJTI4bWF4LXdpZHRoJTNBJTIwNzY3cHglMjklN0IlMEElMjAlMjAlMjAlMjAucHJpY2luZy1jb2x1bW4td3JhcHBlciUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMG1pbi13aWR0aCUzQSUyMDI2MHB4JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdE"][vc_column width="1/2" css=".vc_custom_1668346195236{padding-top: 155px !important;padding-right: 65px !important;padding-bottom: 125px !important;padding-left: 65px !important;}" tablet_padding_top="85" tablet_padding_bottom="55" tablet_padding_left="42" tablet_padding_right="42"][vc_single_image image="{{IMG_ID=9562}}" img_size="full" alignment="center" el_class="green-line"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Subscribe%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1668345170059{margin-bottom: -5px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_custom_font_size="1" heading_text_transform="lowercase" text_content="%5B%7B%22heading_text%22%3A%22to%20see%20more%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="30"][vc_column_text]<span style="color: #63717e;">Lorem ipsum dolor sit ametcon sectetur adipisicing elit, sed doiusmod tempor incidi labore et dolore. agna aliqua.</span>[/vc_column_text][gem_divider margin_top="40"][gem_button text="More plans" position="left" style="outline" corner="0" border="2" icon_pack="elegant" link="url:%23" text_color="#2d2f3d" border_color="#2d2f3d" hover_text_color="#ffffff" hover_background_color="#2d2f3d" hover_border_color="#2d2f3d" padding_left="35" padding_right="35"][/vc_column][vc_column width="1/2" css=".vc_custom_1668419806634{padding-top: 15px !important;background-color: #222432 !important;}"][gem_pricing_table style="2"][gem_pricing_column cols="3"][gem_pricing_price title="Full membership" font_size_label="custom" currency="$" price="19" time="Per Month" price_color="#71e6b7" title_color="#ffffff" time_color="#ffffff" font_size="50"][gem_pricing_row]<span style="color: #ffffff;">Orci varius natoque dolor</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Praesent euismod ac felis</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Nullam eu erat condimentum</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #ffffff;">Donec quis est ac felis</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #63717e;">Mollis pellentesque erat</span>[/gem_pricing_row][gem_pricing_row]<span style="color: #63717e;">Condimentum nullat</span>[/gem_pricing_row][gem_pricing_footer button_1_corner="0" button_1_icon_pack="elegant" button_1_text="Purchase now" button_1_link="url:%23" button_1_text_color="#2d2f3d" button_1_hover_text_color="#2d2f3d" button_1_background_color="#71e6b7" button_1_hover_background_color="#ffffff"][/gem_pricing_column][/gem_pricing_table][/vc_column][/vc_row]',
 		'categories' => array (
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '868',
 				'popup_width_tablet' => '600',
 				'popup_width_mobile' => '300',
@@ -8110,13 +8069,12 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		'mark' => '',
 		'pic' => 'popup-51-preview.jpg',
 		'preview' => 'https://codex-themes.com/thegem/blocks/preview/popup-51-call-to-action/',
-		'content' => '[vc_row css=".vc_custom_1669380750418{margin-bottom: 0px !important;background-image: url({{IMG_URL=9564}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="LnByaWNpbmctdGFibGUtc3R5bGUtMiUyMC5wcmljaW5nLXJvdyUyMCU3QiUwQSUyMCUyMCUyMCUyMG1hcmdpbiUzQSUyMDAlMjFpbXBvcnRhbnQlM0IlMjAlMjAlMjAlMjAlMEElMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLWJvdHRvbSUzQSUyMDFweCUyMHNvbGlkJTIwJTIzZWZlZmVmJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMHRyYW5zcGFyZW50JTIxaW1wb3J0YW50JTNCJTBBJTdEJTBBLnByaWNpbmctdGFibGUtc3R5bGUtMiUyMC5wcmljaW5nLWZvb3RlciUyMCU3QiUwQSUyMCUyMCUyMCUyMGJvcmRlciUzQSUyMG5vbmUlMjFpbXBvcnRhbnQlM0IlMEElN0QlMEEucHJpY2luZy10YWJsZS1zdHlsZS0yJTIwLnByaWNpbmctcHJpY2UtdGl0bGUlN0IlMEElMjAlMjAlMjAlMjBmb250LXNpemUlM0ElMjAyNHB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwbGluZS1oZWlnaHQlM0ElMjAzNnB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwcGFkZGluZy1ib3R0b20lM0ElMjA4cHglMjFpbXBvcnRhbnQlM0IlMEElN0Q="][vc_column css=".vc_custom_1668414660632{padding-top: 90px !important;padding-right: 50px !important;padding-bottom: 10px !important;padding-left: 50px !important;}" tablet_padding_top="65" mobile_padding_left="21" mobile_padding_right="21"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22Subscribe%20to%20see%20more%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="45" tablet_margin_top="25" mobile_margin_top="25"][gem_pricing_table style="2"][gem_pricing_column cols="3"][gem_pricing_price title="Beginner" font_size_label="custom" currency="$" price="99" time="Per Month" backgroundcolor="#2d2f3d" price_color="#57b9d1" time_color="#57b9d1" title_color="#ffffff"][gem_pricing_row]Ut mollis pellentesque tortor[/gem_pricing_row][gem_pricing_row]Nullam eu erat condimentum[/gem_pricing_row][gem_pricing_row]Donec quis est ac felis[/gem_pricing_row][gem_pricing_row strike="1"]Orci varius natoque dolor[/gem_pricing_row][gem_pricing_row strike="1"]Praesent euismod ac felis[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Order" button_1_link="url:%23" button_1_text_color="#2d2f3d" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#2d2f3d" button_1_border_color="#2d2f3d" button_1_hover_border_color="#2d2f3d"][/gem_pricing_column][gem_pricing_column cols="3"][gem_pricing_price title="Advanced" font_size_label="custom" currency="$" price="199" time="Per Month" backgroundcolor="#56cce9" price_color="#ffffff" time_color="#ffffff" title_color="#2d2f3d"][gem_pricing_row]Ut mollis pellentesque tortor[/gem_pricing_row][gem_pricing_row]Nullam eu erat condimentum[/gem_pricing_row][gem_pricing_row]Donec quis est ac felis[/gem_pricing_row][gem_pricing_row]Orci varius natoque dolor[/gem_pricing_row][gem_pricing_row strike="1"]Praesent euismod ac felis[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Order" button_1_link="url:%23" button_1_text_color="#2d2f3d" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#2d2f3d" button_1_border_color="#2d2f3d" button_1_hover_border_color="#2d2f3d"][/gem_pricing_column][gem_pricing_column cols="3"][gem_pricing_price title="Ultimate" font_size_label="custom" currency="$" price="299" time="Per Month" backgroundcolor="#2d2f3d" price_color="#57b9d1" time_color="#57b9d1" title_color="#ffffff"][gem_pricing_row]Ut mollis pellentesque tortor[/gem_pricing_row][gem_pricing_row]Nullam eu erat condimentum[/gem_pricing_row][gem_pricing_row]Donec quis est ac felis[/gem_pricing_row][gem_pricing_row]Orci varius natoque dolor[/gem_pricing_row][gem_pricing_row]Praesent euismod ac felis[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Order" button_1_link="url:%23" button_1_text_color="#2d2f3d" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#2d2f3d" button_1_border_color="#2d2f3d" button_1_hover_border_color="#2d2f3d"][/gem_pricing_column][/gem_pricing_table][/vc_column][/vc_row]',
+		'content' => '[vc_row css=".vc_custom_1678450928999{margin-bottom: 0px !important;background-image: url({{IMG_URL=9564}}) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" custom_css_code="LnByaWNpbmctdGFibGUtc3R5bGUtMiUyMC5wcmljaW5nLXJvdyUyMCU3QiUwQSUyMCUyMCUyMCUyMG1hcmdpbiUzQSUyMDAlMjFpbXBvcnRhbnQlM0IlMjAlMjAlMjAlMjAlMEElMjAlMjAlMjAlMjBib3JkZXIlM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLWJvdHRvbSUzQSUyMDFweCUyMHNvbGlkJTIwJTIzZWZlZmVmJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMHRyYW5zcGFyZW50JTIxaW1wb3J0YW50JTNCJTBBJTdEJTBBLnByaWNpbmctdGFibGUtc3R5bGUtMiUyMC5wcmljaW5nLWZvb3RlciUyMCU3QiUwQSUyMCUyMCUyMCUyMGJvcmRlciUzQSUyMG5vbmUlMjFpbXBvcnRhbnQlM0IlMEElN0QlMEEucHJpY2luZy10YWJsZS1zdHlsZS0yJTIwLnByaWNpbmctcHJpY2UtdGl0bGUlN0IlMEElMjAlMjAlMjAlMjBmb250LXNpemUlM0ElMjAyNHB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwbGluZS1oZWlnaHQlM0ElMjAzNnB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwcGFkZGluZy1ib3R0b20lM0ElMjA4cHglMjFpbXBvcnRhbnQlM0IlMEElN0Q="][vc_column css=".vc_custom_1668414660632{padding-top: 90px !important;padding-right: 50px !important;padding-bottom: 10px !important;padding-left: 50px !important;}" tablet_padding_top="65" mobile_padding_left="21" mobile_padding_right="21"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_align="center" heading_custom_font_size="1" heading_text_transform="uppercase" text_content="%5B%7B%22heading_text%22%3A%22Subscribe%20to%20see%20more%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%232d2f3d%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="45" tablet_margin_top="25" mobile_margin_top="25"][gem_pricing_table style="2"][gem_pricing_column cols="3"][gem_pricing_price title="Beginner" font_size_label="custom" currency="$" price="99" time="Per Month" backgroundcolor="#2d2f3d" price_color="#57b9d1" time_color="#57b9d1" title_color="#ffffff"][gem_pricing_row]Ut mollis pellentesque tortor[/gem_pricing_row][gem_pricing_row]Nullam eu erat condimentum[/gem_pricing_row][gem_pricing_row]Donec quis est ac felis[/gem_pricing_row][gem_pricing_row strike="1"]Orci varius natoque dolor[/gem_pricing_row][gem_pricing_row strike="1"]Praesent euismod ac felis[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Order" button_1_link="url:%23" button_1_text_color="#2d2f3d" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#2d2f3d" button_1_border_color="#2d2f3d" button_1_hover_border_color="#2d2f3d"][/gem_pricing_column][gem_pricing_column cols="3"][gem_pricing_price title="Advanced" font_size_label="custom" currency="$" price="199" time="Per Month" backgroundcolor="#56cce9" price_color="#ffffff" time_color="#ffffff" title_color="#2d2f3d"][gem_pricing_row]Ut mollis pellentesque tortor[/gem_pricing_row][gem_pricing_row]Nullam eu erat condimentum[/gem_pricing_row][gem_pricing_row]Donec quis est ac felis[/gem_pricing_row][gem_pricing_row]Orci varius natoque dolor[/gem_pricing_row][gem_pricing_row strike="1"]Praesent euismod ac felis[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Order" button_1_link="url:%23" button_1_text_color="#2d2f3d" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#2d2f3d" button_1_border_color="#2d2f3d" button_1_hover_border_color="#2d2f3d"][/gem_pricing_column][gem_pricing_column cols="3"][gem_pricing_price title="Ultimate" font_size_label="custom" currency="$" price="299" time="Per Month" backgroundcolor="#2d2f3d" price_color="#57b9d1" time_color="#57b9d1" title_color="#ffffff"][gem_pricing_row]Ut mollis pellentesque tortor[/gem_pricing_row][gem_pricing_row]Nullam eu erat condimentum[/gem_pricing_row][gem_pricing_row]Donec quis est ac felis[/gem_pricing_row][gem_pricing_row]Orci varius natoque dolor[/gem_pricing_row][gem_pricing_row]Praesent euismod ac felis[/gem_pricing_row][gem_pricing_footer button_1_style="outline" button_1_corner="25" button_1_border="2" button_1_icon_pack="elegant" button_1_text="Order" button_1_link="url:%23" button_1_text_color="#2d2f3d" button_1_hover_text_color="#ffffff" button_1_hover_background_color="#2d2f3d" button_1_border_color="#2d2f3d" button_1_hover_border_color="#2d2f3d"][/gem_pricing_column][/gem_pricing_table][/vc_column][/vc_row]',
 		'categories' => array (
 			'call-to-action' => 'Call To Action',
 		),
 		'metas' => array (
-			'thegem_popup_item_data' => 
-			array (
+			'thegem_popup_item_data' => array (
 				'popup_width_desktop' => '1108',
 				'popup_width_tablet' => '650',
 				'popup_width_mobile' => '320',
@@ -8149,6 +8107,2728 @@ Sunday:	Closed" subtitle_text_style="text-body" description="" icon_desktop_spac
 		),
 		'attachment_ids' => array (
 			0 => '9564',
+		),
+	),
+	340 => array (
+		'id' => 9918,
+		'type' => 'portfolio',
+		'title' => 'Branding',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-1.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/branding/',
+		'content' => '[vc_row full_width="stretch_row" ken_burns_transition_speed="15000" thegem_featured_image_for_bg_active="true" ken_burns_enabled="true" css=".vc_custom_1676981398113{margin-bottom: 0px !important;background-color: #b5f4fa !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column css=".vc_custom_1676979790852{padding-top: 350px !important;padding-bottom: 350px !important;}" tablet_padding_top="250" tablet_padding_bottom="250" mobile_padding_top="200" mobile_padding_bottom="200"][/vc_column][/vc_row][vc_row css=".vc_custom_1675406596580{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675423492869{padding-top: 95px !important;padding-bottom: 50px !important;}" tablet_padding_top="80" tablet_padding_bottom="20" mobile_padding_top="60"][thegem_te_portfolio_title alignment="center" text_style="title-h1" text_transform="none" text_letter_spacing="0"][gem_divider margin_top="45" mobile_margin_top="35"][thegem_te_portfolio_excerpt alignment="center" text_style="styled-subtitle" max_width="770" text_letter_spacing="0"][gem_divider margin_top="90" tablet_margin_top="65" mobile_margin_top="65"][vc_row_inner equal_height="yes"][vc_column_inner width="1/4" css=".vc_custom_1675423537593{border-right-width: 1px !important;padding-top: 20px !important;padding-bottom: 20px !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;}" offset="vc_col-lg-3 vc_col-md-3 vc_col-xs-6"][thegem_te_portfolio_info list_alignment="center" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_location_field_type%22%3A%22text%22%2C%22meta_thegem_cf_location_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_location_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_type_field_type%22%3A%22text%22%2C%22meta_thegem_cf_type_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_type_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_value_field_type%22%3A%22text%22%2C%22meta_thegem_cf_value_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_value_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_property_id_field_type%22%3A%22text%22%2C%22meta_thegem_cf_property_id_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_property_id_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_bathrooms_field_type%22%3A%22text%22%2C%22meta_thegem_cf_bathrooms_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_bathrooms_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_bedrooms_field_type%22%3A%22text%22%2C%22meta_thegem_cf_bedrooms_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_bedrooms_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_price_field_type%22%3A%22text%22%2C%22meta_thegem_cf_price_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_price_icon_pack%22%3A%22elegant%22%7D%5D"][/vc_column_inner][vc_column_inner width="1/4" css=".vc_custom_1675423546374{border-right-width: 1px !important;padding-top: 20px !important;padding-bottom: 20px !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;}" offset="vc_col-lg-3 vc_col-md-3 vc_col-xs-6"][thegem_te_portfolio_info list_alignment="center" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][vc_column_inner width="1/4" css=".vc_custom_1675423568253{border-right-width: 1px !important;padding-top: 20px !important;padding-bottom: 20px !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;}" offset="vc_col-lg-3 vc_col-md-3 vc_col-xs-6"][thegem_te_portfolio_info list_alignment="center" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][vc_column_inner width="1/4" css=".vc_custom_1675423577159{padding-top: 20px !important;padding-bottom: 20px !important;}" offset="vc_col-lg-3 vc_col-md-3 vc_col-xs-6"][thegem_te_portfolio_info list_alignment="center" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_art_director%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Art%20Director%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row css=".vc_custom_1675420745648{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675423820027{padding-top: 50px !important;padding-bottom: 50px !important;}" tablet_padding_bottom="30" mobile_padding_bottom="15"][thegem_te_portfolio_gallery type="grid" grid_columns_desktop="2" grid_columns_tablet="2" grid_columns_mobile="1" grid_gaps_desktop="42" grid_gaps_mobile="21" image_ratio="" image_height_desktop="436" image_shadow=""][/vc_column][/vc_row][vc_row][vc_column css=".vc_custom_1675424498643{padding-top: 50px !important;padding-bottom: 20px !important;}"][thegem_te_portfolio_content alignment="center"][/vc_column][/vc_row][vc_row css=".vc_custom_1675424265166{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675424677210{padding-top: 40px !important;padding-bottom: 40px !important;}" tablet_padding_top="20" tablet_padding_bottom="20"][gem_social_sharing alignment="center" icons_size="small" tumblr="" reddit="" whatsapp="" viber="" xing=""][gem_divider margin_top="55"][thegem_te_portfolio_navigation][/vc_column][/vc_row][vc_row][vc_column css=".vc_custom_1676285010275{padding-top: 50px !important;padding-bottom: 100px !important;}" mobile_padding_top="40" tablet_padding_top="35" tablet_padding_bottom="50"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Projects%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="85" tablet_margin_top="65" mobile_margin_top="55"][gem_portfolio portfolio_uid="grid_c47a11a" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_display_titles="hover" portfolio_hover_hover="zooming-blur" additional_meta_added="1" show_additional_meta="" portfolio_items_per_page="3" portfolio_pagination="disable" portfolio_gaps_size="42" loading_animation="bounce" new_default_highlights="1" ajax_preloader_type="minimal" source_type="custom" portfolio_gaps_size_tablet="42" portfolio_gaps_size_mobile="21" image_ratio_default="1.24"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+			'art_director' => array (
+				'title' => 'Art Director',
+				'key' => '_thegem_cf_art_director',
+				'type' => 'text',
+				'id' => 3,
+				'value' => 'Jackson Smith',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	341 => array (
+		'id' => 9919,
+		'type' => 'portfolio',
+		'title' => 'Clean Demo Two',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-2.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/clean-demo-two/',
+		'content' => '[vc_row css=".vc_custom_1675426637177{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675430275959{padding-top: 25px !important;}"][thegem_te_portfolio_breadcrumbs][gem_divider margin_top="30"][thegem_te_portfolio_title text_style="title-h2" text_transform="none" text_letter_spacing="0"][/vc_column][/vc_row][vc_row equal_height="yes" css=".vc_custom_1675430060207{margin-bottom: 0px !important;padding-top: 30px !important;padding-bottom: 60px !important;}"][vc_column offset="vc_col-lg-9 vc_col-md-9" css=".vc_custom_1675430470532{padding-top: 0px !important;padding-right: 30px !important;}" tablet_padding_right="21"][thegem_te_portfolio_content][/vc_column][vc_column offset="vc_col-lg-3 vc_col-md-3" css=".vc_custom_1675430539961{padding-top: 0px !important;padding-left: 30px !important;}" tablet_padding_left="21" tablet_padding_top="25"][thegem_te_portfolio_info layout="vertical" list_spacing_desktop="15" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][gem_divider margin_top="22" margin_bottom="25" color="#dfe5e8"][gem_social_sharing tumblr="" reddit="" whatsapp="" viber="" xing=""][/vc_column][/vc_row][vc_row][vc_column][thegem_te_portfolio_gallery type="grid" grid_columns_desktop="1" grid_columns_tablet="1" grid_columns_mobile="1" grid_gaps_desktop="21" image_ratio="" lightbox="" image_shadow=""][/vc_column][/vc_row][vc_row css=".vc_custom_1675429836970{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675429927674{padding-top: 70px !important;padding-bottom: 20px !important;}"][thegem_te_portfolio_navigation label="" title_text_style="text-body" arrows_type="round"][/vc_column][/vc_row][vc_row][vc_column css=".vc_custom_1676288043888{padding-top: 40px !important;padding-bottom: 60px !important;}" tablet_padding_bottom="30"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Works%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="65" tablet_margin_top="55" mobile_margin_top="55"][gem_portfolio portfolio_uid="grid_60ef147" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_hover="zoom-overlay" additional_meta_added="1" show_additional_meta="" portfolio_items_per_page="3" portfolio_pagination="disable" portfolio_gaps_size="15" portfolio_title_style="dark" portfolio_title_preset="title-h6" portfolio_title_transform="uppercase" portfolio_background_style="transparent" caption_container_alignment="center" new_default_highlights="1" ajax_preloader_type="minimal" source_type="custom" portfolio_gaps_size_tablet="15" portfolio_gaps_size_mobile="15" image_ratio_default="1.27"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	342 => array (
+		'id' => 9920,
+		'type' => 'portfolio',
+		'title' => 'Photography',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-3.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/photography/',
+		'content' => '[vc_row equal_height="yes" css=".vc_custom_1677832892976{padding-top: 130px !important;padding-bottom: 90px !important;}" tablet_padding_bottom="50" mobile_padding_top="115" mobile_padding_bottom="40"][vc_column width="1/3" offset="vc_col-lg-6 vc_col-md-4"][thegem_te_portfolio_title text_style="title-h2" text_transform="none" text_letter_spacing="0"][/vc_column][vc_column width="2/3" offset="vc_col-lg-6 vc_col-md-8" mobile_padding_top="35"][thegem_te_portfolio_excerpt text_style="text-body"][gem_divider margin_top="40"][thegem_te_portfolio_info list_spacing_desktop="35" list_spacing_tablet="20" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" css=".vc_custom_1676288741609{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1676986472007{padding-top: 0px !important;}"][gem_gallery source_type="portfolio-gallery" gallery_type="grid" gallery_layout="100%" gallery_style="masonry" gaps_size="42" metro_max_row_height="380" new_default_highlights="1" fullwidth_section_images="1"][/vc_column][/vc_row][vc_row][vc_column css=".vc_custom_1675435166885{padding-top: 0px !important;}"][thegem_te_portfolio_content][gem_divider margin_bottom="55" color="#dfe5e8" margin_top="55"][thegem_te_portfolio_navigation title_text_style="title-h6" title_text_transform="none" arrows="" title_text_letter_spacing="0"][/vc_column][/vc_row][vc_row css=".vc_custom_1675435078377{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1676294620494{padding-top: 70px !important;}" tablet_padding_top="55"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Projects%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" css=".vc_custom_1676293649583{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1676294581846{padding-top: 65px !important;padding-right: 42px !important;padding-bottom: 30px !important;padding-left: 42px !important;}" tablet_padding_top="35" tablet_padding_left="21" tablet_padding_right="21"][gem_portfolio portfolio_uid="grid_cf8519f" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="4x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="280" portfolio_fullwidth_section_images="1" portfolio_display_titles="hover" additional_meta_added="1" show_additional_meta="" portfolio_items_per_page="4" portfolio_pagination="disable" portfolio_gaps_size="42" portfolio_title_preset="title-h5" portfolio_title_transform="none" new_default_highlights="1" ajax_preloader_type="minimal" source_type="custom" portfolio_gaps_size_tablet="21" portfolio_gaps_size_mobile="21" image_ratio_default="1.27"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	343 => array (
+		'id' => 9921,
+		'type' => 'portfolio',
+		'title' => 'Digital Marketing',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-4.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/digital-marketing/',
+		'content' => '[vc_row full_width="stretch_row_content" ken_burns_transition_speed="15000" thegem_featured_image_for_bg_active="true" ken_burns_enabled="true" css=".vc_custom_1682060176674{margin-bottom: 0px !important;background-color: #030135 !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column css=".vc_custom_1682060266771{padding-top: 400px !important;padding-bottom: 400px !important;}" tablet_padding_top="300" tablet_padding_bottom="300"][/vc_column][/vc_row][vc_row equal_height="yes" content_placement="middle" css=".vc_custom_1677063122823{margin-top: -100px !important;margin-bottom: 0px !important;background-color: #ffffff !important;}" z_index="10" tablet_margin_top="0" custom_css_code="LmdlbS1idXR0b24tc2l6ZS1zbWFsbCUyMCU3QiUwQSUyMCUyMCUyMCUyMG1hcmdpbiUzQSUyMDAlMjFpbXBvcnRhbnQlM0IlMEElN0Q="][vc_column width="2/3" css=".vc_custom_1675674554225{padding-top: 45px !important;padding-bottom: 10px !important;padding-left: 90px !important;}" offset="vc_col-lg-9 vc_col-md-8 vc_col-xs-6" tablet_padding_left="42" mobile_padding_left="21" mobile_padding_bottom="15"][thegem_te_portfolio_info info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%7D%5D"][/vc_column][vc_column width="1/3" css=".vc_custom_1675674549001{padding-top: 45px !important;padding-bottom: 15px !important;padding-left: 55px !important;}" offset="vc_col-lg-3 vc_col-md-4 vc_col-xs-6" tablet_padding_left="42" mobile_padding_left="21"][gem_button text="View Website" link_type="dynamic" link_dynamic="project_details" project_details_link_select="_thegem_cf_link" link_target="" link_nofollow="" corner="3" icon_pack="elegant" text_color="#ffffff" background_color="#00bcd4" hover_text_color="#ffffff" hover_background_color="#3c3950" padding_left="25" padding_right="25" padding_left_mobile="15" padding_right_mobile="15"][/vc_column][/vc_row][vc_row equal_height="yes" content_placement="bottom"][vc_column width="2/3" css=".vc_custom_1675683310324{padding-top: 80px !important;padding-bottom: 115px !important;padding-left: 90px !important;}" offset="vc_col-lg-9 vc_col-md-8" tablet_padding_left="42" tablet_padding_top="45" tablet_padding_bottom="65" mobile_padding_left="21" mobile_padding_bottom="25"][thegem_te_portfolio_title text_style="title-h1" text_transform="none" text_letter_spacing="0" max_width="490"][gem_divider margin_top="40" tablet_margin_top="35" mobile_margin_top="35"][thegem_te_portfolio_excerpt text_style="styled-subtitle" text_transform="none" text_letter_spacing="0" max_width="590"][/vc_column][vc_column width="1/3" css=".vc_custom_1675682396664{padding-top: 80px !important;padding-bottom: 115px !important;padding-left: 55px !important;}" offset="vc_col-lg-3 vc_col-md-4" tablet_padding_top="45" tablet_padding_bottom="65" tablet_padding_left="42" mobile_padding_left="21" mobile_padding_top="30"][thegem_te_portfolio_info layout="vertical" list_spacing_desktop="32" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_link%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Link%22%2C%22link%22%3A%22dynamic%22%2C%22link_dynamic%22%3A%22project_details%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%2C%22link_target%22%3A%221%22%7D%5D"][/vc_column][/vc_row][vc_row css=".vc_custom_1675681440374{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675681457978{padding-top: 0px !important;}"][thegem_te_portfolio_content][/vc_column][/vc_row][vc_row css=".vc_custom_1675681484868{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1676299673061{padding-top: 70px !important;padding-right: 90px !important;padding-bottom: 90px !important;padding-left: 90px !important;}" tablet_padding_left="42" tablet_padding_right="42" mobile_padding_left="21" mobile_padding_right="21" tablet_padding_bottom="50"][gem_divider margin_bottom="65" color="#dfe5e8"][thegem_te_portfolio_navigation title_text_style="title-h6" title_text_transform="none" arrows="" title_text_letter_spacing="0"][gem_divider margin_top="60"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Works%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="70" tablet_margin_top="50" mobile_margin_top="50"][gem_portfolio portfolio_uid="grid_3696c4c" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_display_titles="image" portfolio_hover_image_alternative="circular" portfolio_show_date="" additional_meta_added="1" show_additional_meta="" portfolio_items_per_page="2" portfolio_pagination="disable" portfolio_gaps_size="42" new_default_highlights="1" ajax_preloader_type="minimal" source_type="custom" portfolio_gaps_size_tablet="21" portfolio_gaps_size_mobile="21" portfolio_title_letter_spacing="0" image_ratio_default="1.44"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+			'link' => array (
+				'title' => 'Link',
+				'key' => '_thegem_cf_link',
+				'type' => 'link',
+				'id' => 4,
+				'value' => 'https://www.domain.tld',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	344 => array (
+		'id' => 9922,
+		'type' => 'portfolio',
+		'title' => 'Clean Demo One',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-5.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/clean-demo-one/',
+		'content' => '[vc_row css=".vc_custom_1675684798663{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675756103338{padding-top: 70px !important;padding-bottom: 35px !important;}" mobile_padding_top="50"][thegem_te_portfolio_title alignment="center" text_style="title-xlarge" text_transform="none" text_letter_spacing="0"][gem_divider margin_top="45"][thegem_te_portfolio_excerpt alignment="center" text_style="styled-subtitle" max_width="710"][gem_divider margin_top="60"][thegem_te_portfolio_breadcrumbs alignment="center"][/vc_column][/vc_row][vc_row full_width="stretch_row" thegem_featured_image_for_bg_active="true" css=".vc_custom_1677048883527{margin-bottom: -175px !important;background-color: #f5c4bd !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" mobile_margin_bottom="-120"][vc_column css=".vc_custom_1676969858191{padding-top: 320px !important;padding-bottom: 320px !important;}" tablet_padding_top="225" tablet_padding_bottom="225" mobile_padding_top="200" mobile_padding_bottom="200"][/vc_column][/vc_row][vc_row equal_height="yes" css=".vc_custom_1677075063005{margin-bottom: 0px !important;}" z_index="10"][vc_column width="1/12"][/vc_column][vc_column width="5/6" thegem_shadow_color="rgba(0,0,0,0.1)" thegem_shaow_blur="20" thegem_enable_shadow="true" css=".vc_custom_1675756420285{padding-top: 65px !important;padding-bottom: 70px !important;background-color: #ffffff !important;}" mobile_margin_left="21" mobile_margin_right="21" mobile_padding_top="45" mobile_padding_bottom="45" mobile_padding_left="42" mobile_padding_right="42"][vc_row_inner equal_height="yes" content_placement="bottom"][vc_column_inner width="1/12"][/vc_column_inner][vc_column_inner width="1/2" css=".vc_custom_1675754852189{padding-top: 0px !important;padding-left: 35px !important;}" tablet_padding_left="21"][thegem_te_portfolio_info info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%7D%5D"][gem_divider margin_top="45" mobile_margin_top="25"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Duis%20aute%20irure%3A%20dolor%20in%20omnis%20iste%20reprehenderit%20in%20voluptate%20velit%2C%20sed%20do%20eiusmod%20tempo%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="460" heading_letter_spacing="0"][/vc_column_inner][vc_column_inner width="1/3" mobile_padding_top="30"][thegem_te_portfolio_info layout="vertical" list_spacing_desktop="25" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0"][/vc_column_inner][vc_column_inner width="1/12"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column width="1/12"][/vc_column][/vc_row][vc_row equal_height="yes" css=".vc_custom_1675690073680{margin-bottom: 0px !important;}"][vc_column width="1/12" offset="vc_col-lg-2 vc_col-md-2 vc_hidden-xs"][/vc_column][vc_column width="5/12" css=".vc_custom_1675756497618{padding-top: 60px !important;}" offset="vc_col-lg-4 vc_col-md-4 vc_col-xs-9"][gem_social_sharing icons_size="custom" icons_size_custom="20" tumblr="" reddit="" whatsapp="" viber="" xing=""][/vc_column][vc_column width="5/12" css=".vc_custom_1675756503120{padding-top: 60px !important;}" offset="vc_col-lg-4 vc_col-md-4 vc_col-xs-3"][thegem_te_portfolio_info list_alignment="right" info_content="%5B%7B%22type%22%3A%22likes%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%7D%5D" label_text_color="#3c3950"][/vc_column][vc_column width="1/12" offset="vc_col-lg-2 vc_col-md-2 vc_hidden-xs"][/vc_column][/vc_row][vc_row css=".vc_custom_1675687951993{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1680765704909{padding-top: 50px !important;padding-bottom: 65px !important;}" tablet_padding_bottom="45"][thegem_te_portfolio_content][/vc_column][/vc_row][vc_row equal_height="yes" css=".vc_custom_1675690041063{margin-bottom: 0px !important;}"][vc_column width="1/12" offset="vc_col-lg-2 vc_col-md-2"][/vc_column][vc_column width="5/6" offset="vc_col-lg-8 vc_col-md-8"][thegem_te_portfolio_navigation][gem_divider margin_top="70" tablet_margin_top="55" mobile_margin_top="55"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Projects%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="60" tablet_margin_top="45" mobile_margin_top="45"][/vc_column][vc_column width="1/12" offset="vc_col-lg-2 vc_col-md-2"][/vc_column][/vc_row][vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1675756861926{margin-bottom: 0px !important;}" custom_css_code="JTQwbWVkaWElMjBvbmx5JTIwc2NyZWVuJTIwYW5kJTIwJTI4bWF4LXdpZHRoJTNBJTIwODMwcHglMjklMjBhbmQlMjAlMjhtaW4td2lkdGglM0ElMjA1NTBweCUyOSU3QiUwQS5wb3J0Zm9saW8lM0Fub3QlMjguZXh0ZW5kZWQtcHJvZHVjdHMtZ3JpZCUyOSUyMC5wb3J0Zm9saW8tc2V0JTIwLnBvcnRmb2xpby1pdGVtJTdCJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwd2lkdGglM0ElMjAzMy4zJTI1JTNCJTBBJTIwJTIwJTIwJTdEJTBBJTdE"][vc_column css=".vc_custom_1675752812983{padding-top: 0px !important;}"][gem_portfolio portfolio_uid="grid_322a142" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_fullwidth_section_images="1" portfolio_display_titles="hover" additional_meta_added="1" portfolio_items_per_page="3" portfolio_pagination="disable" portfolio_gaps_size="0" fullwidth_section_sorting="1" new_default_highlights="1" ajax_preloader_type="minimal" disable_bottom_margin="1" source_type="custom" image_ratio_default="1.05"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	345 => array (
+		'id' => 9923,
+		'type' => 'portfolio',
+		'title' => 'Media Production',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-6.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/media-production/',
+		'content' => '[vc_row full_width="stretch_row_content" thegem_featured_image_for_bg_active="true" css=".vc_custom_1676376208371{margin-bottom: 0px !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column css=".vc_custom_1675766887264{padding-top: 355px !important;padding-bottom: 355px !important;}" tablet_padding_top="230" tablet_padding_bottom="230" mobile_padding_top="200" mobile_padding_bottom="200"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_align="center" heading_custom_font_size="1" heading_disable_mobile="1" text_content="%5B%7B%22heading_text%22%3A%22The%20Music%20Videoclip%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_enabled%22%3A%221%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522Leading%2520Music%2520Company%2522%257D%252C%257B%2522text%2522%253A%2522Collaborate%2520and%2520Create%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%2C%22rotating_animation_duration%22%3A%223000%22%7D%5D" heading_letter_spacing="0"][gem_heading heading_tag="div" heading_div_style="title-xlarge" heading_align="center" heading_custom_font_size="1" heading_disable_desktop="1" heading_disable_tablet="1" text_content="%5B%7B%22heading_text%22%3A%22The%20Music%20Videoclip%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][/vc_column][/vc_row][vc_row css=".vc_custom_1675762072929{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675768125530{padding-top: 140px !important;padding-bottom: 115px !important;}" tablet_padding_top="80" tablet_padding_bottom="65" mobile_padding_top="60" mobile_padding_bottom="45"][thegem_te_portfolio_title alignment="center" text_style="title-h2" text_transform="none" text_letter_spacing="0"][gem_divider margin_top="45"][thegem_te_portfolio_info list_alignment="center" list_spacing_desktop="22" list_spacing_mobile="10" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][gem_divider margin_top="25"][gem_button text="View on YouTube" link_type="dynamic" link_dynamic="project_details" project_details_link_select="_thegem_cf_link" link_target="" link_nofollow="" position="center" corner="3" icon_pack="elegant" text_color="#ffffff" background_color="#181b2e" hover_text_color="#ffffff" hover_background_color="#b400ff"][/vc_column][/vc_row][vc_row css=".vc_custom_1675765270992{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675768254508{padding-top: 0px !important;padding-bottom: 140px !important;}" tablet_padding_bottom="85" mobile_padding_bottom="65"][thegem_te_portfolio_content][thegem_te_portfolio_gallery type="grid" grid_columns_desktop="3" grid_gaps_desktop="18" image_shadow=""][gem_divider margin_top="95" tablet_margin_top="85" mobile_margin_top="65"][gem_social_sharing alignment="center" icons_size="small" reddit="" whatsapp="" viber="" xing="" icons_color="#3c3950"][gem_divider margin_top="60"][thegem_te_portfolio_navigation][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+			'link' => array (
+				'title' => 'Link',
+				'key' => '_thegem_cf_link',
+				'type' => 'link',
+				'id' => 4,
+				'value' => 'https://www.domain.tld',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	346 => array (
+		'id' => 9924,
+		'type' => 'portfolio',
+		'title' => 'Design & Illustration',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-7.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/design-illustration/',
+		'content' => '[vc_row full_width="stretch_row" ken_burns_direction="zoom_out" ken_burns_transition_speed="15000" thegem_featured_image_for_bg_active="true" ken_burns_enabled="true" css=".vc_custom_1681121094707{margin-bottom: -530px !important;background-color: #242539 !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" z_index="0" el_class="hero-row"][vc_column css=".vc_custom_1681119810182{padding-top: 190px !important;padding-bottom: 530px !important;}" tablet_padding_bottom="110" tablet_padding_top="140" el_class="hero-column"][thegem_te_portfolio_title alignment="center" text_style="title-xlarge" text_transform="none" use_custom_font_size="1" use_custom_responsive_font="1" text_letter_spacing="0" custom_font_size="100" custom_line_height="110" custom_font_size_tablet="50" custom_line_height_tablet="69" custom_font_size_mobile="36" custom_line_height_mobile="53" text_color="#ffffff"][gem_divider margin_top="35"][thegem_te_portfolio_breadcrumbs alignment="center" color="#ffffff" color_hover="#00bcd4" color_active="#00bcd4"][gem_divider divider_disable_tablet="1" divider_disable_mobile="1" margin_top="135" tablet_margin_top="0" mobile_margin_top="0"][/vc_column][/vc_row][vc_row equal_height="yes" css=".vc_custom_1681118984824{padding-top: 50px !important;padding-right: 30px !important;padding-bottom: 20px !important;padding-left: 30px !important;background-color: #181b2e !important;}" tablet_padding_left="0" tablet_padding_right="0" tablet_padding_top="65" z_index="99"][vc_column css=".vc_custom_1675777125411{padding-top: 0px !important;}" offset="vc_col-lg-6 vc_col-md-6"][thegem_te_portfolio_info info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%7D%5D"][gem_divider margin_top="45" tablet_margin_top="30" mobile_margin_top="30"][thegem_te_portfolio_excerpt text_style="title-h2" text_transform="none" text_letter_spacing="0" text_color="#ffffff" max_width="465"][gem_divider margin_top="40" tablet_margin_top="30" mobile_margin_top="30"][gem_social_sharing tumblr="" reddit="" whatsapp="" viber="" xing="" icons_color="#ffffff"][/vc_column][vc_column css=".vc_custom_1681120202872{padding-top: 0px !important;}" offset="vc_col-lg-6 vc_col-md-6" tablet_padding_top="50"][vc_row_inner equal_height="yes" css=".vc_custom_1675837871633{margin-right: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;padding-top: 55px !important;padding-right: 42px !important;padding-bottom: 55px !important;padding-left: 42px !important;background-color: #242539 !important;}" tablet_padding_left="21" tablet_padding_right="21" mobile_padding_top="40" mobile_padding_bottom="40"][vc_column_inner width="1/2" css=".vc_custom_1675776093234{padding-top: 0px !important;}"][thegem_te_portfolio_info text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%2C%22meta_thegem_cf_location_field_type%22%3A%22text%22%2C%22meta_thegem_cf_location_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_location_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_type_field_type%22%3A%22text%22%2C%22meta_thegem_cf_type_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_type_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_value_field_type%22%3A%22text%22%2C%22meta_thegem_cf_value_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_value_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_property_id_field_type%22%3A%22text%22%2C%22meta_thegem_cf_property_id_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_property_id_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_bathrooms_field_type%22%3A%22text%22%2C%22meta_thegem_cf_bathrooms_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_bathrooms_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_bedrooms_field_type%22%3A%22text%22%2C%22meta_thegem_cf_bedrooms_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_bedrooms_icon_pack%22%3A%22elegant%22%2C%22meta_thegem_cf_price_field_type%22%3A%22text%22%2C%22meta_thegem_cf_price_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_price_icon_pack%22%3A%22elegant%22%7D%5D" value_text_letter_spacing="0" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/2" css=".vc_custom_1675837783187{padding-top: 0px !important;}" mobile_padding_top="30"][thegem_te_portfolio_info text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/2" css=".vc_custom_1675775287344{padding-top: 30px !important;}"][thegem_te_portfolio_info text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/2" css=".vc_custom_1675837811658{padding-top: 30px !important;}"][thegem_te_portfolio_info text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_link%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Link%22%2C%22link%22%3A%22dynamic%22%2C%22link_dynamic%22%3A%22project_details%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%2C%22link_target%22%3A%221%22%7D%5D" value_text_letter_spacing="0" label_text_color="#ffffff" value_text_color="#00bcd4" value_text_color_hover="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row full_width="stretch_row" css=".vc_custom_1681118112418{margin-bottom: 0px !important;background-color: #181b2e !important;}" z_index="99"][vc_column css=".vc_custom_1681120933215{padding-top: 50px !important;padding-right: 50px !important;padding-bottom: 70px !important;padding-left: 50px !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" tablet_padding_left="21" tablet_padding_right="21" tablet_padding_bottom="55"][thegem_te_portfolio_content text_color="#99a9b5"][gem_divider margin_top="55"][thegem_te_portfolio_gallery type="grid" grid_columns_desktop="1" grid_columns_tablet="1" grid_columns_mobile="1" grid_gaps_desktop="60" grid_gaps_tablet="42" image_ratio="" image_shadow=""][gem_divider margin_top="55"][thegem_te_portfolio_navigation title_text_style="title-h6" title_text_transform="none" arrows="" title_text_color="#ffffff" title_text_letter_spacing="0"][gem_divider margin_top="70" mobile_margin_top="60"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20projects%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="75" tablet_margin_top="55" mobile_margin_top="55"][gem_portfolio portfolio_uid="grid_ec5b53b" query_type="portfolios" source="" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_display_titles="image" portfolio_hover_image_alternative="horizontal-sliding" portfolio_show_date="" additional_meta_added="1" show_additional_meta="" portfolio_items_per_page="3" portfolio_pagination="disable" portfolio_gaps_size="42" new_default_highlights="1" ajax_preloader_type="minimal" source_type="custom" portfolio_gaps_size_tablet="21" portfolio_gaps_size_mobile="21" image_ratio_default="1.35"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => array (
+			'_wpb_post_custom_css' => '@media(max-width: 1199px) and (min-width: 1024px){
+.hero-column .vc_column-inner {
+				padding-bottom: 0!important;
+		}
+}
+@media(max-width: 1199px){
+		.hero-row.vc_row {
+				margin-bottom: 0!important;		
+		}
+}',
+		),
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+			'link' => array (
+				'title' => 'Link',
+				'key' => '_thegem_cf_link',
+				'type' => 'link',
+				'id' => 4,
+				'value' => 'https://www.domain.tld',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	347 => array (
+		'id' => 9925,
+		'type' => 'portfolio',
+		'title' => 'Clean Demo Dark',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-8.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/clean-demo-dark/',
+		'content' => '[vc_row full_width="stretch_row" css=".vc_custom_1675867479270{margin-bottom: 0px !important;background-color: #181b2e !important;}"][vc_column css=".vc_custom_1675867487937{padding-top: 140px !important;padding-bottom: 70px !important;}"][thegem_te_portfolio_info list_alignment="center" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%7D%5D"][gem_divider margin_top="40"][thegem_te_portfolio_title alignment="center" text_style="title-h1" text_transform="none" text_letter_spacing="0" text_color="#ffffff"][gem_divider margin_top="40"][thegem_te_portfolio_excerpt alignment="center" max_width="600" text_color="#99a9b5"][gem_divider margin_top="40"][thegem_te_portfolio_info list_alignment="center" list_spacing_desktop="20" list_spacing_mobile="10" label_text_transform="none" value_text_font_weight="light" value_text_transform="none" info_content="%5B%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_color="#ffffff" label_text_letter_spacing="0"][gem_divider margin_top="40"][gem_social_sharing alignment="center" tumblr="" reddit="" whatsapp="" viber="" xing="" icons_color="#ffffff"][gem_divider margin_top="40"][thegem_te_portfolio_navigation alignment="center" label="" title="" arrows_type="round" arrows_spacing="10" arrows_color="#737e8c" arrows_border_color="#737e8c"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" css=".vc_custom_1675924998436{margin-bottom: 0px !important;background-color: #181b2e !important;}"][vc_column css=".vc_custom_1676373729444{padding-top: 0px !important;padding-right: 0px !important;padding-left: 0px !important;}" tablet_padding_left="21" tablet_padding_right="21"][thegem_te_portfolio_gallery type="grid" grid_columns_desktop="3" grid_columns_mobile="1" grid_gaps_desktop="30" grid_gaps_tablet="21" image_ratio="" image_shadow=""][/vc_column][/vc_row][vc_row full_width="stretch_row" css=".vc_custom_1675925819520{margin-bottom: 0px !important;background-color: #181b2e !important;}" custom_css_code="LmdlbS10ZXN0aW1vbmlhbC1pbWFnZSU3QiUwQSUyMCUyMCUyMCUyMGRpc3BsYXklM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTdE"][vc_column css=".vc_custom_1676373821943{padding-top: 60px !important;padding-bottom: 90px !important;}" tablet_padding_top="30" tablet_padding_bottom="50"][gem_testimonials set="blocks-portfolio-illustration-design" text_color="#ffffff" quote_color="#fbb900"][gem_divider margin_top="100" tablet_margin_top="65" mobile_margin_top="65"][gem_heading heading_tag="div" heading_div_style="title-h1" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Related%20Works%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="90" tablet_margin_top="50" mobile_margin_top="50"][gem_portfolio portfolio_uid="grid_6b2d444" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_hover="zoom-overlay" additional_meta_added="1" show_additional_meta="" portfolio_items_per_page="3" portfolio_pagination="disable" portfolio_gaps_size="42" portfolio_background_style="dark" caption_container_alignment="center" loading_animation="bounce" new_default_highlights="1" ajax_preloader_type="minimal" source_type="custom" portfolio_gaps_size_tablet="21" portfolio_gaps_size_mobile="21" portfolio_background_color="#242539" portfolio_background_color_hover="#ffffff" image_ratio_default="1.35"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	348 => array (
+		'id' => 9927,
+		'type' => 'portfolio',
+		'title' => 'Sticky Column Demo One',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-10.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/sticky-column-demo-one/',
+		'content' => '[vc_row full_width="stretch_row_content" css=".vc_custom_1677844191273{margin-bottom: 0px !important;}"][vc_column el_sticky="1" css=".vc_custom_1680685712519{margin-top: 225px !important;padding-top: 0px !important;}" offset="vc_col-lg-6 vc_col-md-6" el_sticky_offset="70" tablet_margin_top="110" tablet_margin_bottom="70"][vc_row_inner equal_height="yes" content_placement="middle"][vc_column_inner width="1/6" offset="vc_col-xs-2 vc_hidden-xs"][gem_social_sharing icons_type="round" facebook="" pinterest="" tumblr="" linkedin="" reddit="" telegram="" whatsapp="" viber="" xing="" icons_color="#ffffff" icons_background_color="#00bcd4" icons_background_color_hover="#ffffff" icons_border_color="#00bcd4"][gem_divider margin_top="10"][gem_social_sharing icons_type="round" twitter="" pinterest="" tumblr="" linkedin="" reddit="" telegram="" whatsapp="" viber="" xing="" icons_color="#ffffff" icons_background_color="#5275db" icons_background_color_hover="#ffffff" icons_border_color="#5275db"][gem_divider margin_top="10"][gem_social_sharing icons_type="round" facebook="" twitter="" pinterest="" tumblr="" reddit="" telegram="" whatsapp="" viber="" xing="" icons_color="#ffffff" icons_background_color="#0288d1" icons_background_color_hover="#ffffff" icons_border_color="#0288d1"][gem_divider margin_top="10"][gem_social_sharing icons_type="round" facebook="" twitter="" pinterest="" tumblr="" linkedin="" reddit="" telegram="" whatsapp="" xing="" icons_color="#ffffff" icons_background_color="#8f5db7" icons_background_color_hover="#ffffff" icons_border_color="#8f5db7"][gem_divider margin_top="10"][gem_social_sharing icons_type="round" facebook="" twitter="" tumblr="" linkedin="" reddit="" telegram="" whatsapp="" viber="" xing="" icons_color="#ffffff" icons_background_color="#ff5757" icons_background_color_hover="#ffffff" icons_border_color="#ff5757"][/vc_column_inner][vc_column_inner width="5/6"][thegem_te_portfolio_info skin="classic" list_spacing_desktop="15" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%7D%2C%7B%22type%22%3A%22date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%7D%2C%7B%22type%22%3A%22likes%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%7D%5D"][gem_divider margin_top="30"][thegem_te_portfolio_title text_style="title-xlarge" text_transform="none" text_letter_spacing="0" max_width="350"][gem_divider margin_top="45"][thegem_te_portfolio_info list_spacing_desktop="25" list_spacing_mobile="15" icon_size="20" text_layout="vertical" label_colon="" value_text_font_weight="light" value_text_transform="none" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22icon_material%22%3A%22f10e%22%2C%22icon_thegemheader%22%3A%22e700%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22icon_thegemheader%22%3A%22e9ce%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_link%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22icon_thegemheader%22%3A%22e72f%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Link%22%2C%22link%22%3A%22dynamic%22%2C%22link_dynamic%22%3A%22project_details%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%2C%22link_target%22%3A%221%22%7D%5D" value_text_spacing="25"][gem_divider margin_top="40"][thegem_te_portfolio_excerpt text_style="styled-subtitle" max_width="560" text_letter_spacing="0"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column css=".vc_custom_1675858849358{padding-top: 0px !important;padding-right: 0px !important;padding-left: 0px !important;}" offset="vc_col-lg-6 vc_col-md-6" tablet_padding_left="21" tablet_padding_right="21"][thegem_te_portfolio_gallery type="grid" grid_columns_desktop="1" grid_columns_tablet="1" grid_columns_mobile="1" grid_gaps_desktop="0" image_ratio="" image_shadow=""][/vc_column][/vc_row][vc_row full_width="stretch_row_content" css=".vc_custom_1675848477096{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675858872806{padding-top: 90px !important;padding-bottom: 90px !important;}" tablet_padding_top="70" tablet_padding_bottom="70"][thegem_te_portfolio_navigation label="" title_text_style="title-h6" title_text_transform="none" arrows_type="round" title_text_letter_spacing="0"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+			'link' => array (
+				'title' => 'Link',
+				'key' => '_thegem_cf_link',
+				'type' => 'link',
+				'id' => 4,
+				'value' => 'https://www.domain.tld',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	349 => array (
+		'id' => 9928,
+		'type' => 'portfolio',
+		'title' => 'Sticky Column Demo Two',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-11.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/sticky-column-demo-two/',
+		'content' => '[vc_row full_width="stretch_row_content" equal_height="yes" thegem_revesrse_columns_tablet="true" thegem_revesrse_columns_mobile="true" css=".vc_custom_1677844745211{margin-bottom: 0px !important;padding-top: 30px !important;}" tablet_padding_top="0"][vc_column offset="vc_col-lg-7 vc_col-md-7"][gem_gallery source_type="portfolio-gallery" gallery_type="grid" gallery_layout="3x" gallery_style="masonry" gaps_size="21" metro_max_row_height="380" new_default_highlights="1"][/vc_column][vc_column el_sticky="1" el_sticky_offset="20" offset="vc_col-lg-5 vc_col-md-5" tablet_padding_top="25" tablet_padding_bottom="55"][thegem_te_portfolio_info skin="classic" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%2C%22meta_thegem_cf_location_field_type%22%3A%22text%22%2C%22meta_thegem_cf_location_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_location_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_location_label%22%3A%221%22%2C%22meta_thegem_cf_type_field_type%22%3A%22text%22%2C%22meta_thegem_cf_type_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_type_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_type_label%22%3A%221%22%2C%22meta_thegem_cf_value_field_type%22%3A%22text%22%2C%22meta_thegem_cf_value_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_value_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_value_label%22%3A%221%22%2C%22meta_thegem_cf_property_id_field_type%22%3A%22text%22%2C%22meta_thegem_cf_property_id_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_property_id_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_property_id_label%22%3A%221%22%2C%22meta_thegem_cf_bathrooms_field_type%22%3A%22text%22%2C%22meta_thegem_cf_bathrooms_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_bathrooms_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_bathrooms_label%22%3A%221%22%2C%22meta_thegem_cf_bedrooms_field_type%22%3A%22text%22%2C%22meta_thegem_cf_bedrooms_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_bedrooms_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_bedrooms_label%22%3A%221%22%2C%22meta_thegem_cf_price_field_type%22%3A%22text%22%2C%22meta_thegem_cf_price_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_price_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_price_label%22%3A%221%22%7D%2C%7B%22type%22%3A%22likes%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%2C%22meta_thegem_cf_location_field_type%22%3A%22text%22%2C%22meta_thegem_cf_location_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_location_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_location_label%22%3A%221%22%2C%22meta_thegem_cf_type_field_type%22%3A%22text%22%2C%22meta_thegem_cf_type_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_type_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_type_label%22%3A%221%22%2C%22meta_thegem_cf_value_field_type%22%3A%22text%22%2C%22meta_thegem_cf_value_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_value_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_value_label%22%3A%221%22%2C%22meta_thegem_cf_property_id_field_type%22%3A%22text%22%2C%22meta_thegem_cf_property_id_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_property_id_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_property_id_label%22%3A%221%22%2C%22meta_thegem_cf_bathrooms_field_type%22%3A%22text%22%2C%22meta_thegem_cf_bathrooms_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_bathrooms_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_bathrooms_label%22%3A%221%22%2C%22meta_thegem_cf_bedrooms_field_type%22%3A%22text%22%2C%22meta_thegem_cf_bedrooms_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_bedrooms_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_bedrooms_label%22%3A%221%22%2C%22meta_thegem_cf_price_field_type%22%3A%22text%22%2C%22meta_thegem_cf_price_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_price_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_price_label%22%3A%221%22%7D%5D" list_divider_color="#dfe5e8"][gem_divider margin_top="30" mobile_margin_top="15"][thegem_te_portfolio_title text_tag="div" text_style="title-h2" text_transform="none" text_letter_spacing="0"][gem_divider margin_top="40" mobile_margin_top="25"][thegem_te_portfolio_content][gem_divider margin_bottom="25"][thegem_te_portfolio_info skin="table" list_divider="" table_vertical_spacing="11" table_horizontal_spacing="45" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][gem_divider margin_top="22" margin_bottom="25" color="#dfe5e8"][gem_social_sharing tumblr="" reddit="" whatsapp="" viber="" xing="" icons_color="#3c3950" icons_color_hover="#00bcd4"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" css=".vc_custom_1676558789850{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1676283954011{padding-top: 55px !important;padding-bottom: 95px !important;}" tablet_padding_top="60" tablet_padding_bottom="70" mobile_padding_top="35"][thegem_te_portfolio_navigation title_text_style="title-h6" title_text_transform="none" title_text_letter_spacing="0"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	350 => array (
+		'id' => 9929,
+		'type' => 'portfolio',
+		'title' => 'Sticky Column Demo Three',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-12.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/sticky-column-demo-three/',
+		'content' => '[vc_row css=".vc_custom_1675861805086{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1680594452485{padding-top: 50px !important;padding-bottom: 40px !important;}" tablet_padding_top="40"][thegem_te_portfolio_info info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%7D%2C%7B%22type%22%3A%22date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_field_type%22%3A%22text%22%2C%22meta_thegem_cf_client_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_client_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_client_label%22%3A%221%22%2C%22meta_thegem_cf_services_field_type%22%3A%22text%22%2C%22meta_thegem_cf_services_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_services_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_services_label%22%3A%221%22%2C%22meta_thegem_cf_art_director_field_type%22%3A%22text%22%2C%22meta_thegem_cf_art_director_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_art_director_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_art_director_label%22%3A%221%22%2C%22meta_thegem_cf_link_field_type%22%3A%22text%22%2C%22meta_thegem_cf_link_field_format%22%3A%22wp_locale%22%2C%22meta_thegem_cf_link_icon_pack%22%3A%22thegem-header%22%2C%22meta_thegem_cf_link_label%22%3A%221%22%7D%5D"][gem_divider margin_top="25"][thegem_te_portfolio_title text_style="title-h1" text_transform="none" text_letter_spacing="0"][gem_divider margin_top="30"][thegem_te_portfolio_breadcrumbs color_hover="#00bcd4" color_active="#00bcd4"][/vc_column][/vc_row][vc_row thegem_revesrse_columns_mobile="true" css=".vc_custom_1676361202299{margin-bottom: 0px !important;}"][vc_column width="1/2"][thegem_te_portfolio_gallery type="grid" grid_columns_desktop="1" grid_columns_tablet="1" grid_columns_mobile="1" grid_gaps_desktop="21" image_ratio="" image_shadow=""][/vc_column][vc_column width="1/2" el_sticky="1" el_sticky_offset="90" mobile_padding_bottom="65"][thegem_te_portfolio_content][gem_divider margin_top="30"][thegem_te_portfolio_info skin="table" table_horizontal_spacing="55" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_link%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Link%22%2C%22link%22%3A%22dynamic%22%2C%22link_dynamic%22%3A%22project_details%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%2C%22link_target%22%3A%221%22%7D%5D" value_text_letter_spacing="0"][gem_divider margin_bottom="16" color="#dfe5e8"][gem_social_sharing reddit="" whatsapp="" viber="" xing="" icons_color="#3c3950"][/vc_column][/vc_row][vc_row css=".vc_custom_1675862160477{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675862193339{padding-top: 65px !important;padding-bottom: 70px !important;}"][thegem_te_portfolio_navigation title_text_style="title-h6" title_text_transform="none" title_text_letter_spacing="0"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+			'link' => array (
+				'title' => 'Link',
+				'key' => '_thegem_cf_link',
+				'type' => 'link',
+				'id' => 4,
+				'value' => 'https://www.domain.tld',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	351 => array (
+		'id' => 9930,
+		'type' => 'portfolio',
+		'title' => 'Real Estate Demo One',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-15.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-demo-one/',
+		'content' => '[vc_row css=".vc_custom_1675939637626{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1675948846070{padding-top: 25px !important;padding-bottom: 55px !important;}"][thegem_te_portfolio_breadcrumbs][gem_divider margin_top="30" tablet_margin_top="20" mobile_margin_top="15"][vc_row_inner equal_height="yes" content_placement="middle" css=".vc_custom_1675944581811{margin-bottom: 0px !important;}"][vc_column_inner width="1/2" css=".vc_custom_1676874433412{padding-top: 0px !important;}"][thegem_te_portfolio_title text_style="title-h2" text_transform="none" text_letter_spacing="0"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_hidden-xs" css=".vc_custom_1676874437161{padding-top: 0px !important;}"][gem_social_sharing alignment="right" tumblr="" reddit="" whatsapp="" viber="" xing=""][/vc_column_inner][/vc_row_inner][gem_divider margin_top="15"][thegem_te_portfolio_info info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][gem_divider margin_top="20"][thegem_te_portfolio_info value_text_style="title-h2" value_text_transform="none" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_price%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0"][gem_divider margin_top="15"][thegem_te_portfolio_info list_spacing_desktop="35" list_spacing_tablet="14" text_layout="vertical" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_location%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Location%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_apartment%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Apartment%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_area_sqft%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Area%20(sqft)%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_property_id%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Property%20ID%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_bathrooms%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Bathrooms%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_bedrooms%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Bedrooms%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column][/vc_row][vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1675945009706{margin-bottom: 0px !important;}"][vc_column][thegem_te_portfolio_gallery carousel_columns_desktop="1" carousel_columns_tablet="1" carousel_columns_mobile="1" image_ratio="" autoplay="1" image_height_desktop="800" image_shadow="" arrows_type="square" arrows_icons="" dots="" arrows_color="#3c3950" arrows_color_hover="#ffffff" arrows_background_color="#ffffff" arrows_background_color_hover="#00bcd4" arrows_border_color="#ffffff" arrows_border_color_hover="#00bcd4"][/vc_column][/vc_row][vc_row css=".vc_custom_1675945441313{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1676384807115{padding-top: 60px !important;padding-bottom: 60px !important;}" tablet_padding_bottom="30"][thegem_te_portfolio_content][gem_divider margin_top="25" tablet_margin_top="45" mobile_margin_top="45"][thegem_te_portfolio_navigation label_prev="Previous" label_next="Next" title_text_style="title-h6" title_text_transform="none" title_text_letter_spacing="0"][gem_divider margin_top="75" tablet_margin_top="55" mobile_margin_top="55"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Similar%20Listings%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="55"][gem_portfolio portfolio_uid="grid_dbc8914" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_hover="zoom-overlay" portfolio_show_description="" portfolio_show_date="" additional_meta_added="1" show_additional_meta="" show_details="1" repeater_details="%5B%7B%22attribute_title%22%3A%22Location%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_location%22%2C%22attribute_meta_type%22%3A%22text%22%2C%22attribute_price_format%22%3A%22disabled%22%2C%22attribute_icon_pack%22%3A%22material%22%7D%2C%7B%22attribute_title%22%3A%22Apartment%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_apartment%22%2C%22attribute_meta_type%22%3A%22text%22%2C%22attribute_price_format%22%3A%22disabled%22%2C%22attribute_icon_pack%22%3A%22material%22%7D%2C%7B%22attribute_title%22%3A%22Area%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_area_sqft%22%2C%22attribute_meta_type%22%3A%22number%22%2C%22attribute_price_format%22%3A%22wp_locale%22%2C%22attribute_price_format_suffix%22%3A%22%20sqft%22%2C%22attribute_icon_pack%22%3A%22material%22%7D%2C%7B%22attribute_title%22%3A%22Price%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_price%22%2C%22attribute_meta_type%22%3A%22number%22%2C%22attribute_price_format%22%3A%22wp_locale%22%2C%22attribute_price_format_prefix%22%3A%22%24%22%2C%22attribute_icon_pack%22%3A%22material%22%7D%5D" show_readmore_button="1" portfolio_items_per_page="3" portfolio_pagination="disable" portfolio_gaps_size="42" portfolio_title_preset="title-h6" readmore_button_border="2" portfolio_background_style="transparent" new_default_highlights="1" ajax_preloader_type="minimal" source_type="custom" portfolio_gaps_size_tablet="21" portfolio_gaps_size_mobile="21" portfolio_title_letter_spacing="0" image_ratio_default="1.38"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'location' => array (
+				'title' => 'Location',
+				'key' => '_thegem_cf_location',
+				'type' => 'text',
+				'id' => 5,
+				'value' => 'Chicago, USA',
+			),
+			'property_id' => array (
+				'title' => 'Property ID',
+				'key' => '_thegem_cf_property_id',
+				'type' => 'text',
+				'id' => 8,
+				'value' => 'HZ39567',
+			),
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'bedrooms' => array (
+				'title' => 'Bedrooms',
+				'key' => '_thegem_cf_bedrooms',
+				'type' => 'number',
+				'id' => 10,
+				'value' => '3',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+			'apartment' => array (
+				'title' => 'Apartment',
+				'key' => '_thegem_cf_apartment',
+				'type' => 'text',
+				'id' => 21,
+				'value' => 'Villa',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	352 => array (
+		'id' => 9931,
+		'type' => 'portfolio',
+		'title' => 'Real Estate Demo Two',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-20.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-demo-two/',
+		'content' => '[vc_row full_width="stretch_row" full_height="yes" columns_placement="bottom" equal_height="yes" content_placement="bottom" ken_burns_transition_speed="15000" thegem_featured_image_for_bg_active="true" ken_burns_enabled="true" css=".vc_custom_1676469086327{margin-bottom: 0px !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column css=".vc_custom_1676041862607{padding-top: 100px !important;padding-bottom: 70px !important;}"][thegem_te_portfolio_info value_text_style="title-xlarge" value_text_transform="none" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_price%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" value_text_color="#ffffff"][gem_divider margin_top="10" tablet_margin_top="0" mobile_margin_top="0"][thegem_te_portfolio_title text_style="title-h2" text_transform="none" text_letter_spacing="0" text_color="#ffffff"][gem_divider margin_top="10"][thegem_te_portfolio_info value_text_style="text-body" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_address%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff"][gem_divider margin_top="35"][vc_row_inner equal_height="yes" css=".vc_custom_1676034088068{margin-bottom: 0px !important;}"][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3 vc_col-xs-6"][gem_infotext preset="highlighted" icon_image="image" image="{{IMG_ID=11903}}" icon_size="72" title_source="project_details" title_project_details_select_field="_thegem_cf_storeys" title_field_type="number" title_text_style="title-h4" subtitle_source="project_details" subtitle_project_details_select_field="_thegem_cf_storeys" subtitle_output_data="label" subtitle_text_style="text-body" description="" icon_desktop_spacing_top="" icon_desktop_spacing_left="" icon_desktop_spacing_right="20" icon_mobile_spacing_right="8" title_custom_font_options="" subtitle_custom_font_options="" title_text_color="#ffffff" subtitle_desktop_spacing_top="-7" color="#ffffff" subtitle_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3 vc_col-xs-6"][gem_infotext preset="highlighted" icon_image="image" image="{{IMG_ID=11902}}" icon_size="72" title_source="project_details" title_project_details_select_field="_thegem_cf_bedrooms" title_field_type="number" title_text_style="title-h4" subtitle_source="project_details" subtitle_project_details_select_field="_thegem_cf_bedrooms" subtitle_output_data="label" subtitle_text_style="text-body" description="" icon_desktop_spacing_top="" icon_desktop_spacing_left="" icon_desktop_spacing_right="20" icon_mobile_spacing_right="8" title_custom_font_options="" subtitle_custom_font_options="" title_text_color="#ffffff" subtitle_desktop_spacing_top="-7" color="#ffffff" subtitle_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3 vc_col-xs-6" tablet_padding_top="20"][gem_infotext preset="highlighted" icon_image="image" image="{{IMG_ID=11904}}" icon_size="72" title_source="project_details" title_project_details_select_field="_thegem_cf_bathrooms" title_field_type="number" title_text_style="title-h4" subtitle_source="project_details" subtitle_project_details_select_field="_thegem_cf_bathrooms" subtitle_output_data="label" subtitle_text_style="text-body" description="" icon_desktop_spacing_top="" icon_desktop_spacing_left="" icon_desktop_spacing_right="20" icon_mobile_spacing_right="8" title_custom_font_options="" subtitle_custom_font_options="" title_text_color="#ffffff" subtitle_desktop_spacing_top="-7" color="#ffffff" subtitle_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3 vc_col-xs-6" tablet_padding_top="20"][gem_infotext preset="highlighted" icon_image="image" image="{{IMG_ID=11905}}" icon_size="72" title_source="project_details" title_project_details_select_field="_thegem_cf_area_sqft" title_field_type="number" title_text_style="title-h4" subtitle_source="project_details" subtitle_project_details_select_field="_thegem_cf_area_sqft" subtitle_output_data="label" subtitle_text_style="text-body" description="" icon_desktop_spacing_top="" icon_desktop_spacing_left="" icon_desktop_spacing_right="20" icon_mobile_spacing_right="8" title_custom_font_options="1" subtitle_custom_font_options="" title_text_color="#ffffff" subtitle_desktop_spacing_top="-7" color="#ffffff" subtitle_text_color="#ffffff" title_letter_spacing="0"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row equal_height="yes" css=".vc_custom_1676382208302{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1676041188036{padding-top: 70px !important;}" offset="vc_col-lg-8 vc_col-md-8"][thegem_te_portfolio_gallery carousel_columns_desktop="1" carousel_columns_tablet="1" carousel_columns_mobile="1" image_ratio="" autoplay="" image_shadow="" arrows_type="square" arrows_icons="" dots=""][gem_divider margin_top="55"][thegem_te_portfolio_content][gem_divider margin_top="65"][thegem_te_portfolio_navigation label_prev="Previous" label_next="Next" title_text_style="title-h6" title_text_transform="none" title_text_letter_spacing="0"][/vc_column][vc_column width="1/2" el_sticky="1" css=".vc_custom_1676382416308{padding-top: 70px !important;padding-bottom: 70px !important;}" el_sticky_offset="20" offset="vc_col-lg-offset-0 vc_col-lg-4 vc_col-md-offset-0 vc_col-md-4 vc_col-sm-offset-3" tablet_padding_bottom="0"][vc_row_inner css=".vc_custom_1676038860059{margin-right: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;}"][vc_column_inner thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="10" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1676042152953{padding-top: 45px !important;padding-right: 30px !important;padding-bottom: 45px !important;padding-left: 30px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h5" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Interested%20in%20this%20Property%3F%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1676039050526{padding-bottom: 5px !important;}"][gem_button text="Email Agent" link_type="dynamic" link_dynamic="project_details" project_details_link_select="_thegem_cf_link" link_target="" link_nofollow="" position="center" corner="3" icon_pack="elegant" text_color="#ffffff" background_color="#00bcd4" hover_text_color="#ffffff" hover_background_color="#3c3950" padding_left="70" padding_right="70"][gem_heading heading_tag="div" heading_div_style="title-h5" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22or%20call%20%2B1%20916-875-2235%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1676039054349{padding-top: 5px !important;}"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row css=".vc_custom_1676039313147{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1676382492500{padding-top: 60px !important;padding-bottom: 60px !important;}" tablet_padding_bottom="30"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Similar%20Listings%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="50"][gem_portfolio portfolio_uid="grid_dbc8914" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_hover="zoom-overlay" portfolio_show_description="" portfolio_show_date="" additional_meta_added="1" show_additional_meta="" show_details="1" details_layout="inline" repeater_details="%5B%7B%22attribute_title%22%3A%22Location%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_location%22%2C%22attribute_meta_type%22%3A%22text%22%2C%22attribute_price_format%22%3A%22disabled%22%2C%22attribute_icon_pack%22%3A%22elegant%22%2C%22attribute_icon_elegant%22%3A%22e01d%22%7D%2C%7B%22attribute_title%22%3A%22Area%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_area_sqft%22%2C%22attribute_meta_type%22%3A%22number%22%2C%22attribute_price_format%22%3A%22wp_locale%22%2C%22attribute_price_format_suffix%22%3A%22%20sqft%22%2C%22attribute_icon_pack%22%3A%22elegant%22%2C%22attribute_icon_elegant%22%3A%222e%22%7D%2C%7B%22attribute_title%22%3A%22Price%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_price%22%2C%22attribute_meta_type%22%3A%22number%22%2C%22attribute_price_format%22%3A%22wp_locale%22%2C%22attribute_price_format_prefix%22%3A%22%24%22%2C%22attribute_icon_pack%22%3A%22elegant%22%2C%22attribute_icon_elegant%22%3A%22e100%22%7D%5D" show_readmore_button="1" portfolio_items_per_page="3" portfolio_pagination="disable" portfolio_gaps_size="42" portfolio_title_preset="title-h6" readmore_button_border="2" portfolio_background_style="transparent" caption_container_alignment="left" new_default_highlights="1" ajax_preloader_type="minimal" source_type="custom" portfolio_gaps_size_tablet="21" portfolio_gaps_size_mobile="21" portfolio_title_letter_spacing="0" image_ratio_default="1.38"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'bedrooms' => array (
+				'title' => 'Bedrooms',
+				'key' => '_thegem_cf_bedrooms',
+				'type' => 'number',
+				'id' => 10,
+				'value' => '3',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'storeys' => array (
+				'title' => 'Storeys',
+				'key' => '_thegem_cf_storeys',
+				'type' => 'number',
+				'id' => 12,
+				'value' => '1',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+			'address' => array (
+				'title' => 'Address',
+				'key' => '_thegem_cf_address',
+				'type' => 'text',
+				'id' => 20,
+				'value' => '4885 N Francisco Ave, Chicago, IL 60625, USA',
+			),
+			'email' => array (
+				'title' => 'eMail',
+				'key' => '_thegem_cf_email',
+				'type' => 'link',
+				'value' => 'name@domain.tld',
+				'applying' => false,
+				'id' => 27,
+			),
+		),
+		'attachment_ids' => array (
+			0 => '11903',
+			1 => '11902',
+			2 => '11904',
+			3 => '11905',
+		),
+	),
+	353 => array (
+		'id' => 9932,
+		'type' => 'portfolio',
+		'title' => 'Real Estate Demo Three',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-14.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-demo-three/',
+		'content' => '[vc_row full_width="stretch_row" full_height="yes" columns_placement="bottom" equal_height="yes" content_placement="bottom" ken_burns_transition_speed="15000" thegem_featured_image_for_bg_active="true" ken_burns_enabled="true" css=".vc_custom_1676441826643{margin-bottom: 0px !important;background-color: #181b2e !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column width="2/3" css=".vc_custom_1676028136664{padding-top: 50px !important;padding-bottom: 50px !important;}" offset="vc_col-lg-9 vc_col-md-9" mobile_padding_bottom="0"][thegem_te_portfolio_title text_style="title-h1" text_transform="none" text_letter_spacing="0" text_color="#ffffff"][gem_divider margin_top="20" mobile_margin_top="5"][gem_infotext icon_thegem_header="e636" title_source="project_details" title_project_details_select_field="_thegem_cf_address" title_text_style="text-body" description="" title_custom_font_options="" title_text_color="#ffffff" color="#ffffff"][/vc_column][vc_column width="1/3" css=".vc_custom_1676028416745{padding-top: 50px !important;padding-bottom: 40px !important;}" offset="vc_col-lg-3 vc_col-md-3" mobile_padding_top="0" mobile_padding_bottom="60"][thegem_te_portfolio_info text_layout="vertical" label_text_style="text-body" value_text_style="title-h2" value_text_transform="none" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_price%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Price%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_letter_spacing="0" value_text_color="#ffffff"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="middle" css=".vc_custom_1675954972532{margin-bottom: 0px !important;background-color: #181b2e !important;}"][vc_column width="1/2" css=".vc_custom_1676029913366{padding-top: 60px !important;padding-bottom: 20px !important;}" offset="vc_col-lg-6 vc_col-md-6" mobile_padding_bottom="15"][thegem_te_portfolio_info skin="classic" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" list_divider_color="#474b64" value_text_color="#ffffff"][/vc_column][vc_column width="1/2" css=".vc_custom_1676029889307{padding-top: 60px !important;padding-bottom: 20px !important;}" offset="vc_col-lg-6 vc_col-md-6" mobile_padding_top="0"][gem_social_sharing alignment="right" reddit="" whatsapp="" viber="" xing="" element_hide_mobile="1" icons_color="#ffffff"][gem_social_sharing reddit="" whatsapp="" viber="" xing="" element_hide_desktop="1" element_hide_tablet="1" icons_color="#ffffff"][/vc_column][/vc_row][vc_row full_width="stretch_row" equal_height="yes" content_placement="bottom" css=".vc_custom_1676029170905{margin-bottom: 0px !important;padding-bottom: 105px !important;background-color: #181b2e !important;}" tablet_padding_bottom="65"][vc_column css=".vc_custom_1676029209076{padding-top: 30px !important;}" offset="vc_col-lg-6 vc_col-md-12"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Description%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="35"][thegem_te_portfolio_excerpt text_color="#99a9b5"][/vc_column][vc_column css=".vc_custom_1676029212813{padding-top: 30px !important;}" offset="vc_col-lg-6 vc_col-md-12"][vc_row_inner][vc_column_inner width="1/3" offset="vc_col-xs-4"][thegem_te_portfolio_info list_spacing_desktop="65" list_spacing_tablet="50" list_spacing_mobile="20" text_layout="vertical" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_location%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Location%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/3" offset="vc_col-xs-4"][thegem_te_portfolio_info list_spacing_desktop="65" list_spacing_tablet="50" list_spacing_mobile="20" text_layout="vertical" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_bedrooms%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Bedrooms%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/3" offset="vc_col-xs-4"][thegem_te_portfolio_info list_spacing_desktop="65" list_spacing_tablet="50" list_spacing_mobile="20" text_layout="vertical" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_area_sqft%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Area%20(sqft)%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][gem_divider margin_top="20"][vc_row_inner][vc_column_inner width="1/3" offset="vc_col-xs-4"][thegem_te_portfolio_info list_spacing_desktop="65" list_spacing_tablet="50" list_spacing_mobile="20" text_layout="vertical" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_apartment%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Apartment%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/3" offset="vc_col-xs-4"][thegem_te_portfolio_info list_spacing_desktop="65" list_spacing_tablet="50" list_spacing_mobile="20" text_layout="vertical" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_bathrooms%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Bathrooms%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/3" offset="vc_col-xs-4"][thegem_te_portfolio_info list_spacing_desktop="65" list_spacing_tablet="50" list_spacing_mobile="20" text_layout="vertical" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_property_id%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Property%20ID%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1676633055058{margin-bottom: 0px !important;background-color: #181b2e !important;}"][vc_column][thegem_te_portfolio_gallery carousel_columns_desktop="3" carousel_columns_tablet="2" carousel_columns_mobile="1" carousel_gaps_desktop="0" image_ratio="" autoplay="" image_shadow="" arrows_type="square" arrows_icons="" dots=""][/vc_column][/vc_row][vc_row full_width="stretch_row" css=".vc_custom_1676018273598{margin-bottom: 0px !important;background-color: #181b2e !important;}"][vc_column css=".vc_custom_1676383135477{padding-top: 105px !important;padding-bottom: 90px !important;}" tablet_padding_top="60" tablet_padding_bottom="65"][thegem_te_portfolio_content][gem_divider margin_top="20" tablet_margin_top="40" mobile_margin_top="0"][thegem_te_portfolio_navigation label_prev="Previous" label_next="Next" title_text_style="title-h6" title_text_transform="none" title_text_letter_spacing="0" title_text_color="#ffffff" arrows_color="#ffffff"][/vc_column][/vc_row][vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1676383211793{margin-bottom: 0px !important;background-color: #181b2e !important;}"][vc_column css=".vc_custom_1676383127997{padding-top: 0px !important;}"][gem_portfolio portfolio_uid="grid_5fa7e90" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_fullwidth_section_images="1" portfolio_display_titles="image" portfolio_hover_image_alternative="zoom-overlay" portfolio_show_description="" portfolio_show_date="" additional_meta_added="1" show_additional_meta="" show_details="1" details_layout="inline" repeater_details="%5B%7B%22attribute_title%22%3A%22Location%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_location%22%2C%22attribute_meta_type%22%3A%22text%22%2C%22attribute_price_format%22%3A%22disabled%22%2C%22attribute_icon_pack%22%3A%22elegant%22%2C%22attribute_icon_elegant%22%3A%22e01d%22%2C%22attribute_icon_thegemheader%22%3A%22e636%22%7D%2C%7B%22attribute_title%22%3A%22Area%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_area_sqft%22%2C%22attribute_meta_type%22%3A%22number%22%2C%22attribute_price_format%22%3A%22wp_locale%22%2C%22attribute_price_format_suffix%22%3A%22%20sqft%22%2C%22attribute_icon_pack%22%3A%22elegant%22%2C%22attribute_icon_elegant%22%3A%222e%22%2C%22attribute_icon_thegemheader%22%3A%22e636%22%7D%2C%7B%22attribute_title%22%3A%22Price%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_price%22%2C%22attribute_meta_type%22%3A%22number%22%2C%22attribute_price_format%22%3A%22wp_locale%22%2C%22attribute_price_format_prefix%22%3A%22%24%22%2C%22attribute_icon_pack%22%3A%22elegant%22%2C%22attribute_icon_elegant%22%3A%22e100%22%7D%5D" portfolio_items_per_page="3" portfolio_pagination="disable" portfolio_gaps_size="0" loading_animation="bounce" new_default_highlights="1" ajax_preloader_type="minimal" disable_bottom_margin="1" source_type="custom" portfolio_gaps_size_tablet="0" portfolio_gaps_size_mobile="0" portfolio_title_letter_spacing="0" image_ratio_default="1.38"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'location' => array (
+				'title' => 'Location',
+				'key' => '_thegem_cf_location',
+				'type' => 'text',
+				'id' => 5,
+				'value' => 'Chicago, USA',
+			),
+			'property_id' => array (
+				'title' => 'Property ID',
+				'key' => '_thegem_cf_property_id',
+				'type' => 'text',
+				'id' => 8,
+				'value' => 'HZ39567',
+			),
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'bedrooms' => array (
+				'title' => 'Bedrooms',
+				'key' => '_thegem_cf_bedrooms',
+				'type' => 'number',
+				'id' => 10,
+				'value' => '3',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+			'address' => array (
+				'title' => 'Address',
+				'key' => '_thegem_cf_address',
+				'type' => 'text',
+				'id' => 20,
+				'value' => '4885 N Francisco Ave, Chicago, IL 60625, USA',
+			),
+			'apartment' => array (
+				'title' => 'Apartment',
+				'key' => '_thegem_cf_apartment',
+				'type' => 'text',
+				'id' => 21,
+				'value' => 'Villa',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	354 => array (
+		'id' => 12164,
+		'type' => 'portfolio',
+		'title' => 'Project Gallery',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-16.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/project-gallery/',
+		'content' => '[vc_row full_width="stretch_row" equal_height="yes" background_position_desktop="center top" ken_burns_direction="zoom_out" ken_burns_transition_speed="15000" thegem_featured_image_for_bg_active="true" ken_burns_enabled="true" css=".vc_custom_1681293129705{margin-bottom: 0px !important;background-color: #c7b8e4 !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column width="1/12" offset="vc_col-lg-2 vc_col-md-2 vc_hidden-xs"][/vc_column][vc_column width="5/6" css=".vc_custom_1681302601605{padding-top: 250px !important;padding-right: 60px !important;padding-bottom: 180px !important;padding-left: 60px !important;}" offset="vc_col-lg-8 vc_col-md-8 vc_col-xs-12" tablet_padding_top="160" tablet_padding_bottom="130" mobile_padding_left="21" mobile_padding_right="21" mobile_padding_top="110" mobile_padding_bottom="90"][gem_textbox content_background_color="#ffffff" centered="1" padding_top="65" padding_bottom="65"][thegem_te_portfolio_info list_alignment="center" label_colon="" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][gem_divider margin_top="25"][thegem_te_portfolio_title alignment="center" text_style="title-h1" text_transform="none" text_letter_spacing="0"][gem_divider margin_top="25"][thegem_te_portfolio_excerpt alignment="center" text_style="styled-subtitle" max_width="380"][/gem_textbox][/vc_column][vc_column width="1/12" offset="vc_col-lg-2 vc_col-md-2 vc_hidden-xs"][/vc_column][/vc_row][vc_row css=".vc_custom_1681133722373{margin-bottom: 0px !important;padding-top: 100px !important;padding-bottom: 100px !important;}" tablet_padding_top="70" tablet_padding_bottom="70" mobile_padding_top="60"][vc_column width="1/2" css=".vc_custom_1681133647889{border-right-width: 1px !important;padding-top: 20px !important;padding-bottom: 20px !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;}" offset="vc_col-lg-3 vc_col-md-3"][thegem_te_portfolio_info layout="vertical" list_alignment="center" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22date%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22date_icon_thegemheader%22%3A%22e709%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22elegant%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column][vc_column width="1/2" css=".vc_custom_1681133652088{border-right-width: 1px !important;padding-top: 20px !important;padding-bottom: 20px !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;}" offset="vc_col-lg-3 vc_col-md-3"][thegem_te_portfolio_info layout="vertical" list_alignment="center" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22icon_material%22%3A%22f10e%22%2C%22icon_thegemheader%22%3A%22e700%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Client%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column][vc_column width="1/2" css=".vc_custom_1681133656967{border-right-width: 1px !important;padding-top: 20px !important;padding-bottom: 20px !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;}" offset="vc_col-lg-3 vc_col-md-3"][thegem_te_portfolio_info layout="vertical" list_alignment="center" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22icon_thegemheader%22%3A%22e9ce%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Services%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column][vc_column width="1/2" css=".vc_custom_1681133661839{padding-top: 20px !important;padding-bottom: 20px !important;}" offset="vc_col-lg-3 vc_col-md-3"][thegem_te_portfolio_info layout="vertical" list_alignment="center" text_layout="vertical" label_colon="" value_text_font_weight="light" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_link%22%2C%22date_label%22%3A%22Date%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22icon_thegemheader%22%3A%22e72f%22%2C%22label%22%3A%221%22%2C%22label_text%22%3A%22Link%22%2C%22link%22%3A%22dynamic%22%2C%22link_dynamic%22%3A%22project_details%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%2C%22link_target%22%3A%221%22%7D%5D"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" css=".vc_custom_1681300123151{margin-bottom: 0px !important;padding-right: 90px !important;padding-left: 90px !important;}" tablet_padding_left="21" tablet_padding_right="21" el_class="row-gallery" mobile_padding_left="0" mobile_padding_right="0"][vc_column css=".vc_custom_1681131704177{padding-top: 0px !important;}"][thegem_te_portfolio_gallery type="grid" grid_columns_desktop="3" grid_columns_mobile="1" grid_gaps_desktop="65" grid_gaps_tablet="42" grid_gaps_mobile="21" image_ratio="0.73" image_shadow=""][/vc_column][/vc_row][vc_row css=".vc_custom_1681132487049{margin-bottom: 0px !important;}" custom_css_code="LmdlbS10ZXN0aW1vbmlhbC1pbWFnZSUyQyUwQS5zdHlsZTElMjAuZ2VtLXRlc3RpbW9uaWFsLXdyYXBwZXIlM0FhZnRlciU3QiUwQSUyMCUyMCUyMCUyMGRpc3BsYXklM0ElMjBub25lJTIxaW1wb3J0YW50JTNCJTBBJTdE"][vc_column css=".vc_custom_1681133470702{padding-top: 50px !important;padding-bottom: 90px !important;}" tablet_padding_top="30" tablet_padding_bottom="70"][gem_testimonials set="blocks-portfolio-illustration-design" name_color="#3c3950"][gem_divider margin_top="20" tablet_margin_top="10" mobile_margin_top="10"][gem_social_sharing alignment="center" icons_size="small" reddit="" telegram="" whatsapp="" viber="" xing="" icons_color="#3c3950"][gem_divider margin_top="80" tablet_margin_top="65" mobile_margin_top="65"][thegem_te_portfolio_navigation label="" title_text_style="title-h6" title_text_transform="none" title_text_letter_spacing="0"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => array (
+			'_wpb_post_custom_css' => '@media(max-width: 1400px) and (min-width: 1024px){
+		.row-gallery {
+				padding-left: 42px!important;
+				padding-right: 42px!important;
+		}
+}',
+		),
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+			'link' => array (
+				'title' => 'Link',
+				'key' => '_thegem_cf_link',
+				'type' => 'link',
+				'id' => 4,
+				'value' => 'https://www.domain.tld',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	355 => array (
+		'id' => 12166,
+		'type' => 'portfolio',
+		'title' => 'Product Concept',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-17.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/product-concept/',
+		'content' => '[vc_row css=".vc_custom_1681220083407{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1681280700712{padding-top: 100px !important;padding-bottom: 100px !important;}" tablet_padding_top="60" tablet_padding_bottom="60"][thegem_te_portfolio_title alignment="center" text_tag="div" text_style="title-h1" text_transform="none" text_letter_spacing="0"][gem_divider margin_top="30"][thegem_te_portfolio_excerpt alignment="center" text_style="styled-subtitle" max_width="750"][gem_divider margin_top="45"][thegem_te_portfolio_info list_alignment="center" list_spacing_desktop="15" info_content="%5B%7B%22type%22%3A%22date%22%2C%22date_format%22%3A%225%22%2C%22date_icon%22%3A%22custom%22%2C%22date_icon_pack%22%3A%22material%22%2C%22date_icon_material%22%3A%22f1cc%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22likes%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column][/vc_row][vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1681220788510{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1681220959068{padding-top: 0px !important;}"][thegem_te_portfolio_gallery carousel_columns_desktop="3" carousel_columns_mobile="1" carousel_gaps_desktop="0" image_ratio="1.33" autoplay="1" image_shadow="" arrows="" dots="1" dots_top_spacing="25"][/vc_column][/vc_row][vc_row css=".vc_custom_1681280228746{margin-bottom: 0px !important;padding-top: 100px !important;padding-bottom: 90px !important;}" tablet_padding_top="90" tablet_padding_bottom="70" mobile_padding_top="70" mobile_padding_bottom="50"][vc_column css=".vc_custom_1681280162312{padding-top: 0px !important;}"][vc_row_inner equal_height="yes" css=".vc_custom_1681280137540{margin-bottom: 0px !important;}"][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3"][gem_infotext infobox_alignment="center" icon_image="image" image="{{IMG_ID=12085}}" icon_size="42" title="Lorem ipsum dolor amet consectetur" title_text_style="title-h6" description="" icon_desktop_spacing_right="20" title_custom_font_options="1" title_letter_spacing="0" title_width="170"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3" mobile_padding_top="30"][gem_infotext infobox_alignment="center" icon_image="image" image="{{IMG_ID=12081}}" icon_size="42" title="Lorem ipsum dolor amet consectetur" title_text_style="title-h6" description="" icon_desktop_spacing_right="20" title_custom_font_options="1" title_letter_spacing="0" title_width="170"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3" tablet_padding_top="30"][gem_infotext infobox_alignment="center" icon_image="image" image="{{IMG_ID=12086}}" icon_size="42" title="Lorem ipsum dolor amet consectetur" title_text_style="title-h6" description="" icon_desktop_spacing_right="20" title_custom_font_options="1" title_letter_spacing="0" title_width="170"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3" tablet_padding_top="30"][gem_infotext infobox_alignment="center" icon_image="image" image="{{IMG_ID=12083}}" icon_size="42" title="Lorem ipsum dolor amet consectetur" title_text_style="title-h6" description="" icon_desktop_spacing_right="20" title_custom_font_options="1" title_letter_spacing="0" title_width="170"][/vc_column_inner][/vc_row_inner][gem_divider margin_top="100" tablet_margin_top="80" mobile_margin_top="60"][thegem_te_portfolio_content][/vc_column][/vc_row][vc_row css=".vc_custom_1681224175693{margin-bottom: 0px !important;}" z_index="99"][vc_column css=".vc_custom_1681985902469{margin-bottom: -300px !important;padding-top: 0px !important;}" tablet_margin_bottom="-230" mobile_margin_bottom="-100"][thegem_te_portfolio_featured_image alignment="center" action="lightbox"][/vc_column][/vc_row][vc_row full_width="stretch_row" css=".vc_custom_1681222167299{margin-bottom: 0px !important;background-color: #5442f0 !important;}"][vc_column css=".vc_custom_1681985909377{padding-top: 435px !important;padding-bottom: 140px !important;}" tablet_padding_top="310" tablet_padding_bottom="110" mobile_padding_bottom="90" mobile_padding_top="180"][vc_row_inner][vc_column_inner width="1/12" offset="vc_col-lg-1 vc_col-md-1 vc_hidden-md vc_hidden-sm vc_hidden-xs"][/vc_column_inner][vc_column_inner offset="vc_col-lg-5 vc_col-md-6" tablet_padding_bottom="50"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Lorem%20ipsum%20dolor%20sit%20amet%2C%20consectetur%20adipisicing%20elit%2C%20sed%20do%20eiusmod%20tempor%22%2C%22heading_text_weight%22%3A%22default%22%2C%22heading_text_color%22%3A%22%23ffffff%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_width="440" heading_letter_spacing="0"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3"][thegem_te_portfolio_info layout="vertical" list_spacing_desktop="90" list_spacing_tablet="50" list_spacing_mobile="30" text_layout="vertical" label_text_style="title-h5" label_text_transform="none" label_colon="" value_text_style="text-body" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_letter_spacing="0" value_text_color="#ffffff" label_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/2" offset="vc_col-lg-3 vc_col-md-3" mobile_padding_top="30"][thegem_te_portfolio_info layout="vertical" list_spacing_desktop="90" list_spacing_tablet="50" list_spacing_mobile="30" text_layout="vertical" label_text_style="title-h5" label_text_transform="none" label_colon="" value_text_style="text-body" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_link%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link%22%3A%22dynamic%22%2C%22link_dynamic%22%3A%22project_details%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%2C%22link_target%22%3A%221%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_art_director%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_letter_spacing="0" value_text_color="#ffffff" label_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row full_width="stretch_row_content" content_placement="middle" css=".vc_custom_1681280524292{margin-bottom: 0px !important;padding-top: 85px !important;padding-right: 65px !important;padding-bottom: 85px !important;padding-left: 65px !important;background-color: #dfe5e8 !important;}" tablet_padding_top="65" tablet_padding_bottom="65" tablet_padding_left="0" tablet_padding_right="0"][vc_column css=".vc_custom_1681225162890{padding-top: 0px !important;}"][thegem_te_portfolio_navigation label_prev="Previous" label_next="Next" title_text_style="title-h5" title_text_transform="none" title_text_letter_spacing="0"][/vc_column][/vc_row][vc_row css=".vc_custom_1681225316600{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1681280881108{padding-top: 90px !important;padding-bottom: 90px !important;}" tablet_padding_top="80" tablet_padding_bottom="60" mobile_padding_top="60" mobile_padding_bottom="40"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Other%20Concepts%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="90" tablet_margin_top="60" mobile_margin_top="40"][gem_portfolio portfolio_uid="grid_5dc3e96" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="4x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="280" portfolio_hover="zoom-overlay" portfolio_show_description="" portfolio_show_date="" additional_meta_added="1" show_additional_meta="" portfolio_items_per_page="4" portfolio_pagination="disable" next_page_preloading="" portfolio_gaps_size="42" portfolio_title_style="dark" portfolio_title_preset="title-h6" portfolio_title_transform="none" portfolio_background_style="transparent" caption_container_alignment="center" new_default_highlights="1" ajax_preloader_type="minimal" disable_bottom_margin="1" image_ratio_default="1" portfolio_title_letter_spacing="0" portfolio_title_color_hover="#3c3950"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => '',
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+			'art_director' => array (
+				'title' => 'Art Director',
+				'key' => '_thegem_cf_art_director',
+				'type' => 'text',
+				'id' => 3,
+				'value' => 'Jackson Smith',
+			),
+			'link' => array (
+				'title' => 'Link',
+				'key' => '_thegem_cf_link',
+				'type' => 'link',
+				'id' => 4,
+				'value' => 'https://www.domain.tld',
+			),
+		),
+		'attachment_ids' => array (
+			0 => '12085',
+			1 => '12081',
+			2 => '12086',
+			3 => '12083',
+		),
+	),
+	356 => array (
+		'id' => 12167,
+		'type' => 'portfolio',
+		'title' => 'Fullscreen Hero',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-18.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/fullscreen-hero/',
+		'content' => '[vc_row full_width="stretch_row_content" full_height="yes" columns_placement="bottom" equal_height="yes" content_placement="bottom" background_position_desktop="center top" ken_burns_direction="zoom_out" ken_burns_transition_speed="15000" thegem_featured_image_for_bg_active="true" ken_burns_enabled="true" css=".vc_custom_1681718524129{margin-bottom: 0px !important;background-color: #010101 !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column css=".vc_custom_1681366948268{padding-top: 250px !important;padding-bottom: 130px !important;padding-left: 130px !important;}" offset="vc_col-lg-5 vc_col-md-12" el_class="hero-left-col" tablet_padding_left="42" mobile_padding_left="21" tablet_padding_bottom="0" tablet_padding_top="150"][thegem_te_portfolio_title text_style="title-h1" text_transform="none" text_letter_spacing="0" text_color="#ffffff" max_width="450"][gem_divider margin_top="30"][thegem_te_portfolio_excerpt text_style="styled-subtitle" max_width="420" text_color="#ffffff"][gem_divider margin_top="30"][thegem_te_portfolio_info list_spacing_desktop="15" label_colon="" info_content="%5B%7B%22type%22%3A%22cats%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22likes%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column][vc_column css=".vc_custom_1681292025526{padding-top: 250px !important;padding-right: 130px !important;padding-bottom: 130px !important;}" offset="vc_col-lg-7 vc_col-md-12 vc_hidden-md vc_hidden-sm vc_hidden-xs" el_class="hero-right-col"][gem_social_sharing alignment="right" icons_size="custom" icons_size_custom="20" tumblr="" reddit="" whatsapp="" viber="" xing="" icons_color="#ffffff"][gem_divider margin_top="40"][thegem_te_portfolio_info list_alignment="right" list_spacing_desktop="25" value_text_style="text-body" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_art_director%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column][vc_column offset="vc_hidden-lg" css=".vc_custom_1681370403587{padding-top: 45px !important;padding-bottom: 80px !important;padding-left: 42px !important;}" mobile_padding_left="21"][gem_social_sharing icons_size="custom" icons_size_custom="20" tumblr="" reddit="" whatsapp="" viber="" xing="" icons_color="#ffffff"][gem_divider margin_top="25"][thegem_te_portfolio_info list_spacing_desktop="25" value_text_style="text-body" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_client%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_services%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_link%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link%22%3A%22dynamic%22%2C%22link_dynamic%22%3A%22project_details%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%2C%22link_target%22%3A%221%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_art_director%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" label_text_color="#ffffff" value_text_color="#ffffff"][/vc_column][/vc_row][vc_row css=".vc_custom_1681283573019{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1681291586756{padding-top: 100px !important;padding-bottom: 90px !important;}" tablet_padding_top="85" tablet_padding_bottom="70" mobile_padding_top="65" mobile_padding_bottom="50"][thegem_te_portfolio_content][/vc_column][/vc_row][vc_row full_width="stretch_row_content_no_spaces" css=".vc_custom_1681286386453{margin-bottom: 0px !important;}"][vc_column][thegem_te_portfolio_gallery carousel_columns_desktop="3" carousel_columns_mobile="1" image_ratio="1.33" autoplay="1" image_shadow="" arrows_icons="" dots=""][/vc_column][/vc_row][vc_row css=".vc_custom_1681286469244{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1681291306625{padding-top: 85px !important;padding-bottom: 85px !important;}" tablet_padding_top="65" tablet_padding_bottom="65"][thegem_te_portfolio_navigation title_text_style="title-h5" title_text_transform="none" title_text_letter_spacing="0"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" css=".vc_custom_1681286868185{margin-bottom: 0px !important;background-color: #f4f6f7 !important;}"][vc_column css=".vc_custom_1681291650899{padding-top: 90px !important;padding-right: 70px !important;padding-bottom: 100px !important;padding-left: 70px !important;}" tablet_padding_left="21" tablet_padding_right="21" tablet_padding_top="80" tablet_padding_bottom="90" mobile_padding_bottom="70" mobile_padding_top="65"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22You%20May%20Also%20Like%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="85" tablet_margin_top="45" mobile_margin_top="45"][gem_portfolio portfolio_uid="grid_ef1380a" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="4x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="280" portfolio_fullwidth_section_images="1" portfolio_display_titles="hover" portfolio_hover_hover="circular" additional_meta_added="1" show_additional_meta="" portfolio_pagination="disable" next_page_preloading="" portfolio_gaps_size="42" portfolio_title_preset="title-h6" portfolio_title_transform="none" new_default_highlights="1" ajax_preloader_type="minimal" disable_bottom_margin="1" image_ratio_default="1.33" portfolio_title_letter_spacing="0" portfolio_gaps_size_tablet="21"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => array (
+			'_wpb_post_custom_css' => '@media(max-width: 1600px) and (min-width: 1200px){
+		.hero-right-col .vc_column-inner {
+				padding-right: 70px!important;
+				padding-bottom: 70px!important;
+		}
+		.hero-left-col .vc_column-inner {
+				padding-left: 70px!important;
+				padding-bottom: 70px!important;
+		}
+}
+@media(max-width: 1199px) and (min-width: 769px){
+		.hero-right-col .vc_column-inner {
+				padding-right: 42px!important;
+		}
+		.hero-left-col .vc_column-inner {
+				padding-left: 42px!important;
+				padding-bottom: 0!important;
+		}
+}',
+		),
+		'project_details' => array (
+			'client' => array (
+				'title' => 'Client',
+				'key' => '_thegem_cf_client',
+				'type' => 'text',
+				'id' => 1,
+				'value' => 'Castro Capital Company',
+			),
+			'services' => array (
+				'title' => 'Services',
+				'key' => '_thegem_cf_services',
+				'type' => 'text',
+				'id' => 2,
+				'value' => 'Branding',
+			),
+			'art_director' => array (
+				'title' => 'Art Director',
+				'key' => '_thegem_cf_art_director',
+				'type' => 'text',
+				'id' => 3,
+				'value' => 'Jackson Smith',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	357 => array (
+		'id' => 12170,
+		'type' => 'portfolio',
+		'title' => 'Rental Demo (Boat)',
+		'mark' => '',
+		'pic' => 'portfolio-page-preview-19.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/rental-demo-boat/',
+		'content' => '[vc_row css=".vc_custom_1681140308997{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1681140651139{padding-top: 20px !important;}"][thegem_te_portfolio_breadcrumbs][/vc_column][/vc_row][vc_row equal_height="yes" css=".vc_custom_1681140377383{margin-bottom: 0px !important;}"][vc_column width="2/3" css=".vc_custom_1681217375098{padding-top: 30px !important;padding-bottom: 45px !important;}" tablet_padding_top="20" mobile_padding_bottom="20"][thegem_te_portfolio_title text_style="title-h2" text_transform="none" text_letter_spacing="0"][gem_divider margin_top="15" mobile_margin_top="8"][thegem_te_portfolio_info skin="classic" list_divider="" label_colon="" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_address%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e01d%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column][vc_column width="1/3" css=".vc_custom_1681217300143{padding-top: 30px !important;padding-bottom: 45px !important;}" offset="vc_hidden-xs" tablet_padding_top="20"][thegem_te_portfolio_info list_alignment="right" label_colon="" value_text_style="title-h2" value_text_transform="none" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_rental_day%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22field_suffix%22%3A%22%20per%20Day%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#00bcd4" value_text_letter_spacing="0"][gem_divider margin_top="5"][thegem_te_portfolio_info skin="classic" list_alignment="right" icon_spacing="10" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_rental_2_hrs%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%222%20Hours%3A%20%24%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e100%22%2C%22icon_thegemheader%22%3A%22e640%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_rental_3_hrs%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%223%20Hours%3A%20%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column][vc_column css=".vc_custom_1681217360770{padding-top: 0px !important;padding-bottom: 45px !important;}" offset="vc_hidden-lg vc_hidden-md vc_hidden-sm"][thegem_te_portfolio_info label_colon="" value_text_style="title-h2" value_text_transform="none" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_rental_day%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22field_suffix%22%3A%22%20per%20Day%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#00bcd4" value_text_letter_spacing="0"][thegem_te_portfolio_info skin="classic" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_rental_2_hrs%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%222%20Hours%3A%20%24%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e100%22%2C%22icon_thegemheader%22%3A%22e640%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_rental_3_hrs%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%223%20Hours%3A%20%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#3c3950" list_divider_color="#d8e1e7" icon_color="#3c3950"][/vc_column][/vc_row][vc_row full_width="stretch_row_content" equal_height="yes" css=".vc_custom_1681191548547{margin-bottom: 0px !important;padding-right: 21px !important;padding-left: 21px !important;}" tablet_padding_left="0" tablet_padding_right="0"][vc_column thegem_featured_image_for_bg_active="true" css=".vc_custom_1681464065336{margin-right: 21px !important;margin-bottom: 42px !important;margin-left: 21px !important;padding-top: 200px !important;padding-bottom: 200px !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}" offset="vc_col-lg-6 vc_col-md-12" mobile_padding_top="130" mobile_padding_bottom="130" tablet_margin_bottom="0"][/vc_column][vc_column css=".vc_custom_1681464076828{margin-bottom: 42px !important;padding-top: 0px !important;}" offset="vc_col-lg-6 vc_col-md-12" tablet_padding_top="21" tablet_margin_bottom="0"][thegem_te_portfolio_gallery type="grid" grid_columns_desktop="2" grid_columns_tablet="2" grid_columns_mobile="1" grid_gaps_desktop="42" grid_gaps_tablet="21" image_ratio="1.45" image_shadow=""][/vc_column][/vc_row][vc_row equal_height="yes" css=".vc_custom_1676382208302{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1681464184395{padding-top: 40px !important;}" offset="vc_col-lg-8 vc_col-md-8" el_class="column-info" mobile_padding_top="50" tablet_padding_top="80"][vc_row_inner css=".vc_custom_1681211139012{margin-bottom: 0px !important;}"][vc_column_inner width="1/4" css=".vc_custom_1681211231766{padding-top: 0px !important;}" offset="vc_col-xs-6"][gem_infotext infobox_alignment="center" icon_image="image" image="{{IMG_ID=12063}}" size="medium" title="Type:" subtitle_source="project_details" subtitle_project_details_select_field="_thegem_cf_boat_type" subtitle_text_style="title-default" subtitle_font_weight="light" description="" icon_desktop_spacing_right="25" title_custom_font_options="1" subtitle_custom_font_options="1" description_custom_font_options="" title_letter_spacing="0" subtitle_letter_spacing="0"][/vc_column_inner][vc_column_inner width="1/4" css=".vc_custom_1681211236149{padding-top: 0px !important;}" offset="vc_col-xs-6"][gem_infotext infobox_alignment="center" icon_image="image" image="{{IMG_ID=12057}}" size="medium" title="Guest:" subtitle_source="project_details" subtitle_project_details_select_field="_thegem_cf_persons" subtitle_field_type="number" subtitle_field_format="" subtitle_text_style="title-default" subtitle_font_weight="light" description="" icon_desktop_spacing_right="25" title_custom_font_options="1" subtitle_custom_font_options="1" description_custom_font_options="" title_letter_spacing="0" subtitle_letter_spacing="0"][/vc_column_inner][vc_column_inner width="1/4" css=".vc_custom_1681211129541{padding-top: 0px !important;}" mobile_padding_top="30" offset="vc_col-xs-6"][gem_infotext infobox_alignment="center" icon_image="image" image="{{IMG_ID=12059}}" size="medium" title="Baths:" subtitle_source="project_details" subtitle_project_details_select_field="_thegem_cf_bathrooms" subtitle_field_type="number" subtitle_field_format="" subtitle_text_style="title-default" subtitle_font_weight="light" description="" icon_desktop_spacing_right="25" title_custom_font_options="1" subtitle_custom_font_options="1" description_custom_font_options="" title_letter_spacing="0" subtitle_letter_spacing="0"][/vc_column_inner][vc_column_inner width="1/4" css=".vc_custom_1681211136396{padding-top: 0px !important;}" mobile_padding_top="30" offset="vc_col-xs-6"][gem_infotext infobox_alignment="center" icon_image="image" image="{{IMG_ID=12060}}" size="medium" title="Cabins:" subtitle_source="project_details" subtitle_project_details_select_field="_thegem_cf_cabins" subtitle_field_type="number" subtitle_field_format="" subtitle_text_style="title-default" subtitle_font_weight="light" description="" icon_desktop_spacing_right="25" title_custom_font_options="1" subtitle_custom_font_options="1" description_custom_font_options="" title_letter_spacing="0" subtitle_letter_spacing="0"][/vc_column_inner][/vc_row_inner][gem_divider margin_top="60" margin_bottom="60" color="#e7edf1"][thegem_te_portfolio_content][gem_divider margin_top="45" margin_bottom="60" color="#e7edf1"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Features%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="20"][vc_row_inner css=".vc_custom_1681198019022{margin-bottom: 0px !important;}"][vc_column_inner width="1/2"][thegem_te_portfolio_info skin="table" table_vertical_spacing="15" table_horizontal_spacing="99" label_text_style="text-body" value_text_style="text-body" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_brand%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22m%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_model%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22m%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_engine%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][vc_column_inner width="1/2"][thegem_te_portfolio_info skin="table" table_vertical_spacing="15" table_horizontal_spacing="90" label_text_style="text-body" value_text_style="text-body" info_content="%5B%7B%22type%22%3A%22meta_thegem_cf_length%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22m%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_year%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22type%22%3A%22meta_thegem_cf_harbour%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][/vc_row_inner][gem_divider margin_top="55" margin_bottom="60" color="#e7edf1"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Conditions%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="50"][vc_row_inner equal_height="yes" css=".vc_custom_1681198125914{margin-bottom: 0px !important;}"][vc_column_inner width="1/2" thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="10" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1681218259276{margin-right: 21px !important;margin-left: 21px !important;padding-top: 30px !important;padding-bottom: 30px !important;padding-left: 40px !important;}"][gem_heading heading_tag="div" heading_div_style="main-menu-item" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Check-in%20%26%20check-out%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="25"][vc_column_text css=".vc_custom_1681198678672{margin-bottom: 0px !important;padding-bottom: 15px !important;}"]Schedule for check-in: 10:00[/vc_column_text][vc_column_text css=".vc_custom_1681198663394{margin-bottom: 0px !important;}"]Schedule for check-out: 18:00[/vc_column_text][/vc_column_inner][vc_column_inner width="1/2" thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="10" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1681218255696{margin-right: 21px !important;margin-left: 21px !important;padding-top: 30px !important;padding-bottom: 30px !important;padding-left: 40px !important;}" mobile_margin_top="30"][gem_heading heading_tag="div" heading_div_style="main-menu-item" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Rules%20for%20the%20boat%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="25"][vc_column_text css=".vc_custom_1681198669767{margin-bottom: 0px !important;padding-bottom: 15px !important;}"]Fuel included in price: No[/vc_column_text][vc_column_text css=".vc_custom_1681198674170{margin-bottom: 0px !important;}"]Minimum rental age: 18 years old[/vc_column_text][/vc_column_inner][/vc_row_inner][gem_divider margin_top="70" margin_bottom="60" color="#e7edf1"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Frequently%20asked%20questions%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="25"][vc_tta_accordion title_tag="h6" section_title_tag="h6" style="simple_solid" c_position="right" active_section="1" thegem_top_spacing="20" thegem_bottom_spacing="20"][vc_tta_section title="What happens in the case of bad weather?" tab_id="1681199367547-21b9caba-d477"][vc_column_text]Sed molestie diam sed metus rhoncus tincidunt. Integer et urna in leo rutrum placerat. Nam interdum, lacus in euismod tristique, urna velit scelerisque dui, malesuada eleifend magna purus eget lectus. Sed fringilla metus vitae mollis aliquam. Aenean pellentesque est a metus hendrerit, at vulputate ante aliquam.[/vc_column_text][/vc_tta_section][vc_tta_section title="Is fuel included in the charter price?" tab_id="1681199367614-64be69c4-046d"][vc_column_text]Sed molestie diam sed metus rhoncus tincidunt. Integer et urna in leo rutrum placerat. Nam interdum, lacus in euismod tristique, urna velit scelerisque dui, malesuada eleifend magna purus eget lectus. Sed fringilla metus vitae mollis aliquam. Aenean pellentesque est a metus hendrerit, at vulputate ante aliquam.[/vc_column_text][/vc_tta_section][vc_tta_section title="Do I need a licence to rent this boat?" tab_id="1681199863151-45a12e4e-fddc"][vc_column_text]Sed molestie diam sed metus rhoncus tincidunt. Integer et urna in leo rutrum placerat. Nam interdum, lacus in euismod tristique, urna velit scelerisque dui, malesuada eleifend magna purus eget lectus. Sed fringilla metus vitae mollis aliquam. Aenean pellentesque est a metus hendrerit, at vulputate ante aliquam.[/vc_column_text][/vc_tta_section][vc_tta_section title="Am I insured in case of problems with the boat at sea?" tab_id="1681199886310-ea8795c7-05c8"][vc_column_text]Sed molestie diam sed metus rhoncus tincidunt. Integer et urna in leo rutrum placerat. Nam interdum, lacus in euismod tristique, urna velit scelerisque dui, malesuada eleifend magna purus eget lectus. Sed fringilla metus vitae mollis aliquam. Aenean pellentesque est a metus hendrerit, at vulputate ante aliquam.[/vc_column_text][/vc_tta_section][vc_tta_section title="Am I experienced enough to rent this boat?" tab_id="1681199901889-02eec5d1-b453"][vc_column_text]Sed molestie diam sed metus rhoncus tincidunt. Integer et urna in leo rutrum placerat. Nam interdum, lacus in euismod tristique, urna velit scelerisque dui, malesuada eleifend magna purus eget lectus. Sed fringilla metus vitae mollis aliquam. Aenean pellentesque est a metus hendrerit, at vulputate ante aliquam.[/vc_column_text][/vc_tta_section][/vc_tta_accordion][gem_divider margin_top="20"][vc_row_inner equal_height="yes" content_placement="middle" css=".vc_custom_1681201139110{margin-right: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;background-color: #f5f7f9 !important;}"][vc_column_inner width="7/12" css=".vc_custom_1681211975792{padding-top: 40px !important;padding-bottom: 40px !important;}" offset="vc_col-lg-7 vc_col-md-6" mobile_padding_bottom="0"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Do%20you%20have%20any%20questions%3F%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][/vc_column_inner][vc_column_inner width="5/12" css=".vc_custom_1681392619373{padding-top: 15px !important;padding-bottom: 15px !important;}" offset="vc_col-lg-5 vc_col-md-6" mobile_padding_bottom="20"][gem_button text="Ask the owner" link_type="dynamic" link_dynamic="project_details" project_details_link_select="_thegem_cf_email" link_target="1" link_nofollow="" position="center" corner="4" size="medium" icon_pack="elegant" text_color="#ffffff" background_color="#00bcd4" hover_text_color="#ffffff" hover_background_color="#3c3950" padding_left="40" padding_right="40"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column width="1/2" el_sticky="1" css=".vc_custom_1681464090518{margin-top: 40px !important;padding-top: 0px !important;padding-bottom: 70px !important;}" el_sticky_offset="90" offset="vc_col-lg-offset-0 vc_col-lg-4 vc_col-md-offset-0 vc_col-md-4 vc_col-sm-offset-3" tablet_padding_bottom="0" el_class="column-sticky"][vc_row_inner css=".vc_custom_1676038860059{margin-right: 0px !important;margin-bottom: 0px !important;margin-left: 0px !important;}"][vc_column_inner thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="10" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1681217710561{padding-top: 35px !important;padding-right: 20px !important;padding-bottom: 25px !important;padding-left: 20px !important;}"][gem_heading heading_tag="div" heading_div_style="title-h4" heading_align="center" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Add%20date%20for%20prices%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0" css=".vc_custom_1681457137235{padding-bottom: 5px !important;}"][gem_divider margin_top="10"][vc_column_text css=".vc_custom_1681457113026{margin-bottom: 0px !important;}"]
+<p style="text-align: center;">Select your date:</p>
+[/vc_column_text][gem_divider margin_top="15"][contact-form-7 id="{{CF_ID=12062}}"][gem_divider margin_top="-5"][vc_column_text css=".vc_custom_1681217745483{margin-bottom: 0px !important;}"]
+<p style="text-align: center;">or</p>
+[/vc_column_text][gem_button text="Book" link_type="dynamic" link_dynamic="project_details" project_details_link_select="_thegem_cf_email" link_target="1" link_nofollow="" position="center" corner="4" size="medium" icon_pack="elegant" text_color="#ffffff" background_color="#00bcd4" hover_text_color="#ffffff" hover_background_color="#3c3950" padding_left="97" padding_right="97"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row][vc_row css=".vc_custom_1676039313147{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1681201391603{padding-top: 65px !important;padding-bottom: 60px !important;}" tablet_padding_bottom="30"][thegem_te_portfolio_navigation label_prev="Previous" label_next="Next" title_text_style="title-h6" title_text_transform="none" title_text_letter_spacing="0"][gem_divider margin_top="80" mobile_margin_top="60"][gem_heading heading_tag="div" heading_div_style="title-h2" heading_custom_font_size="1" text_content="%5B%7B%22heading_text%22%3A%22Similar%20Boats%22%2C%22heading_text_weight%22%3A%22default%22%2C%22rotating_text_items%22%3A%22%255B%257B%2522text%2522%253A%2522This%2520is%2520rotating%2520text%2522%257D%255D%22%2C%22rotating_animation_name%22%3A%22default%22%7D%5D" heading_letter_spacing="0"][gem_divider margin_top="50"][gem_portfolio portfolio_uid="grid_dbc8dbds" query_type="related" taxonomy_related="thegem_portfolios" exclude_type="current" thegem_elementor_preset="alternative" portfolio_layout="3x" layout_scheme_6x="6a" layout_scheme_5x="5a" layout_scheme_4x="4a" layout_scheme_3x="3a" layout_scheme_2x="2a" metro_max_row_height="380" portfolio_hover="zoom-overlay" portfolio_show_description="" portfolio_show_date="" additional_meta_added="1" show_additional_meta="" show_details="1" details_layout="inline" repeater_details="%5B%7B%22attribute_title%22%3A%22Model%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_model%22%2C%22attribute_meta_type%22%3A%22text%22%2C%22attribute_price_format%22%3A%22disabled%22%2C%22attribute_icon_pack%22%3A%22elegant%22%2C%22attribute_icon_elegant%22%3A%22e017%22%7D%2C%7B%22attribute_title%22%3A%22Harbour%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_harbour%22%2C%22attribute_meta_type%22%3A%22text%22%2C%22attribute_price_format%22%3A%22wp_locale%22%2C%22attribute_icon_pack%22%3A%22elegant%22%2C%22attribute_icon_elegant%22%3A%22e01d%22%7D%2C%7B%22attribute_title%22%3A%22Price%22%2C%22attribute_type%22%3A%22details%22%2C%22attribute_details%22%3A%22_thegem_cf_price%22%2C%22attribute_meta_type%22%3A%22number%22%2C%22attribute_price_format%22%3A%22wp_locale%22%2C%22attribute_price_format_prefix%22%3A%22%24%22%2C%22attribute_icon_pack%22%3A%22elegant%22%2C%22attribute_icon_elegant%22%3A%22e100%22%7D%5D" portfolio_items_per_page="3" portfolio_pagination="disable" portfolio_gaps_size="42" portfolio_title_preset="title-h6" portfolio_background_style="transparent" caption_container_alignment="left" loading_animation="disabled" new_default_highlights="1" ajax_preloader_type="minimal" source_type="custom" portfolio_gaps_size_tablet="21" portfolio_gaps_size_mobile="21" portfolio_title_letter_spacing="0" image_ratio_default="1.33"][/vc_column][/vc_row]',
+		'categories' => array (
+		),
+		'metas' => array (
+			'_wpb_post_custom_css' => '.column-info .vc_tta.vc_general .vc_tta-title-text {
+		text-transform: none!important;
+		letter-spacing: 0!important;
+		font-family: \'Montserrat\'!important;
+		font-weight: 700!important;
+}
+.column-sticky .gem-button-size-medium {
+		margin: 15px 0!important;	 
+}
+.column-sticky .date-form {
+		background-color: transparent!important;
+		border: 1px solid #e7edf1!important;
+		width: 255px!important;
+		padding-right: 20px!important;
+}
+.column-sticky .wpcf7-submit {
+		background-color: #3c3950!important;
+		padding: 10px!important;
+		margin: 30px 0 15px!important;
+		border-radius: 4px!important;
+		width: 255px!important;
+}
+.column-sticky .wpcf7-submit:hover {
+		background-color: #00bcd4!important;
+}
+.column-sticky .wpcf7-form .wpcf7-form-control-wrap,
+.column-sticky .boat-rental{
+		text-align: center!important;
+}
+.column-sticky .wpcf7-spinner {
+		margin: 0 -11px!important;
+}',
+		),
+		'project_details' => array (
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'year' => array (
+				'title' => 'Year',
+				'key' => '_thegem_cf_year',
+				'type' => 'number',
+				'id' => 14,
+				'value' => '2023',
+			),
+			'address' => array (
+				'title' => 'Address',
+				'key' => '_thegem_cf_address',
+				'type' => 'text',
+				'id' => 20,
+				'value' => '4885 N Francisco Ave, Chicago, IL 60625, USA',
+			),
+			'model' => array (
+				'title' => 'Model',
+				'key' => '_thegem_cf_model',
+				'type' => 'text',
+				'id' => 22,
+				'value' => 'Yacht',
+			),
+			'persons' => array (
+				'title' => 'Persons',
+				'key' => '_thegem_cf_persons',
+				'type' => 'number',
+				'id' => 23,
+				'value' => '1',
+			),
+			'harbour' => array (
+				'title' => 'Harbour',
+				'key' => '_thegem_cf_harbour',
+				'type' => 'text',
+				'id' => 25,
+				'value' => 'Latsi',
+			),
+			'email' => array (
+				'title' => 'eMail',
+				'key' => '_thegem_cf_email',
+				'type' => 'link',
+				'value' => 'name@domain.tld',
+				'applying' => false,
+				'id' => 27,
+			),
+			'rental_day' => array (
+				'title' => 'Rental (day)',
+				'key' => '_thegem_cf_rental_day',
+				'type' => 'number',
+				'value' => '105',
+				'applying' => false,
+				'id' => 28,
+			),
+			'rental_2_hrs' => array (
+				'title' => 'Rental (2 hrs)',
+				'key' => '_thegem_cf_rental_2_hrs',
+				'type' => 'number',
+				'value' => '50',
+				'applying' => false,
+				'id' => 29,
+			),
+			'rental_3_hrs' => array (
+				'title' => 'Rental (3 hrs)',
+				'key' => '_thegem_cf_rental_3_hrs',
+				'type' => 'number',
+				'value' => '75',
+				'applying' => false,
+				'id' => 30,
+			),
+			'boat_type' => array (
+				'title' => 'Boat Type ',
+				'key' => '_thegem_cf_boat_type',
+				'type' => 'text',
+				'value' => 'Motorboat',
+				'applying' => false,
+				'id' => 31,
+			),
+			'cabins' => array (
+				'title' => 'Cabins',
+				'key' => '_thegem_cf_cabins',
+				'type' => 'number',
+				'value' => '6',
+				'applying' => false,
+				'id' => 32,
+			),
+			'length' => array (
+				'title' => 'Length',
+				'key' => '_thegem_cf_length',
+				'type' => 'number',
+				'value' => '6',
+				'applying' => false,
+				'id' => 33,
+			),
+			'engine' => array (
+				'title' => 'Engine',
+				'key' => '_thegem_cf_engine',
+				'type' => 'text',
+				'value' => '115hp',
+				'applying' => false,
+				'id' => 34,
+			),
+			'brand' => array (
+				'title' => 'Brand',
+				'key' => '_thegem_cf_brand',
+				'type' => 'text',
+				'value' => 'Ranieri',
+				'applying' => false,
+				'id' => 35,
+			),
+		),
+		'attachment_ids' => array (
+			0 => '12063',
+			1 => '12057',
+			2 => '12059',
+			3 => '12060',
+		),
+		'cf_ids' => array (
+			0 => '12062',
+		),
+	),
+	358 => array (
+		'id' => 12668,
+		'type' => 'loop-item',
+		'title' => 'Caption Card on Image',
+		'mark' => '',
+		'pic' => 'caption-card-on-image.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/caption-card-on-image/',
+		'content' => '[vc_row css=".vc_custom_1686032839939{padding-top: 0px !important;padding-right: 0px !important;padding-bottom: 80px !important;padding-left: 0px !important;}"][vc_column][thegem_te_loop_featured_media][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="-80" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="-80" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="-80" css=".vc_custom_1686146472807{padding-right: 25px !important;padding-left: 25px !important;}" position_absolute_custom_markup=""][vc_column_inner thegem_shadow_color="rgba(0,0,0,0.15)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1686123148728{padding-top: 0px !important;padding-right: 25px !important;padding-bottom: 30px !important;padding-left: 25px !important;background-color: #ffffff !important;}"][thegem_te_post_info list_alignment="center" list_divider="" text_style="text-body-tiny" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686122990011{margin-top: -11px !important;margin-bottom: 15px !important;}"][thegem_te_post_info list_alignment="center" text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22author%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][thegem_te_post_title alignment="center" truncate_title="3"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'cards' => 'Cards',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12090',
+				'demo_width' => '',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	359 => array (
+		'id' => 12669,
+		'type' => 'loop-item',
+		'title' => 'Box with Shadow',
+		'mark' => '',
+		'pic' => 'box-with-shadow.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/box-with-shadow/',
+		'content' => '[vc_row thegem_shadow_color="rgba(0,0,0,0.15)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1686040030499{padding-top: 30px !important;padding-right: 30px !important;padding-bottom: 35px !important;padding-left: 30px !important;border-radius: 30px !important;}"][vc_column][thegem_te_loop_featured_media image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_radius_normal_top_left="30" image_radius_normal_top_right="30" image_radius_normal_bottom_left="30" image_radius_normal_bottom_right="30" container_layout=".vc_custom_1686039885327{margin-bottom: 15px !important;}"][thegem_te_post_info list_alignment="center" text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686123563203{margin-bottom: 5px !important;}"][thegem_te_post_title alignment="center" text_style="title-h5" truncate_title="3" container_layout=".vc_custom_1686146544763{margin-bottom: 20px !important;}"][gem_button text="Read More" position="center" style="outline" corner="100" border="2" icon_pack="elegant"][/vc_column][/vc_row]',
+		'categories' => array (
+			'cards' => 'Cards',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	360 => array (
+		'id' => 12670,
+		'type' => 'loop-item',
+		'title' => 'Clean & Centered',
+		'mark' => '',
+		'pic' => 'clean-centered.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/clean-centered/',
+		'content' => '[vc_row][vc_column][thegem_te_loop_featured_media][thegem_te_post_info list_alignment="center" list_divider="" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686124317568{margin-top: -11px !important;margin-bottom: 25px !important;}"][thegem_te_post_title alignment="center" text_style="title-h5"][thegem_te_post_info list_alignment="center" list_divider="" text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686124323384{margin-bottom: 20px !important;}"][/vc_column][/vc_row]',
+		'categories' => array (
+			'cards' => 'Cards',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	361 => array (
+		'id' => 12671,
+		'type' => 'loop-item',
+		'title' => 'List Item 01',
+		'mark' => '',
+		'pic' => 'list-item-01.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/list-item-01/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" thegem_shadow_color="rgba(0,0,0,0.15)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_enable_shadow="true" thegem_revesrse_columns_mobile="true"][vc_column width="7/12" css=".vc_custom_1686041113620{padding-top: 35px !important;padding-right: 40px !important;padding-bottom: 40px !important;padding-left: 40px !important;}"][thegem_te_post_info info_content="%5B%7B%22type%22%3A%22author%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][thegem_te_post_title truncate_title="2" container_layout=".vc_custom_1686125538176{margin-bottom: 10px !important;}"][thegem_te_post_excerpt truncate_excerpt="3"][gem_divider margin_top="25"][gem_button text="Read More" position="left" style="outline" corner="3" border="2" icon_pack="elegant"][/vc_column][vc_column width="5/12" background_position_desktop="center center" thegem_featured_image_for_bg_active="true" css=".vc_custom_1688131979937{background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_row_inner position_absolute="absolute" position_absolute_horizontal="right" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_horizontal_tablet="right" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_horizontal_mobile="right" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0"][vc_column_inner css=".vc_custom_1686146712255{padding-right: 0px !important;padding-left: 0px !important;}"][thegem_te_post_info list_alignment="right" list_divider="" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column_inner][/vc_row_inner][gem_divider margin_top="250" mobile_margin_top="200"][/vc_column][/vc_row]',
+		'categories' => array (
+			'list-item' => 'List Item',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8539',
+				'demo_width' => '550',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	362 => array (
+		'id' => 12672,
+		'type' => 'loop-item',
+		'title' => 'List Item 02',
+		'mark' => '',
+		'pic' => 'list-item-02.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/list-item-02/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" css=".vc_custom_1686127496945{border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;border-left-color: #dfe5e8 !important;border-left-style: solid !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;border-bottom-color: #dfe5e8 !important;border-bottom-style: solid !important;}"][vc_column width="7/12" css=".vc_custom_1686127292291{padding-top: 0px !important;}"][thegem_te_loop_featured_media image_ratio="1.25"][/vc_column][vc_column width="5/12" css=".vc_custom_1686208786029{padding-top: 15px !important;padding-right: 25px !important;padding-bottom: 15px !important;padding-left: 25px !important;}"][thegem_te_post_info list_alignment="center" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686208732336{margin-top: 10px !important;margin-bottom: 10px !important;}"][thegem_te_post_title alignment="center" text_style="title-h5" truncate_title="3"][thegem_te_post_info list_alignment="center" text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][/vc_row]',
+		'categories' => array (
+			'list-item' => 'List Item',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '9095',
+				'demo_width' => '550',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	363 => array (
+		'id' => 12673,
+		'type' => 'loop-item',
+		'title' => 'Corner Tile',
+		'mark' => '',
+		'pic' => 'corner-tile.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/corner-tile/',
+		'content' => '[vc_row][vc_column][thegem_te_loop_featured_media image_ratio="1.25"][vc_row_inner position_absolute="absolute" position_absolute_horizontal="right" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_horizontal_mobile="right" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0"][vc_column_inner css=".vc_custom_1686146729703{padding-right: 0px !important;}"][thegem_te_post_info list_alignment="right" list_divider="" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column_inner][/vc_row_inner][vc_row_inner position_absolute="absolute" position_absolute_horizontal="right" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_horizontal_tablet="right" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686128551097{padding-top: 30px !important;padding-right: 0px !important;padding-left: 20px !important;background-color: #ffffff !important;}" position_absolute_width="80%" position_absolute_width_tablet="80%" position_absolute_width_mobile="100%"][vc_column_inner css=".vc_custom_1686127650386{padding-top: 0px !important;}"][thegem_te_post_title text_style="title-h5" truncate_title="3"][thegem_te_post_info text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'caption-on-image' => 'Caption On Image',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	364 => array (
+		'id' => 12674,
+		'type' => 'loop-item',
+		'title' => 'Image Overlap',
+		'mark' => '',
+		'pic' => 'image-overlap.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/image-overlap/',
+		'content' => '[vc_row equal_height="yes" thegem_revesrse_columns_mobile="true" mobile_margin_bottom="20"][vc_column width="5/12" z_index="5" mobile_padding_top="30"][thegem_te_post_info terms_taxonomy_style="list" container_layout_mobile_padding_bottom="0" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686128171760{padding-bottom: 20px !important;}"][vc_row_inner css=".vc_custom_1686736392825{margin-right: -100px !important;padding-top: 20px !important;padding-bottom: 20px !important;background-color: #ffffff !important;}" z_index="5" mobile_margin_right="0" mobile_padding_top="0" mobile_padding_bottom="0" mobile_margin_bottom="10"][vc_column_inner css=".vc_custom_1686146787990{padding-top: 0px !important;padding-left: 0px !important;}"][thegem_te_post_title truncate_title="3"][/vc_column_inner][/vc_row_inner][thegem_te_post_excerpt truncate_excerpt="6" container_layout_tablet_padding_right="0" container_layout=".vc_custom_1686735940940{padding-right: 20px !important;}"][/vc_column][vc_column width="7/12" background_position_desktop="center center" thegem_featured_image_for_bg_active="true" css=".vc_custom_1686050240052{background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][gem_divider margin_top="300"][/vc_column][/vc_row]',
+		'categories' => array (
+			'caption-on-image' => 'Caption On Image',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '9155',
+				'demo_width' => '550',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	365 => array (
+		'id' => 12675,
+		'type' => 'loop-item',
+		'title' => 'Rounded Corner',
+		'mark' => '',
+		'pic' => 'box-with-shadow-2.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/rounded-corner/',
+		'content' => '[vc_row thegem_shadow_color="rgba(0,0,0,0.1)" thegem_shaow_vertical="0" thegem_shaow_blur="10" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1686738917494{padding-top: 50px !important;padding-right: 40px !important;padding-bottom: 50px !important;padding-left: 50px !important;}" custom_css_code="JTIwJTdCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLWJvdHRvbS1yaWdodC1yYWRpdXMlM0ElMjAxMDBweCUyMCUyMWltcG9ydGFudCUzQiUwQSU3RA==" mobile_padding_top="30" mobile_padding_bottom="30" mobile_padding_left="30" mobile_padding_right="30"][vc_column][thegem_te_post_info terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686129039137{margin-bottom: 5px !important;}"][thegem_te_post_title text_style="title-h3" truncate_title="2" container_layout=".vc_custom_1686737133011{margin-bottom: 5px !important;}"][vc_row_inner css=".vc_custom_1686210118406{margin-right: 40% !important;margin-bottom: 125px !important;}"][vc_column_inner css=".vc_custom_1686146850342{padding-left: 0px !important;}"][thegem_te_post_info list_divider="" text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22author%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column_inner][/vc_row_inner][vc_row_inner position_absolute="absolute" position_absolute_horizontal="right" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_horizontal_tablet="right" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_horizontal_mobile="right" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0"][vc_column_inner css=".vc_custom_1686210203918{padding-right: 0px !important;padding-left: 0px !important;}"][thegem_te_loop_featured_media image_position="right" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_max_width="120" image_radius_normal_top_left="120" image_radius_normal_top_right="120" image_radius_normal_bottom_left="120" image_radius_normal_bottom_right="120"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'cards' => 'Cards',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	366 => array (
+		'id' => 12676,
+		'type' => 'loop-item',
+		'title' => 'Box with Circle Image',
+		'mark' => '',
+		'pic' => 'box-with-circle-image.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/box-with-circle-image/',
+		'content' => '[vc_row css=".vc_custom_1686737603832{margin-bottom: 0px !important;padding-top: 50px !important;padding-right: 50px !important;padding-bottom: 50px !important;padding-left: 50px !important;background-color: #f4f7f8 !important;}" mobile_padding_top="30" mobile_padding_bottom="30" mobile_padding_left="30" mobile_padding_right="30"][vc_column css=".vc_custom_1686129700701{padding-top: 0px !important;}"][thegem_te_post_title truncate_title="5"][thegem_te_post_info text_style="text-body" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686051829461{margin-top: 5px !important;margin-bottom: 80px !important;}"][thegem_te_loop_featured_media image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_max_width="120" image_radius_normal_top_left="120" image_radius_normal_top_right="120" image_radius_normal_bottom_left="120" image_radius_normal_bottom_right="120"][/vc_column][/vc_row]',
+		'categories' => array (
+			'cards' => 'Cards',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	367 => array (
+		'id' => 12677,
+		'type' => 'loop-item',
+		'title' => 'Centered Caption',
+		'mark' => '',
+		'pic' => 'centered-caption.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/centered-caption/',
+		'content' => '[vc_row content_placement="middle"][vc_column][thegem_te_loop_featured_media image_ratio="0.85" image_position="centered" image_background_normal="rgba(0,0,0,0.3)" image_background_hover="rgba(0,0,0,0.5)" image_radius_normal_top_left="30" image_radius_normal_top_right="30" image_radius_normal_bottom_left="30" image_radius_normal_bottom_right="30"][vc_row_inner content_placement="middle" position_absolute="absolute" position_absolute_offset_x="" position_absolute_offset_y="50%" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="50%" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="50%" css=".vc_custom_1686129934447{margin-right: 10% !important;margin-left: 10% !important;}" position_absolute_translate_y="-50%" position_absolute_width="80%" position_absolute_translate_y_tablet="-50%" position_absolute_translate_y_mobile="-50%"][vc_column_inner][thegem_te_post_info list_alignment="center" list_divider="" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686053260338{margin-bottom: 5px !important;}"][thegem_te_post_title alignment="center" text_style="title-h5" text_color="#ffffff"][thegem_te_post_info list_alignment="center" text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff" container_layout=".vc_custom_1686054166665{margin-top: 5px !important;}"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'caption-on-image' => 'Caption On Image',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	368 => array (
+		'id' => 12678,
+		'type' => 'loop-item',
+		'title' => 'Corner Caption',
+		'mark' => '',
+		'pic' => 'corner-caption.jpeg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/corner-caption/',
+		'content' => '[vc_row][vc_column][thegem_te_loop_featured_media image_ratio="1.25" image_position="centered" image_background_normal="rgba(0,0,0,0.3)" image_background_hover="rgba(0,0,0,0.5)" image_radius_normal_top_left="10" image_radius_normal_top_right="10" image_radius_normal_bottom_left="10" image_radius_normal_bottom_right="10"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686147104031{padding-top: 30px !important;padding-bottom: 20px !important;}"][vc_column_inner css=".vc_custom_1686147113070{padding-right: 30px !important;padding-left: 30px !important;}"][thegem_te_post_info text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][thegem_te_post_title text_color="#ffffff"][thegem_te_post_info info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'caption-on-image' => 'Caption On Image',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	369 => array (
+		'id' => 12679,
+		'type' => 'loop-item',
+		'title' => 'Portrait Ratio',
+		'mark' => '',
+		'pic' => 'portrait-ratio.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/portrait-ratio/',
+		'content' => '[vc_row css=".vc_custom_1686738788156{margin-bottom: 0px !important;}"][vc_column][thegem_te_loop_featured_media image_ratio="0.7" image_background_normal="rgba(0,0,0,0.5)" image_background_hover="rgba(0,0,0,0.6)"][vc_row_inner position_absolute="absolute" position_absolute_horizontal="right" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_horizontal_tablet="right" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_horizontal_mobile="right" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0"][vc_column_inner css=".vc_custom_1686738637916{padding-right: 0px !important;padding-left: 0px !important;}"][thegem_te_post_info list_alignment="right" list_divider="" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column_inner][/vc_row_inner][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686147149695{padding-top: 30px !important;padding-bottom: 25px !important;}"][vc_column_inner css=".vc_custom_1686147157342{padding-right: 30px !important;padding-left: 30px !important;}"][thegem_te_post_info info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][thegem_te_post_title truncate_title="5" text_color="#ffffff"][thegem_te_post_excerpt text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'caption-on-image' => 'Caption On Image',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '9022',
+				'demo_width' => '',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	370 => array (
+		'id' => 12680,
+		'type' => 'loop-item',
+		'title' => 'Dark Gradient',
+		'mark' => '',
+		'pic' => 'dark-gradient.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/dark-gradient/',
+		'content' => '[vc_row][vc_column][thegem_te_loop_featured_media image_ratio="1.45"][vc_row_inner thegem_background_overlay_gradient_angle="to top" position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" thegem_background_overlay="true" thegem_background_overlay_gradient="true" css=".vc_custom_1686221661284{padding-top: 30px !important;padding-bottom: 30px !important;}" position_absolute_custom_markup="" thegem_background_overlay_gradient_from="rgba(0,0,0,0.5)" thegem_background_overlay_gradient_to="rgba(0,0,0,0)"][vc_column_inner css=".vc_custom_1686147226918{padding-right: 40px !important;padding-left: 40px !important;}"][thegem_te_post_info list_divider="" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" terms_list_text_color="#1f1c33" terms_list_background_color="#ffffff" container_layout=".vc_custom_1686055617048{margin-bottom: 10px !important;}"][thegem_te_post_title truncate_title="3" text_color="#ffffff"][thegem_te_post_info list_divider="" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'caption-on-image' => 'Caption On Image',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	371 => array (
+		'id' => 12681,
+		'type' => 'loop-item',
+		'title' => 'Clean with Shadow',
+		'mark' => '',
+		'pic' => 'clean-with-shadow-1.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/clean-with-shadow/',
+		'content' => '[vc_row css=".vc_custom_1686205611026{margin-bottom: 0px !important;}"][vc_column thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1686731268571{padding-top: 25px !important;padding-right: 40px !important;padding-bottom: 25px !important;padding-left: 40px !important;border-radius: 25px !important;}"][thegem_te_post_info text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22author%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686205639726{margin-bottom: 5px !important;}"][thegem_te_post_title truncate_title="3"][thegem_te_post_info text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][/vc_row]',
+		'categories' => array (
+			'minimal' => 'Minimal',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	372 => array (
+		'id' => 12682,
+		'type' => 'loop-item',
+		'title' => 'Clean with Border',
+		'mark' => '',
+		'pic' => 'clean-with-border.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/clean-with-border/',
+		'content' => '[vc_row css=".vc_custom_1686205314807{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1686205456484{border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;padding-top: 35px !important;padding-right: 40px !important;padding-bottom: 35px !important;padding-left: 40px !important;border-left-color: #dfe5e8 !important;border-left-style: solid !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;border-bottom-color: #dfe5e8 !important;border-bottom-style: solid !important;}" mobile_padding_top="30" mobile_padding_bottom="30" mobile_padding_left="30" mobile_padding_right="30"][thegem_te_post_info terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686205311956{margin-bottom: 10px !important;}"][thegem_te_post_title text_style="title-h5" truncate_title="2"][thegem_te_post_excerpt truncate_excerpt="3" container_layout=".vc_custom_1686731868197{margin-top: 10px !important;}"][/vc_column][/vc_row]',
+		'categories' => array (
+			'minimal' => 'Minimal',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	373 => array (
+		'id' => 12683,
+		'type' => 'loop-item',
+		'title' => 'Minimalistic',
+		'mark' => '',
+		'pic' => 'minimalistic.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/minimalistic/',
+		'content' => '[vc_row][vc_column][thegem_te_post_title text_style="title-h6" truncate_title="2" container_layout=".vc_custom_1686733147711{margin-bottom: 5px !important;}"][thegem_te_post_info text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon%22%3A%22default%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][/vc_row]',
+		'categories' => array (
+			'minimal' => 'Minimal',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	374 => array (
+		'id' => 12684,
+		'type' => 'loop-item',
+		'title' => 'Rounded Corners',
+		'mark' => '',
+		'pic' => 'rounded-corners.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/rounded-corners/',
+		'content' => '[vc_row css=".vc_custom_1686152454351{margin-bottom: 0px !important;}" custom_css_code="LmNvbHVtbi1ib3JkZXIlMjAudmNfY29sdW1uLWlubmVyJTIwJTdCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLXRvcC1yaWdodC1yYWRpdXMlM0ElMjA1MHB4JTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwYm9yZGVyLWJvdHRvbS1sZWZ0LXJhZGl1cyUzQSUyMDUwcHglMjFpbXBvcnRhbnQlM0IlMEElN0QlMEEucG9zdC1tZXRhLWRhdGUlMjAucG9zdC1pbmZvJTIwLnBvc3QtaW5mby1pdGVtJTIwJTdCJTBBJTIwJTIwJTIwJTIwYmFja2dyb3VuZC1jb2xvciUzQSUyMCUyM0VBRUZGMiUzQiUwQSUyMCUyMCUyMCUyMG1hcmdpbi1ib3R0b20lM0ElMjAwcHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjBwYWRkaW5nLWxlZnQlM0ElMjA1cHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjBwYWRkaW5nLXJpZ2h0JTNBJTIwNXB4JTIxaW1wb3J0YW50JTNCJTBBJTdE"][vc_column css=".vc_custom_1686151952796{border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;padding-top: 0px !important;border-left-color: #eaeff2 !important;border-left-style: solid !important;border-right-color: #eaeff2 !important;border-right-style: solid !important;border-top-color: #eaeff2 !important;border-top-style: solid !important;border-bottom-color: #eaeff2 !important;border-bottom-style: solid !important;}" el_class="column-border"][thegem_te_post_info terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][thegem_te_post_title text_style="title-h5" truncate_title="2" container_layout_mobile_padding_left="30" container_layout_mobile_padding_right="30" container_layout=".vc_custom_1686732546137{padding-top: 25px !important;padding-right: 50px !important;padding-bottom: 20px !important;padding-left: 50px !important;}"][thegem_te_post_info list_alignment="right" element_class="post-meta-date" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#6e7e8a"][/vc_column][/vc_row]',
+		'categories' => array (
+			'minimal' => 'Minimal',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	375 => array (
+		'id' => 12685,
+		'type' => 'loop-item',
+		'title' => 'Clean and Centered',
+		'mark' => '',
+		'pic' => 'clean-and-centered.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/clean-and-centered/',
+		'content' => '[vc_row content_placement="middle" css=".vc_custom_1686047490089{margin-bottom: 0px !important;background-color: #f4f7f8 !important;}"][vc_column css=".vc_custom_1686149564872{padding-top: 40px !important;padding-right: 30px !important;padding-bottom: 40px !important;padding-left: 30px !important;}" tablet_padding_left="21" tablet_padding_right="21"][thegem_te_post_info list_alignment="center" text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][thegem_te_post_title alignment="center" text_style="title-h6" truncate_title="2" use_custom_font_size="1" custom_font_size="14"][thegem_te_post_info list_alignment="center" text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][/vc_row]',
+		'categories' => array (
+			'minimal' => 'Minimal',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	376 => array (
+		'id' => 12686,
+		'type' => 'loop-item',
+		'title' => 'Float Right Image',
+		'mark' => '',
+		'pic' => 'float-right-image.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/float-right-image/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" custom_css_code="JTQwbWVkaWElMjhtaW4td2lkdGglM0ElMjA3NzBweCUyOSU3QiUyMCUyMCUyMCUyMCUwQSUyMCUyMCUyMCUyMC5pbWctZmVhdHVyZSUyMC50aGVnZW0tdGUtbG9vcC1mZWF0dXJlZC1tZWRpYSUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHdpZHRoJTNBJTIwMTI2JTI1JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdEJTBBJTQwbWVkaWElMjhtYXgtd2lkdGglM0ElMjA3NjlweCUyOSUyMGFuZCUyMCUyOG1pbi13aWR0aCUzQSUyMDc2OHB4JTI5JTdCJTBBJTIwJTIwJTIwJTIwLmltZy1mZWF0dXJlJTIwLnRoZWdlbS10ZS1sb29wLWZlYXR1cmVkLW1lZGlhJTIwJTdCJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwd2lkdGglM0ElMjAxMjklMjUlM0IlMEElMjAlMjAlMjAlMjAlN0QlMEElN0Q=" css=".vc_custom_1686212131392{margin-bottom: 0px !important;}"][vc_column width="11/12" css=".vc_custom_1686212330514{padding-top: 70px !important;padding-right: 0px !important;padding-bottom: 70px !important;padding-left: 75px !important;background-color: #f4f7f8 !important;}" tablet_padding_top="50" tablet_padding_bottom="50" tablet_padding_left="21" mobile_padding_top="30" mobile_padding_bottom="40" mobile_padding_left="30" mobile_padding_right="30"][vc_row_inner equal_height="yes" content_placement="middle" thegem_revesrse_columns_mobile="true"][vc_column_inner width="1/2" css=".vc_custom_1686212284063{padding-right: 50px !important;}" tablet_padding_right="20" mobile_padding_left="0" mobile_padding_right="0"][thegem_te_post_info text_style="text-body-tiny" terms_taxonomy_style="list" container_layout_tablet_margin_bottom="20" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22author%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686211929980{margin-bottom: 35px !important;}"][thegem_te_post_title text_style="title-h2" truncate_title="2" container_layout=".vc_custom_1686211482932{margin-bottom: 10px !important;}"][thegem_te_post_excerpt truncate_excerpt="3"][gem_divider margin_top="50" tablet_margin_top="30" mobile_margin_top="30"][gem_button text="Read More" position="left" style="outline" corner="3" border="2" icon_pack="elegant"][/vc_column_inner][vc_column_inner el_class="img-feature" width="1/2" mobile_padding_left="0" mobile_padding_right="0" mobile_margin_bottom="40"][thegem_te_loop_featured_media image_ratio="1.5" image_position="right" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column width="1/12"][/vc_column][/vc_row]',
+		'categories' => array (
+			'list-item' => 'List Item',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '1170',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	377 => array (
+		'id' => 12687,
+		'type' => 'loop-item',
+		'title' => 'Float Left Image',
+		'mark' => '',
+		'pic' => 'float-left-image.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/float-left-image/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" css=".vc_custom_1686212479762{margin-bottom: 0px !important;}" custom_css_code="JTQwbWVkaWElMjhtaW4td2lkdGglM0ElMjA3NzBweCUyOSU3QiUyMCUyMCUyMCUyMCUwQSUyMCUyMCUyMCUyMC5pbWctZmVhdHVyZSUyMC50aGVnZW0tdGUtbG9vcC1mZWF0dXJlZC1tZWRpYSUyMCU3QiUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHdpZHRoJTNBJTIwMTk1JTI1JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdEJTBBJTQwbWVkaWElMjhtYXgtd2lkdGglM0ElMjA3NjlweCUyOSUyMGFuZCUyMCUyOG1pbi13aWR0aCUzQSUyMDc2OHB4JTI5JTdCJTBBJTIwJTIwJTIwJTIwLmltZy1mZWF0dXJlJTIwLnRoZWdlbS10ZS1sb29wLWZlYXR1cmVkLW1lZGlhJTIwJTdCJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwd2lkdGglM0ElMjAxOTElMjUlM0IlMEElMjAlMjAlMjAlMjAlN0QlMEElN0Q="][vc_column width="1/3" css=".vc_custom_1686211070211{padding-top: 35px !important;padding-bottom: 35px !important;}" z_index="10" el_class="img-feature" background_color_mobile="#f4f7f8" mobile_padding_top="30" mobile_padding_left="30" mobile_padding_right="30" mobile_padding_bottom="40"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="35" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="35" position_absolute_offset_x_mobile="30" position_absolute_offset_y_mobile="30" css=".vc_custom_1686212665948{margin-bottom: 0px !important;}" position_absolute_custom_markup=""][vc_column_inner css=".vc_custom_1686212463015{padding-right: 0px !important;padding-left: 0px !important;}"][thegem_te_post_info text_style="text-body-tiny" terms_taxonomy_style="list" element_class="terms-category" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column_inner][/vc_row_inner][thegem_te_loop_featured_media image_ratio="1.7" image_position="right" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)"][/vc_column][vc_column width="2/3" css=".vc_custom_1686209631890{padding-top: 35px !important;padding-bottom: 35px !important;background-color: #f4f7f8 !important;}" mobile_padding_top="0" mobile_padding_bottom="40" mobile_padding_left="30" mobile_padding_right="30"][vc_row_inner equal_height="yes" content_placement="middle"][vc_column_inner width="1/2"][/vc_column_inner][vc_column_inner width="1/2" css=".vc_custom_1686209645107{padding-right: 60px !important;padding-left: 40px !important;}" tablet_padding_left="10" tablet_padding_right="30" mobile_padding_left="0" mobile_padding_right="0"][thegem_te_post_info text_style="text-body-tiny" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22author%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686207766564{margin-bottom: 5px !important;}"][thegem_te_post_title text_style="title-h3" truncate_title="4" container_layout_mobile_margin_bottom="25" container_layout=".vc_custom_1686209255435{margin-bottom: 35px !important;}"][gem_button text="Read More" position="left" style="outline" corner="3" border="2" icon_pack="elegant"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'list-item' => 'List Item',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '1170',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	378 => array (
+		'id' => 12688,
+		'type' => 'loop-item',
+		'title' => 'Circle Image',
+		'mark' => '',
+		'pic' => 'circle-image.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/circle-image/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle"][vc_column css=".vc_custom_1686736486792{padding-right: 0px !important;}" offset="vc_col-lg-4 vc_col-md-4" tablet_padding_right="21"][thegem_te_loop_featured_media image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" container_layout_tablet_margin_bottom="30" image_radius_normal_top_left="180" image_radius_normal_top_right="180" image_radius_normal_bottom_left="180" image_radius_normal_bottom_right="180" image_max_width="180"][/vc_column][vc_column css=".vc_custom_1686736339186{padding-right: 40px !important;padding-left: 40px !important;}" tablet_padding_left="0" tablet_padding_right="0" offset="vc_col-lg-8 vc_col-md-8"][thegem_te_post_info text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%2C%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][thegem_te_post_title truncate_title="3" container_layout=".vc_custom_1686736046544{margin-bottom: 10px !important;}"][thegem_te_post_excerpt truncate_excerpt="2"][/vc_column][/vc_row]',
+		'categories' => array (
+			'list-item' => 'List Item',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'attachment_ids' => array (
+		),
+	),
+	379 => array (
+		'id' => 12690,
+		'type' => 'loop-item',
+		'title' => 'Table View 01',
+		'mark' => '',
+		'pic' => 'table-view-01.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/table-view-01/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" css=".vc_custom_1686063819411{margin-bottom: 0px !important;border-top-width: 1px !important;padding-top: 40px !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;}" custom_css_code="JTQwbWVkaWElMjhtaW4td2lkdGglM0ElMjA3NjlweCUyOSUyMCU3QiUwQSUyMCUyMCUyMCUyMC5nZW0tYnV0dG9uLXBvc2l0aW9uLWxlZnQlMjAlN0IlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBmbG9hdCUzQSUyMHJpZ2h0JTIxaW1wb3J0YW50JTNCJTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTIwJTIwJTIwJTIwLmdlbS1idXR0b24tcG9zaXRpb24tbGVmdCUyMC5nZW0tYnV0dG9uJTIwJTdCJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwbWFyZ2luLXJpZ2h0JTNBJTIwMCUyMWltcG9ydGFudCUzQiUwQSUyMCUyMCUyMCUyMCU3RCUwQSUyMCUyMCUyMCUyMC50aGVnZW0tdGUtbG9vcC1mZWF0dXJlZC1tZWRpYSUyMC5tZWRpYS1pbm5lci13cmFwJTIwJTdCJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwbWF4LXdpZHRoJTNBJTIwMjAwcHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjAlN0QlMEElN0Q="][vc_column css=".vc_custom_1686147762356{padding-top: 0px !important;}" offset="vc_col-lg-3 vc_col-md-3"][thegem_te_loop_featured_media image_ratio="1.5" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" container_layout_tablet_margin_bottom="20"][/vc_column][vc_column css=".vc_custom_1686148090456{padding-top: 0px !important;padding-right: 21px !important;padding-left: 21px !important;}" offset="vc_col-lg-offset-0 vc_col-lg-3 vc_col-md-offset-0 vc_col-md-3 vc_col-sm-offset-0" tablet_padding_left="0" tablet_padding_right="0"][thegem_te_post_title text_style="title-h6" truncate_title="3"][/vc_column][vc_column css=".vc_custom_1686148095568{padding-top: 0px !important;padding-right: 21px !important;padding-left: 21px !important;}" offset="vc_col-lg-2 vc_col-md-2" tablet_padding_left="0" tablet_padding_right="0"][thegem_te_post_info text_style="text-body-tiny" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][vc_column css=".vc_custom_1686148102601{padding-top: 0px !important;padding-right: 21px !important;padding-left: 21px !important;}" offset="vc_col-lg-2 vc_col-md-2" tablet_padding_left="0" tablet_padding_right="0"][thegem_te_post_info text_style="text-body-tiny" terms_taxonomy_style="list" container_layout_tablet_margin_bottom="10" container_layout_tablet_margin_left="-7" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" terms_list_text_color="#00bcd4" terms_list_background_color="rgba(255,255,255,0.01)"][/vc_column][vc_column css=".vc_custom_1686059254107{padding-top: 0px !important;}" offset="vc_col-lg-2 vc_col-md-2"][gem_button text="Read More" position="left" style="outline" corner="3" border="2" icon_pack="elegant"][/vc_column][/vc_row]',
+		'categories' => array (
+			'list-item' => 'List Item',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '1170',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	380 => array (
+		'id' => 12691,
+		'type' => 'loop-item',
+		'title' => 'Table View 02',
+		'mark' => '',
+		'pic' => 'table-view-02.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/table-view-02/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" css=".vc_custom_1686063405662{margin-bottom: 0px !important;border-top-width: 1px !important;padding-top: 40px !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;}" custom_css_code="JTQwbWVkaWElMjhtaW4td2lkdGglM0ElMjA3NjlweCUyOSU3QiUwQSUyMCUyMCUyMCUyMC50aGVnZW0tdGUtbG9vcC1mZWF0dXJlZC1tZWRpYSUyMC5tZWRpYS1pbm5lci13cmFwJTIwJTdCJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwbWF4LXdpZHRoJTNBJTIwMTIwcHglMjFpbXBvcnRhbnQlM0IlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBtYXJnaW4lM0ElMjAwJTIxaW1wb3J0YW50JTNCJTBBJTIwJTIwJTIwJTIwJTdEJTBBJTdE"][vc_column css=".vc_custom_1686063739386{padding-top: 0px !important;}" offset="vc_col-lg-2 vc_col-md-2"][thegem_te_loop_featured_media image_position="centered" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" container_layout_tablet_margin_bottom="20" image_radius_normal_top_left="100%" image_radius_normal_top_right="100%" image_radius_normal_bottom_left="100%" image_radius_normal_bottom_right="100%" image_max_width="400"][/vc_column][vc_column css=".vc_custom_1686144166956{padding-top: 0px !important;padding-right: 21px !important;padding-left: 21px !important;}" offset="vc_col-lg-3 vc_col-md-3"][thegem_te_post_title alignment="center" text_style="title-h6" truncate_title="2" use_custom_font_size="1" custom_font_size="14" container_layout=".vc_custom_1686739689617{margin-bottom: 5px !important;}"][/vc_column][vc_column css=".vc_custom_1686144171122{padding-top: 0px !important;padding-right: 21px !important;padding-left: 21px !important;}" offset="vc_col-lg-3 vc_col-md-3"][thegem_te_post_info skin="modern" list_alignment="center" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column][vc_column css=".vc_custom_1686144174618{padding-top: 0px !important;padding-right: 21px !important;padding-left: 21px !important;}" offset="vc_col-lg-3 vc_col-md-3"][thegem_te_post_info list_alignment="center" text_style="title-main-menu" text_transform="none" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#3c3950" terms_list_background_color="rgba(255,255,255,0.01)" text_letter_spacing="0" container_layout=".vc_custom_1686145086535{margin-bottom: 5px !important;}"][/vc_column][vc_column css=".vc_custom_1686144186802{padding-top: 0px !important;}" offset="vc_col-lg-1 vc_col-md-1"][gem_icon pack="elegant" centered="1" icon_elegant="24" color="#3c3950" link="#"][/vc_column][/vc_row]',
+		'categories' => array (
+			'list-item' => 'List Item',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '1170',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	381 => array (
+		'id' => 12693,
+		'type' => 'loop-item',
+		'title' => 'Caption Box on Image',
+		'mark' => '',
+		'pic' => 'caption-box-on-image.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/caption-box-on-image/',
+		'content' => '[vc_row background_position_desktop="center center" thegem_featured_image_for_bg_active="true" css=".vc_custom_1686138052325{margin-bottom: 0px !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}"][vc_column css=".vc_custom_1686055311379{padding-top: 40px !important;padding-right: 60px !important;padding-bottom: 40px !important;padding-left: 60px !important;}"][vc_row_inner equal_height="yes" content_placement="middle"][vc_column_inner width="7/12" css=".vc_custom_1686145523610{margin-bottom: 0px !important;padding-top: 80px !important;padding-right: 50px !important;padding-bottom: 70px !important;padding-left: 50px !important;background-color: #ffffff !important;}" offset="vc_col-lg-4 vc_col-md-5" mobile_padding_left="30" mobile_padding_right="30"][thegem_te_post_title alignment="center" text_style="title-h5" truncate_title="3" container_layout=".vc_custom_1686214472134{margin-bottom: 10px !important;}"][thegem_te_post_info list_alignment="center" terms_taxonomy_style="list" info_content="%5B%7B%22type%22%3A%22terms%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][/vc_column_inner][vc_column_inner width="1/3" offset="vc_col-lg-4 vc_hidden-lg vc_col-md-4 vc_hidden-md vc_hidden-sm vc_hidden-xs"][/vc_column_inner][vc_column_inner width="1/3" offset="vc_col-lg-4 vc_hidden-lg vc_col-md-3 vc_hidden-md vc_hidden-sm vc_hidden-xs"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'list-item' => 'List Item',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '1170',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	382 => array (
+		'id' => 12696,
+		'type' => 'loop-item',
+		'title' => 'Bold Title List',
+		'mark' => '',
+		'pic' => 'bold-title-list.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/bold-title-list/',
+		'content' => '[vc_row css=".vc_custom_1686127425365{margin-bottom: 0px !important;}"][vc_column css=".vc_custom_1686127587610{border-bottom-width: 1px !important;padding-top: 20px !important;padding-bottom: 65px !important;border-bottom-color: #eaeff2 !important;border-bottom-style: solid !important;}" mobile_padding_top="0" mobile_padding_bottom="50"][thegem_te_post_info skin="modern" text_style="title-h6" text_transform="none" info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22post_tag%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_letter_spacing="0" layout_delim_head_container_style="" container_layout=".vc_custom_1686126935520{margin-bottom: -5px !important;}"][thegem_te_post_title text_style="title-h1"][/vc_column][/vc_row]',
+		'categories' => array (
+			'list-item' => 'List Item',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '1170',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	383 => array (
+		'id' => 12697,
+		'type' => 'loop-item',
+		'title' => 'Real Estate 01',
+		'mark' => '',
+		'pic' => 'real-estate-01.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-01/',
+		'content' => '[vc_row thegem_shadow_color="rgba(0,0,0,0.07)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1686642228896{margin-bottom: 0px !important;padding-top: 8px !important;padding-right: 8px !important;padding-bottom: 8px !important;padding-left: 8px !important;}" custom_css_code="LmN1c3RvbS1sYWJlbCUyMC5tZXRhJTIwJTdCJTBBJTIwJTIwJTIwJTIwZm9udC1zaXplJTNBJTIwODUlMjUlM0IlMEElN0Q="][vc_column css=".vc_custom_1686300428832{padding-top: 0px !important;}"][thegem_te_loop_featured_media image_ratio="1.5" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_gradient_background="1" image_gradient_background_from="rgba(0,0,0,0)" image_gradient_background_start="50" image_gradient_background_to="rgba(0,0,0,0.7)" image_gradient_background_end="100" image_gradient_background_hover_from="rgba(0,0,0,0)" image_gradient_background_hover_to="rgba(0,0,0,0.7)"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0" css=".vc_custom_1686301906433{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686655016142{margin-top: -5px !important;padding-top: 0px !important;padding-right: 0px !important;padding-left: 0px !important;}"][gem_custom_fields source="project_details" skin="labels" labels_background_color="#2bcb81" element_class="custom-label" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_purpose%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff" container_layout=".vc_custom_1686642156745{margin-top: 0px !important;margin-bottom: 0px !important;}"][/vc_column_inner][/vc_row_inner][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686301988589{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686573166391{padding-top: 0px !important;padding-right: 10px !important;padding-bottom: 5px !important;padding-left: 10px !important;}"][gem_custom_fields source="project_details" skin="modern" icon_size="16" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_location%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e01d%22%2C%22image_file%22%3A%2212646%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column css=".vc_custom_1686300763978{padding-top: 10px !important;padding-right: 10px !important;padding-bottom: 8px !important;padding-left: 10px !important;}"][thegem_te_post_info info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" text_color="#9ba7b3"][thegem_te_post_title text_style="title-h5" truncate_title="1"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h6" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#00bcd4" container_layout=".vc_custom_1686573993125{margin-top: -2px !important;margin-bottom: 2px !important;}" value_text_letter_spacing="0"][gem_custom_fields source="project_details" skin="modern" icon_size="16" value_text_style="title-main-menu" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_bedrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Rooms%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e0ef%22%2C%22image_file%22%3A%2212637%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Baths%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e009%22%2C%22image_file%22%3A%2212059%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_area_sqft%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20sqft%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%222e%22%2C%22image_file%22%3A%2212634%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#00bcd4" value_text_letter_spacing="0"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '11771',
+				'demo_width' => '',
+			),
+		),
+		'project_details' => array (
+			'location' => array (
+				'title' => 'Location',
+				'key' => '_thegem_cf_location',
+				'type' => 'text',
+				'id' => 5,
+				'value' => 'Chicago, USA',
+			),
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'bedrooms' => array (
+				'title' => 'Bedrooms',
+				'key' => '_thegem_cf_bedrooms',
+				'type' => 'number',
+				'id' => 10,
+				'value' => '3',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'purpose' => array (
+				'title' => 'Purpose',
+				'key' => '_thegem_cf_purpose',
+				'type' => 'text',
+				'id' => 18,
+				'value' => 'For Sale',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	384 => array (
+		'id' => 12698,
+		'type' => 'loop-item',
+		'title' => 'Real Estate 02',
+		'mark' => '',
+		'pic' => 'real-estate-02.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-02/',
+		'content' => '[vc_row][vc_column][thegem_te_loop_featured_media image_ratio="1.23" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_gradient_background="1" image_gradient_background_from="rgba(0,0,0,0.01)" image_gradient_background_start="50" image_gradient_background_to="rgba(0,0,0,0.7)" image_gradient_background_hover_from="rgba(0,0,0,0.01)" image_gradient_background_hover_start="50" image_gradient_background_hover_to="rgba(0,0,0,0.7)"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686303033150{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686303090120{padding-right: 20px !important;padding-bottom: 10px !important;padding-left: 20px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h5" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column css=".vc_custom_1686304438524{padding-top: 0px !important;}"][thegem_te_post_info info_content="%5B%7B%22type%22%3A%22date%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D" container_layout=".vc_custom_1686574818718{margin-top: 10px !important;margin-bottom: 5px !important;}" text_color="#9ba7b3"][thegem_te_post_title text_style="title-h5" truncate_title="1" container_layout=".vc_custom_1686305961366{margin-bottom: 5px !important;}"][gem_custom_fields source="project_details" list_alignment="justify" table_vertical_spacing="10" label_text_style="text-body-tiny" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_location%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_apartment%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_area_sqft%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20sqft%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%5D" container_layout=".vc_custom_1689936776836{margin-bottom: 20px !important;}"][gem_button text="Read More" position="left" style="outline" corner="3" border="2" icon_pack="elegant"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'project_details' => array (
+			'location' => array (
+				'title' => 'Location',
+				'key' => '_thegem_cf_location',
+				'type' => 'text',
+				'id' => 5,
+				'value' => 'Chicago, USA',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+			'apartment' => array (
+				'title' => 'Apartment',
+				'key' => '_thegem_cf_apartment',
+				'type' => 'text',
+				'id' => 21,
+				'value' => 'Villa',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	385 => array (
+		'id' => 12699,
+		'type' => 'loop-item',
+		'title' => 'Real Estate 03',
+		'mark' => '',
+		'pic' => 'real-estate-03.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-03/',
+		'content' => '[vc_row custom_css_code="LmN1c3RvbS1sYWJlbCUyMC5tZXRhJTIwJTdCJTBBJTIwJTIwJTIwJTIwZm9udC1zaXplJTNBJTIwODUlMjUlM0IlMEElN0Q="][vc_column][thegem_te_loop_featured_media image_ratio="1.4" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_gradient_background="1" image_gradient_background_from="rgba(0,0,0,0)" image_gradient_background_start="50" image_gradient_background_to="rgba(0,0,0,0.7)" image_gradient_background_hover_from="rgba(0,0,0,0)" image_gradient_background_hover_start="50" image_gradient_background_hover_to="rgba(0,0,0,0.7)"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686320244255{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686575850604{padding-bottom: 15px !important;}"][gem_custom_fields source="project_details" skin="labels" labels_background_color="#2bcb81" element_class="custom-label" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_purpose%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h5" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" value_text_color="#ffffff"][gem_custom_fields source="project_details" skin="modern" icon_size="16" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_bedrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Rooms%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e0ef%22%2C%22image_file%22%3A%2212637%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Baths%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e009%22%2C%22image_file%22%3A%2212059%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_area_sqft%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20sqft%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%222e%22%2C%22image_file%22%3A%2212634%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'project_details' => array (
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'bedrooms' => array (
+				'title' => 'Bedrooms',
+				'key' => '_thegem_cf_bedrooms',
+				'type' => 'number',
+				'id' => 10,
+				'value' => '3',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'purpose' => array (
+				'title' => 'Purpose',
+				'key' => '_thegem_cf_purpose',
+				'type' => 'text',
+				'id' => 18,
+				'value' => 'For Sale',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	386 => array (
+		'id' => 12700,
+		'type' => 'loop-item',
+		'title' => 'Real Estate 04',
+		'mark' => '',
+		'pic' => 'real-estate-04.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-04/',
+		'content' => '[vc_row custom_css_code="LmN1c3RvbS1sYWJlbCUyMC5tZXRhJTIwJTdCJTBBJTIwJTIwJTIwJTIwZm9udC1zaXplJTNBJTIwODUlMjUlM0IlMEElN0QlMEEubG9vcC1idXR0b24lMjAuZ2VtLWJ1dHRvbiU3QiUwQSUyMCUyMCUyMCUyMG1hcmdpbi10b3AlM0ElMjAxMHB4JTNCJTBBJTdE"][vc_column][thegem_te_loop_featured_media image_ratio="1.42" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0"][vc_column_inner css=".vc_custom_1686655234727{padding-top: 3px !important;padding-right: 8px !important;padding-bottom: 3px !important;padding-left: 8px !important;}"][gem_custom_fields source="project_details" skin="labels" labels_background_color="#2bcb81" element_class="custom-label" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_purpose%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column thegem_content_alignment="left" css=".vc_custom_1686577602680{border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;padding-top: 10px !important;padding-right: 20px !important;padding-bottom: 20px !important;padding-left: 20px !important;border-left-color: #dfe5e7 !important;border-left-style: solid !important;border-right-color: #dfe5e7 !important;border-right-style: solid !important;border-bottom-color: #dfe5e7 !important;border-bottom-style: solid !important;}"][gem_custom_fields source="project_details" skin="modern" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_location%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" container_layout=".vc_custom_1686321704570{margin-bottom: -2px !important;}"][thegem_te_post_title text_style="title-h5" container_layout=".vc_custom_1686321724736{margin-bottom: -2px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h6" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" value_text_color="#00bcd4"][gem_custom_fields source="project_details" skin="modern" icon_size="16" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_bedrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Rooms%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e0ef%22%2C%22image_file%22%3A%2212637%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Baths%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e009%22%2C%22image_file%22%3A%2212059%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_area_sqft%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20sqft%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%222e%22%2C%22image_file%22%3A%2212634%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#3c3950" icon_color="#00bcd4"][gem_button text="Call Us" link_type="custom" style="outline" corner="2" size="tiny" size_tablet="tiny" size_mobile="tiny" text_style="text-body-tiny" no_uppercase="1" border="1" icon_source="svg" text_color="#3c3950" border_color="#3c3950" hover_text_color="#ffffff" hover_background_color="#3c3950" hover_border_color="#3c3950" icon_image_file="12649" padding_left="17" padding_right="17" margin_right="10" extra_class="loop-button" link="url:%23"][gem_button text="Email" link_type="custom" style="outline" corner="2" size="tiny" size_tablet="tiny" size_mobile="tiny" text_style="text-body-tiny" no_uppercase="1" border="1" icon_source="svg" text_color="#3c3950" border_color="#3c3950" hover_text_color="#ffffff" hover_background_color="#3c3950" hover_border_color="#3c3950" icon_image_file="12660" padding_left="17" padding_right="17" margin_right="10" extra_class="loop-button" link="url:%23"][gem_button text="WhatsApp" link_type="custom" style="outline" corner="2" size="tiny" size_tablet="tiny" size_mobile="tiny" text_style="text-body-tiny" no_uppercase="1" border="1" icon_source="svg" text_color="#3c3950" border_color="#3c3950" hover_text_color="#ffffff" hover_background_color="#3c3950" hover_border_color="#3c3950" icon_image_file="12655" extra_class="loop-button" link="url:%23"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => '',
+		),
+		'project_details' => array (
+			'location' => array (
+				'title' => 'Location',
+				'key' => '_thegem_cf_location',
+				'type' => 'text',
+				'id' => 5,
+				'value' => 'Chicago, USA',
+			),
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'bedrooms' => array (
+				'title' => 'Bedrooms',
+				'key' => '_thegem_cf_bedrooms',
+				'type' => 'number',
+				'id' => 10,
+				'value' => '3',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'purpose' => array (
+				'title' => 'Purpose',
+				'key' => '_thegem_cf_purpose',
+				'type' => 'text',
+				'id' => 18,
+				'value' => 'For Sale',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	387 => array (
+		'id' => 12701,
+		'type' => 'loop-item',
+		'title' => 'Real Estate 05',
+		'mark' => '',
+		'pic' => 'real-estate-05.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-05/',
+		'content' => '[vc_row custom_css_code="LmN1c3RvbS1sYWJlbCUyMC5tZXRhJTIwJTdCJTBBJTIwJTIwJTIwJTIwZm9udC1zaXplJTNBJTIwODUlMjUlM0IlMEElN0Q="][vc_column width="1/2" css=".vc_custom_1686550717769{padding-top: 0px !important;}"][thegem_te_loop_featured_media image_ratio="1.68" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_radius_normal_top_left="25" image_radius_normal_top_right="25" image_radius_normal_bottom_left="25" image_radius_normal_bottom_right="25"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0" css=".vc_custom_1686550473487{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686636738026{padding-top: 15px !important;}"][gem_custom_fields source="project_details" skin="labels" labels_background_color="#2bcb81" element_class="custom-label" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_purpose%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff" labels_border_radius="11"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column width="1/2" css=".vc_custom_1686553930999{padding-top: 0px !important;padding-left: 42px !important;}" mobile_padding_top="30" mobile_padding_left="0"][thegem_te_post_title truncate_title="1" container_layout=".vc_custom_1686652624476{margin-top: -8px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h5" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" value_text_color="#00bcd4"][thegem_te_post_excerpt truncate_excerpt="2" container_layout=".vc_custom_1686550866184{margin-bottom: 10px !important;}"][gem_custom_fields source="project_details" table_vertical_spacing="10" icon_size="16" label_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_location%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e01d%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_apartment%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e0ef%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212059%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_area_sqft%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20sqft%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%222e%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#3c3950" label_text_color="#3c3950" container_layout=".vc_custom_1686645185887{margin-bottom: 10px !important;}"][gem_button text="Read More" position="left" style="outline" corner="50" border="2" icon_pack="elegant"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '890',
+			),
+		),
+		'project_details' => array (
+			'location' => array (
+				'title' => 'Location',
+				'key' => '_thegem_cf_location',
+				'type' => 'text',
+				'id' => 5,
+				'value' => 'Chicago, USA',
+			),
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'purpose' => array (
+				'title' => 'Purpose',
+				'key' => '_thegem_cf_purpose',
+				'type' => 'text',
+				'id' => 18,
+				'value' => 'For Sale',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+			'apartment' => array (
+				'title' => 'Apartment',
+				'key' => '_thegem_cf_apartment',
+				'type' => 'text',
+				'id' => 21,
+				'value' => 'Villa',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	388 => array (
+		'id' => 12702,
+		'type' => 'loop-item',
+		'title' => 'Real Estate 06',
+		'mark' => '',
+		'pic' => 'real-estate-06.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-06/',
+		'content' => '[vc_row css=".vc_custom_1686642618539{margin-bottom: 0px !important;}" custom_css_code="LmN1c3RvbS1sYWJlbCUyMC5tZXRhJTIwJTdCJTBBJTIwJTIwJTIwJTIwZm9udC1zaXplJTNBJTIwODUlMjUlM0IlMEElN0Q="][vc_column][thegem_te_loop_featured_media thumbnail="full" image_ratio="2.2" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_gradient_background="1" image_gradient_background_from="rgba(255,255,255,0.01)" image_gradient_background_start="50" image_gradient_background_to="rgba(0,0,0,0.7)" image_gradient_background_hover_from="rgba(255,255,255,0.01)" image_gradient_background_hover_start="50" image_gradient_background_hover_to="rgba(0,0,0,0.7)"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0" css=".vc_custom_1686556825824{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686559526589{padding-top: 15px !important;padding-right: 20px !important;padding-bottom: 15px !important;padding-left: 20px !important;}"][gem_custom_fields source="project_details" skin="labels" labels_background_color="#2bcb81" element_class="custom-label" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_purpose%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][vc_row_inner equal_height="yes" content_placement="bottom" position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686559424185{margin-bottom: 0px !important;}"][vc_column_inner width="1/2" css=".vc_custom_1686563135902{padding-top: 0px !important;padding-right: 21px !important;padding-bottom: 25px !important;padding-left: 30px !important;}" mobile_padding_top="15" mobile_padding_bottom="0" mobile_padding_left="21"][thegem_te_post_title container_layout_mobile_margin_bottom="-2" text_color="#ffffff" container_layout=".vc_custom_1686560571331{margin-bottom: 8px !important;}"][gem_custom_fields source="project_details" skin="modern" icon_size="16" element_hide_mobile="1" container_layout_mobile_margin_bottom="-2" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_location%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e01d%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#ffffff" value_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/2" css=".vc_custom_1686560520679{padding-top: 0px !important;padding-right: 30px !important;padding-bottom: 25px !important;padding-left: 21px !important;}" mobile_padding_bottom="15" mobile_padding_right="21"][gem_custom_fields source="project_details" skin="modern" list_alignment="right" value_text_style="title-h3" value_text_transform="none" element_hide_mobile="1" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" value_text_color="#ffffff"][gem_custom_fields source="project_details" skin="modern" list_alignment="right" icon_size="16" element_hide_mobile="1" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_bedrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Rooms%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e0ef%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Baths%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e0ef%22%2C%22image_file%22%3A%2212059%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_area_sqft%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20sqft%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%222e%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#ffffff" value_text_color="#ffffff"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h3" value_text_transform="none" element_hide_desktop="1" element_hide_tablet="1" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" value_text_color="#ffffff" container_layout=".vc_custom_1686560607687{margin-bottom: -5px !important;}"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '900',
+			),
+		),
+		'project_details' => array (
+			'location' => array (
+				'title' => 'Location',
+				'key' => '_thegem_cf_location',
+				'type' => 'text',
+				'id' => 5,
+				'value' => 'Chicago, USA',
+			),
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'bedrooms' => array (
+				'title' => 'Bedrooms',
+				'key' => '_thegem_cf_bedrooms',
+				'type' => 'number',
+				'id' => 10,
+				'value' => '3',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'purpose' => array (
+				'title' => 'Purpose',
+				'key' => '_thegem_cf_purpose',
+				'type' => 'text',
+				'id' => 18,
+				'value' => 'For Sale',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	389 => array (
+		'id' => 12703,
+		'type' => 'loop-item',
+		'title' => 'Real Estate 07',
+		'mark' => '',
+		'pic' => 'real-estate-07.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/real-estate-07/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" custom_css_code="LmN1c3RvbS1sYWJlbCUyMC5tZXRhJTIwJTdCJTBBJTIwJTIwJTIwJTIwZm9udC1zaXplJTNBJTIwODUlMjUlM0IlMEElN0Q="][vc_column offset="vc_col-lg-6 vc_col-md-6"][thegem_te_loop_featured_media image_ratio="1.25" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_gradient_background="1" image_gradient_background_from="rgba(0,0,0,0)" image_gradient_background_to="rgba(0,0,0,0.7)" image_gradient_background_hover_from="rgba(0,0,0,0)" image_gradient_background_hover_to="rgba(0,0,0,0.7)" image_gradient_background_start="50" image_gradient_background_hover_start="50"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686563677564{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686564328632{padding-right: 20px !important;padding-bottom: 10px !important;padding-left: 20px !important;}"][gem_custom_fields source="project_details" skin="labels" labels_background_color="#2bcb81" element_class="custom-label" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_purpose%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff" container_layout=".vc_custom_1686642714149{margin-bottom: 5px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h4" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column css=".vc_custom_1686636419818{border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;padding-top: 30px !important;padding-right: 21px !important;padding-bottom: 40px !important;padding-left: 40px !important;border-left-color: #dfe5e7 !important;border-left-style: solid !important;border-right-color: #dfe5e7 !important;border-right-style: solid !important;border-top-color: #dfe5e7 !important;border-top-style: solid !important;border-bottom-color: #dfe5e7 !important;border-bottom-style: solid !important;}" offset="vc_col-lg-6 vc_col-md-6" mobile_padding_top="20" mobile_padding_bottom="30" mobile_padding_left="21" mobile_padding_right="21"][gem_custom_fields source="project_details" skin="modern" icon_size="16" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_location%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e01d%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#9ba7b3" value_text_color="#9ba7b3" container_layout=".vc_custom_1686564691169{margin-bottom: 8px !important;}"][thegem_te_post_title truncate_title="1" container_layout=".vc_custom_1686566571640{margin-bottom: 5px !important;}"][gem_custom_fields source="project_details" skin="modern" icon_size="16" value_text_style="title-main-menu" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_bedrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Rooms%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e0ef%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Baths%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e0ef%22%2C%22image_file%22%3A%2212059%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_area_sqft%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20sqft%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%222e%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#00bcd4" value_text_letter_spacing="0" container_layout=".vc_custom_1686645521105{margin-bottom: 5px !important;}"][thegem_te_post_excerpt truncate_excerpt="3" container_layout=".vc_custom_1686565034690{margin-bottom: 25px !important;}"][gem_button text="Read More" position="left" style="outline" corner="3" border="2" icon_pack="elegant"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'post',
+				'demo_post_id' => '8855',
+				'demo_width' => '900',
+			),
+		),
+		'project_details' => array (
+			'location' => array (
+				'title' => 'Location',
+				'key' => '_thegem_cf_location',
+				'type' => 'text',
+				'id' => 5,
+				'value' => 'Chicago, USA',
+			),
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'bedrooms' => array (
+				'title' => 'Bedrooms',
+				'key' => '_thegem_cf_bedrooms',
+				'type' => 'number',
+				'id' => 10,
+				'value' => '3',
+			),
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'purpose' => array (
+				'title' => 'Purpose',
+				'key' => '_thegem_cf_purpose',
+				'type' => 'text',
+				'id' => 18,
+				'value' => 'For Sale',
+			),
+			'area_sqft' => array (
+				'title' => 'Area (sqft)',
+				'key' => '_thegem_cf_area_sqft',
+				'type' => 'number',
+				'id' => 19,
+				'value' => '1856',
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	390 => array (
+		'id' => 12704,
+		'type' => 'loop-item',
+		'title' => 'Car Rental 01',
+		'mark' => '',
+		'pic' => 'car-rental-01.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/car-rental-01/',
+		'content' => '[vc_row thegem_shadow_color="rgba(0,0,0,0.15)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1686662956041{border-radius: 5px !important;}"][vc_column][thegem_te_loop_featured_media image_ratio="1.3" image_position="centered" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_radius_normal_top_left="5" image_radius_normal_top_right="5" image_radius_normal_bottom_left="5" image_radius_normal_bottom_right="5" container_layout=".vc_custom_1686915514500{margin-top: 5px !important;margin-right: 5px !important;margin-bottom: 5px !important;margin-left: 5px !important;}"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0" css=".vc_custom_1686574127768{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686574100356{padding-top: 13px !important;padding-right: 13px !important;padding-bottom: 13px !important;padding-left: 13px !important;}"][gem_custom_fields source="project_details" skin="labels" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_make%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" container_layout=".vc_custom_1686641218674{margin-top: -5px !important;}"][/vc_column_inner][/vc_row_inner][vc_row_inner css=".vc_custom_1686574979265{margin-top: 20px !important;margin-bottom: 0px !important;}" mobile_margin_top="20" tablet_margin_top="20"][vc_column_inner css=".vc_custom_1686306751507{padding-right: 30px !important;padding-left: 30px !important;}"][gem_custom_fields source="project_details" skin="labels" labels_background_color="#ecf1f3" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_class%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_year%22%2C%22field_type%22%3A%22number%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%5D" value_text_color="#5f727f"][thegem_te_post_title text_style="title-h5" container_layout=".vc_custom_1686306824890{margin-top: 15px !important;margin-bottom: 5px !important;}"][/vc_column_inner][/vc_row_inner][vc_row_inner equal_height="yes" css=".vc_custom_1686574428735{margin-bottom: 0px !important;padding-right: 9px !important;padding-left: 9px !important;}"][vc_column_inner width="1/2" offset="vc_col-xs-6"][gem_custom_fields source="project_details" skin="modern" layout="vertical" icon_size="21" icon_spacing="12" value_text_style="text-body" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_people%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20People%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212639%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_type_of_fuel%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22People%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212644%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#3c3950"][/vc_column_inner][vc_column_inner width="1/2" css=".vc_custom_1686641900970{margin-right: -10px !important;padding-right: 0px !important;padding-left: 0px !important;}" offset="vc_col-xs-6"][gem_custom_fields source="project_details" skin="modern" layout="vertical" icon_size="21" icon_spacing="12" value_text_style="text-body" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_consumption%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20People%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212651%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_mileage%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20km%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212662%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#3c3950"][/vc_column_inner][/vc_row_inner][vc_row_inner css=".vc_custom_1686306892148{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686306886724{padding-right: 30px !important;padding-left: 30px !important;}"][gem_divider color="#eaeff2" margin_top="15" margin_bottom="8"][/vc_column_inner][/vc_row_inner][vc_row_inner equal_height="yes" content_placement="middle" css=".vc_custom_1686641163871{margin-bottom: 8px !important;padding-right: 9px !important;padding-left: 9px !important;}"][vc_column_inner width="1/3" offset="vc_col-xs-4"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h4" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_rental_day%22%2C%22field_type%22%3A%22number%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][vc_column_inner width="2/3" thegem_content_alignment="right" offset="vc_col-xs-8"][gem_icon source="svg" size="custom" image_file="12649" color="#ffffff" background_color="#3c3950" link="#" custom_size="20" icon_left_margin="7" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_border_radius="3"][gem_icon source="svg" size="custom" image_file="12655" color="#ffffff" background_color="#2ccb82" link="#" custom_size="20" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_left_margin="7" icon_border_radius="3"][gem_icon source="svg" size="custom" link_type="post" image_file="12647" color="#ffffff" background_color="#42c6da" icon_top_margin="0" icon_bottom_margin="0" custom_size="20" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_left_margin="7" icon_border_radius="3"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12569',
+				'demo_width' => '',
+			),
+		),
+		'project_details' => array (
+			'year' => array (
+				'title' => 'Year',
+				'key' => '_thegem_cf_year',
+				'type' => 'number',
+				'id' => 14,
+				'value' => '2023',
+			),
+			'rental_day' => array (
+				'title' => 'Rental (day)',
+				'key' => '_thegem_cf_rental_day',
+				'type' => 'number',
+				'value' => '105',
+				'applying' => false,
+				'id' => 28,
+			),
+			'class' => array (
+				'title' => 'Class',
+				'key' => '_thegem_cf_class',
+				'type' => 'text',
+				'value' => 'Premium',
+				'applying' => false,
+				'id' => 36,
+			),
+			'people' => array (
+				'title' => 'People',
+				'key' => '_thegem_cf_people',
+				'type' => 'text',
+				'value' => '4',
+				'applying' => false,
+				'id' => 38,
+			),
+			'type_of_fuel' => array (
+				'title' => 'Type of fuel',
+				'key' => '_thegem_cf_type_of_fuel',
+				'type' => 'text',
+				'value' => 'Gasoline',
+				'applying' => false,
+				'id' => 39,
+			),
+			'consumption' => array (
+				'title' => 'Consumption',
+				'key' => '_thegem_cf_consumption',
+				'type' => 'text',
+				'value' => '7.6km / 1-litre',
+				'applying' => false,
+				'id' => 40,
+			),
+			'mileage' => array (
+				'title' => 'Mileage',
+				'key' => '_thegem_cf_mileage',
+				'type' => 'text',
+				'value' => '59000',
+				'applying' => false,
+				'id' => 41,
+			),
+			'make' => array (
+				'title' => 'Make',
+				'key' => '_thegem_cf_make',
+				'type' => 'text',
+				'value' => 'BMW',
+				'applying' => false,
+				'id' => 43,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	391 => array (
+		'id' => 12705,
+		'type' => 'loop-item',
+		'title' => 'Car Rental 02',
+		'mark' => '',
+		'pic' => 'car-rental-02.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/car-rental-02/',
+		'content' => '[vc_row][vc_column][thegem_te_loop_featured_media image_ratio="0.9" image_position="centered" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)"][vc_row_inner position_absolute="absolute" position_absolute_horizontal="right" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_horizontal_tablet="right" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_horizontal_mobile="right" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0"][vc_column_inner thegem_content_alignment="right" css=".vc_custom_1686310482336{padding-top: 7px !important;padding-right: 7px !important;padding-bottom: 7px !important;padding-left: 7px !important;}"][gem_icon source="svg" size="custom" image_file="12649" color="#ffffff" background_color="#3c3950" link="#" custom_size="20" icon_left_margin="7" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_border_radius="3"][gem_icon source="svg" size="custom" image_file="12655" color="#ffffff" background_color="#2ccb82" link="#" custom_size="20" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_left_margin="7" icon_border_radius="3"][gem_icon source="svg" size="custom" link_type="post" image_file="12647" color="#ffffff" background_color="#42c6da" icon_top_margin="0" icon_bottom_margin="0" custom_size="20" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_left_margin="7" icon_border_radius="3"][/vc_column_inner][/vc_row_inner][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" thegem_background_overlay="true" thegem_background_overlay_gradient="true" css=".vc_custom_1686642958027{padding-bottom: 15px !important;}" thegem_background_overlay_gradient_from="rgba(0,0,0,0)" thegem_background_overlay_gradient_start="0" thegem_background_overlay_gradient_to="rgba(0,0,0,0.5)" thegem_background_overlay_gradient_end="100"][vc_column_inner css=".vc_custom_1686658366879{padding-right: 10px !important;}"][gem_custom_fields source="project_details" skin="labels" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_make%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff"][thegem_te_post_title text_style="title-h5" text_color="#ffffff"][gem_custom_fields source="project_details" skin="modern" icon_size="21" icon_spacing="4" label_colon="" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_people%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212639%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_type_of_fuel%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212644%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_consumption%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212651%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_mileage%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212662%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff" icon_color="#ffffff"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h6" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_rental_day%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22field_suffix%22%3A%22%20%2F%20per%20Day%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff" container_layout=".vc_custom_1686663139899{margin-top: -5px !important;}"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12658',
+				'demo_width' => '',
+			),
+		),
+		'project_details' => array (
+			'rental_day' => array (
+				'title' => 'Rental (day)',
+				'key' => '_thegem_cf_rental_day',
+				'type' => 'number',
+				'value' => '105',
+				'applying' => false,
+				'id' => 28,
+			),
+			'people' => array (
+				'title' => 'People',
+				'key' => '_thegem_cf_people',
+				'type' => 'text',
+				'value' => '4',
+				'applying' => false,
+				'id' => 38,
+			),
+			'type_of_fuel' => array (
+				'title' => 'Type of fuel',
+				'key' => '_thegem_cf_type_of_fuel',
+				'type' => 'text',
+				'value' => 'Gasoline',
+				'applying' => false,
+				'id' => 39,
+			),
+			'consumption' => array (
+				'title' => 'Consumption',
+				'key' => '_thegem_cf_consumption',
+				'type' => 'text',
+				'value' => '7.6km / 1-litre',
+				'applying' => false,
+				'id' => 40,
+			),
+			'mileage' => array (
+				'title' => 'Mileage',
+				'key' => '_thegem_cf_mileage',
+				'type' => 'text',
+				'value' => '59000',
+				'applying' => false,
+				'id' => 41,
+			),
+			'make' => array (
+				'title' => 'Make',
+				'key' => '_thegem_cf_make',
+				'type' => 'text',
+				'value' => 'BMW',
+				'applying' => false,
+				'id' => 43,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	392 => array (
+		'id' => 12706,
+		'type' => 'loop-item',
+		'title' => 'Car Rental 03',
+		'mark' => '',
+		'pic' => 'car-rental-03.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/car-rental-03/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" thegem_shadow_color="rgba(0,0,0,0.15)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_enable_shadow="true"][vc_column offset="vc_col-lg-2/5" css=".vc_custom_1686314640319{padding-top: 5px !important;padding-right: 5px !important;padding-bottom: 5px !important;padding-left: 5px !important;}"][thegem_te_loop_featured_media image_ratio="1.3" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_radius_normal_top_left="5" image_radius_normal_top_right="5" image_radius_normal_bottom_left="5" image_radius_normal_bottom_right="5"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0" css=".vc_custom_1686645174282{padding-left: 4px !important;}"][vc_column_inner css=".vc_custom_1686311097039{padding-top: 8px !important;padding-right: 8px !important;padding-bottom: 8px !important;padding-left: 8px !important;}"][gem_custom_fields source="project_details" skin="labels" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_make%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column css=".vc_custom_1686906020615{padding-top: 7px !important;padding-right: 30px !important;padding-bottom: 7px !important;padding-left: 30px !important;}" offset="vc_col-lg-3/5" mobile_padding_left="21" mobile_padding_right="21"][gem_custom_fields source="project_details" skin="labels" labels_background_color="#ecf1f3" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_class%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_year%22%2C%22field_type%22%3A%22number%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%5D" value_text_color="#5f727f"][thegem_te_post_title text_style="title-h5" container_layout=".vc_custom_1686311223954{margin-top: 15px !important;margin-bottom: 5px !important;}"][vc_row_inner css=".vc_custom_1686312022693{margin-bottom: 15px !important;}"][vc_column_inner width="1/3" css=".vc_custom_1686644921371{padding-left: 0px !important;}" offset="vc_col-xs-6"][gem_custom_fields source="project_details" skin="modern" layout="vertical" icon_size="21" icon_spacing="8" value_text_style="text-body" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_people%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20People%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212639%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_type_of_fuel%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22People%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212644%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#3c3950" icon_color="#42c6da"][/vc_column_inner][vc_column_inner width="1/3" css=".vc_custom_1686906134588{padding-left: 0px !important;}" offset="vc_col-xs-6" mobile_padding_right="0"][gem_custom_fields source="project_details" skin="modern" layout="vertical" icon_size="21" icon_spacing="8" value_text_style="text-body" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_consumption%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20People%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212651%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_mileage%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20km%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212662%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#3c3950" icon_color="#42c6da"][/vc_column_inner][vc_column_inner width="1/3" css=".vc_custom_1686645033864{padding-left: 0px !important;}" offset="vc_col-xs-12" mobile_padding_top="5"][gem_custom_fields source="project_details" skin="modern" layout="vertical" icon_size="21" icon_spacing="8" value_text_style="text-body" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_vehicle_type%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20People%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212640%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_drive_unit%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20km%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212653%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#3c3950" icon_color="#42c6da"][/vc_column_inner][/vc_row_inner][vc_row_inner css=".vc_custom_1686311790189{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686644651074{padding-right: 0px !important;padding-left: 0px !important;}"][gem_custom_fields source="project_details" skin="modern" icon_size="16" icon_spacing="8" label_text_style="text-body-tiny" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_minimal_rental_period%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22Minimum%3A%20%22%2C%22field_suffix%22%3A%22%20Days%20Rental%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%227d%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_deposit%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e100%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#3c3950" label_text_color="#3c3950"][gem_divider margin_top="15" margin_bottom="8" color="#eaeff2"][/vc_column_inner][/vc_row_inner][vc_row_inner equal_height="yes" content_placement="middle"][vc_column_inner width="1/3" offset="vc_col-xs-4" css=".vc_custom_1686643962710{padding-right: 0px !important;padding-left: 0px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h4" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_rental_day%22%2C%22field_type%22%3A%22number%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][vc_column_inner width="2/3" thegem_content_alignment="right" offset="vc_col-xs-8" css=".vc_custom_1686643968478{padding-right: 0px !important;padding-left: 0px !important;}"][gem_icon source="svg" size="custom" image_file="12649" color="#ffffff" background_color="#3c3950" link="#" custom_size="20" icon_left_margin="7" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_border_radius="3"][gem_icon source="svg" size="custom" image_file="12655" color="#ffffff" background_color="#2ccb82" link="#" custom_size="20" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_left_margin="7" icon_border_radius="3"][gem_icon source="svg" size="custom" link_type="post" image_file="12647" color="#ffffff" background_color="#42c6da" icon_top_margin="0" icon_bottom_margin="0" custom_size="20" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_left_margin="7" icon_border_radius="3"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12569',
+				'demo_width' => '1200px',
+			),
+		),
+		'project_details' => array (
+			'year' => array (
+				'title' => 'Year',
+				'key' => '_thegem_cf_year',
+				'type' => 'number',
+				'id' => 14,
+				'value' => '2023',
+			),
+			'rental_day' => array (
+				'title' => 'Rental (day)',
+				'key' => '_thegem_cf_rental_day',
+				'type' => 'number',
+				'value' => '105',
+				'applying' => false,
+				'id' => 28,
+			),
+			'class' => array (
+				'title' => 'Class',
+				'key' => '_thegem_cf_class',
+				'type' => 'text',
+				'value' => 'Premium',
+				'applying' => false,
+				'id' => 36,
+			),
+			'people' => array (
+				'title' => 'People',
+				'key' => '_thegem_cf_people',
+				'type' => 'text',
+				'value' => '4',
+				'applying' => false,
+				'id' => 38,
+			),
+			'type_of_fuel' => array (
+				'title' => 'Type of fuel',
+				'key' => '_thegem_cf_type_of_fuel',
+				'type' => 'text',
+				'value' => 'Gasoline',
+				'applying' => false,
+				'id' => 39,
+			),
+			'consumption' => array (
+				'title' => 'Consumption',
+				'key' => '_thegem_cf_consumption',
+				'type' => 'text',
+				'value' => '7.6km / 1-litre',
+				'applying' => false,
+				'id' => 40,
+			),
+			'mileage' => array (
+				'title' => 'Mileage',
+				'key' => '_thegem_cf_mileage',
+				'type' => 'text',
+				'value' => '59000',
+				'applying' => false,
+				'id' => 41,
+			),
+			'drive_unit' => array (
+				'title' => 'Drive Unit',
+				'key' => '_thegem_cf_drive_unit',
+				'type' => 'text',
+				'value' => 'RWD',
+				'applying' => false,
+				'id' => 42,
+			),
+			'make' => array (
+				'title' => 'Make',
+				'key' => '_thegem_cf_make',
+				'type' => 'text',
+				'value' => 'BMW',
+				'applying' => false,
+				'id' => 43,
+			),
+			'vehicle_type' => array (
+				'title' => 'Vehicle Type',
+				'key' => '_thegem_cf_vehicle_type',
+				'type' => 'text',
+				'value' => 'Sedan',
+				'applying' => false,
+				'id' => 44,
+			),
+			'minimal_rental_period' => array (
+				'title' => 'Minimal rental period',
+				'key' => '_thegem_cf_minimal_rental_period',
+				'type' => 'text',
+				'value' => '2',
+				'applying' => false,
+				'id' => 45,
+			),
+			'deposit' => array (
+				'title' => 'Deposit',
+				'key' => '_thegem_cf_deposit',
+				'type' => 'text',
+				'value' => '150',
+				'applying' => false,
+				'id' => 46,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	393 => array (
+		'id' => 12707,
+		'type' => 'loop-item',
+		'title' => 'Car Rental 04',
+		'mark' => '',
+		'pic' => 'car-rental-04.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/car-rental-04/',
+		'content' => '[vc_row content_placement="middle" css=".vc_custom_1686313413691{border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;border-left-color: #dfe5e8 !important;border-left-style: solid !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;border-bottom-color: #dfe5e8 !important;border-bottom-style: solid !important;}"][vc_column offset="vc_col-lg-6 vc_col-md-12"][thegem_te_loop_featured_media image_ratio="1.2" image_position="centered" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0" css=".vc_custom_1686645732476{padding-top: 2px !important;padding-right: 8px !important;padding-bottom: 8px !important;padding-left: 8px !important;}"][vc_column_inner css=".vc_custom_1686313485563{padding-left: 0px !important;}"][gem_custom_fields source="project_details" skin="labels" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_make%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][vc_row_inner content_placement="middle" position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" thegem_background_overlay="true" thegem_background_overlay_gradient="true" css=".vc_custom_1686645813983{margin-bottom: 0px !important;padding-top: 15px !important;padding-right: 15px !important;padding-bottom: 15px !important;padding-left: 15px !important;}" thegem_background_overlay_gradient_from="rgba(0,0,0,0)" thegem_background_overlay_gradient_start="0" thegem_background_overlay_gradient_to="rgba(0,0,0,0.5)" thegem_background_overlay_gradient_end="100"][vc_column_inner width="1/2" css=".vc_custom_1686313802795{padding-left: 0px !important;}" offset="vc_col-xs-5"][gem_custom_fields source="project_details" skin="modern" list_spacing_desktop="5" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_class%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_year%22%2C%22field_type%22%3A%22number%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%5D" value_text_color="#ffffff"][/vc_column_inner][vc_column_inner width="1/2" thegem_content_alignment="right" css=".vc_custom_1686313808203{padding-right: 0px !important;}" offset="vc_col-xs-7"][gem_icon source="svg" size="custom" image_file="12649" color="#ffffff" background_color="#3c3950" link="#" custom_size="20" icon_left_margin="7" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_border_radius="3"][gem_icon source="svg" size="custom" image_file="12655" color="#ffffff" background_color="#2ccb82" link="#" custom_size="20" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_left_margin="7" icon_border_radius="3"][gem_icon source="svg" size="custom" link_type="post" image_file="12647" color="#ffffff" background_color="#42c6da" icon_top_margin="0" icon_bottom_margin="0" custom_size="20" icon_left_padding="8" icon_right_padding="8" icon_top_padding="8" icon_bottom_padding="8" icon_left_margin="7" icon_border_radius="3"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column css=".vc_custom_1686313604421{padding-top: 20px !important;padding-right: 45px !important;padding-bottom: 20px !important;padding-left: 45px !important;}" offset="vc_col-lg-6 vc_col-md-12" tablet_padding_top="25" tablet_padding_bottom="25" tablet_padding_left="25" tablet_padding_right="25"][thegem_te_post_title text_style="title-h5"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h5" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_rental_day%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22field_suffix%22%3A%22%20%2F%20per%20Day%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#00bcd4" value_text_letter_spacing="0"][gem_custom_fields source="project_details" list_alignment="justify" table_vertical_spacing="10" icon_size="21" icon_spacing="8" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_people%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212639%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_type_of_fuel%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212644%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_consumption%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212651%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_mileage%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212662%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_drive_unit%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212653%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%5D" list_divider_color="#dfe5e8"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12569',
+				'demo_width' => '1200px',
+			),
+		),
+		'project_details' => array (
+			'year' => array (
+				'title' => 'Year',
+				'key' => '_thegem_cf_year',
+				'type' => 'number',
+				'id' => 14,
+				'value' => '2023',
+			),
+			'rental_day' => array (
+				'title' => 'Rental (day)',
+				'key' => '_thegem_cf_rental_day',
+				'type' => 'number',
+				'value' => '105',
+				'applying' => false,
+				'id' => 28,
+			),
+			'class' => array (
+				'title' => 'Class',
+				'key' => '_thegem_cf_class',
+				'type' => 'text',
+				'value' => 'Premium',
+				'applying' => false,
+				'id' => 36,
+			),
+			'people' => array (
+				'title' => 'People',
+				'key' => '_thegem_cf_people',
+				'type' => 'text',
+				'value' => '4',
+				'applying' => false,
+				'id' => 38,
+			),
+			'type_of_fuel' => array (
+				'title' => 'Type of fuel',
+				'key' => '_thegem_cf_type_of_fuel',
+				'type' => 'text',
+				'value' => 'Gasoline',
+				'applying' => false,
+				'id' => 39,
+			),
+			'consumption' => array (
+				'title' => 'Consumption',
+				'key' => '_thegem_cf_consumption',
+				'type' => 'text',
+				'value' => '7.6km / 1-litre',
+				'applying' => false,
+				'id' => 40,
+			),
+			'mileage' => array (
+				'title' => 'Mileage',
+				'key' => '_thegem_cf_mileage',
+				'type' => 'text',
+				'value' => '59000',
+				'applying' => false,
+				'id' => 41,
+			),
+			'drive_unit' => array (
+				'title' => 'Drive Unit',
+				'key' => '_thegem_cf_drive_unit',
+				'type' => 'text',
+				'value' => 'RWD',
+				'applying' => false,
+				'id' => 42,
+			),
+			'make' => array (
+				'title' => 'Make',
+				'key' => '_thegem_cf_make',
+				'type' => 'text',
+				'value' => 'BMW',
+				'applying' => false,
+				'id' => 43,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	394 => array (
+		'id' => 12708,
+		'type' => 'loop-item',
+		'title' => 'Boat Rental 01',
+		'mark' => '',
+		'pic' => 'boat-rental-01.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/boat-rental-01/',
+		'content' => '[vc_row][vc_column][thegem_te_loop_featured_media image_ratio="1.25" image_position="centered" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0"][vc_column_inner css=".vc_custom_1686568302241{margin-top: -5px !important;padding-right: 0px !important;padding-left: 0px !important;}"][gem_custom_fields source="project_details" skin="labels" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_class%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%5D" value_text_color="#ffffff"][/vc_column_inner][/vc_row_inner][vc_row_inner position_absolute="absolute" position_absolute_horizontal="right" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_horizontal_tablet="right" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_horizontal_mobile="right" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686315911080{background-color: #ffffff !important;}" position_absolute_width="auto"][vc_column_inner css=".vc_custom_1686315895144{padding-top: 3px !important;padding-right: 0px !important;padding-left: 10px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h6" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_rental_day%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22field_suffix%22%3A%22%20%2F%20per%20Day%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#00bcd4" value_text_letter_spacing="0"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column css=".vc_custom_1689056285433{padding-top: 20px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_boat_type%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_deal_type%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_year%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#9ba7b3"][thegem_te_post_title text_style="title-h6"][gem_custom_fields source="project_details" skin="modern" icon_size="20" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_persons%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Guest%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212648%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_cabins%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Cabins%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212642%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Baths%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212635%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#9ba7b3" icon_color="#00bcd4"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12592',
+				'demo_width' => '',
+			),
+		),
+		'project_details' => array (
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'year' => array (
+				'title' => 'Year',
+				'key' => '_thegem_cf_year',
+				'type' => 'number',
+				'id' => 14,
+				'value' => '2023',
+			),
+			'persons' => array (
+				'title' => 'Persons',
+				'key' => '_thegem_cf_persons',
+				'type' => 'number',
+				'id' => 23,
+				'value' => '1',
+			),
+			'rental_day' => array (
+				'title' => 'Rental (day)',
+				'key' => '_thegem_cf_rental_day',
+				'type' => 'number',
+				'value' => '105',
+				'applying' => false,
+				'id' => 28,
+			),
+			'boat_type' => array (
+				'title' => 'Boat Type ',
+				'key' => '_thegem_cf_boat_type',
+				'type' => 'text',
+				'value' => 'Motorboat',
+				'applying' => false,
+				'id' => 31,
+			),
+			'cabins' => array (
+				'title' => 'Cabins',
+				'key' => '_thegem_cf_cabins',
+				'type' => 'number',
+				'value' => '6',
+				'applying' => false,
+				'id' => 32,
+			),
+			'class' => array (
+				'title' => 'Class',
+				'key' => '_thegem_cf_class',
+				'type' => 'text',
+				'value' => 'Premium',
+				'applying' => false,
+				'id' => 36,
+			),
+			'deal_type' => array (
+				'title' => 'Deal Type',
+				'key' => '_thegem_cf_deal_type',
+				'type' => 'text',
+				'value' => 'For Rent',
+				'applying' => false,
+				'id' => 37,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	395 => array (
+		'id' => 12709,
+		'type' => 'loop-item',
+		'title' => 'Boat Rental 02',
+		'mark' => '',
+		'pic' => 'boat-rental-02.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/boat-rental-02/',
+		'content' => '[vc_row thegem_shadow_color="rgba(0,0,0,0.15)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1686319474191{padding-top: 15px !important;padding-right: 15px !important;padding-bottom: 5px !important;padding-left: 15px !important;}"][vc_column][thegem_te_loop_featured_media image_ratio="1.25" image_position="centered" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)"][vc_row_inner css=".vc_custom_1686907681122{margin-bottom: 0px !important;}"][vc_column_inner css=".vc_custom_1686568409753{padding-right: 0px !important;padding-left: 10px !important;}"][gem_custom_fields source="project_details" skin="labels" list_alignment="center" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_class%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%5D" container_layout=".vc_custom_1689939044935{margin-top: -17px !important;}"][gem_custom_fields source="project_details" skin="modern" list_alignment="center" value_text_style="title-h6" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_rental_day%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22field_suffix%22%3A%22%20%2F%20per%20Day%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#00bcd4" value_text_letter_spacing="0"][thegem_te_post_title alignment="center" text_style="title-h6"][gem_custom_fields source="project_details" skin="modern" list_alignment="center" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_boat_type%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_deal_type%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_year%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#9ba7b3"][gem_divider color="#dfe5e8" margin_top="10" margin_bottom="7"][/vc_column_inner][/vc_row_inner][vc_row_inner css=".vc_custom_1686575876659{margin-bottom: 0px !important;}"][vc_column_inner thegem_content_alignment="center" css=".vc_custom_1686575827484{padding-right: 0px !important;padding-left: 0px !important;}"][gem_custom_fields source="project_details" skin="modern" list_alignment="center" list_spacing_desktop="5" icon_size="20" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_persons%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Guest%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212648%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_cabins%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Cabins%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212642%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Baths%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212635%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12603',
+				'demo_width' => '',
+			),
+		),
+		'project_details' => array (
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'year' => array (
+				'title' => 'Year',
+				'key' => '_thegem_cf_year',
+				'type' => 'number',
+				'id' => 14,
+				'value' => '2023',
+			),
+			'persons' => array (
+				'title' => 'Persons',
+				'key' => '_thegem_cf_persons',
+				'type' => 'number',
+				'id' => 23,
+				'value' => '1',
+			),
+			'rental_day' => array (
+				'title' => 'Rental (day)',
+				'key' => '_thegem_cf_rental_day',
+				'type' => 'number',
+				'value' => '105',
+				'applying' => false,
+				'id' => 28,
+			),
+			'boat_type' => array (
+				'title' => 'Boat Type ',
+				'key' => '_thegem_cf_boat_type',
+				'type' => 'text',
+				'value' => 'Motorboat',
+				'applying' => false,
+				'id' => 31,
+			),
+			'cabins' => array (
+				'title' => 'Cabins',
+				'key' => '_thegem_cf_cabins',
+				'type' => 'number',
+				'value' => '6',
+				'applying' => false,
+				'id' => 32,
+			),
+			'class' => array (
+				'title' => 'Class',
+				'key' => '_thegem_cf_class',
+				'type' => 'text',
+				'value' => 'Premium',
+				'applying' => false,
+				'id' => 36,
+			),
+			'deal_type' => array (
+				'title' => 'Deal Type',
+				'key' => '_thegem_cf_deal_type',
+				'type' => 'text',
+				'value' => 'For Rent',
+				'applying' => false,
+				'id' => 37,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	396 => array (
+		'id' => 12710,
+		'type' => 'loop-item',
+		'title' => 'Boat Rental 03',
+		'mark' => '',
+		'pic' => 'boat-rental-03.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/boat-rental-03/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle"][vc_column offset="vc_col-lg-2/5"][thegem_te_loop_featured_media image_ratio="1.25" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="-5" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="-5" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="-5"][vc_column_inner css=".vc_custom_1686568614188{padding-right: 0px !important;padding-left: 0px !important;}"][gem_custom_fields source="project_details" skin="labels" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_deal_type%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][/vc_row_inner][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" thegem_background_overlay="true" thegem_background_overlay_gradient="true" css=".vc_custom_1686568740048{margin-bottom: 0px !important;padding-bottom: 5px !important;}" thegem_background_overlay_gradient_from="rgba(0,0,0,0.01)" thegem_background_overlay_gradient_start="0" thegem_background_overlay_gradient_to="rgba(0,0,0,0.5)" thegem_background_overlay_gradient_end="100" z_index="10"][vc_column_inner css=".vc_custom_1686568910104{padding-right: 10px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h5" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_rental_day%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22field_suffix%22%3A%22%20%2F%20per%20Day%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff" value_text_letter_spacing="0"][/vc_column_inner][/vc_row_inner][/vc_column][vc_column css=".vc_custom_1686568950692{padding-right: 40px !important;padding-left: 40px !important;}" offset="vc_col-lg-3/5" tablet_padding_top="25" tablet_padding_bottom="25" tablet_padding_left="0" tablet_padding_right="0"][gem_custom_fields source="project_details" skin="modern" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_boat_type%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_class%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_year%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#9ba7b3"][thegem_te_post_title container_layout=".vc_custom_1686323326715{margin-top: 5px !important;margin-bottom: 10px !important;}"][vc_row_inner equal_height="yes" css=".vc_custom_1686323298919{margin-bottom: 0px !important;}"][vc_column_inner width="1/2" css=".vc_custom_1686321137648{padding-left: 0px !important;}"][gem_custom_fields source="project_details" list_alignment="justify" table_vertical_spacing="10" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_persons%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_cabins%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22People%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_length%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20m%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%5D"][/vc_column_inner][vc_column_inner width="1/2" mobile_padding_left="0"][gem_custom_fields source="project_details" list_alignment="justify" table_vertical_spacing="10" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_model%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_year%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22People%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_harbour%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_engine%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20m%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22label%22%3A%221%22%2C%22link_dynamic%22%3A%22custom_fields%22%7D%5D"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12603',
+				'demo_width' => '1200px',
+			),
+		),
+		'project_details' => array (
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'year' => array (
+				'title' => 'Year',
+				'key' => '_thegem_cf_year',
+				'type' => 'number',
+				'id' => 14,
+				'value' => '2023',
+			),
+			'model' => array (
+				'title' => 'Model',
+				'key' => '_thegem_cf_model',
+				'type' => 'text',
+				'id' => 22,
+				'value' => 'Yacht',
+			),
+			'persons' => array (
+				'title' => 'Persons',
+				'key' => '_thegem_cf_persons',
+				'type' => 'number',
+				'id' => 23,
+				'value' => '1',
+			),
+			'harbour' => array (
+				'title' => 'Harbour',
+				'key' => '_thegem_cf_harbour',
+				'type' => 'text',
+				'id' => 25,
+				'value' => 'Latsi',
+			),
+			'rental_day' => array (
+				'title' => 'Rental (day)',
+				'key' => '_thegem_cf_rental_day',
+				'type' => 'number',
+				'value' => '105',
+				'applying' => false,
+				'id' => 28,
+			),
+			'boat_type' => array (
+				'title' => 'Boat Type ',
+				'key' => '_thegem_cf_boat_type',
+				'type' => 'text',
+				'value' => 'Motorboat',
+				'applying' => false,
+				'id' => 31,
+			),
+			'cabins' => array (
+				'title' => 'Cabins',
+				'key' => '_thegem_cf_cabins',
+				'type' => 'number',
+				'value' => '6',
+				'applying' => false,
+				'id' => 32,
+			),
+			'length' => array (
+				'title' => 'Length',
+				'key' => '_thegem_cf_length',
+				'type' => 'number',
+				'value' => '6',
+				'applying' => false,
+				'id' => 33,
+			),
+			'engine' => array (
+				'title' => 'Engine',
+				'key' => '_thegem_cf_engine',
+				'type' => 'text',
+				'value' => '115hp',
+				'applying' => false,
+				'id' => 34,
+			),
+			'class' => array (
+				'title' => 'Class',
+				'key' => '_thegem_cf_class',
+				'type' => 'text',
+				'value' => 'Premium',
+				'applying' => false,
+				'id' => 36,
+			),
+			'deal_type' => array (
+				'title' => 'Deal Type',
+				'key' => '_thegem_cf_deal_type',
+				'type' => 'text',
+				'value' => 'For Rent',
+				'applying' => false,
+				'id' => 37,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	397 => array (
+		'id' => 12711,
+		'type' => 'loop-item',
+		'title' => 'Boat Rental 04',
+		'mark' => '',
+		'pic' => 'boat-rental-04.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/boat-rental-04/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle" thegem_shadow_color="rgba(0,0,0,0.15)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_enable_shadow="true" css=".vc_custom_1686322055441{padding-top: 7px !important;padding-right: 7px !important;padding-bottom: 7px !important;padding-left: 7px !important;}"][vc_column offset="vc_col-lg-4" css=".vc_custom_1686322287463{padding-right: 5px !important;}"][thegem_te_loop_featured_media image_ratio="1.1" image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0"][vc_column_inner css=".vc_custom_1686569353037{margin-top: -5px !important;padding-right: 0px !important;padding-left: 0px !important;}"][gem_custom_fields source="project_details" skin="labels" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_deal_type%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D"][/vc_column_inner][/vc_row_inner][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_vertical="bottom" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_vertical_tablet="bottom" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_vertical_mobile="bottom" position_absolute_offset_y_mobile="0" css=".vc_custom_1686321358728{margin-bottom: 0px !important;padding-bottom: 5px !important;}"][vc_column_inner][/vc_column_inner][/vc_row_inner][/vc_column][vc_column css=".vc_custom_1686322960093{padding-top: 5px !important;padding-right: 40px !important;padding-bottom: 5px !important;padding-left: 40px !important;}" offset="vc_col-lg-8" tablet_padding_top="20" tablet_padding_bottom="0" tablet_padding_left="30" tablet_padding_right="30" mobile_padding_top="20" mobile_padding_left="20" mobile_padding_right="20"][gem_custom_fields source="project_details" skin="modern" icon_size="16" value_text_style="text-body" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_location%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22icon_thegemheader%22%3A%22e636%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0"][thegem_te_post_title][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h5" value_text_transform="none" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_rental_day%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22field_suffix%22%3A%22%20%2F%20per%20Day%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#00bcd4" value_text_letter_spacing="0"][thegem_te_post_excerpt container_layout=".vc_custom_1686322836600{margin-bottom: 20px !important;}"][gem_divider color="#dfe5e8" margin_top="5" margin_bottom="5"][gem_custom_fields source="project_details" skin="modern" icon_size="20" value_text_style="text-body-tiny" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_persons%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Guest%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212648%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_cabins%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Cabins%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212642%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_bathrooms%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Baths%22%2C%22icon%22%3A%22svg%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22image_file%22%3A%2212635%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" container_layout=".vc_custom_1686660274642{margin-bottom: 2px !important;}"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12603',
+				'demo_width' => '800px',
+			),
+		),
+		'project_details' => array (
+			'location' => array (
+				'title' => 'Location',
+				'key' => '_thegem_cf_location',
+				'type' => 'text',
+				'id' => 5,
+				'value' => 'Chicago, USA',
+			),
+			'bathrooms' => array (
+				'title' => 'Bathrooms',
+				'key' => '_thegem_cf_bathrooms',
+				'type' => 'number',
+				'id' => 9,
+				'value' => '2',
+			),
+			'persons' => array (
+				'title' => 'Persons',
+				'key' => '_thegem_cf_persons',
+				'type' => 'number',
+				'id' => 23,
+				'value' => '1',
+			),
+			'rental_day' => array (
+				'title' => 'Rental (day)',
+				'key' => '_thegem_cf_rental_day',
+				'type' => 'number',
+				'value' => '105',
+				'applying' => false,
+				'id' => 28,
+			),
+			'cabins' => array (
+				'title' => 'Cabins',
+				'key' => '_thegem_cf_cabins',
+				'type' => 'number',
+				'value' => '6',
+				'applying' => false,
+				'id' => 32,
+			),
+			'deal_type' => array (
+				'title' => 'Deal Type',
+				'key' => '_thegem_cf_deal_type',
+				'type' => 'text',
+				'value' => 'For Rent',
+				'applying' => false,
+				'id' => 37,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	398 => array (
+		'id' => 12712,
+		'type' => 'loop-item',
+		'title' => 'Courses 01',
+		'mark' => '',
+		'pic' => 'courses-01.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/courses-01/',
+		'content' => '[vc_row equal_height="yes" content_placement="middle"][vc_column offset="vc_col-lg-3/5"][thegem_te_loop_featured_media image_ratio="1.25"][/vc_column][vc_column css=".vc_custom_1686558641927{padding-top: 20px !important;padding-right: 40px !important;padding-bottom: 20px !important;padding-left: 40px !important;background-color: #f4f7f8 !important;}" tablet_padding_top="30" tablet_padding_bottom="30" tablet_padding_left="30" tablet_padding_right="30" offset="vc_col-lg-2/5" mobile_padding_left="21" mobile_padding_right="21"][gem_custom_fields source="project_details" skin="labels" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_skill%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" container_layout=".vc_custom_1686557119548{margin-bottom: 15px !important;}"][thegem_te_post_title text_style="title-h5" truncate_title="2" container_layout=".vc_custom_1686558322117{margin-bottom: 5px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h4" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" value_text_color="#00bcd4"][thegem_te_post_excerpt truncate_excerpt="3" container_layout=".vc_custom_1686558179865{margin-bottom: 15px !important;}"][gem_custom_fields source="project_details" skin="modern" icon_size="16" icon_spacing="8" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_duration%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%227d%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_lectures%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Lectures%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e022%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#00bcd4" container_layout=".vc_custom_1686557491635{margin-bottom: 25px !important;}"][gem_button text="Read More" position="left" style="outline" corner="3" border="2" icon_pack="elegant"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12619',
+				'demo_width' => '1000px',
+			),
+		),
+		'project_details' => array (
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'duration' => array (
+				'title' => 'Duration',
+				'key' => '_thegem_cf_duration',
+				'type' => 'text',
+				'value' => '06 hr 30 mins',
+				'applying' => false,
+				'id' => 47,
+			),
+			'lectures' => array (
+				'title' => 'Lectures',
+				'key' => '_thegem_cf_lectures',
+				'type' => 'text',
+				'value' => '20',
+				'applying' => false,
+				'id' => 48,
+			),
+			'skill' => array (
+				'title' => 'Skill',
+				'key' => '_thegem_cf_skill',
+				'type' => 'text',
+				'value' => 'UI/UX Design',
+				'applying' => false,
+				'id' => 51,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	399 => array (
+		'id' => 12713,
+		'type' => 'loop-item',
+		'title' => 'Courses 02',
+		'mark' => '',
+		'pic' => 'courses-02.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/courses-02/',
+		'content' => '[vc_row thegem_shadow_color="rgba(0,0,0,0.15)" thegem_shaow_vertical="0" thegem_shaow_blur="80" thegem_shaow_spread="0" thegem_row_overflow="hidden" thegem_enable_shadow="true" css=".vc_custom_1686914476198{border-radius: 20px !important;}"][vc_column][thegem_te_loop_featured_media image_background_normal="rgba(0,0,0,0.01)" image_background_hover="rgba(0,0,0,0.3)" image_radius_normal_top_left="20" image_radius_normal_top_right="20"][vc_row_inner position_absolute="absolute" position_absolute_offset_x="0" position_absolute_offset_y="0" position_absolute_offset_x_tablet="0" position_absolute_offset_y_tablet="0" position_absolute_offset_x_mobile="0" position_absolute_offset_y_mobile="0" thegem_background_overlay="true" thegem_background_overlay_gradient="true" css=".vc_custom_1686562993244{padding-top: 5px !important;padding-right: 20px !important;padding-bottom: 20px !important;padding-left: 20px !important;border-radius: 20px !important;}" thegem_background_overlay_gradient_from="rgba(0,0,0,0.5)" thegem_background_overlay_gradient_start="0" thegem_background_overlay_gradient_to="rgba(0,0,0,0.01)" thegem_background_overlay_gradient_end="100"][vc_column_inner css=".vc_custom_1686562783055{padding-right: 0px !important;padding-left: 0px !important;border-radius: 20px !important;}"][gem_custom_fields source="project_details" skin="modern" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_skill%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#ffffff" container_layout=".vc_custom_1686562792677{border-radius: 20px !important;}"][/vc_column_inner][/vc_row_inner][vc_row_inner css=".vc_custom_1686560216997{padding-top: 25px !important;padding-right: 20px !important;padding-bottom: 20px !important;padding-left: 20px !important;}"][vc_column_inner css=".vc_custom_1686560451813{padding-right: 0px !important;padding-left: 0px !important;}"][thegem_te_post_title text_style="title-h6" truncate_title="2" container_layout=".vc_custom_1686560500287{margin-bottom: 3px !important;}"][thegem_te_post_info info_content="%5B%7B%22type%22%3A%22author%22%2C%22terms_taxonomy%22%3A%22category%22%2C%22terms_link%22%3A%221%22%2C%22author_label%22%3A%22By%22%2C%22author_avatar%22%3A%221%22%2C%22author_link%22%3A%221%22%2C%22date_icon_pack%22%3A%22thegem-header%22%2C%22time_icon_pack%22%3A%22thegem-header%22%2C%22comments_icon%22%3A%22default%22%2C%22comments_icon_pack%22%3A%22thegem-header%22%2C%22likes_icon%22%3A%22default%22%2C%22likes_icon_pack%22%3A%22thegem-header%22%7D%5D"][thegem_te_post_excerpt][gem_custom_fields source="project_details" skin="modern" icon_size="16" icon_spacing="8" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_duration%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%227d%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_lectures%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Lectures%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e022%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#00bcd4" container_layout=".vc_custom_1686560592124{margin-top: 5px !important;}"][gem_custom_fields source="project_details" skin="modern" value_text_style="title-h5" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_letter_spacing="0" value_text_color="#00bcd4" container_layout=".vc_custom_1686560800632{margin-bottom: 10px !important;}"][gem_button text="Read More" position="left" style="outline" corner="50" size="tiny" text_weight="thin" text_transform="none" border="1" icon_pack="elegant" text_size="14" text_color="#3c3950" border_color="#3c3950" hover_text_color="#ffffff" hover_background_color="#3c3950"][/vc_column_inner][/vc_row_inner][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12619',
+				'demo_width' => '',
+			),
+		),
+		'project_details' => array (
+			'price' => array (
+				'title' => 'Price',
+				'key' => '_thegem_cf_price',
+				'type' => 'number',
+				'id' => 11,
+				'value' => '450000',
+			),
+			'duration' => array (
+				'title' => 'Duration',
+				'key' => '_thegem_cf_duration',
+				'type' => 'text',
+				'value' => '06 hr 30 mins',
+				'applying' => false,
+				'id' => 47,
+			),
+			'lectures' => array (
+				'title' => 'Lectures',
+				'key' => '_thegem_cf_lectures',
+				'type' => 'text',
+				'value' => '20',
+				'applying' => false,
+				'id' => 48,
+			),
+			'skill' => array (
+				'title' => 'Skill',
+				'key' => '_thegem_cf_skill',
+				'type' => 'text',
+				'value' => 'UI/UX Design',
+				'applying' => false,
+				'id' => 51,
+			),
+		),
+		'attachment_ids' => array (
+		),
+	),
+	400 => array (
+		'id' => 12714,
+		'type' => 'loop-item',
+		'title' => 'Courses 03',
+		'mark' => '',
+		'pic' => 'courses-03.jpg',
+		'preview' => 'https://codex-themes.com/thegem/blocks/preview/courses-03/',
+		'content' => '[vc_row css=".vc_custom_1686664487013{border-top-width: 1px !important;border-right-width: 1px !important;border-bottom-width: 1px !important;border-left-width: 1px !important;padding-top: 25px !important;padding-right: 30px !important;padding-bottom: 30px !important;padding-left: 45px !important;border-left-color: #dfe5e8 !important;border-left-style: solid !important;border-right-color: #dfe5e8 !important;border-right-style: solid !important;border-top-color: #dfe5e8 !important;border-top-style: solid !important;border-bottom-color: #dfe5e8 !important;border-bottom-style: solid !important;border-radius: 10px !important;}" mobile_padding_top="30" mobile_padding_bottom="30" mobile_padding_left="30" mobile_padding_right="30" custom_css_code="JTIwLmN1c3RvbS1pbmxpbmUtcm93JTIwJTdCJTBBJTIwJTIwJTIwZGlzcGxheSUzQWlubGluZS1ibG9jayUzQiUwQSUyMCUyMCUyMHdpZHRoJTNBYXV0byUyMCUyMWltcG9ydGFudCUzQiUwQSU3RCUwQQ=="][vc_column thegem_content_alignment="left"][gem_custom_fields source="project_details" skin="labels" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_skill%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" container_layout=".vc_custom_1686564638161{margin-bottom: 10px !important;}"][thegem_te_post_title][gem_custom_fields source="project_details" skin="modern" icon_size="16" icon_spacing="8" icon_spacing_vertical="0" value_text_style="text-body-tiny" element_class="custom-inline-row" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_duration%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%227d%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_lectures%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_suffix%22%3A%22%20Lectures%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e022%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#00bcd4" container_layout=".vc_custom_1686665633375{margin-top: 5px !important;padding-right: 20px !important;}" value_text_letter_spacing="0" value_text_color="#3c3950"][gem_custom_fields source="project_details" skin="modern" list_spacing_desktop="1" icon_size="16" icon_spacing="8" value_text_style="text-body-tiny" element_class="custom-inline-row" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_min_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%24%22%2C%22field_suffix%22%3A%22%20-%22%2C%22icon%22%3A%22custom%22%2C%22icon_pack%22%3A%22elegant%22%2C%22icon_elegant%22%3A%22e100%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_max_price%22%2C%22field_type%22%3A%22number%22%2C%22field_format%22%3A%22wp_locale%22%2C%22field_prefix%22%3A%22%20%20%24%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" icon_color="#00bcd4" container_layout=".vc_custom_1686665618187{margin-top: 5px !important;margin-bottom: 10px !important;}" value_text_color="#00bcd4" value_text_letter_spacing="0"][gem_custom_fields source="project_details" skin="labels" labels_background_color="#ecf1f3" project_details_info_content="%5B%7B%22select_field%22%3A%22_thegem_cf_related_skill_1%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_related_skill_2%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%2C%7B%22select_field%22%3A%22_thegem_cf_related_skill_3%22%2C%22field_type%22%3A%22text%22%2C%22field_format%22%3A%22wp_locale%22%2C%22icon_pack%22%3A%22thegem-header%22%2C%22link_dynamic%22%3A%22custom_fields%22%2C%22project_details_link_select%22%3A%22_thegem_cf_link%22%7D%5D" value_text_color="#5f727f"][/vc_column][/vc_row]',
+		'categories' => array (
+			'custom-fields' => 'Custom Fields',
+		),
+		'metas' => array (
+			'thegem_template_preview_settings' => array (
+				'demo_posttype' => 'thegem_pf_item',
+				'demo_post_id' => '12619',
+				'demo_width' => '1200',
+			),
+		),
+		'project_details' => array (
+			'duration' => array (
+				'title' => 'Duration',
+				'key' => '_thegem_cf_duration',
+				'type' => 'text',
+				'value' => '06 hr 30 mins',
+				'applying' => false,
+				'id' => 47,
+			),
+			'lectures' => array (
+				'title' => 'Lectures',
+				'key' => '_thegem_cf_lectures',
+				'type' => 'text',
+				'value' => '20',
+				'applying' => false,
+				'id' => 48,
+			),
+			'min_price' => array (
+				'title' => 'Min. Price',
+				'key' => '_thegem_cf_min_price',
+				'type' => 'text',
+				'value' => '100.00',
+				'applying' => false,
+				'id' => 49,
+			),
+			'max_price' => array (
+				'title' => 'Max. Price',
+				'key' => '_thegem_cf_max_price',
+				'type' => 'text',
+				'value' => '320.00',
+				'applying' => false,
+				'id' => 50,
+			),
+			'skill' => array (
+				'title' => 'Skill',
+				'key' => '_thegem_cf_skill',
+				'type' => 'text',
+				'value' => 'UI/UX Design',
+				'applying' => false,
+				'id' => 51,
+			),
+			'related_skill_1' => array (
+				'title' => 'Related Skill 1',
+				'key' => '_thegem_cf_related_skill_1',
+				'type' => 'text',
+				'value' => 'Intern',
+				'applying' => false,
+				'id' => 52,
+			),
+			'related_skill_2' => array (
+				'title' => 'Related Skill 2',
+				'key' => '_thegem_cf_related_skill_2',
+				'type' => 'text',
+				'value' => 'Front end developer',
+				'applying' => false,
+				'id' => 53,
+			),
+			'related_skill_3' => array (
+				'title' => 'Related Skill 3',
+				'key' => '_thegem_cf_related_skill_3',
+				'type' => 'text',
+				'value' => 'Product designer',
+				'applying' => false,
+				'id' => 54,
+			),
+		),
+		'attachment_ids' => array (
 		),
 	),
 );
@@ -8448,6 +11128,18 @@ $dummyList = array (
 	9595 => 'popup-39.png',
 	9599 => 'popup-49.png',
 	9600 => 'popup-18.jpg',
+	11902 => 'real_estate_03_9.svg',
+	11903 => 'real_estate_03_10.svg',
+	11904 => 'real_estate_03_11.svg',
+	11905 => 'real_estate_03_12.svg',
+	12057 => 'boat-rental-svg-1.svg',
+	12059 => 'boat-rental-svg-3.svg',
+	12060 => 'boat-rental-svg-4.svg',
+	12063 => 'boat-rental-svg-5.svg',
+	12081 => 'product-concept-icon-1.svg',
+	12083 => 'product-concept-icon-3.svg',
+	12085 => 'product-concept-icon-5.svg',
+	12086 => 'product-concept-icon-6.svg',
 );
 
 $mailChimpForms = array (
@@ -8518,8 +11210,8 @@ $mailChimpForms = array (
 			'update-email-failure' => '',
 		),
 		'custom_notifications' => '',
-		'impressions' => 514,
-		'submissions' => 17,
+		'impressions' => 767,
+		'submissions' => 19,
 		'custom_fields' => array (
 		),
 		'unique_id' => 1,
@@ -8590,7 +11282,7 @@ $mailChimpForms = array (
 			'update-email-failure' => '',
 		),
 		'custom_notifications' => '',
-		'impressions' => 49,
+		'impressions' => 62,
 		'submissions' => 1,
 		'custom_fields' => array (
 		),
@@ -8663,7 +11355,7 @@ $mailChimpForms = array (
 			'update-email-failure' => '',
 		),
 		'custom_notifications' => '',
-		'impressions' => 79,
+		'impressions' => 177,
 		'submissions' => 0,
 		'custom_fields' => array (
 		),
@@ -8749,8 +11441,8 @@ This email was sent from: [url]
 			'update-email-failure' => '',
 		),
 		'custom_notifications' => '',
-		'impressions' => 71,
-		'submissions' => 1,
+		'impressions' => 108,
+		'submissions' => 2,
 		'custom_fields' => array (
 		),
 		'unique_id' => 16,
@@ -8834,7 +11526,7 @@ This email was sent from: [url]
 			'update-email-failure' => '',
 		),
 		'custom_notifications' => '',
-		'impressions' => 92,
+		'impressions' => 132,
 		'submissions' => 2,
 		'custom_fields' => array (
 		),
@@ -8906,7 +11598,7 @@ This email was sent from: [url]
 			'update-email-failure' => '',
 		),
 		'custom_notifications' => '',
-		'impressions' => 81,
+		'impressions' => 202,
 		'submissions' => 0,
 		'custom_fields' => array (
 		),
@@ -8991,7 +11683,7 @@ This email was sent from: [url]
 			'update-email-failure' => '',
 		),
 		'custom_notifications' => '',
-		'impressions' => 276,
+		'impressions' => 837,
 		'submissions' => 0,
 		'custom_fields' => array (
 		),
@@ -9076,7 +11768,7 @@ This email was sent from: [url]
 			'update-email-failure' => '',
 		),
 		'custom_notifications' => '',
-		'impressions' => 9,
+		'impressions' => 17,
 		'submissions' => 0,
 		'custom_fields' => array (
 		),
@@ -9125,6 +11817,13 @@ $contactForms = array (
 	<div class="col-lg-12 col-md-12 col-xs-12">
 		<div class="form-line-button">[submit "Send Message"]</div>
 	</div>
+</div>',
+	),
+	12062 => array (
+		'name' => 'Block Portfolio - Boat Rental (Template Demo)',
+		'form' => '<div class="boat-rental">
+		<label> [date date-785 class:date-form] </label>
+		<div>[submit "Ask for a quote"]</div>
 </div>',
 	),
 	9401 => array (

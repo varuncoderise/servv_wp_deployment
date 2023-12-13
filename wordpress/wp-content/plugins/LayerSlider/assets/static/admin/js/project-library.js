@@ -18,7 +18,6 @@ var LS_SliderLibrary = {
 		onChange: function() {},
 
 		modalSettings: {
-			uid: 'ls-guttenberg-slider-list',
 			id: 'ls-slider-library-modal',
 			title: LS_SLibrary_l10n.WindowTitle,
 			content: LS_SLibrary_l10n.WindowLoading,
@@ -28,7 +27,8 @@ var LS_SliderLibrary = {
 			maxHeight: '100%',
 			animationIn: 'scale',
 			overlaySettings: {
-				animationIn: 'fade'
+				animationIn: 'fade',
+				customClasses: 'ls-slider-library-main-overlay'
 			}
 		},
 
@@ -39,7 +39,8 @@ var LS_SliderLibrary = {
 			modalClasses: 'ls-slider-group-modal-window',
 			animationIn: 'scale',
 			overlaySettings: {
-				animationIn: 'fade'
+				animationIn: 'fade',
+				customClasses: 'ls-slider-library-group-overlay'
 			}
 		}
 	},

@@ -13,6 +13,14 @@ $l10n_ls_gutenberg = [
 	'BlockExampleTitle' 		=> __('Example Project Block', 'LayerSlider'),
 	'BlockExamplePreview' 		=> LS_ROOT_URL.'/static/admin/img/gutenberg-preview.jpg',
 
+	'BlockTitle' 				=> _x('LayerSlider #%d', 'Gutenberg block content title with project ID', 'LayerSlider'),
+
+	'ProjectInfoPanel' 			=> __('Project Info', 'LayerSlider'),
+	'ProjectInfoID' 			=> _x('ID', 'Gutenberg block: project ID', 'LayerSlider'),
+	'ProjectInfoName' 			=> _x('NAME', 'Gutenberg block: project ID', 'LayerSlider'),
+	'ProjectInfoReplace' 		=> __('Replace Project', 'LayerSlider'),
+	'ProjectInfoEdit' 			=> __('Open in Editor', 'LayerSlider'),
+
 	'OverridePanel' 			=> __('Override Project Settings', 'LayerSlider'),
 	'OverridePanelDesc' 		=> __('Overriding project settings is optional. It can be useful if you want to make small changes to the same project in certain situations without having duplicates. For example, you might want to change the project skin on some pages to fit better to a different page style.', 'LayerSlider'),
 

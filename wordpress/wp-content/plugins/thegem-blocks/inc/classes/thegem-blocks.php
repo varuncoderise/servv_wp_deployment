@@ -716,6 +716,14 @@ class TheGemBlocks {
                     $category = 'blog-posts';
                     break;
 
+                case 'portfolio':
+                    $category = 'single-projects';
+                    break;
+
+                case 'loop-item':
+                    $category = 'loop-item';
+                    break;
+
                 default:
                 $category = 'all';
             }

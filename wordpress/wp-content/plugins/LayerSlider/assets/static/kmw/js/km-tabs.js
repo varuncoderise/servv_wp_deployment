@@ -12,23 +12,31 @@ jQuery( document ).ready( function( $ ){
 
 	$( document ).on( 'click.km-tabs', '.km-tabs-list > *:not(.kmw-disabled, .kmw-unselectable, kmw-menutitle)', function(){
 
-		var selector = '[data-kmw-uid="' + $(this).closest('.kmw-modal-container').data('kmwUid') + '"] kmw-menuitem';
-
 		var $clicked = $(this),
-			index = $clicked.index( selector ),
 			$parent = $clicked.parent(),
 			$modal = $parent.closest( '.kmw-modal' ),
 			menuText = $clicked.find( 'kmw-menutext' ).text(),
 			$target = $( $parent.data( 'target' ) ),
-			disableAutoRename = $parent.data( 'disableAutoRename' );
+			disableAutoRename = $parent.data( 'disableAutoRename' ),
+			modalSelector = '[data-kmw-uid="' + $(this).closest('.kmw-modal-container').data('kmwUid') + '"] ',
+			selector = modalSelector + 'kmw-menuitem, ' + modalSelector + '.kmw-menuitem',
+			index = $clicked.index( selector );
+
+		var dataTabTarget = $clicked.data( 'tab-target' ) || '',
+			$tabTarget = $target.find('[data-tab="' + dataTabTarget + '"]' );
 
 		if( !$clicked.hasClass( 'kmw-active' ) ){
 
 			$clicked.siblings().removeClass( 'kmw-active' );
 			$clicked.addClass( 'kmw-active' );
 
-			$target.children().removeClass( 'kmw-active' );
-			$target.children().eq(index).addClass( 'kmw-active' );
+			if( dataTabTarget && $tabTarget.length ) {
+				$tabTarget.siblings().removeClass( 'kmw-active' );
+				$tabTarget.addClass( 'kmw-active' );
+			} else {
+				$target.children().removeClass( 'kmw-active' );
+				$target.children().eq(index).addClass( 'kmw-active' );
+			}
 		}
 
 		if( typeof disableAutoRename === 'undefined' ){

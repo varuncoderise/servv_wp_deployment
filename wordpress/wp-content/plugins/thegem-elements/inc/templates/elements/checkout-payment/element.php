@@ -1,14 +1,14 @@
 <?php
 
 class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_Element{
-	
+
 	public function __construct(){
 	}
-	
+
 	public function get_name(){
 		return 'thegem_te_checkout_payment';
 	}
-	
+
 	public function shortcode_output($atts, $content = '') {
 		// General params
 		$params = shortcode_atts(array_merge(array(
@@ -40,26 +40,28 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			thegem_templates_extra_options_extract(),
 			thegem_templates_responsive_options_extract()
 		), $atts, 'thegem_te_checkout_payment');
-		
-		
+
+
 		// Init Design Options Params
 		$uniqid = uniqid('thegem-custom-') . rand(1, 9999);
 		ob_start();
-  
+
 		$checkout = WC()->checkout();
 		$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
 		$order_button_text = apply_filters('woocommerce_order_button_text', __('Place order', 'woocommerce'));
-		
+
 		$params['element_class'] .= empty($params['order_btn']) ? ' place-order-btn--hide' : null;
 		$params['element_class'] .= empty($params['payment_box_paddings']) ? ' payment-box-paddings--hide' : null;
 		$params['element_class'] .= ' place-order-btn--'.$params['order_btn_alignment'];
 		$params['element_class'] = implode(' ', array($params['element_class'], thegem_templates_responsive_options_output($params)));
-  
+
+		do_action( 'woocommerce_review_order_before_payment' );
+
 		?>
 
         <div <?php if (!empty($params['element_id'])): ?>id="<?= esc_attr($params['element_id']); ?>"<?php endif; ?>
              class="thegem-te-checkout-payment <?= esc_attr($params['element_class']); ?> <?= esc_attr($uniqid); ?>">
-            
+
             <div id="payment" class="woocommerce-checkout-payment">
 				<?php if (WC()->cart->needs_payment()) : ?>
                     <ul class="wc_payment_methods payment_methods methods">
@@ -84,11 +86,11 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
                         <button type="submit" class="button alt" name="woocommerce_checkout_update_totals"
                                 value="<?php esc_attr_e('Update totals', 'woocommerce'); ?>"><?php esc_html_e('Update totals', 'woocommerce'); ?></button>
                     </noscript>
-					
+
 					<?php wc_get_template('checkout/terms.php'); ?>
-					
+
 					<?php do_action('woocommerce_review_order_before_submit'); ?>
-		
+
 		            <?php if (!empty($params['order_btn'])): ?>
                         <div class="checkout-navigation-buttons">
                             <?php
@@ -100,20 +102,22 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
                             ?>
                         </div>
                     <?php endif; ?>
-					
+
 					<?php do_action('woocommerce_review_order_after_submit'); ?>
-					
+
 					<?php wp_nonce_field('woocommerce-process_checkout', 'woocommerce-process-checkout-nonce'); ?>
                 </div>
             </div>
+
+			<?php if ( is_ajax() || !defined('WC_GERMANIZED_VERSION') ) { do_action( 'woocommerce_review_order_after_payment' ); } ?>
         </div>
-		
+
 		<?php
-  
+
 		//Custom Styles
 		$customize = '.thegem-te-checkout-payment.'.$uniqid;
 		$custom_css = '';
-		
+
 		// Content Styles
 		if (empty($params['dividers'])) {
 			$custom_css .= $customize.' .woocommerce-checkout-payment .payment_methods li {border: 0 !important;}';
@@ -137,7 +141,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 		if (!empty($params['payment_box_background'])) {
 			$custom_css .= $customize.' .woocommerce-checkout-payment .payment_methods li .payment_box {background-color: ' . $params['payment_box_background'] . ' !important;}';
         }
-		
+
 		// Form Styles
 		if (!empty($params['label_text_color'])) {
 			$custom_css .= $customize.' .woocommerce-checkout-payment .payment_methods li label {color: ' . $params['label_text_color'] . ' !important;}';
@@ -158,7 +162,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 		if (!empty($params['input_checkbox_border_radius']) || $params['input_checkbox_border_radius'] == 0) {
 			$custom_css .= $customize.' .woocommerce-checkout-payment .checkbox-sign {border-radius: ' . $params['input_checkbox_border_radius'] . 'px !important;}';
 		}
-		
+
 		// Order Button Styles
 		if (!empty($params['order_btn_border_width'])) {
 			$add_to_cart_btn_line_height = intval(40 - $params['order_btn_border_width']*2);
@@ -189,22 +193,22 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 		if (!empty($params['loading_overlay_color'])) {
 			$custom_css .= $customize.' .blockOverlay {background-color: ' . $params['loading_overlay_color'] . ' !important;}';
 		}
-		
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
-		
+
 		// Print custom css
 		$css_output = '';
 		if(!empty($custom_css)) {
 			$css_output = '<style>'.$custom_css.'</style>';
 		}
-		
+
 		$return_html = $css_output.$return_html;
 		return $return_html;
 	}
-	
+
 	public function set_content_params() {
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('Content', 'thegem'),
@@ -212,7 +216,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Dividers', 'thegem'),
@@ -222,7 +226,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Dividers Color', 'thegem'),
@@ -234,7 +238,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color', 'thegem'),
@@ -242,7 +246,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Links Color', 'thegem'),
@@ -250,7 +254,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Links Hover Color', 'thegem'),
@@ -289,10 +293,10 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 		);
 		return $result;
 	}
-	
+
 	public function set_form_params() {
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('Checkbox & Radio Button', 'thegem'),
@@ -300,7 +304,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Label Text Color', 'thegem'),
@@ -308,7 +312,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Marker Color', 'thegem'),
@@ -316,7 +320,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Input Background Color', 'thegem'),
@@ -324,7 +328,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Input Border Color', 'thegem'),
@@ -332,7 +336,7 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Checkbox Border Radius', 'thegem'),
@@ -340,14 +344,14 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function set_order_btn_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('"Place Order" Button', 'thegem'),
@@ -489,10 +493,10 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function shortcode_settings(){
 		return array(
 			'name' => __('Payment Methods', 'thegem'),
@@ -501,19 +505,19 @@ class TheGem_Template_Element_Checkout_Payment extends TheGem_Checkout_Template_
             'category' => __('Checkout Builder', 'thegem'),
             'description' => __('Payment Methods (Checkout Builder)', 'thegem'),
 			'params' => array_merge(
-			
+
 			    /* General - Content */
 				$this->set_content_params(),
-				
+
 				/* General - Form */
 				$this->set_form_params(),
-				
+
 				/* General - Order Button */
 				$this->set_order_btn_params(),
-				
+
 				/* Extra Options */
 				thegem_set_elements_extra_options(),
-				
+
 				/* Responsive Options */
 				thegem_set_elements_responsive_options()
 			),

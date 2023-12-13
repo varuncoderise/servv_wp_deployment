@@ -414,8 +414,6 @@ input.thegem-fullscreen-searchform-input:-moz-placeholder { /* Firefox 18- */
 	top: 100px;
 	left: initial;
 	right: 50%;
-	margin-right: -40px;
-	margin-left: -40px;
 }
 
 .thegem-fullscreen-search .preloader-new + .result-sections {

@@ -17,9 +17,37 @@ class TheGem_Template_Element_Post_Navigation extends TheGem_Single_Post_Templat
 		return empty(get_next_post());
 	}
 	
+	public function get_taxonomy_list() {
+		$data = array(
+			__('Categories', 'thegem') => 'category',
+			__('Tags', 'thegem') => 'post_tag',
+        );
+        
+        /*
+		$taxonomies = get_taxonomies(['object_type' => ['post']], 'objects');
+		
+		if (!empty($taxonomies)) {
+			foreach ($taxonomies as $taxonomy) {
+				$data[$taxonomy->label] = $taxonomy->name;
+			}
+		}
+        */
+		
+		return $data;
+	}
+	
+	public function get_default_taxonomy() {
+		$taxonomies = array_flip($this->get_taxonomy_list());
+		if (empty($taxonomies)) return;
+		
+		return array_keys($taxonomies)[0];
+	}
+	
 	public function shortcode_output($atts, $content = '') {
 		// General params
 		$params = shortcode_atts(array_merge(array(
+			'navigate_by' => 'chronology',
+			'taxonomy' => $this->get_default_taxonomy(),
 			'alignment' => 'justified',
 			'max_width' => '',
 			'label' => '1',
@@ -70,6 +98,9 @@ class TheGem_Template_Element_Post_Navigation extends TheGem_Single_Post_Templat
 			return thegem_templates_close_single_post($this->get_name(), $this->shortcode_settings(), '');
 		}
 		
+		$is_taxonomy = !empty($params['navigate_by']) && $params['navigate_by'] == 'taxonomy' ? true : false;
+		$taxonomy = !empty($params['taxonomy']) ? $params['taxonomy'] : '';
+  
 		$alignment = 'post-nav--'.$params['alignment'];
 		$last_post = $this->is_first_post() || $this->is_last_post() ? 'post-nav--hide-gaps' : '';
 		$label = empty($params['label']) ? 'post-label--hide' : '';
@@ -106,7 +137,8 @@ class TheGem_Template_Element_Post_Navigation extends TheGem_Single_Post_Templat
                 the_post_navigation( array(
                     'next_text' => $next_text_output,
                     'prev_text' => $prev_text_output,
-	                'screen_reader_text' => '',
+	                'in_same_term' => $is_taxonomy,
+	                'taxonomy' => $taxonomy
                 ) );
             ?>
         </div>
@@ -213,6 +245,34 @@ class TheGem_Template_Element_Post_Navigation extends TheGem_Single_Post_Templat
 	public function set_layout_params() {
 		$result = array();
 		$group = __('General', 'thegem');
+		
+		$result[] = array(
+			'type' => 'dropdown',
+			'heading' => __('Navigate by', 'thegem'),
+			'param_name' => 'navigate_by',
+			'value' => array_merge(array(
+					__('Chronology', 'thegem') => 'chronology',
+					__('Same Taxonomy', 'thegem') => 'taxonomy',
+				)
+			),
+			'std' => 'chronology',
+			'edit_field_class' => 'vc_column vc_col-sm-12',
+			'group' => $group
+		);
+		
+		$result[] = array(
+			'type' => 'dropdown',
+			'heading' => __('Select Taxonomy', 'thegem'),
+			'param_name' => 'taxonomy',
+			'value' => $this->get_taxonomy_list(),
+			'std' => $this->get_default_taxonomy(),
+			'edit_field_class' => 'vc_column vc_col-sm-12',
+			'dependency' => array(
+				'element' => 'navigate_by',
+				'value' => 'taxonomy'
+			),
+			'group' => $group
+		);
 		
 		$result[] = array(
 			'type' => 'dropdown',
@@ -721,7 +781,7 @@ class TheGem_Template_Element_Post_Navigation extends TheGem_Single_Post_Templat
 			'name' => __('Post Navigation', 'thegem'),
 			'base' => 'thegem_te_post_navigation',
 			'icon' => 'thegem-icon-wpb-ui-element-post-navigation',
-			'category' => __('Single Post Builder', 'thegem'),
+			'category' => $this->is_template() ? __('Single Post Builder', 'thegem') : __('Single post', 'thegem'),
 			'description' => __('Post Navigation (Single Post Builder)', 'thegem'),
 			'params' => array_merge(
 			

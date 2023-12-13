@@ -26,16 +26,17 @@ class WPBakeryShortCode_Vc_Tta_Tabs extends WPBakeryShortCode_Vc_Tta_Accordion {
 		$attributes[] = 'class="' . esc_attr( $this->getTtaContainerClasses() ) . '"';
 		$attributes[] = 'data-vc-action="collapse"';
 
-		$autoplay = $this->atts['autoplay'];
-		if ( $autoplay && 'none' !== $autoplay && intval( $autoplay ) > 0 ) {
-			$attributes[] = 'data-vc-tta-autoplay="' . esc_attr( wp_json_encode( array(
-				'delay' => intval( $autoplay ) * 1000,
-			) ) ) . '"';
+		if ( isset( $this->atts['autoplay'] ) ) {
+			$autoplay = $this->atts['autoplay'];
+			if ( $autoplay && 'none' !== $autoplay && intval( $autoplay ) > 0 ) {
+				$attributes[] = 'data-vc-tta-autoplay="' . esc_attr( wp_json_encode( array(
+					'delay' => intval( $autoplay ) * 1000,
+				) ) ) . '"';
+			}
 		}
 		if ( ! empty( $this->atts['el_id'] ) ) {
 			$attributes[] = 'id="' . esc_attr( $this->atts['el_id'] ) . '"';
 		}
-
 		return implode( ' ', $attributes );
 	}
 
@@ -171,7 +172,7 @@ class WPBakeryShortCode_Vc_Tta_Tabs extends WPBakeryShortCode_Vc_Tta_Accordion {
 					$classes[] = $this->activeClass;
 				}
 
-				$title = '<span class="vc_tta-title-text">' . $section['title'] . '</span>';
+				$title = '<span class="vc_tta-title-text">' . wp_kses_post( $section['title'] ) . '</span>';
 				if ( 'true' === $section['add_icon'] ) {
 					$icon_html = $this->constructIcon( $section );
 					if ( 'left' === $section['i_position'] ) {

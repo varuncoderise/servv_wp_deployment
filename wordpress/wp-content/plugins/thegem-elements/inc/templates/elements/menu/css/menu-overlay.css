@@ -340,6 +340,7 @@
     cursor: pointer;
     outline: none;
     pointer-events: auto;
+    font-size: 0;
 }
 .thegem-te-menu__overlay.desktop-view .overlay-toggle-close .menu-line-1,
 .thegem-te-menu__overlay.desktop-view .overlay-toggle-close .menu-line-2,

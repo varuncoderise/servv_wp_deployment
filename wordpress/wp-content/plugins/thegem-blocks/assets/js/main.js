@@ -184,7 +184,7 @@
         },
 
         setCategory: function(name) {
-            this.$templatesContainer.removeClass('category-headers category-mega-menu category-single-product category-shop-categories category-blog-categories category-blog category-checkout category-purchase-summary category-blog-posts category-post');
+            this.$templatesContainer.removeClass('category-headers category-mega-menu category-single-product category-shop-categories category-blog-categories category-blog category-checkout category-purchase-summary category-blog-posts category-post category-single-projects category-loop-item');
 
             if (name == 'headers') {
                 this.$templatesContainer.addClass('category-headers');
@@ -212,6 +212,12 @@
             }
             if (name == 'blog-posts') {
                 this.$templatesContainer.addClass('category-blog-posts');
+            }
+            if (name == 'single-projects') {
+                this.$templatesContainer.addClass('category-single-projects');
+            }
+            if (name == 'loop-item') {
+                this.$templatesContainer.addClass('category-loop-item');
             }
 
 
@@ -246,7 +252,7 @@
 
             if (['favorite'].indexOf(self.activeCategory) === -1) {
                 self.$items = self.$templates.filter(function(idx, item) {
-                    return $(item).data('category') === self.activeCategory || (self.activeCategory === 'all' && $(item).data('category') != 'headers' && $(item).data('category') != 'mega-menu' && $(item).data('category') != 'single-product' && $(item).data('category') != 'single-post' && $(item).data('category') != 'popup');
+                    return $(item).data('category') === self.activeCategory || (self.activeCategory === 'all' && $(item).data('category') != 'headers' && $(item).data('category') != 'mega-menu' && $(item).data('category') != 'single-product' && $(item).data('category') != 'single-post' && $(item).data('category') != 'popup' && $(item).data('category') != 'single-projects' && $(item).data('category') != 'loop-item');
                 });
             }
 

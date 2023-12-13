@@ -337,38 +337,6 @@
 	height: 100%
 }
 
-.ls-gfonts-not-found {
-	display: none;
-	width: 100%;
-	height: 100%;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center
-}
-
-.ls-gfonts-not-found-shruggie {
-	font-size: 120px;
-	line-height: 1;
-	white-space: nowrap;
-	font-weight: bold;
-	color: #d6d6d6
-}
-
-.ls-gfonts-not-found-text {
-	font-size: 20px;
-	color: #999
-}
-
-.ls-gfonts-not-found-reset {
-	cursor: pointer;
-	background-color: #999 !important
-}
-
-.ls-gfonts-not-found-text,
-.ls-gfonts-not-found-reset {
-	margin-top: 40px !important
-}
-
 .lse-google-font-modal .kmw-modal-inner {
 	overflow-x: hidden;
 }

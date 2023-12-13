@@ -81,7 +81,7 @@ class LayerSlider_Widget extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?= $this->get_field_id( 'id' ); ?>"><?= __('Choose a project:', 'LayerSlider') ?></label><br>
-			<?php if( $sliders != null && !empty($sliders) ) { ?>
+			<?php if( ! empty( $sliders ) ) { ?>
 			<select id="<?= $this->get_field_id( 'id' ); ?>" class="widefat" name="<?= $this->get_field_name( 'id' ); ?>">
 				<?php foreach($sliders as $item) : ?>
 				<?php $name = empty($item['name']) ? 'Unnamed' : htmlspecialchars($item['name']); ?>

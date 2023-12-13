@@ -1,14 +1,13 @@
 <?php
 
 class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Template_Element {
-	
 	public function __construct() {
 	}
-	
+
 	public function get_name() {
 		return 'thegem_te_post_featured_image';
 	}
-	
+
 	public function shortcode_output($atts, $content = '') {
 		// General params
 		$params = shortcode_atts(array_merge(array(
@@ -23,22 +22,26 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			thegem_templates_extra_options_extract(),
 			thegem_templates_responsive_options_extract()
 		), $atts, 'thegem_te_post_featured_image');
-		
+
 		// Init Featured Image
 		ob_start();
 		$uniqid = uniqid('thegem-custom-').rand(1,9999);
 		$single_post = thegem_templates_init_post();
 		$featured_image_data = wp_get_attachment_image_src( get_post_thumbnail_id( $single_post->ID ), "full" );
-		
+
 		if (empty($single_post) || empty($featured_image_data)) {
 			ob_end_clean();
 			return thegem_templates_close_single_post($this->get_name(), $this->shortcode_settings(), '');
 		}
-		
+
         $src = $featured_image_data[0];
 		$alt = !empty($params['alt']) ? $params['alt'] : $single_post->post_name;
 		$width = !empty($params['width']) ? $params['width'] : $featured_image_data[1];
 		$height = !empty($params['height']) ? $params['height'] : $featured_image_data[2];
+		if (!empty($params['size']) && $params['size'] == 'custom') {
+			$width = substr($width, -1) == '%' || substr($width, -2) == 'px' ? $width . '' : $width . 'px';
+			$height = substr($height, -1) == '%' || substr($height, -2) == 'px' ? $height . '' : $height . 'px';
+		}
 		$size = !empty($params['size']) ? 'featured-image--'.$params['size'] : null;
 		$alignment = !empty($params['alignment']) ? 'featured-image--'.$params['alignment'] : null;
 		$style = !empty($params['style']) ? 'featured-image--'.$params['style'] : null;
@@ -49,7 +52,7 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			$params['element_class'],
             thegem_templates_responsive_options_output($params)
         ));
-  
+
 		?>
 
         <div <?php if (!empty($params['element_id'])): ?>id="<?=esc_attr($params['element_id']); ?>"<?php endif;?>
@@ -57,32 +60,37 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 
             <div class="post-featured-image">
 	            <?php if (!empty($params['action'])): ?><a href="<?= $src ?>" class="fancybox" rel="lightbox"><?php endif; ?>
-                    <img src="<?= $src ?>" width="<?= esc_attr($width) ?>" height="<?= esc_attr($height) ?>" class="img-responsive" alt="<?= esc_attr($alt) ?>">
+                    <img src="<?= $src ?>"
+	                    width="<?= esc_attr($width) ?>"
+	                    height="<?= esc_attr($height) ?>"
+	                    class="img-responsive"
+	                    alt="<?= esc_attr($alt) ?>"
+	                    <?php if ($params['size'] == 'custom'): ?>style="width: <?= esc_attr($width) ?>; height: <?= esc_attr($height) ?>"<?php endif; ?>>
                 <?php if (!empty($params['action'])): ?></a><?php endif; ?>
             </div>
         </div>
-		
+
 		<?php
 		//Custom Styles
 		$customize = '.thegem-te-post-featured-image.'.$uniqid;
 		$custom_css = '';
-		
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
-		
+
 		// Print custom css
 		$css_output = '';
 		if(!empty($custom_css)) {
 			$css_output = '<style>'.$custom_css.'</style>';
 		}
-		
+
 		$return_html = $css_output.$return_html;
 		return thegem_templates_close_single_post($this->get_name(), $this->shortcode_settings(), $return_html);
 	}
-	
+
 	public function set_layout_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('General', 'thegem'),
@@ -90,7 +98,7 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Size', 'thegem'),
@@ -105,7 +113,7 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Width', 'thegem'),
@@ -117,7 +125,7 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Height', 'thegem'),
@@ -129,7 +137,20 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
+		$result[] = array(
+			'type' => 'thegem_delimeter_heading_two_level',
+			'heading' => __('', 'thegem'),
+			'param_name' => 'custom_size_description_sub_delim_head',
+			'edit_field_class' => 'vc_column vc_col-sm-12 no-top-padding',
+			'description' => __('Note: px units are used by default. For % units add values with %, eg. 10%', 'thegem'),
+			'dependency' => array(
+				'element' => 'size',
+				'value' => array('custom')
+			),
+			'group' => $group
+		);
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Alignment', 'thegem'),
@@ -148,7 +169,7 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Alt text', 'thegem'),
@@ -156,7 +177,7 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Image style', 'thegem'),
@@ -181,7 +202,7 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('On click action', 'thegem'),
@@ -195,26 +216,26 @@ class TheGem_Template_Element_Post_Featured_Image extends TheGem_Single_Post_Tem
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function shortcode_settings() {
-		
+
 		return array(
 			'name' => __('Featured Image', 'thegem'),
 			'base' => 'thegem_te_post_featured_image',
 			'icon' => 'thegem-icon-wpb-ui-element-post-featured-image',
-			'category' => __('Single Post Builder', 'thegem'),
+			'category' => $this->is_template() ? __('Single Post Builder', 'thegem') : __('Single post', 'thegem'),
 			'description' => __('Featured Image (Single Post Builder)', 'thegem'),
 			'params' => array_merge(
-			
+
 			    /* General - Layout */
 				$this->set_layout_params(),
-				
+
 				/* Extra Options */
 				thegem_set_elements_extra_options(),
-				
+
 				/* Responsive Options */
 				thegem_set_elements_responsive_options()
 			),

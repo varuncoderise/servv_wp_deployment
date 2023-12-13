@@ -82,16 +82,21 @@
 		</div>
 		<div class="ls-gfonts-font-panels-cnt">
 		</div>
-		<div class="ls-gfonts-not-found ls--form-control">
-				<div class="ls-gfonts-not-found-shruggie">
-					¯\_(ツ)_/¯
-				</div>
-				<div class="ls-gfonts-not-found-text">
-					<?= __('Can’t find any fonts. Try a different search term.', 'LayerSlider') ?>
-				</div>
-				<ls-button class="ls-gfonts-not-found-reset">
-					<?= __('Reset search', 'LayerSlider') ?>
-				</ls-button>
+
+		<div id="ls-gfonts-not-found" class="lse-not-found ls--not-found">
+			<div class="not-found-icon">
+				<?= lsGetSVGIcon( 'face-monocle', 'duotone' ) ?>
+			</div>
+			<div class="not-found-main-text">
+				<?= __('Can’t find any fonts.', 'LayerSlider') ?>
+			</div>
+			<div class="not-found-sub-text">
+				<?= __('Try a different search term.', 'LayerSlider') ?>
+			</div>
+			<ls-button class="not-found-button lse-button ls-button">
+				<?= __('Reset Search', 'LayerSlider') ?>
+			</ls-button>
 		</div>
+
 	</div>
 </div>

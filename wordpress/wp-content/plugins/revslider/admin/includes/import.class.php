@@ -27,12 +27,16 @@ class RevSliderSliderImport extends RevSliderSlider {
 		parent::__construct();
 		require_once(ABSPATH . 'wp-admin/includes/file.php');
 		
+		$slider_id = $this->get_post_var('sliderid');
+		if(empty($slider_id)){
+			$data		= $this->get_request_var('data', '', false);
+			$slider_id	= $this->get_val($data, 'sliderid');
+		}
 		$this->old_slider_id	= '';
 		$this->real_slider_id	= '';
-		$upload_dir				= wp_upload_dir();
-		$this->remove_path		= $upload_dir['basedir'].'/rstemp/';
-		$this->download_path	= $this->remove_path;
-		$this->slider_id		= $this->get_post_var('sliderid');
+		$this->download_path	= $this->get_temp_path('rstemp');
+		$this->remove_path		= $this->download_path;
+		$this->slider_id		= $slider_id;
 		$this->import_zip		= false;
 		$this->exists			= !empty($this->slider_id);
 		$this->imported			= array();
@@ -56,15 +60,18 @@ class RevSliderSliderImport extends RevSliderSlider {
 	 * @before: RevSliderSlider::importSliderFromPost();
 	 */
 	public function import_slider($update_animation = true, $exact_filepath = false, $is_template = false, $single_slide = false, $update_navigation = true, $install = true){
-		global $wp_filesystem;
 		WP_Filesystem();
 		
 		try{
 			if($this->exists){
 				$this->init_by_id($this->slider_id);
-			}else{
+			}
+			
+			if($this->inited === false){
+				$this->slider_id = '';
 				$exec = $this->unzip_slider($exact_filepath);
 				if($exec !== true) return $exec;
+				$this->exists = false;
 			}
 			
 			$this->is_template = $is_template;
@@ -80,13 +87,12 @@ class RevSliderSliderImport extends RevSliderSlider {
 			$this->set_dynamic_css_v6(); //used since 6.0 exports
 			
 			$this->set_navigations($update_navigation);
-			
 			$this->process_slider_raw_data();
 			if($this->exists) $this->delete_all_slides(); //delete current slides
 			
 			$this->process_slide_data();
 			$this->process_layer_data();
-			
+
 			$this->process_static_slide_data();
 			
 			//do the update routines
@@ -104,9 +110,9 @@ class RevSliderSliderImport extends RevSliderSlider {
 			
 			$slider->update_css_and_javascript_ids($this->old_slider_id, $this->slider_id, $this->map);
 			$slider->update_color_ids($this->map);
-			
+
 			//$slider->update_modal_ids($slider_ids, $slides_ids);
-			
+
 			$this->real_slider_id = $this->slider_id;
 			
 			if($install){
@@ -114,12 +120,9 @@ class RevSliderSliderImport extends RevSliderSlider {
 				if(is_array($duplicate)) return $duplicate; //error
 			}
 			
-			$wp_filesystem->delete($this->remove_path, true);
-			
+			$this->clear_files();
 		}catch(Exception $e){
-			if(isset($this->remove_path)){
-				$wp_filesystem->delete($this->remove_path, true);
-			}
+			$this->clear_files();
 			
 			return array('success' => false, 'error' => $e->getMessage(), 'sliderID' => $this->slider_id);
 		}
@@ -174,10 +177,10 @@ class RevSliderSliderImport extends RevSliderSlider {
 			$this->throw_error(__('Import file not found', 'revslider'));
 		
 		WP_Filesystem();
-		global $wp_filesystem;
 		
+		$this->check_bad_files($path);
+
 		$file = unzip_file($path, $this->download_path);
-		
 		if(is_wp_error($file)){
 			@define('FS_METHOD', 'direct'); //lets try direct.
 			WP_Filesystem();  //WP_Filesystem() needs to be called again since now we use direct!
@@ -202,7 +205,7 @@ class RevSliderSliderImport extends RevSliderSlider {
 			$this->import_zip = true;
 			return true;
 		}else{
-			$wp_filesystem->delete($this->remove_path, true);
+			$this->clear_files();
 			return array('success' => false, 'error' => $unzipped_data->get_error_message());
 		}
 	}
@@ -448,7 +451,7 @@ class RevSliderSliderImport extends RevSliderSlider {
 		global $wp_filesystem;
 		
 		$uid_check = ($wp_filesystem->exists($this->download_path.'info.cfg')) ? $wp_filesystem->get_contents($this->download_path.'info.cfg') : '';
-		
+
 		if($this->is_template !== false){
 			if($uid_check != $this->is_template){
 				return array('success' => false, 'error' => __('Please select the correct zip file, checksum failed!', 'revslider'));
@@ -493,10 +496,10 @@ class RevSliderSliderImport extends RevSliderSlider {
 	 * process the Slider Data from Sliders that were exported before version 6.0
 	 **/
 	public function process_slider_raw_data_pre_6(){
-		global $wpdb, $wp_filesystem;
+		global $wpdb;
 		
 		if(empty($this->slider_data)){
-			$wp_filesystem->delete($this->remove_path, true);
+			$this->clear_files();
 			$this->throw_error(__('Wrong export slider file format! Please make sure that the uploaded file is either a zip file with a correct slider_export.txt in the root of it or an valid slider_export.txt file.', 'revslider'));
 		}
 		
@@ -574,10 +577,10 @@ class RevSliderSliderImport extends RevSliderSlider {
 	 * process the Slider Data from Sliders that were exported before version 6.0
 	 **/
 	public function process_slider_raw_data_post_6(){
-		global $wpdb, $wp_filesystem;
+		global $wpdb;
 		
 		if(empty($this->slider_data)){
-			$wp_filesystem->delete($this->remove_path, true);
+			$this->clear_files();
 			$this->throw_error(__('Wrong export slider file format! Please make sure that the uploaded file is either a zip file with a correct slider_export.txt in the root of it or an valid slider_export.txt file.', 'revslider'));
 		}
 		
@@ -587,7 +590,7 @@ class RevSliderSliderImport extends RevSliderSlider {
 		
 		//check if we are a premium slider
 		if($this->get_val($params, 'pakps', false) === true && $this->_truefalse(get_option('revslider-valid', 'false')) === false){
-			$wp_filesystem->delete($this->remove_path, true);
+			$this->clear_files();
 			$this->throw_error(__('Please register your Slider Revolution plugin to import premium templates', 'revslider'));
 		}
 
@@ -1056,7 +1059,7 @@ class RevSliderSliderImport extends RevSliderSlider {
 								
 								if($mp4 !== '')	 $layer['media']['mp4Url'] = $this->get_image_url_from_path($this->check_file_in_zip($this->download_path, $mp4, $alias, $this->imported, true));
 								if($webm !== '') $layer['media']['webmUrl'] = $this->get_image_url_from_path($this->check_file_in_zip($this->download_path, $webm, $alias, $this->imported, true));
-								if($ogv !== '')	 $layer['media']['ogvUrl'] = $this->get_image_url_from_path($this->check_file_in_zip($this->download_path, ogv, $alias, $this->imported, true));
+								if($ogv !== '')	 $layer['media']['ogvUrl'] = $this->get_image_url_from_path($this->check_file_in_zip($this->download_path, $ogv, $alias, $this->imported, true));
 							}elseif($media_type == 'audio'){ //video cover image
 								$audio = $this->get_val($layer, array('media', 'audioUrl'));
 								if($audio !== '') $layer['media']['audioUrl'] = $this->get_image_url_from_path($this->check_file_in_zip($this->download_path, $audio, $alias, $this->imported, true));
@@ -1640,9 +1643,7 @@ class RevSliderSliderImport extends RevSliderSlider {
 				if($changed){
 					$mslider->copy_slide_to_slider($single_slide);
 				}else{
-					global $wp_filesystem;
-					
-					$wp_filesystem->delete($this->remove_path, true);
+					$this->clear_files();
 					return array('success' => false, 'error' => __('could not find correct Slide to copy, please try again.', 'revslider'), 'sliderID' => $this->slider_id);
 				}
 			}else{
@@ -1868,5 +1869,17 @@ class RevSliderSliderImport extends RevSliderSlider {
 	 */
 	public function rs_unserialize($string){
 		return @unserialize($string);
+	}
+
+	/**
+	 * clear given folder if it can be deleted
+	 **/
+	public function clear_files(){
+		if(isset($this->remove_path) && !empty($this->remove_path) && is_writable(dirname($this->remove_path))){
+			global $wp_filesystem;
+			WP_Filesystem();
+			
+			$wp_filesystem->delete($this->remove_path, true);
+		}
 	}
 }

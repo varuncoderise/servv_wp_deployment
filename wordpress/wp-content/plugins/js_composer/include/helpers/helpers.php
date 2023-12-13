@@ -22,7 +22,7 @@ if ( ! defined( 'WPB_VC_VERSION' ) ) {
  * @since 4.2
  * vc_filter: vc_wpb_getimagesize - to override output of this function
  */
-function wpb_getImageBySize( $params = array() ) {
+function wpb_getImageBySize( $params = array() ) { // phpcs:ignore
 	$params = array_merge( array(
 		'post_id' => null,
 		'attach_id' => null,
@@ -61,6 +61,7 @@ function wpb_getImageBySize( $params = array() ) {
 		$attributes = array(
 			'class' => $thumb_class . 'attachment-' . $thumb_size,
 			'title' => $title,
+			'alt'   => trim( esc_attr( do_shortcode( get_post_meta( $attach_id, '_wp_attachment_image_alt', true ) ) ) ),
 		);
 
 		$thumbnail = wp_get_attachment_image( $attach_id, $thumb_size, false, $attributes );
@@ -84,7 +85,7 @@ function wpb_getImageBySize( $params = array() ) {
 		if ( is_array( $thumb_size ) ) {
 			// Resize image to custom size
 			$p_img = wpb_resize( $attach_id, null, $thumb_size[0], $thumb_size[1], true );
-			$alt = trim( wp_strip_all_tags( get_post_meta( $attach_id, '_wp_attachment_image_alt', true ) ) );
+			$alt = trim( esc_attr( do_shortcode( get_post_meta( $attach_id, '_wp_attachment_image_alt', true ) ) ) );
 			$attachment = get_post( $attach_id );
 			if ( ! empty( $attachment ) ) {
 				$title = trim( wp_strip_all_tags( $attachment->post_title ) );
@@ -96,15 +97,16 @@ function wpb_getImageBySize( $params = array() ) {
 					$alt = $title;
 				}
 				if ( $p_img ) {
-
-					$attributes = vc_stringify_attributes( array(
+					$attributes = array(
 						'class' => $thumb_class,
 						'src' => $p_img['url'],
 						'width' => $p_img['width'],
 						'height' => $p_img['height'],
 						'alt' => $alt,
 						'title' => $title,
-					) );
+					);
+
+					$attributes = vc_stringify_attributes( vc_add_lazy_loading_attribute( $attributes ) );
 
 					$thumbnail = '<img ' . $attributes . ' />';
 				}
@@ -118,6 +120,23 @@ function wpb_getImageBySize( $params = array() ) {
 		'thumbnail' => $thumbnail,
 		'p_img_large' => $p_img_large,
 	), $attach_id, $params );
+}
+
+/**
+ * Add `loading` attribute with param lazy to attribute list.
+ *
+ * @param array $attributes
+ * @return array
+ * @since 7.1
+ */
+function vc_add_lazy_loading_attribute( $attributes ) {
+	if ( ! is_array( $attributes ) ) {
+		$attributes = [];
+	}
+
+	$attributes['loading'] = 'lazy';
+
+	return $attributes;
 }
 
 /**
@@ -172,7 +191,7 @@ function vc_get_image_by_size( $id, $size ) {
  * @return string
  * @since 4.2
  */
-function wpb_translateColumnWidthToFractional( $width ) {
+function wpb_translateColumnWidthToFractional( $width ) { // phpcs:ignore
 	switch ( $width ) {
 		case 'vc_col-sm-2':
 			$w = '1/6';
@@ -209,7 +228,7 @@ function wpb_translateColumnWidthToFractional( $width ) {
  * @return bool|string
  * @since 4.2
  */
-function wpb_translateColumnWidthToSpan( $width ) {
+function wpb_translateColumnWidthToSpan( $width ) { // phpcs:ignore
 	$output = $width;
 	preg_match( '/(\d+)\/(\d+)/', $width, $matches );
 
@@ -281,7 +300,7 @@ if ( ! function_exists( 'vc_siteAttachedImages' ) ) {
 	 * @return string
 	 * @since 4.11
 	 */
-	function vc_siteAttachedImages( $att_ids = array() ) {
+	function vc_siteAttachedImages( $att_ids = array() ) { // phpcs:ignore
 		$output = '';
 
 		$limit = (int) apply_filters( 'vc_site_attached_images_query_limit', - 1 );
@@ -341,7 +360,7 @@ function vc_field_attached_images( $images = array() ) {
  * @return array
  * @since 4.2
  */
-function wpb_removeNotExistingImgIDs( $param_value ) {
+function wpb_removeNotExistingImgIDs( $param_value ) { // phpcs:ignore
 	$tmp = explode( ',', $param_value );
 	$return_ar = array();
 	foreach ( $tmp as $id ) {
@@ -729,7 +748,7 @@ function wpb_vc_get_column_width_indent( $width ) {
  * @return string
  * @since 4.2
  */
-function vc_colorCreator( $colour, $per = 10 ) {
+function vc_colorCreator( $colour, $per = 10 ) { // phpcs:ignore
 	require_once 'class-vc-color-helper.php';
 	$color = $colour;
 	if ( stripos( $colour, 'rgba(' ) !== false ) {
@@ -844,9 +863,9 @@ function vc_hex2rgb( $color ) {
  * @return array
  * @since 4.2
  */
-function vc_parse_multi_attribute( $value, $default = array() ) {
+function vc_parse_multi_attribute( $value, $default = [] ) {
 	$result = $default;
-	$params_pairs = explode( '|', $value );
+	$params_pairs = is_string( $value ) ? explode( '|', $value ) : [];
 	if ( ! empty( $params_pairs ) ) {
 		foreach ( $params_pairs as $pair ) {
 			$param = preg_split( '/\:/', $pair );
@@ -1180,18 +1199,6 @@ function vc_extract_youtube_id( $url ) {
 /**
  * @return string[]|\WP_Taxonomy[]
  */
-/**
- * @return string[]|\WP_Taxonomy[]
- */
-/**
- * @return string[]|\WP_Taxonomy[]
- */
-/**
- * @return string[]|\WP_Taxonomy[]
- */
-/**
- * @return string[]|\WP_Taxonomy[]
- */
 function vc_taxonomies_types( $post_type = null ) {
 	global $vc_taxonomies_types;
 	if ( is_null( $vc_taxonomies_types ) || $post_type ) {
@@ -1287,18 +1294,6 @@ function vc_stringify_attributes( $attributes ) {
 	return implode( ' ', $atts );
 }
 
-/**
- * @return bool
- */
-/**
- * @return bool
- */
-/**
- * @return bool
- */
-/**
- * @return bool
- */
 /**
  * @return bool
  */
@@ -1446,4 +1441,29 @@ function wpb_remove_custom_onclick( $match ) {
 	}
 
 	return $match[0];
+}
+
+/**
+ * We use it only to check is current environment is wordpress.com
+ * @since 6.2
+ *
+ * @return bool
+ */
+function wpb_check_wordpress_com_env() {
+	return defined( 'IS_ATOMIC' ) &&
+		IS_ATOMIC &&
+		defined( 'ATOMIC_CLIENT_ID' ) &&
+		'2' === ATOMIC_CLIENT_ID;
+}
+
+/**
+ * Get name of post custom layout.
+ * @note it can be empty sting if post custom layout is not set
+ * @since 7.0
+ *
+ * @return string
+ */
+function wpb_get_name_post_custom_layout() {
+	$layout_manager = new Vc_PostCustomLayout();
+	return $layout_manager->getCustomLayoutName();
 }

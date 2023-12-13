@@ -18,9 +18,7 @@ class DOM {
 		if( $html ) {
 			$this->dom = new DOMDocument();
 			$this->dom->encoding = 'utf-8';
-			$this->dom->loadHTML( self::utf8_decode(
-				preg_replace('~>\s+<~', '><', trim( $html ) )
-			) );
+			$this->dom->loadHTML( self::normalizeHTML( $html ) );
 
 			$body = isset( $this->dom->documentElement )
 				? $this->dom->documentElement->lastChild
@@ -42,15 +40,9 @@ class DOM {
 
 
 	public function __toString() {
-		preg_match('~<body>(.*)</body>~s', $this->dom->saveHTML(), $html);
+		preg_match('~<body>(.*)</body>~s', $this->dom->saveHTML( $this->dom->documentElement ), $html);
 		return isset( $html[1] ) ? $html[1] : '';
 	}
-
-
-	public static function newDocument( $html ) {
-		return new self( $html );
-	}
-
 
 	public static function newDocumentHTML( $html ) {
 		return new self( $html );
@@ -93,7 +85,7 @@ class DOM {
 
 		$doc = new DOMDocument();
 		$doc->encoding = 'utf-8';
-		$doc->loadHTML( self::utf8_decode('<div>'.preg_replace('~>\s+<~', '><', trim( $html )).'</div>') );
+		$doc->loadHTML( self::normalizeHTML('<div>'.$html.'</div>') );
 
 		$body = isset( $doc->documentElement )
 			? $doc->documentElement->lastChild
@@ -203,17 +195,9 @@ class DOM {
 
 
 
-	public static function utf8_decode( $str ) {
+	public static function normalizeHTML( $html ) {
 
-		if( function_exists('mb_convert_encoding') ) {
-			return mb_convert_encoding( $str, 'HTML-ENTITIES', 'UTF-8');
-
-		} else {
-
-			return htmlspecialchars_decode(
-				utf8_decode(
-					htmlentities( $str, ENT_COMPAT, 'utf-8', false )
-			) );
-		}
+		$html = preg_replace('~>\s+<~', '><', trim( $html ) );
+		return '<?xml encoding="UTF-8">'.$html;
 	}
 }

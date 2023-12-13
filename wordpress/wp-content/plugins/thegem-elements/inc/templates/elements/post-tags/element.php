@@ -1,7 +1,8 @@
 <?php
 
 class TheGem_Template_Element_Post_Tags extends TheGem_Single_Post_Template_Element {
-	
+	public $show_in_posts = false;
+	public $show_in_loop = true;
 	public function __construct() {
 	}
 	

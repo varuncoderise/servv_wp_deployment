@@ -418,7 +418,7 @@ function ls_normalize_slider_data( $slider ) {
 
 			$toParams = explode(' ', trim( $slideVal['properties']['parallaxtransformorigin'] ) );
 			if( $toParams[0] === '50%' ) { $toParams[0] = 'slidercenter'; }
-			if( $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
+			if( isset( $toParams[1] ) && $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
 
 			$slideVal['properties']['parallaxtransformorigin'] = implode(' ', $toParams);
 		}
@@ -475,6 +475,16 @@ function ls_normalize_slider_data( $slider ) {
 					$layerVal['layerBackgroundThumb'] = apply_filters('ls_get_thumbnail', $layerVal['layerBackgroundId'], $layerVal['layerBackground']);
 				}
 
+				if( ! empty( $layerVal['mediaAttachments'] ) ) {
+					foreach( $layerVal['mediaAttachments'] as &$media ) {
+						if( $mediaURL = wp_get_attachment_url( $media['id'] ) ) {
+							$media['url'] = $mediaURL;
+						}
+					}
+
+					unset( $media );
+				}
+
 				// Line break
 				if( empty( $layerVal['htmlLineBreak'] ) ) {
 					$layerVal['htmlLineBreak'] = 'manual';
@@ -513,9 +523,17 @@ function ls_normalize_slider_data( $slider ) {
 				if( empty( $layerVal['styles']->{'border-width'} ) ) {
 					$borderParts = ls_parse_border_prop( $layerVal['styles'] );
 
-					$layerVal['styles']->{'border-width'} = $borderParts['width'];
-					$layerVal['styles']->{'border-style'} = $borderParts['style'];
-					$layerVal['styles']->{'border-color'} = $borderParts['color'];
+					if( ! empty( $borderParts['width'] ) ) {
+						$layerVal['styles']->{'border-width'} = $borderParts['width'];
+					}
+
+					if( ! empty( $borderParts['style'] ) ) {
+						$layerVal['styles']->{'border-style'} = $borderParts['style'];
+					}
+
+					if( ! empty( $borderParts['color'] ) ) {
+						$layerVal['styles']->{'border-color'} = $borderParts['color'];
+					}
 
 					unset( $layerVal['styles']->{'border-top'} );
 					unset( $layerVal['styles']->{'border-right'} );
@@ -557,7 +575,7 @@ function ls_normalize_slider_data( $slider ) {
 
 					$toParams = explode(' ', trim( $layerVal['transition']->parallaxtransformorigin ) );
 					if( $toParams[0] === '50%' ) { $toParams[0] = 'slidercenter'; }
-					if( $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
+					if( isset( $toParams[1] ) && $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
 
 					$layerVal['transition']->parallaxtransformorigin = implode(' ', $toParams);
 				}

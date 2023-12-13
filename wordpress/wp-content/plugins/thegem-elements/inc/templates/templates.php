@@ -83,8 +83,10 @@ function thegem_templates_types($with_content = true) {
 		'footer' => __('Footer', 'thegem'),
 		'megamenu' => __('Mega Menu', 'thegem'),
 		'popup' => __('Popups', 'thegem'),
-		'blog-archive' => __('Blog Archives', 'thegem'),
-		'single-post' => __('Single Post', 'thegem'),
+		'blog-archive' => __('Archives', 'thegem'),
+		'single-post' => __('Single Post/Page', 'thegem'),
+		'loop-item' => __('Loop Item', 'thegem'),
+		'portfolio' => __('Portfolio Page', 'thegem'),
 		'single-product' => __('Single Product', 'thegem'),
 		'product-archive' => __('Product Archives', 'thegem'),
 		'cart' => __('Cart', 'thegem'),
@@ -92,7 +94,7 @@ function thegem_templates_types($with_content = true) {
 		'checkout-thanks' => __('Purchase Summary', 'thegem'),
 	);
 	if($with_content) {
-		$types['content'] = __('Section', 'thegem');
+		$types['content'] = __('Global Sections', 'thegem');
 	}
 	if(!defined('WC_PLUGIN_FILE')) {
 		unset($types['single-product']);
@@ -192,9 +194,11 @@ add_filter( 'views_edit-thegem_templates', 'thegem_templates_admin_print_tabs');
 
 function thegem_templates_admin_columns_headers( $posts_columns ) {
 	$offset = 2;
-	$posts_columns = array_slice( $posts_columns, 0, $offset, true ) + [
-		'thegem_templates_type' => esc_html__( 'Type', 'thegem' ),
-	] + array_slice( $posts_columns, $offset, null, true );
+	$add_columns = ['thegem_templates_type' => esc_html__( 'Type', 'thegem' )];
+	if(!empty($_REQUEST['templates_type']) && $_REQUEST['templates_type'] === 'content') {
+		$add_columns['thegem_templates_shortcode'] = esc_html__( 'Shortcode', 'thegem' );
+	}
+	$posts_columns = array_slice( $posts_columns, 0, $offset, true ) + $add_columns + array_slice( $posts_columns, $offset, null, true );
 	return $posts_columns;
 }
 add_action( 'manage_thegem_templates_posts_columns', 'thegem_templates_admin_columns_headers' );
@@ -205,6 +209,9 @@ function thegem_templates_admin_columns_content( $column_name, $post_id ) {
 		$type = thegem_get_template_type($post_id);
 		$url = add_query_arg(array('post_type' => 'thegem_templates', 'templates_type' => $type), admin_url('edit.php'));
 		echo '<a href="'.$url.'">'.$templates_types[$type].'</a>';
+	}
+	if ( 'thegem_templates_shortcode' === $column_name ) {
+		echo '<input type="text" name="template_shotcode" value=\'[gem_template id="'.esc_attr($post_id).'"]\' readonly="readonly" style="width: 250px;"/>';
 	}
 }
 add_action( 'manage_thegem_templates_posts_custom_column', 'thegem_templates_admin_columns_content', 10, 2 );
@@ -295,10 +302,15 @@ function thegem_templates_new_popup() {
 	$categories['checkout-thanks'] = array('*' => esc_html__('All', 'thegem'));
 	$categories['blog-archive'] = array('*' => esc_html__('All', 'thegem'));
 	$categories['popup'] = array('*' => esc_html__('All', 'thegem'));
+	$categories['loop-item'] = array('*' => esc_html__('All', 'thegem'));
+	$loop_item_templates_need_import = array();
 	foreach($import_templates as $key => $template) {
 		if(!empty($template['categories']) && is_array($template['categories'])) {
 			$categories[$template['type']] = array_merge($categories[$template['type']], $template['categories']);
 			$import_templates[$key]['data-cats'] = implode(' ', array_keys($template['categories']));
+		}
+		if($template['type'] === 'loop-item') {
+			$loop_item_templates_need_import[$template['id']] = empty($template['project_details']) ? 0 : 1;
 		}
 	}
 ?>
@@ -367,6 +379,10 @@ function thegem_templates_new_popup() {
 									<span class="separator">or</span>
 									<a id="thegem-templates-import-link" class="btn-solid" href="javascript:void(0);" data-target-template-type="single-post"><?php echo esc_html__( 'Import Pre-Built Template', 'thegem' ); ?></a>
 								</div>
+								<div class="show-is-portfolio"<?php echo (!empty($_REQUEST['templates_type']) && $_REQUEST['templates_type'] == 'portfolio') ? '' : ' style="display: none;"'; ?>>
+									<span class="separator">or</span>
+									<a id="thegem-templates-import-link" class="btn-solid" href="javascript:void(0);" data-target-template-type="portfolio"><?php echo esc_html__( 'Import Pre-Built Template', 'thegem' ); ?></a>
+								</div>
 								<div class="show-is-product-archive"<?php echo (!empty($_REQUEST['templates_type']) && $_REQUEST['templates_type'] == 'product-archive') ? '' : ' style="display: none;"'; ?>>
 									<span class="separator">or</span>
 									<a id="thegem-templates-import-link" class="btn-solid" href="javascript:void(0);" data-target-template-type="product-archive"><?php echo esc_html__( 'Import Pre-Built Template', 'thegem' ); ?></a>
@@ -390,6 +406,10 @@ function thegem_templates_new_popup() {
 								<div class="show-is-popup"<?php echo (!empty($_REQUEST['templates_type']) && $_REQUEST['templates_type'] == 'popup') ? '' : ' style="display: none;"'; ?>>
 									<span class="separator">or</span>
 									<a id="thegem-templates-import-link" class="btn-solid" href="javascript:void(0);" data-target-template-type="popup"><?php echo esc_html__( 'Import Pre-Built Template', 'thegem' ); ?></a>
+								</div>
+								<div class="show-is-loop-item"<?php echo (!empty($_REQUEST['templates_type']) && $_REQUEST['templates_type'] == 'loop-item') ? '' : ' style="display: none;"'; ?>>
+									<span class="separator">or</span>
+									<a id="thegem-templates-import-link" class="btn-solid" href="javascript:void(0);" data-target-template-type="loop-item"><?php echo esc_html__( 'Import Pre-Built Template', 'thegem' ); ?></a>
 								</div>
 							</div>
 						</form>
@@ -641,6 +661,122 @@ function thegem_templates_new_popup() {
 						</div>
 					<?php endif;
 				endforeach; ?>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/template" id="thegem-templates-import-popup" data-template-type="portfolio">
+	<div class="thegem-templates-import-popup">
+		<div class="thegem-templates-modal-title">
+			<a href="javascript:void(0);" class="thegem-templates-modal-back"><?php esc_html_e('Back', 'thegem'); ?></a>
+			<span class="thegem-templates-modal-text"><?php esc_html_e('Select Template to Insert', 'thegem'); ?></span>
+			<a href="javascript:void(0);" class="thegem-templates-modal-close"></a>
+		</div>
+		<div class="thegem-templates-import-grid loading">
+			<?php /* <div class="thegem-templates-import-nav">
+				<ul>
+					<?php $cat_active = true; foreach($categories['portfolio'] as $key => $category) : ?>
+						<li><a<?php echo ($cat_active ? ' class="active"' : ''); ?> href="javascript:void(0)" data-cat-slug="<?php echo esc_attr($key); ?>"><?php echo esc_html($category); ?></a></li>
+					<?php $cat_active = false; endforeach; ?>
+				</ul>
+			</div> */ ?>
+			<div class="thegem-templates-import-grid-wrap grid">
+				<?php foreach($import_templates as $template) :
+					if($template['type'] === 'portfolio') : ?>
+						<div class="template"<?php echo (!empty($template['data-cats']) ? ' data-categories="'.$template['data-cats'].'"' : ''); ?>>
+							<div class="template-preview">
+								<div class="template-preview-image">
+									<img src="<?php echo $template['pic']; ?>" alt="#">
+								</div>
+								<div class="template-preview-actions">
+									<a href="javascript:void(0);" data-import-details-link="<?php echo add_query_arg(array('import_details' => 1),$template['insert']); ?>" data-link="<?php echo $template['insert']; ?>" class="thegem-templates-insert-link thegem-potfolio-template-insert"><?php esc_html_e('Insert', 'thegem'); ?></a>
+									<a href="<?php echo $template['preview']; ?>" class="thegem-template-preview-link" target="_blank"><?php esc_html_e('Preview', 'thegem'); ?></a>
+								</div>
+							</div>
+							<div class="template-info">
+								<div class="template-info-title"><?php echo $template['title']; ?></div>
+								<?php if(!empty($template['mark'])) : ?>
+									<div class="template-info-mark <?php echo $template['mark']; ?>"><?php echo $template['mark']; ?></div>
+								<?php endif; ?>
+							</div>
+						</div>
+					<?php endif;
+				endforeach; ?>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/template" id="thegem-templates-import-portfolio-details-popup">
+	<div class="thegem-templates-import-popup">
+		<div class="thegem-templates-modal-title">
+			<a href="javascript:void(0);" class="thegem-templates-modal-close"></a>
+		</div>
+		<div class="thegem-templates-import-portfolio-details-info">
+			<div class="text">
+				<p><?php printf(__('This pre-built template includes project details fields (DEMO). Project details are special dynamic fields like "customer", "services", "year" which are dynamically populated by values specified in page options of the portfolio page. These fields can be managed in <a href="%s" target="_blank">Theme Options > Single Pages > Portfolio Page > Project Details</a>.', 'thegem'), admin_url('admin.php?page=thegem-theme-options#/single-pages/portfolio')); ?></p>
+				<p><?php esc_html_e('Here you can choose if you wish to insert this template with or without DEMO project details.', 'thegem'); ?></p>
+			</div>
+			<div class="buttons">
+				<label class="checkbox-container thegem-templates-import-details-checkbox"><input type="checkbox" checked="checked" id="thegem-templates-import-details" ><span class="checkbox-sign"></span><?php esc_html_e('Include DEMO project details', 'thegem'); ?></label>
+				<a id="thegem-templates-import-portfolio" class="btn-solid" href="#"><?php esc_html_e('Insert template', 'thegem'); ?></a>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/template" id="thegem-templates-import-popup" data-template-type="loop-item">
+	<div class="thegem-templates-import-popup">
+		<div class="thegem-templates-modal-title">
+			<a href="javascript:void(0);" class="thegem-templates-modal-back"><?php esc_html_e('Back', 'thegem'); ?></a>
+			<span class="thegem-templates-modal-text"><?php esc_html_e('Select Template to Insert', 'thegem'); ?></span>
+			<a href="javascript:void(0);" class="thegem-templates-modal-close"></a>
+		</div>
+		<div class="thegem-templates-import-grid loading">
+			<div class="thegem-templates-import-nav">
+				<ul>
+					<?php $cat_active = true; foreach($categories['loop-item'] as $key => $category) : ?>
+						<li><a<?php echo ($cat_active ? ' class="active"' : ''); ?> href="javascript:void(0)" data-cat-slug="<?php echo esc_attr($key); ?>"><?php echo esc_html($category); ?></a></li>
+					<?php $cat_active = false; endforeach; ?>
+				</ul>
+			</div>
+			<div class="thegem-templates-import-grid-wrap grid" data-need-import="<?= esc_attr(json_encode($loop_item_templates_need_import)); ?>">
+				<?php foreach($import_templates as $template) :
+					if($template['type'] === 'loop-item') : ?>
+						<div class="template"<?php echo (!empty($template['data-cats']) ? ' data-categories="'.$template['data-cats'].'"' : ''); ?>>
+							<div class="template-preview">
+								<div class="template-preview-image">
+									<img src="<?php echo $template['pic']; ?>" alt="#">
+								</div>
+								<div class="template-preview-actions">
+									<a href="javascript:void(0);" data-import-details-link="<?php echo add_query_arg(array('import_details' => 1),$template['insert']); ?>" data-link="<?php echo $template['insert']; ?>" data-id="<?php echo $template['id']; ?>" class="thegem-templates-insert-link thegem-loop-item-template-insert"><?php esc_html_e('Insert', 'thegem'); ?></a>
+									<a href="<?php echo $template['preview']; ?>" class="thegem-template-preview-link" target="_blank"><?php esc_html_e('Preview', 'thegem'); ?></a>
+								</div>
+							</div>
+							<div class="template-info">
+								<div class="template-info-title"><?php echo $template['title']; ?></div>
+								<?php if(!empty($template['mark'])) : ?>
+									<div class="template-info-mark <?php echo $template['mark']; ?>"><?php echo $template['mark']; ?></div>
+								<?php endif; ?>
+							</div>
+						</div>
+					<?php endif;
+				endforeach; ?>
+			</div>
+		</div>
+	</div>
+</script>
+<script type="text/template" id="thegem-templates-import-loop-item-details-popup">
+	<div class="thegem-templates-import-popup">
+		<div class="thegem-templates-modal-title">
+			<a href="javascript:void(0);" class="thegem-templates-modal-close"></a>
+		</div>
+		<div class="thegem-templates-import-loop-item-details-info">
+			<div class="text">
+				<p><?php printf(__('For the preview purposes this pre-built template uses TheGem\'s portfolio item with custom fields (project details). Custom fields can be added via <a href="%s" target="_blank">Theme Options -> Single Pages</a> or using ACF / Toolset plugins and are dynamically populated by values specified in page options of the respective page/post/portfolio item. <a href="%s" target="_blank">Learn more</a>.', 'thegem'), admin_url('admin.php?page=thegem-theme-options#/single-pages/portfolio'), 'https://docs.codex-themes.com/category/455-custom-fields'); ?></p>
+				<p><?php esc_html_e('Here you can choose if you wish to insert this template with or without DEMO custom fields (project details).', 'thegem'); ?></p>
+			</div>
+			<div class="buttons">
+				<label class="checkbox-container thegem-templates-import-details-checkbox"><input type="checkbox" checked="checked" id="thegem-templates-import-details" ><span class="checkbox-sign"></span><?php esc_html_e('Include DEMO project details', 'thegem'); ?></label>
+				<a id="thegem-templates-import-loop-item" class="btn-solid" href="#"><?php esc_html_e('Insert template', 'thegem'); ?></a>
 			</div>
 		</div>
 	</div>
@@ -988,6 +1124,9 @@ function thegem_templates_new_create() {
 				if($type === 'header') {
 					thegem_templates_import_menus();
 				}
+				if($type === 'portfolio' && !empty($_REQUEST['import_details'])) {
+					thegem_templates_import_portfolio($template);
+				}
 				if(!empty($template['wpb_css'])) {
 					$meta_data[ '_wpb_post_custom_css' ] = $template['wpb_css'];
 				}
@@ -995,6 +1134,14 @@ function thegem_templates_new_create() {
 					foreach($template['metas'] as $meta_key => $meta_value) {
 						$meta_data[ $meta_key ] = $meta_value;
 					}
+				}
+				if($type === 'loop-item' && !empty($_REQUEST['import_details'])) {
+					$view_post = thegem_templates_import_portfolio($template);
+					if(empty($meta_data['thegem_template_preview_settings'])) {
+						$meta_data['thegem_template_preview_settings'] = array();
+					}
+					$meta_data['thegem_template_preview_settings']['demo_posttype'] = 'thegem_pf_item';
+					$meta_data['thegem_template_preview_settings']['demo_post_id'] = $view_post->ID;
 				}
 			}
 		}
@@ -1148,6 +1295,103 @@ function thegem_templates_import_menus() {
 	}
 }
 
+function thegem_templates_import_portfolio($template) {
+	$pid = thegem_get_option('portfolio_builder_previews');
+	$view_post = false;
+	if(!empty($pid)) {
+		$view_post = get_post($pid);
+	}
+	if(empty($view_post) || get_post_type($view_post) !== 'thegem_pf_item') {
+		$args = array(
+			'posts_per_page' => '1',
+			'post_type' => 'thegem_pf_item',
+		);
+		$test_post = new WP_Query($args);
+		while ( $test_post->have_posts() ) {
+			$test_post->the_post();
+			$view_post = get_post();
+		}
+		wp_reset_postdata();
+	}
+	if(empty($view_post)) {
+		$view_post = thegem_templates_import_dummy_pf_item();
+	}
+	$pd_to = thegem_get_option('portfolio_project_details_data');
+	$pd_to = json_decode($pd_to, true);
+	$pd_to = !empty($pd_to) && is_array($pd_to) ? $pd_to : array();
+	$pd_to_list = array();
+	foreach($pd_to as $pd_field) {
+		$pd_to_list[] = str_replace('_thegem_cf_', '', $pd_field['key']);
+	}
+	$pd_import = !empty($template['project_details']) ? $template['project_details'] : array();
+	foreach($pd_import as $key => $pd_field) {
+		if(!in_array($key, $pd_to_list)) {
+			$pd_to[] = $pd_field;
+		}
+		$meta_val = get_post_meta( $view_post->ID, '_thegem_cf_'.$key, true );
+		if(empty($meta_val) && !empty($pd_field['value'])) {
+			update_post_meta($view_post->ID, '_thegem_cf_'.$key, $pd_field['value']);
+		}
+	}
+	$theme_options = get_option('thegem_theme_options');
+	$theme_options['portfolio_project_details'] = 1;
+	$theme_options['portfolio_project_details_data'] = json_encode($pd_to);
+	update_option('thegem_theme_options', $theme_options);
+	return $view_post;
+}
+
+function thegem_templates_import_dummy_pf_item() {
+	$post_data['post_type'] = 'thegem_pf_item';
+	$post_data['post_status'] = 'publish';
+	$post_data['post_title'] = __('Dummy Portfolio Item', 'thegem');
+	$post_data['post_excerpt'] = __('This is the dummy portfolio item. It is used for demo purposes only. Lorem ipsum dolor sit amet, consectetur adi pisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua!', 'thegem');
+	$post_data['post_content'] = <<<POST_CONTENT
+<p class="styled-subtitle" style="text-align: center;">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+
+&nbsp;
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem, sed do eiusmod tempor incididunt ut labore.
+
+&nbsp;
+
+<p class="styled-subtitle" style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adi pisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+
+&nbsp;
+
+Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+Excepteur sint occaecat cupidatat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+POST_CONTENT;
+	$post_id = wp_insert_post( $post_data );
+	update_post_meta($post_id, '_wp_page_template', 'default');
+	$term = wp_create_term('Dummy Category', 'thegem_portfolios');
+	wp_set_post_terms($post_id, sanitize_title('Dummy Category'), 'thegem_portfolios');
+	$attachmentId = thegem_template_getAttachmentIdByFilename('pf-dummy.jpg');
+	if(empty($attachmentId)) {
+		$file = __DIR__ . '/assets/img/pf-dummy.jpg';
+		$prefixedFilename = 'pf-dummy.jpg';
+		if (file_exists(wp_upload_dir()['path'].'/'.$prefixedFilename)) {
+			unlink(wp_upload_dir()['path'].'/'.$prefixedFilename);
+		}
+		$tmpFile = wp_upload_dir()['basedir'].'/'.$prefixedFilename;
+		if (copy($file, $tmpFile)) {
+			$file_array = [
+				'name' => $prefixedFilename,
+				'tmp_name' => $tmpFile,
+				'error' => 0,
+				'size' => filesize($tmpFile),
+			];
+			$attachmentId = media_handle_sideload($file_array);
+		}
+	}
+	if(!empty($attachmentId)) {
+		set_post_thumbnail($post_id, $attachmentId);
+	}
+	return get_post($post_id);
+}
+
 function thegem_templates_importContactForms($ids=[]) {
 	if (! defined( 'WPCF7_VERSION' )) {
 		return [];
@@ -1268,9 +1512,11 @@ function thegem_vc_add_element_categories_templates($tabs) {
             $tab['name'] === __('Checkout Builder', 'thegem') ||
             $tab['name'] === __('Purchase Summary Builder', 'thegem') ||
             $tab['name'] === __('Archive Product Builder', 'thegem') ||
-            $tab['name'] === __('Archive Blog Builder', 'thegem') ||
+            $tab['name'] === __('Archive Builder', 'thegem') ||
             $tab['name'] === __('Single Post Builder', 'thegem') ||
-            $tab['name'] === __('Popups Builder', 'thegem')
+            $tab['name'] === __('Loop Item Builder', 'thegem') ||
+            $tab['name'] === __('Popups Builder', 'thegem') ||
+            $tab['name'] === __('Portfolio Page Builder', 'thegem')
         ) {
 			$builder_tab = $tab;
 			$builder_tab_key = $key;
@@ -1389,9 +1635,9 @@ function thegem_templates_single_product_heading_init() {
 			vc_remove_param( 'gem_heading', "heading_disable_desktop" );
 			vc_remove_param( 'gem_heading', "heading_disable_tablet" );
 			vc_remove_param( 'gem_heading', "heading_disable_mobile" );
-			
+
 			vc_remove_param( 'vc_column_text', "css" );*/
-			
+
 			add_action('vc_backend_editor_enqueue_js_css', 'thegem_tamplates_editor_script', 11);
 			add_action('vc_frontend_editor_enqueue_js_css', 'thegem_tamplates_editor_script', 11);
 			add_action('vc_load_iframe_jscss', 'thegem_tamplates_editor_script', 11);
@@ -1494,6 +1740,9 @@ function thegem_templates_menu_search_widget($items){
 	$items .= '<div class="minisearch">';
 	$items .= '<form role="search" class="sf" action="'.esc_url( home_url( '/' ) ).'" method="GET">';
 	$items .= '<input class="sf-input" type="text" placeholder="'.esc_html__('Search...', 'thegem').'" name="s">';
+	if (thegem_is_plugin_active('woocommerce/woocommerce.php') && thegem_get_option('website_search_post_type_products') == '1') {
+		$items .= '<input type="hidden" name="post_type" value="product" />';
+	}
 	$items .= '<span class="sf-submit-icon"></span>';
 	$items .= '<input class="sf-submit" type="submit" value="">';
 	$items .= '</form>';
@@ -1555,7 +1804,7 @@ function thegem_templates_extra_options_extract() {
 }
 
 function thegem_templates_design_options_extract($param = 'default') {
- 
+
 	switch ($param) {
 		case 'single-product':
 			$custom_gap = '';
@@ -1563,7 +1812,7 @@ function thegem_templates_design_options_extract($param = 'default') {
 		default:
 			$custom_gap = '5';
 	}
-	
+
 	return array(
 		'desktop_disable' => '',
 		'tablet_disable' => '',
@@ -1653,7 +1902,7 @@ function thegem_templates_design_options_output($ext) {
 }
 
 function thegem_templates_responsive_options_extract() {
-	
+
 	return array(
 		'element_hide_desktop' => '0',
 		'element_hide_tablet' => '0',
@@ -1670,8 +1919,17 @@ function thegem_templates_responsive_options_output($params) {
 		];
 		return implode(' ', $styles);
 	}
-	
+
 	return false;
+}
+
+function thegem_templates_dynamic_link_options_extract() {
+
+	return array(
+		'dynamic_link_type' => 'post',
+		'dynamic_link_custom' => '',
+		'dynamic_link_hover_effect' => '1',
+	);
 }
 
 function thegem_te_delay_class() {
@@ -1699,76 +1957,38 @@ function thegem_templates_get_wc_attributes() {
 	return $data;
 }
 
-function thegem_templates_product_tabs_callback($params) {
-	global $product, $post;
-
-	$tabs = array();
-	$description_tab_callback = '';
-
-	if($params['description_tab_source'] == 'page_builder') {
-		$vc_show_content = false;
-		if(thegem_is_plugin_active('js_composer/js_composer.php')) {
-			global $vc_manager;
-			if($vc_manager->mode() == 'admin_frontend_editor' || $vc_manager->mode() == 'admin_page' || $vc_manager->mode()== 'page_editable') {
-				$vc_show_content = true;
-			}
-		}
-		if(get_the_content() || $vc_show_content) {
-			$description_tab_callback = 'thegem_woocommerce_single_product_page_content';
-		}
-	} else {
-		$description_tab_callback = 'woocommerce_product_description_tab';
-	}
-
-	if ( !empty($params['description']) ) {
-		$tabs['description'] = array(
-			'title' => esc_html__( $params['description_title'], 'woocommerce'),
-			'priority' => 10,
-			'callback' => $description_tab_callback
-		);
-	} else {
-		unset( $tabs['description'] );
-	}
-
-	if ( !empty($params['additional']) ) {
-		$tabs['additional_information'] = array(
-			'title'	=> esc_html__( $params['additional_title'], 'woocommerce'),
-			'priority' => 20,
-			'callback' => 'woocommerce_product_additional_information_tab',
-		);
-	} elseif ( isset( $tabs['additional_information'] ) ) {
-		unset( $tabs['additional_information'] );
-	}
-
-	if ( !empty($params['reviews']) )  {
-		$tabs['reviews'] = array(
-			'title'	=> $product->get_review_count() > 0 ? sprintf(esc_html__( $params['reviews_title'], 'woocommerce' ).' <sup>%d</sup>', $product->get_review_count()) : esc_html__( $params['reviews_title']),
-			'priority' => 30,
-			'callback' => 'comments_template',
-		);
-	} elseif ( isset( $tabs['reviews'] )) {
-		unset( $tabs['reviews'] );
-	}
-
-	return $tabs;
-}
-add_filter( 'thegem_templates_product_tabs', 'thegem_templates_product_tabs_callback', 11 );
-
 function thegem_templates_init_post() {
 	$pid = thegem_get_option('single_post_builder_preview_post');
 	$bpid = get_post_meta(get_the_ID(), 'thegem_single_post_id', true);
 	if(!empty($bpid) && get_post_type($bpid) === 'post') {
 		$pid = $bpid;
 	}
+	$post_id = get_the_ID();
 	$view_post = false;
-	if(thegem_get_template_type(get_the_ID()) === 'single-post' || get_post_meta(get_the_ID(), 'thegem_is_single_post', true)) {
+	if(!empty($GLOBALS['thegem_loop_item_post'])) {
+		$pid = $GLOBALS['thegem_loop_item_post'];
+	}
+	if(thegem_get_template_type($post_id) === 'single-post' || thegem_get_template_type($post_id) === 'loop-item' || get_post_meta($post_id, 'thegem_is_single_post', true)) {
 		if(!empty($pid)) {
 			$view_post = get_post($pid);
 		}
-		if(empty($view_post) || get_post_type($view_post) !== 'post') {
+		$editor_post_id = $post_id;
+		$preview_settings = get_post_meta($editor_post_id, 'thegem_template_preview_settings', true);
+		if(!empty($preview_settings)) {
+			$preview_post_type = empty($preview_settings['demo_posttype']) ? 'post' : $preview_settings['demo_posttype'];
+			if(!empty($preview_settings['demo_post_id'])) {
+				$preview_post_id = $preview_settings['demo_post_id'];
+				$preview_post = get_post($preview_post_id);
+				if(!empty($preview_post)) {
+					$view_post = get_post($preview_post);
+				}
+			}
+		}
+		if(empty($view_post)/* || get_post_type($view_post) !== 'post'*/) {
 			$args = array(
 				'posts_per_page' => '1',
 				'post_type' => 'post',
+				'post_status' => 'publish'
 			);
 			$test_post = new WP_Query($args);
 			while ( $test_post->have_posts() ) {
@@ -1780,6 +2000,10 @@ function thegem_templates_init_post() {
 	} else {
 		$view_post = get_post();
 	}
+	if(!empty($GLOBALS['thegem_loop_item_post'])) {
+		$pid = $GLOBALS['thegem_loop_item_post'];
+		$view_post = get_post($pid);
+	}
 	global $post;
 	if(empty($view_post)) return false;
 	$GLOBALS['thegem_post_data'] = thegem_get_sanitize_post_data($pid);
@@ -1788,8 +2012,60 @@ function thegem_templates_init_post() {
 	return $post;
 }
 
+function thegem_templates_init_portfolio() {
+	$pid = thegem_get_option('portfolio_builder_previews');
+	$bpid = get_post_meta(get_the_ID(), 'thegem_portfolio_id', true);
+	if(!empty($bpid) && get_post_type($bpid) === 'thegem_pf_item') {
+		$pid = $bpid;
+	}
+	$post_id = get_the_ID();
+	$view_post = false;
+	if(thegem_get_template_type($post_id) === 'portfolio' || thegem_get_template_type($post_id) === 'single-post' || thegem_get_template_type($post_id) === 'loop-item' || get_post_meta($post_id, 'thegem_is_portfolio', true)) {
+		if(!empty($pid)) {
+			$view_post = get_post($pid);
+		}
+		$editor_post_id = $post_id;
+		$preview_settings = get_post_meta($editor_post_id, 'thegem_template_preview_settings', true);
+		if(!empty($preview_settings)) {
+			$preview_post_type = empty($preview_settings['demo_posttype']) ? 'post' : $preview_settings['demo_posttype'];
+			if(!empty($preview_settings['demo_post_id'])) {
+				$preview_post_id = $preview_settings['demo_post_id'];
+				$preview_post = get_post($preview_post_id);
+				if(!empty($preview_post)) {
+					$view_post = get_post($preview_post);
+				}
+			}
+		}
+		if((empty($view_post) || get_post_type($view_post) !== 'thegem_pf_item') && (thegem_get_template_type($post_id) === 'portfolio' || get_post_meta($post_id, 'thegem_is_portfolio', true))) {
+			$args = array(
+				'posts_per_page' => '1',
+				'post_type' => 'thegem_pf_item',
+			);
+			$test_post = new WP_Query($args);
+			while ( $test_post->have_posts() ) {
+				$test_post->the_post();
+				$view_post = get_post();
+			}
+			wp_reset_postdata();
+		}
+	} else {
+		$view_post = get_post();
+	}
+	if(!empty($GLOBALS['thegem_loop_item_post'])) {
+		$pid = $GLOBALS['thegem_loop_item_post'];
+		$view_post = get_post($pid);
+	}
+	global $post;
+	if(empty($view_post)) return false;
+	$GLOBALS['thegem_portfolio_data'] = thegem_get_sanitize_post_data($pid);
+	$post = $view_post;
+	setup_postdata($post);
+	return $post;
+}
+
 function thegem_templates_init_product() {
 	$pid = thegem_get_option('product_builder_preview_product');
+	$post_id = get_the_ID();
 	$bpid = get_post_meta(get_the_ID(), 'thegem_single_product_id', true);
 	if(!empty($bpid) && get_post_type($bpid) === 'product') {
 		$pid = $bpid;
@@ -1802,6 +2078,17 @@ function thegem_templates_init_product() {
 			'posts_per_page' => '1',
 			'post_type' => 'product',
 		);
+		$editor_post_id = $post_id;
+		$preview_settings = get_post_meta($editor_post_id, 'thegem_template_preview_settings', true);
+		if(!empty($preview_settings)) {
+			if(!empty($preview_settings['demo_product_id'])) {
+				$preview_post_id = $preview_settings['demo_product_id'];
+				$preview_post = get_post($preview_post_id);
+				if(!empty($preview_post)) {
+					$pid = $preview_post_id;
+				}
+			}
+		}
 		if(!empty($pid) && get_post_type($pid) === 'product') {
 			$args['p'] = $pid;
 		}
@@ -1825,7 +2112,25 @@ function thegem_templates_init_product() {
 function thegem_templates_close_post($name = '', $settings = '', $html = '') {
 	$output = $html;
 	wp_reset_postdata();
-	if(thegem_get_template_type(get_the_ID()) === 'single-post' && empty($html)) {
+	if(!empty($GLOBALS['thegem_loop_item_post'])) {
+		$pid = $GLOBALS['thegem_loop_item_post'];
+		$view_post = get_post($pid);
+		global $post;
+		$post = $view_post;
+		setup_postdata($post);
+	}
+	if((thegem_get_template_type(get_the_ID()) === 'single-post' || thegem_get_template_type(get_the_ID()) === 'loop-item') && empty($html) && !empty($settings)) {
+		$class = str_replace('_', '-', $name);
+		$title = $settings['name'];
+		$output = '<div class="'.esc_attr($class).' template-post-empty-output default-background">'.$title.'</div>';
+	}
+	return $output;
+}
+
+function thegem_templates_close_portfolio($name = '', $settings = '', $html = '') {
+	$output = $html;
+	wp_reset_postdata();
+	if(thegem_get_template_type(get_the_ID()) === 'portfolio' && empty($html)) {
 		$class = str_replace('_', '-', $name);
 		$title = $settings['name'];
 		$output = '<div class="'.esc_attr($class).' template-post-empty-output default-background">'.$title.'</div>';
@@ -1864,6 +2169,19 @@ function thegem_templates_product_archive_source() {
 				$obj = $term;
 			}
 		}
+		$post_id = get_the_ID();
+		$editor_post_id = $post_id;
+		$preview_settings = get_post_meta($editor_post_id, 'thegem_template_preview_settings', true);
+		if(!empty($preview_settings)) {
+			$preview_tax = empty($preview_settings['demo_tax']) ? 'category' : $preview_settings['demo_tax'];
+			if(!empty($preview_settings['demo_term_id'])) {
+				$preview_term_id = $preview_settings['demo_term_id'];
+				$preview_term = get_term($preview_term_id);
+				if(!empty($preview_term)) {
+					$obj = $preview_term;
+				}
+			}
+		}
 	}
 	if(is_singular('blocks')) {
 		if($slug = get_post_meta(get_queried_object_id(), 'thegem_product_archive_slug', true)) {
@@ -1894,6 +2212,19 @@ function thegem_templates_blog_archive_source() {
 			$term = get_term_by( 'term_id', $tid, 'category');
 			if($term) {
 				$obj = $term;
+			}
+		}
+		$post_id = get_the_ID();
+		$editor_post_id = $post_id;
+		$preview_settings = get_post_meta($editor_post_id, 'thegem_template_preview_settings', true);
+		if(!empty($preview_settings)) {
+			$preview_tax = empty($preview_settings['demo_tax']) ? 'category' : $preview_settings['demo_tax'];
+			if(!empty($preview_settings['demo_term_id'])) {
+				$preview_term_id = $preview_settings['demo_term_id'];
+				$preview_term = get_term($preview_term_id);
+				if(!empty($preview_term)) {
+					$obj = $preview_term;
+				}
 			}
 		}
 	}
@@ -1933,7 +2264,14 @@ function thegem_templates_close_checkout_thanks($name = '', $settings = '', $htm
 function thegem_templates_close_single_post($name = '', $settings = '', $html = '') {
 	$output = $html;
 	wp_reset_postdata();
-	if(thegem_get_template_type(get_the_ID()) === 'single-post' && empty($html)) {
+	if(!empty($GLOBALS['thegem_loop_item_post'])) {
+		$pid = $GLOBALS['thegem_loop_item_post'];
+		$view_post = get_post($pid);
+		global $post;
+		$post = $view_post;
+		setup_postdata($post);
+	}
+	if((thegem_get_template_type(get_the_ID()) === 'single-post' || thegem_get_template_type(get_the_ID()) === 'loop-item') && empty($html) && !empty($settings)) {
 		$class = str_replace('_', '-', $name);
 		$title = $settings['name'];
 		$output = '<div class="'.esc_attr($class).' template-post-empty-output default-background">'.$title.'</div>';
@@ -1977,6 +2315,9 @@ function thegem_blog_archive_shortcodes_category($shortcodes) {
 			'gem_news',
 			'gem_news_grid',
 			'gem_featured_posts_slider',
+			'gem_posts_carousel',
+			'gem_extended_filter',
+			'gem_extended_sorting'
 		);
 		foreach($shortcodes_list as $sc) {
 			if(isset($shortcodes[$sc])) {
@@ -1987,7 +2328,7 @@ function thegem_blog_archive_shortcodes_category($shortcodes) {
 				} else {
 					$categories_array[] = $categories;
 				}
-				$categories_array[] = __('Archive Blog Builder', 'thegem');
+				$categories_array[] = __('Archive Builder', 'thegem');
 				$shortcodes[$sc]['category'] = $categories_array;
 			}
 		}
@@ -1995,6 +2336,141 @@ function thegem_blog_archive_shortcodes_category($shortcodes) {
 	return $shortcodes;
 }
 add_filter('thegem_shortcodes_array', 'thegem_blog_archive_shortcodes_category', 20);
+
+function thegem_product_archive_shortcodes_category($shortcodes) {
+	if(thegem_is_template_post('product-archive')) {
+		$shortcodes_list = array(
+			'gem_extended_filter',
+			'gem_extended_sorting'
+		);
+		foreach($shortcodes_list as $sc) {
+			if(isset($shortcodes[$sc])) {
+				$categories = $shortcodes[$sc]['category'];
+				$categories_array = array();
+				if(is_array($categories)) {
+					$categories_array = $categories;
+				} else {
+					$categories_array[] = $categories;
+				}
+				$categories_array[] = __('Archive Product Builder', 'thegem');
+				$shortcodes[$sc]['category'] = $categories_array;
+			}
+		}
+	}
+	return $shortcodes;
+}
+add_filter('thegem_shortcodes_array', 'thegem_product_archive_shortcodes_category', 20);
+
+function thegem_portfolio_shortcodes_category($shortcodes) {
+	if(thegem_is_template_post('portfolio')) {
+		$shortcodes_list = array(
+			'gem_portfolio',
+			'gem_gallery',
+		);
+		foreach($shortcodes_list as $sc) {
+			if(isset($shortcodes[$sc])) {
+				$categories = $shortcodes[$sc]['category'];
+				$categories_array = array();
+				if(is_array($categories)) {
+					$categories_array = $categories;
+				} else {
+					$categories_array[] = $categories;
+				}
+				$categories_array[] = __('Portfolio Page Builder', 'thegem');
+				$shortcodes[$sc]['category'] = $categories_array;
+			}
+		}
+	}
+	return $shortcodes;
+}
+add_filter('thegem_shortcodes_array', 'thegem_portfolio_shortcodes_category', 20);
+
+function thegem_wc_hook_shortcode_categories($shortcodes) {
+	$sc = 'gem_wc_hook';
+	if(isset($shortcodes[$sc])) {
+		$categories = $shortcodes[$sc]['category'];
+		$categories_array = array();
+		if(is_array($categories)) {
+			$categories_array = $categories;
+		} else {
+			$categories_array[] = $categories;
+		}
+		if(thegem_is_template_post('single-product')) {
+			$categories_array[] = __('Single Product Builder', 'thegem');
+		}
+		if(thegem_is_template_post('product-archive')) {
+			$categories_array[] = __('Archive Product Builder', 'thegem');
+		}
+		if(thegem_is_template_post('cart')) {
+			$categories_array[] = __('Cart Builder', 'thegem');
+		}
+		if(thegem_is_template_post('checkout')) {
+			$categories_array[] = __('Checkout Builder', 'thegem');
+		}
+		$shortcodes[$sc]['category'] = $categories_array;
+	}
+	return $shortcodes;
+}
+add_filter('thegem_shortcodes_array', 'thegem_wc_hook_shortcode_categories', 20);
+
+function thegem_single_post_shortcodes_category($shortcodes) {
+	if(thegem_is_template_post('single-post')) {
+		$shortcodes_list = array(
+			'gem_news_grid',
+			'gem_featured_posts_slider',
+			'gem_custom_fields',
+		);
+		foreach($shortcodes_list as $sc) {
+			if(isset($shortcodes[$sc])) {
+				$categories = $shortcodes[$sc]['category'];
+				$categories_array = array();
+				if(is_array($categories)) {
+					$categories_array = $categories;
+				} else {
+					$categories_array[] = $categories;
+				}
+				$categories_array[] = __('Single Post Builder', 'thegem');
+				$shortcodes[$sc]['category'] = $categories_array;
+			}
+		}
+	}
+
+	if(thegem_is_template_post('loop-item')) {
+		$shortcodes_list = array(
+			'gem_custom_fields',
+			'gem_button',
+		);
+		foreach($shortcodes_list as $sc) {
+			if(isset($shortcodes[$sc])) {
+				$categories = $shortcodes[$sc]['category'];
+				$categories_array = array();
+				if(is_array($categories)) {
+					$categories_array = $categories;
+				} else {
+					$categories_array[] = $categories;
+				}
+				$categories_array[] = __('Loop Item Builder', 'thegem');
+				$shortcodes[$sc]['category'] = $categories_array;
+			}
+		}
+		$shortcodes_list = array(
+			'thegem_te_loop_featured_media',
+			'thegem_te_post_excerpt',
+			'thegem_te_post_info',
+			'thegem_te_post_tags',
+			'thegem_te_post_title',
+		);
+		foreach($shortcodes_list as $sc) {
+			if(isset($shortcodes[$sc])) {
+				$categories_array = array(__('Loop Item Builder', 'thegem'));
+				$shortcodes[$sc]['category'] = $categories_array;
+			}
+		}
+	}
+
+	return $shortcodes;
+}
+add_filter('thegem_shortcodes_array', 'thegem_single_post_shortcodes_category', 20);
 
 function thegem_te_product_text_styled($params) {
 	if (!empty($params)) {
@@ -2006,12 +2482,11 @@ function thegem_te_product_text_styled($params) {
 		];
 		return implode(' ', $styles);
 	}
-	
+
 	return false;
 }
 
 require_once(plugin_dir_path( __FILE__ ) . 'class-element.php');
-
 
 function thegem_temlates_button_shortcode($shortcodes) {
 	if(thegem_is_template_post('checkout') || thegem_is_template_post('cart')) {
@@ -2621,10 +3096,10 @@ function thegem_temlates_button_shortcode($shortcodes) {
 						'description' => sprintf( __( '(Please refer to this %s)', 'thegem' ), '<a href="https://www.w3schools.com/cssref/css3_pr_animation-timing-function.asp" target="_blank">article</a>' ),
 					)
 				),
-				
+
 				// Init interactions controls
 				$interactions,
-				
+
 				// Init responsive controls
 				$responsive
 			),
@@ -2634,8 +3109,8 @@ function thegem_temlates_button_shortcode($shortcodes) {
 }
 add_filter('thegem_shortcodes_array', 'thegem_temlates_button_shortcode', 20);
 
-/* POPUP ITEM POST META BOX */
 
+/* POPUP ITEM POST META BOX */
 function thegem_template_popup_register_meta_box($post) {
 	if (thegem_get_template_type(get_the_ID()) == 'popup') {
 		add_meta_box('thegem_popup_item_settings', __('Popup Settings', 'thegem'), 'thegem_popup_item_settings_box', 'thegem_templates', 'normal', 'high');
@@ -3101,3 +3576,255 @@ function thegem_save_template_data_to_translation($post_id, $data, $job) {
 	}
 }
 add_action( 'wpml_translation_job_saved', 'thegem_save_template_data_to_translation', 10, 3 );
+
+function thegem_template_preview_settings_add_controls($list) {
+	if(thegem_get_template_type(get_the_ID()) === 'single-post' || thegem_get_template_type(get_the_ID()) === 'loop-item') {
+
+		$post_types = [
+			'post' => __('Post', 'thegem'),
+			'page' => __('Page', 'thegem'),
+		];
+		$post_types_data = get_post_types(array(
+			'public' => true,
+			'_builtin' => false
+		), 'objects');
+		foreach ($post_types_data as $post_type) {
+			if (!empty($post_type->name) && !in_array($post_type->name, ['thegem_title', 'thegem_footer', 'thegem_templates'])) {
+				$post_types[$post_type->name] = $post_type->label;
+			}
+		}
+
+		$post_id = get_the_ID();
+		$preview_settings = get_post_meta($post_id, 'thegem_template_preview_settings', true);
+		$selected_post_type = !empty($preview_settings) && !empty($preview_settings['demo_posttype']) ? $preview_settings['demo_posttype'] : 'post';
+
+		$post_types_select = '<label>'.esc_html__('Post type:', 'thegem').'</label><select class="thegem-template-preview-settings-select-posttype vc_select vc_select-navbar" data-post-id="' . esc_attr($post_id) .'">';
+		foreach ( $post_types as $posttype => $posttype_title ) {
+			$post_types_select .= '<option value="' . $posttype . '"' . ( $posttype === $selected_post_type ? ' selected' : '' ) . '>' . $posttype_title . '</option>';
+		}
+		$post_types_select .= '</select>';
+
+		$post_select = '<label>'.esc_html__('Post:', 'thegem').'</label><select class="thegem-template-preview-settings-select-post vc_select vc_select-navbar"></select>';
+
+		$width_input = '';
+		if(thegem_get_template_type(get_the_ID()) === 'loop-item') {
+			$width = !empty($preview_settings) && isset($preview_settings['demo_width']) ? $preview_settings['demo_width'] : '';
+			$width_input = '<label>'.esc_html__('Width:', 'thegem').'</label><input class="thegem-template-preview-settings-width" type="text" value="'.esc_attr($width).'" />';
+		}
+
+		$controls = '<li class="vc_pull-right thegem-template-preview-settings">'.
+			$post_types_select.
+			$post_select.
+			$width_input.
+			'<button class="thegem-template-preview-settings-apply vc_btn vc_btn-default vc_btn-sm vc_navbar-btn">'.esc_html__('Apply', 'thegem').'</button>'.
+			'</li>';
+		$list[] = array(
+			'thegem_template_preview_settings',
+			$controls,
+		);
+	}
+	if(thegem_get_template_type(get_the_ID()) === 'single-product') {
+		$post_id = get_the_ID();
+		$preview_settings = get_post_meta($post_id, 'thegem_template_preview_settings', true);
+		$products_list = array(array('id' => 0, 'title' => esc_html__('Please Select', 'thegem'), 'disabled' => 1));
+		$selected_product = '';
+		if(!empty($preview_settings['demo_product_id'])) {
+			$selected_product = get_post($preview_settings['demo_product_id']);
+			if(!empty($selected_product)) {
+				$products_list = array();
+				$products_list[] = array(
+					'id' => $selected_product->ID,
+					'title' => $selected_product->post_title. ' (ID=' . $selected_product->ID . ')'
+				);
+			}
+		}
+		$products = get_posts(array(
+			'posts_per_page' => 50,
+			'post_status' => 'publish',
+			'post_type' => 'product',
+			'exclude' => empty($products_list) || empty($preview_settings['demo_product_id']) ? array() : array($preview_settings['demo_product_id']),
+		));
+		foreach($products as $p) {
+			$products_list[] = array(
+				'id' => $p->ID,
+				'title' => $p->post_title. ' (ID=' . $p->ID . ')'
+			);
+		}
+
+		$product_select_options = '';
+		foreach ( $products_list as $product ) {
+			$product_select_options .= '<option value="' . $product['id'] . '"' . ( $product['id'] === $selected_product ? ' selected' : '' ) . '>' . $product['title'] . '</option>';
+		}
+
+		$product_select = '<label>'.esc_html__('Product:', 'thegem').'</label><select class="thegem-template-preview-settings-select-product vc_select vc_select-navbar" data-post-id="' . esc_attr($post_id) .'">'.$product_select_options.'</select>';
+
+		$controls = '<li class="vc_pull-right thegem-template-preview-settings">'.
+			$product_select.
+			'<button class="thegem-template-preview-settings-apply vc_btn vc_btn-default vc_btn-sm vc_navbar-btn">'.esc_html__('Apply', 'thegem').'</button>'.
+			'</li>';
+		$list[] = array(
+			'thegem_template_preview_settings',
+			$controls,
+		);
+	}
+	if(thegem_get_template_type(get_the_ID()) === 'blog-archive' || thegem_get_template_type(get_the_ID()) === 'product-archive') {
+
+		$taxonomies = [
+			'category' => __('Post Category', 'thegem'),
+			'post_tag' => __('Post Tag', 'thegem'),
+		];
+		$taxonomies_data = get_taxonomies(array(
+			'public' => true,
+			'_builtin' => false
+		), 'objects');
+
+		foreach ($taxonomies_data as $tax) {
+			if (!empty($tax->object_type) && !in_array('product', $tax->object_type)) {
+				$taxonomies[$tax->name] = $tax->label;
+			}
+		}
+
+		if(thegem_get_template_type(get_the_ID()) === 'product-archive') {
+			$taxonomies = [
+				'product_cat' => __('Product Category', 'thegem'),
+				'product_tag' => __('Product Tag', 'thegem'),
+			];
+		}
+
+		$post_id = get_the_ID();
+		$preview_settings = get_post_meta($post_id, 'thegem_template_preview_settings', true);
+		$selected_tax = !empty($preview_settings) && !empty($preview_settings['demo_tax']) ? $preview_settings['demo_tax'] : 'category';
+
+		$tax_select = '<label>'.esc_html__('Taxonomy:', 'thegem').'</label><select class="thegem-template-preview-settings-select-tax vc_select vc_select-navbar" data-post-id="' . esc_attr($post_id) .'">';
+		foreach ( $taxonomies as $tax => $tax_title ) {
+			$tax_select .= '<option value="' . $tax . '"' . ( $tax === $selected_tax ? ' selected' : '' ) . '>' . $tax_title . '</option>';
+		}
+		$tax_select .= '</select>';
+
+		$term_select = '<label>'.esc_html__('Term:', 'thegem').'</label><select class="thegem-template-preview-settings-select-term vc_select vc_select-navbar"></select>';
+
+
+		$controls = '<li class="vc_pull-right thegem-template-preview-settings">'.
+			$tax_select.
+			$term_select.
+			'<button class="thegem-template-preview-settings-apply vc_btn vc_btn-default vc_btn-sm vc_navbar-btn">'.esc_html__('Apply', 'thegem').'</button>'.
+			'</li>';
+		$list[] = array(
+			'thegem_template_preview_settings',
+			$controls,
+		);
+	}
+	return $list;
+}
+add_filter( 'vc_nav_front_controls', 'thegem_template_preview_settings_add_controls');
+
+function thegem_template_preview_settings_get_posts() {
+	$post_type = !empty($_REQUEST['posttype']) ? $_REQUEST['posttype'] : 'post';
+	$post_id = !empty($_REQUEST['post_id']) ? $_REQUEST['post_id'] : 0;
+	$post_list = array(array('id' => 0, 'title' => esc_html__('Please Select', 'thegem'), 'disabled' => 1));
+	$preview_settings = get_post_meta($post_id, 'thegem_template_preview_settings', true);
+	if(!empty($preview_settings['demo_posttype']) && $post_type === $preview_settings['demo_posttype'] && !empty($preview_settings['demo_post_id'])) {
+		$selected_post = get_post($preview_settings['demo_post_id']);
+		if(!empty($selected_post)) {
+			$post_list = array();
+			$post_list[] = array(
+				'id' => $selected_post->ID,
+				'title' => $selected_post->post_title. ' (ID=' . $selected_post->ID . ')'
+			);
+		}
+	}
+	$posts = get_posts(array(
+		'posts_per_page' => 50,
+		'post_status' => 'publish',
+		'post_type' => $post_type,
+		'exclude' => empty($post_list) || empty($preview_settings['demo_post_id']) ? array() : array($preview_settings['demo_post_id']),
+	));
+	foreach($posts as $p) {
+		$post_list[] = array(
+			'id' => $p->ID,
+			'title' => $p->post_title. ' (ID=' . $p->ID . ')'
+		);
+	}
+	$data = array(
+		'status' => 'success',
+		'items' => $post_list
+	);
+	echo wp_json_encode($data);
+	die();
+}
+add_action('wp_ajax_thegem_template_preview_settings_get_posts', 'thegem_template_preview_settings_get_posts');
+
+function thegem_template_preview_settings_apply() {
+	$post_type = !empty($_REQUEST['posttype']) ? $_REQUEST['posttype'] : 'post';
+	$post_id = !empty($_REQUEST['post_id']) ? $_REQUEST['post_id'] : 0;
+	$template_id = !empty($_REQUEST['template_id']) ? $_REQUEST['template_id'] : 0;
+	$width = isset($_REQUEST['width']) ? $_REQUEST['width'] : '';
+	$tax = !empty($_REQUEST['tax']) ? $_REQUEST['tax'] : 'category';
+	$term_id = !empty($_REQUEST['term_id']) ? $_REQUEST['term_id'] : 0;
+	$product_id = !empty($_REQUEST['product_id']) ? $_REQUEST['product_id'] : 0;
+	if(thegem_get_template_type($template_id) === 'single-post' || thegem_get_template_type($template_id) === 'loop-item') {
+		update_post_meta($template_id, 'thegem_template_preview_settings', array('demo_posttype' => $post_type, 'demo_post_id' => $post_id, 'demo_width' => $width));
+	}
+	if(thegem_get_template_type($template_id) === 'single-product') {
+		update_post_meta($template_id, 'thegem_template_preview_settings', array('demo_product_id' => $product_id));
+	}
+	if(thegem_get_template_type($template_id) === 'blog-archive' || thegem_get_template_type($template_id) === 'product-archive') {
+		update_post_meta($template_id, 'thegem_template_preview_settings', array('demo_tax' => $tax, 'demo_term_id' => $term_id));
+	}
+	$data = array(
+		'status' => 'success'
+	);
+	echo wp_json_encode($data);
+	die();
+}
+add_action('wp_ajax_thegem_template_preview_settings_apply', 'thegem_template_preview_settings_apply');
+
+function thegem_template_preview_settings_get_terms() {
+	$tax = !empty($_REQUEST['tax']) ? $_REQUEST['tax'] : 'category';
+	$post_id = !empty($_REQUEST['post_id']) ? $_REQUEST['post_id'] : 0;
+	$terms_list = array(array('id' => 0, 'title' => esc_html__('Please Select', 'thegem'), 'disabled' => 1));
+	$preview_settings = get_post_meta($post_id, 'thegem_template_preview_settings', true);
+	if(!empty($preview_settings['demo_tax']) && $tax === $preview_settings['demo_tax'] && !empty($preview_settings['demo_term_id'])) {
+		$selected_term = get_term($preview_settings['demo_term_id']);
+		if(!empty($selected_term)) {
+			$terms_list = array();
+			$terms_list[] = array(
+				'id' => $selected_term->term_id,
+				'title' => $selected_term->name. ' (ID=' . $selected_term->term_id . ')'
+			);
+		}
+	}
+	$terms = get_terms(array(
+		'taxonomy' => $tax,
+		'exclude' => empty($terms_list) || empty($preview_settings['demo_term_id']) ? array() : array($preview_settings['demo_term_id']),
+	));
+	foreach($terms as $t) {
+		$terms_list[] = array(
+			'id' => $t->term_id,
+			'title' => $t->name. ' (ID=' . $t->term_id . ')'
+		);
+	}
+	$data = array(
+		'status' => 'success',
+		'items' => $terms_list
+	);
+	echo wp_json_encode($data);
+	die();
+}
+add_action('wp_ajax_thegem_template_preview_settings_get_terms', 'thegem_template_preview_settings_get_terms');
+
+function thegem_template_loop_builder_hide_no_content_helper() {
+	if(thegem_get_template_type(get_the_ID()) === 'loop-item') {
+		echo '<style>#vc_no-content-helper.vc_not-empty {display: none;}</style>';
+	}
+}
+add_action('vc_backend_editor_render', 'thegem_template_loop_builder_hide_no_content_helper');
+
+function thegem_templates_loop_builder_hide_header_footer( $page_data, $post_id, $item_data, $type) {
+	if(empty($type) && thegem_get_template_type($post_id) === 'loop-item') {
+		$page_data['effects_hide_header'] = 'disabled';
+		$page_data['effects_hide_footer'] = 'disabled';
+	}
+	return $page_data;
+}
+add_filter('thegem_admin_page_data', 'thegem_templates_loop_builder_hide_header_footer', 10, 4);

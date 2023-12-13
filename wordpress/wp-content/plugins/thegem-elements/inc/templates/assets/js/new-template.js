@@ -40,6 +40,12 @@
 				$typeSelect.val() === 'single-post' ? $isSinglePost.show() : $isSinglePost.hide();
 			});
 
+			let $isPortfolio = $('.thegem-templates-new-popup .show-is-portfolio');
+			$typeSelect.val() === 'portfolio' ? $isPortfolio.show() : $isPortfolio.hide();
+			$(document).on('change', 'select[name=template_type]', function () {
+				$typeSelect.val() === 'portfolio' ? $isPortfolio.show() : $isPortfolio.hide();
+			});
+
 			let $isProductArchive = $('.thegem-templates-new-popup .show-is-product-archive');
 			$typeSelect.val() === 'product-archive' ? $isProductArchive.show() : $isProductArchive.hide();
 			$(document).on('change', 'select[name=template_type]', function () {
@@ -77,6 +83,12 @@
 			$(document).on('change', 'select[name=template_type]', function () {
 				$typeSelect.val() === 'popup' ? $isPopup.show() : $isPopup.hide();
 				$typeSelect.val() === 'popup' ? $isNotPopup.hide() : $isNotPopup.show();
+			});
+
+			let $isLoopItem = $('.thegem-templates-new-popup .show-is-loop-item');
+			$typeSelect.val() === 'loop-item' ? $isLoopItem.show() : $isLoopItem.hide();
+			$(document).on('change', 'select[name=template_type]', function () {
+				$typeSelect.val() === 'loop-item' ? $isLoopItem.show() : $isLoopItem.hide();
 			});
 
 		}
@@ -190,6 +202,67 @@
 
 			selectedTemplateType();
 		});
+
+		$(document).on('click', '.thegem-templates-import-popup .thegem-potfolio-template-insert', function(e) {
+			var insertDetailsLink = $(this).data('import-details-link');
+			var insertSimpleLink = $(this).data('link');
+			e.preventDefault();
+			if($('#thegem-templates-import-portfolio-details-popup').length) {
+				$.fancybox.close();
+				$.fancybox.open($('#thegem-templates-import-portfolio-details-popup').text(), {
+					modal: true,
+					afterShow: function(instance, current) {
+						$('#thegem-templates-import-portfolio').data('details-link', insertDetailsLink);
+						$('#thegem-templates-import-portfolio').data('simple-link', insertSimpleLink);
+						$('.thegem-templates-loading').remove();
+					}
+				});
+			}
+		});
+
+		$(document).on('click', '.thegem-templates-import-popup .thegem-loop-item-template-insert', function(e) {
+			var needImportData = $(this).closest('.thegem-templates-import-grid-wrap').data('need-import');
+			var insertDetailsLink = $(this).data('import-details-link');
+			var insertSimpleLink = $(this).data('link');
+			var insertId = $(this).data('id');
+			if(needImportData[insertId] === 1) {
+				e.preventDefault();
+				if($('#thegem-templates-import-loop-item-details-popup').length) {
+					$.fancybox.close();
+					$.fancybox.open($('#thegem-templates-import-loop-item-details-popup').text(), {
+						modal: true,
+						afterShow: function(instance, current) {
+							$('#thegem-templates-import-loop-item').data('details-link', insertDetailsLink);
+							$('#thegem-templates-import-loop-item').data('simple-link', insertSimpleLink);
+							$('.thegem-templates-loading').remove();
+						}
+					});
+				}
+			} else {
+				window.location = insertSimpleLink;
+			}
+		});
+
+		$(document).on('click', '#thegem-templates-import-portfolio', function(e) {
+			$('body').prepend('<div class="thegem-templates-loading" />');
+			const detailsCheck = $('#thegem-templates-import-details').is(':checked');
+			if(detailsCheck) {
+				window.location = $('#thegem-templates-import-portfolio').data('details-link');
+			} else {
+				window.location = $('#thegem-templates-import-portfolio').data('simple-link');
+			}
+		});
+
+		$(document).on('click', '#thegem-templates-import-loop-item', function(e) {
+			$('body').prepend('<div class="thegem-templates-loading" />');
+			const detailsCheck = $('#thegem-templates-import-details').is(':checked');
+			if(detailsCheck) {
+				window.location = $('#thegem-templates-import-loop-item').data('details-link');
+			} else {
+				window.location = $('#thegem-templates-import-loop-item').data('simple-link');
+			}
+		});
+
 
 		/*
 		$(document).on('click', '.thegem-templates-import-popup .thegem-template-preview-link', function(e) {

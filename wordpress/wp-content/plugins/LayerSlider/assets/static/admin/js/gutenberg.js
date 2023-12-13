@@ -192,6 +192,44 @@ registerBlockType( 'kreatura/layerslider', {
 
 			el( InspectorControls, {},
 
+				el( PanelBody, { title: LS_GB_l10n.ProjectInfoPanel },
+					el( 'div', { className: 'ls-gb-project-info' },
+
+						el( 'div', null,
+							el( 'div', null, LS_GB_l10n.ProjectInfoID),
+							el( 'div', null, LS_GB_l10n.ProjectInfoName ),
+						),
+						el( 'div', null,
+							el( 'div', null, attrs.id ),
+							el( 'div', null, attrs.name ),
+						)
+					),
+					el( Button, {
+						text: LS_GB_l10n.ProjectInfoReplace,
+						icon: 'screenoptions',
+						variant: 'secondary',
+						onClick: function() {
+							lsOpenProjectLibrary( props );
+						},
+						style: {
+							width: '100%',
+							marginBottom: '10px'
+						}
+						
+					}),
+					el( Button, {
+						text: LS_GB_l10n.ProjectInfoEdit,
+						icon: 'edit',
+						variant: 'secondary',
+						onClick: function() {
+							lsOpenProjectInEditor( attrs.id );
+						},
+						style: {
+							width: '100%'
+						}
+					})
+				),
+
 				// Panel Body
 				el( PanelBody, { title: LS_GB_l10n.OverridePanel },
 
@@ -313,18 +351,7 @@ registerBlockType( 'kreatura/layerslider', {
 					isLarge: true,
 					variant: 'primary',
 					onClick: function() {
-
-						LS_SliderLibrary.open({
-							onChange: function( sliderData ) {
-								props.setAttributes({
-									id: sliderData.id.toString(),
-									name: sliderData.name,
-									previewURL: sliderData.previewurl,
-									slideCount: sliderData.slidecount,
-									lastUpdated: lsGetTimestamp()
-								});
-							}
-						});
+						lsOpenProjectLibrary( props );
 					}
 				}, LS_GB_l10n.SliderLibraryButton )
 
@@ -342,17 +369,7 @@ registerBlockType( 'kreatura/layerslider', {
 						label: LS_GB_l10n.BlockEditLabel,
 						icon: 'screenoptions',
 						onClick: function() {
-							LS_SliderLibrary.open({
-								onChange: function( sliderData ) {
-									props.setAttributes({
-										id: sliderData.id.toString(),
-										name: sliderData.name,
-										previewURL: sliderData.previewurl,
-										slideCount: sliderData.slidecount,
-										lastUpdated: lsGetTimestamp()
-									});
-								}
-							});
+							lsOpenProjectLibrary( props );
 						}
 					})
 				),
@@ -364,7 +381,7 @@ registerBlockType( 'kreatura/layerslider', {
 						label: LS_GB_l10n.BlockSliderEditorLabel,
 						icon: 'edit',
 						onClick: function() {
-							window.open(LS_GB_l10n.edit_url + attrs.id, '_blank');
+							lsOpenProjectInEditor( attrs.id );
 						}
 					})
 				)
@@ -393,6 +410,7 @@ registerBlockType( 'kreatura/layerslider', {
 				}
 			},
 				el('div', { className: 'ls-info' },
+					el( 'div', { className: 'ls-id' }, LS_GB_l10n.BlockTitle.replace('%d', attrs.id ) ),
 					el( 'div', { className: 'ls-name' }, attrs.name )
 				),
 
@@ -458,7 +476,25 @@ function lsUpdateBlockData( props ) {
 			});
 		}
 	});
+}
 
+
+function lsOpenProjectLibrary( props ) {
+	LS_SliderLibrary.open({
+		onChange: function( sliderData ) {
+			props.setAttributes({
+				id: sliderData.id.toString(),
+				name: sliderData.name,
+				previewURL: sliderData.previewurl,
+				slideCount: sliderData.slidecount,
+				lastUpdated: lsGetTimestamp()
+			});
+		}
+	});
+}
+
+function lsOpenProjectInEditor( id ) {
+	window.open(LS_GB_l10n.edit_url + id, '_blank');
 }
 
 function lsGetTimestamp() {

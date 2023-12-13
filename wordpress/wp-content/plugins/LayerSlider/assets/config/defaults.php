@@ -693,6 +693,16 @@ $lsDefaults = [
 			]
 		],
 
+		'borderRadius' => [
+			'value' => '',
+			'name' => __('Rounded Corners', 'LayerSlider'),
+			'keys' => 'borderRadius',
+			'desc' => __('Rounding of the project canvas. You can enter a pixel or percentage value or space-separated values for the 4 distinct corners. Using rounded corners will clip overflowing content, such as layers outside the project canvas.', 'LayerSlider'),
+			'props' => [
+				'meta' => true
+			]
+
+		],
 
 		'sliderFadeInDuration' => [
 			'value' => 0,
@@ -705,6 +715,36 @@ $lsDefaults = [
 			]
 		],
 
+		'animateFirstSlide' => [
+			'value' => false,
+			'name' => __('Animate First Slide', 'LayerSlider'),
+			'keys' => 'animateFirstSlide',
+			'desc' => __('If enabled, the slider will start by playing the selected slide transition when it appears.', 'LayerSlider')
+		],
+
+		'firstSlideDuration' => [
+			'value' => '',
+			'name' => __('First Slide Duration', 'LayerSlider'),
+			'keys' => 'firstSlideDuration',
+			'advanced' => true,
+			'desc' => sprintf(__('When %s Animate First Slide %s is enabled, you can override the duration of the initial slide transition. By modifying this value, you can speed up or slow down the transition. Leave this option empty to use the default speed. This value is in milliseconds, so the value 1000 means 1 second.', 'LayerSlider'), '<b>', '</b>'),
+			'attrs' => [
+				'type' => 'number',
+				'min' => 0
+			]
+		],
+
+		'firstSlideTimeShift' => [
+			'value' => '',
+			'name' => __('First Slide Time Shift', 'LayerSlider'),
+			'keys' => 'firstSlideTimeShift',
+			'advanced' => true,
+			'desc' => sprintf(__('When %s Animate First Slide %s is enabled, layers can animate in at an earlier time before the initial slide transition finishes. This value is in milliseconds, so the value 1000 means 1 second. You can only use negative values.', 'LayerSlider'), '<b>', '</b>'),
+			'attrs' => [
+				'type' => 'number',
+				'max' => 0
+			]
+		],
 
 		'sliderClasses' => [
 			'value' => '',
@@ -893,6 +933,19 @@ $lsDefaults = [
 			'desc' => __('The height of thumbnails in the navigation area.', 'LayerSlider'),
 			'attrs' => [
 				'min' => 0
+			]
+		],
+
+		'tnFillMode' => [
+			'value' => 'contain',
+			'name' => __('Thumbnail Fill Mode', 'LayerSlider'),
+			'keys' => 'tnFillMode',
+			'desc' => __('Set how the thumbnail image should fill the area defined by the thumbnail width/height.', 'LayerSlider'),
+			'options' => [
+				'contain' => __('Contain', 'LayerSlider'),
+				'cover' => __('Cover', 'LayerSlider'),
+				'100% 100%' => __('Stretch', 'LayerSlider'),
+				'auto' => __('Auto', 'LayerSlider')
 			]
 		],
 
@@ -1532,7 +1585,7 @@ $lsDefaults = [
 
 		'enhancedLazyLoad' => [
 			'value' => 'inherit',
-			'name' => 'Enhanced Lazy Load',
+			'name' => __('Enhanced Lazy Load', 'LayerSlider'),
 			'keys' => 'enhancedLazyLoad',
 			'desc' => __('The default lazy loading behavior ensures maximum compatibility and works ideally for general purposes. However, there is a chance that the browser might start downloading some assets for a split second before LayerSlider cancels them. Enabling this option will eliminate any chance of generating even a minuscule amount of unwanted traffic, but it can also cause issues for search engine indexing and other WP themes/plugins.', 'LayerSlider'),
 			'options' => [
@@ -1558,6 +1611,13 @@ $lsDefaults = [
 			'advanced' => true
 		],
 
+		'fixFloatedContainers' => [
+			'value' => false,
+			'name' => __('Fix resizing issues in special cases', 'LayerSlider'),
+			'keys' => 'fixFloatedContainers',
+			'desc' => __('If the slider is inside a floated element or a flexbox layout, enabling this option can fix resizing issues.', 'LayerSlider'),
+			'advanced' => true
+		],
 
 		'postType' => [
 			'value' => '',
@@ -1880,7 +1940,7 @@ $lsDefaults = [
 			'keys' => 'kenburnsrotate',
 			'attrs' => [
 				'type' => 'number',
-				'placeholder' => 0
+				'placeholder' => '0 '
 			]
 
 		],
@@ -1892,9 +1952,6 @@ $lsDefaults = [
 			'attrs' => [
 				'type' => 'number',
 				'step' => 0.1
-			],
-			'props' => [
-				'output' => true
 			]
 		],
 
@@ -2105,6 +2162,12 @@ $lsDefaults = [
 			'props' => [ 'meta' => true ]
 		],
 
+		'isAsset' => [
+			'value' => '',
+			'keys' => 'isAsset',
+			'props' => [ 'meta' => true ]
+		],
+
 		'html' => [
 			'value' => '',
 			'keys' => 'html',
@@ -2207,13 +2270,22 @@ $lsDefaults = [
 			]
 		],
 
+		'mediaAttachments' => [
+			'value' => '',
+			'keys' => 'mediaAttachments',
+			'props' => [
+				'meta' => true
+			]
+		],
+
 		'mediaAutoPlay' => [
 			'value' => 'inherit',
 			'name' => __('Media Autoplay', 'LayerSlider'),
 			'keys' => 'autoplay',
 			'options' => [
 				'inherit' => __('Inherit', 'LayerSlider'),
-				'enabled' => __('Enabled', 'LayerSlider'),
+				'instant' => __('Immediately', 'LayerSlider'),
+				'enabled' => __('After Opening Transition', 'LayerSlider'),
 				'disabled' => __('Disabled', 'LayerSlider')
 			]
 		],
@@ -2251,17 +2323,6 @@ $lsDefaults = [
 			'value' => '',
 			'keys' => 'posterId',
 			'props' => [ 'meta' => true ]
-		],
-
-
-		'mediaFillMode' => [
-			'value' => 'cover',
-			'name' => __('Media Fill Mode', 'LayerSlider'),
-			'keys' => 'fillmode',
-			'options' => [
-				'contain'  => __('Contain', 'LayerSlider'),
-				'cover'  => __('Cover', 'LayerSlider')
-			]
 		],
 
 
@@ -2353,17 +2414,22 @@ $lsDefaults = [
 		],
 
 		'transitionInDuration' => [
-			'value' => 1000,
+			'value' => '1000',
 			'name' => __('Duration', 'LayerSlider'),
 			'keys' => 'durationin',
 			'attrs' => [ 'min' => 0, 'step' => 50 ]
 		],
 
 		'transitionInDelay' => [
-			'value' => 0,
+			'value' => '0',
 			'name' => __('Start At', 'LayerSlider'),
-			'keys' => 'delayin',
-			'attrs' => [ 'min' => 0, 'step' => 50 ]
+			'keys' => 'delayin'
+		],
+
+		'startAtFirst' => [
+			'value' => '0',
+			'name' => __('Start At First', 'LayerSlider'),
+			'keys' => 'startatfirst'
 		],
 
 		'transitionInEasing' => [
@@ -2475,6 +2541,17 @@ $lsDefaults = [
 			'keys' => 'filterin'
 		],
 
+		'zIndexIn' => [
+			'value' => '',
+			'name' => __('Stacking Order', 'LayerSlider'),
+			'keys' => 'zindexin',
+			'attrs' => [
+				'type' => 'number',
+				'min' => 1,
+				'placeholder' => __('auto', 'LayerSlider')
+			]
+		],
+
 		'transitionInPerspective' => [
 			'value' => '500',
 			'name' => __('Perspective', 'LayerSlider'),
@@ -2509,7 +2586,7 @@ $lsDefaults = [
 		],
 
 		'transitionOutDuration' => [
-			'value' => 1000,
+			'value' => '1000',
 			'name' => __('Duration', 'LayerSlider'),
 			'keys' => 'durationout',
 			'attrs' => [ 'min' => 0, 'step' => 50 ]
@@ -2642,6 +2719,17 @@ $lsDefaults = [
 			'keys' => 'filterout'
 		],
 
+		'zIndexOut' => [
+			'value' => '',
+			'name' => __('Stacking Order', 'LayerSlider'),
+			'keys' => 'zindexout',
+			'attrs' => [
+				'type' => 'number',
+				'min' => 1,
+				'placeholder' => __('auto', 'LayerSlider')
+			]
+		],
+
 		'transitionOutPerspective' => [
 			'value' => '500',
 			'name' => __('Perspective', 'LayerSlider'),
@@ -2657,7 +2745,7 @@ $lsDefaults = [
 		// -----
 
 		'skipLayer' => [
-			'value' => false,
+			'value' => '',
 			'name' => __('Hidden', 'LayerSlider'),
 			'keys' => 'skip',
 			'props' => [
@@ -2804,7 +2892,8 @@ $lsDefaults = [
 			'options' => [
 				'inherit' => __('Inherit', 'LayerSlider'),
 				'visible' => __('Visible', 'LayerSlider'),
-				'hidden' => __('Hidden', 'LayerSlider')
+				'hidden' => __('Hidden', 'LayerSlider'),
+				'textmask' => __('Mask Text Fragments', 'LayerSlider')
 			]
 		],
 
@@ -3002,7 +3091,8 @@ $lsDefaults = [
 			'options' => [
 				'inherit' => __('Inherit', 'LayerSlider'),
 				'visible' => __('Visible', 'LayerSlider'),
-				'hidden' => __('Hidden', 'LayerSlider')
+				'hidden' => __('Hidden', 'LayerSlider'),
+				'textmask' => __('Mask Text Fragments', 'LayerSlider')
 			]
 		],
 
@@ -3152,7 +3242,7 @@ $lsDefaults = [
 		],
 
 		'loopDuration' => [
-			'value' => 1000,
+			'value' => '1000',
 			'name' => __('Duration', 'LayerSlider'),
 			'keys' => 'loopduration',
 			'attrs' => ['min' => 0, 'step' => 100 ]
@@ -3198,7 +3288,7 @@ $lsDefaults = [
 		],
 
 		'loopOpacity' => [
-			'value' => 1,
+			'value' => '1',
 			'name' => __('Opacity', 'LayerSlider'),
 			'keys' => 'loopopacity',
 			'attrs' => [ 'min' => 0, 'max' => 1, 'step' => 0.1 ]
@@ -3299,7 +3389,7 @@ $lsDefaults = [
 		],
 
 		'loopWait' => [
-			'value' => 0,
+			'value' => '0',
 			'name' => __('Wait', 'LayerSlider'),
 			'keys' => 'looprepeatdelay',
 			'attrs' => [ 'min' => 0, 'step' => 100 ]
@@ -3350,7 +3440,7 @@ $lsDefaults = [
 		],
 
 		'hoverInDuration' => [
-			'value' => 500,
+			'value' => '500',
 			'name' => __('Duration', 'LayerSlider'),
 			'keys' => 'hoverdurationin',
 			'attrs' => [ 'min' => 0, 'step' => 100 ]
@@ -3583,6 +3673,12 @@ $lsDefaults = [
 			]
 		],
 
+		'parallaxReset' => [
+			'value' => false,
+			'name' => __('Reset Parallax Transition', 'LayerSlider'),
+			'keys' => 'parallaxreset'
+		],
+
 		'parallaxPerspective' => [
 			'value' => '',
 			'name' => __('Perspective', 'LayerSlider'),
@@ -3604,10 +3700,30 @@ $lsDefaults = [
 		],
 
 		'scrollDuration' => [
-			'value' => 500,
+			'value' => '500',
 			'name' => __('Duration', 'LayerSlider'),
 			'keys' => 'scrollduration',
 			'attrs' => [ 'min' => 0, 'step' => 100 ]
+		],
+
+		'scrollDurationRev' => [
+			'value' => '',
+			'name' => __('Reverse Duration', 'LayerSlider'),
+			'keys' => 'scrolldurationrev',
+			'attrs' => [ 'min' => 0, 'step' => 100, 'placeholder' => __('same', 'LayerSlider') ]
+		],
+
+		'scrollEase' => [
+			'value' => 'easeOutQuad',
+			'name' => __('Easing', 'LayerSlider'),
+			'keys' => 'scrollease'
+		],
+
+		'scrollEaseRev' => [
+			'value' => '',
+			'name' => __('Reverse  Easing', 'LayerSlider'),
+			'keys' => 'scrolleaserev',
+			'attrs' => [ 'placeholder' => __('same', 'LayerSlider') ]
 		],
 
 		'scrollCenter' => [
@@ -3637,6 +3753,15 @@ $lsDefaults = [
 			'value' => '50% 50% 0',
 			'name' => __('Transform Origin', 'LayerSlider'),
 			'keys' => 'scrolltransformorigin'
+		],
+
+		'scrollTransformOriginAlt' => [
+			'value' => '',
+			'name' => __('Alternate Transform Origin', 'LayerSlider'),
+			'keys' => 'scrolltransformoriginalt',
+			'attrs' => [
+				'placeholder' => __('same', 'LayerSlider')
+			]
 		],
 
 		'scrollPerspective' => [
@@ -4080,6 +4205,54 @@ $lsDefaults = [
 			]
 		],
 
+		'marginTop' => [
+			'value' => '',
+			'name' => __('Margin Top', 'LayerSlider'),
+			'keys' => 'margin-top',
+			'attrs' => [
+				'placeholder' => '0px'
+			],
+			'props' => [
+				'meta' => true
+			]
+		],
+
+		'marginRight' => [
+			'value' => '',
+			'name' => __('Margin Right', 'LayerSlider'),
+			'keys' => 'margin-right',
+			'attrs' => [
+				'placeholder' => '0px'
+			],
+			'props' => [
+				'meta' => true
+			]
+		],
+
+		'marginBottom' => [
+			'value' => '',
+			'name' => __('Margin Bottom', 'LayerSlider'),
+			'keys' => 'margin-bottom',
+			'attrs' => [
+				'placeholder' => '0px'
+			],
+			'props' => [
+				'meta' => true
+			]
+		],
+
+		'marginLeft' => [
+			'value' => '',
+			'name' => __('Margin Left', 'LayerSlider'),
+			'keys' => 'margin-left',
+			'attrs' => [
+				'placeholder' => '0px'
+			],
+			'props' => [
+				'meta' => true
+			]
+		],
+
 		'paddingTop' => [
 			'value' => '',
 			'name' => __('Padding Top', 'LayerSlider'),
@@ -4266,7 +4439,7 @@ $lsDefaults = [
 		],
 
 		'opacity' => [
-			'value' => 1,
+			'value' => '1',
 			'name' => __('Opacity', 'LayerSlider'),
 			'keys' => 'opacity',
 			'attrs' => [
@@ -4305,6 +4478,28 @@ $lsDefaults = [
 			'value' => '#000',
 			'name' => __('Color', 'LayerSlider'),
 			'keys' => 'color',
+			'props' => [
+				'meta' => true
+			]
+		],
+
+		'stroke' => [
+			'value' => '#000',
+			'name' => __('Stroke Color', 'LayerSlider'),
+			'keys' => 'stroke',
+			'props' => [
+				'meta' => true
+			]
+		],
+
+		'strokeWidth' => [
+			'value' => 0,
+			'name' => __('Stroke Size', 'LayerSlider'),
+			'keys' => 'stroke-width',
+			'attrs' => [
+				'type' => 'number',
+				'min' => 0
+			],
 			'props' => [
 				'meta' => true
 			]
@@ -4358,6 +4553,19 @@ $lsDefaults = [
 				'100% 0%' => __('right top', 'LayerSlider'),
 				'100% 50%' => __('right center', 'LayerSlider'),
 				'100% 100%' => __('right bottom', 'LayerSlider')
+			]
+		],
+
+		'smartBG' => [
+			'value' => 'disabled',
+			'name' => __('Smart Background Behavior', 'LayerSlider'),
+			'keys' => 'smartBG',
+			'options' => [
+				'disabled' => __('Disabled', 'LayerSlider'),
+				'enabled' => __('Continuous Background', 'LayerSlider'),
+				'inout' => __('Dynamic for Opening/Ending Transitions', 'LayerSlider'),
+				'loop' => __('Dynamic for Loop Transition', 'LayerSlider'),
+				'inoutloop' => __('Dynamic for Opening/Ending/Loop Transitions', 'LayerSlider')
 			]
 		],
 
@@ -4531,14 +4739,22 @@ $lsDefaults = [
 		],
 
 		'overflow' => [
-			'value' => 'visible',
+			'value' => '',
 			'name' => __('Overflow', 'LayerSlider'),
 			'keys' => 'overflow',
 			'options' => [
+				'' => __('Default', 'LayerSlider'),
 				'visible' => __('Visible', 'LayerSlider'),
 				'hidden' => __('Hidden', 'LayerSlider')
 			]
 		],
+
+		'trmask' => [
+			'value' => false,
+			'name' => __('Mask Transitions', 'LayerSlider'),
+			'keys' => 'trmask'
+		],
+
 
 		'cursor' => [
 			'value' => '',
@@ -4552,7 +4768,9 @@ $lsDefaults = [
 				'text' => __('Text', 'LayerSlider'),
 				'vertical-text' => __('Vertical text', 'LayerSlider'),
 				'zoom-in' => __('Zoom in', 'LayerSlider'),
-				'zoom-out' => __('Zoom out', 'LayerSlider')
+				'zoom-out' => __('Zoom out', 'LayerSlider'),
+				'move' => __('Move', 'LayerSlider'),
+				'none' => __('None', 'LayerSlider')
 			]
 		],
 

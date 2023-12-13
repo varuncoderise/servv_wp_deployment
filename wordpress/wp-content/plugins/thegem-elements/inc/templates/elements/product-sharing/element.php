@@ -26,6 +26,7 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 			'tumblr' => '1',
 			'linkedin' => '1',
 			'reddit' => '1',
+			'whatsapp' => '',
 			'icons_color' => '',
 			'icons_color_hover' => '',
 			'icons_size' => 'tiny',
@@ -34,11 +35,11 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 			thegem_templates_extra_options_extract(),
 			thegem_templates_design_options_extract('single-product')
         ), $atts, 'thegem_te_product_sharing');
-		
+
 		// Init Design Options Params
 		$uniqid = uniqid('thegem-custom-').rand(1,9999);
 		$custom_css = thegem_templates_element_design_options($uniqid, '.thegem-te-product-sharing', $params);
-		
+
 		// Init Sharing
 		ob_start();
 		$product = thegem_templates_init_product();
@@ -47,7 +48,7 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 			ob_end_clean();
 			return thegem_templates_close_product($this->get_name(), $this->shortcode_settings(), '');
 		}
-  
+
 		$titleClass = thegem_te_product_text_styled($params);
 
 
@@ -65,7 +66,7 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 		<div <?php if (!empty($params['element_id'])): ?>id="<?=esc_attr($params['element_id']); ?>"<?php endif;?>
              class="thegem-te-product-sharing <?= esc_attr($params['element_class']); ?> <?= esc_attr($uniqid); ?>"
 			<?= thegem_data_editor_attribute($uniqid . '-editor') ?>>
-            
+
             <div class="product-sharing socials-sharing socials socials-colored-hover">
 				<?php if ($params['title']): ?>
                     <div class="product-sharing__title">
@@ -93,6 +94,9 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 	                <?php if ($params['reddit']): ?>
                         <a class="socials-item" target="_blank" href="<?= esc_url('https://www.reddit.com/submit?url='.urlencode(get_permalink()).'&amp;title='.urlencode(get_the_title())); ?>" title="Reddit"><i class="socials-item-icon reddit"></i></a>
 	                <?php endif; ?>
+	                <?php if ($params['whatsapp']): ?>
+		                <a class="socials-item" target="_blank" href="<?= esc_url('https://wa.me/?text='.urlencode(get_permalink())); ?>" title="WhatsApp"><i class="socials-item-icon whatsapp"></i></a>
+	                <?php endif; ?>
                 </div>
             </div>
 		</div>
@@ -100,7 +104,7 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 		<?php
 		//Custom Styles
 		$customize = '.thegem-te-product-sharing.'.$uniqid;
-		
+
 		// Layout Styles
 		if (!empty($params['alignment'])) {
 			$custom_css .= $customize.' .product-sharing {justify-content: ' . $params['alignment'] . '; text-align: ' . $params['alignment'] . ';}';
@@ -111,7 +115,7 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 		if (!empty($params['title_color'])) {
 			$custom_css .= $customize.' .product-sharing .product-sharing__title span {color: ' . $params['title_color'] . ';}';
 		}
-		
+
 		// Icons Styles
 		if (!empty($params['icons_color'])) {
 			$custom_css .= $customize.' .product-sharing .product-sharing__list a > i {color: ' . $params['icons_color'] . ';}';
@@ -122,7 +126,7 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 		if ($params['icons_size'] == 'custom' && !empty($params['icons_size_custom'])) {
 			$custom_css .= $customize.' .product-sharing .product-sharing__list a > i {font-size: ' . $params['icons_size_custom'] . 'px;}';
 		}
-		
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
 
 		// Print custom css
@@ -134,11 +138,11 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 		$return_html = $css_output.$return_html;
 		return thegem_templates_close_product($this->get_name(), $this->shortcode_settings(), $return_html);
 	}
-	
+
 	public function set_layout_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('General', 'thegem'),
@@ -228,14 +232,14 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-    
+
     public function set_socials_params() {
 	    $result = array();
 	    $group = __('General', 'thegem');
-	
+
 	    $result[] = array(
 		    'type' => 'thegem_delimeter_heading',
 		    'heading' => __('Icons', 'thegem'),
@@ -254,7 +258,7 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 	    );
 	    $result[] = array(
             'type' => 'checkbox',
-            'heading' => __('Twitter', 'thegem'),
+            'heading' => __('Twitter (X)', 'thegem'),
             'param_name' => 'twitter',
             'value' => array(__('Yes', 'thegem') => '1'),
             'std' => '1',
@@ -294,6 +298,15 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
             'param_name' => 'reddit',
             'value' => array(__('Yes', 'thegem') => '1'),
             'std' => '1',
+            'edit_field_class' => 'vc_column vc_col-sm-4',
+		    'group' => $group
+        );
+	    $result[] = array(
+            'type' => 'checkbox',
+            'heading' => __('Whatsapp', 'thegem'),
+            'param_name' => 'whatsapp',
+            'value' => array(__('Yes', 'thegem') => '1'),
+            'std' => '',
             'edit_field_class' => 'vc_column vc_col-sm-4',
 		    'group' => $group
         );
@@ -339,7 +352,7 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 		    'edit_field_class' => 'vc_column vc_col-sm-6',
 		    'group' => $group
 	    );
-        
+
         return $result;
     }
 
@@ -352,16 +365,16 @@ class TheGem_Template_Element_Product_Sharing extends TheGem_Product_Template_El
 			'category' => __('Single Product Builder', 'thegem'),
 			'description' => __('Product Sharing (Product Builder)', 'thegem'),
 			'params' => array_merge(
-			
+
 			    /* General - Layout */
 				$this->set_layout_params(),
-				
+
 				/* General - Socials */
 				$this->set_socials_params(),
-				
+
 				/* Extra Options */
 				thegem_set_elements_extra_options(),
-				
+
 				/* Flex Options */
 				thegem_set_elements_design_options('single-product')
 			),

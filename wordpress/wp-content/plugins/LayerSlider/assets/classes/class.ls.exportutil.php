@@ -79,26 +79,35 @@ class LS_ExportUtil {
 	 * @access public
 	 * @param mixed $files Image path or an array of image paths to be added
 	 * @param string $folder Sub-folder name
-	 * @param string $imgFolder Name of the folder that stores the images
+	 * @param string $imagesDir Name of the folder that stores the images
+	 * @param string $forceDir Forces the provided directory name
 	 * @return void
 	 */
-	public function addImage($files, $folder = '', $imgFolder = 'uploads') {
+	public function addImage($files, $folder = '', $imagesDir = 'uploads', $forceDir = false ) {
 
 		// Check file
-		if(empty($files)) { return false; }
+		if( empty( $files ) ) {
+			return false;
+		}
 
 		// Check file type
-		if(!is_array($files)) { $files = [ $files ]; }
-
-		// Check folder
-		$folder = is_string($folder) ? $folder."/$imgFolder/" : "$imgFolder/";
+		if( ! is_array( $files ) ) {
+			$files = [ $files ];
+		}
 
 		// Add contents to ZIP
-		foreach($files as $file) {
-			if(!empty($file) && is_string($file)) {
-				$this->zip->addFile($file,
-					$folder.sanitize_file_name(basename($file))
-				);
+		foreach( $files as $file ) {
+
+			if( ! empty( $file ) && is_string( $file ) ) {
+
+				if( ! $forceDir ) {
+					$isAsset = ( strpos( $file, '/layerslider/assets/' ) !== false );
+					$imagesDir = $isAsset ? 'assets' : 'uploads';
+				}
+
+				$projectDir = is_string($folder) ? $folder."/$imagesDir/" : "$imagesDir/";
+
+				$this->zip->addFile( $file, $projectDir.basename( $file ) );
 			}
 		}
 	}
@@ -206,6 +215,13 @@ class LS_ExportUtil {
 						$this->_addImageToList( $layer, 'imageId', 'image' );
 						$this->_addImageToList( $layer, 'posterId', 'poster' );
 						$this->_addImageToList( $layer, 'layerBackgroundId', 'layerBackground' );
+
+						// Media uploads
+						if( ! empty( $layer['mediaAttachments'] ) ) {
+							foreach( $layer['mediaAttachments'] as $media ) {
+								$this->imageList[] = $media['url'];
+							}
+						}
 					}
 				}
 			}

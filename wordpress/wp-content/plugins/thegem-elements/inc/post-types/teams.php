@@ -156,7 +156,7 @@ function thegem_team_person_settings_box($post) {
 function thegem_team_person_socials_list() {
 	return (array)apply_filters('thegem_team_person_socials_list', array(
 		'facebook' => __('Facebook'),
-		'twitter' => __('Twitter'),
+		'twitter' => __('Twitter (X)'),
 		'linkedin' => __('LinkedIn'),
 		'instagram' => __('Instagram'),
 		'skype' => __('Skype'),
@@ -165,7 +165,7 @@ function thegem_team_person_socials_list() {
 
 function thegem_team_person_additional_socials_list() {
 	return array_diff(apply_filters('thegem_socials_icons_list', array(
-		'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter', 'instagram' => 'Instagram',
+		'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter (X)', 'instagram' => 'Instagram',
 		'pinterest' => 'Pinterest', 'stumbleupon' => 'StumbleUpon', 'rss' => 'RSS',
 		'vimeo' => 'Vimeo', 'youtube' => 'YouTube', 'flickr' => 'Flickr', 'tumblr' => 'Tumblr',
 		'wordpress' => 'WordPress', 'dribbble' => 'Dribbble', 'deviantart' => 'DeviantArt', 'share' => 'Share',
@@ -239,7 +239,7 @@ function thegem_get_sanitize_team_person_data($post_id = 0, $item_data = array()
 		$person_data['social_link_'.$social] = esc_url($person_data['social_link_'.$social], $protocol);
 	}
 	$socials_list = array_keys(apply_filters('thegem_socials_icons_list', array(
-		'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter', 'instagram' => 'Instagram',
+		'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter (X)', 'instagram' => 'Instagram',
 		'pinterest' => 'Pinterest', 'stumbleupon' => 'StumbleUpon', 'rss' => 'RSS',
 		'vimeo' => 'Vimeo', 'youtube' => 'YouTube', 'flickr' => 'Flickr', 'tumblr' => 'Tumblr',
 		'wordpress' => 'WordPress', 'dribbble' => 'Dribbble', 'deviantart' => 'DeviantArt', 'share' => 'Share',

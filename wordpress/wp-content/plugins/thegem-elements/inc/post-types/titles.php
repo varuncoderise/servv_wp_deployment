@@ -117,7 +117,7 @@ function thegem_custom_title_shortcodes_array($shortcodes) {
 						'value' => array(
 							__('Color', 'thegem') => 'color',
 							__('Gradient', 'thegem') => 'gradient',
-							__('Image', 'thegem') => 'image',
+							__('Image / Post Featured Image', 'thegem') => 'image',
 							__('Video', 'thegem') => 'video',
 						),
 						'description' => __('Specify background type of the background container.', 'thegem'),
@@ -132,6 +132,16 @@ function thegem_custom_title_shortcodes_array($shortcodes) {
 							'value' => array('color')
 						),
 						'description' => __('Specify background color for page/post title\'s background. Note: if background color is set in page options -> title area -> dynamic settings, it will overwrite the value set here.', 'thegem'),
+					),
+					array(
+						'type' => 'checkbox',
+						'heading' => __('Use post featured image', 'thegem'),
+						'param_name' => 'background_image_use_featured',
+						'value' => array(__('Yes', 'thegem') => '1'),
+						'dependency' => array(
+							'element' => 'background_type',
+							'value' => array('image')
+						),
 					),
 					array(
 						'type' => 'attach_image',
@@ -2201,6 +2211,7 @@ function thegem_title_background_shortcode($atts, $content) {
 		'background_type' => '',
 		'background_color' => '',
 		'background_image' => '',
+		'background_image_use_featured' => 0,
 		'background_image_color' => '',
 		'background_image_repeat' => '',
 		'background_size' => 'auto',
@@ -2269,6 +2280,22 @@ function thegem_title_background_shortcode($atts, $content) {
 				$satts['ken_burns_transition_speed'] = empty($page_data['ken_burns_transition_speed']) ? $satts['ken_burns_transition_speed'] : $page_data['ken_burns_transition_speed'];
 				$satts['background_parallax'] = $page_data['title_background_effect'] == 'parallax';
 				$satts['background_image_overlay'] = $page_data['title_background_image_overlay'];
+				if(!empty($satts['background_image_use_featured'])) {
+					$pid = get_queried_object_id();
+					$thumbnail_id = 0;
+					if(is_singular()) {
+						$thumbnail_id = get_post_thumbnail_id($pid);
+					}
+					if(is_tax('product_cat')) {
+						$attachment_id = get_term_meta( $pid, 'thumbnail_id', true );
+						if($attachment_id) {
+							$thumbnail_id = $attachment_id;
+						}
+					}
+					if(!empty($thumbnail_id)) {
+						$satts['background_image'] = thegem_attachment_url($thumbnail_id);
+					}
+				}
 			}
 			if($page_data['title_background_type'] == 'video' && !empty($page_data['title_background_video'])) {
 				$satts['background_type'] = $page_data['title_background_type'];

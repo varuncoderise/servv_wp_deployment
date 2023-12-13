@@ -16,6 +16,8 @@
     outline: none;
     background: transparent;
     padding: 0;
+    font-size: 0;
+    line-height: 0;
 }
 .thegem-te-menu .menu-toggle.small,
 .thegem-te-menu .menu-toggle.dl-trigger,
@@ -533,6 +535,9 @@
 .thegem-te-menu nav.desktop-view .nav-menu.submenu-hide-border > li ul,
 .thegem-te-menu nav.desktop-view .nav-menu.submenu-hide-border > li ul li {
     border: none !important;
+}
+.thegem-te-menu nav.desktop-view .nav-menu.submenu-hide-border > li.megamenu-enable.megamenu-style-grid ul li {
+  margin: 0 !important;
 }
 
 /*Use Light Color Scheme*/

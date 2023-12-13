@@ -61,29 +61,29 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 			thegem_templates_extra_options_extract(),
 			thegem_templates_design_options_extract('single-product')
         ), $atts, 'thegem_te_product_add_to_cart');
-		
+
 		// Init Design Options Params
 		$uniqid = uniqid('thegem-custom-').rand(1,9999);
 		$custom_css = thegem_templates_element_design_options($uniqid, '.thegem-te-product-add-to-cart', $params);
-		
+
 		// Init Add_To_Cart
 		ob_start();
 		$product = thegem_templates_init_product();
-		
-		if (empty($product) || !$product->is_in_stock()) {
+
+		if (empty($product)) {
 			ob_end_clean();
 			return thegem_templates_close_product($this->get_name(), $this->shortcode_settings(), '');
 		}
-        
+
         $isAjaxLoad = $product->get_type() != 'external' && $product->get_type() != 'grouped';
 
 		?>
-  
+
 		<div <?php if (!empty($params['element_id'])): ?>id="<?=esc_attr($params['element_id']); ?>"<?php endif;?>
              class="thegem-te-product-add-to-cart <?= esc_attr($params['element_class']); ?> <?= esc_attr($uniqid); ?>"
              <?=thegem_data_editor_attribute($uniqid.'-editor')?>
              <?php if ($isAjaxLoad):?>data-ajax-load="<?=$params['add_to_cart_btn_ajax']?>"<?php endif; ?>>
-            
+
             <?= woocommerce_template_single_add_to_cart() ?>
             <?= thegem_woocommerce_product_page_ajax_notification() ?>
 		</div>
@@ -93,7 +93,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		$customize = '.thegem-te-product-add-to-cart.'.$uniqid;
 		$resolution = array('desktop', 'tablet', 'mobile');
 		$unit = 'px';
-		
+
 		// General Layout
 		if (!empty($params['general_layout'])) {
 			$custom_css .= $customize.' form.cart {flex-direction: ' . $params['general_layout'] . '; }';
@@ -102,7 +102,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 			$custom_css .= $customize.' form.cart table.variations {width: auto;}';
 			$custom_css .= $customize.' form.cart .single_variation_wrap {margin-top: 0px;}';
         }
-		
+
 		// Attributes Layout
 		if (!empty($params['attributes_section_layout'])) {
 			$custom_css .= $customize.' form.cart table.variations tbody {flex-direction: ' . $params['attributes_section_layout'] . ';}';
@@ -112,7 +112,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 			$custom_css .= $customize.' form.cart table.variations tbody tr {margin-right: 20px;}';
 			$custom_css .= $customize.' form.cart table.variations .gem-attribute-options {display: flex; flex-wrap: wrap;}';
 		}
-		
+
 		// Add to cart Layout
 		if (!empty($params['add_to_cart_section_layout'])) {
 			$custom_css .= $customize.' form:not(.variations_form) {flex-direction: ' . $params['add_to_cart_section_layout'] . '; }';
@@ -124,12 +124,12 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 			$custom_css .= $customize.' form.cart .yith-wcwl-add-to-wishlist {margin-left: 0;}';
 			$custom_css .= $customize.' form.cart .yith-wcwl-add-to-wishlist a {width: auto !important;}';
 		}
-  
+
 		// Horizontal Alignment
 		if ($params['horizontal_alignment'] == 'center') {
 			$custom_css .= $customize.' form.cart {justify-content: center;}';
 			$custom_css .= $customize.' form.cart table.variations tbody {justify-content: center;}';
-			$custom_css .= $customize.' form.cart table.variations th.label {text-align: center;}';
+			$custom_css .= $customize.', '.$customize.' form.cart table.variations th.label {text-align: center;}';
 			$custom_css .= $customize.' form.cart .single_variation_wrap {justify-content: center;}';
 			$custom_css .= $customize.' form.cart .single_variation_wrap .woocommerce-variation {justify-content: center;}';
 			$custom_css .= $customize.' form.cart .woocommerce-variation-add-to-cart {justify-content: center;}';
@@ -149,7 +149,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		}
 		if ($params['horizontal_alignment'] == 'right') {
 			$custom_css .= $customize.' form.cart table.variations tbody {justify-content: flex-end;}';
-			$custom_css .= $customize.' form.cart table.variations th.label {text-align: right;}';
+			$custom_css .= $customize.', '.$customize.' form.cart table.variations th.label {text-align: right;}';
 			$custom_css .= $customize.' form.cart .single_variation_wrap {justify-content: flex-end;}';
 			$custom_css .= $customize.' form.cart .single_variation_wrap .woocommerce-variation {justify-content: flex-end;}';
 			$custom_css .= $customize.' form.cart .woocommerce-variation-add-to-cart {justify-content: flex-end;}';
@@ -166,7 +166,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 			$custom_css .= $customize.' form.cart .single_variation_wrap .woocommerce-variation {align-items: flex-end;}';
 			$custom_css .= $customize.' form.cart .woocommerce-variation-add-to-cart {align-items: flex-end;}';
 		}
-  
+
 		// Amount control styled
 		if (empty($params['amount_control'])) {
 			$custom_css .= $customize.' form.cart .quantity {display: none !important;}';
@@ -331,7 +331,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
         if (empty($params['in_stock_amount'])) {
 			$custom_css .= $customize.' form.cart .woocommerce-variation-availability {display: none;}';
 		}
-  
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
 
 		// Print custom css
@@ -343,7 +343,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		$return_html = $css_output.$return_html;
 		return thegem_templates_close_product($this->get_name(), $this->shortcode_settings(), $return_html);
 	}
-    
+
     public function set_general_params () {
 	    $result[] = array(
 		    'type' => 'thegem_delimeter_heading',
@@ -405,14 +405,14 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-12',
 		    'group' => 'General',
 	    );
-	
+
 	    return $result;
     }
-    
+
     public function set_add_to_cart_btn_params() {
 	    $resolutions = array('desktop', 'tablet', 'mobile');
 	    $group = __('General', 'thegem');
-	
+
 	    $result[] = array(
 		    'type' => 'thegem_delimeter_heading',
 		    'heading' => __('"Add to cart" button', 'thegem'),
@@ -463,7 +463,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-12',
 		    'group' => $group,
 	    );
-	
+
 	    foreach ($resolutions as $res) {
 		    $result[] = array(
 			    'type' => 'textfield',
@@ -478,7 +478,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 			    'group' => $group,
 		    );
 	    }
-	
+
 	    $result[] = array(
 		    'type' => 'dropdown',
 		    'heading' => __('Border Width', 'thegem'),
@@ -585,8 +585,8 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-6',
 		    'group' => $group
 	    );
-        
-	
+
+
         /*
 	    $result[] = array(
 		    'type' => 'thegem_delimeter_heading',
@@ -596,13 +596,13 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'group' => 'General',
 	    );
         */
-	
+
 	    return $result;
     }
-    
+
     public function set_wishlist_params() {
 	    $group = __('General', 'thegem');
-     
+
 	    $result[] = array(
 		    'type' => 'thegem_delimeter_heading',
 		    'heading' => __('"Add to wishlist" button', 'thegem'),
@@ -610,7 +610,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 		    'group' => $group
 	    );
-	
+
 	    $result[] = array(
 		    'type' => 'checkbox',
 		    'heading' => __('Button', 'thegem'),
@@ -625,7 +625,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'description' => __('This works only if YITH WooCommerce Wishlist plugin is active', 'thegem'),
 		    'group' => $group
 	    );
-	
+
 	    $result[] = array(
 		    'type' => 'colorpicker',
 		    'heading' => __('Normal Color', 'thegem'),
@@ -662,15 +662,15 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-4',
 		    'group' => $group
 	    );
-	
+
 	    return $result;
     }
-    
+
     public function set_amount_params() {
 	    $resolutions = array('desktop', 'tablet', 'mobile');
 	    $result = array();
 	    $group = __('General', 'thegem');
-	
+
 	    $result[] = array(
 		    'type' => 'thegem_delimeter_heading',
 		    'heading' => __('"Amount" control', 'thegem'),
@@ -709,7 +709,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-12',
 		    'group' => $group
 	    );
-	
+
 	    foreach ($resolutions as $res) {
 		    $result[] = array(
 			    'type' => 'textfield',
@@ -724,7 +724,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 			    'group' => $group
 		    );
 	    }
-	
+
 	    $result[] = array(
 		    'type' => 'colorpicker',
 		    'heading' => __('"Amount" control text color', 'thegem'),
@@ -737,7 +737,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-6',
 		    'group' => $group
 	    );
-	
+
 	    $result[] = array(
 		    'type' => 'colorpicker',
 		    'heading' => __('"Amount" control background color', 'thegem'),
@@ -750,7 +750,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-6',
 		    'group' => $group
 	    );
-	
+
 	    $result[] = array(
 		    'type' => 'colorpicker',
 		    'heading' => __('"Amount" control border color', 'thegem'),
@@ -763,7 +763,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-6',
 		    'group' => $group
 	    );
-	
+
 	    $result[] = array(
 		    'type' => 'colorpicker',
 		    'heading' => __('"Amount" control separator color', 'thegem'),
@@ -776,14 +776,14 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-6',
 		    'group' => $group
 	    );
-	
+
 	    return $result;
     }
-    
+
     public function set_attributes_params() {
 	    $result = array();
 	    $group = __('General', 'thegem');
-     
+
 	    $result[] = array(
 		    'type' => 'thegem_delimeter_heading',
 		    'heading' => __('"Attributes" section', 'thegem'),
@@ -915,10 +915,10 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-4',
 		    'group' => $group
 	    );
-	
+
 	    return $result;
     }
-    
+
     public function set_price_params() {
 	    $result[] = array(
 		    'type' => 'thegem_delimeter_heading',
@@ -960,7 +960,7 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 		    'edit_field_class' => 'vc_column vc_col-sm-12',
 		    'group' => 'General',
 	    );
-	
+
 	    return $result;
     }
 
@@ -973,25 +973,25 @@ class TheGem_Template_Element_Product_Add_To_Cart extends TheGem_Product_Templat
 			'category' => __('Single Product Builder', 'thegem'),
 			'description' => __('Product Add To Cart (Product Builder)', 'thegem'),
 			'params' => array_merge(
-       
+
 			    /* General - Layout */
 				$this->set_general_params(),
-				
+
 				/* General - "Add to cart" button */
 				$this->set_add_to_cart_btn_params(),
-                
+
                 /* General - "Add to wishlist" button */
 				$this->set_wishlist_params(),
-                
+
                 /* General - "Amount" control */
 				$this->set_amount_params(),
-				
+
 				/* General - "Attributes" section */
 				$this->set_attributes_params(),
-                
+
                 /* General - "Variation" price */
 				$this->set_price_params(),
-				
+
 				/* Extra Options */
 				thegem_set_elements_extra_options(),
 

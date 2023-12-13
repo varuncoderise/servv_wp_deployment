@@ -77,7 +77,7 @@ class TheGem_Template_Element_Post_Breadcrumbs extends TheGem_Single_Post_Templa
 			'name' => __('Post Breadcrumbs', 'thegem'),
 			'base' => 'thegem_te_post_breadcrumbs',
 			'icon' => 'thegem-icon-wpb-ui-element-post-breadcrumbs',
-			'category' => __('Single Post Builder', 'thegem'),
+			'category' => $this->is_template() ? __('Single Post Builder', 'thegem') : __('Single post', 'thegem'),
 			'description' => __('Post Breadcrumbs (Single Post Builder)', 'thegem'),
 			'params' => array_merge(
 			

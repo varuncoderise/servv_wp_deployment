@@ -24,7 +24,7 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 	public function head_scripts($attr) {
 		$attr = shortcode_atts(array('pack' => 'thegem-header'), $attr, 'thegem-te-wishlist');
 		wp_enqueue_style('icons-'.$attr['pack']);
-		
+
 		wp_enqueue_script('thegem-te-cart');
 		wp_enqueue_style('thegem-te-cart');
 	}
@@ -32,14 +32,14 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 	public function front_editor_scripts() {
 		wp_enqueue_style('thegem-te-cart-editor');
 	}
-	
+
 	public function is_woocommerce_exist() {
 		return thegem_is_plugin_active('woocommerce/woocommerce.php');
 	}
 
 	public function shortcode_output($atts, $content = '') {
 		if (!$this->is_woocommerce_exist()) return;
-  
+
 		// General params
 		$params = shortcode_atts(array_merge(array(
 			'pack' => 'thegem-header',
@@ -61,6 +61,7 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 			'label_background_hover' => '',
 			'minicart_spacing' => '20',
 			'view_type' => wp_is_mobile() ? 'mobile-view' : 'desktop-view',
+			'mini_cart_type' => thegem_get_option('mini_cart_type'),
 			//Extra
 			'element_id' => '',
 			'element_class' => '',
@@ -71,47 +72,48 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 		$custom_css = $uniqid = $icon = '';
 		$uniqid = uniqid('thegem-custom-').rand(1,9999);
 		$custom_css = thegem_templates_element_design_options($uniqid, '.thegem-te-cart', $params);
-		
+
 		//General
 		$el_id = $el_class = '';
 		if (!empty($params['element_id'])){ $el_id = $params['element_id']; }
 		if (!empty($params['element_class'])){ $el_class = $params['element_class']; }
-  
-		
+
+
 		// Label
 		if ($params['label_type'] == 'circle'){
 			$label_type = 'circle-count';
 		} else {
 			$label_type = 'label-count';
 		}
-		
+
 		// Init cart
 		$count = thegem_get_cart_count();
 		ob_start();
 		woocommerce_mini_cart();
 		$minicart = ob_get_clean();
 
-		ob_start();
-        
-        ?>
-		
+		ob_start(); ?>
+
 		<div <?php if ($el_id): ?>id="<?=esc_attr($el_id); ?>"<?php endif;?> class="thegem-te-cart <?=esc_attr($label_type)?> <?=$params['view_type']?> <?= esc_attr($el_class); ?> <?= esc_attr($uniqid); ?>" <?=thegem_data_editor_attribute($uniqid . '-editor')?>>
 			<div class="menu-item-cart <?=thegem_te_delay_class()?>">
 				<a href="<?=esc_url(get_permalink(wc_get_page_id('cart')))?>" class="minicart-menu-link <?php if ($count == 0):?>empty<?php endif; ?>">
 					<span class="minicart-item-count"><?=$count?></span>
 				</a>
-				<div class="minicart">
-					<div class="widget_shopping_cart_content"><?=$minicart?></div>
-				</div>
-				<div class="mobile-minicart-overlay"></div>
+
+				<?php if (!empty($params['mini_cart_type']) && $params['mini_cart_type'] == 'dropdown'): ?>
+                    <div class="minicart">
+                        <div class="widget_shopping_cart_content"><?= $minicart ?></div>
+                    </div>
+                    <div class="mobile-minicart-overlay"></div>
+				<?php endif; ?>
 			</div>
 		</div>
-		
+
 		<?php
 		
 		// Icon Custom Styles
 		$customize = '.thegem-te-cart.'.$uniqid;
-		
+
 		if ($params['pack'] == 'elegant' && $params['icon_elegant']) {
 			$custom_css .= $customize.' .minicart-menu-link:before {content: "\\'.$params['icon_elegant'].'"; font-family: "ElegantIcons";}';
 		}
@@ -130,19 +132,19 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 		if($params['pack'] == 'thegem-header' && !empty($params['icon_thegem_header'])) {
 			$custom_css .= $customize.' .minicart-menu-link:before {content: "\\'.$params['icon_thegem_header'].'"; font-family: "TheGem Header";}';
 		}
-  
+
 		if(!empty($params['icon_size_custom']) && $params['icon_size'] == 'custom') {
 			$custom_size = $params['icon_size_custom'];
 			$custom_css .= $customize.' .minicart-menu-link:before {font-size: '.esc_attr($custom_size).'px;}';
 		}
-		
+
 		if(!empty($params['icon_color'])) {
 			$custom_css .= $customize.' .minicart-menu-link {color: '.$params['icon_color'].';}';
 		}
 		if(!empty($params['icon_color_hover'])) {
 			$custom_css .= $customize.' .minicart-menu-link:hover {color: '.$params['icon_color_hover'].';}';
 		}
-		
+
 		if(!empty($params['label_color'])) {
 			$custom_css .= $customize.' .minicart-item-count {color: '.$params['label_color'].';}';
 		}
@@ -157,24 +159,24 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 			$custom_css .= $customize.' .minicart-menu-link:hover .minicart-item-count {background-color: '.$params['label_background_hover'].';}';
 			$custom_css .= $customize.'.label-count .minicart-menu-link:hover .minicart-item-count:after {background-color: '.$params['label_background_hover'].';}';
 		}
-		
+
 		// Spacing
 		if (isset($params['minicart_spacing']) && !empty($params['minicart_spacing'])) {
 			$custom_css .= $customize.'.desktop-view .minicart {top: calc(100% + ' . $params['minicart_spacing'] . 'px);}';
 		}
-		
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
-		
+
 		// Print custom css
 		$css_output = '';
 		if(!empty($custom_css)) {
 			$css_output = '<style>'.$custom_css.'</style>';
 		}
-		
+
 		$return_html = $css_output.$return_html;
 		return $return_html;
 	}
-	
+
 	public function thegem_te_cart_set_params () {
 		if ($this->is_woocommerce_exist()) {
 			$params = array_merge(
@@ -317,7 +319,7 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 						'group' => __('General', 'thegem')
 					),
 				)),
-				
+
 				/* General - Label */
 				array(
 					array(
@@ -368,7 +370,7 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 						'group' => 'General'
 					),
 				),
-				
+
 				/* General - Spacing */
 				array(
 					array(
@@ -387,10 +389,10 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 						'group' => __('General', 'thegem')
 					),
 				),
-				
+
 				/* General - Extra */
 				thegem_set_elements_extra_options(),
-				
+
 				thegem_set_elements_design_options()
 			);
 		} else {
@@ -403,7 +405,7 @@ class TheGem_Template_Element_Cart extends TheGem_Template_Element {
 				)
 			);
 		}
-		
+
 		return $params;
     }
 

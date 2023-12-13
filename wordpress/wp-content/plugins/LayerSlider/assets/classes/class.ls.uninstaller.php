@@ -64,6 +64,8 @@ class LS_Uninstaller {
 			'ls_use_srcset',
 			'ls_enhanced_lazy_load',
 			'ls_enable_play_by_scroll',
+			'ls_wpml_string_translation',
+			'ls_wpml_media_translation',
 
 			// Updates & Services
 			'ls-share-displayed',
@@ -85,10 +87,14 @@ class LS_Uninstaller {
 			'ls-store-last-updated',
 			'ls-important-notice',
 			'ls-release-log-last-updated',
+			'ls-remote-data',
+			'ls-remote-data-updated',
+			'ls-remote-data-v2',
+			'ls-remote-data-v2-updated',
+			'ls-news-feed-data',
+			'ls-news-feed-data-updated',
 			'ls-google-fonts-data',
 			'ls-google-fonts-data-updated',
-			'ls-remote-data-updated',
-			'ls-remote-data',
 			'ls-p-url',
 
 			// GDPR
@@ -106,6 +112,14 @@ class LS_Uninstaller {
 
 			// Other
 			'ls-transition-presets',
+
+			// 404
+			'ls-404-addon-enabled',
+			'ls-404-addon-title',
+			'ls-404-addon-type',
+			'ls-404-addon-page',
+			'ls-404-addon-slider',
+			'ls-404-addon-background',
 
 			// Legacy
 			'ls-collapsed-boxes',

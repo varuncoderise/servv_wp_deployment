@@ -184,6 +184,7 @@ function layerslider_create_db_table() {
 			  author int(10) NOT NULL DEFAULT 0,
 			  name varchar(100) DEFAULT '',
 			  slug varchar(100) DEFAULT '',
+			  keywords varchar(100) DEFAULT '',
 			  data mediumtext NOT NULL,
 			  date_c int(10) NOT NULL,
 			  date_m int(10) NOT NULL,
@@ -228,12 +229,10 @@ function layerslider_verify_db_tables() {
 
 	global $wpdb;
 
-
 	// Step 1: Check DB version
 	if( version_compare( get_option('ls-db-version', '1.0.0'), LS_DB_VERSION, '<' ) ) {
 		return false;
 	}
-
 
 
 	// Step 2: Verify that the DB tables exist
@@ -246,7 +245,7 @@ function layerslider_verify_db_tables() {
 
 
 	// Step 3: Some hand picked things to look for
-	$popup = $wpdb->get_var("SHOW COLUMNS FROM `{$wpdb->prefix}layerslider` LIKE 'flag_group'");
+	$popup = $wpdb->get_var("SHOW COLUMNS FROM `{$wpdb->prefix}layerslider` LIKE 'keywords'");
 
 	if( empty( $popup ) ) {
 		return false;

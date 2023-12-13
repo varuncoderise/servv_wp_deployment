@@ -29,17 +29,11 @@
 			<kmw-menuitem data-shape-type="blob" data-shape-name="<?= _x('Blob', 'Shape Type', 'LayerSlider') ?>">
 				<?= lsGetSVGIcon('blob', false, false, 'kmw-icon') ?>
 				<kmw-menutext><?= _x('Blob', 'Shape Type', 'LayerSlider') ?></kmw-menutext>
-				<lse-badge>
-					<?= __('NEW', 'LayerSlider') ?>
-				</lse-badge>
 			</kmw-menuitem>
 
 			<kmw-menuitem data-shape-type="wave" data-shape-name="<?= _x('Wave', 'Shape Type', 'LayerSlider') ?>">
 				<?= lsGetSVGIcon('wave', false, false, 'kmw-icon') ?>
 				<kmw-menutext><?= _x('Wave', 'Shape Type', 'LayerSlider') ?></kmw-menutext>
-				<lse-badge>
-					<?= __('NEW', 'LayerSlider') ?>
-				</lse-badge>
 			</kmw-menuitem>
 
 		</kmw-navigation>
@@ -344,6 +338,30 @@
 					</lse-ib>
 				</lse-col>
 
+				<lse-col class="lse-wide">
+					<lse-ib>
+						<lse-text>
+							<?= __('Stroke size', 'LayerSlider') ?>
+						</lse-text>
+					</lse-ib>
+					<lse-ib class="lse-range-inputs lse-3-1">
+						<input class="lse-small" type="range" min="0" max="10" step="0.1" value="0">
+						<input name="strokeWidth" type="number" min="0" max="100" value="0">
+					</lse-ib>
+				</lse-col>
+				<lse-col class="lse-3-1">
+					<lse-ib>
+						<lse-text>
+							<?= __('Stroke Color', 'LayerSlider') ?>
+						</lse-text>
+					</lse-ib>
+					<lse-ib>
+						<lse-fe-wrapper class="lse-smart-help lse-color-input" data-smart-help="color" data-smart-help-title="<?= __('Stroke Color', 'LayerSlider') ?>" data-smart-load="lse-color-picker">
+							<input name="strokeColor" type="text" class="lse-color-picker-input" value="#000">
+						</lse-fe-wrapper>
+					</lse-ib>
+				</lse-col>
+
 				<lse-col class="lse-3-1">
 					<lse-ib>
 						<lse-text>
@@ -426,6 +444,30 @@
 					<lse-ib class="lse-3-1 lse-range-inputs">
 						<input class="lse-small" type="range" min="1" max="4" value="1">
 						<input name="layers" type="number" min="1" max="4" value="1">
+					</lse-ib>
+				</lse-col>
+
+				<lse-col class="lse-wide">
+					<lse-ib>
+						<lse-text>
+							<?= __('Stroke size', 'LayerSlider') ?>
+						</lse-text>
+					</lse-ib>
+					<lse-ib class="lse-range-inputs lse-3-1">
+						<input class="lse-small" type="range" min="0" max="5" step="0.1" value="0">
+						<input name="strokeWidth" type="number" min="0" max="100" value="0">
+					</lse-ib>
+				</lse-col>
+				<lse-col class="lse-3-1">
+					<lse-ib>
+						<lse-text>
+							<?= __('Stroke Color', 'LayerSlider') ?>
+						</lse-text>
+					</lse-ib>
+					<lse-ib>
+						<lse-fe-wrapper class="lse-smart-help lse-color-input" data-smart-help="color" data-smart-help-title="<?= __('Stroke Color', 'LayerSlider') ?>" data-smart-load="lse-color-picker">
+							<input name="strokeColor" type="text" class="lse-color-picker-input" value="#000">
+						</lse-fe-wrapper>
 					</lse-ib>
 				</lse-col>
 

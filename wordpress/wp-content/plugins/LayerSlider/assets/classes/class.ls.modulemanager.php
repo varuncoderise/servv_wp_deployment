@@ -30,7 +30,7 @@ class LS_ModuleManager {
 			'autoDownload' => true,
 		], $moduleProperties );
 
-		$this->moduleHandle = $moduleHandle;
+		$this->moduleHandle = sanitize_file_name( $moduleHandle );
 		$this->repoURL = LS_REPO_BASE_URL.'modules/';
 
 		if( ! $this->checkDirectories() ) {

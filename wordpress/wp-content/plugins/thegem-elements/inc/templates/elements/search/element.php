@@ -195,7 +195,7 @@ class TheGem_Template_Element_Search extends TheGem_Template_Element {
 									<input type="hidden" name="post_type" value="product" />
 								<?php } ?>
 								<span class="sf-submit-icon"></span>
-								<input id="searchform-submit" class="sf-submit" type="submit" value="">
+								<input id="searchform-submit" class="sf-submit" type="submit" value="s">
 							</form>
 						</div>
 					<?php } else {

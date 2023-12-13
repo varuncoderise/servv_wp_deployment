@@ -159,19 +159,19 @@ class Vc_License {
 	 * 2) Receive success status and license key
 	 * 3) Set new license key
 	 *
-	 * @param bool $activation
+	 * @param bool $isActivation
 	 * @param string $user_token
 	 *
 	 * @return bool
 	 */
-	public function finishActivationDeactivation( $activation, $user_token ) {
+	public function finishActivationDeactivation( $isActivation, $user_token ) {
 		if ( ! $this->isValidToken( $user_token ) ) {
 			$this->showError( esc_html__( 'Token is not valid or has expired', 'js_composer' ) );
 
 			return false;
 		}
 
-		if ( $activation ) {
+		if ( $isActivation ) {
 			$url = self::$support_host . '/finish-license-activation';
 		} else {
 			$url = self::$support_host . '/finish-license-deactivation';
@@ -223,23 +223,23 @@ class Vc_License {
 			return false;
 		}
 
-		if ( $activation ) {
+		if ( $isActivation ) {
 			if ( ! isset( $json['license_key'] ) || ! $this->isValidFormat( $json['license_key'] ) ) {
 				$this->showError( esc_html__( 'Invalid response structure. Please contact us for support.', 'js_composer' ) );
 
 				return false;
 			}
 
-			$this->setLicenseKey( $json['license_key'] );
+			$this->setLicenseOptions( $json['license_key'] );
 
-			update_option( 'wpb_license_errors', array() );
 			add_action( 'admin_notices', array(
 				$this,
 				'outputActivatedSuccess',
 			) );
 		} else {
 			$this->setLicenseKey( '' );
-			update_option( 'wpb_license_errors', array() );
+
+			$this->setLicenseOptions();
 
 			add_action( 'admin_notices', array(
 				$this,
@@ -247,9 +247,18 @@ class Vc_License {
 			) );
 		}
 
-		$this->setLicenseKeyToken( '' );
-
 		return true;
+	}
+
+	/**
+	 * Set some options related to license.
+	 *
+	 * @param string $licenseKey
+	 */
+	public function setLicenseOptions( $licenseKey = '' ) {
+		$this->setLicenseKey( $licenseKey );
+		update_option( 'wpb_license_errors', array() );
+		$this->setLicenseKeyToken( '' );
 	}
 
 	/**
@@ -466,7 +475,7 @@ class Vc_License {
 	}
 
 	/**
-	 * Check if current enviroment is dev
+	 * Check if current environment is dev
 	 *
 	 * Environment is considered dev if host is:
 	 * - ip address
@@ -570,7 +579,7 @@ class Vc_License {
 	 *
 	 * @param string $token
 	 *
-	 * @return string
+	 * @return bool
 	 */
 	public function setLicenseKeyToken( $token ) {
 		if ( vc_is_network_plugin() ) {
@@ -651,10 +660,7 @@ class Vc_License {
 	}
 
 	/**
-	 * @return string|void
-	 */
-	/**
-	 * @return string|void
+	 * @return string
 	 */
 	public static function getSiteUrl() {
 		if ( vc_is_network_plugin() ) {

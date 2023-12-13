@@ -24,7 +24,7 @@ class TheGem_Template_Element_Wishlist extends TheGem_Template_Element {
 	public function head_scripts($attr) {
 		$attr = shortcode_atts(array('pack' => 'thegem-header'), $attr, 'thegem-te-wishlist');
 		wp_enqueue_style('icons-'.$attr['pack']);
-  
+
 		wp_enqueue_style('thegem-te-wishlist');
 		wp_enqueue_script('thegem-te-wishlist');
 	}
@@ -32,14 +32,14 @@ class TheGem_Template_Element_Wishlist extends TheGem_Template_Element {
 	public function front_editor_scripts() {
 		wp_enqueue_style('thegem-te-wishlist');
 	}
-	
-	public function is_woocommerce_exist() {
-		return (thegem_is_plugin_active('woocommerce/woocommerce.php') && thegem_is_plugin_active('yith-woocommerce-wishlist/init.php'));
+
+	public function is_wishlist_exist() {
+		return thegem_is_plugin_active('woocommerce/woocommerce.php') && (thegem_is_plugin_active('yith-woocommerce-wishlist/init.php') || thegem_is_plugin_active('yith-woocommerce-wishlist-premium/init.php'));
 	}
 
 	public function shortcode_output($atts, $content = '') {
-		if (!$this->is_woocommerce_exist()) return;
-  
+		if (!$this->is_wishlist_exist()) return;
+
 		$params = shortcode_atts(array_merge(array(
 			'pack' => 'thegem-header',
 			'icon_elegant' => '',
@@ -98,7 +98,7 @@ class TheGem_Template_Element_Wishlist extends TheGem_Template_Element {
 
 		// Init wishlist
 		ob_start();
-        
+
         ?>
 
 		<div <?php if ($el_id): ?>id="<?=esc_attr($el_id); ?>"<?php endif;?> class="thegem-te-wishlist <?= esc_attr($el_class); ?> <?php echo esc_attr($uniqid); ?>" <?=thegem_data_editor_attribute($uniqid . '-editor')?>>
@@ -110,7 +110,7 @@ class TheGem_Template_Element_Wishlist extends TheGem_Template_Element {
 						<div class="wishlist-icon-default"></div>
 					<?php endif; ?>
 				</div>
-                
+
                 <script type="text/javascript">
                     (function($){
                         $( document ).ready(function() {
@@ -177,7 +177,7 @@ class TheGem_Template_Element_Wishlist extends TheGem_Template_Element {
 	}
 
     public function thegem_te_wishlist_set_params () {
-		if ($this->is_woocommerce_exist()) {
+		if ($this->is_wishlist_exist()) {
 			$params = array_merge(
 			/* General - Icon */
 				array(
@@ -318,7 +318,7 @@ class TheGem_Template_Element_Wishlist extends TheGem_Template_Element {
 						'group' => __('General', 'thegem')
 					),
 				)),
-				
+
 				/* General - Label */
 				array(
 					array(
@@ -357,10 +357,10 @@ class TheGem_Template_Element_Wishlist extends TheGem_Template_Element {
 						'group' => 'General'
 					),
 				),
-				
+
 				/* General - Extra */
 				thegem_set_elements_extra_options(),
-				
+
 				/* Design Options */
 				thegem_set_elements_design_options()
 			);
@@ -374,7 +374,7 @@ class TheGem_Template_Element_Wishlist extends TheGem_Template_Element {
 				)
 			);
 		}
-		
+
 		return $params;
 	}
 

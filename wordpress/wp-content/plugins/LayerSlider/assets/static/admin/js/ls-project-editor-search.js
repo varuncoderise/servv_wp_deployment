@@ -53,6 +53,15 @@ const LS_SearchActions = [
 			},
 
 			{
+				name: 'Asset',
+				icon: 'asset',
+				keywords: 'add new create',
+				action: function() {
+					LS_AssetsLibrary.open();
+				}
+			},
+
+			{
 				name: 'Shape Layer',
 				icon: 'shape',
 				keywords: 'add new create',

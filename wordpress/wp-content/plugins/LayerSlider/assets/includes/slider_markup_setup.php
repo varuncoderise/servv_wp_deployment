@@ -8,6 +8,7 @@ $slider = [];
 $sliderVersion 	= ! empty( $slides['properties']['sliderVersion'] ) ? $slides['properties']['sliderVersion'] : '1.0.0';
 $preVersion725 	= version_compare( $sliderVersion, '7.2.5', '<' );
 
+
 // Filter to override the defaults
 if(has_filter('layerslider_override_defaults')) {
 	$newDefaults = apply_filters('layerslider_override_defaults', $lsDefaults);
@@ -26,7 +27,7 @@ if(has_filter('layerslider_override_defaults')) {
 foreach( $embed as $key => $val ) {
 
 	if( $key !== 'id' ) {
-		$slides['properties'][ $key ] = $val;
+		$slides['properties'][ $key ] = esc_js( $val );
 	}
 }
 
@@ -48,7 +49,9 @@ if(has_filter('layerslider_pre_parse_defaults')) {
 }
 
 // Filter slider data with defaults
-$slides['properties'] = apply_filters('ls_parse_defaults', $lsDefaults['slider'], $slides['properties']);
+$slides['properties'] = apply_filters('ls_parse_defaults', $lsDefaults['slider'], $slides['properties'], [ 'esc_js' => true ] );
+
+
 $skin = !empty($slides['properties']['attrs']['skin']) ? $slides['properties']['attrs']['skin'] : $lsDefaults['slider']['skin']['value'];
 $slides['properties']['attrs']['skinsPath'] = dirname(LS_Sources::urlForSkin($skin)) . '/';
 if(isset($slides['properties']['autoPauseSlideshow'])) {
@@ -62,10 +65,20 @@ if(isset($slides['properties']['autoPauseSlideshow'])) {
 
 // Get global background image by attachment ID (if any)
 if( ! empty( $slides['properties']['props']['globalBGImageId'] ) ) {
+
+	if( has_filter('wpml_object_id') && get_option('ls_wpml_media_translation', true ) ) {
+		$slides['properties']['props']['globalBGImageId'] = apply_filters('wpml_object_id', $slides['properties']['props']['globalBGImageId'], 'attachment', true );
+	}
+
 	$tempSrc = wp_get_attachment_image_src( $slides['properties']['props']['globalBGImageId'], 'full' );
 	$tempSrc = apply_filters('layerslider_init_props_image', $tempSrc[0]);
 
 	$slides['properties']['attrs']['globalBGImage'] = $tempSrc;
+}
+
+// GLobal background image asset
+if( ! empty( $slides['properties']['attrs']['globalBGImage'] ) && ! ls_assets_cond( $slides['properties']['attrs'], 'globalBGImage' ) ) {
+	unset( $slides['properties']['attrs']['globalBGImage'] );
 }
 
 
@@ -102,7 +115,7 @@ if(isset($slides['layers']) && is_array($slides['layers'])) {
 
 			$toParams = explode(' ', trim( $slide['properties']['parallaxtransformorigin'] ) );
 			if( $toParams[0] === '50%' ) { $toParams[0] = 'slidercenter'; }
-			if( $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
+			if( isset( $toParams[1] ) && $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
 
 			$slide['properties']['parallaxtransformorigin'] = implode(' ', $toParams);
 		}
@@ -153,7 +166,7 @@ if(isset($slides['layers']) && is_array($slides['layers'])) {
 
 					$toParams = explode(' ', trim( $layer['parallaxtransformorigin'] ) );
 					if( $toParams[0] === '50%' ) { $toParams[0] = 'slidercenter'; }
-					if( $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
+					if( isset( $toParams[1] ) && $toParams[1] === '50%' ) { $toParams[1] = 'slidermiddle'; }
 
 					$layer['parallaxtransformorigin'] = implode(' ', $toParams);
 				}

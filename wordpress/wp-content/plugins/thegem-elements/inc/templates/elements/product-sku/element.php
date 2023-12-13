@@ -25,17 +25,17 @@ class TheGem_Template_Element_Product_Sku extends TheGem_Product_Template_Elemen
 			thegem_templates_extra_options_extract(),
 			thegem_templates_design_options_extract('single-product')
         ), $atts, 'thegem_te_product_sku');
-		
+
 		// Init Design Options Params
 		$uniqid = uniqid('thegem-custom-').rand(1,9999);
 		$custom_css = thegem_templates_element_design_options($uniqid, '.thegem-te-product-sku', $params);
-		
+
 		// Init Sku
 		ob_start();
 		$product = thegem_templates_init_product();
 		if(empty($product)) { ob_end_clean(); return thegem_templates_close_product($this->get_name(), $this->shortcode_settings(), ''); }
 		if ( !wc_product_sku_enabled() || !$product->get_sku()) { ob_end_clean(); return thegem_templates_close_product($this->get_name(), $this->shortcode_settings(), ''); }
-		
+
 		$titleClass = thegem_te_product_text_styled($params);
         $titleOutput = !empty($params['title']) ? '<span class="product-sku__title '.$titleClass.'">'.esc_html($params['title']).': </span>' : null;
 
@@ -44,8 +44,8 @@ class TheGem_Template_Element_Product_Sku extends TheGem_Product_Template_Elemen
 		<div <?php if (!empty($params['element_id'])): ?>id="<?=esc_attr($params['element_id']); ?>"<?php endif;?>
              class="thegem-te-product-sku <?= esc_attr($params['element_class']); ?> <?= esc_attr($uniqid); ?>"
 			<?= thegem_data_editor_attribute($uniqid . '-editor') ?>>
-            
-            <div class="product-sku">
+
+            <div class="product-sku" data-sku="<?= ($sku = $product->get_sku()) ? $sku : '' ?>">
                 <?= $titleOutput ?> <span class="product-sku__list <?= $titleClass ?>" itemprop="sku"><?= ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span>
             </div>
         </div>
@@ -53,7 +53,7 @@ class TheGem_Template_Element_Product_Sku extends TheGem_Product_Template_Elemen
 		<?php
 		//Custom Styles
 		$customize = '.thegem-te-product-sku.'.$uniqid;
-		
+
 		// Layout Styles
 		if (!empty($params['alignment'])) {
 			$custom_css .= $customize.' .product-sku {justify-content: ' . $params['alignment'] . '; text-align: ' . $params['alignment'] . ';}';
@@ -68,7 +68,7 @@ class TheGem_Template_Element_Product_Sku extends TheGem_Product_Template_Elemen
 		if (!empty($params['text_color'])) {
 			$custom_css .= $customize.' .product-sku .product-sku__list {color: ' . $params['text_color'] . ';}';
 		}
-		
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
 
 		// Print custom css
@@ -80,11 +80,11 @@ class TheGem_Template_Element_Product_Sku extends TheGem_Product_Template_Elemen
 		$return_html = $css_output.$return_html;
 		return thegem_templates_close_product($this->get_name(), $this->shortcode_settings(), $return_html);
 	}
-	
+
 	public function set_layout_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('General', 'thegem'),
@@ -181,7 +181,7 @@ class TheGem_Template_Element_Product_Sku extends TheGem_Product_Template_Elemen
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
 
@@ -194,13 +194,13 @@ class TheGem_Template_Element_Product_Sku extends TheGem_Product_Template_Elemen
 			'category' => __('Single Product Builder', 'thegem'),
 			'description' => __('Product Sku (Product Builder)', 'thegem'),
 			'params' => array_merge(
-			
+
 			    /* General - Layout */
 				$this->set_layout_params(),
-				
+
 				/* Extra Options */
 				thegem_set_elements_extra_options(),
-				
+
 				/* Flex Options */
 				thegem_set_elements_design_options('single-product')
 			),

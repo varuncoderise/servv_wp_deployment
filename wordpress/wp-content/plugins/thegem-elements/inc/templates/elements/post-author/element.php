@@ -715,12 +715,12 @@ class TheGem_Template_Element_Post_Author extends TheGem_Single_Post_Template_El
 	}
 	
 	public function shortcode_settings() {
-		
+
 		return array(
 			'name' => __('Author Box', 'thegem'),
 			'base' => 'thegem_te_post_author',
 			'icon' => 'thegem-icon-wpb-ui-element-post-author',
-			'category' => __('Single Post Builder', 'thegem'),
+			'category' => $this->is_template() ? __('Single Post Builder', 'thegem') : __('Single post', 'thegem'),
 			'description' => __('Author Box (Single Post Builder)', 'thegem'),
 			'params' => array_merge(
 			

@@ -9,6 +9,26 @@ class TheGem_Template_Element_Product_Navigation extends TheGem_Product_Template
 		return 'thegem_te_product_navigation';
 	}
 	
+	public function get_taxonomy_list() {
+		$data = array();
+		$taxonomies = get_taxonomies(['object_type' => ['product']], 'objects');
+		
+		if (!empty($taxonomies)) {
+			foreach ($taxonomies as $taxonomy) {
+				$data[ucwords($taxonomy->label)] = $taxonomy->name;
+			}
+		}
+		
+		return $data;
+	}
+	
+	public function get_default_taxonomy() {
+		$taxonomies = array_flip($this->get_taxonomy_list());
+		if (empty($taxonomies)) return;
+		
+		return array_keys($taxonomies)[1];
+	}
+	
 	public function productPreviewOutput($id) {
 		$product = wc_get_product($id);
 		$preview_output = '';
@@ -27,6 +47,8 @@ class TheGem_Template_Element_Product_Navigation extends TheGem_Product_Template
 		// General params
 		$params = shortcode_atts(array_merge(array(
 			'nav_elements' => '1',
+			'navigate_by' => 'chronology',
+			'taxonomy' => $this->get_default_taxonomy(),
 			'preview_on_hover' => '1',
 			'back_to_shop' => '1',
 			'back_to_shop_link' => 'main_shop',
@@ -49,6 +71,8 @@ class TheGem_Template_Element_Product_Navigation extends TheGem_Product_Template
 		if(empty($product)) { ob_end_clean(); return thegem_templates_close_product($this->get_name(), $this->shortcode_settings(), ''); }
   
 		$isNavigate = $params['nav_elements'] || $params['back_to_shop'];
+		$is_taxonomy = !empty($params['navigate_by']) && $params['navigate_by'] == 'taxonomy' ? true : false;
+		$taxonomy = !empty($params['taxonomy']) ? $params['taxonomy'] : '';
 		$back_to_shop_url = 'javascript:void(0);';
 		switch ( $params['back_to_shop_link'] ) {
 			case 'main_shop':
@@ -76,7 +100,7 @@ class TheGem_Template_Element_Product_Navigation extends TheGem_Product_Template
             <?php if ( $isNavigate ): ?>
                 <div class="product-navigation">
                     <ul class="product-navigation__list">
-						<?php if (($post = get_previous_post()) && $params['nav_elements']): ?>
+						<?php if (($post = get_previous_post($is_taxonomy, '', $taxonomy)) && $params['nav_elements']): ?>
                             <li>
                                 <a class="product-navigation__list-prev" href="<?= get_permalink( $post->ID ) ?>">
 				                    <?php if ( $params['preview_on_hover'] ): ?>
@@ -92,7 +116,7 @@ class TheGem_Template_Element_Product_Navigation extends TheGem_Product_Template
                             </li>
 						<?php endif; ?>
 						
-						<?php if (( $post = get_next_post()) && $params['nav_elements']): ?>
+						<?php if (( $post = get_next_post($is_taxonomy, '', $taxonomy)) && $params['nav_elements']): ?>
                             <li>
                                 <a class="product-navigation__list-next" href="<?= get_permalink( $post->ID ) ?>">
 	                                <?php if ( $params['preview_on_hover'] ): ?>
@@ -166,6 +190,38 @@ class TheGem_Template_Element_Product_Navigation extends TheGem_Product_Template
 						'edit_field_class' => 'vc_column vc_col-sm-12',
 						'group' => 'General',
 					),
+					array(
+						'type' => 'dropdown',
+						'heading' => __('Navigate by', 'thegem'),
+						'param_name' => 'navigate_by',
+						'value' => array_merge(array(
+								__('Chronology', 'thegem') => 'chronology',
+								__('Same Taxonomy', 'thegem') => 'taxonomy',
+							)
+						),
+						'std' => 'chronology',
+						'dependency' => array(
+							'element' => 'nav_elements',
+							'value' => '1'
+						),
+						'edit_field_class' => 'vc_column vc_col-sm-12',
+						'group' => 'General',
+					),
+		
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => __('Select Taxonomy', 'thegem'),
+                        'param_name' => 'taxonomy',
+                        'value' => $this->get_taxonomy_list(),
+                        'std' => $this->get_default_taxonomy(),
+                        'edit_field_class' => 'vc_column vc_col-sm-12',
+                        'dependency' => array(
+                            'element' => 'navigate_by',
+                            'value' => 'taxonomy'
+                        ),
+	                    'group' => 'General',
+                    ),
+                    
                     array(
 						'type' => 'checkbox',
 						'heading' => __('Product Preview on Hover', 'thegem'),

@@ -1,14 +1,14 @@
 <?php
 
 class TheGem_Template_Element_Post_Content extends TheGem_Single_Post_Template_Element {
-	
+	public $show_in_posts = false;
 	public function __construct() {
 	}
-	
+
 	public function get_name() {
 		return 'thegem_te_post_content';
 	}
-	
+
 	public function shortcode_output($atts, $content = '') {
 		// General params
 		$params = shortcode_atts(array_merge(array(
@@ -23,30 +23,25 @@ class TheGem_Template_Element_Post_Content extends TheGem_Single_Post_Template_E
 		),
 			thegem_templates_extra_options_extract()
 		), $atts, 'thegem_te_post_content');
-		
+
 		// Init Content
 		$single_post = thegem_templates_init_post();
 		ob_start();
 		$uniqid = uniqid('thegem-custom-').rand(1,9999);
-		
+
 		if (empty($single_post)) {
 			ob_end_clean();
 			return thegem_templates_close_single_post($this->get_name(), $this->shortcode_settings(), '');
 		}
-		
-		$params['text_styled'] = implode(' ', array($params['text_style'], $params['text_font_weight']));
-		
-		?>
 
-		<div <?php if (!empty($params['element_id'])): ?>id="<?=esc_attr($params['element_id']); ?>"<?php endif;?> class="thegem-te-post-content <?= esc_attr($params['element_class']); ?> <?= esc_attr($uniqid); ?>">
-			<div class="post-content <?= $params['text_styled'] ?>"><?php thegem_single_post_page_content(); ?></div>
-		</div>
-		
-		<?php
+		$params['text_styled'] = implode(' ', array($params['text_style'], $params['text_font_weight']));
+
+		thegem_single_post_page_content();
+
 		//Custom Styles
 		$customize = '.thegem-te-post-content.'.$uniqid;
 		$custom_css = '';
-		
+
 		// Layout Styles
 		if (!empty($params['alignment'])) {
 			$custom_css .= $customize.' {justify-content: ' . $params['alignment'] . '; text-align: ' . $params['alignment'] . ';}';
@@ -54,7 +49,7 @@ class TheGem_Template_Element_Post_Content extends TheGem_Single_Post_Template_E
 		if (!empty($params['max_width'])) {
 			$custom_css .= $customize.' .post-content {max-width: ' . $params['max_width'] . 'px;}';
 		}
-		
+
 		// Text Styles
 		if ($params['text_letter_spacing'] != '') {
 			$custom_css .= $customize.' .post-content {letter-spacing: ' . $params['text_letter_spacing'] . 'px;}';
@@ -65,25 +60,32 @@ class TheGem_Template_Element_Post_Content extends TheGem_Single_Post_Template_E
 		if (!empty($params['text_color'])) {
 			$custom_css .= $customize.' .post-content {color: ' . $params['text_color'] . ';}';
 		}
-		
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
-		
+
+		if(empty($return_html)) {
+			return thegem_templates_close_single_post($this->get_name(), $this->shortcode_settings(), $return_html);
+		}
+
+		$return_html = '<div'.(!empty($params['element_id']) ? ' id="'.esc_attr($params['element_id']).'"' : '').' class="thegem-te-post-content '.esc_attr($params['element_class']).' '.esc_attr($uniqid).'"><div class="post-content '.$params['text_styled'].'">'.$return_html.'</div></div>';
+
+
 		$custom_css .= get_post_meta(get_the_ID(), '_wpb_shortcodes_custom_css', true) . get_post_meta(get_the_ID(), '_wpb_post_custom_css', true);
-		
+
 		// Print custom css
 		$css_output = '';
 		if(!empty($custom_css)) {
 			$css_output = '<style>'.$custom_css.'</style>';
 		}
-		
+
 		$return_html = $css_output.$return_html;
 		return thegem_templates_close_single_post($this->get_name(), $this->shortcode_settings(), $return_html);
 	}
-	
+
 	public function set_layout_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('General', 'thegem'),
@@ -179,12 +181,12 @@ class TheGem_Template_Element_Post_Content extends TheGem_Single_Post_Template_E
 			'description' => __('To style default blog title typography go to <a href="'.get_site_url().'/wp-admin/admin.php?page=thegem-theme-options#/typography/headings-and-body" target="_blank">Theme Options → Typography</a>.', 'thegem'),
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function shortcode_settings() {
-		
+
 		return array(
 			'name' => __('Post Content', 'thegem'),
 			'base' => 'thegem_te_post_content',
@@ -192,7 +194,7 @@ class TheGem_Template_Element_Post_Content extends TheGem_Single_Post_Template_E
 			'category' => __('Single Post Builder', 'thegem'),
 			'description' => __('Post Content (Single Post Builder)', 'thegem'),
 			'params' => array_merge(
-			
+
 			    /* General - Layout */
 				$this->set_layout_params(),
     

@@ -44,12 +44,12 @@
 
 	<!-- User CSS -->
 	<?php if( file_exists( $uploads['basedir'].'/layerslider.custom.css' ) ) : ?>
-	<link rel="stylesheet" href="<?= $uploads['baseurl'].'/layerslider.custom.css?ver='.LS_PLUGIN_VERSION ?>">
+	<link rel="stylesheet" href="<?= $uploads['baseurl'].'/layerslider.custom.css?ver='.filemtime($uploads['basedir'].'/layerslider.custom.css') ?>">
 	<?php endif ?>
 
 	<!-- Custom Transitions -->
 	<?php if( file_exists( $uploads['basedir'].'/layerslider.custom.transitions.js' ) ) : ?>
-	<script src="<?= $uploads['baseurl'].'/layerslider.custom.transitions.js?ver='.LS_PLUGIN_VERSION ?>"></script>
+	<script src="<?= $uploads['baseurl'].'/layerslider.custom.transitions.js?ver='.filemtime($uploads['basedir'].'/layerslider.custom.transitions.js') ?>"></script>
 	<?php endif ?>
 </head>
 <body class="lse-scrollbar lse-scrollbar-dark">

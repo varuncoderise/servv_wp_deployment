@@ -66,6 +66,7 @@
                 itemClass = '.owl-item',
                 itemClassActive = '.owl-item.active',
                 isVertical = $galleryElement.data("thumb") === 'vertical',
+                isThumbsOnMobile = $galleryElement.data("thumb-on-mobile") == '1',
                 isDots = $galleryElement.data("thumb") === 'dots',
                 isThumb = $galleryElement.data("thumb") !== 'single',
                 isHover = $galleryElement.data("type") === 'hover',
@@ -135,7 +136,7 @@
                 onInitialized: function () {
                     initApiVideos();
 
-                    if (isVertical && isTrueCount && !isMobile && !isDots) {
+                    if (isVertical && isTrueCount && !(isMobile && !isThumbsOnMobile) && !isDots) {
                         initVerticalGallery();
                     } else {
                         resizeVerticalGallery();
@@ -179,7 +180,7 @@
                 onInitialized: function (el) {
                     setCurrentThumb(el);
 
-                    if (isVertical && isTrueCount && !isMobile && !isDots) {
+                    if (isVertical && isTrueCount && !(isMobile && !isThumbsOnMobile) && !isDots) {
                         initVerticalGallery();
                     } else {
                         resizeVerticalGallery();
@@ -283,9 +284,8 @@
                     thumbWrapWidth = $galleryThumbsWrap.width();
                 }
 
-                $galleryElement.css('padding-left', Math.round(thumbWidth + 15));
                 if (isAutoHeight) {
-                    $galleryElement.css('height', thumbWrapWidth-30).css('overflow', 'hidden');
+                    $galleryElement.css('height', 'auto').css('overflow', '');
                 } else {
                     $galleryElement.css('min-height', thumbWrapWidth-30);
                 }
@@ -293,11 +293,23 @@
                 var translate = Math.round(-thumbWidth/2) + 'px';
                 $galleryThumbsWrap.css('transform', 'rotate3d(0, 0, 1, 90deg) translate('+translate+','+translate+') translate3d(0,0,0)');
 
+                // Thumbs right position
+                if ($galleryElement.data("thumb-position") == 'right') {
+                    $galleryElement.css('padding-right', Math.round(thumbWidth + 15));
+
+                    setTimeout(() => {
+                        const previewWrapWidth = $galleryPreviewWrap.width();
+                        $galleryThumbsWrap.css({'left': previewWrapWidth + 15});
+                    }, 250)
+                } else {
+                    $galleryElement.css('padding-left', Math.round(thumbWidth + 15));
+                }
+
                 $galleryPreviewCarousel.trigger('refresh.owl.carousel');
             }
 
             function resizeVerticalGallery() {
-                $galleryElement.css('padding-left', '0');
+                $galleryElement.css('padding', '0');
                 $galleryThumbsWrap.css('transform', 'rotate() translate(0,0) translate3d(0,0,0)');
                 $galleryPreviewCarousel.trigger('refresh.owl.carousel');
             }
@@ -511,7 +523,7 @@
 
             // Hide thumbs if mobile device OR thumb-type = dots
             function hideThumbsOnMobile() {
-                if (!isTrueCount || isDots || isMobile || (!isVertical && isTabletPortrait)) {
+                if (!isTrueCount || isDots || (isMobile && !isThumbsOnMobile) || (!isVertical && isTabletPortrait)) {
                     $galleryThumbsCarousel.hide();
                     $('.owl-dots', $galleryPreviewCarousel).show();
                 } else {
@@ -540,7 +552,7 @@
                         isTabletPortrait = false;
                     }
 
-                    if (isVertical && isTrueCount && !isMobile && !isDots) {
+                if (isVertical && isTrueCount && !(isMobile && !isThumbsOnMobile) && !isDots) {
                         initVerticalGallery();
                     } else {
                         resizeVerticalGallery();
@@ -557,6 +569,71 @@
 
     $.fn.updateProductGalleries = function () {
         $('.product-gallery', this).each(updateProductGallery);
+
+        $('.variations_form').each(function () {
+            $(this).on('show_variation', function (event, variation) {
+                if (variation.image_id) {
+                    const $productContent = $(this).closest('.thegem-template-wrapper');
+                    const $gallery = $productContent.find('.thegem-te-product-gallery').eq(0);
+                    const $mainCarousel = $gallery.find('.product-gallery-slider');
+                    if ($gallery.length) {
+                        const $galleryItem = $gallery.find('.product-gallery-slider-item[data-image-id="' + variation.image_id + '"]').parent('.owl-item').index();
+                        $mainCarousel.trigger('to.owl.carousel', [$galleryItem, 300, true]);
+                    }
+                    if($gallery.hasClass('product-gallery--native')) {
+                        var $form             = $(this),
+                            $product_gallery  = $gallery.find( '.woocommerce-product-gallery__wrapper' ),
+                            $gallery_img      = $gallery.find( 'li:eq(0) img' ),
+                            $product_img_wrap = $product_gallery
+                                .find( '.woocommerce-product-gallery__image, .woocommerce-product-gallery__image--placeholder' )
+                                .eq( 0 ),
+                            $product_img      = $product_img_wrap.find( '.wp-post-image' ),
+                            $product_link     = $product_img_wrap.find( 'a' ).eq( 0 );
+
+                        if ( variation && variation.image && variation.image.src && variation.image.src.length > 1 ) {
+                            // See if the gallery has an image with the same original src as the image we want to switch to.
+                            var galleryHasImage = $gallery.find( 'li img[data-o_src="' + variation.image.gallery_thumbnail_src + '"]' ).length > 0;
+
+                            // If the gallery has the image, reset the images. We'll scroll to the correct one.
+                            if ( galleryHasImage ) {
+                                $form.wc_variations_image_reset();
+                            }
+
+                            // See if gallery has a matching image we can slide to.
+                            var slideToImage = $gallery.find( 'li img[src="' + variation.image.gallery_thumbnail_src + '"]' );
+
+                            if ( slideToImage.length > 0 ) {
+                                slideToImage.trigger( 'click' );
+                                $form.attr( 'current-image', variation.image_id );
+                                window.setTimeout( function() {
+                                    $( window ).trigger( 'resize' );
+                                    $product_gallery.trigger( 'woocommerce_gallery_init_zoom' );
+                                }, 20 );
+                                return;
+                            }
+
+                            $product_img.wc_set_variation_attr( 'src', variation.image.src );
+                            $product_img.wc_set_variation_attr( 'height', variation.image.src_h );
+                            $product_img.wc_set_variation_attr( 'width', variation.image.src_w );
+                            $product_img.wc_set_variation_attr( 'srcset', variation.image.srcset );
+                            $product_img.wc_set_variation_attr( 'sizes', variation.image.sizes );
+                            $product_img.wc_set_variation_attr( 'title', variation.image.title );
+                            $product_img.wc_set_variation_attr( 'data-caption', variation.image.caption );
+                            $product_img.wc_set_variation_attr( 'alt', variation.image.alt );
+                            $product_img.wc_set_variation_attr( 'data-src', variation.image.full_src );
+                            $product_img.wc_set_variation_attr( 'data-large_image', variation.image.full_src );
+                            $product_img.wc_set_variation_attr( 'data-large_image_width', variation.image.full_src_w );
+                            $product_img.wc_set_variation_attr( 'data-large_image_height', variation.image.full_src_h );
+                            $product_img_wrap.wc_set_variation_attr( 'data-thumb', variation.image.src );
+                            $gallery_img.wc_set_variation_attr( 'src', variation.image.gallery_thumbnail_src );
+                            $product_link.wc_set_variation_attr( 'href', variation.image.full_src );
+                        } else {
+                            $form.wc_variations_image_reset();
+                        }
+                    }
+                }
+            });
+        });
     };
 
     $('body').updateProductGalleries();

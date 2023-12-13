@@ -119,6 +119,10 @@
 		transform: none !important;
 	}
 
+	.ls-wrapper .line {
+		white-space: nowrap;
+	}
+
 	.ls-layer.ls-has-chars .word {
 		position: static !important;
 	}
@@ -133,6 +137,21 @@
 
 	.ls-layer.ls-has-lines .line {
 		position: relative !important;
+	}
+
+	.ls-layer .char,
+	.ls-layer .word,
+	.ls-layer .line {
+		text-decoration: inherit;
+	}
+
+	.ls-layer[data-ls-text-animating-in][data-ls-mask-text-in] .char,
+	.ls-layer[data-ls-text-animating-in][data-ls-mask-text-in] .word,
+	.ls-layer[data-ls-text-animating-in][data-ls-mask-text-in] .line,
+	.ls-layer[data-ls-text-animating-out][data-ls-mask-text-out] .char,
+	.ls-layer[data-ls-text-animating-out][data-ls-mask-text-out] .word,
+	.ls-layer[data-ls-text-animating-out][data-ls-mask-text-out] .line {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	}
 
 	.ls-textnode-dummy {
@@ -175,7 +194,7 @@
 		width: auto !important;
 	}
 
-	.ls-wrapper.ls-force-height-auto {
+	.ls-force-height-auto {
 		height: auto !important;
 	}
 
@@ -219,7 +238,6 @@
 
 	.ls-layers {
 		z-index: 35;
-		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 	}
 
 	.ls-z,
@@ -234,6 +252,15 @@
 		height: 100%;
 		top: 0;
 		left: 0;
+	}
+
+	.ls-clip,
+	.ls-m-layers-clip {
+		clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+	}
+
+	.ls-layers-clip {
+		clip: rect( 0px, var( --sw ), var( --sh ), 0px );
 	}
 
 	.ls-z {
@@ -281,7 +308,6 @@
 		background: none !important;
 	}
 
-	.ls-parallax,
 	.ls-bg-wrap,
 	.ls-loop {
 		margin: 0 !important;
@@ -774,6 +800,10 @@
 			margin: 0 auto;
 		}
 
+		.ls-thumbnail-wrapper.ls-thumbnail-fill  a img {
+			width: 100%;
+		}
+
 		.ls-thumbnail {
 			position: relative;
 			margin: 0 auto;
@@ -809,6 +839,7 @@
 			max-height: 100% !important;
 			height: 100%;
 			visibility: visible !important;
+			background-position: center !important;
 		}
 
 		.ls-touchscroll {
@@ -873,7 +904,8 @@
 		z-index: 2;
 	}
 
-	.ls-autoplay .ls-playvideo {
+	.ls-autoplay .ls-playvideo,
+	.ls-instant-autoplay .ls-playvideo {
 		display: none !important;
 	}
 
@@ -997,8 +1029,7 @@
 
 	.ls-curtile,
 	.ls-nexttile,
-	.ls-3d-box,
-	.ls-3d-box div {
+	.ls-3d-box {
 		-ms-backface-visibility: hidden;
 		-moz-backface-visibility: hidden;
 		-webkit-backface-visibility: hidden;
@@ -1143,6 +1174,18 @@
 		font-size: 36px;
 		font-family: Arial, sans-serif;
 		background-repeat: no-repeat;
+
+		stroke: #000;
+		text-align: left;
+		font-style: normal;
+		text-decoration: none;
+		text-transform: none;
+		font-weight: 400;
+		letter-spacing: 0;
+		background-position: 0% 0%;
+		background-clip: border-box;
+		opacity: 1;
+		mix-blend-mode: unset;
 	}
 
 	.ls-container .ls-layer svg,
@@ -1150,6 +1193,11 @@
 		width: 1em;
 		height: 1em;
 		display: block;
+	}
+
+	.ls-container .ls-layer:not(.ls-html-layer),
+	.ls-container .ls-l:not(.ls-html-layer) {
+		stroke-width: 0;
 	}
 
 	.ls-container .ls-layer:not(.ls-html-layer) svg,
@@ -1184,6 +1232,33 @@
 		display: inline;
 		width: auto;
 		height: auto;
+	}
+
+/* Smart BG */
+
+	.ls-l[data-ls-smart-bg],
+	.ls-layer[data-ls-smart-bg],
+	ls-layer[data-ls-smart-bg] {
+		overflow: hidden !important;
+		background-size: 0 0 !important;
+	}
+
+	.ls-l[data-ls-smart-bg]:before,
+	.ls-layer[data-ls-smart-bg]:before,
+	ls-layer[data-ls-smart-bg]:before {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: -1;
+		width: var(--sw);
+		height: var(--sh);
+		transform: translate( calc( var( --x, 0px ) + var( --lx, 0px ) ), calc( var( --y, 0px ) + var( --ly, 0px ) ) );
+		background-image: inherit;
+		background-size: var( --bgs, inherit );
+		background-position: inherit;
+		background-repeat: inherit;
 	}
 
 /* Removing all default global styles of WordPress themes */
@@ -1448,12 +1523,38 @@
 		}
 	}
 
-	[data-ls-animating-in],
-	[data-ls-animating-out] {
-		will-change: transform, opacity;
-	}
-
-	.ls-loop {
+	.ls-z[data-ls-animating-in] .ls-wrapper.ls-in-out,
+	.ls-z[data-ls-animating-out] .ls-wrapper.ls-in-out,
+	.ls-curtile,
+	.ls-nexttile {
 		will-change: transform;
 	}
 
+	.ls-z[data-ls-animating-in] .ls-layer,
+	.ls-z[data-ls-animating-out] .ls-layer,
+	.ls-curtile,
+	.ls-nexttile {
+		will-change: opacity;
+	}
+
+	.ls-layer[data-ls-animating-in],
+	.ls-layer[data-ls-animating-out] {
+		will-change: filter;
+	}
+
+	.ls-layer[data-ls-text-animating-in] .line,
+	.ls-layer[data-ls-text-animating-in] .word,
+	.ls-layer[data-ls-text-animating-in] .char,
+	.ls-layer[data-ls-text-animating-out] .line,
+	.ls-layer[data-ls-text-animating-out] .word,
+	.ls-layer[data-ls-text-animating-out] .char {
+		will-change: transform;
+	}
+
+	.ls-z:not([data-ls-hidden]),
+	.ls-z:not([data-ls-hidden]) .ls-wrapper.ls-loop,
+	.ls-z:not([data-ls-hidden]) .ls-wrapper.ls-parallax,
+	.ls-z:not([data-ls-hidden]) .ls-wrapper.ls-scroll-transform,
+	.ls-z:not([data-ls-hidden]) .ls-wrapper.ls-scroll {
+		will-change: transform;
+	}

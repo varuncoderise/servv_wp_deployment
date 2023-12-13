@@ -4,10 +4,6 @@
 
 	let $body, $header, $wrapper, $navigate, menuLockedTimeout;
 
-	const tabletLandscapeMaxWidth = 1212;
-	const tabletLandscapeMinWidth = 980;
-	const tabletPortraitMaxWidth = 979;
-	const tabletPortraitMinWidth = 768;
 	const pageOffset = $('#page').offset();
 	const pageWidth = $('#page').width();
 
@@ -201,7 +197,12 @@
 			let viewportWidth = window.innerWidth;
 			document.documentElement.style.setProperty('--scrollbar-width', -(window.innerWidth - document.body.clientWidth) + "px");
 
-			$navigate.each(function (i, el) {
+			$navigate.each(function (i, nav) {
+				const tabletLandscapeMaxWidth = $(nav).data("desktop-breakpoint");
+				const tabletLandscapeMinWidth = $(nav).data("tablet-breakpoint");
+				const tabletPortraitMaxWidth = $(nav).data("tablet-breakpoint") - 1;
+				const tabletPortraitMinWidth = $(nav).data("mobile-breakpoint");
+
 				if ($(this).data("tablet-landscape") === 'default' && viewportWidth >= tabletLandscapeMinWidth && viewportWidth <= tabletLandscapeMaxWidth) {
 					$(this).removeClass('mobile-view').addClass('desktop-view');
 				} else if ($(this).data("tablet-portrait") === 'default' && viewportWidth >= tabletPortraitMinWidth && viewportWidth <= tabletPortraitMaxWidth) {
@@ -509,6 +510,12 @@
 					showCurrentLabel: thegem_menu_data.showCurrentLabel
 				});
 
+				$('li:not(.menu-item-has-children):not(.dl-back)', $menuItem).on('click', 'a', function (e) {
+					if (typeof $.fn.dlmenu === 'function') {
+						$menuItem.dlmenu('closeMenu');
+					}
+				});
+
 				//dl-menu navmenu/submenu set maxHeight && left position
 				let navMenu = $menuItem.find('ul');
 				_helpers.setMobMenuDefaultMaxHeight(navMenu);
@@ -696,7 +703,7 @@
 
 			if (megamenu_width > container_width) {
 				megamenu_width = container_width;
-				let new_megamenu_width = container_width - parseInt($item.css('padding-left')) - parseInt($item.css('padding-right'));
+				let new_megamenu_width = container_width - parseInt($item.css('padding-left')) - parseInt($item.css('padding-right')) - parseInt($item.css('border-left')) - parseInt($item.css('border-right'));
 				let columns = $item.data('megamenu-columns') || 4;
 				let margin = 0;
 				$(' > li.menu-item', $item).each(function (index) {
@@ -709,7 +716,9 @@
 				$(' > li', $item).each(function () {
 					$(this).data('old-width', $(this).width()).css('width', column_width_int);
 				});
-				$item.addClass('megamenu-fullwidth').width(new_megamenu_width - (column_width - column_width_int) * columns);
+				let columns_dif = (column_width - column_width_int) * columns;
+				$(' > li.megamenu-first-element', $item).css('width', column_width_int + columns_dif);
+				$item.addClass('megamenu-fullwidth').width(new_megamenu_width);
 			}
 
 			if (!isMenuVertical && !isMenuHamburger && !isMenuPerspective && containerWidthCallback === undefined) {
@@ -736,7 +745,9 @@
 				let positions = {},
 					max_bottom = 0;
 
-				$item.width($item.width() - 1);
+				if (!$item.hasClass('megamenu-fullwidth')) {
+					$item.width($item.width() - 1);
+				}
 				let new_row_height = $('.megamenu-new-row', $item).outerHeight() + parseInt($('.megamenu-new-row', $item).css('margin-bottom'));
 
 				$('> li.menu-item', $item).each(function () {

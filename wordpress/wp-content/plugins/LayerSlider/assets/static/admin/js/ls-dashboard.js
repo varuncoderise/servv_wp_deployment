@@ -22,6 +22,11 @@ var LS_contextMenuSliderItem;
 
 jQuery(function($) {
 
+	// Check if addons buttons should pulse/highlight
+	jQuery( '#ls-addons-button' ).closest( '.ls-item' ).addClass( 'ls--highlight-' + ( localStorage.getItem( 'lsDashboard.addonsHighlight' ) || 'enabled' ) );
+
+
+
 	kmUI.dropdown.init();
 
 	$('#ls-list-main-menu ls-button[data-scroll]').on('click', function() {
@@ -68,6 +73,7 @@ jQuery(function($) {
 
 		kmw.modal.open({
 			content: $('#tmpl-plugin-settings-content'),
+			outerClasses: 'plugin-settings-content-modal',
 			clip: true,
 			minWidth: 400,
 			maxHeight: '90%',
@@ -154,27 +160,6 @@ jQuery(function($) {
 			maxWidth: 960,
 		});
 	});
-
-	// Twitter feed
-	window.lsTwitterFeedInterval = setInterval( function() {
-
-		let $iframe 	= $('#ls--box-twitter-feed iframe'),
-			$contents 	= $iframe.contents(),
-			$header 	= $contents.find('.timeline-Header');
-
-		if( $header.length ) {
-
-			$contents.find('head').append('<link rel="stylesheet" href="'+LS_pageMeta.assetsPath+'/static/admin/css/twitter.css" type="text/css" />');
-			clearInterval( window.lsTwitterFeedInterval );
-		}
-
-
-	}, 200 );
-
-	// Fallback Twitter feed
-	setTimeout( function() {
-		clearInterval( window.lsTwitterFeedInterval );
-	}, 5000 );
 
 
 	$('#ls-notification-clear-button').click( function() {
@@ -317,9 +302,7 @@ jQuery(function($) {
 			animationIn: 'scale',
 			overlaySettings: {
 				animationIn: 'fade',
-				customStyle: {
-					backgroundColor: 'rgba( 225, 225, 225, 0.95 )'
-				}
+				customClasses: 'ls-project-group-modal-overlay'
 			},
 			onBeforeOpen: function() {
 				jQuery('#ls-slider-selection-bar-placeholder').show();
@@ -349,6 +332,7 @@ jQuery(function($) {
 
 			$.get( ajaxurl, {
 				action: 'ls_rename_slider_group',
+				nonce: LS_pageMeta.dashboardNonce,
 				groupId: $lastOpenedGroup.data('id'),
 				name: $this.val()
 			});
@@ -368,6 +352,7 @@ jQuery(function($) {
 
 			$.get( ajaxurl, {
 				action: 'ls_delete_slider_group',
+				nonce: LS_pageMeta.dashboardNonce,
 				groupId: $lastOpenedGroup.data('id'),
 			});
 
@@ -428,6 +413,101 @@ jQuery(function($) {
 			closeButton: true
 		});
 	});
+
+
+	// Add-Ons
+	// var LS_Addons = {
+
+	// 	initialized: false,
+	// 	$modal: null,
+
+	// 	init: function(){
+
+	// 		jQuery('#ls-addons-button' ).on( 'click', function(e){
+	// 			e.preventDefault();
+	// 			kmw.modal.close();
+	// 			LS_Addons.openModal();
+
+	// 			// disable pulse/highlight effect
+	// 			localStorage.setItem( 'lsDashboard.addonsHighlight', 'disabled' );
+	// 		});
+	// 	},
+
+	// 	attachEvents: function(){
+
+	// 		jQuery(document).on( 'mouseenter', '#ls-addons-modal-window .ls--video', function(e){
+	// 			$( this ).attr( 'loop', '' );
+	// 			this.play();
+
+	// 		}).on( 'mouseleave', '#ls-addons-modal-window ls-col:not(".kmw-active") .ls--video', function(e){
+	// 			$( this ).removeAttr( 'loop' );
+	// 			if( $( this ).is( '.ls--allowstop') ){
+	// 				this.pause();
+	// 			}
+
+	// 		}).on('click', '#ls-addons-grid .kmw-menuitem', function(e) {
+	// 			LS_Addons.openAddon( $( this ) );
+	// 			$( '#ls-addons-grid .kmw-menuitem .ls--video' ).trigger( 'mouseleave' );
+	// 		});
+
+	// 	},
+
+	// 	openModal: function(){
+
+	// 		kmw.modal.open({
+	// 			id: 'ls-addons-modal-window',
+	// 			content: $('#ls-addons-modal-content'),
+	// 			maxWidth: 1200,
+	// 			overlaySettings: {
+	// 				customClasses: 'ls--dark-overlay'
+	// 			},
+	// 			sidebar: {
+	// 				right: {
+	// 					title: ' ', // Important for having the kmw-sidebar-title element in place
+	// 					width: 400,
+	// 					content: $('#ls-addons-modal-sidebar')
+	// 				}
+	// 			},
+	// 			onBeforeOpen: function() {
+
+	// 				LS_Addons.$modal = jQuery('#ls-addons-modal-window');
+
+	// 				if( ! LS_Addons.initialized ) {
+	// 					LS_Addons.initialized = true;
+	// 					LS_Addons.attachEvents();
+	// 				}
+
+	// 				LS_Addons.maintainSidebarTitle();
+	// 			}
+	// 		});
+	// 	},
+
+	// 	closeModal: function(){
+	// 		kmw.modal.close();
+	// 	},
+
+	// 	maintainSidebarTitle: function() {
+
+	// 		var $menuItems = $('#ls-addons-grid .kmw-menuitem'),
+	// 			$activeItem = $menuItems.filter('.kmw-active');
+
+	// 			if( $activeItem.length ) {
+	// 				$activeItem.click();
+	// 			 } else {
+	// 				$menuItems.first().click();
+	// 			 }
+	// 	},
+
+	// 	openAddon: function( $tab ) {
+
+	// 		var title = $tab.find('.ls--title').text(),
+	// 			$sidebarTitle = LS_Addons.$modal.find('.kmw-sidebar-title');
+	// 			$sidebarTitle.text( title );
+	// 	}
+	// };
+
+	// LS_Addons.init();
+
 
 
 	// Import Sliders
@@ -714,10 +794,18 @@ jQuery(function($) {
 
 		var $curTag = $(this),
 			handle = $curTag.attr( 'data-handle' ),
-			$templatesHolder = $curTag.closest( 'ls-templates-container' ).find( 'ls-templates-holder' ),
+			$templatesContainer = $curTag.closest( 'ls-templates-container' ),
+			$templatesHolder = $templatesContainer.find( 'ls-templates-holder' ),
 			$allTemplates = $templatesHolder.find( 'ls-template' ),
 			$filteredTemplates = $templatesHolder.find( 'ls-template[data-groups*="'+handle+'"]' ),
-			$allButFilteredTemplates = $templatesHolder.find( 'ls-template:not([data-groups*="'+handle+'"])' );
+			$allButFilteredTemplates = $templatesHolder.find( 'ls-template:not([data-groups*="'+handle+'"])' ),
+			$descHolder = $templatesContainer.find( 'ls-tag-descriptions-holder' ),
+			$allDesc = $descHolder.find('ls-tag-description');
+
+			$( 'ls-templates-containers' ).scrollTop(0);
+
+			$allDesc.hide();
+			$allDesc.filter('[data-handle="' + handle + '"]').css('display','flex');
 
 			$curTag.addClass('ls--active').siblings().removeClass('ls--active');
 			$allTemplates.show();
@@ -1318,13 +1406,17 @@ jQuery(function($) {
 
 					$.getJSON( ajaxurl, {
 						action: 'ls_create_slider_group',
+						nonce: LS_pageMeta.dashboardNonce,
 						items: [
 							$( targetSliderItem ).data('id'),
 							$( draggedSliderItem ).data('id')
 						]
 
 					}, function( data ) {
-						$group.data('id', data.groupId );
+
+						if( data.success && data.groupId ) {
+							$group.data('id', data.groupId );
+						}
 					});
 				}
 			}
@@ -1348,6 +1440,7 @@ jQuery(function($) {
 		if( ! withoutXHR ) {
 			$.get( ajaxurl, {
 				action: 'ls_add_slider_to_group',
+				nonce: LS_pageMeta.dashboardNonce,
 				sliderId: $slider.data('id'),
 				groupId: $group.data('id')
 			});
@@ -1398,6 +1491,7 @@ jQuery(function($) {
 		if( ! withoutXHR ) {
 			$.get( ajaxurl, {
 				action: 'ls_remove_slider_from_group',
+				nonce: LS_pageMeta.dashboardNonce,
 				sliderId: $slider.data('id'),
 				groupId: $group.data('id')
 			});

@@ -68,7 +68,7 @@ add_action('admin_bar_menu', function( $admin_bar ) {
 				$admin_bar->add_menu([
 					'parent' => 'ab-ls-recently-created',
 					'id'    => 'ab-ls-recently-created-'.$slider['id'],
-					'title' => ! empty( $slider['name'] ) ? $slider['name'] : __('Unnamed', 'LayerSlider'),
+					'title' => ! empty( $slider['name'] ) ? htmlentities( stripslashes( $slider['name'] ) ) : __('Unnamed', 'LayerSlider'),
 					'href'  => admin_url('admin.php?page=layerslider&action=edit&id='.$slider['id'])
 				]);
 			}
@@ -87,7 +87,7 @@ add_action('admin_bar_menu', function( $admin_bar ) {
 				$admin_bar->add_menu([
 					'parent' => 'ab-ls-recently-modified',
 					'id'    => 'ab-ls-recently-modified-'.$slider['id'],
-					'title' => ! empty( $slider['name'] ) ? $slider['name'] : __('Unnamed', 'LayerSlider'),
+					'title' => ! empty( $slider['name'] ) ? htmlentities( stripslashes( $slider['name'] ) ) : __('Unnamed', 'LayerSlider'),
 					'href'  => admin_url('admin.php?page=layerslider&action=edit&id='.$slider['id'])
 				]);
 			}

@@ -106,5 +106,21 @@ $iconModules = [
 			<lse-b id="lse-icons-panel-search-display" class="lse-icons-display-areas">
 			</lse-b>
 		</lse-b>
+
+		<div id="lse-icon-not-found" class="lse-not-found ls--not-found">
+			<div class="not-found-icon">
+				<?= lsGetSVGIcon( 'face-monocle', 'duotone' ) ?>
+			</div>
+			<div class="not-found-main-text">
+				<?= __('Can’t find any icons.', 'LayerSlider') ?>
+			</div>
+			<div class="not-found-sub-text">
+				<?= __('Try a different search term or icon family.', 'LayerSlider') ?>
+			</div>
+			<ls-button class="not-found-button lse-button ls-button">
+				<?= __('Reset Search', 'LayerSlider') ?>
+			</ls-button>
+		</div>
+
 	</lse-b>
 </div>

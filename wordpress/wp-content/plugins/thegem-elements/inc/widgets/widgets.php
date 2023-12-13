@@ -183,7 +183,7 @@ add_action('widgets_init', 'thegem_widgets_init');
 				echo $before_title . $widget_data['title'] . $after_title;
 			}
 			$thegem_socials_icons = apply_filters('thegem_socials_icons_list', array(
-				'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter', 'instagram' => 'Instagram',
+				'facebook' => 'Facebook', 'linkedin' => 'LinkedIn', 'twitter' => 'Twitter (X)', 'instagram' => 'Instagram',
 				'pinterest' => 'Pinterest', 'stumbleupon' => 'StumbleUpon', 'rss' => 'RSS',
 				'vimeo' => 'Vimeo', 'youtube' => 'YouTube', 'flickr' => 'Flickr', 'tumblr' => 'Tumblr',
 				'wordpress' => 'WordPress', 'dribbble' => 'Dribbble', 'deviantart' => 'DeviantArt', 'share' => 'Share',
@@ -378,11 +378,24 @@ function pp_posts($sort = 'recent', $items = 3, $echo = TRUE, $categories = arra
 		$category = '';
 		if (!in_array(0, $categories))
 			$category = '&category='.implode(',', $categories);
-		$posts = get_posts('numberposts=' . $items . '&order=DESC&orderby=date&post_type=post&post_status=publish'.$category);
+		$posts = get_posts(array(
+			'numberposts' => $items,
+			'order' => 'desc',
+			'orderby' => 'date',
+			'order' => 'post',
+			'post_status' => 'publish',
+			'category' => implode(',', $categories),
+			'suppress_filters' => false,
+		));
 	} else {
-		global $wpdb;
-		$query = "SELECT ID, post_title, post_content, post_date FROM {$wpdb->prefix}posts WHERE post_type = 'post' AND post_status= 'publish' ORDER BY comment_count DESC LIMIT 0, %d";
-		$posts = $wpdb->get_results($wpdb->prepare($query, $items));
+		$posts = get_posts(array(
+			'numberposts' => $items,
+			'order' => 'desc',
+			'orderby' => 'comment_count',
+			'order' => 'post',
+			'post_status' => 'publish',
+			'suppress_filters' => false,
+		));
 	}
 	if (!empty($posts)) {
 		$return_html .= '<ul class="posts  styled">';
@@ -1866,8 +1879,8 @@ class The_Gem_Widget_Clients extends WP_Widget {
 
 class The_Gem_Widget_Template extends WP_Widget {
 	function __construct() {
-		$widget_ops = array('classname' => 'thegem-widget-template', 'description' => __('TheGem Section Template', 'thegem'));
-		parent::__construct('thegem_template', __('Section Template', 'thegem'), $widget_ops);
+		$widget_ops = array('classname' => 'thegem-widget-template', 'description' => __('TheGem Global Section', 'thegem'));
+		parent::__construct('thegem_template', __('Global Section', 'thegem'), $widget_ops);
 	}
 	function widget($args, $instance) {
 		extract($args);
@@ -1898,12 +1911,21 @@ class The_Gem_Widget_Template extends WP_Widget {
 
 	function form($instance) {
 		$instance = wp_parse_args((array)$instance, array('id' => ''));
+		$templates = thegem_get_section_templates_list();
+		if(is_array($templates) && count($templates) > 0) {
 		$values = array('0' => esc_html__('Select Template', 'thegem')) + thegem_get_section_templates_list();
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id('id'); ?>"><?php _e('Template', 'thegem'); ?>:</label><br/>
 			<?php thegem_print_select_input($values, $instance['id'], $this->get_field_name('id'), $this->get_field_id('id')) ?>
 		</p>
-	<?php
+		<?php
+		} else {
+		?>
+		<p><b><?php esc_html_e('No Global Sections Found', 'thegem') ?></b></p>
+		<p><?php printf(__('To create new global section go to <a href="%s" target="_blank">TheGem Templates Builder &rarr; Global Sections</a>', 'thegem'), add_query_arg(array('post_type' => 'thegem_templates', 'templates_type' => 'content'), admin_url( 'edit.php' )).'#open-modal'); ?></p>
+		<p><?php printf(__('Check <a href="%s" target="_blank">documentation</a>', 'thegem'), 'https://codex-themes.com/thegem/documentation/section-template/'); ?></p>
+		<?php
+		}
 	}
 }

@@ -7,7 +7,10 @@ include LS_ROOT_PATH . '/classes/class.ls.templateutils.php';
 
 $lsTemplatesConnectionError = empty( $lsStoreData );
 
-$lsStoreData = LS_TemplateUtils::processTemplatesData( $lsStoreData );
+$lsStoreData = LS_TemplateUtils::processTemplatesData( $lsStoreData, [
+	'lastViewed' => $lsStoreLastViewed,
+]);
+
 $demoSliders = LS_Sources::getDemoSliders();
 
 
@@ -103,7 +106,7 @@ function lsPrintTemplateGridItems( $originalCategory, $items, $max = 9999, $excl
 				<ls-wrapper class="ls--back">
 					<ls-ib class="ls--button ls--close-templates">
 						<?= lsGetSVGIcon('arrow-left'); ?>
-						<ls-ib><?= __('Back to Dashboard [ESC]', 'LayerSlider') ?></ls-ib>
+						<ls-ib><?= __('Back to Dashboard', 'LayerSlider') ?> <span><?= __('[ESC]', 'LayerSlider') ?></span></ls-ib>
 					</ls-ib>
 				</ls-wrapper>
 				<ls-templates-nav>
@@ -113,19 +116,26 @@ function lsPrintTemplateGridItems( $originalCategory, $items, $max = 9999, $excl
 							<ls-ib><?= __('Discover', 'LayerSlider') ?></ls-ib>
 						</ls-li>
 
+						<?php foreach( $lsStoreData['categories'] as $categoryKey => $category ) { ?>
+						<?php if( ! empty( $category['separator-before'] ) ) : ?>
+						<ls-separator></ls-separator>
+						<?php endif ?>
+						<ls-li data-show-category="<?= $categoryKey ?>">
+							<lse-badge <?= ! empty( $category['new_items_counter'] ) ? 'data-new-items="'.$category['new_items_counter'].'"' : '' ?>></lse-badge>
+							<?= $category['icon'] ?>
+							<ls-ib><?= $category['name'] ?></ls-ib>
+						</ls-li>
+						<?php if( ! empty( $category['separator-after'] ) ) : ?>
+						<ls-separator></ls-separator>
+						<?php endif ?>
+						<?php } ?>
+
 						<?php if( ! empty( $lsStoreData['collections'] ) ) : ?>
 						<ls-li data-show-category="collections">
 							<?= lsGetSVGIcon('rectangle-history', 'duotone'); ?>
 							<ls-ib><?= __('Collections', 'LayerSlider') ?></ls-ib>
 						</ls-li>
 						<?php endif ?>
-
-						<?php foreach( $lsStoreData['categories'] as $categoryKey => $category ) { ?>
-						<ls-li data-show-category="<?= $categoryKey ?>">
-							<?= $category['icon'] ?>
-							<ls-ib><?= $category['name'] ?></ls-ib>
-						</ls-li>
-						<?php } ?>
 					</ls-ul>
 
 				</ls-templates-nav>
@@ -223,6 +233,7 @@ function lsPrintTemplateGridItems( $originalCategory, $items, $max = 9999, $excl
 					</ls-templates-holder>
 
 					<?php foreach( $lsStoreData['categories'] as $categoryKey => $category ) : ?>
+					<?php if( ! empty( $category['supports']['discover'] ) ) : ?>
 					<ls-templates-title>
 						<ls-ib><?= sprintf( _x('Latest %s', 'Templates category (eg. Latest Sliders)', 'LayerSlider'), $category['name-alt'] ) ?></ls-ib>
 					</ls-templates-title>
@@ -232,6 +243,7 @@ function lsPrintTemplateGridItems( $originalCategory, $items, $max = 9999, $excl
 					<ls-templates-button-holder>
 						<ls-ib class="ls--button ls--show-all" data-show-category="<?= $categoryKey ?>"><?= __('Show All', 'LayerSlider') ?></ls-ib>
 					</ls-templates-button-holder>
+					<?php endif ?>
 					<?php endforeach ?>
 
 
@@ -242,35 +254,37 @@ function lsPrintTemplateGridItems( $originalCategory, $items, $max = 9999, $excl
 				<?php if( ! empty( $lsStoreData['collections'] ) ) : ?>
 				<ls-templates-container data-category="collections">
 
-					<ls-templates-holder class="ls--collections-list">
-						<?php
-						$counter = 0;
-						foreach( $lsStoreData['collections']['items'] as $handle => $collection ) {
+					<ls-b class="ls--sticky-header">
+						<ls-templates-holder class="ls--collections-list">
+							<?php
+							$counter = 0;
+							foreach( $lsStoreData['collections']['items'] as $handle => $collection ) {
 
-							$activeClass = '';
-							if( ! empty( $lsStoreData['collections']['active'] ) ) {
-								if( $lsStoreData['collections']['active'] === $handle ) {
+								$activeClass = '';
+								if( ! empty( $lsStoreData['collections']['active'] ) ) {
+									if( $lsStoreData['collections']['active'] === $handle ) {
+										$activeClass = 'ls--active';
+									}
+								} elseif( $counter++ === 0 ) {
 									$activeClass = 'ls--active';
 								}
-							} elseif( $counter++ === 0 ) {
-								$activeClass = 'ls--active';
-							}
-						?>
-						<ls-template class="<?= $activeClass ?>" data-handle="<?= $handle ?>" data-name="<?= $collection['name'] ?>">
-							<ls-wrapper>
-								<ls-image-holder <?= ! empty( $collection['image'] ) ? 'style="background-image: url('.$collection['image'].');"' : '' ?>></ls-image-holder>
-								<ls-content-wrapper>
-									<ls-template-name>
-										<?= $collection['icon'] ?>
-										<ls-text><?= $collection['name'] ?></ls-text>
-									</ls-template-name>
-								</ls-content-wrapper>
-							</ls-wrapper>
-						</ls-template>
-						<?php } ?>
-					</ls-templates-holder>
+							?>
+							<ls-template class="<?= $activeClass ?>" data-handle="<?= $handle ?>" data-name="<?= $collection['name'] ?>">
+								<ls-wrapper>
+									<ls-image-holder <?= ! empty( $collection['image'] ) ? 'style="background-image: url('.$collection['image'].');"' : '' ?>></ls-image-holder>
+									<ls-content-wrapper>
+										<ls-template-name>
+											<?= $collection['icon'] ?>
+											<ls-text><?= $collection['name'] ?></ls-text>
+										</ls-template-name>
+									</ls-content-wrapper>
+								</ls-wrapper>
+							</ls-template>
+							<?php } ?>
+						</ls-templates-holder>
+						<!-- <ls-templates-holder-separator></ls-templates-holder-separator> -->
+					</ls-b>
 
-					<ls-templates-title id="ls--collection-title"><ls-ib><?= sprintf( __('Showing %s Collection', 'LayerSlider'), '<span></span>') ?></ls-ib></ls-templates-title>
 					<ls-templates-holder id="ls--collection-templates" class="ls--templates-list">
 					</ls-templates-holder>
 
@@ -296,17 +310,38 @@ function lsPrintTemplateGridItems( $originalCategory, $items, $max = 9999, $excl
 				<ls-templates-container class="<?= ! empty( $category['supports']['collections'] ) ? 'ls-template-collections-target' : '' ?>" data-category="<?= $categoryKey ?>">
 
 					<!-- TAGS -->
-					<ls-tags-holder>
+					<ls-b class="ls--sticky-header">
+						<ls-tags-holder>
+							<?php foreach( $category['tags'] as $handle => $tag ) : ?>
+							<ls-tag class="ls--button <?= $tag['active'] ? 'ls--active' : '' ?>" data-handle="<?= $handle ?>">
+								<?= $tag['icon'] ?>
+								<ls-text><?= $tag['name'] ?></ls-text>
+							</ls-tag>
+							<?php endforeach ?>
+						</ls-tags-holder>
+						<!-- <ls-templates-holder-separator></ls-templates-holder-separator> -->
+					</ls-b>
+
+					<!-- TAG DESCRIPTIONS -->
+					<ls-tag-descriptions-holder data-show-description="all">
 						<?php foreach( $category['tags'] as $handle => $tag ) : ?>
-						<ls-tag class="ls--button <?= $tag['active'] ? 'ls--active' : '' ?>" data-handle="<?= $handle ?>">
-							<?= $tag['icon'] ?>
-							<ls-text><?= $tag['name'] ?></ls-text>
-						</ls-tag>
+						<?php if( ! empty( $tag['description']['text'] ) ) : ?>
+						<ls-tag-description data-handle="<?= $handle ?>">
+
+							<?php if( ! empty( $tag['description']['icon'] ) ) : ?>
+							<ls-block class="ls-icon-holder">
+								<?= $tag['description']['icon'] ?>
+							</ls-block>
+							<?php endif ?>
+							<ls-block class="ls-text-holder">
+								<ls-text><?= $tag['description']['text'] ?></ls-text>
+							</ls-block>
+						</ls-tag-description>
+						<?php endif ?>
 						<?php endforeach ?>
-					</ls-tags-holder>
+					</ls-tag-descriptions-holder>
 
 					<!-- ITEMS -->
-					<ls-templates-holder-separator></ls-templates-holder-separator>
 					<ls-templates-holder class="ls--templates-list">
 						<?php lsPrintTemplateGridItems( $categoryKey, $category['items']) ?>
 					</ls-templates-holder>

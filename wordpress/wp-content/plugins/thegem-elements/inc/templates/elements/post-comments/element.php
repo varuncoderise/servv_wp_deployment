@@ -1,14 +1,14 @@
 <?php
 
 class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_Element {
-	
+	public $show_in_posts = false;
 	public function __construct() {
 	}
-	
+
 	public function get_name() {
 		return 'thegem_te_post_comments';
 	}
-	
+
 	public function shortcode_output($atts, $content = '') {
 		// General params
 		$params = shortcode_atts(array_merge(array(
@@ -88,17 +88,18 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			thegem_templates_extra_options_extract(),
 			thegem_templates_responsive_options_extract()
 		), $atts, 'thegem_te_post_comments');
-  
+
 		// Init Content
 		ob_start();
 		$uniqid = uniqid('thegem-custom-').rand(1,9999);
 		$single_post = thegem_templates_init_post();
-		
-		if (empty($single_post) || post_password_required()) {
+
+		$comments_count = get_comments_number( $single_post );
+		if (empty($single_post) || (function_exists('vc_is_page_editable') && vc_is_page_editable() && !comments_open() && $comments_count == '0')) {
 			ob_end_clean();
 			return thegem_templates_close_single_post($this->get_name(), $this->shortcode_settings(), '');
 		}
-		
+
 		$separator = empty($params['separator']) ? 'post-comments--separator-hide' : '';
 		$title_form = empty($params['title_form']) ? 'post-comments--title-hide' : '';
 		$btn_alignment = !empty($params['send_btn_alignment']) ? 'post-comments-btn--'.$params['send_btn_alignment'] : '';
@@ -107,29 +108,29 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			$params['element_class'],
 			thegem_templates_responsive_options_output($params)
 		));
-  
+
 		$params['title_styled'] = implode(' ', array($params['title_font_style'], $params['title_font_weight']));
 		$params['name_styled'] = implode(' ', array($params['name_font_style'], $params['name_font_weight']));
 		$params['reply_styled'] = implode(' ', array($params['reply_font_style'], $params['reply_font_weight']));
 		$params['date_styled'] = implode(' ', array($params['date_font_style'], $params['date_font_weight']));
 		$params['desc_styled'] = implode(' ', array($params['desc_font_style'], $params['desc_font_weight']));
-		
+
 		global $thegem_comments_params;
 		$thegem_comments_params = $params;
-		
+
 		?>
 
         <div <?php if (!empty($params['element_id'])): ?>id="<?=esc_attr($params['element_id']); ?>"<?php endif;?> class="thegem-te-post-comments <?= esc_attr($params['element_class']); ?> <?= esc_attr($uniqid); ?>">
             <?php comments_template('/comments.php', $thegem_comments_params); unset($thegem_comments_params ); ?>
         </div>
-		
+
 		<?php
 		//Custom Styles
 		$customize = '.thegem-te-post-comments.'.$uniqid;
 		$custom_css = '';
 		$resolution = array('desktop', 'tablet', 'mobile');
 		$directions = array('top', 'bottom');
-		
+
 		// Layout Styles
 		if (!empty($params['separator_weight'])) {
 			$custom_css .= $customize.' .post-comments__list .comment {border-width: ' . $params['separator_weight'] . 'px;}';
@@ -153,7 +154,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 				}
 			}
 		}
-		
+
 		// Title Styles
 		if ($params['title_letter_spacing'] != '') {
 			$custom_css .= $customize.' h2.post-comments__title span {letter-spacing: ' . $params['title_letter_spacing'] . 'px;}';
@@ -177,12 +178,12 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			$custom_css .= $customize.' h3.comment-reply-title a {color: ' . $params['title_color'] . ';}';
 			$custom_css .= $customize.' .no-comments {color: ' . $params['title_color'] . ';}';
 		}
-		
+
 		// Avatar Styles
 		if (!empty($params['avatar_spacing'])) {
 			$custom_css .= $customize.' .post-comment__avatar {margin-right: ' . $params['avatar_spacing'] . 'px;}';
 		}
-		
+
 		// Name Styles
 		if ($params['name_letter_spacing'] != '') {
 			$custom_css .= $customize.' .post-comment__name-author {letter-spacing: ' . $params['name_letter_spacing'] . 'px;}';
@@ -197,7 +198,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 		if (!empty($params['name_color_hover'])) {
 			$custom_css .= $customize.' .post-comment__name-author a:hover {color: ' . $params['name_color_hover'] . ';}';
 		}
-		
+
 		// Reply Styles
 		if ($params['reply_letter_spacing'] != '') {
 			$custom_css .= $customize.' .post-comment__name-reply {letter-spacing: ' . $params['reply_letter_spacing'] . 'px;}';
@@ -211,7 +212,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 		if (!empty($params['reply_color_hover'])) {
 			$custom_css .= $customize.' .post-comment__name-reply a:hover {color: ' . $params['reply_color_hover'] . ';}';
 		}
-		
+
 		// Date Styles
 		if ($params['date_letter_spacing'] != '') {
 			$custom_css .= $customize.' .post-comment__date {letter-spacing: ' . $params['date_letter_spacing'] . 'px;}';
@@ -226,7 +227,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 		if (!empty($params['date_color_hover'])) {
 			$custom_css .= $customize.' .post-comment__date a:hover {color: ' . $params['date_color_hover'] . ';}';
 		}
-  
+
 		// Description Styles
 		if (!empty($params['desc_max_width'])) {
 			$custom_css .= $customize.' .post-comment__desc {max-width: ' . $params['desc_max_width'] . 'px;}';
@@ -243,7 +244,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			$custom_css .= $customize.' .post-comment__desc {color: ' . $params['desc_color'] . ';}';
 			$custom_css .= $customize.' .post-comment__approved {color: ' . $params['desc_color'] . ';}';
 		}
-		
+
 		// Form Styles
 		if (!empty($params['label_text_color'])) {
 			$custom_css .= $customize.' .comment-form label {color: ' . $params['label_text_color'] . ' !important;}';
@@ -272,7 +273,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 		if (!empty($params['input_checkbox_border_radius']) || $params['input_checkbox_border_radius'] == '0') {
 			$custom_css .= $customize.' .comment-form .checkbox-sign {border-radius: ' . $params['input_checkbox_border_radius'] . 'px !important;}';
 		}
-		
+
 		// Order Button Styles
 		if (!empty($params['send_btn_border_width'])) {
 			$add_to_cart_btn_line_height = intval(40 - $params['send_btn_border_width']*2);
@@ -300,25 +301,25 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 		if (!empty($params['send_btn_border_color_hover'])) {
 			$custom_css .= $customize.' .form-submit .gem-button:hover {border-color:'.$params['send_btn_border_color_hover'].'!important;}';
 		}
-		
+
 		$return_html = trim(preg_replace('/\s\s+/', ' ', ob_get_clean()));
-		
+
 		// Print custom css
 		$css_output = '';
 		if(!empty($custom_css)) {
 			$css_output = '<style>'.$custom_css.'</style>';
 		}
-		
+
 		$return_html = $css_output.$return_html;
 		return thegem_templates_close_single_post($this->get_name(), $this->shortcode_settings(), $return_html);
 	}
-	
+
 	public function set_layout_params() {
 		$result = array();
 		$group = __('General', 'thegem');
 		$resolutions = array('desktop', 'tablet', 'mobile');
 		$directions = array('top', 'bottom');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('General', 'thegem'),
@@ -326,7 +327,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Separator', 'thegem'),
@@ -336,7 +337,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			"type" => "textfield",
 			'heading' => __('Separator Weight', 'thegem'),
@@ -348,7 +349,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			"edit_field_class" => "vc_column vc_col-sm-6",
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Separator Color', 'thegem'),
@@ -360,7 +361,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		foreach ($resolutions as $res) {
 			$result[] = array(
 				'type' => 'thegem_delimeter_heading_two_level',
@@ -380,14 +381,14 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 				);
 			}
 		}
-		
+
 		return $result;
 	}
-	
+
 	public function set_title_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('Titles', 'thegem'),
@@ -395,7 +396,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading_two_level',
 			'heading' => __('Title Comments', 'thegem'),
@@ -403,7 +404,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading-two-level vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Title Comments', 'thegem'),
@@ -413,7 +414,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Title Comments Text', 'thegem'),
@@ -426,7 +427,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			),
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Title Comments Spacing', 'thegem'),
@@ -438,7 +439,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading_two_level',
 			'heading' => __('Title Form', 'thegem'),
@@ -446,7 +447,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading-two-level vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Title Form', 'thegem'),
@@ -456,7 +457,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Title Form Text', 'thegem'),
@@ -469,7 +470,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			),
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Title Form Spacing', 'thegem'),
@@ -481,7 +482,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading_two_level',
 			'heading' => __('Titles Presets', 'thegem'),
@@ -489,7 +490,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading-two-level vc_column vc_col-sm-12',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Style', 'thegem'),
@@ -512,7 +513,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Font weight', 'thegem'),
@@ -524,7 +525,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Letter Spacing', 'thegem'),
@@ -532,7 +533,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Transform', 'thegem'),
@@ -548,7 +549,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color', 'thegem'),
@@ -556,14 +557,14 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function set_author_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('Avatar', 'thegem'),
@@ -571,7 +572,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Avatar', 'thegem'),
@@ -581,7 +582,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Size', 'thegem'),
@@ -593,7 +594,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Spacing', 'thegem'),
@@ -605,14 +606,14 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function set_name_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('Name', 'thegem'),
@@ -620,7 +621,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Name', 'thegem'),
@@ -630,7 +631,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Style', 'thegem'),
@@ -657,7 +658,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Font weight', 'thegem'),
@@ -673,7 +674,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Letter Spacing', 'thegem'),
@@ -685,7 +686,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Transform', 'thegem'),
@@ -704,7 +705,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Name Link', 'thegem'),
@@ -718,7 +719,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color', 'thegem'),
@@ -730,7 +731,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color on Hover', 'thegem'),
@@ -742,14 +743,14 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function set_reply_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('Reply', 'thegem'),
@@ -757,7 +758,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Reply', 'thegem'),
@@ -767,7 +768,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Label', 'thegem'),
@@ -780,7 +781,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			),
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Style', 'thegem'),
@@ -806,7 +807,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Font weight', 'thegem'),
@@ -822,7 +823,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Letter Spacing', 'thegem'),
@@ -834,7 +835,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Transform', 'thegem'),
@@ -853,7 +854,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color', 'thegem'),
@@ -865,7 +866,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color on Hover', 'thegem'),
@@ -877,14 +878,14 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
- 
+
 	public function set_date_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('Date', 'thegem'),
@@ -892,7 +893,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Date', 'thegem'),
@@ -902,7 +903,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Style', 'thegem'),
@@ -929,7 +930,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Font weight', 'thegem'),
@@ -945,7 +946,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Letter Spacing', 'thegem'),
@@ -957,7 +958,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Transform', 'thegem'),
@@ -976,7 +977,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Date link', 'thegem'),
@@ -990,7 +991,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color', 'thegem'),
@@ -1002,7 +1003,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color on Hover', 'thegem'),
@@ -1014,14 +1015,14 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function set_desc_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('Description', 'thegem'),
@@ -1029,7 +1030,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'checkbox',
 			'heading' => __('Description', 'thegem'),
@@ -1039,7 +1040,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Max Width', 'thegem'),
@@ -1051,7 +1052,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			),
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Style', 'thegem'),
@@ -1078,7 +1079,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Font weight', 'thegem'),
@@ -1094,7 +1095,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Letter Spacing', 'thegem'),
@@ -1106,7 +1107,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Text Transform', 'thegem'),
@@ -1125,7 +1126,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color', 'thegem'),
@@ -1137,13 +1138,13 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function set_form_params() {
 		$group = __('General', 'thegem');
-		
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('Form', 'thegem'),
@@ -1151,7 +1152,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Label Text Color', 'thegem'),
@@ -1159,7 +1160,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Input Text Color', 'thegem'),
@@ -1167,7 +1168,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Input Background Color', 'thegem'),
@@ -1175,7 +1176,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Input Border Color', 'thegem'),
@@ -1183,7 +1184,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Input Marker Color', 'thegem'),
@@ -1191,7 +1192,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Border Radius', 'thegem'),
@@ -1199,7 +1200,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Checkbox Border Radius', 'thegem'),
@@ -1207,14 +1208,14 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function set_form_btn_params() {
 		$result = array();
 		$group = __('General', 'thegem');
-  
+
 		$result[] = array(
 			'type' => 'thegem_delimeter_heading',
 			'heading' => __('"Send Comment" Button', 'thegem'),
@@ -1222,7 +1223,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'thegem-param-delimeter-heading no-top-padding margin-top vc_column vc_col-sm-12 capitalize',
 			'group' => $group
 		);
-		
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Button Size', 'thegem'),
@@ -1239,7 +1240,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Button Alignment', 'thegem'),
@@ -1255,7 +1256,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-12',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'dropdown',
 			'heading' => __('Border Width', 'thegem'),
@@ -1274,7 +1275,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group,
 		);
-  
+
 		$result[] = array(
 			'type' => 'textfield',
 			'heading' => __('Border Radius', 'thegem'),
@@ -1283,7 +1284,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color', 'thegem'),
@@ -1292,7 +1293,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Text Color on Hover', 'thegem'),
@@ -1301,7 +1302,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Background Color', 'thegem'),
@@ -1310,7 +1311,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Background Color on Hover', 'thegem'),
@@ -1319,7 +1320,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Border Color', 'thegem'),
@@ -1328,7 +1329,7 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-  
+
 		$result[] = array(
 			'type' => 'colorpicker',
 			'heading' => __('Border Color on Hover', 'thegem'),
@@ -1337,12 +1338,12 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'edit_field_class' => 'vc_column vc_col-sm-6',
 			'group' => $group
 		);
-		
+
 		return $result;
 	}
-	
+
 	public function shortcode_settings() {
-		
+
 		return array(
 			'name' => __('Post Comments', 'thegem'),
 			'base' => 'thegem_te_post_comments',
@@ -1350,37 +1351,37 @@ class TheGem_Template_Element_Post_Comments extends TheGem_Single_Post_Template_
 			'category' => __('Single Post Builder', 'thegem'),
 			'description' => __('Post Comments (Single Post Builder)', 'thegem'),
 			'params' => array_merge(
-			
+
 			    /* General - Layout */
 				$this->set_layout_params(),
-			
+
 			    /* General - Title */
 				$this->set_title_params(),
-				
+
 				/* General - Author */
 				$this->set_author_params(),
-				
+
 				/* General - Name */
 				$this->set_name_params(),
-				
+
 				/* General - Reply Link */
 				$this->set_reply_params(),
-                
+
                 /* General - Date */
 				$this->set_date_params(),
-				
+
 				/* General - Description */
 				$this->set_desc_params(),
-				
+
 				/* General - Form */
 				$this->set_form_params(),
-				
+
 				/* General - Form Btn */
 				$this->set_form_btn_params(),
-				
+
 				/* Extra Options */
 				thegem_set_elements_extra_options(),
-				
+
 				/* Responsive Options */
 				thegem_set_elements_responsive_options()
 			),

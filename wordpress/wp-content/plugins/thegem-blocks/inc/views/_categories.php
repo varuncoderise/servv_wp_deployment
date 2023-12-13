@@ -23,7 +23,9 @@
                       ($category['name'] == 'cart' && $this->templateType !='cart') ||
                       ($category['name'] == 'checkout' && $this->templateType !='checkout') ||
                       ($category['name'] == 'purchase-summary' && $this->templateType !='checkout-thanks') ||
-                      ($category['name'] == 'blog-posts' && $this->templateType !='single-post')
+                      ($category['name'] == 'blog-posts' && $this->templateType !='single-post') ||
+                      ($category['name'] == 'single-projects' && $this->templateType !='portfolio') ||
+                      ($category['name'] == 'loop-item' && $this->templateType !='loop-item')
                   ) continue; ?>
             <li>
                 <a href="#"

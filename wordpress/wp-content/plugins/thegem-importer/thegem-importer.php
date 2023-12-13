@@ -4,7 +4,7 @@
 Plugin Name: TheGem Demo Import (for WPBakery)
 Plugin URI: http://codex-themes.com/thegem/
 Author: Codex Themes
-Version: 5.7.0
+Version: 5.9.3
 Author URI: http://codex-themes.com/thegem/
 */
 
@@ -320,6 +320,26 @@ function thegem_importer_get_import_step_1() {
 				<button type="button" class="plugins-proceed-import"><?php _e('Proceed', 'thegem-importer'); ?></button>
 			<?php endif; ?>
 		</div>
+	<?php elseif(!empty($imports_data[$_REQUEST['import']]['acf']) && empty($_REQUEST['ignore_plugins']) && !class_exists( 'ACF' )) : $status = 100; ?>
+		<div class="import-select-warning"><?php _e('Please install following plugins before<br>importing this demo:', 'thegem-importer'); ?></div>
+		<div class="import-select-woocommerce-required-table">
+			<div class="required-table-row">
+				<div class="required-table-title"><span class="plugin-name"><?php _e('Advanced Custom Fields', 'thegem-importer'); ?></span><span class="required-plugin"><?php _e('(required)', 'thegem-importer'); ?></span></div>
+				<div class="required-table-button">
+					<?php if(!class_exists( 'ACF' )) : ?>
+						<a href="<?php echo admin_url('plugin-install.php?s=advanced-custom-fields&tab=search&type=term'); ?>" target="_blank" class="plugin-install"><?php _e('Install', 'thegem-importer'); ?></a>
+					<?php else : ?>
+						<span class="plugin-installed"><?php _e('Installed', 'thegem-importer'); ?></span>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+		<div class="submit-buttons">
+			<button type="button" class="cancel-import plugins-cancel-import"><?php _e('Cancel', 'thegem-importer'); ?></button>
+			<?php if(class_exists( 'ACF' )) : ?>
+				<button type="button" class="plugins-proceed-import"><?php _e('Proceed', 'thegem-importer'); ?></button>
+			<?php endif; ?>
+		</div>
 	<?php elseif(!empty($imports_data[$_REQUEST['import']]['required_child']) && get_stylesheet() != $imports_data[$_REQUEST['import']]['required_child']) : ?>
 		<div class="import-select-title"><?php _e('Warning', 'thegem-importer'); ?></div>
 		<div class="import-select-warning">
@@ -372,8 +392,12 @@ function thegem_importer_check_plugins() {
 		if(!empty($import_data['woocommerce']) && (!function_exists('WC') || !defined( 'YITH_WCWL' ))) {
 			$status = 100;
 		}
+		if(!empty($import_data['acf']) && !class_exists( 'ACF' )) {
+			$status = 100;
+		}
 		ob_start();
 ?>
+<?php if(!empty($import_data['woocommerce'])) : ?>
 <div class="import-select-woocommerce-required-table">
 	<div class="required-table-row">
 		<div class="required-table-title"><span class="plugin-name"><?php _e('WooCommerce', 'thegem-importer'); ?></span><span class="required-plugin"><?php _e('(required)', 'thegem-importer'); ?></span></div>
@@ -396,13 +420,27 @@ function thegem_importer_check_plugins() {
 		</div>
 	</div>
 </div>
+<?php elseif(!empty($import_data['acf'])) : ?>
+<div class="import-select-woocommerce-required-table">
+	<div class="required-table-row">
+		<div class="required-table-title"><span class="plugin-name"><?php _e('Advanced Custom Fields', 'thegem-importer'); ?></span><span class="required-plugin"><?php _e('(required)', 'thegem-importer'); ?></span></div>
+		<div class="required-table-button">
+			<?php if(!class_exists( 'ACF' )) : ?>
+				<a href="<?php echo admin_url('plugin-install.php?s=advanced-custom-fields&tab=search&type=term'); ?>" target="_blank" class="plugin-install"><?php _e('Install', 'thegem-importer'); ?></a>
+			<?php else : ?>
+				<span class="plugin-installed"><?php _e('Installed', 'thegem-importer'); ?></span>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
+<?php endif; ?>
 <?php
 	$content_table = ob_get_clean();
 	ob_start();
 ?>
 		<div class="submit-buttons">
 			<button type="button" class="cancel-import plugins-cancel-import"><?php _e('Cancel', 'thegem-importer'); ?></button>
-			<?php if(function_exists('WC')) : ?>
+			<?php if((!empty($import_data['woocommerce']) && function_exists('WC')) || (!empty($import_data['acf']) && class_exists( 'ACF' ))) : ?>
 				<button type="button" class="plugins-proceed-import"><?php _e('Proceed', 'thegem-importer'); ?></button>
 			<?php endif; ?>
 		</div>
@@ -644,6 +682,34 @@ function thegem_importer_get_import_step_3() {
 		unlink($menu_file_temp);
 		unlink($widgets_file_temp);
 		unlink($forms_file_temp);
+
+		if(!empty($imports_data[$import_selection['import']]['acf']) && class_exists('ACF')) {
+			$acf_file_temp = download_url(THEGEM_IMPORT_URL.$single_new_prefix.$import_selection['import'].'/acf-config.json');
+			if(is_wp_error( $acf_file_temp )) {
+				echo json_encode(array('status' => 0, 'content' => thegem_importer_error_content(__('Can\'t download files from demo-content server.', 'thegem-importer'))));
+				die(-1);
+			} else {
+				$acf_file = @copy($acf_file_temp, $importer_dir.'/acf-config.json');
+			}
+			unlink($acf_file_temp);
+			$acf_cpt_config = file_get_contents($importer_dir.'/acf-config.json');
+			$acf_cpt_config = json_decode($acf_cpt_config, true);
+			$ids = array();
+			if($acf_cpt_config && is_array($acf_cpt_config)) {
+				if(isset($acf_cpt_config['key'])) {
+					$acf_cpt_config = array($acf_cpt_config);
+				}
+				foreach ( $acf_cpt_config as $to_import ) {
+					$post_type = acf_determine_internal_post_type( $to_import['key'] );
+					$post = acf_get_internal_post_type_post( $to_import['key'], $post_type );
+					if ( $post ) {
+						$to_import['ID'] = $post->ID;
+					}
+					$to_import = acf_import_internal_post_type( $to_import, $post_type );
+					$ids[] = $to_import['ID'];
+				}
+			}
+		}
 
 		if (! defined('WP_LOAD_IMPORTERS')) define('WP_LOAD_IMPORTERS', true);
 		require_once(plugin_dir_path( __FILE__ ) . 'inc/wordpress-importer.php');
@@ -1204,6 +1270,14 @@ function thegem_importer_import_settings() {
 			update_option('thegem_options_page_settings_post', $page_settings['post']);
 			update_option('thegem_options_page_settings_product', $page_settings['product']);
 			update_option('thegem_options_page_settings_product_categories', $page_settings['product_categories']);
+			if(!empty($page_settings['popups'])) {
+				update_option('thegem_popups', $page_settings['popups']);
+			}
+			if(!empty($page_settings['cpts'])) {
+				foreach($page_settings['cpts'] as $dataType => $options) {
+					update_option('thegem_options_page_settings_'.$dataType, $options);
+				}
+			}
 
 			if ($import_selection['import_type'] != 'part') {
 				$additionals_fonts_content = file_get_contents($importer_dir.'/additionals_fonts.json');
@@ -1313,7 +1387,7 @@ function thegem_importer_import_settings() {
 		}
 
 		global $wpdb;
-		$prefix = thegem_get_image_cache_option_key_prefix();
+		$prefix = 'thegem_image_cache_';
 		$wpdb->query("DELETE FROM `{$wpdb->options}` WHERE `option_name` LIKE '%{$prefix}%'");
 
 	}
@@ -1496,7 +1570,7 @@ function thegem_importer_error_content($error = '') {
 		<?php if($error == 'ajax') : ?>
 			<div class="import-error-title"><?php _e('Problem occured while processing the ajax request. Possible reasons for that:', 'thegem-importer'); ?></div>
 			<div class="import-error-text">
-				<p><?php printf(__('1. Your server settings do not correspond with the recommended server settings (check here <a href="%s" target="_blank">%s</a>). Please contact your hoster and ask them to adjust your settings.', 'thegem-importer'), 'https://codexthemes.ticksy.com/article/8024/', 'https://codexthemes.ticksy.com/article/8024/'); ?></p>
+				<p><?php printf(__('1. Your server settings do not correspond with the recommended server settings (check here <a href="%s" target="_blank">%s</a>). Please contact your hoster and ask them to adjust your settings.', 'thegem-importer'), 'https://docs.codex-themes.com/article/518-requirements', 'https://docs.codex-themes.com/article/518-requirements'); ?></p>
 				<p><?php _e('2. Your desktop is using some proxy with restricted ajax processing settings. Please disable any proxy on your desktop.', 'thegem-importer'); ?></p>
 				<p><?php _e('3. No internet connection. Please check your internet connection.', 'thegem-importer'); ?></p>
 				<p><?php printf(__('Please check this points and restart demo import. In case the problem will remain, <a href="%s" target="_blank">contact our support at codexthemes.ticksy.com</a>.', 'thegem-importer'), 'https://codexthemes.ticksy.com/'); ?></p>

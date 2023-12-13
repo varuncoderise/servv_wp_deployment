@@ -4,12 +4,15 @@
 class LS_TemplateUtils {
 
 
-	public static function processTemplatesData( $data = [] ) {
+	public static function processTemplatesData( $data = [], $extraParams = [] ) {
 
 		if( ! empty( $data['collections'] ) ) {
-
 			$data['collections']['items'] = ! empty( $data['collections']['items'] ) ? $data['collections']['items'] : [];
 			$data['collections']['items'] = LS_TemplateUtils::processCollections( $data['collections']['items'] );
+		}
+
+		if( ! empty( $data['workshop'] ) ) {
+			$data['categories'] = array_merge( $data['categories'], $data['workshop'] );
 		}
 
 		// Normalize categories
@@ -33,13 +36,38 @@ class LS_TemplateUtils {
 			$category['items'] 		= ! empty( $category['items'] ) ? $category['items'] : [];
 
 			// Brand new section
-			$newItems = array_slice( $category['items'], 0, 3 );
-			foreach( $newItems as $itemKey => $itemVal ) {
-				$itemVal['category'] 	= $categoryKey;
-				$newItems[ $itemKey ] 	= $itemVal;
+			if( ! empty( $category['supports']['brand-new'] ) ) {
+				$newItems = array_slice( $category['items'], 0, 3 );
+
+				foreach( $newItems as $itemKey => $itemVal ) {
+					$itemVal['category'] 	= $categoryKey;
+					$newItems[ $itemKey ] 	= $itemVal;
+				}
+
+				$data['new']['items'] = array_merge( $data['new']['items'], $newItems );
 			}
 
-			$data['new']['items'] = array_merge( $data['new']['items'], $newItems );
+
+			// Count new/unseen items in category
+			$loopCounter = 0; $newTemplatesCounter = 0;
+			foreach( $category['items'] as $itemKey => $itemVal ) {
+
+				if( ++$loopCounter > 100 ) {
+					break;
+				}
+
+				if( empty( $itemVal['released'] ) ) {
+					continue;
+				}
+
+				if( $itemVal['released'] <= $extraParams['lastViewed'] ) {
+					break;
+				}
+
+				$newTemplatesCounter++;
+			}
+
+			$category['new_items_counter'] = ( $newTemplatesCounter > 99 ) ? '99+' : $newTemplatesCounter;
 
 			unset( $category );
 		}
@@ -180,9 +208,20 @@ class LS_TemplateUtils {
 				continue;
 			}
 
-			$tags[ $tagKey ]['active'] 	= ( 0 === $counter++ );
-			$tags[ $tagKey ]['name'] 	= ! empty( $tag['name'] ) ? $tag['name'] : '';
-			$tags[ $tagKey ]['icon'] 	= self::findAndProccessIcon( $tag );
+			$tags[ $tagKey ]['active'] 				= ( 0 === $counter++ );
+			$tags[ $tagKey ]['name'] 				= ! empty( $tag['name'] ) ? $tag['name'] : '';
+			$tags[ $tagKey ]['icon'] 				= self::findAndProccessIcon( $tag );
+
+			if( empty( $tag['description'] ) ) {
+				$tags[ $tagKey ]['description'] = [];
+
+			} elseif( ! empty( $tag['description'] ) && is_string( $tag['description'] ) ) {
+				$tags[ $tagKey ]['description'] = [
+					'text' => $tag['description']
+				];
+			}
+
+			$tags[ $tagKey ]['description']['icon'] = self::findAndProccessIcon( $tags[ $tagKey ]['description'] );
 		}
 
 		return $tags;
@@ -209,8 +248,9 @@ class LS_TemplateUtils {
 
 		// Has name
 		if( ! empty( $array['icon']['name'] ) ) {
-			$type = ! empty( $array['icon']['type'] ) ? $array['icon']['type'] : 'solid';
-			return lsGetSVGIcon( $array['icon']['name'], $type );
+			$type 		= ! empty( $array['icon']['type'] ) ? $array['icon']['type'] : 'solid';
+			$attributes = ! empty( $array['icon']['attributes'] ) ? $array['icon']['attributes'] : [];
+			return lsGetSVGIcon( $array['icon']['name'], $type, $attributes );
 
 		// HTML/SVG source
 		} elseif( ! empty( $array['icon']['html'] ) ) {

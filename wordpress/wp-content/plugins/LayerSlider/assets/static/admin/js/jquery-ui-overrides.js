@@ -91,7 +91,7 @@ jQuery(document).ready(function($){
 				uiT = ui.offset.top,
 				uiM = uiT + uiH / 2,
 				uiB = uiT + uiH;
-			//console.log( ui );
+
 			for ( i = inst.snapElements.length - 1; i >= 0; i-- ) {
 
 				$el = $( inst.snapElements[ i ].item );
@@ -222,7 +222,6 @@ jQuery(document).ready(function($){
 				}
 				inst.snapElements[ i ].snapping = ( ts || bs || ls || rs || cc || mm || first );
 			}
-
 		}
-	} );
+	});
 });

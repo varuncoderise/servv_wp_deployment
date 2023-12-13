@@ -24,7 +24,7 @@ function theGemHeadingRotatingText(element) {
         items.forEach((item)=>item.style.width = maxWidth + 'px');
 
         setInterval(()=>{
-            let next = current.nextElementSibling !== null ? current.nextElementSibling : element.childNodes[0];
+            let next = current.nextElementSibling !== null ? current.nextElementSibling : element.firstElementChild;
             current.style.opacity = 0;
 
             setTimeout(()=>{
@@ -41,7 +41,7 @@ function theGemHeadingRotatingText(element) {
         items.forEach((item)=>item.dataset.width = item.clientWidth);
 
         setInterval(()=>{
-            let next = current.nextElementSibling !== null ? current.nextElementSibling : element.childNodes[0];
+            let next = current.nextElementSibling !== null ? current.nextElementSibling : element.firstElementChild;
             let nextWidth = next.dataset.width;
             let currentWidth = current.dataset.width;
 
