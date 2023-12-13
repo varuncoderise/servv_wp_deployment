@@ -38,9 +38,7 @@ class Current_Page_Helper {
 	 * Retrieves the current post id.
 	 * Returns 0 if no post id is found.
 	 *
-	 * @codeCoverageIgnore It depends on external request input.
-	 *
-	 * @return integer The post id.
+	 * @return int The post id.
 	 */
 	public function get_current_post_id() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: We are not processing form information, We are casting to an integer.
@@ -54,8 +52,6 @@ class Current_Page_Helper {
 	/**
 	 * Retrieves the current post type.
 	 *
-	 * @codeCoverageIgnore It depends on external request input.
-	 *
 	 * @return string The post type.
 	 */
 	public function get_current_post_type() {
@@ -63,6 +59,12 @@ class Current_Page_Helper {
 		if ( isset( $_GET['post_type'] ) && \is_string( $_GET['post_type'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reason: We are not processing form information.
 			return \sanitize_text_field( \wp_unslash( $_GET['post_type'] ) );
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reason: should be done outside the helper function.
+		if ( isset( $_POST['post_type'] ) && \is_string( $_POST['post_type'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Reason: should be done outside the helper function.
+			return \sanitize_text_field( \wp_unslash( $_POST['post_type'] ) );
 		}
 
 		$post_id = $this->get_current_post_id();
@@ -76,8 +78,6 @@ class Current_Page_Helper {
 
 	/**
 	 * Retrieves the current taxonomy.
-	 *
-	 * @codeCoverageIgnore This function depends on external request input.
 	 *
 	 * @return string The taxonomy.
 	 */

@@ -19,8 +19,8 @@ use WPSEO_Social_Previews;
 use WPSEO_Utils;
 use Yoast\WP\SEO\Conditionals\Third_Party\Elementor_Edit_Conditional;
 use Yoast\WP\SEO\Integrations\Integration_Interface;
-use Yoast\WP\SEO\Premium\Helpers\Prominent_Words_Helper;
 use Yoast\WP\SEO\Premium\Helpers\Current_Page_Helper;
+use Yoast\WP\SEO\Premium\Helpers\Prominent_Words_Helper;
 use Yoast\WP\SEO\Premium\Integrations\Admin\Prominent_Words\Indexing_Integration;
 use Yoast\WP\SEO\Premium\Integrations\Admin\Replacement_Variables_Integration;
 
@@ -30,18 +30,18 @@ use Yoast\WP\SEO\Premium\Integrations\Admin\Replacement_Variables_Integration;
 class Elementor_Premium implements Integration_Interface {
 
 	/**
-	 * Holds the Current_Page_Helper.
-	 *
-	 * @var Current_Page_Helper
-	 */
-	protected $current_page_helper;
-
-	/**
 	 * Holds the script handle.
 	 *
 	 * @var string
 	 */
 	const SCRIPT_HANDLE = 'elementor-premium';
+
+	/**
+	 * Holds the Current_Page_Helper.
+	 *
+	 * @var Current_Page_Helper
+	 */
+	protected $current_page_helper;
 
 	/**
 	 * Represents the post.
@@ -77,7 +77,7 @@ class Elementor_Premium implements Integration_Interface {
 	 * Constructs the class.
 	 *
 	 * @param Prominent_Words_Helper $prominent_words_helper The prominent words helper.
-	 * @param Current_Page_Helper    $current_page_helper The Current_Page_Helper.
+	 * @param Current_Page_Helper    $current_page_helper    The Current_Page_Helper.
 	 */
 	public function __construct( Prominent_Words_Helper $prominent_words_helper, Current_Page_Helper $current_page_helper ) {
 		$this->prominent_words_helper = $prominent_words_helper;
@@ -157,19 +157,20 @@ class Elementor_Premium implements Integration_Interface {
 		$assets_manager = new WPSEO_Admin_Asset_Manager();
 
 		$data = [
-			'restApi'                         => $this->get_rest_api_config(),
-			'seoAnalysisEnabled'              => $analysis_seo->is_enabled(),
-			'licensedURL'                     => WPSEO_Utils::get_home_url(),
-			'settingsPageUrl'                 => \admin_url( 'admin.php?page=wpseo_page_settings#/site-features#card-wpseo-enable_link_suggestions' ),
-			'integrationsTabURL'              => \admin_url( 'admin.php?page=wpseo_integrations' ),
-			'commonsScriptUrl'                => \plugins_url(
+			'restApi'                     => $this->get_rest_api_config(),
+			'seoAnalysisEnabled'          => $analysis_seo->is_enabled(),
+			'licensedURL'                 => WPSEO_Utils::get_home_url(),
+			'settingsPageUrl'             => \admin_url( 'admin.php?page=wpseo_page_settings#/site-features#card-wpseo-enable_link_suggestions' ),
+			'integrationsTabURL'          => \admin_url( 'admin.php?page=wpseo_integrations' ),
+			'commonsScriptUrl'            => \plugins_url(
 				'assets/js/dist/commons-premium-' . $assets_manager->flatten_version( \WPSEO_PREMIUM_VERSION ) . \WPSEO_CSSJS_SUFFIX . '.js',
 				\WPSEO_PREMIUM_FILE
 			),
-			'premiumAssessmentsScriptUrl'     => \plugins_url(
+			'premiumAssessmentsScriptUrl' => \plugins_url(
 				'assets/js/dist/register-premium-assessments-' . $assets_manager->flatten_version( \WPSEO_PREMIUM_VERSION ) . \WPSEO_CSSJS_SUFFIX . '.js',
 				\WPSEO_PREMIUM_FILE
 			),
+			'pluginUrl'                   => \plugins_url( '', \WPSEO_PREMIUM_FILE ),
 		];
 		if ( \defined( 'YOAST_SEO_TEXT_FORMALITY' ) && \YOAST_SEO_TEXT_FORMALITY === true ) {
 			$data['textFormalityScriptUrl'] = \plugins_url(

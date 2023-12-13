@@ -105,7 +105,12 @@ class WPSEO_Redirect_Table extends WP_List_Table {
 		}
 		?>
 		<div class="alignleft actions">
-			<label for="filter-by-redirect" class="screen-reader-text"><?php esc_html_e( 'Filter by redirect type', 'wordpress-seo-premium' ); ?></label>
+			<label for="filter-by-redirect" class="screen-reader-text">
+			<?php
+				/* translators: Hidden accessibility text. */
+				esc_html_e( 'Filter by redirect type', 'wordpress-seo-premium' );
+			?>
+			</label>
 			<select name="redirect-type" id="filter-by-redirect">
 				<option<?php selected( $selected, 0 ); ?> value="0"><?php esc_html_e( 'All redirect types', 'wordpress-seo-premium' ); ?></option>
 				<?php
@@ -241,6 +246,7 @@ class WPSEO_Redirect_Table extends WP_List_Table {
 			'<label class="screen-reader-text" for="wpseo-redirects-bulk-cb-%2$s">%3$s</label> <input type="checkbox" name="wpseo_redirects_bulk_delete[]" id="wpseo-redirects-bulk-cb-%2$s" value="%1$s" />',
 			esc_attr( $item['old'] ),
 			$item['row_number'],
+			/* translators: Hidden accessibility text. */
 			esc_html( __( 'Select this redirect', 'wordpress-seo-premium' ) )
 		);
 	}
@@ -263,7 +269,7 @@ class WPSEO_Redirect_Table extends WP_List_Table {
 			case 'new':
 				$classes      = [ 'val' ];
 				$new_url      = $item['new'];
-				$new_full_url = ( $new_url && $new_url[0] === '/' ) ? site_url() . $new_url : site_url() . '/' . $new_url;
+				$new_full_url = home_url( $new_url );
 				if ( ! $is_regex && WPSEO_Redirect_Util::requires_trailing_slash( $new_url ) ) {
 					$classes[] = 'has-trailing-slash';
 				}
@@ -283,7 +289,7 @@ class WPSEO_Redirect_Table extends WP_List_Table {
 
 			case 'old':
 				$classes      = '';
-				$old_full_url = ( $item['old'][0] === '/' ) ? site_url() . $item['old'] : site_url() . '/' . $item['old'];
+				$old_full_url = home_url( $item['old'] );
 				if ( $is_regex === true ) {
 					return '<div class="val remove-slashes">' . esc_html( $item['old'] ) . '</div>' . $row_actions;
 				}
@@ -355,7 +361,7 @@ class WPSEO_Redirect_Table extends WP_List_Table {
 		if ( isset( $_GET['redirect-type'] ) && is_string( $_GET['redirect-type'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: Cast to an integer and strictly compared against known keys.
 			$redirect_type = (int) wp_unslash( $_GET['redirect-type'] );
-			$redirect_type = in_array( $redirect_type, array_keys( $this->redirect_types ), true ) ? $redirect_type : 0;
+			$redirect_type = array_key_exists( $redirect_type, $this->redirect_types ) ? $redirect_type : 0;
 		}
 		if ( $redirect_type !== 0 ) {
 			$this->filter['redirect_type'] = $redirect_type;
@@ -456,7 +462,7 @@ class WPSEO_Redirect_Table extends WP_List_Table {
 		if ( isset( $_GET['orderby'] ) && is_string( $_GET['orderby'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Reason: same as above and we are strictly comparing the values.
 			$orderby = wp_unslash( $_GET['orderby'] );
-			if ( in_array( $orderby, array_keys( $this->get_sortable_columns() ), true ) ) {
+			if ( array_key_exists( $orderby, $this->get_sortable_columns() ) ) {
 				return $orderby;
 			}
 		}

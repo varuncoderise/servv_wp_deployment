@@ -5,7 +5,6 @@
  * @package WPSEO\Admin
  */
 
-use Yoast\WP\SEO\Helpers\Wordpress_Helper;
 use Yoast\WP\SEO\Integrations\Settings_Integration;
 
 /**
@@ -87,7 +86,8 @@ class WPSEO_Admin {
 		}
 
 		$this->admin_features = [
-			'dashboard_widget' => new Yoast_Dashboard_Widget(),
+			'dashboard_widget'         => new Yoast_Dashboard_Widget(),
+			'wincher_dashboard_widget' => new Wincher_Dashboard_Widget(),
 		];
 
 		if ( WPSEO_Metabox::is_post_overview( $pagenow ) || WPSEO_Metabox::is_post_edit( $pagenow ) ) {
@@ -239,7 +239,6 @@ class WPSEO_Admin {
 			array_unshift( $links, $ftc_link );
 		}
 
-
 		$addon_manager = new WPSEO_Addon_Manager();
 		if ( YoastSEO()->helpers->product->is_premium() ) {
 
@@ -316,16 +315,8 @@ class WPSEO_Admin {
 	 * Log the updated timestamp for user profiles when theme is changed.
 	 */
 	public function switch_theme() {
-		$wordpress_helper  = new Wordpress_Helper();
-		$wordpress_version = $wordpress_helper->get_wordpress_version();
 
-		// Capability queries were only introduced in WP 5.9.
-		if ( version_compare( $wordpress_version, '5.8.99', '<' ) ) {
-			$users = get_users( [ 'who' => 'authors' ] );
-		}
-		else {
-			$users = get_users( [ 'capability' => [ 'edit_posts' ] ] );
-		}
+		$users = get_users( [ 'capability' => [ 'edit_posts' ] ] );
 
 		if ( is_array( $users ) && $users !== [] ) {
 			foreach ( $users as $user ) {

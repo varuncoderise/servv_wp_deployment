@@ -29,7 +29,7 @@ class Yoast_View_Utils {
 	 * @codeCoverageIgnore
 	 */
 	public function __construct() {
-		_deprecated_function( __METHOD__, 'WPSEO 20.3' );
+		_deprecated_function( __METHOD__, 'Yoast SEO 20.3' );
 		$this->form = Yoast_Form::get_instance();
 	}
 
@@ -38,16 +38,16 @@ class Yoast_View_Utils {
 	 *
 	 * Used for all the Help sections for indexable objects like post types, taxonomies, or archives.
 	 *
-	 * @param string|object $post_type        The post type to show the search results help for.
-	 * @param string        $help_text_switch Switch the help text to one that's more appropriate
-	 *                                        for the indexable object type the help section is for.
 	 * @deprecated 20.3
 	 * @codeCoverageIgnore
 	 *
+	 * @param string|object $post_type        The post type to show the search results help for.
+	 * @param string        $help_text_switch Switch the help text to one that's more appropriate
+	 *                                        for the indexable object type the help section is for.
 	 * @return object The help panel instance.
 	 */
 	public function search_results_setting_help( $post_type, $help_text_switch = '' ) {
-		_deprecated_function( __METHOD__, 'WPSEO 20.3' );
+		_deprecated_function( __METHOD__, 'Yoast SEO 20.3' );
 		if ( ! is_object( $post_type ) ) {
 			$post_type = get_post_type_object( $post_type );
 		}
@@ -79,15 +79,15 @@ class Yoast_View_Utils {
 	/**
 	 * Generates the OpenGraph disabled alert, depending on whether the OpenGraph feature is disabled.
 	 *
-	 * @param string $type The type of message. Can be altered to homepage, taxonomies or archives. Empty string by default.
-	 *
 	 * @deprecated 20.3
 	 * @codeCoverageIgnore
+	 *
+	 * @param string $type The type of message. Can be altered to homepage, taxonomies or archives. Empty string by default.
 	 *
 	 * @return string The alert. Returns an empty string if the setting is enabled.
 	 */
 	public function generate_opengraph_disabled_alert( $type = '' ) {
-		_deprecated_function( __METHOD__, 'WPSEO 20.3' );
+		_deprecated_function( __METHOD__, 'Yoast SEO 20.3' );
 		$is_enabled = WPSEO_Options::get( 'opengraph', true );
 
 		if ( $is_enabled ) {

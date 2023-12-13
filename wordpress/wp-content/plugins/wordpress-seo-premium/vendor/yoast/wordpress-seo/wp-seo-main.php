@@ -15,7 +15,7 @@ if ( ! function_exists( 'add_filter' ) ) {
  * {@internal Nobody should be able to overrule the real version number as this can cause
  *            serious issues with the options, so no if ( ! defined() ).}}
  */
-define( 'WPSEO_VERSION', '20.3' );
+define( 'WPSEO_VERSION', '21.7' );
 
 
 if ( ! defined( 'WPSEO_PATH' ) ) {
@@ -34,9 +34,9 @@ define( 'YOAST_VENDOR_NS_PREFIX', 'YoastSEO_Vendor' );
 define( 'YOAST_VENDOR_DEFINE_PREFIX', 'YOASTSEO_VENDOR__' );
 define( 'YOAST_VENDOR_PREFIX_DIRECTORY', 'vendor_prefixed' );
 
-define( 'YOAST_SEO_PHP_REQUIRED', '5.6' );
-define( 'YOAST_SEO_WP_TESTED', '6.1.1' );
-define( 'YOAST_SEO_WP_REQUIRED', '6.0' );
+define( 'YOAST_SEO_PHP_REQUIRED', '7.2.5' );
+define( 'YOAST_SEO_WP_TESTED', '6.4.2' );
+define( 'YOAST_SEO_WP_REQUIRED', '6.2' );
 
 if ( ! defined( 'WPSEO_NAMESPACES' ) ) {
 	define( 'WPSEO_NAMESPACES', true );
@@ -78,6 +78,17 @@ elseif ( ! class_exists( 'WPSEO_Options' ) ) { // Still checking since might be 
 	add_action( 'admin_init', 'yoast_wpseo_missing_autoload', 1 );
 
 	return;
+}
+
+/**
+ * Include the file from the `symfony/deprecation-contracts` dependency instead of autoloading it via composer.
+ *
+ * We need to do that because autoloading via composer prevents the vendor-prefixing of the dependency itself.
+ * Note that we don't expect the function to be ever called since the OAuth2 library should not provide invalid input.
+ */
+$deprecation_contracts_file = WPSEO_PATH . 'vendor_prefixed/symfony/deprecation-contracts/functions.php';
+if ( is_readable( $deprecation_contracts_file ) ) {
+	include $deprecation_contracts_file;
 }
 
 if ( function_exists( 'spl_autoload_register' ) ) {
@@ -218,7 +229,7 @@ function _wpseo_activate() {
 		WPSEO_Options::set( 'should_redirect_after_install_free', true );
 	}
 	else {
-		WPSEO_Options::set( 'activation_redirect_timestamp_free', \time() );
+		WPSEO_Options::set( 'activation_redirect_timestamp_free', time() );
 	}
 
 	// Reset tracking to be disabled by default.
@@ -442,15 +453,7 @@ if ( ! wp_installing() && ( $spl_autoload_exists && $filter_exists ) ) {
 register_activation_hook( WPSEO_FILE, 'wpseo_activate' );
 register_deactivation_hook( WPSEO_FILE, 'wpseo_deactivate' );
 
-// Wpmu_new_blog has been deprecated in 5.1 and replaced by wp_insert_site.
-global $wp_version;
-if ( version_compare( $wp_version, '5.1', '<' ) ) {
-	add_action( 'wpmu_new_blog', 'wpseo_on_activate_blog' );
-}
-else {
-	add_action( 'wp_initialize_site', 'wpseo_on_activate_blog', 99 );
-}
-
+add_action( 'wp_initialize_site', 'wpseo_on_activate_blog', 99 );
 add_action( 'activate_blog', 'wpseo_on_activate_blog' );
 
 // Registers SEO capabilities.
