@@ -47,7 +47,7 @@ if ( ! class_exists( 'TSSProAdmin' ) ) :
 		public function manage_rt_sc_code_selection_columns( $column ) {
 			switch ( $column ) {
 				case 'shortcode':
-					echo '<input type="text" onfocus="this.select();" readonly="readonly" value="[rt-testimonial id=&quot;' . get_the_ID() . '&quot; title=&quot;' . get_the_title() . '&quot;]" class="large-text code tlp-code-sc">';
+					echo '<input type="text" onfocus="this.select();" readonly="readonly" value="[rt-testimonial id=&quot;' . esc_attr(get_the_ID()) . '&quot; title=&quot;' . esc_attr(get_the_title()) . '&quot;]" class="large-text code tlp-code-sc">';
 					break;
 				default:
 					break;
@@ -127,6 +127,7 @@ if ( ! class_exists( 'TSSProAdmin' ) ) :
 			}
 
 			$tax_name         = $this->get_taxonomy_name_from_slug( $tax_slug );
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$current_tax_slug = isset( $_GET[ $tax_slug ] ) ? sanitize_text_field( wp_unslash( $_GET[ $tax_slug ] ) ) : false;
 			$filter           = '<select name="' . esc_attr( $tax_slug ) . '" id="' . esc_attr( $tax_slug ) . '" class="postform">';
 			$filter          .= '<option value="0">' . esc_html( $tax_name ) . '</option>';

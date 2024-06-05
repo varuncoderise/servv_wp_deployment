@@ -46,9 +46,16 @@ class Requirements
         if ($result === true && self::isPluginActive(self::DUP_PRO_PLUGIN_KEY)) {
             add_action('admin_init', array(__CLASS__, 'addProEnableNotice'));
             $pluginUrl                 = (is_multisite() ? network_admin_url('plugins.php') : admin_url('plugins.php'));
-            self::$deactivationMessage = __('Can\'t enable Duplicator LITE if the PRO version is enabled.', 'duplicator') . '<br/>'
-                . __('Please deactivate Duplicator PRO, then reactivate LITE version from the ', 'duplicator')
-                . "<a href='" . $pluginUrl . "'>" . __('plugins page', 'duplicator') . ".</a>";
+            self::$deactivationMessage = sprintf(
+                esc_html_x(
+                    'Can\'t enable Duplicator LITE if the PRO version is enabled. Please deactivate Duplicator PRO, 
+                    then reactivate LITE version from the %1$splugins page%2$s.',
+                    '%1$s and %2$s are <a> tags',
+                    'duplicator'
+                ),
+                '<a href="' . esc_url($pluginUrl) . '">',
+                '</a>'
+            );
             $result                    = false;
         }
 

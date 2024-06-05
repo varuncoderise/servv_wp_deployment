@@ -195,14 +195,15 @@ if ( ! class_exists( 'TSSProSC' ) ) :
 
 				// Start layout.
 				$html .= TSSPro()->layoutStyle( $layoutID, get_post_meta( $scID ), $scID );
-				$html .= "<div class='rt-container-fluid tss-wrapper {$parentClass}' id='{$layoutID}' {$containerDataAttr}>";
+				$html .= "<div class='rt-container-fluid tss-wrapper ".esc_attr($parentClass)."' id='".esc_attr($layoutID)."' {$containerDataAttr}>";
 				$html .= "<div data-title='" . esc_html__(
 					'Loading ...',
 					'testimonial-slider-showcase'
 				) . "' class='rt-row tss-{$layout}{$masonryG} {$preLoader}'>";
 
 				// WP_Query args.
-				$tssArgs = TSSPro()->buildArgs( $buildMetas, $isCarousel );
+				$query_args = new TSSQueryArgs();
+				$tssArgs = $query_args->buildArgs( $buildMetas, $isCarousel );
 
 				$tssQuery = new WP_Query( $tssArgs );
 				if ( $tssQuery->have_posts() ) {

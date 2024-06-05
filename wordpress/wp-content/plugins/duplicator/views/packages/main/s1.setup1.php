@@ -116,10 +116,13 @@ SYSTEM REQUIREMENTS -->
                                 <td><?php echo esc_html($dup_tests['PHP']['ZIP']); ?></td>
                                 <td>
                                     <?php printf(
-                                        "%s <a href='admin.php?page=duplicator-settings&tab=package'>%s</a> %s",
-                                        esc_html__("ZipArchive extension is required or", 'duplicator'),
-                                        esc_html__("Switch to DupArchive", 'duplicator'),
-                                        esc_html__("to by-pass this requirement.", 'duplicator')
+                                        esc_html_x(
+                                            'ZipArchive extension is required or %1$sSwitch to DupArchive%2$s to by-pass this requirement.',
+                                            '1 and 2 are <a> tags',
+                                            'duplicator'
+                                        ),
+                                        '<a href="admin.php?page=duplicator-settings&tab=package">',
+                                        '</a>'
                                     );
                                     ?>
                                 </td>

@@ -52,7 +52,7 @@ jQuery(document).ready(function ($) {
         var wrapper = $('.dup-subscribe-form');
         var input   = $('.dup-subscribe-form input[name="email"]');
 
-        button.html('Subscribing...');
+        button.html(loalizedStrings.subscribing);
         input.attr('disabled', 'disabled');
         $.post(
             ajaxurl,
@@ -64,18 +64,18 @@ jQuery(document).ready(function ($) {
             function (response) {
                 if (response.success) {
                     wrapper.fadeOut(300);
-                    button.html('Subscribed &#10003');
+                    button.html(l10nDupGlobalScript.subscribed);
                     wrapper.fadeIn(300);
 
                     setTimeout(function () {
                         wrapper.fadeOut(300);
                     }, 3000);
                 } else {
-                    console.log("Email subscription failed with message: " + response.message);
-                    button.html('Failed &#10007');
+                    console.log(l10nDupGlobalScript.emailFail + response.message);
+                    button.html(l10nDupGlobalScript.fail);
 
                     setTimeout(function () {
-                        button.html('Subscribe');
+                        button.html(l10nDupGlobalScript.subscribe);
                         input.removeAttr('disabled');
                     }, 3000);
                 }

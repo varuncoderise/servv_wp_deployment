@@ -14,14 +14,24 @@ defined("ABSPATH") || exit;
 ?>
 <div class="wrap">
     <h1 class="margin-bottom-2">
-        Import
+        <?php esc_html_e('Import', 'duplicator') ?>
     </h1>
     <div class="dup-pro-tab-content-wrapper">
         <div id="dup-pro-import-phase-one">
             <div class="dup-pro-import-header">
                 <h2 class="title">
-                    <i class="fas fa-arrow-alt-circle-down">
-                    </i> Step<span class="red">1</span> of 2: Upload Archive
+                    <i class="fas fa-arrow-alt-circle-down"></i>
+                    <?php
+                    printf(
+                        esc_html_x(
+                            'Step %1$s1%2$s of 2: Upload Archive',
+                            '%1$s and %2$s are opening and closing span tags',
+                            'duplicator'
+                        ),
+                        '<span class="red">',
+                        '</span>'
+                    );
+                    ?>
                 </h2>
                 <hr>
             </div>

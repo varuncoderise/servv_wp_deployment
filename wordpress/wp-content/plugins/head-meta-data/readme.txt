@@ -3,15 +3,15 @@
 Plugin Name: Head Meta Data
 Plugin URI: https://perishablepress.com/head-metadata-plus/
 Description: Adds a custom set of &lt;meta&gt; tags to the &lt;head&gt; section of all posts &amp; pages.
-Tags: meta, metadata, head, header, tags,  custom, custom content, author, publisher, language, wp_head
+Tags: meta, metadata, header, author, publisher
 Author: Jeff Starr
 Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
 Requires at least: 4.6
-Tested up to: 6.4
-Stable tag: 20231026
-Version:    20231026
+Tested up to: 6.5
+Stable tag: 20240301
+Version:    20240301
 Requires PHP: 5.6.20
 Text Domain: head-meta-data
 Domain Path: /languages
@@ -261,263 +261,13 @@ To ask a question, suggest a feature, or provide feedback, [contact me directly]
 If you like Head Meta Data, please take a moment to [give a 5-star rating](https://wordpress.org/support/plugin/head-meta-data/reviews/?rate=5#new-post). It helps to keep development and support going strong. Thank you!
 
 
-**20231026**
+**20240301**
 
+* Fixes deprecated warning in PHP 8.2 (Thanks [@knofte](https://wordpress.org/support/topic/php-8-2-deprecated-warnings-fix/))
+* Updates plugin settings page
 * Updates default translation template
-* Updates custom banner notice
-* Tests on WordPress 6.4
+* Improves plugin docs/readme.txt
+* Tests on WordPress 6.5 (beta)
 
-**20230715**
 
-* Improves support panel logic
-* Improves localization function
-* Improves plugin action link function
-* Improves `hmd_render_form()` function
-* Improves appearance of settings page
-* Changes plugin settings menu slug
-* Adds custom notice on settings page
-* Adds information about pro version
-* Updates default translation template
-* Tests on WordPress 6.3
-
-**820230227**
-
-* Improves responsive styles
-* Improves logic when calling `get_current_screen()`
-* Moves WP Resources panel to its own function
-* Removes SES Pro from WP Resources panel
-* Tests on WordPress 6.1 + 6.2 (beta)
-* Tests on PHP 8.1 and 8.2
-
-**20220925**
-
-* Adds custom footer text to plugin settings
-* Improves logic of settings validation
-* Improves plugin documentation
-* Updates translation template
-* Updates "Show Support" panel
-* Tests on WordPress 6.1
-
-**20220515**
-
-* Tests on WordPress 6.0
-
-**20220113**
-
-* Updates support panel
-* Improves loading of translations
-* Updates some links to external resources
-* Changes minimum required WP version to 4.6
-* Tests on WordPress 5.9
-
-**20210713**
-
-* Tests on WordPress 5.8
-
-**20210209**
-
-* Tests on PHP 7.4 and 8.0
-* Tests on WordPress 5.7
-
-**20201110**
-
-* Adds custom meta per post/page (more info in docs)
-* Resolves some PHP notices for PHP version 7.4
-* Updates default translation template
-* Tests on PHP 7.4 and 8.0
-* Tests on WordPress 5.6
-
-**20200805**
-
-* Adds shortcode `[hmd_post_excerpt]` to display post excerpts
-* Adds shortcode `[hmd_post_tags]` to display tags
-* Adds option for `<meta charset="utf-8">`
-* Refines plugin setting page styles
-* Refines readme/documentation
-* Tests on WordPress 5.5
-
-**20200313**
-
-* Tests on WordPress 5.4
-
-**20191027**
-
-* Updates styles for plugin settings page
-* Generates new default translation template
-* Tests on WordPress 5.3
-
-**20190902**
-
-* Updates some links to https
-* Tests on WordPress 5.3 (alpha)
-
-**20190428**
-
-* Bumps [minimum PHP version](https://codex.wordpress.org/Template:Server_requirements) to 5.6.20
-* Tweaks plugin settings screen content
-* Updates default translation template
-* Tests on WordPress 5.2
-
-**20190306**
-
-* Adds check for admin user for settings shortcut link
-* Tests on WordPress 5.1 and 5.2 (alpha)
-
-**20190220**
-
-* Tests on WordPress 5.1
-
-**20181114**
-
-* Adds option for "robots" meta tag
-* Adds homepage link to Plugins screen
-* Updates default translation template
-* Tests on WordPress 5.0
-
-**20180817**
-
-* Adds `rel="noopener noreferrer"` to all [blank-target links](https://perishablepress.com/wordpress-blank-target-vulnerability/)
-* Updates GDPR blurb and donate link
-* Tweaks appearance of plugin settings page
-* Fixes "non-object" bug
-* Regenerates default translation template
-* Further tests on WP versions 4.9 and 5.0 (alpha)
-
-**20180507**
-
-* Adds new shortcodes: `[hmd_post_author]`, `[hmd_post_title]`, `[hmd_post_cats]`, `[hmd_year]`, `[hmd_tab]` (see plugin documentation for details)
-* Improves settings page UI
-* Updates Show Support panel
-* Generates new translation template
-* Updates plugin image files
-* Tests on WordPress 5.0
-
-**20171103**
-
-* Removes extra `manage_options` check for plugin settings
-* Tests on WordPress 4.9
-
-**20171022**
-
-* Adds extra `manage_options` capability check to modify settings
-* Streamlines Support panel in plugin settings
-* Tests on WordPress 4.9
-
-**20170731**
-
-* Updates GPL license blurb
-* Adds GPL license text file
-* Tests on WordPress 4.9 (alpha)
-
-**20170324**
-
-* Refines display of settings page
-* Refines display of settings panels
-* Updates show support panel in plugin settings
-* Changes translation domain in plugin header to `head-meta-data`
-* Adds `[hmd_post_date]` shortcode to display latest post date in custom content
-* Replaces global `$wp_version` with `get_bloginfo('version')`
-* Generates new default translation template
-* Tests on WordPress version 4.8
-
-**20161116**
-
-* Updates plugin author URL
-* Updates Twitter URL to https
-* Changes stable tag from trunk to latest version
-* Refactors `add_hmd_links()` function
-* Updates URL for rate this plugin links
-* Tests on WordPress version 4.7 (beta)
-
-**20160811**
-
-* Fixed backslash-apostrophe bug via esc_attr()
-* Streamlined and optimized plugin settings page
-* Replaced `_e()` with `esc_html_e()` or `esc_attr_e()`
-* Replaced `__()` with `esc_html__()` or `esc_attr__()`
-* Added plugin icons and larger banner image
-* Improved translation support
-* Deleted unused plugin icon
-* General fine-tuning of code
-* Tested on WordPress 4.6
-
-**20160331**
-
-* Replaced icon with retina version
-* Added screenshot to readme/docs
-* Added retina version of banner
-* Added overflow: auto to pre tag
-* Reorganized and refreshed readme.txt
-* Tested on WordPress version 4.5 beta
-
-**20151110**
-
-* Updated heading hierarchy in plugin settings
-* Added French translation (Thanks to [Patrice Chassaing](http://cause.i.am.online.fr/))
-* Updated translation template file
-* Updated minimum version requirement
-* Tested on WordPress 4.4 beta
-
-**20150808**
-
-* Tested on WordPress 4.3
-* Updated minimum version requirement
-
-**20150507**
-
-* Tested with WP 4.2 + 4.3 (alpha)
-* Changed a few "http" links to "https"
-
-**20150315**
-
-* Tested with latest version of WP (4.1)
-* Increased minimum version to WP 3.8
-* Added $hmd_wp_vers for version check
-* Streamline/fine-tune plugin code
-* Added Text Domain and Domain Path to file header
-* Added .pot template for localization
-* Removed deprecated screen_icon()
-
-**20140923**
-
-* Tested with latest version of WordPress (4.0)
-* Increased minimum WP version requirement to 3.7
-* Added conditional check on min-version function
-
-**20140123**
-
-* Tested with latest WordPress (3.8)
-* Added trailing slash to load_plugin_textdomain()
-
-**20131107**
-
-* Added uninstall.php file
-* Added "rate this plugin" links
-* Added support for i18n
-
-**20131104**
-
-* Added line to prevent direct script access
-* Changed default value for copyright meta
-* Improved support for custom content
-* Fixed bug reported [here](https://wordpress.org/support/topic/strange-custom-tag)
-* Replaced wp_kses_post with wp_kses
-* Added "href", "property", "title", "rel", "type", "charset", "media", "rev" to list of allowed attributes
-* Removed closing "?>" tag in head-meta-data.php
-* Tested with latest version of WordPress (3.7)
-
-**20130705**
-
-* General code check n clean, plus Overview and Updates admin panels now toggled open by default.
-
-**20130103**
-
-* Added margins to submit buttons (required in WP 3.5)
-
-**20121102**
-
-* Rebuilt plugin, changed name from "Head MetaData Plus" to "Head Meta Data".
-
-**20060502**
-
-* Initial release.
+Full changelog @ [https://plugin-planet.com/wp/changelog/head-meta-data.txt](https://plugin-planet.com/wp/changelog/head-meta-data.txt)

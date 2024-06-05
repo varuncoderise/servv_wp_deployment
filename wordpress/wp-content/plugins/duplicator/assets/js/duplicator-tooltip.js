@@ -3,10 +3,19 @@
     DuplicatorTooltip = {
         initialized: false,
         messages: {
-            'copy': 'Copy to clipboard',
-            'copied': 'copied to clipboard',
-            'copyUnable': 'Unable to copy'
+            'copy': window.hasOwnProperty('l10nDupTooltip') ? l10nDupTooltip.copy : 'Copy to clipboard',
+            'copied': window.hasOwnProperty('l10nDupTooltip') ? l10nDupTooltip.copied : 'copied to clipboard',
+            'copyUnable': window.hasOwnProperty('l10nDupTooltip') ? l10nDupTooltip.copyUnable : 'Unable to copy'
         },
+        messages: Object.assign(
+            {}, 
+            {
+                'copy': 'Copy to Clipboard',
+                'copied': 'Copied to Clipboard',
+                'copyUnable': 'Unable to Copy'
+            }, 
+            (typeof l10nDupTooltip === 'object' ? l10nDupTooltip : {})
+        ),
         load: function () {
             if (this.initialized) {
                 return;
@@ -84,7 +93,7 @@
                     tmpArea.select();
 
                     try {
-                        message = document.execCommand('copy') ? copiedTitle : 'Unable to copy';
+                        message = document.execCommand('copy') ? copiedTitle : DuplicatorTooltip.messages.copyUnable;
                     } catch (err) {
                         console.log(err);
                     }

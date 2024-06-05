@@ -31,8 +31,8 @@ $packages = $tplData['packages'];
     <ul>
         <?php foreach ($packages as $package) {
             $createdTime  = strtotime($package->Created);
-            $createdDate  = date(get_option('date_format'), $createdTime);
-            $createdHours = date(get_option('time_format'), $createdTime);
+            $createdDate  = date_i18n(get_option('date_format'), $createdTime);
+            $createdHours = date_i18n(get_option('time_format'), $createdTime);
 
             ?>
             <li>

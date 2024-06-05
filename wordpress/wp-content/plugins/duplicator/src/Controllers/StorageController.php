@@ -93,8 +93,8 @@ class StorageController
                 'iconUrl'  => DUPLICATOR_PLUGIN_URL . 'assets/img/cloudflare.svg',
             ),
             array(
-                'title'    => __('Digital Ocean Spaces', 'duplicator'),
-                'label'    => __('Digital Ocean Spaces', 'duplicator'),
+                'title'    => __('DigitalOcean Spaces', 'duplicator'),
+                'label'    => __('DigitalOcean Spaces', 'duplicator'),
                 'iconUrl'  => DUPLICATOR_PLUGIN_URL . 'assets/img/digital-ocean.svg',
             ),
             array(

@@ -285,7 +285,7 @@ class ServicesEducation extends AbstractAjaxService
                 $data = json_decode(wp_remote_retrieve_body($response));
                 if (!is_object($data)) {
                     $requestError['code']    = -1;
-                    $requestError['message'] = __('Invalid license JSON data.', 'duplicator-pro');
+                    $requestError['message'] = __('Invalid license JSON data.', 'duplicator');
                     $requestError['details'] = 'Response: ' . wp_remote_retrieve_body($response);
                 } else {
                     return $data;

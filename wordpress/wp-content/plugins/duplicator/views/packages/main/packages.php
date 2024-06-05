@@ -257,7 +257,7 @@ if (DUP_Settings::Get('installer_name_mode') == DUP_Settings::INSTALLER_NAME_MOD
                         <td class='pack-name'>
                             <?php echo ($pack_dbonly) ? "{$pack_name} <sup title='" . esc_attr(__('Database Only', 'duplicator')) . "'>DB</sup>" : esc_html($pack_name); ?><br/>
                             <span class="building-info" >
-                                <i class="fa fa-cog fa-sm fa-spin"></i> <b>Building Package</b> <span class="perc"><?php echo $pack_perc; ?></span>%
+                                <i class="fa fa-cog fa-sm fa-spin"></i> <b><?php esc_html_e('Building Package', 'duplicator') ?></b> <span class="perc"><?php echo $pack_perc; ?></span>%
                                 &nbsp; <i class="fas fa-question-circle fa-sm" style="color:#2C8021"
                                           data-tooltip-title="<?php esc_attr_e("Package Build Running", 'duplicator'); ?>"
                                           data-tooltip="<?php esc_attr_e('To stop or reset this package build goto Settings > Advanced > Reset Packages', 'duplicator'); ?>"></i>

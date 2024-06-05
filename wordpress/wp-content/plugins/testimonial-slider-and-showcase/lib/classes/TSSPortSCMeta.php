@@ -267,7 +267,7 @@ if ( ! class_exists( 'TSSPortSCMeta' ) ) :
 				return;
 			}
 
-			if ( ! TSSPro()->verifyNonce() ) {
+			if ( ! wp_verify_nonce(TSSPro()->getNonce(),TSSPro()->nonceText()) && ! current_user_can( 'edit_page', $post_id )) {
 				return $post_id;
 			}
 

@@ -164,23 +164,25 @@ class EmailSummaryBootstrap
 
         if ($frequency === EmailSummary::SEND_FREQ_NEVER) {
             if (wp_next_scheduled(self::CRON_HOOK)) {
-                return is_int(wp_clear_scheduled_hook(self::CRON_HOOK));
+                //have to check return like this because
+                //wp_clear_scheduled_hook returns void in WP < 5.1
+                return !self::isFalseOrWpError(wp_clear_scheduled_hook(self::CRON_HOOK));
             } else {
                 return true;
             }
         } else {
             if (
                 wp_next_scheduled(self::CRON_HOOK)
-                && !is_int(wp_clear_scheduled_hook(self::CRON_HOOK)) //make sure we clear the old cron
+                && self::isFalseOrWpError(wp_clear_scheduled_hook(self::CRON_HOOK))
             ) {
                 return false;
             }
 
-            return (wp_schedule_event(
+            return !self::isFalseOrWpError(wp_schedule_event(
                 self::getFirstRunTime($frequency),
                 self::getCronSchedule($frequency),
                 self::CRON_HOOK
-            ) === true);
+            ));
         }
     }
 
@@ -231,5 +233,17 @@ class EmailSummaryBootstrap
             default:
                 throw new Exception("Unknown frequency: " . $frequency);
         }
+    }
+
+    /**
+     * Returns true if is false or wp_error
+     *
+     * @param mixed $value The value
+     *
+     * @return bool
+     */
+    private static function isFalseOrWpError($value)
+    {
+        return $value === false || is_wp_error($value);
     }
 }

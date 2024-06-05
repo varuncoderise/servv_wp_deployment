@@ -117,7 +117,12 @@
 			};
 			var compiledTemplate = vc.template( _.unescape( template ),
 				_.extend( {}, vc.templateOptions.custom, { evaluate: /\{#([\s\S]+?)#}/g } ) );
-			this.$controls = $( compiledTemplate( data ).trim() ).addClass( 'vc_controls' );
+			var controlsClasses = 'vc_controls';
+			if (this.model.setting( 'as_parent' ) && this.model.setting('content_element')) {
+				controlsClasses += ' vc_controls-parent';
+			}
+
+			this.$controls = $( compiledTemplate( data ).trim() ).addClass( controlsClasses );
 
 			this.$controls.appendTo( this.$el );
 		},

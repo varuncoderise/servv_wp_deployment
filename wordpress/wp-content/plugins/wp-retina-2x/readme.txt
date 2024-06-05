@@ -3,9 +3,9 @@ Contributors: TigrouMeow
 Tags: retina, images, replace, size, thumbnail, regenerate, sizes, high-dpi
 Donate link: https://meowapps.com/donation/
 Requires at least: 6.0
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 6.5.0
+Stable tag: 6.5.7
 
 Optimize and manage your images with Perfect Images. Easily replace or regenerate existing images in bulk, set custom sizes, improve performance, create retina versions, and more. Achieve perfect images for your site with ease.
 
@@ -50,11 +50,45 @@ The Pro version adds support for Retina for full-size, support for lazy-loading 
 
 == Changelog ==
 
+= 6.5.7 (2024/06/24) =
+* Fix: Clear logs functionality.
+* Fix: Addressed warnings and meta sizes.
+* Add: AVIF support and Optimizer check for AVIF.
+* Remove: Lato font.
+
+= 6.5.6 (2024/05/13) =
+* Add: Import / Export Settings functionality.
+* Update: Enhanced button readability in actions by reducing text.
+* Update: User Interface improvements for Full Size image handling.
+* Add: Automatic building of Full-Size Webp images.
+* Optimization: Optimized image handling by fetching only the mime type.
+
+= 6.5.5 (2024/04/27) =
+* Fix: Corrected an issue where "crop" was always set to true.
+* Add: Introduced log reader, log cleaner, and secure anti-traversal for log paths to enhance security and functionality.
+
+= 6.5.4 (2024/03/23) =
+* Fix: Corrected actions for selected items and addressed missing status on entries.
+* Update: Deprecated string variables for improved code quality.
+
+= 6.5.3 (2024/03/16) =
+* Fix: Issue in Regenerate Entries.
+* Update: Make sure sizes are array to avoid issues.
+
+= 6.5.2 (2024/02/02) =
+* Add: Visual clue for media items lacking information, enhancing user awareness.
+* Update: Improved logging for wp_get_image_editor errors for better troubleshooting.
+* Update: Made MetadataViewer's status code more user-friendly, improving usability.
+* Add: Optimized regenerate feature for thumbnails, alongside restoration of the previous version.
+* Fix: Corrected issues with additional image sizes, ensuring comprehensive size coverage.
+
+= 6.5.1 (2023/12/25) =
+* Update: Enhanced thumbnail check before regeneration to process only when necessary.
+
 = 6.5.0 (2023/12/04) =
 * Update: Improved thumbnail viewing and metadata display for a more user-friendly experience.
 * Add: Added and refined features for handling WebP images, including creation, deletion, and status updates.
 * Update: Updates to ESLint, error handling, and API connections for improved performance and stability.
-* Info: If you enjoy this plugin, please share some love by [writing a little review here](https://wordpress.org/support/plugin/wp-retina-2x/reviews/?rate=5#new-post). And since I read them all, don't hesitate to drop a few remarks and feature requests in those reviews. Thank you :)
 
 = 6.4.7 (2023/10/19) =
 * Add: Custom Image Sizes.

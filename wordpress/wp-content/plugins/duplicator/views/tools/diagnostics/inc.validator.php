@@ -30,11 +30,14 @@ SCAN VALIDATOR -->
     </div>
     <div class="dup-box-panel" style="display: <?php echo $scan_run ? 'block' : 'none';  ?>">
         <?php
-            esc_html_e("This utility will help to find unreadable files and sys-links in your environment  that can lead to issues during the scan process.  ", "duplicator");
-            esc_html_e("The utility will also shows how many files and directories you have in your system.  This process may take several minutes to run.  ", "duplicator");
-            esc_html_e("If there is a recursive loop on your system then the process has a built in check to stop after a large set of files and directories have been scanned.  ", "duplicator");
-            esc_html_e("A message will show indicated that that a scan depth has been reached. If you have issues with the package scanner (step 2) during the build process then try to add "
-            . "The paths below to your file filters to allow the scanner to finish.", "duplicator");
+            esc_html_e(
+                "This utility will help to find unreadable files and sym-links in your environment that can lead to issues during the scan process. 
+                The utility will also show how many files and directories you have in your system. This process may take several minutes to run. 
+                If there is a recursive loop on your system then the process has a built in check to stop after a large set of files and directories have been scanned. 
+                A message will show indicated that a scan depth has been reached. If you have issues with the package scanner (step 2) during the build process then try to add 
+                the paths below to your file filters to allow the scanner to finish.",
+                "duplicator"
+            );
             ?>
         <br/><br/>
 

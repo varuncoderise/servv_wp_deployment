@@ -1,6 +1,22 @@
 Changelog
 =========
 
+#### 4.9.13 - Apr 25, 2024
+
+- Fix issue with Composer classmap throwing a fatal error when an older version of Composer is already loaded.
+
+
+#### 4.9.12 - Apr 22, 2024 
+
+- Fix last 10 Mailchimp lists not being pulled-in when having more than 10 lists.
+
+
+#### 4.9.11 - Jan 8, 2024
+
+- Update third-party JS dependencies.
+- Bump tested WordPress version.
+
+
 #### 4.9.10 - Nov 20, 2023
 
 - Integrations: Update CheckoutWC hook name for WooCommerce checkbox integration.

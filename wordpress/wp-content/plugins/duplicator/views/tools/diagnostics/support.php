@@ -91,7 +91,19 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 <?php esc_html_e('Upgrade Now', 'duplicator') ?>
                     </a> <br/>
                 </div>
-                <small>Free Users <a href="https://wordpress.org/support/plugin/duplicator/" target="_blank">Support Forum</a></small>
+                <small>
+                    <?php
+                    printf(
+                        esc_html_x(
+                            'Free Users %1$sSupport Forum%2$s',
+                            '1 and 2 are opening and closing anchor or link tags',
+                            'duplicator'
+                        ),
+                        '<a href="https://wordpress.org/support/plugin/duplicator/" target="_blank">',
+                        '</a>'
+                    );
+                    ?>
+                </small>
             </div>
         </div>
     </div>

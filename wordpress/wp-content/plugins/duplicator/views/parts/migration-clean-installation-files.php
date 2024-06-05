@@ -83,11 +83,14 @@ use Duplicator\Views\AdminNotices;
             <?php
             _e('The Duplicator team has worked many years to make moving a WordPress site a much easier process. ', 'duplicator');
             echo '<br/>';
-            _e(
-                'Show your support with a '
-                . '<a href="' . esc_url(\Duplicator\Core\Notifications\Review::getReviewUrl()) . '" '
-                . 'target="_blank">5 star review</a>! We would be thrilled if you could!',
-                'duplicator'
+            printf(
+                esc_html_x(
+                    'Show your support with a %1$s5 star review%2$s! We would be thrilled if you could!',
+                    '%1$s and %2$s are <a> tags',
+                    'duplicator'
+                ),
+                '<a href="' . esc_url(\Duplicator\Core\Notifications\Review::getReviewUrl()) . '" target="_blank">',
+                '</a>'
             );
             ?>
         </p>

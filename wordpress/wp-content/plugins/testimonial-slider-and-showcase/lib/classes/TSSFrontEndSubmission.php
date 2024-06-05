@@ -104,9 +104,8 @@ if ( ! class_exists( 'TSSFrontEndSubmission' ) ) :
 			}
 
 			if ( empty( $required ) ) {
-				if ( TSSPro()->verifyNonce() ) {
+				if ( wp_verify_nonce(TSSPro()->getNonce(),TSSPro()->nonceText()) ) {
 					$r = true;
-
 					if ( ! TSSPro()->verifyRecaptcha() && $enableRecaptcha ) {
 						$r   = false;
 						$msg = esc_html__( 'reCAPTCHA verification error', 'testimonial-slider-showcase' );

@@ -287,7 +287,7 @@ class Disqus_Rest_Api {
 
             return $this->rest_get_response( $status );
         } catch ( Exception $e ) {
-            return $this->rest_get_error( 'There was an error fetching sync status.' );
+            return $this->rest_get_error( 'There was an error fetching sync status. Please go to Disqus.com and check that you are logged into a Disqus account with moderator privileges on this site, and then reload this page. For further troubleshooting, here is a 150 character error message preview: ' . substr( $e, 0, 150 ) );
         }
     }
 
@@ -304,7 +304,7 @@ class Disqus_Rest_Api {
 
             return $this->rest_get_response( $status );
         } catch ( Exception $e ) {
-            return $this->rest_get_error( 'There was an error attempting to enable syncing.' );
+            return $this->rest_get_error( 'There was an error attempting to enable automatic syncing. Please go to Disqus.com and check that you are logged into a Disqus account with moderator privileges on this site, and then reload this page. For further troubleshooting, here is a 150 character error message preview: ' . substr( $e, 0, 150 ) );
         }
     }
 
@@ -321,7 +321,7 @@ class Disqus_Rest_Api {
 
             return $this->rest_get_response( $status );
         } catch ( Exception $e ) {
-            return $this->rest_get_error( 'There was an error attempting to disable syncing.' );
+            return $this->rest_get_error( 'There was an error attempting to disable automatic syncing. Please go to Disqus.com and check that you are logged into a Disqus account with moderator privileges on this site, and then reload this page. For further troubleshooting, here is a 150 character error message preview: ' . substr( $e, 0, 150 ) );
         }
     }
 
@@ -700,7 +700,6 @@ class Disqus_Rest_Api {
         // Remove non-updating fields.
         unset( $comment_data['comment_meta'] );
         unset( $comment_data['comment_agent'] );
-        unset( $comment_data['comment_parent'] );
         unset( $comment_data['comment_type'] );
         unset( $comment_data['comment_date_gmt'] );
         unset( $comment_data['comment_post_ID'] );
@@ -763,11 +762,9 @@ class Disqus_Rest_Api {
             update_post_meta( $wp_post_id, 'dsq_thread_id', $thread['id'] );
         }
 
-        if ( null === $wp_post_id || false == $wp_post_id ) {
-            throw new Exception( 'No post found associated with the thread.' );
-        }
-
         // Find the parent comment, if any.
+        // To simplify our syncing process and prevent syncing errors,
+        // still sync the comment even if we don't have its parent comment synced.
         $parent = 0;
         if ( null !== $post['parent'] ) {
             $parent_comment_query = new WP_Comment_Query( array(
@@ -777,9 +774,7 @@ class Disqus_Rest_Api {
             ) );
             $parent_comments = $parent_comment_query->comments;
 
-            if ( empty( $parent_comments ) ) {
-                throw new Exception( 'This comment\'s parent has not been synced yet.' );
-            } else {
+            if ( $parent_comments ) {
                 $parent = $parent_comments[0]->comment_ID;
             }
         }

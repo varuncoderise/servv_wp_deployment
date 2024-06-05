@@ -50,9 +50,11 @@ class WPCode_Conditional_Logic {
 	/**
 	 * Get all the admin options for the conditional logic form.
 	 *
+	 * @param bool $for_js Whether to return the options for JS or not.
+	 *
 	 * @return array
 	 */
-	public function get_all_admin_options() {
+	public function get_all_admin_options( $for_js = false ) {
 		$options = array();
 		foreach ( $this->types as $type ) {
 			$type->load_type_options(); // Reload the options in case a global snippet made them get loaded before some post types were registered, for example.
@@ -77,7 +79,15 @@ class WPCode_Conditional_Logic {
 				$available_options[ $key ] = $option;
 			}
 		}
-		return array_merge( $available_options, $unavailable_options );
+
+		// For the user logged_in option let's run esc_attr on the option values to save the values correctly.
+		if ( $for_js && isset( $available_options['user']['options']['logged_in']['options'] ) ) {
+			foreach ( $available_options['user']['options']['logged_in']['options'] as $key => $option ) {
+				$available_options['user']['options']['logged_in']['options'][ $key ]['value'] = esc_attr( $option['value'] );
+			}
+		}
+
+		return apply_filters( 'wpcode_conditional_logic_admin_options', array_merge( $available_options, $unavailable_options ) );
 	}
 
 	/**
@@ -141,7 +151,7 @@ class WPCode_Conditional_Logic {
 		// Go through all rule groups.
 		foreach ( $rules['groups'] as $rule_group ) {
 			// If any of the groups are met return true.
-			if ( $this->are_group_rules_met( $rule_group ) ) {
+			if ( $this->are_group_rules_met( $rule_group, $snippet ) ) {
 				return true;
 			}
 		}
@@ -153,17 +163,18 @@ class WPCode_Conditional_Logic {
 	/**
 	 * Evaluate all the rows of rules in a group.
 	 *
-	 * @param array $rule_group An array of rows.
+	 * @param array          $rule_group An array of rows.
+	 * @param WPCode_Snippet $snippet The snippet we are evaluating the rules for.
 	 *
 	 * @return bool
 	 */
-	public function are_group_rules_met( $rule_group ) {
+	public function are_group_rules_met( $rule_group, $snippet ) {
 		foreach ( $rule_group as $rule_row ) {
 			if ( ! isset( $rule_row['type'] ) || ! isset( $this->types[ $rule_row['type'] ] ) ) {
 				continue;
 			}
 			$rule_type = $this->types[ $rule_row['type'] ];
-			if ( ! $rule_type->evaluate_rule_row( $rule_row ) ) {
+			if ( ! $rule_type->evaluate_rule_row( $rule_row, $snippet ) ) {
 				// If this row doesn't match, the whole group fails.
 				return false;
 			}

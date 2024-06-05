@@ -16,11 +16,11 @@ defined('ABSPATH') || exit;
 $frequency = DUP_Settings::Get('email_summary_frequency');
 ?>
 
-<h3 class="title"><?php _e('Email Summary', 'duplicator-pro') ?></h3>
+<h3 class="title"><?php _e('Email Summary', 'duplicator') ?></h3>
 <hr size="1" />
 <table class="dup-capabilities-selector-wrapper form-table">
     <tr valign="top">
-        <th scope="row"><label><?php _e('Frequency', 'duplicator-pro'); ?></label></th>
+        <th scope="row"><label><?php _e('Frequency', 'duplicator'); ?></label></th>
         <td>
             <select id="email-summary-frequency" name="email_summary_frequency">
                 <?php foreach (EmailSummary::getAllFrequencyOptions() as $key => $label) : ?>
@@ -35,7 +35,7 @@ $frequency = DUP_Settings::Get('email_summary_frequency');
                     _x(
                         'You can view the email summary example %1shere%2s.',
                         '%1s and %2s are the opening and close <a> tags to the summary preview link',
-                        'duplicator-pro'
+                        'duplicator'
                     ),
                     '<a href="' . EmailSummary::getPreviewLink() . '" target="_blank">',
                     '</a>'

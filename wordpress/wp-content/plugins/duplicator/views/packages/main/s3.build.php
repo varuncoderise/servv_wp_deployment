@@ -312,15 +312,19 @@ TOOL BAR:STEPS -->
                     <br/><br/>
 
                     <div style="font-style:italic">
-                        <?php esc_html_e(
-                            'Note:DupArchive on Duplicator only supports sites up to 500MB.  If your site is over 500MB then use a file filter on step 1 to get the size '
-                            . 'below 500MB or try the other options mentioned below.  Alternatively, you may want to consider',
-                            'duplicator'
-                        ); ?>
-                        <a href="<?php echo esc_url(Upsell::getCampaignUrl('package-build-complete', 'Build Failed Get Pro')); ?>" target="_blank">
-                            Duplicator Pro,
-                        </a>
-                        <?php esc_html_e(' which is capable of migrating sites much larger than 500MB.', 'duplicator'); ?>
+                        <?php
+                            printf(
+                                esc_html_x(
+                                    'Note: DupArchive on Duplicator only supports sites up to 500MB.  If your site is over 500MB then use a file filter on 
+                                    step 1 to get the size below 500MB or try the other options mentioned below.  Alternatively, you may want to consider 
+                                    %1$sDuplicator Pro%2$s, which is capable of migrating sites much larger than 500MB.',
+                                    '1: opening link tag, 2: closing link tag (<a></a>)',
+                                    'duplicator'
+                                ),
+                                '<a href="' . esc_url(Upsell::getCampaignUrl('package-build-complete', 'Build Failed Get Pro')) . '" target="_blank">',
+                                '</a>'
+                            );
+                            ?>
                     </div><br/>
 
                     <b><i class="far fa-file-alt fa-sm"></i> <?php esc_html_e('Overview', 'duplicator'); ?></b><br/>
@@ -335,11 +339,20 @@ TOOL BAR:STEPS -->
                     </ol>
 
                     <small style="font-style:italic">
-                        <?php esc_html_e('Note:The DupArchive engine will generate an archive.daf file. This file is very similar to a .zip except that it can only be extracted by the '
-                            . 'installer.php file or the', 'duplicator'); ?>
-                        <a href="<?php echo esc_url(LinkManager::getDocUrl('how-to-work-with-daf-files-and-the-duparchive-extraction-tool', 'backup_step_3_fail', 'DupArchive Extraction Tool')); ?>" target="_blank">
-                            <?php esc_html_e('commandline extraction tool', 'duplicator'); ?>
-                        </a>.
+                        <?php
+                            printf(
+                                esc_html_x(
+                                    'Note: The DupArchive engine will generate an archive.daf file. This file is very similar to a .zip except that it can 
+                                    only be extracted by the installer.php file or the %1$scommandline extraction tool%2$s.',
+                                    '1: opening link tag, 2: closing link tag (<a></a>)',
+                                    'duplicator'
+                                ),
+                                '<a href="'
+                                . esc_url(LinkManager::getDocUrl('how-to-work-with-daf-files-and-the-duparchive-extraction-tool', 'backup_step_3_fail', 'DupArchive Extraction Tool'))
+                                . '" target="_blank">',
+                                '</a>'
+                            );
+                            ?>
                     </small>
                 </div>
             </div>
@@ -470,7 +483,7 @@ TOOL BAR:STEPS -->
                             <span class="data sub-data">
                                 <span class="label"><?php esc_html_e("Mode", 'duplicator'); ?>:</span>
                                    <?php
-                                    $try_update = $try_update ? 'is dynamic' : 'value is fixed';
+                                    $try_update = $try_update ? __('is dynamic') : __('value is fixed');
                                     echo "{$try_update}";
                                     ?>
                                 <i class="fa fa-question-circle data-size-help"

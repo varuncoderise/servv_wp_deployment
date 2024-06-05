@@ -3,12 +3,15 @@
         'items': 'tr',
         'axis': 'y',
         'helper': fixHelper,
-        'update': function(e, ui) {
-            $.post( ajaxurl, {
-                action: 'tss-update-menu-order',
-                order: $('#the-list').sortable('serialize'),
-            }).done(function($data) {
-                console.log($data);
+        'update': function (e, ui) {
+            var order = $('#the-list').sortable('serialize');
+            $.ajax({
+                type: "post",
+                url: ajaxurl,
+                data: order + "&action=tss-update-menu-order&"+ tss.nonceId + "=" + tss.nonce,
+                success: function (data) {
+                    console.log(data);
+                }
             });
         }
     });

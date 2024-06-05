@@ -47,7 +47,7 @@ var DupExtraPlugins = window.DupExtraPlugins || (function (document, window, $) 
                     let buttonText      = $(this).html();
 
                     $(this).addClass('disabled');
-                    $(this).html('Loading...');
+                    $(this).html(l10nDupExtraPlugins.loading);
 
                     $.post(
                         duplicator_extra_plugins.ajax_url,
@@ -60,7 +60,7 @@ var DupExtraPlugins = window.DupExtraPlugins || (function (document, window, $) 
                         console.log(response);
                         if (response.success !== true) {
                             console.log("Plugin installed failed with message: " + response.data.message);
-                            statusLabel.html('Failure');
+                            statusLabel.html(l10nDupExtraPlugins.failure);
                             statusLabel.addClass('status-installed');
                             button.fadeOut(300);
 
@@ -77,8 +77,8 @@ var DupExtraPlugins = window.DupExtraPlugins || (function (document, window, $) 
                         button.fadeOut(500);
                         status.fadeOut(500);
 
-                        button.html('Activated');
-                        statusLabel.html('Active');
+                        button.html(l10nDupExtraPlugins.activated);
+                        statusLabel.html(l10nDupExtraPlugins.active);
 
                         statusLabel.removeClass('status-missing');
                         statusLabel.removeClass('status-installed');

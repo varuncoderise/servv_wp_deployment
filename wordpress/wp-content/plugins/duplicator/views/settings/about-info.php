@@ -46,9 +46,12 @@ div#mce-responses {margin: auto; padding: 10px; width:500px; font-weight: bold;}
             </td>
             <td valign="top" style="padding-top:10px; font-size:15px; text-align:justify;">
                 <?php
-                    esc_html_e("Duplicator can streamline your workflow and quickly clone/migrate a WordPress site. The plugin helps admins, designers and "
-                        . "developers speed up the migration process of moving a WordPress site. Please help us continue development by giving the plugin a "
-                        . "5 star and consider purchasing our Pro product.", 'duplicator');
+                    esc_html_e(
+                        "Duplicator can streamline your workflow and quickly clone/migrate a WordPress site. The plugin helps admins, designers and 
+                        developers speed up the migration process of moving a WordPress site. Please help us continue development by giving the plugin a 
+                        5 star and consider purchasing our Pro product.",
+                        'duplicator'
+                    );
                     ?>
                 <br/><br/>
 
@@ -68,10 +71,11 @@ div#mce-responses {margin: auto; padding: 10px; width:500px; font-weight: bold;}
                                 <div  style=" font-size: 16px; font-weight: bold; line-height: 22px">
                                     <a href="<?php echo esc_url(\Duplicator\Core\Notifications\Review::getReviewUrl()); ?>" target="vote-wp">
                                         <?php
-                                            esc_html_e('Support Duplicator', 'duplicator');
-                                            echo '<br/>';
-                                            esc_html_e('with a 5 star review!', 'duplicator')
-                                        ?>
+                                            echo wp_kses(
+                                                __('Support Duplicator <br/> with a 5 star review!', 'duplicator'),
+                                                ['br' => []]
+                                            );
+                                            ?>
                                     </a>
                                 </div>
                             </td>

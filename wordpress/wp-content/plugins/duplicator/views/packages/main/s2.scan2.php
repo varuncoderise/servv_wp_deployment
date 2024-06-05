@@ -90,11 +90,18 @@ SYSTEM AND WORDPRESS -->
         _e('Duplicator Lite allows users to build a package on managed hosts, however, the installer may not properly install packages created on managed hosts due to the non-standard configurations of managed hosts. '
             . 'It is also possible the package engine of Duplicator Lite won’t be able to capture all of the necessary data of a site running on a managed host.', 'duplicator');
         echo '<br/><br/>';
-        _e('<b>Due to these constraints Lite does not officially support the migration of managed hosts.</b> '
-            . 'It’s possible one could get the package to install but it may require custom manual effort. '
-            . 'To get support and the advanced installer processing required for managed host support we encourage users to <i>'
-            . '<a href="' .  esc_url(Upsell::getCampaignUrl('package-build-scan', 'Managed Host Support'))  . '" target="_blank">upgrade to Duplicator Pro</a></i>. '
-            . 'Pro has more sophisticated package and installer logic and accounts for odd configurations associated with managed hosts.', 'duplicator');
+        _e('<b>Due to these constraints Lite does not officially support the migration of managed hosts.</b> ');
+        printf(
+            esc_html_x(
+                'It\'s possible one could get the package to install but it may require custom manual effort. 
+                To get support and the advanced installer processing required for managed host support we encourage users to %1$supgrade to Duplicator Pro%2$s.
+                Pro has more sophisticated package and installer logic and accounts for odd configurations associated with managed hosts.',
+                '1 and 2 are <a> tags',
+                'duplicator'
+            ),
+            '<i><a href="' .  esc_url(Upsell::getCampaignUrl('package-build-scan', 'Managed Host Support'))  . '" target="_blank">',
+            '</a></i>'
+        );
         echo '<br/><br/>';
 
         ?>
@@ -129,7 +136,7 @@ WP SETTINGS -->
                      echo '&nbsp; &nbsp; <b><i class="fa fa-exclamation-circle scan-warn"></i>&nbsp;' . $core_dir . '</b><br/>';
             }
                     echo '</small><br/>';
-                    $filter_text = "directories";
+                    $filter_text = __("directories");
         }
 
         if ($core_file_notice) {
@@ -140,13 +147,19 @@ WP SETTINGS -->
                       echo '&nbsp; &nbsp; <b><i class="fa fa-exclamation-circle scan-warn"></i>&nbsp;' . $core_file . '</b><br/>';
             }
                     echo '</small><br/>';
-                    $filter_text .= (strlen($filter_text) > 0) ? " and file" : "files";
+                    $filter_text .= (strlen($filter_text) > 0) ? __(" and file") : __("files");
         }
 
         if (strlen($filter_text) > 0) {
             echo '<small>';
-            esc_html_e("Note: Please change the {$filter_text} filters if you wish to include the WordPress core files otherwise the data will have to be manually copied"
-            . " to the new location for the site to function properly.", 'duplicator');
+            printf(
+                esc_html__(
+                    'Note: Please change the %1$s filters if you wish to include the WordPress core files 
+                    otherwise the data will have to be manually copied to the new location for the site to function properly.',
+                    'duplicator'
+                ),
+                esc_html($filter_text)
+            );
             echo '</small>';
         }
 

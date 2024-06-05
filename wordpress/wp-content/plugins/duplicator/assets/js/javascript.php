@@ -7,11 +7,13 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 
 //UNIQUE NAMESPACE
 Duplicator          = new Object();
+Duplicator.Util     = new Object();
 Duplicator.UI       = new Object();
 Duplicator.Pack     = new Object();
 Duplicator.Settings = new Object();
 Duplicator.Tools    = new Object();
 Duplicator.Debug    = new Object();
+Duplicator.Help     = new Object();
 
 //GLOBAL CONSTANTS
 Duplicator.DEBUG_AJAX_RESPONSE = false;
@@ -381,6 +383,82 @@ jQuery(document).ready(function($)
     //Prevent notice boxes from flashing as its re-positioned in DOM
     $('div.dup-wpnotice-box').show(300);
 
+    /**
+     *
+     * @param string message // html message conent
+     * @param string errLevel // notice warning error
+     * @param function updateCallback // called after message content is updated
+     * 
+     * @returns void
+     */
+    Duplicator.addAdminMessage = function (message, errLevel, options) {
+        let settings = $.extend({}, {
+            'isDismissible': true,
+            'hideDelay': 0, // 0 no hide or millisec
+            'updateCallback': false
+        }, options);
+
+        var classErrLevel = 'notice';
+        switch (errLevel) {
+            case 'error':
+                classErrLevel = 'notice-error';
+                break;
+            case 'warning':
+                classErrLevel = 'update-nag';
+                break;
+            case 'notice':
+            default:
+                classErrLevel = 'updated notice-success';
+                break;
+        }
+
+        var noticeCLasses = 'duplicator-admin-notice notice ' + classErrLevel + ' no_display';
+        if (settings.isDismissible) {
+            noticeCLasses += ' is-dismissible';
+        }
+
+        var msgNode = $('<div class="' + noticeCLasses + '">' +
+                '<div class="margin-top-1 margin-bottom-1 msg-content">' + message + '</div>' +
+                '</div>');
+        var dismissButton = $('<button type="button" class="notice-dismiss">' +
+                '<span class="screen-reader-text">Dismiss this notice.</span>' +
+                '</button>');
+
+        var anchor = $("#wpcontent");
+        if (anchor.find('.wrap').length) {
+            anchor = anchor.find('.wrap').first();
+        }
+
+        if (anchor.find('h1').length) {
+            anchor = anchor.find('h1').first();
+            msgNode.insertAfter(anchor);
+        } else {
+            msgNode.prependTo(anchor);
+        }
+
+        if (settings.isDismissible) {
+            dismissButton.appendTo(msgNode).click(function () {
+                dismissButton.closest('.is-dismissible').fadeOut("slow", function () {
+                    $(this).remove();
+                });
+            });
+        }
+
+        if (typeof settings.updateCallback === "function") {
+            settings.updateCallback(msgNode);
+        }
+
+        $("body, html").animate({scrollTop: 0}, 500);
+        $(msgNode).css('display', 'none').removeClass("no_display").fadeIn("slow", function () {
+            if (settings.hideDelay > 0) {
+                setTimeout(function () {
+                    dismissButton.closest('.is-dismissible').fadeOut("slow", function () {
+                        $(this).remove();
+                    });
+                }, settings.hideDelay);
+            }
+        });
+    };
 });
 
 jQuery(document).ready(function($) {
@@ -406,4 +484,12 @@ jQuery(document).ready(function($) {
     $('#screen-meta-links').show();
 });
 
+</script>
+<?php
+    require_once(DUPLICATOR_PLUGIN_PATH . '/assets/js/duplicator/dup.util.php');
+?>
+<script>
+    <?php
+        require_once(DUPLICATOR_PLUGIN_PATH . '/assets/js/modal-box.js');
+    ?>
 </script>

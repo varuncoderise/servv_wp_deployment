@@ -47,8 +47,8 @@ if (Duplicator\Requirements::canRun($currentPluginBootFile) === false) {
     require_once 'classes/class.db.php';
     require_once 'classes/class.server.php';
     require_once 'classes/ui/class.ui.viewstate.php';
+    require_once 'classes/ui/class.ui.screen.base.php';
     require_once 'classes/package/class.pack.php';
-    require_once 'views/packages/screen.php';
     require_once 'ctrls/ctrl.package.php';
     require_once 'ctrls/ctrl.tools.php';
     require_once 'ctrls/ctrl.ui.php';

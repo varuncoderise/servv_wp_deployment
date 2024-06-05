@@ -7,6 +7,7 @@ return array(
 	'name' => esc_html__( 'Video Player', 'js_composer' ),
 	'base' => 'vc_video',
 	'icon' => 'icon-wpb-film-youtube',
+	'element_default_class' => 'wpb_content_element',
 	'category' => esc_html__( 'Content', 'js_composer' ),
 	'description' => esc_html__( 'Embed YouTube/Vimeo player', 'js_composer' ),
 	'params' => array(
@@ -20,7 +21,7 @@ return array(
 			'type' => 'textfield',
 			'heading' => esc_html__( 'Video link', 'js_composer' ),
 			'param_name' => 'link',
-			'value' => 'https://vimeo.com/51589652',
+			'value' => 'https://vimeo.com/channels/staffpicks/181907337',
 			'admin_label' => true,
 			'description' => sprintf( esc_html__( 'Enter link to video (Note: read more about available formats at WordPress %1$scodex page%2$s).', 'js_composer' ), '<a href="https://codex.wordpress.org/Embeds#Okay.2C_So_What_Sites_Can_I_Embed_From.3F" target="_blank">', '</a>' ),
 		),
@@ -85,6 +86,9 @@ return array(
 			'heading' => esc_html__( 'CSS box', 'js_composer' ),
 			'param_name' => 'css',
 			'group' => esc_html__( 'Design Options', 'js_composer' ),
+			'value' => array(
+				'margin-bottom' => '35px',
+			),
 		),
 	),
 );

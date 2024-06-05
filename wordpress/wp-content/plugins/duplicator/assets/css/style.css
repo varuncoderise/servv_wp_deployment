@@ -402,9 +402,29 @@ td.dup-store-promo-area i[data-tooltip].fa-question-circle {
 }
 
 .dup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 40px);
     border-top: 3px solid #fe4716;
     padding: 20px;
     padding-bottom: 0px;
+    position: relative;
+    left: 0px;
+}
+
+.duplicator-help-open {
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    border-color: transparent;
+    background: #c8c8c8;
+    cursor: pointer;
+}
+
+.duplicator-help-open .fa-question-circle {
+    color: #535252;
+    font-size: 23px;
 }
 
 /* Allow screen meta to go over other content and not push it */
@@ -1254,4 +1274,94 @@ td.dup-store-promo-area i[data-tooltip].fa-question-circle {
 
 #component-section-title i[data-tooltip].fa-question-circle {
     color: #e27730;
+}
+
+/* Ajax loader */
+#duplicator-ajax-loader {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100000000;
+    width: 100%;
+    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(200, 200, 200, 0.3);
+}
+
+#duplicator-ajax-loader-img-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+}
+
+#duplicator-ajax-loader-img-wrapper img {
+    animation-name: ajax-loader-spin;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    width: 100px;
+}
+
+@keyframes ajax-loader-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/** General styles */
+.margin-top-0 {
+    margin-top: 0;
+}
+
+.margin-top-1 {
+    margin-top: 20px;
+}
+
+.margin-top-2 {
+    margin-top: 40px;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0;
+}
+
+.margin-bottom-1 {
+    margin-bottom: 20px;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 40px;
+}
+
+.margin-left-0 {
+    margin-left: 0;
+}
+
+.margin-left-1 {
+    margin-left: 20px;
+}
+
+.margin-left-2 {
+    margin-left: 40px;
+}
+
+.margin-right-0 {
+    margin-right: 0;
+}
+
+.margin-right-1 {
+    margin-right: 20px;
+}
+
+.margin-right-2 {
+    margin-right: 40px;
 }

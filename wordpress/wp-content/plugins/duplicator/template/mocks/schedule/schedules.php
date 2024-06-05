@@ -13,7 +13,7 @@ defined("ABSPATH") || exit;
  */
 ?>
 <div class="wrap">
-    <h1>Schedules</h1>
+    <h1><?php esc_html_e('Schedules', 'duplicator') ?></h1>
     <div class="mock-blur">
         <!-- ====================
         TOOL-BAR -->

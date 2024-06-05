@@ -72,7 +72,18 @@ if ( ! class_exists( 'TSSNotice' ) ):
 							src="<?php echo esc_url( TSSPro()->assetsUrl ) . 'images/icon-128x128.gif'; ?>" width="74px"
 							height="74px" style="grid-row: 1 / 4; align-self: center;justify-self: center"/>
 						<h3 style="margin:0;"><?php echo sprintf( '%s Black Friday Sale 2023!!', esc_html( $plugin_name ) ); ?></h3>
-						<p style="margin:0 0 2px;"><?php echo esc_html__( "🚀 Exciting News: $plugin_name Black Friday sale is now live!", 'testimonial-slider-showcase' ); ?>
+						<p style="margin:0 0 2px;"><?php
+							printf(
+							    /* translators: %s is the plugin name */
+								esc_html__(
+									'🚀 Exciting News: %1$s Black Friday sale is now live!',
+									'testimonial-slider-showcase'
+								),
+								esc_html( $plugin_name )
+							);
+
+
+                        ?>
                             Get the plugin today and enjoy discounts up to <b> 50%.</b>
 						</p>
 						<p style="margin:0;">
@@ -98,7 +109,7 @@ if ( ! class_exists( 'TSSNotice' ) ):
 											e.preventDefault();
 											$.post(ajaxurl, {
 												'action': 'rttss_dismiss_admin_notice',
-												'nonce': <?php echo json_encode( wp_create_nonce( 'rttss-dismissible-notice' ) ); ?>
+												'nonce': <?php echo wp_json_encode( wp_create_nonce( 'rttss-dismissible-notice' ) ); ?>
 											});
 											$(e.target).closest('.is-dismissible').remove();
 										});
@@ -173,28 +184,20 @@ if ( ! class_exists( 'TSSNotice' ) ):
 				$remind_me    = add_query_arg( $args + [ 'rttss_remind_me' => '1' ], self::rttss_current_admin_url() );
 				$rated        = add_query_arg( $args + [ 'rttss_rated' => '1' ], self::rttss_current_admin_url() );
 				$reviewurl    = 'https://wordpress.org/support/plugin/testimonial-slider-and-showcase/reviews/?filter=5#new-post';
-
-				printf(
-					__( '<div class="notice rttss-review-notice rttss-review-notice--extended">
-							<div class="rttss-review-notice_content">
-								<h3>Enjoying Testimonial Slider and Showcase?</h3>
-								<p>Thank you for choosing Testimonial Slider and Showcase. If you have found our plugin useful and makes you smile, please consider giving us a 5-star rating on WordPress.org. It will help us to grow.</p>
-								<div class="rttss-review-notice_actions">
-									<a href="%1$s" class="rttss-review-button rttss-review-button--cta" target="_blank"><span>⭐ Yes, You Deserve It!</span></a>
-									<a href="%2$s" class="rttss-review-button rttss-review-button--cta rttss-review-button--outline"><span>😀 Already Rated!</span></a>
-									<a href="%3$s" class="rttss-review-button rttss-review-button--cta rttss-review-button--outline"><span>🔔 Remind Me Later</span></a>
-									<a href="%4$s" class="rttss-review-button rttss-review-button--cta rttss-review-button--error rttss-review-button--outline"><span>😐 No Thanks</span></a>
-								</div>
-							</div>
-						</div>',
-						'testimonial-slider-showcase'
-					),
-					esc_url( $reviewurl ),
-					esc_url( $rated ),
-					esc_url( $remind_me ),
-					esc_url( $dont_disturb )
-				);
-
+                ?>
+				<div class="notice rttss-review-notice rttss-review-notice--extended">
+                    <div class="rttss-review-notice_content">
+                        <h3><?php esc_html_e('Enjoying Testimonial Slider and Showcase?','testimonial-slider-showcase'); ?></h3>
+                        <p><?php esc_html_e('Thank you for choosing Testimonial Slider and Showcase. If you have found our plugin useful and makes you smile, please consider giving us a 5-star rating on WordPress.org. It will help us to grow.','testimonial-slider-showcase'); ?></p>
+                        <div class="rttss-review-notice_actions">
+                            <a href="<?php echo esc_url( $reviewurl );?>" class="rttss-review-button rttss-review-button--cta" target="_blank"><span>⭐ <?php esc_html_e('Yes, You Deserve It!','testimonial-slider-showcase'); ?></span></a>
+                            <a href="<?php echo esc_url( $rated ); ?>" class="rttss-review-button rttss-review-button--cta rttss-review-button--outline"><span>😀 Already Rated!</span></a>
+                            <a href="<?php echo esc_url( $remind_me ); ?>" class="rttss-review-button rttss-review-button--cta rttss-review-button--outline"><span>🔔 Remind Me Later</span></a>
+                            <a href="<?php echo esc_url( $dont_disturb ); ?>" class="rttss-review-button rttss-review-button--cta rttss-review-button--error rttss-review-button--outline"><span>😐 No Thanks</span></a>
+                        </div>
+                    </div>
+                </div>
+                <?php
 				echo '<style>
 					.rttss-review-button--cta {
 						--e-button-context-color: #4C6FFF;

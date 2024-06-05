@@ -132,6 +132,15 @@ abstract class WPCode_Admin_Page {
 	}
 
 	/**
+	 * Get the post type for this page.
+	 *
+	 * @return string
+	 */
+	public function get_post_type() {
+		return wpcode_get_post_type();
+	}
+
+	/**
 	 * Override in child class to define page-specific hooks that will run only
 	 * after checks have been passed.
 	 *
@@ -402,12 +411,13 @@ abstract class WPCode_Admin_Page {
 	 * @return void
 	 */
 	public function logo_image( $id = 'wpcode-header-logo' ) {
-		$logo_src = WPCODE_PLUGIN_URL . 'admin/images/wpcode-logo.png';
-		// Translators: This simply adds the plugin name before the logo text.
-		$alt = sprintf( __( '%s logo', 'insert-headers-and-footers' ), 'WPCode' )
-		?>
-		<img src="<?php echo esc_url( $logo_src ); ?>" width="132" alt="<?php echo esc_attr( $alt ); ?>" id="<?php echo esc_attr( $id ); ?>"/>
-		<?php
+		$logo = get_wpcode_icon( 'logo-text', 132, 33, '0 0 132 33', $id );
+
+		if ( wpcode()->settings->get_option( 'dark_mode' ) ) {
+			$logo = str_replace( '11293E', 'CCCCCC', $logo );
+		}
+
+		echo wp_kses( $logo, wpcode_get_icon_allowed_tags() );
 	}
 
 	/**
@@ -575,7 +585,7 @@ abstract class WPCode_Admin_Page {
 			$args['snippet_id'] = $this->snippet_id;
 		}
 
-		return add_query_arg( $args, admin_url( 'admin.php' ) );
+		return add_query_arg( $args, $this->admin_url( 'admin.php' ) );
 	}
 
 	/**
@@ -594,7 +604,7 @@ abstract class WPCode_Admin_Page {
 		<div class="wpcode-metabox">
 			<div class="wpcode-metabox-title">
 				<div class="wpcode-metabox-title-text">
-					<?php echo esc_html( $title ); ?>
+					<?php echo wp_kses_post( $title ); ?>
 					<?php $this->help_icon( $help ); ?>
 				</div>
 				<div class="wpcode-metabox-title-toggle">
@@ -643,23 +653,25 @@ abstract class WPCode_Admin_Page {
 	 *
 	 * @param string $label The label of the field.
 	 * @param string $input The field input (html).
-	 * @param string $id The id for the row.
+	 * @param string $input_id The id of the input that we use in the label.
 	 * @param string $show_if_id Conditional logic id, automatically hide if the value of the field with this id doesn't match show if value.
 	 * @param string $show_if_value Value(s) to match against, can be comma-separated string for multiple values.
 	 * @param string $description Description to show under the input.
 	 * @param bool   $is_pro Whether this is a pro feature and the pro indicator should be shown next to the label.
+	 * $param string $id The id of the metabox row.
 	 *
 	 * @return void
 	 */
-	public function metabox_row( $label, $input, $id = '', $show_if_id = '', $show_if_value = '', $description = '', $is_pro = false ) {
+	public function metabox_row( $label, $input, $input_id = '', $show_if_id = '', $show_if_value = '', $description = '', $is_pro = false, $id = '' ) {
 		$show_if_rules = '';
 		if ( ! empty( $show_if_id ) ) {
-			$show_if_rules = sprintf( 'data-show-if-id="%1$s" data-show-if-value="%2$s"', $show_if_id, $show_if_value );
+			$show_if_rules = sprintf( 'data-show-if-id="%1$s" data-show-if-value="%2$s"', esc_attr( $show_if_id ), esc_attr( $show_if_value ) );
 		}
+		$id = ! empty( $id ) ? 'id="' . esc_attr( $id ) . '"' : '';
 		?>
-		<div class="wpcode-metabox-form-row" <?php echo $show_if_rules; ?>>
+		<div class="wpcode-metabox-form-row" <?php echo $show_if_rules; ?> <?php echo $id; ?>>
 			<div class="wpcode-metabox-form-row-label">
-				<label for="<?php echo esc_attr( $id ); ?>">
+				<label for="<?php echo esc_attr( $input_id ); ?>">
 					<?php echo esc_html( $label ); ?>
 					<?php
 					if ( $is_pro ) {
@@ -715,7 +727,7 @@ abstract class WPCode_Admin_Page {
 					'page'   => 'wpcode-snippet-manager',
 					'custom' => true,
 				),
-				admin_url( 'admin.php' )
+				$this->admin_url( 'admin.php' )
 			);
 			if ( 0 !== $snippet['library_id'] ) {
 				if ( ! empty( $used_library_snippets[ $snippet['library_id'] ] ) ) {
@@ -1123,7 +1135,7 @@ abstract class WPCode_Admin_Page {
 				'page' => $this->page_slug,
 				'view' => $view,
 			),
-			admin_url( 'admin.php' )
+			$this->admin_url( 'admin.php' )
 		);
 	}
 
@@ -1278,8 +1290,72 @@ abstract class WPCode_Admin_Page {
 		}
 		if ( false !== get_transient( 'wpcode_deploy_snippet_id' ) ) {
 			// Don't delete the transient here, it will be deleted in the 1-click page.
-			wp_safe_redirect( admin_url( 'admin.php?page=wpcode-click' ) );
+			wp_safe_redirect( $this->admin_url( 'admin.php?page=wpcode-click' ) );
 			exit;
 		}
+	}
+
+	/**
+	 * Get a text field markup.
+	 *
+	 * @param string $id The id of the text field.
+	 * @param string $value The value of the text field.
+	 * @param string $description The description of the text field.
+	 * @param bool   $wide Whether the text field should be wide.
+	 * @param string $type The type of the text field.
+	 *
+	 * @return string
+	 */
+	public function get_input_text( $id, $value = '', $description = '', $wide = false, $type = 'text' ) {
+		$allowed_types = array(
+			'text',
+			'email',
+			'url',
+			'number',
+			'password',
+		);
+		if ( in_array( $type, $allowed_types, true ) ) {
+			$type = esc_attr( $type );
+		} else {
+			$type = 'text';
+		}
+		$class = 'wpcode-regular-text';
+		if ( $wide ) {
+			$class .= ' wpcode-wide-text';
+		}
+		if ( 'text' !== $type ) {
+			$class .= ' wpcode-input-' . $type;
+		}
+		$markup = '<input type="' . esc_attr( $type ) . '" id="' . esc_attr( $id ) . '" name="' . esc_attr( $id ) . '" value="' . esc_attr( $value ) . '" class="' . esc_attr( $class ) . '" autocomplete="off">';
+		if ( ! empty( $description ) ) {
+			$markup .= '<p>' . wp_kses_post( $description ) . '</p>';
+		}
+
+		return $markup;
+	}
+
+	/**
+	 * Get an email field.
+	 *
+	 * @param string $id The id of the text field.
+	 * @param string $value The value of the text field.
+	 * @param string $description The description of the text field.
+	 * @param bool   $wide Whether the text field should be wide.
+	 *
+	 * @return string
+	 */
+	public function get_input_email( $id, $value = '', $description = '', $wide = false ) {
+		return $this->get_input_text( $id, $value, $description, $wide, 'email' );
+	}
+
+	/**
+	 * Get an admin URL.
+	 *
+	 * @param string $path The path to append to the admin URL.
+	 *
+	 * @return string
+	 */
+	public function admin_url( $path ) {
+		return admin_url( $path );
 	}
 }

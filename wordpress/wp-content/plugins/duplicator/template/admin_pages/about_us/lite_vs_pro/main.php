@@ -22,7 +22,17 @@ use Duplicator\Utils\Upsell;
 <div class="wrap" id="dup-admin-about">
     <div class="dup-admin-about-section dup-admin-about-section-squashed">
         <h1 class="centered">
-            <strong>Lite</strong> vs <strong>Pro</strong>
+            <?php
+            echo wp_kses(
+                esc_html__(
+                    '<strong>Lite</strong> vs <strong>Pro</strong>',
+                    'duplicator'
+                ),
+                [
+                    'strong' => [],
+                ]
+            );
+            ?>
         </h1>
 
         <p class="centered">

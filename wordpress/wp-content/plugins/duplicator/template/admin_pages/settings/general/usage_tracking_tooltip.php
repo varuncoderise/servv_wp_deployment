@@ -71,7 +71,7 @@ defined("ABSPATH") || exit;
     <li>
         <?php
         _e(
-            '<b>Plugins and Themes infos:</b> so we can figure out which ones I can generate compatibility errors with Duplicator.',
+            '<b>Plugins and Themes infos:</b> so we can figure out which ones can generate compatibility errors with Duplicator.',
             'duplicator'
         );
         ?>

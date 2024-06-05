@@ -1,10 +1,10 @@
 === Duplicator - WordPress Migration & Backup Plugin ===
 Contributors: seedprod, smub, andreamk
 Tags: migration, backup, duplicate, move, migrate, restore, transfer, clone, automate, copy site, migrator
-Requires at least: 4.0
-Tested up to: 6.4
-Requires PHP: 5.3.8
-Stable tag: 1.5.7.1
+Requires at least: 4.9
+Tested up to: 6.5
+Requires PHP: 5.6.20
+Stable tag: 1.5.9
 License: GPLv2
 WordPress migration and backups are much easier with Duplicator! Clone, backup, move and transfer an entire site from one location to another.
 

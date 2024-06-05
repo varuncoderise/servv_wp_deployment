@@ -58,6 +58,16 @@ class Meow_WR2X_Rest
 			'permission_callback' => array( $this->core, 'can_access_settings' ),
 			'callback' => array( $this, 'rest_check_optimizers' )
 		) );
+		register_rest_route( $this->namespace, '/get_logs', array(
+			'methods' => 'GET',
+			'permission_callback' => array( $this->core, 'can_access_features' ),
+			'callback' => array( $this, 'rest_get_logs' )
+		) );
+		register_rest_route( $this->namespace, '/clear_logs', array(
+			'methods' => 'GET',
+			'permission_callback' => array( $this->core, 'can_access_features' ),
+			'callback' => array( $this, 'rest_clear_logs' )
+		) );
 
 		// STATS & LISTING
 		register_rest_route( $this->namespace, '/stats', array(
@@ -148,6 +158,16 @@ class Meow_WR2X_Rest
 		) );
   }
 
+  	function rest_get_logs() {
+		$logs = $this->core->get_logs();
+		return new WP_REST_Response( [ 'success' => true, 'data' => $logs ], 200 );
+	}
+
+	function rest_clear_logs() {
+		$this->core->clear_logs();
+		return new WP_REST_Response( [ 'success' => true ], 200 );
+	}
+
 	function check_upload( $tmpfname, $filename ) {
 		if ( !current_user_can( 'upload_files' ) ) {
 			$this->core->log( "You do not have permission to upload files." );
@@ -207,8 +227,8 @@ class Meow_WR2X_Rest
 					$normal_file = trailingslashit( $basepath ) . $meta['sizes'][$name]['file'];
 					$pathinfo = pathinfo( $normal_file );
 					$retina_file = trailingslashit( $pathinfo['dirname'] ) . $pathinfo['filename'] . $this->core->retina_extension() . $pathinfo['extension'];
-					$webp_file = trailingslashit( $pathinfo['dirname'] ) . $pathinfo['filename'] . "." . $pathinfo['extension'] . $this->core->webp_extension();
-					$webp_retina_file = trailingslashit( $pathinfo['dirname'] ) . $pathinfo['filename'] . $this->core->retina_extension() . $pathinfo['extension'] . $this->core->webp_extension();
+					$webp_file = trailingslashit( $pathinfo['dirname'] ) . $pathinfo['filename'] . "." . $pathinfo['extension'] . $this->core->webp_avif_extension();
+					$webp_retina_file = trailingslashit( $pathinfo['dirname'] ) . $pathinfo['filename'] . $this->core->retina_extension() . $pathinfo['extension'] . $this->core->webp_avif_extension();
 
 					// Test if the file exists and if it is actually a file (and not a dir)
 					// Some old WordPress Media Library are sometimes broken and link to directories
@@ -253,8 +273,9 @@ class Meow_WR2X_Rest
 
 	function rest_check_optimizers() {
 		if ( !function_exists('exec') ) {
-			return new WP_REST_Response( [ 'success' => true, 'data' => false ], 200 );
+			return new WP_REST_Response([ 'success' => true, 'data' => false ], 200);
 		}
+	
 		$optimizers = [
 			'jpegoptim',
 			'jpegtran',
@@ -265,62 +286,70 @@ class Meow_WR2X_Rest
 		];
 		$data = [];
 		$message = '';
+	
 		foreach ( $optimizers as $optimizer ) {
 			$output = null;
 			$result_code = null;
 			exec('whereis ' . $optimizer, $output, $result_code);
-			$exploded = explode(':', $output[0]);
-			if (count($exploded) >= 2) {
-					list($name, $value) = $exploded;
-					$data[$name]['result'] = (bool)$value;
+	
+			if ( isset($output[0]) ) {
+				$exploded = explode(':', $output[0]);
 			} else {
-					$data[$optimizer]['result'] = false;
+				$exploded = [];
 			}
+	
+			if (count($exploded) >= 2) {
+				list($name, $value) = $exploded;
+				$data[$name]['result'] = (bool)$value;
+			} else {
+				$data[$optimizer]['result'] = false;
+			}
+	
 			if ( $result_code === 127 ) { // 127 means command not found.
-				$message = 'Can not check some optimizers. We need "whereis" command. Please check your server configuration.';
-				$data = [];
-				break;
+				return new WP_REST_Response([
+					'success' => false,
+					'message' => 'Can not check some optimizers. We need "whereis" command. Please check your server configuration.'
+				], 200);
 			}
 		}
-		// WebP (GD or Imagick which are used to convert images to Webp by Images to WebP plugin)
-		if ( ! extension_loaded( 'gd' ) && ! extension_loaded( 'imagick' ) ){
-			$data['webp']['result'] = false;
-		} else {
-			$enabled_webp = false;
-			if ( extension_loaded( 'imagick' ) ) {
-				if ( class_exists( 'Imagick' ) ) {
-					$image = new Imagick();
-					if ( in_array( 'WEBP', $image->queryFormats() ) ){
-						$enabled_webp = true;
-						$data['Imagick(webp)']['result'] = true;
-					}
+	
+		// Check for WebP and AVIF support
+		$formats = ['webp', 'avif'];
+	
+		foreach ($formats as $format) {
+			$enabled_format = false;
+	
+			if ( extension_loaded('imagick') && class_exists('Imagick') ) {
+				$image = new Imagick();
+				if ( in_array(strtoupper($format), $image->queryFormats()) ) {
+					$enabled_format = true;
+					$data["Imagick($format)"]['result'] = true;
 				}
 			}
+	
 			if (
-				function_exists( 'imagecreatefromjpeg' ) &&
-				function_exists( 'imagecreatefrompng' ) &&
-				function_exists( 'imagecreatefromgif' ) &&
-				function_exists( 'imageistruecolor' ) &&
-				function_exists( 'imagepalettetotruecolor' ) &&
-				function_exists( 'imagewebp' )
+				extension_loaded('gd') &&
+				function_exists('imagecreatefromjpeg') &&
+				function_exists('imagecreatefrompng') &&
+				function_exists('imagecreatefromgif') &&
+				function_exists('imageistruecolor') &&
+				function_exists('imagepalettetotruecolor') &&
+				function_exists("image$format")  // Dynamic function check for GD format support
 			) {
-				$enabled_webp = true;
-				$data['GD(webp)']['result'] = true;
+				$enabled_format = true;
+				$data["GD($format)"]['result'] = true;
 			}
-			if ( !$enabled_webp ) {
-				$enable_imagick = extension_loaded( 'imagick' );
-				$enable_gd = extension_loaded( 'gd' );
-				$library = $enable_imagick ? 'Imagick' : 'GD';
-				if ( $enable_imagick && $enable_gd ) {
-					$library = 'Imagick or GD';
-				}
-				$data['webp'] = [
+	
+			if (!$enabled_format) {
+				$library = (extension_loaded('imagick') && extension_loaded('gd')) ? 'Imagick or GD' : (extension_loaded('imagick') ? 'Imagick' : 'GD');
+				$data[$format] = [
 					'result' => false,
-					'message' => 'Needs to enable WebP in ' . $library . ' on your server.',
+					'message' => "Needs to enable $format in $library on your server.",
 				];
 			}
 		}
-		return new WP_REST_Response( [ 'success' => true, 'data' => $data, 'message' => $message ], 200 );
+	
+		return new WP_REST_Response([ 'success' => true, 'data' => $data ], 200);
 	}
 
 	function count_issues($search) {
@@ -368,7 +397,7 @@ class Meow_WR2X_Rest
 			$wpml = $this->core->create_sql_if_wpml_original();
 			$ids = $wpdb->get_col( "SELECT ID FROM $wpdb->posts p 
 				WHERE post_type='attachment'
-				AND post_type = 'attachment' ${wpml}
+				AND post_type = 'attachment' {$wpml}
 				AND post_status='inherit'
 				AND ( post_mime_type = 'image/jpeg' OR
 				post_mime_type = 'image/png' OR
@@ -416,6 +445,7 @@ class Meow_WR2X_Rest
 				INNER JOIN $wpdb->postmeta pm ON pm.post_id = p.ID
 				WHERE post_type = 'attachment'
 				AND pm.meta_key = '_wp_attachment_metadata'
+				AND p.post_mime_type LIKE 'image/%%'
 				$whereIsIn
 				GROUP BY p.ID
 				$orderSql
@@ -430,6 +460,7 @@ class Meow_WR2X_Rest
 				INNER JOIN $wpdb->postmeta pm ON pm.post_id = p.ID
 				WHERE post_type = 'attachment'
 				AND pm.meta_key = '_wp_attachment_metadata'
+				AND p.post_mime_type LIKE 'image/%%'
 				$whereIsIn
 				AND p.post_title LIKE %s
 				GROUP BY p.ID
@@ -529,8 +560,51 @@ class Meow_WR2X_Rest
 		do_action( 'wr2x_before_generate_thumbnails', $mediaId );
 		$file = get_attached_file( $mediaId );
 		$meta = wp_generate_attachment_metadata( $mediaId, $file );
+
 		wp_update_attachment_metadata( $mediaId, $meta );
 		do_action( 'wr2x_generate_thumbnails', $mediaId );
+	}
+
+	function regenerate_thumbnails_optimized( $media_id ) {
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+		do_action( 'wr2x_before_generate_thumbnails', $media_id );
+		
+		$file = get_attached_file( $media_id );
+		$meta = wp_get_attachment_metadata( $media_id );
+
+		if ( ! is_array( $meta ) || ! isset( $meta['sizes'] ) ) {
+			$meta = array( 'sizes' => array() );
+		}
+
+		// Get the current registered image sizes
+		$needed_sizes = wp_get_registered_image_subsizes();
+		$option_sizes = $this->core->get_option( 'sizes' );
+
+		foreach ( $option_sizes as $size ) {
+			if ( array_key_exists( $size['name'], $needed_sizes ) ) {
+				if ( ! $size['enabled'] ) {
+					unset( $needed_sizes[ $size['name'] ] );
+				}
+			}
+		}
+		
+		foreach ( $needed_sizes as $size => $size_data ) {
+			$image_path = path_join( dirname( $file ), $meta['sizes'][ $size ]['file'] ?? '' );
+			if ( isset( $meta['sizes'][ $size ] ) && file_exists( $image_path ) && filesize( $image_path ) > 0 ) {
+				// Thumbnail exists, no need to regenerate it.
+				continue;
+			}
+
+			// Generate the thumbnail size.
+			$resized = image_make_intermediate_size( $file, $size_data['width'], $size_data['height'], $size_data['crop'] ?? true );
+
+			if ( $resized ) {
+				$meta['sizes'][ $size ] = $resized;
+			}
+		}
+
+		wp_update_attachment_metadata( $media_id, $meta );
+		do_action( 'wr2x_generate_thumbnails', $media_id );
 	}
 
 	function rest_build_retina( $request ) {
@@ -643,6 +717,7 @@ class Meow_WR2X_Rest
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 		$params = $request->get_json_params();
 		$mediaId = isset( $params['mediaId'] ) ? (int)$params['mediaId'] : null;
+		$optimized = isset( $params['optimized'] ) ? (bool)$params['optimized'] : false;
 
 		// Check errors
 		if ( empty( $mediaId ) ) {
@@ -650,7 +725,12 @@ class Meow_WR2X_Rest
 		}
 
 		// Regenerate
-		$this->regenerate_thumbnails( $mediaId );
+		if ( $optimized ) {
+			$this->regenerate_thumbnails_optimized( $mediaId );
+		}
+		else {
+			$this->regenerate_thumbnails( $mediaId );
+		}
 		$info = $this->core->get_media_status_one( $mediaId );
 		return new WP_REST_Response( [ 'success' => true, 'data' => $info  ], 200 );
 	}
@@ -687,6 +767,7 @@ class Meow_WR2X_Rest
 			if ($success && $custom_image_size_changes !== null) {
 				$type = $custom_image_size_changes['type'];
 				$values = $custom_image_size_changes['value'];
+				//TODO: Should use core->add_image_sizes instead
 				$this->core->register_custom_image_size(
 					$type,
 					$values['name'],

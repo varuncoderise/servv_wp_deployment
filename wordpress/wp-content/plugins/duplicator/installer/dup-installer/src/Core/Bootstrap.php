@@ -20,7 +20,7 @@ class Bootstrap
 {
     const ARCHIVE_PREFIX      = 'dup-archive__';
     const ARCHIVE_EXTENSION   = '.txt';
-    const MINIMUM_PHP_VERSION = '5.3.8';
+    const MINIMUM_PHP_VERSION = '5.6.20';
 
     /**
      * this variable becomes false after the installer is initialized by skipping the shutdown function defined in the boot class

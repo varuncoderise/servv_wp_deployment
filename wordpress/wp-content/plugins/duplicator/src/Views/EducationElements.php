@@ -117,7 +117,7 @@ class EducationElements
                 'backup or transfer. No bloat!', 'duplicator'),
             __('Large Site Support - Duplicator Pro has developed a new way to package backups especially tailored for ' .
                 'larger site. No server timeouts or other restrictions.', 'duplicator'),
-            __('Mulstisite Support - Duplicator Pro supports multisite network backup & migration. You can even install ' .
+            __('Multisite Support - Duplicator Pro supports multisite network backup & migration. You can even install ' .
                 'a subsite as a standalone site.', 'duplicator'),
         );
     }

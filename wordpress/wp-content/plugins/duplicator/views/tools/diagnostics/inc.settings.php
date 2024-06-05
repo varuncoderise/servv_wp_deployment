@@ -2,8 +2,8 @@
 defined('ABSPATH') || defined('DUPXABSPATH') || exit;
     $dbvar_maxtime  = DUP_DB::getVariable('wait_timeout');
     $dbvar_maxpacks = DUP_DB::getVariable('max_allowed_packet');
-    $dbvar_maxtime  = is_null($dbvar_maxtime)  ? __("unknow", 'duplicator') : $dbvar_maxtime;
-    $dbvar_maxpacks = is_null($dbvar_maxpacks) ? __("unknow", 'duplicator') : $dbvar_maxpacks;
+    $dbvar_maxtime  = is_null($dbvar_maxtime)  ? __("unknown", 'duplicator') : $dbvar_maxtime;
+    $dbvar_maxpacks = is_null($dbvar_maxpacks) ? __("unknown", 'duplicator') : $dbvar_maxpacks;
 
     $abs_path   = duplicator_get_abs_path();
     $space      = null;

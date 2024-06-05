@@ -184,6 +184,14 @@ class WPBakeryShortCode_Vc_Basic_Grid extends WPBakeryShortCode_Vc_Pageable {
 		if ( in_array( $this->atts['item'], $this->lightbox_list ) ) {
 			return true;
 		}
+		//if we have grid builder item in grid element template with lightbox functionality
+		$grid_builder_id = intval( $this->atts['item'] );
+		if ( $grid_builder_id ) {
+			$content = get_post_field( 'post_content', $grid_builder_id );
+			if ( strpos( $content, 'image_lightbox' ) !== false ) {
+				return true;
+			}
+		}
 
 		return false;
 	}

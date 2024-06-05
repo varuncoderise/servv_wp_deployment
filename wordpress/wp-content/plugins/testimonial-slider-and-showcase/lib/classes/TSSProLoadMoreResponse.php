@@ -31,7 +31,7 @@ if ( ! class_exists( 'TSSProLoadMoreResponse' ) ) :
 		public function tssLoadMore() {
 			$error = true;
 			$msg   = $data = null;
-			if ( TSSPro()->verifyNonce() ) {
+			if ( wp_verify_nonce(TSSPro()->getNonce(),TSSPro()->nonceText()) ) {
 				$scID = isset( $_REQUEST['scID'] ) ? sanitize_text_field( $_REQUEST['scID'] ) : null;
 
 				if ( ! empty( $scID ) && ! is_null( get_post( $scID ) ) ) {
@@ -295,6 +295,7 @@ if ( ! class_exists( 'TSSProLoadMoreResponse' ) ) :
 		 */
 		public function tssElLoadMore() {
 			$data   = null;
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$scMeta = json_decode( wp_unslash( $_REQUEST['elData'] ), true );
 
 			$layout = ( ! empty( $scMeta['tss_layout'] ) ? esc_attr( $scMeta['tss_layout'] ) : 'layout1' );
@@ -355,7 +356,7 @@ if ( ! class_exists( 'TSSProLoadMoreResponse' ) ) :
 
 				// Set 'posts_per_page' parameter
 				$args['posts_per_page'] = $posts_per_page;
-
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$paged = ( ! empty( $_REQUEST['paged'] ) ) ? absint( $_REQUEST['paged'] ) : 2;
 
 				$offset        = $posts_per_page * ( (int) $paged - 1 );

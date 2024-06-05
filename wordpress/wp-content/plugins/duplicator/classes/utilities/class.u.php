@@ -306,7 +306,14 @@ class DUP_Util
      */
     public static function elapsedTime($end, $start)
     {
-        return sprintf("%.2f sec.", abs($end - $start));
+        return sprintf(
+            esc_html_x(
+                "%.2f sec.",
+                "sec. stands for seconds",
+                "duplicator"
+            ),
+            abs($end - $start)
+        );
     }
 
     /**

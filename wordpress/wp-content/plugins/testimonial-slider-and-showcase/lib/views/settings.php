@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<div id="settings-tabs" class="rt-tabs rt-tab-container">
 					<ul class="tab-nav rt-tab-nav">
 						<?php
+						// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 						$sTab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : '';
 						?>
 						<li class="<?php echo ( 'support' !== $sTab ) ? 'active' : ''; ?>">

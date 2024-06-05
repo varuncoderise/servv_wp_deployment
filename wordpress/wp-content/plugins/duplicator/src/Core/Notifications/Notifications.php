@@ -61,6 +61,14 @@ class Notifications
             return;
         }
 
+        // Add notification count to menu label.
+        add_filter('duplicator_menu_label_duplicator', function ($label) {
+            if (self::getCount() === 0) {
+                return $label;
+            }
+            return $label . '<span class="awaiting-mod">' . self::getCount() . '</span>';
+        });
+
         self::update();
 
         add_action(self::DUPLICATOR_BEFORE_PACKAGES_HOOK, array(__CLASS__, 'output'));

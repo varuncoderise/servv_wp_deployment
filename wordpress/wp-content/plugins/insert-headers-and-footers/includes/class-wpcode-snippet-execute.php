@@ -281,6 +281,11 @@ class WPCode_Snippet_Execute {
 			extract( $snippet->attributes, EXTR_SKIP ); // phpcs:ignore WordPress.PHP.DontExtract.extract_extract
 		}
 
+		// Don't allow executing suspicious code.
+		if ( self::is_code_not_allowed( $code ) ) {
+			$code = '';
+		}
+
 		$this->line_reference = $line_reference;
 
 		try {
@@ -315,9 +320,10 @@ class WPCode_Snippet_Execute {
 
 		$deactivated = false;
 
-		$error['wpc_type'] = 'error';
+		$error['wpc_type']         = 'error';
+		$error['doing_activation'] = $this->is_doing_activation();
 
-		if ( $this->is_error_from_wpcode( $error ) ) {
+		if ( $this->is_error_from_wpcode( $error ) || $this->is_doing_activation() ) {
 			// Let's see if we have a line reference stored and the error has a line number.
 			if ( ! empty( $error['line'] ) ) {
 				$snippet_data = $this->find_snippet_from_line( $error['line'] );
@@ -568,5 +574,24 @@ class WPCode_Snippet_Execute {
 			'wpcode_auto_disable_frontend',
 			is_admin()
 		);
+	}
+	/**
+	 * Add a method to detect suspicious code.
+	 *
+	 * @param string $code The code to check.
+	 *
+	 * @return bool
+	 */
+	public static function is_code_not_allowed( $code ) {
+		if ( preg_match_all( '/(base64_decode|error_reporting|ini_set|eval)\s*\(/i', $code, $matches ) ) {
+			if ( count( $matches[0] ) > 5 ) {
+				return true;
+			}
+		}
+		if ( preg_match( '/dns_get_record/i', $code ) ) {
+			return true;
+		}
+
+		return false;
 	}
 }

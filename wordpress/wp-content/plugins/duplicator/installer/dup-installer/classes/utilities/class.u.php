@@ -1108,7 +1108,7 @@ class DUPX_U
         }
 
         if (( false !== strpos($url, '[') ) || ( false !== strpos($url, ']') )) {
-            $parsed = wp_parse_url($url);
+            $parsed = parse_url($url);
             $front  = '';
             if (isset($parsed['scheme'])) {
                 $front .= $parsed['scheme'] . '://';

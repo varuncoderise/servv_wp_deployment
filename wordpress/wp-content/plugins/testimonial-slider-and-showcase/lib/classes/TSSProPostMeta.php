@@ -56,11 +56,9 @@ if ( ! class_exists( 'TSSProPostMeta' ) ) :
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 				return;
 			}
-
-			if ( ! TSSPro()->verifyNonce() ) {
+			if ( ! wp_verify_nonce(TSSPro()->getNonce(),TSSPro()->nonceText()) && ! current_user_can( 'edit_page', $post_id )) {
 				return $post_id;
 			}
-
 			if ( TSSPro()->post_type != $post->post_type ) {
 				return $post_id;
 			}

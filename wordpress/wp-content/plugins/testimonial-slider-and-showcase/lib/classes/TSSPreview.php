@@ -33,7 +33,7 @@ if ( ! class_exists( 'TSSPreview' ) ) :
 			$scID  = null;
 			$error = true;
 
-			if ( TSSPro()->verifyNonce() ) {
+			if ( wp_verify_nonce(TSSPro()->getNonce(),TSSPro()->nonceText()) ) {
 				$error    = false;
 				$rand     = wp_rand();
 				$layoutID = 'rt-container-' . $rand;
@@ -226,7 +226,7 @@ if ( ! class_exists( 'TSSPreview' ) ) :
 
 				// Start layout.
 				$html .= TSSPro()->layoutStyle( $layoutID, $_REQUEST );
-				$html .= "<div class='rt-container-fluid tss-wrapper {$parentClass}' id='{$layoutID}' {$containerDataAttr}>";
+				$html .= "<div class='rt-container-fluid tss-wrapper ".esc_attr($parentClass)."' id=' ".esc_attr($layoutID)." ' {$containerDataAttr}>";
 				$html .= "<div data-title='" . esc_html__( 'Loading ...', 'testimonial-slider-showcase' ) . "' class='rt-row tss-{$layout}{$masonryG} {$preLoader}'>";
 
 				$tssQuery = new WP_Query( $args );

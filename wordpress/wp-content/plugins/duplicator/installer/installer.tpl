@@ -99,7 +99,7 @@ namespace {
         const SECONDARY_PACKAGE_HASH = '@@SECONDARY_PACKAGE_HASH@@';
         const VERSION            = '@@VERSION@@';
 
-        const MINIMUM_PHP_VERSION = '5.3.8';
+        const MINIMUM_PHP_VERSION = '5.6.20';
 
         const ZIP_MODE_AUTO    = 0;
         const ZIP_MODE_ARCHIVE = 1;

@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<p><?php esc_html_e( 'There are several resources available to WPBakery Page Builder users to help you to get around plugin:', 'js_composer' ); ?></p>
 			<ul>
 				<li>
-					<a href="https://wpbakery.com/?utm_campaign=VCplugin&amp;utm_source=vc_user&amp;utm_medium=welcome_page" target="_blank"><?php esc_html_e( 'Official website', 'js_composer' ); ?></a>
+					<a href="https://wpbakery.com?utm_source=wpdashboard&utm_medium=wpb-settings-about-resources&utm_campaign=info&utm_content=text" target="_blank"><?php esc_html_e( 'Official website', 'js_composer' ); ?></a>
 				</li>
 				<li><a href="https://kb.wpbakery.com" target="_blank"><?php esc_html_e( 'Official Knowledge Base', 'js_composer' ); ?></a></li>
 				<li><a href="https://wpbakery.com/video-academy/" target="_blank"><?php esc_html_e( 'Video Academy', 'js_composer' ); ?></a></li>

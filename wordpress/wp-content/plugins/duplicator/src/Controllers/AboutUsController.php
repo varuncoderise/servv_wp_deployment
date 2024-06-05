@@ -36,6 +36,16 @@ class AboutUsController
             DUPLICATOR_VERSION,
             true
         );
+        wp_localize_script(
+            'duplicator-extra-plugins',
+            'l10nDupExtraPlugins',
+            array(
+                'loading'   => esc_html__('Loading...', 'duplicator'),
+                'failure'   => esc_html__('Failure', 'duplicator'),
+                'active'    => esc_html__('Active', 'duplicator'),
+                'activated' => esc_html__('Activated', 'duplicator'),
+            )
+        );
 
         wp_localize_script(
             'duplicator-extra-plugins',

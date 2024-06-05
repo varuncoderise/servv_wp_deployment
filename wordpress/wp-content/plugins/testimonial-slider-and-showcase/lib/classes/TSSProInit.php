@@ -327,7 +327,7 @@ if ( ! class_exists( 'TSSProInit' ) ) :
 			$error = true;
 			$msg   = false;
 
-			if ( TSSPro()->verifyNonce() ) {
+			if ( wp_verify_nonce(TSSPro()->getNonce(),TSSPro()->nonceText()) && current_user_can('manage_options') ) {
 				unset( $_REQUEST['action'] );
 				unset( $_REQUEST['_wp_http_referer'] );
 				unset( $_REQUEST['tss_nonce'] );
@@ -483,6 +483,7 @@ if ( ! class_exists( 'TSSProInit' ) ) :
 		}
 
 		public function sanitize_title( $data ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( $data['post_type'] === TSSPro()->post_type && isset( $_POST['post_title'] ) ) {
 				$data['post_title'] = wp_kses( $data['post_title'], TSSPro()->allowedHtml() );
 			}

@@ -53,7 +53,7 @@
       bottom: 0;
       left: 50%;
       .translate(-50%, 0);
-      z-index: 1;
+      z-index: 5;
     }
     &br {
       //bottom right
@@ -168,6 +168,13 @@
         top: -29px;
       }
     }
+  }
+}
+
+.vc_controls-parent.vc_controls {
+  > .vc_controls-out-tl {
+    left: initial;
+    right: -1px;
   }
 }
 
@@ -466,6 +473,19 @@
             padding-right: 6px;
           }
         }
+      }
+    }
+  }
+}
+
+.vc_controls-parent {
+  .vc_control-btn {
+    .vc_btn-content {
+      background-color: @vc_controls_parent_background;
+      border-color: @vc_controls_parent_border;
+      &:hover {
+        background-color: @vc_controls_parent_background_hover;
+        border-color: @vc_controls_parent_border_hover;
       }
     }
   }

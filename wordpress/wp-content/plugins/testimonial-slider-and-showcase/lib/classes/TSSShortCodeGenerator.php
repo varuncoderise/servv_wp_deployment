@@ -28,10 +28,13 @@ if ( ! class_exists( 'TSSShortCodeGenerator' ) ) :
 		public function __construct() {
 			if ( is_admin() ) {
 				add_action( 'admin_head', [ $this, 'admin_head' ] );
-
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				if ( ( isset( $_GET['post'] ) && 'tss-sc' === get_post_type( sanitize_text_field( wp_unslash( $_GET['post'] ) ) ) ) ||
+				     // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				( isset( $_GET['post_type'] ) && 'tss-sc' === sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) ) ||
+				     // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				( isset( $_GET['post'] ) && 'testimonial' === get_post_type( sanitize_text_field( wp_unslash( $_GET['post'] ) ) ) ) ||
+				     // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				( isset( $_GET['post_type'] ) && 'testimonial' === sanitize_text_field( wp_unslash( $_GET['post_type'] ) ) ) ) {
 					add_action( 'admin_footer', [ $this, 'pro_alert_html' ] );
 				}

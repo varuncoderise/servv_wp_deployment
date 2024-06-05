@@ -7,7 +7,6 @@ DUP_Util::hasCapability('export');
 global $wpdb;
 
 //COMMON HEADER DISPLAY
-require_once(DUPLICATOR_PLUGIN_PATH . '/assets/js/javascript.php');
 require_once(DUPLICATOR_PLUGIN_PATH . '/views/inc.header.php');
 
 $current_view =  (isset($_REQUEST['action']) && $_REQUEST['action'] == 'detail') ? 'detail' : 'main';

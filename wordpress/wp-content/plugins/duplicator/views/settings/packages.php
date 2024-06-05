@@ -307,7 +307,7 @@ $installerNameMode      = DUP_Settings::Get('installer_name_mode');
             </td>
         </tr>
         <tr>
-            <th scope="row"><label><?php esc_html_e("Archive Flush", 'duplicator'); ?></label></th>
+            <th scope="row"><label><?php esc_html_e('Network Keep Alive', 'duplicator'); ?></label></th>
             <td>
                 <input type="checkbox" name="package_zip_flush" id="package_zip_flush" <?php echo ($package_zip_flush) ? 'checked="checked"' : ''; ?> />
                 <label for="package_zip_flush"><?php esc_html_e("Attempt Network Keep Alive", 'duplicator'); ?></label>
@@ -344,7 +344,14 @@ $installerNameMode      = DUP_Settings::Get('installer_name_mode');
                     <input type="radio" name="installer_name_mode"
                         value="<?php echo DUP_Settings::INSTALLER_NAME_MODE_WITH_HASH; ?>"
                         <?php checked($installerNameMode === DUP_Settings::INSTALLER_NAME_MODE_WITH_HASH); ?> />
-                    <b class="dup-install-meta"><?php esc_html_e("Secure", 'duplicator'); ?></b> &nbsp; [name]_[hash]_[time]_installer.php &nbsp;
+                    <b class="dup-install-meta"><?php esc_html_e("Secure", "duplicator"); ?></b> &nbsp;
+                    <?php
+                    echo esc_html_x(
+                        '[name]_[hash]_[time]_installer.php',
+                        'Leave _installer.php part as is translate only [name], [hash] and [time]',
+                        'duplicator'
+                    );
+                    ?> &nbsp;
                     <i>(<?php esc_html_e("recommended", 'duplicator'); ?>)</i>
                 </label>
                 <p class="description">

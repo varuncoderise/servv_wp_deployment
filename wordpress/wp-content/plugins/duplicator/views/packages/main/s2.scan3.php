@@ -232,9 +232,14 @@ ADDON SITES -->
     <div class="info">
         <div style="margin-bottom:10px;">
             <?php
-                printf(__('An "Addon Site" is a separate WordPress site(s) residing in subdirectories within this site. If you confirm these to be separate sites, '
-                    . 'then it is recommended that you exclude them by checking the corresponding boxes below and clicking the \'Add Filters & Rescan\' button.  To backup the other sites '
-                    . 'install the plugin on the sites needing to be backed-up.'));
+                printf(
+                    __(
+                        'An "Addon Site" is a separate WordPress site(s) residing in subdirectories within this site. If you confirm these to be separate sites, 
+                        then it is recommended that you exclude them by checking the corresponding boxes below and clicking the \'Add Filters & Rescan\' button.  To backup the other sites 
+                        install the plugin on the sites needing to be backed-up.',
+                        'duplicator'
+                    )
+                );
             ?>
         </div>
         <script id="hb-addon-sites" type="text/x-handlebars-template">
@@ -1097,15 +1102,15 @@ jQuery(document).ready(function($)
                         switch(key) {
                             case 'Case':
                                 color = (val == 1) ? 'red' : 'black';
-                                html += '<td style="color:' + color + '">Uppercase: ' + val + '</td>';
+                                html += '<td style="color:' + color + '"><?php echo esc_js(__('Uppercase:', 'duplicator')) ?> ' + val + '</td>';
                                 break;
                             case 'Rows':
                                 color = (val > DB_TableRowMax) ? 'red' : 'black';
-                                html += '<td style="color:' + color + '">Rows: ' + val + '</td>';
+                                html += '<td style="color:' + color + '"><?php echo esc_js(__('Rows:', 'duplicator')) ?> ' + val + '</td>';
                                 break;
                             case 'USize':
                                 color = (parseInt(val) > DB_TableSizeMax) ? 'red' : 'black';
-                                html += '<td style="color:' + color + '">Size: ' + data.DB.TableList[i]['Size'] + '</td>';
+                                html += '<td style="color:' + color + '"><?php echo esc_js(__('Size:', 'duplicator')) ?> ' + data.DB.TableList[i]['Size'] + '</td>';
                                 break;
                         }   
                     });

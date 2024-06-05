@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Testimonial Slider And Showcase
+# Copyright (C) 2024 Testimonial Slider And Showcase
 # This file is distributed under the same license as the Testimonial Slider And Showcase package.
 msgid ""
 msgstr ""
@@ -6,7 +6,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-11-20 09:27+0000\n"
+"POT-Creation-Date: 2024-04-17 03:16+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -50,52 +50,53 @@ msgstr ""
 msgid "reCAPTCHA field is required"
 msgstr ""
 
-#: ../lib/classes/TSSFrontEndSubmission.php:179
+#: ../lib/classes/TSSFrontEndSubmission.php:178
 msgid "Session error"
 msgstr ""
 
-#: ../lib/classes/TSSFrontEndSubmission.php:112
+#: ../lib/classes/TSSFrontEndSubmission.php:111
 msgid "reCAPTCHA verification error"
 msgstr ""
 
-#: ../lib/classes/TSSFrontEndSubmission.php:175
+#: ../lib/classes/TSSFrontEndSubmission.php:174
 msgid "Wp Error!!!."
 msgstr ""
 
-#: ../lib/classes/TSSFrontEndSubmission.php:173
+#: ../lib/classes/TSSFrontEndSubmission.php:172
 msgid "Testimonial successfully posted."
 msgstr ""
 
-#: ../lib/classes/TSSFrontEndSubmission.php:203
+#: ../lib/classes/TSSFrontEndSubmission.php:202
 msgid "Submit"
 msgstr ""
 
-#: ../lib/classes/TSSFrontEndSubmission.php:243
+#: ../lib/classes/TSSFrontEndSubmission.php:242
 msgid "Name field is required."
 msgstr ""
 
-#: ../lib/classes/TSSFrontEndSubmission.php:244, ../lib/classes/TSSFrontEndSubmission.php:249
+#: ../lib/classes/TSSFrontEndSubmission.php:243, ../lib/classes/TSSFrontEndSubmission.php:248
 msgid "Testimonial field is required."
 msgstr ""
 
-#: ../lib/classes/TSSFrontEndSubmission.php:245
+#: ../lib/classes/TSSFrontEndSubmission.php:244
 msgid "reCAPTCHA field is required."
 msgstr ""
 
-#: ../lib/classes/TSSNotice.php:178
-msgid ""
-"<div class=\"notice rttss-review-notice rttss-review-notice--extended\">\n"
-"							<div class=\"rttss-review-notice_content\">\n"
-"								<h3>Enjoying Testimonial Slider and Showcase?</h3>\n"
-"								<p>Thank you for choosing Testimonial Slider and Showcase. If you have found our plugin useful and makes you smile, please consider giving us a 5-star rating on WordPress.org. It will help us to grow.</p>\n"
-"								<div class=\"rttss-review-notice_actions\">\n"
-"									<a href=\"%1$s\" class=\"rttss-review-button rttss-review-button--cta\" target=\"_blank\"><span>⭐ Yes, You Deserve It!</span></a>\n"
-"									<a href=\"%2$s\" class=\"rttss-review-button rttss-review-button--cta rttss-review-button--outline\"><span>😀 Already Rated!</span></a>\n"
-"									<a href=\"%3$s\" class=\"rttss-review-button rttss-review-button--cta rttss-review-button--outline\"><span>🔔 Remind Me Later</span></a>\n"
-"									<a href=\"%4$s\" class=\"rttss-review-button rttss-review-button--cta rttss-review-button--error rttss-review-button--outline\"><span>😐 No Thanks</span></a>\n"
-"								</div>\n"
-"							</div>\n"
-"						</div>"
+#. translators: %s is the plugin name
+#: ../lib/classes/TSSNotice.php:78
+msgid "🚀 Exciting News: %1$s Black Friday sale is now live!"
+msgstr ""
+
+#: ../lib/classes/TSSNotice.php:190
+msgid "Enjoying Testimonial Slider and Showcase?"
+msgstr ""
+
+#: ../lib/classes/TSSNotice.php:191
+msgid "Thank you for choosing Testimonial Slider and Showcase. If you have found our plugin useful and makes you smile, please consider giving us a 5-star rating on WordPress.org. It will help us to grow."
+msgstr ""
+
+#: ../lib/classes/TSSNotice.php:193
+msgid "Yes, You Deserve It!"
 msgstr ""
 
 #: ../lib/classes/TSSPortSCMeta.php:95
@@ -134,27 +135,27 @@ msgstr ""
 msgid "Security Error !!"
 msgstr ""
 
-#: ../lib/classes/TSSPreview.php:230, ../lib/classes/TSSPreview.php:426, ../lib/classes/TSSProSC.php:199, ../lib/classes/TSSProSC.php:406, ../lib/elementor/elements/renders/TSSElementorRender.php:163, ../lib/elementor/elements/renders/TSSElementorRender.php:378
+#: ../lib/classes/TSSPreview.php:230, ../lib/classes/TSSPreview.php:426, ../lib/classes/TSSProSC.php:199, ../lib/classes/TSSProSC.php:407, ../lib/elementor/elements/renders/TSSElementorRender.php:163, ../lib/elementor/elements/renders/TSSElementorRender.php:379
 msgid "Loading ..."
 msgstr ""
 
-#: ../lib/classes/TSSPreview.php:397, ../lib/classes/TSSProSC.php:364, ../lib/elementor/elements/renders/TSSElementorRender.php:336
+#: ../lib/classes/TSSPreview.php:397, ../lib/classes/TSSProSC.php:365, ../lib/elementor/elements/renders/TSSElementorRender.php:337
 msgid "No testimonial found"
 msgstr ""
 
-#: ../lib/classes/TSSPreview.php:266, ../lib/classes/TSSProSC.php:239, ../lib/elementor/elements/renders/TSSElementorRender.php:203
+#: ../lib/classes/TSSPreview.php:266, ../lib/classes/TSSProSC.php:240, ../lib/elementor/elements/renders/TSSElementorRender.php:204
 msgid "Show all"
 msgstr ""
 
-#: ../lib/classes/TSSPreview.php:273, ../lib/classes/TSSProSC.php:246, ../lib/elementor/elements/renders/TSSElementorRender.php:213
+#: ../lib/classes/TSSPreview.php:273, ../lib/classes/TSSProSC.php:247, ../lib/elementor/elements/renders/TSSElementorRender.php:214
 msgid "Search"
 msgstr ""
 
-#: ../lib/classes/TSSPreview.php:424, ../lib/classes/TSSProSC.php:405, ../lib/elementor/elements/renders/TSSElementorRender.php:377
+#: ../lib/classes/TSSPreview.php:424, ../lib/classes/TSSProSC.php:406, ../lib/elementor/elements/renders/TSSElementorRender.php:378
 msgid "No More Post to load"
 msgstr ""
 
-#: ../lib/classes/TSSPreview.php:425, ../lib/classes/TSSProSC.php:457, ../lib/elementor/elements/renders/TSSElementorRender.php:428
+#: ../lib/classes/TSSPreview.php:425, ../lib/classes/TSSProSC.php:458, ../lib/elementor/elements/renders/TSSElementorRender.php:429
 msgid "Load More"
 msgstr ""
 
@@ -178,127 +179,127 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:311
+#: ../lib/classes/TSSProHelper.php:324
 msgid "Show All"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:471
+#: ../lib/classes/TSSProHelper.php:492
 msgid "&laquo;"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:472
+#: ../lib/classes/TSSProHelper.php:493
 msgid "&raquo;"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:679
+#: ../lib/classes/TSSProHelper.php:700
 msgid "Custom image size"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1063
+#: ../lib/classes/TSSProHelper.php:1084
 msgid "Share on facebook"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1069
+#: ../lib/classes/TSSProHelper.php:1090
 msgid "Share on twitter"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1075
+#: ../lib/classes/TSSProHelper.php:1096
 msgid "Share on linkedin"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1081
+#: ../lib/classes/TSSProHelper.php:1102
 msgid "Share on pinterest"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1089
+#: ../lib/classes/TSSProHelper.php:1110
 msgid "Share on Email"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1107
+#: ../lib/classes/TSSProHelper.php:1128
 msgid "Layout 1"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1111
+#: ../lib/classes/TSSProHelper.php:1132
 msgid "Layout 2"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1123
+#: ../lib/classes/TSSProHelper.php:1144
 msgid "Carousel 1"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1127
+#: ../lib/classes/TSSProHelper.php:1148
 msgid "Carousel 2"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1138, ../lib/classes/TSSProOptions.php:680, ../lib/classes/TSSProOptions.php:688, ../lib/classes/TSSProOptions.php:785, ../lib/elementor/elements/sections/TSSElementorStyleSections.php:149
+#: ../lib/classes/TSSProHelper.php:1159, ../lib/classes/TSSProOptions.php:680, ../lib/classes/TSSProOptions.php:688, ../lib/classes/TSSProOptions.php:785, ../lib/elementor/elements/sections/TSSElementorStyleSections.php:149
 msgid "Normal"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1139, ../lib/classes/TSSProOptions.php:689
+#: ../lib/classes/TSSProHelper.php:1160, ../lib/classes/TSSProOptions.php:689
 msgid "Circle"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1162
+#: ../lib/classes/TSSProHelper.php:1183
 msgid "No testimonials found"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1172, ../lib/classes/TSSProOptions.php:706
+#: ../lib/classes/TSSProHelper.php:1193, ../lib/classes/TSSProOptions.php:706
 msgid "Menu Order"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1173, ../lib/classes/TSSProOptions.php:79, ../lib/classes/TSSProOptions.php:707
+#: ../lib/classes/TSSProHelper.php:1194, ../lib/classes/TSSProOptions.php:79, ../lib/classes/TSSProOptions.php:707
 msgid "Name"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1174, ../lib/classes/TSSProOptions.php:708
+#: ../lib/classes/TSSProHelper.php:1195, ../lib/classes/TSSProOptions.php:708
 msgid "ID"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1175, ../lib/classes/TSSProOptions.php:709
+#: ../lib/classes/TSSProHelper.php:1196, ../lib/classes/TSSProOptions.php:709
 msgid "Date"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1179, ../lib/classes/TSSProOptions.php:713
+#: ../lib/classes/TSSProHelper.php:1200, ../lib/classes/TSSProOptions.php:713
 msgid "Random"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1190, ../lib/classes/TSSProOptions.php:721
+#: ../lib/classes/TSSProHelper.php:1211, ../lib/classes/TSSProOptions.php:721
 msgid "Ascending"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1191, ../lib/classes/TSSProOptions.php:722
+#: ../lib/classes/TSSProHelper.php:1212, ../lib/classes/TSSProOptions.php:722
 msgid "Descending"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1197
+#: ../lib/classes/TSSProHelper.php:1218
 msgid "8 Seconds"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1198
+#: ../lib/classes/TSSProHelper.php:1219
 msgid "7 Seconds"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1199
+#: ../lib/classes/TSSProHelper.php:1220
 msgid "6 Seconds"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1200
+#: ../lib/classes/TSSProHelper.php:1221
 msgid "5 Seconds"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1201
+#: ../lib/classes/TSSProHelper.php:1222
 msgid "4 Seconds"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1202
+#: ../lib/classes/TSSProHelper.php:1223
 msgid "3 Seconds"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1203
+#: ../lib/classes/TSSProHelper.php:1224
 msgid "2 Seconds"
 msgstr ""
 
-#: ../lib/classes/TSSProHelper.php:1204
+#: ../lib/classes/TSSProHelper.php:1225
 msgid "1 Second"
 msgstr ""
 
@@ -390,11 +391,11 @@ msgstr ""
 msgid "Get Help"
 msgstr ""
 
-#: ../lib/classes/TSSProLoadMoreResponse.php:276, ../lib/classes/TSSProTaxMeta.php:72, ../lib/classes/TSSProTaxMeta.php:124
+#: ../lib/classes/TSSProLoadMoreResponse.php:276, ../lib/classes/TSSProTaxMeta.php:72, ../lib/classes/TSSProTaxMeta.php:133
 msgid "Security error"
 msgstr ""
 
-#: ../lib/classes/TSSProLoadMoreResponse.php:273, ../lib/classes/TSSProLoadMoreResponse.php:270, ../lib/classes/TSSProLoadMoreResponse.php:259, ../lib/classes/TSSProLoadMoreResponse.php:504
+#: ../lib/classes/TSSProLoadMoreResponse.php:273, ../lib/classes/TSSProLoadMoreResponse.php:270, ../lib/classes/TSSProLoadMoreResponse.php:259, ../lib/classes/TSSProLoadMoreResponse.php:505
 msgid "No more testimonial to load"
 msgstr ""
 
@@ -694,7 +695,7 @@ msgstr ""
 msgid "Order By"
 msgstr ""
 
-#: ../lib/classes/TSSProOptions.php:502, ../lib/classes/TSSProTaxMeta.php:195, ../lib/elementor/elements/sections/TSSElementorContentSections.php:443
+#: ../lib/classes/TSSProOptions.php:502, ../lib/classes/TSSProTaxMeta.php:205, ../lib/elementor/elements/sections/TSSElementorContentSections.php:443
 msgid "Order"
 msgstr ""
 
@@ -1058,7 +1059,7 @@ msgstr ""
 msgid "Testimonial's Information"
 msgstr ""
 
-#: ../lib/classes/TSSProSC.php:432
+#: ../lib/classes/TSSProSC.php:433
 msgid "No shortCode found"
 msgstr ""
 
@@ -1066,23 +1067,23 @@ msgstr ""
 msgid "No term in list"
 msgstr ""
 
-#: ../lib/classes/TSSProTaxMeta.php:121
+#: ../lib/classes/TSSProTaxMeta.php:130
 msgid "Select a taxonomy"
 msgstr ""
 
-#: ../lib/classes/TSSProTaxMeta.php:118
+#: ../lib/classes/TSSProTaxMeta.php:127
 msgid "No term found"
 msgstr ""
 
-#: ../lib/classes/TSSShortCodeGenerator.php:57
+#: ../lib/classes/TSSShortCodeGenerator.php:60
 msgid "Pro field alert!"
 msgstr ""
 
-#: ../lib/classes/TSSShortCodeGenerator.php:58
+#: ../lib/classes/TSSShortCodeGenerator.php:61
 msgid "Sorry! this is a pro field. To use this field, you need to use pro plugin."
 msgstr ""
 
-#: ../lib/classes/TSSShortCodeGenerator.php:59
+#: ../lib/classes/TSSShortCodeGenerator.php:62
 msgid "Upgrade to pro"
 msgstr ""
 
@@ -1134,11 +1135,11 @@ msgstr ""
 msgid "General settings"
 msgstr ""
 
-#: ../lib/views/settings.php:27
+#: ../lib/views/settings.php:28
 msgid "General"
 msgstr ""
 
-#: ../lib/views/settings.php:40
+#: ../lib/views/settings.php:41
 msgid "Save Changes"
 msgstr ""
 

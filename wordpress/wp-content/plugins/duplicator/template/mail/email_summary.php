@@ -70,7 +70,7 @@ use Duplicator\Utils\Email\EmailSummary;
                                 <table <?php EmailHelper::printStyle('table main-tbl-child'); ?>>
                                     <tr <?php EmailHelper::printStyle('tr'); ?>>
                                         <td <?php EmailHelper::printStyle('td'); ?>>
-                                            <h6 <?php EmailHelper::printStyle('h6'); ?>>Hi there!</h6>
+                                            <h6 <?php EmailHelper::printStyle('h6'); ?>><?php esc_html_e('Hi there!', 'duplicator') ?></h6>
                                             <p <?php EmailHelper::printStyle('p subtitle'); ?>>
                                                 <?php
                                                 printf(
@@ -165,7 +165,7 @@ use Duplicator\Utils\Email\EmailSummary;
                                     _x(
                                         'This email was auto-generated and sent from %s.',
                                         '%s is an <a> tag with a link to the current website.',
-                                        'wpforms-lite'
+                                        'duplicator'
                                     ),
                                     '<a href="' . get_site_url() . '" ' .
                                     'style="' . EmailHelper::getStyle('footer-link') . '">'
@@ -179,7 +179,7 @@ use Duplicator\Utils\Email\EmailSummary;
                                     esc_html_x(
                                         'Learn %1show to disable%2s.',
                                         '%1s and %2s are opening and closing link tags to the documentation.',
-                                        'wpforms-lite'
+                                        'duplicator'
                                     ),
                                     '<a href="' . $faqUrl . '" style="' . EmailHelper::getStyle('footer-link') . '">',
                                     '</a>'

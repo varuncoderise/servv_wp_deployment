@@ -3,8 +3,8 @@ Contributors: techlabpro1
 Donate link:
 Tags: testimonials slider, testimonial, testimonials,testimonial slider, testimonial showcase, responsive testimonial, testimonial plugin
 Requires at least: 4.5
-Tested up to: 6.4
-Stable tag: 2.3.5
+Tested up to: 6.5
+Stable tag: 2.3.10
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -185,6 +185,22 @@ The following are the fields that this plugin allows you to have on your testimo
 06. Styles
 
 == Changelog ==
+
+= 2.3.10 (April 17, 2023) =
+Updated: Proper sanitization and escaping for all files.
+Fixed: Some security bugs.
+
+= 2.3.9 (March 25, 2023) =
+* Fixed: Shortcode Query Issue
+
+= 2.3.8 (February 26, 2023) =
+* Fixed: Some Issue
+
+= 2.3.7 (February 15, 2023) =
+* Fixed: Authorization Issue
+
+= 2.3.6 (February 13, 2023) =
+* Fixed: Image Alt Tag Issue
 
 = 2.3.5 (November 20, 2023) =
 * Added: WordPress 6.4 version compatible

@@ -26,12 +26,19 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 			return true;
 		}
 
+		public  function getNonce(  ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			return isset( $_REQUEST[  $this->nonceId() ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ $this->nonceId() ] ) ) : null;
+
+		}
+
 		public function verifyRecaptcha() {
 			$return           = false;
 			$settings         = get_option( TSSPro()->options['settings'] );
 			$recaptcha_secret = ( ! empty( $settings['tss_secret_key'] ) ? sanitize_text_field( $settings['tss_secret_key'] ) : null );
 
 			if ( $recaptcha_secret ) {
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$response = wp_remote_get( 'https://www.google.com/recaptcha/api/siteverify?secret=' . $recaptcha_secret . '&response=' . sanitize_text_field( $_REQUEST['g-recaptcha-response'] ) );
 				$response = json_decode( $response['body'], true );
 
@@ -129,24 +136,28 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 						$newValue = sanitize_email( $value );
 					} elseif ( $type == 'image_size' ) {
 						$newValue = [];
-
-						foreach ( $value as $k => $v ) {
-							$newValue[ $k ] = esc_attr( $v );
+						if ($value){
+							foreach ( $value as $k => $v ) {
+								$newValue[ $k ] = esc_attr( $v );
+							}
 						}
+
 					} elseif ( $type == 'style' || $type == 'multiple_options' ) {
 						$newValue = [];
 
-						foreach ( $value as $k => $v ) {
-							$nV = null;
+						if ($value){
+							foreach ( $value as $k => $v ) {
+								$nV = null;
 
-							if ( $k == 'color' ) {
-								$nV = $this->sanitize_hex_color( $v );
-							} else {
-								$nV = $this->sanitize( [ 'type' => 'text' ], $v );
-							}
+								if ( $k == 'color' ) {
+									$nV = $this->sanitize_hex_color( $v );
+								} else {
+									$nV = $this->sanitize( [ 'type' => 'text' ], $v );
+								}
 
-							if ( $nV ) {
-								$newValue[ $k ] = $nV;
+								if ( $nV ) {
+									$newValue[ $k ] = $nV;
+								}
 							}
 						}
 
@@ -207,10 +218,9 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 			$cSize     = false;
 			$post_id   = ( $post_id ? absint( $post_id ) : $post->ID );
 			$thumb_id  = get_post_thumbnail_id( $post_id );
-			$alt       = trim( wp_strip_all_tags( get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ) ) );
-
+			$alt       = esc_attr(trim( wp_strip_all_tags( get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ) ) ));
 			if ( empty( $alt ) ) {
-				$alt = esc_html( get_the_title( $post_id ) );
+				$alt = esc_attr( get_the_title( $post_id ) );
 			}
 
 			if ( $fImgSize == 'tss_custom' ) {
@@ -295,8 +305,11 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 
 		public function getAllTssCategoryList() {
 			$terms    = [];
-			$termList = get_terms( [ TSSPro()->taxonomies['category'] ], [ 'hide_empty' => 0 ] );
-
+//			$termList = get_terms( [ TSSPro()->taxonomies['category'] ], [ 'hide_empty' => 0 ] );
+			$termList = get_terms( array(
+				'taxonomy'   => TSSPro()->taxonomies['category'],
+				'hide_empty' => false,
+			) );
 			if ( is_array( $termList ) && ! empty( $termList ) && empty( $termList['errors'] ) ) {
 				foreach ( $termList as $term ) {
 					$terms[ $term->term_id ] = $term->name;
@@ -311,7 +324,12 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 				'all' => esc_html__( 'Show All', 'testimonial-slider-showcase' ),
 			];
 
-			$termList = get_terms( [ TSSPro()->taxonomies['category'] ], [ 'hide_empty' => 0 ] );
+//			$termList = get_terms( [ TSSPro()->taxonomies['category'] ], [ 'hide_empty' => 0 ] );
+
+			$termList = get_terms( array(
+				'taxonomy'   => TSSPro()->taxonomies['category'],
+				'hide_empty' => false,
+			) );
 
 			if ( is_array( $termList ) && ! empty( $termList ) && empty( $termList['errors'] ) ) {
 				foreach ( $termList as $term ) {
@@ -324,8 +342,11 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 
 		public function getAllTssTagList() {
 			$terms    = [];
-			$termList = get_terms( [ TSSPro()->taxonomies['tag'] ], [ 'hide_empty' => 0 ] );
-
+//			$termList = get_terms( [ TSSPro()->taxonomies['tag'] ], [ 'hide_empty' => 0 ] );
+			$termList = get_terms( array(
+				'taxonomy'   => TSSPro()->taxonomies['tag'],
+				'hide_empty' => false,
+			) );
 			if ( is_array( $termList ) && ! empty( $termList ) && empty( $termList['errors'] ) ) {
 				foreach ( $termList as $term ) {
 					$terms[ $term->term_id ] = $term->name;
@@ -1287,6 +1308,7 @@ if ( ! class_exists( 'TSSProHelper' ) ) :
 		 */
 		public function printHtml( $html, $allHtml = false ) {
 			if ( $allHtml ) {
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo stripslashes_deep( $html );
 			} else {
 				echo wp_kses_post( stripslashes_deep( $html ) );

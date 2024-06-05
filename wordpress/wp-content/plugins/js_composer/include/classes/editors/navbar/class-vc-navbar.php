@@ -17,13 +17,14 @@ class Vc_Navbar {
 		'preview',
 		'frontend',
 		'custom_css',
+		'seo',
 		'fullscreen',
 		'windowed',
 	);
 	/**
 	 * @var string
 	 */
-	protected $brand_url = 'https://wpbakery.com/?utm_campaign=VCplugin&utm_source=vc_user&utm_medium=backend_editor';
+	protected $brand_url = 'https://wpbakery.com?utm_source=wpb-plugin&utm_medium=backend-editor&utm_campaign=info&utm_content=logo';
 	/**
 	 * @var string
 	 */
@@ -192,5 +193,12 @@ class Vc_Navbar {
 		}
 
 		return '<li class="vc_pull-right vc_save-backend">' . '<a href="javascript:;" class="vc_btn vc_btn-grey vc_btn-sm vc_navbar-btn vc_control-preview">' . esc_attr__( 'Preview', 'js_composer' ) . '</a>' . '<a class="vc_btn vc_btn-sm vc_navbar-btn vc_btn-primary vc_control-save" id="wpb-save-post">' . $save_text . '</a>' . '</li>';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getControlSeo() {
+		return '<li class="vc_pull-right"><a href="javascript:;" class="vc_icon-btn vc_seo-button" id="vc_seo-button" title="' . esc_attr__( 'WPBakery SEO', 'js_composer' ) . '"><i class="vc-composer-icon vc-c-icon-seo"></i></a></li>';
 	}
 }

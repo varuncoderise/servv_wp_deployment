@@ -56,7 +56,7 @@ if ( ! class_exists( 'TSSProTaxMeta' ) ) :
 			$html  = $msg = null;
 			$error = true;
 
-			if ( TSSPro()->verifyNonce() ) {
+			if (  wp_verify_nonce(TSSPro()->getNonce(),TSSPro()->nonceText()) && current_user_can('manage_options')) {
 				$terms = ( ! empty( $_REQUEST['terms'] ) ? explode( ',', sanitize_text_field( $_POST['terms'] ) ) : [] );
 
 				if ( $terms && ! empty( $terms ) ) {
@@ -91,20 +91,29 @@ if ( ! class_exists( 'TSSProTaxMeta' ) ) :
 		public function ajax_get_term_list_taxonomy_slug() {
 			$html  = $msg = null;
 			$error = true;
-			if ( TSSPro()->verifyNonce() ) {
+			if ( wp_verify_nonce(TSSPro()->getNonce(),TSSPro()->nonceText()) && current_user_can('manage_options')) {
 				$tax = ( ! empty( $_REQUEST['tax'] ) ? esc_attr( $_REQUEST['tax'] ) : null );
 
 				if ( $tax ) {
 					$error = false;
-					$terms = get_terms(
-						$tax,
-						[
-							'orderby'    => 'meta_value_num',
-							'meta_key'   => '_order',
-							'order'      => 'ASC',
-							'hide_empty' => false,
-						]
-					);
+					/*Old Code*/
+//					$terms = get_terms(
+//						$tax,
+//						[
+//							'orderby'    => 'meta_value_num',
+//							'meta_key'   => '_order',
+//							'order'      => 'ASC',
+//							'hide_empty' => false,
+//						]
+//					);
+
+					$terms = get_terms( array(
+						'taxonomy'   => $tax,
+						'orderby'    => 'meta_value_num',
+						'meta_key'   => '_order',
+						'order'      => 'ASC',
+						'hide_empty' => false,
+					) );
 
 					if ( ! empty( $terms ) ) {
 						$html .= "<ul id='order-target' data-taxonomy='{$tax}'>";
@@ -143,6 +152,7 @@ if ( ! class_exists( 'TSSProTaxMeta' ) ) :
 			global $pagenow, $typenow;
 
 			// validate page.
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			if ( ! in_array( $pagenow, [ 'edit.php' ] ) && ! empty( $_REQUEST['page'] ) && $_REQUEST['page'] != 'tss_taxonomy_order' ) {
 				return;
 			}

@@ -24,8 +24,17 @@ $err_found   = ($package == null || $package->Status < 100);
 
 <div class="wrap">
     <?php
-        duplicator_header(__("Package Details &raquo; {$package->Name}", 'duplicator'));
-    ?>
+        duplicator_header(
+            sprintf(
+                esc_html_x(
+                    'Package Details &raquo; %1$s',
+                    '%1$s represents the package name',
+                    'duplicator'
+                ),
+                esc_html($package->Name)
+            )
+        );
+        ?>
 
     <?php if ($err_found) :?>
     <div class="error">

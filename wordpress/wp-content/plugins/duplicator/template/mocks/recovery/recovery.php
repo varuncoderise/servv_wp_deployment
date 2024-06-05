@@ -13,11 +13,12 @@ defined("ABSPATH") || exit;
  */
 ?>
 <div class="mock-blur" aria-hidden="true">
-    <h2 class="margin-bottom-0"><i class="fas fa-undo-alt"></i> Recovery Point</h2>
+    <h2 class="margin-bottom-0"><i class="fas fa-undo-alt"></i> <?php esc_html_e('Recovery Point', 'duplicator') ?></h2>
     <hr>
 
     <p class="margin-bottom-1">
-        Quickly restore this site to a specific point in time. <span class="link-style dup-pro-open-help-link">Need more help?</span>
+        <?php esc_html_e('Quickly restore this site to a specific point in time.', 'duplicator') ?>
+        <span class="link-style dup-pro-open-help-link"><?php esc_html_e('Need more help?', 'duplicator') ?></span>
     </p>
     <div class="dup-pro-recovery-details-max-width-wrapper">
         <form id="dpro-recovery-form" method="post">

@@ -163,7 +163,8 @@ if ( ! class_exists( 'TSSElementorRender' ) ) :
 			$html .= "<div data-title='" . esc_html__( 'Loading ...', 'testimonial-slider-showcase' ) . "' class='rt-row tss-{$layout}{$masonryG} {$preLoader}'>";
 
 			// WP_Query args.
-			$tssArgs = TSSPro()->buildArgs( $buildMetas, $isCarousel );
+			$query_args = new TSSQueryArgs();
+			$tssArgs = $query_args->buildArgs( $buildMetas, $isCarousel );
 
 			$tssQuery = new WP_Query( $tssArgs );
 

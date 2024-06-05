@@ -81,7 +81,7 @@ defined("ABSPATH") || exit;
                         <?php _e('Delete', 'duplicator');?>
                     </option>
                 </select>
-                <input type="button" class="button action" value="Apply">
+                <input type="button" class="button action" value="<?php esc_html_e('Apply', 'duplicator') ?>">
                 <span class="btn-separator"></span>
                 <a href="#" class="button grey-icon"
                    title="Settings">
@@ -116,10 +116,10 @@ defined("ABSPATH") || exit;
                     <input type="checkbox" onclick="return false" checked="checked">
                 </td>
                 <td>
-                    <a href="#"><b>Default</b></a>
+                    <a href="#"><b><?php esc_html_e('Default', 'duplicator') ?></b></a>
                 </td>
                 <td>
-                    <i class="far fa-hdd fa-fw"></i>&nbsp;Local
+                    <i class="far fa-hdd fa-fw"></i>&nbsp;<?php esc_html_e('Local', 'duplicator') ?>
                 </td>
             </tr>
             <?php foreach ($tplData['storages'] as $storage) : ?>
@@ -157,7 +157,7 @@ $storageAlert = StorageController::getDialogBox('storage-page');
         $(".storage-tbl tr a, .item-chk, #new_storage").click(function (e) {
             e.preventDefault();
             let btn = $('#dup-storage-upgrade-btn');
-            let baseUrl = "<?php echo Upsell::getCampaignUrl($tplData['utm_medium'], 'Popup Upgrade Now'); ?>";
+            let baseUrl = "<?php echo Upsell::getCampaignUrl('storage-page', 'Popup Upgrade Now'); ?>";
             let url = baseUrl + '&utm_term=New+Storage';
 
             if ($(this).is("a") || $(this).hasClass("item-chk")) {

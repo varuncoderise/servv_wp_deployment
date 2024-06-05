@@ -1,5 +1,43 @@
 *** WPBakery Page Builder changelog ***
 
+2024-04-10 - version 7.6
+  - New: Design Option displayed default values as placeholders for better UX
+  - New: Element edit happens automatically without saving and can be reverted with Undo
+  - Fix: WP admin notifications work properly and can be disabled
+  - Fix: Security improvements for the plugin
+  - Fix: Masonry media grid element works properly in Firefox
+
+2024-02-21 - version 7.5
+  - New: Editor scrolls to elements as they are added to the page
+  - Update: Links from the editor to resources are updated
+  - Fix: Masonry media grid works properly
+  - Fix: Editor controls are displayed properly for containers
+  - Fix: Nested shortcode element containers work properly
+  - Fix: Column controls work properly
+  - Fix: Prettyphoto works properly with modified grid templates
+  - Fix: Call to Action button positions text properly
+  - Fix: Hoverbox element works properly in Safari
+
+2024-01-17 - version 7.4
+  - New: An in-built SEO toolkit to analyze keywords
+  - New: An in-built SEO toolkit to control Google snippet display
+  - New: An in-built content analysis tools for higher quality content and SEO rankings
+  - New: An in-built tool to control social media snippet display
+  - Update: WPBakery AI option is available for the new SEO toolkit
+
+2023-12-06 - version 7.3
+  - New: Introduction popup added to inform about the new features of WPBakery
+  - Update: Structure and links updated in FAQ to reflect the changes in the knowledge base
+  - Update: License activation process improved after plugin installation and update
+
+2023-11-09 - version 7.2
+  - New: WPBakery AI assistant for text and code generation available in Beta
+  - New: WPBakery AI assistant support for 3rd party add-ons available in Beta
+  - Update: RTL controls added to Accordion elements
+  - Fix: "Load more" buttons work properly in the grid elements
+  - Fix: Initial tips and helpers are displayed properly
+  - Fix: Undo/Redot button states are displayed properly
+
 2023-09-26 - version 7.1
   - New: Copy/Paste functionality introduced for rows and elements to copy page-wide, site-wide, and between different websites
   - Update: Blank page selection updated for better user experience

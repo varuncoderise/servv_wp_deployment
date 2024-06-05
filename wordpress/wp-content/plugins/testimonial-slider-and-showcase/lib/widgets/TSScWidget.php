@@ -108,7 +108,7 @@ if ( ! class_exists( 'TSScWidget' ) ) :
 		 */
 		public function update( $new_instance, $old_instance ) {
 			$instance          = [];
-			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+			$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? wp_strip_all_tags( $new_instance['title'] ) : '';
 			$instance['id']    = ( ! empty( $new_instance['id'] ) ) ? absint( $new_instance['id'] ) : '';
 
 			return $instance;
