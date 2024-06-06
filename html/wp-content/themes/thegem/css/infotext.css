@@ -1,0 +1,217 @@
+/* Infotext General */
+.gem-infotext{
+	position: relative;
+	width: fit-content;
+}
+.gem-infotext.alignment-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+.gem-infotext.alignment-right {
+	margin-left: auto;
+}
+.gem-infotext-wrap{
+	position: relative;
+	display: flex;
+	color: inherit;
+}
+.gem-infotext a{
+	cursor: pointer;
+}
+.gem-infotext-wrap:hover{
+	color: inherit;
+}
+
+/* Infotext Positions Update */
+.gem-infotext-wrap.position--top{
+	flex-direction: column;
+}
+.gem-infotext-wrap.position--bottom{
+	flex-direction: column-reverse;
+}
+.gem-infotext-wrap.position--left{
+	justify-content: flex-start;
+}
+.gem-infotext-wrap.position--right{
+	justify-content: flex-end;
+	flex-direction: row-reverse;
+}
+.gem-infotext-wrap.position--top.horizonal--left,
+.gem-infotext-wrap.position--bottom.horizonal--left{
+	align-items: flex-start;
+}
+.gem-infotext-wrap.position--top.horizonal--center,
+.gem-infotext-wrap.position--bottom.horizonal--center{
+	align-items: center;
+}
+.gem-infotext-wrap.position--top.horizonal--right,
+.gem-infotext-wrap.position--bottom.horizonal--right{
+	align-items: flex-end;
+}
+.gem-infotext-wrap.position--left.vertical--top,
+.gem-infotext-wrap.position--right.vertical--top{
+	align-items: flex-start;
+}
+.gem-infotext-wrap.position--left.vertical--center,
+.gem-infotext-wrap.position--right.vertical--center{
+	align-items: center;
+}
+.gem-infotext-wrap.position--left.vertical--bottom,
+.gem-infotext-wrap.position--right.vertical--bottom{
+	align-items: flex-end;
+}
+
+/* Infotext Icon */
+.gem-infotext-icon{
+	position: relative;
+}
+.gem-infotext-icon .gem-icon-size-tiny {
+	font-size: 16px;
+}
+.gem-infotext-icon .gem-icon-size-tiny.gem-simple-icon {
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+}
+.gem-infotext-icon .gem-icon-size-tiny:not(.gem-simple-icon) .gem-icon-inner {
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+}
+.gem-infotext-icon .gem-icon {
+	display: block;
+}
+/*.gem-infotext-icon .gem-icon.gem-simple-icon {
+	width: auto;
+	height: auto;
+	line-height: initial;
+}*/
+.gem-infotext-icon .gem-icon.gem-simple-icon .gem-icon-inner {
+	margin: 0;
+}
+.gem-infotext-icon .gem-icon-inner,
+.gem-infotext-icon .gem-icon-style-gradient .back-angle,
+.gem-infotext-icon .gem-icon-shape-hexagon-top-inner-before {
+	-webkit-transition: background-color .3s;
+	-moz-transition: background-color .3s;
+	-o-transition: background-color .3s;
+	transition: background-color .3s;
+}
+.gem-infotext-icon .gem-icon-half-1,
+.gem-infotext-icon .gem-icon-half-2 {
+	-webkit-transition: color .3s;
+	-moz-transition: color .3s;
+	-o-transition: color .3s;
+	transition: color .3s;
+}
+.gem-infotext-icon .gem-icon {
+	-webkit-transition: color .3s, border-color .3s;
+	-moz-transition: color .3s, border-color .3s;
+	-o-transition: color .3s, border-color .3s;
+	transition: color .3s, border-color .3s;
+	color: var(--thegem-to-menu-level1-color, #3C3950);
+}
+
+/* Infotext Texts */
+.gem-infotext{
+	position: relative;
+}
+.gem-infotext__title{
+	position: relative;
+}
+.gem-infotext__subtitle{
+	position: relative;
+}
+.gem-infotext__description{
+	position: relative;
+}
+
+.gem-infotext__title .title-default,
+.gem-infotext__subtitle .title-default,
+.gem-infotext__description .title-default,
+.gem-infotext__title .title-h1,
+.gem-infotext__subtitle .title-h1,
+.gem-infotext__description .title-h1,
+.gem-infotext__title .title-h2,
+.gem-infotext__subtitle .title-h2,
+.gem-infotext__description .title-h2,
+.gem-infotext__title .title-h3,
+.gem-infotext__subtitle .title-h3,
+.gem-infotext__description .title-h3,
+.gem-infotext__title .title-h4,
+.gem-infotext__subtitle .title-h4,
+.gem-infotext__description .title-h4,
+.gem-infotext__title .title-h5,
+.gem-infotext__subtitle .title-h5,
+.gem-infotext__description .title-h5,
+.gem-infotext__title .title-h6,
+.gem-infotext__subtitle .title-h6,
+.gem-infotext__description .title-h6,
+.gem-infotext__title .title-xlarge,
+.gem-infotext__subtitle .title-xlarge,
+.gem-infotext__description .title-xlarge,
+.gem-infotext__title .styled-subtitle,
+.gem-infotext__subtitle .styled-subtitle,
+.gem-infotext__description .styled-subtitle,
+.gem-infotext__title .text-body,
+.gem-infotext__subtitle .text-body,
+.gem-infotext__description .text-body,
+.gem-infotext__title .text-body-tiny,
+.gem-infotext__subtitle .text-body-tiny,
+.gem-infotext__description .text-body-tiny{
+	padding: 0;
+	margin: 0;
+	-webkit-transition: color .3s;
+	-moz-transition: color .3s;
+	-o-transition: color .3s;
+	transition: color .3s;
+}
+.gem-infotext__title .title-default,
+.gem-infotext__subtitle .title-default,
+.gem-infotext__description .title-default {
+	font-family: var(--thegem-to-menu-font-family, 'Montserrat');
+	font-style: var(--thegem-to-menu-font-style, normal);
+	font-weight: var(--thegem-to-menu-font-weight, 700);
+	font-size: var(--thegem-to-menu-font-size, 14px);
+	line-height: var(--thegem-to-menu-line-height, 25px);
+	letter-spacing: var(--thegem-to-menu-letter-spacing, 0);
+	text-transform: var(--thegem-to-menu-text-transform, uppercase);
+	color: var(--thegem-to-h6-color);
+}
+.gem-infotext__title .title-default.light,
+.gem-infotext__subtitle .title-default.light,
+.gem-infotext__description .title-default.light {
+	font-family: var(--thegem-to-light-title-font-family);
+	font-style: var(--thegem-to-light-title-font-style);
+	font-weight: normal;
+}
+.gem-infotext__title .text-body,
+.gem-infotext__subtitle .text-body,
+.gem-infotext__description .text-body{
+	font-family: var(--thegem-to-body-font-family);
+	font-style: var(--thegem-to-body-font-style);
+	font-weight: var(--thegem-to-body-font-weight);
+	font-size: var(--thegem-to-body-font-size);
+	line-height: var(--thegem-to-body-line-height);
+	letter-spacing: var(--thegem-to-body-letter-spacing);
+	text-transform: var(--thegem-to-body-text-transform);
+}
+.gem-infotext__title .text-body-tiny,
+.gem-infotext__subtitle .text-body-tiny,
+.gem-infotext__description .text-body-tiny{
+	font-family: var(--thegem-to-body-tiny-font-family);
+	font-style: var(--thegem-to-body-tiny-font-style);
+	font-weight: var(--thegem-to-body-tiny-font-weight);
+	font-size: var(--thegem-to-body-tiny-font-size);
+	line-height: var(--thegem-to-body-tiny-line-height);
+	letter-spacing: var(--thegem-to-body-tiny-letter-spacing);
+	text-transform: var(--thegem-to-body-tiny-text-transform);
+}
+
+.gem-infotext a:hover .gem-infotext-icon .gem-icon-half-1,
+.gem-infotext a:hover .gem-infotext-icon .gem-icon-half-2,
+.gem-infotext a:hover .gem-infotext .title-customize,
+.gem-infotext a:hover .gem-infotext .subtitle-customize,
+.gem-infotext a:hover .gem-infotext .description-customize{
+	color: var(--thegem-to-menu-level1-color-hover, #00BCD4);
+}
