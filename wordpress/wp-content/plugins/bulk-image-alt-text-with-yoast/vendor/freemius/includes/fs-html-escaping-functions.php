@@ -17,7 +17,6 @@
          */
         function fs_html_get_allowed_kses_list() {
             $common_attributes = array(
-                'id'     => true,
                 'class'  => true,
                 'style'  => true,
                 'data-*' => true,
@@ -49,7 +48,6 @@
                 'strong' => $common_attributes,
                 'u'      => $common_attributes,
                 'b'      => $common_attributes,
-                'i'      => $common_attributes,
                 'hr'     => $common_attributes,
                 'span'   => $common_attributes,
                 'p'      => $common_attributes,

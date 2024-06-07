@@ -3,44 +3,27 @@ namespace Pagup\Bialty\Core;
 
 class Request
 {
-    public static function safe($value, $safe)
+    public static function post($val, $safe)
     {
-        if ( isset( $value ) && !empty( $value ) && in_array( $value, $safe ) ) { 
-            return sanitize_text_field( $value ); 
+
+        if ( isset( $_POST[$val] ) && in_array( $_POST[$val], $safe ) ) 
+        { 
+            
+            return sanitize_text_field( $_POST[$val] );
+
+        } else {
+
+            return "";
+
         }
         
-        return "";
+        
     }
 
-    public static function check($value)
+    public static function check($val)
     {
-        return isset($_POST[$value]) && !empty($_POST[$value]);
-    }
 
-    public static function text($value)
-    {
-        return static::check($value) ? sanitize_text_field( $value ) : '';
+        return isset( $_POST[$val] ) && !empty( $_POST[$val] ); 
+        
     }
-
-    public static function numeric($value)
-    {
-        if ( isset( $value ) && is_numeric( $value ) ) {
-            return sanitize_text_field( $value );
-        } else {
-            return null;
-        }
-    }
-
-    public static function array($array) {
-        foreach ( (array) $array as $k => $v ) {
-            if ( is_array( $v ) ) {
-                // Recursive call for nested arrays
-                $array[$k] = self::array($v);
-            } else {
-                $array[$k] = sanitize_key($v);
-            }
-        }
-     
-        return $array;                                                       
-    }    
 }

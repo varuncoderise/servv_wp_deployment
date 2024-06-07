@@ -55,32 +55,22 @@
                     beforeSend: function() {
                         $body.css( { cursor: 'wait' } );
 
-                        $this.addClass( 'disabled' );
-
-                        if ( $this.attr( 'id' ) === 'fs_temporary_duplicate_license_activation_link' ) {
-                            $this.append( '<i class="fs-ajax-spinner"></i>' );
-                        }
+                        $cloneResolutionNotice.find( '.button' ).addClass( 'disabled' );
 
                         $( window ).on( 'beforeunload', beforeUnload );
                     },
                     success   : function( resultObj ) {
                         $( window ).off( 'beforeunload', beforeUnload );
 
-                        if (
-                            resultObj.data &&
-                            resultObj.data.redirect_url &&
-                            '' !== resultObj.data.redirect_url
-                        ) {
+                        if ( resultObj.data.redirect_url && '' !== resultObj.data.redirect_url ) {
                             window.location = resultObj.data.redirect_url;
                         } else {
                             window.location.reload();
                         }
                     },
-                    complete  : function() {
+                    error  : function() {
                         $body.css( { cursor: cursor } );
-                        $this.removeClass( 'disabled' );
-
-                        $this.parent().find( '.fs-ajax-spinner' ).remove();
+                        $cloneResolutionNotice.find( '.button' ).removeClass( 'disabled' );
                     }
                 } );
             } );

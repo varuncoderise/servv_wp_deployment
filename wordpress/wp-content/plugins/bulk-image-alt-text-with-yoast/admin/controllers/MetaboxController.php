@@ -34,6 +34,9 @@ class MetaboxController
             'bialty_cs_alt'  => get_post_meta( $post->ID, 'bialty_cs_alt', true ),
             'disable_bialty' => get_post_meta( $post->ID, 'disable_bialty', true ),
         ];
+        //$meta = get_post_meta($post->ID);
+        //var_dump($meta);
+        //var_dump(Option::post_meta('disable_bialty'));
         return Plugin::view( 'metabox', $data );
     }
     
@@ -49,9 +52,9 @@ class MetaboxController
             return false;
         }
         $safe = array( "use_bialty_alt_yes", "disable_bialty_yes" );
-        ( Request::safe( $_POST['use_bialty_alt'] ?? '', $safe ) ? update_post_meta( $postid, 'use_bialty_alt', true ) : delete_post_meta( $postid, 'use_bialty_alt' ) );
+        ( Request::post( 'use_bialty_alt', $safe ) ? update_post_meta( $postid, 'use_bialty_alt', true ) : delete_post_meta( $postid, 'use_bialty_alt' ) );
         ( Request::check( 'bialty_cs_alt' ) ? update_post_meta( $postid, 'bialty_cs_alt', sanitize_text_field( $_POST['bialty_cs_alt'] ) ) : delete_post_meta( $postid, 'bialty_cs_alt' ) );
-        ( Request::safe( $_POST['disable_bialty'] ?? '', $safe ) ? update_post_meta( $postid, 'disable_bialty', true ) : delete_post_meta( $postid, 'disable_bialty' ) );
+        ( Request::post( 'disable_bialty', $safe ) ? update_post_meta( $postid, 'disable_bialty', true ) : delete_post_meta( $postid, 'disable_bialty' ) );
     }
     
     public function check( $val )

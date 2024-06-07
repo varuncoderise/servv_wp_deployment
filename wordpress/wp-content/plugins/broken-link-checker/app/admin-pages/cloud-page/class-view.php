@@ -52,7 +52,7 @@ class View extends Admin_Page {
 
     public function render_body() {
 	    ?>
-        <div class="blc-dashboard-container" id="<?php esc_attr_e( self::$unique_id ); ?>"></div>
+        <div id="<?php esc_attr_e( self::$unique_id ); ?>"></div>
 	    <?php
     }
 

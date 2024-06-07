@@ -4,7 +4,7 @@
 * Plugin Name: BIALTY - Bulk Image Alt Text (Alt tag, Alt Attribute) with Yoast SEO + WooCommerce
 * Description: Auto-add Alt texts, also called Alt Tags or Alt Attributes, from YOAST SEO Focus Keyword field (or page/post/product title) with your page/post/product title, to all images contained on your pages, posts, products, portfolios for better Google Ranking on search engines – Fully compatible with Woocommerce
 * Author: Pagup
-* Version: 2.0.1
+* Version: 1.4.7.2
 * Author URI: https://pagup.com/
 * Text Domain: bulk-image-alt-text-with-yoast
 * Domain Path: /languages/
@@ -23,9 +23,6 @@ if ( function_exists( 'bialty_fs' ) ) {
         }
         if ( !defined( 'BIALTY_PLUGIN_DIR' ) ) {
             define( 'BIALTY_PLUGIN_DIR', plugins_url( '', __FILE__ ) );
-        }
-        if ( !defined( 'BIALTY_PLUGIN_MODE' ) ) {
-            define( 'BIALTY_PLUGIN_MODE', "production" );
         }
         require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
         /******************************************
@@ -106,12 +103,9 @@ if ( function_exists( 'bialty_fs' ) ) {
             
             public function deactivate()
             {
-                
                 if ( \Pagup\Bialty\Core\Option::check( 'remove_settings' ) ) {
                     delete_option( 'bialty' );
-                    delete_option( 'bialty_tour' );
                 }
-            
             }
             
             function bialty_textdomain()

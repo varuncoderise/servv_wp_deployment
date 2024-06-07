@@ -9,9 +9,9 @@ class DomController
     use  DomHelper ;
     public function __construct()
     {
-        add_filter( 'the_content', array( &$this, 'bialty' ), 99999 );
-        add_filter( 'woocommerce_single_product_image_thumbnail_html', array( &$this, 'bialty_woocommerce_gallery' ), 99999 );
-        add_filter( 'post_thumbnail_html', array( &$this, 'bialty' ), 99999 );
+        add_filter( 'the_content', array( &$this, 'bialty' ), 100 );
+        add_filter( 'woocommerce_single_product_image_thumbnail_html', array( &$this, 'bialty_woocommerce_gallery' ), 100 );
+        add_filter( 'post_thumbnail_html', array( &$this, 'bialty' ), 100 );
     }
     
     public function bialty( $content )
@@ -39,14 +39,13 @@ class DomController
             @$dom->loadHTML( mb_convert_encoding( "<div class='bialty-container'>{$content}</div>", 'HTML-ENTITIES', 'UTF-8' ), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
         }
         
-        $post_types = [ 'post', 'page' ];
         $html = new \DOMXPath( $dom );
         foreach ( $html->query( "//img" ) as $node ) {
             // Return image URL
             $img_url = $node->getAttribute( "src" );
             // Set alt for Post & Pages
             
-            if ( is_singular( $post_types ) ) {
+            if ( is_singular( array( 'post', 'page' ) ) ) {
                 
                 if ( empty($node->getAttribute( 'alt' )) ) {
                     if ( Option::check( 'alt_empty' ) ) {
@@ -66,7 +65,7 @@ class DomController
         
         }
         // Set alt for Post/Pages
-        if ( is_singular( $post_types ) ) {
+        if ( is_singular( array( 'post', 'page' ) ) ) {
             if ( empty(Option::post_meta( 'disable_bialty' )) ) {
                 $content = $dom->saveHtml();
             }

@@ -1,1 +1,91 @@
-.elementor-kit-10212{--e-global-color-primary:#6EC1E4;--e-global-color-secondary:#54595F;--e-global-color-text:#7A7A7A;--e-global-color-accent:#61CE70;--e-global-typography-primary-font-family:"Roboto";--e-global-typography-primary-font-weight:600;--e-global-typography-secondary-font-family:"Roboto Slab";--e-global-typography-secondary-font-weight:400;--e-global-typography-text-font-family:"Roboto";--e-global-typography-text-font-weight:400;--e-global-typography-accent-font-family:"Roboto";--e-global-typography-accent-font-weight:500;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1140px;}.e-con{--container-max-width:1140px;}.elementor-widget:not(:last-child){margin-block-end:20px;}.elementor-element{--widgets-spacing:20px 20px;}{}h1.entry-title{display:var(--page-title-display);}@media(max-width:1024px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:1024px;}.e-con{--container-max-width:1024px;}}@media(max-width:767px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:767px;}.e-con{--container-max-width:767px;}}
+.elementor-kit-10212{--e-global-color-primary:#002E5B;--e-global-color-secondary:#2C3E50;--e-global-color-text:#718093;--e-global-color-accent:#00CBAF;--e-global-typography-primary-font-family:"Open Sauce Sans";--e-global-typography-primary-font-weight:700;--e-global-typography-secondary-font-family:"Open Sauce Sans";--e-global-typography-secondary-font-weight:400;--e-global-typography-text-font-family:"Open Sauce Sans";--e-global-typography-text-font-weight:300;--e-global-typography-accent-font-family:"Open Sauce Sans";--e-global-typography-accent-font-weight:400;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1140px;}.e-con{--container-max-width:1140px;}.elementor-widget:not(:last-child){margin-block-end:20px;}.elementor-element{--widgets-spacing:20px 20px;}{}h1.entry-title{display:var(--page-title-display);}.elementor-kit-10212 e-page-transition{background-color:#FFBC7D;}.site-header{padding-inline-end:0px;padding-inline-start:0px;}@media(max-width:1024px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:1024px;}.e-con{--container-max-width:1024px;}}@media(max-width:767px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:767px;}.e-con{--container-max-width:767px;}}/* Start custom CSS */.green .elementor-icon-box-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+.green p.elementor-icon-box-description::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    background: #D1F5F5;
+    left: 0px;
+}
+.prpl .elementor-icon-box-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+.prpl p.elementor-icon-box-description::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    background: rgba(142, 87, 212, 0.1);
+    left: 0px;
+}
+.dgreen .elementor-icon-box-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+.dgreen p.elementor-icon-box-description::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    background: rgba(0, 203, 142, 0.1);
+    left: 0px;
+}
+.blue .elementor-icon-box-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+.blue p.elementor-icon-box-description::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    background: rgba(41, 73, 156, 0.07);
+    left: 0px;
+}/* End custom CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: 100;
+	font-display: auto;
+	src: url('https://coderise.io/wp-content/uploads/2024/06/OpenSauceSans-Light.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-display: auto;
+	src: url('https://coderise.io/wp-content/uploads/2024/06/OpenSauceSans-Medium.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: 300;
+	font-display: auto;
+	src: url('https://coderise.io/wp-content/uploads/2024/06/OpenSauceSans-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-display: auto;
+	src: url('https://coderise.io/wp-content/uploads/2024/06/OpenSauceSans-SemiBold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: 700;
+	font-display: auto;
+	src: url('https://coderise.io/wp-content/uploads/2024/06/OpenSauceSans-Bold.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'Open Sauce Sans';
+	font-style: normal;
+	font-weight: 900;
+	font-display: auto;
+	src: url('https://coderise.io/wp-content/uploads/2024/06/OpenSauceSans-ExtraBold.ttf') format('truetype');
+}
+/* End Custom Fonts CSS */

@@ -709,7 +709,12 @@
          * @return bool
          */
         private function is_new_version_premium( FS_Plugin_Tag $new_version ) {
-            $params = fs_parse_url_params( $new_version->url );
+            $query_str = parse_url( $new_version->url, PHP_URL_QUERY );
+            if ( empty( $query_str ) ) {
+                return false;
+            }
+
+            parse_str( $query_str, $params );
 
             return ( isset( $params['is_premium'] ) && 'true' == $params['is_premium'] );
         }

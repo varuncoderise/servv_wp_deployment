@@ -3,9 +3,9 @@ Contributors: the-rock, pagup, freemius
 Tags: Alt Text, Alt Attribute, Alt tag, Google images, SEO
 Requires at least: 4.1
 Requires PHP: 5.6
-Tested up to: 6.5
-WC tested up to: 8.5
-Stable tag: 2.0.1
+Tested up to: 6.4
+WC tested up to: 7.4.0
+Stable tag: 1.4.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,17 +19,15 @@ BIALTY operates in automatic mode. Once installed, it will be active on all page
 
 **It's also compatible with:** TinyMCE, Page Builder by SiteOrigin, Elementor Page Builder, Gutenberg and more…
 
-**About the PRO feature:**
-
-- Add Post Title or Image Name as Alt Attribute
-- Add alt tag to Woocommerce product pages
-- Add website title as Alt tag
-- Select pages to "blacklist"
-- And more premium features
-
 **SUPPORTED IN 6 LANGUAGES**
 
 BIALTY plugins are translated and available in: English, French – Français, Russian –Руссɤɢɣ, Portuguese – Português, Spanish – Español, German – Deutsch
+
+**ABOUT THE PRO VERSION**
+
+The PRO version allows you to:
+
+Add (create or replace) Alt tags to your WooCommerce products based on the Focus Keywords or product title.
 
 **Why should you optimize your image Alt Texts? Because more than 20% of search queries are made on Google Images.** Check [here](https://sparktoro.com/blog/new-jumpshot-2018-data-where-searches-happen-on-the-web-google-amazon-facebook-beyond/)
 
@@ -292,11 +290,3 @@ Optimizing your images for SEO helps crawlers better index your web pages, which
 = 1.4.7.2 =
 * 🐛 FIX: Security issue
 * 🐛 FIX: Issue with getting post id from global $post
-
-= 2.0.0 =
-* 👌 IMPROVE: Complete user interface revamp. Better experience with more features.
-* 👌 IMPROVE: Image size removed from image name for alt tag in-case thumbnail is used.
-* 👌 IMPROVE: Updated freemius to v2.6.2
-
-= 2.0.1 =
-* 🐛 FIX: 500 Internal Server Error while saving options (Pro version)

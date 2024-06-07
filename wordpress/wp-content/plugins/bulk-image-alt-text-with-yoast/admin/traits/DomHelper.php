@@ -149,11 +149,7 @@ trait DomHelper {
     public function image_name($url)
     {
         $path = pathinfo($url);
-
-        // Remove the size part from the filename if it's a thumbnail
-        $filename = preg_replace('/-\d+x\d+$/', '', $path['filename']);
-
-        return $this->fileName($filename);
+        return $this->fileName($path['filename']);
     }
 
     public function site_title()
@@ -185,7 +181,7 @@ trait DomHelper {
     {
         $blacklist = Option::check('blacklist') ? Option::get('blacklist') : [];
 
-        if ( is_array($blacklist) ) {
+        if (empty($blacklist)) {
             return $blacklist;
         }
         

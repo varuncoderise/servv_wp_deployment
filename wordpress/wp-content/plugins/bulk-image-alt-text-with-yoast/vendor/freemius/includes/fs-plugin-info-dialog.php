@@ -838,8 +838,12 @@
                 'install-plugin' :
                 'upgrade-plugin';
 
-            $url_params = fs_parse_url_params( $network_status_url, true );
+            $query = parse_url( $network_status_url, PHP_URL_QUERY );
+            if ( empty( $query ) ) {
+                return $network_status_url;
+            }
 
+            parse_str( html_entity_decode( $query ), $url_params );
             if ( empty( $url_params ) || ! isset( $url_params['plugin'] ) ) {
                 return $network_status_url;
             }

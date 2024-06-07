@@ -20,13 +20,14 @@ use WPMUDEV_BLC\Core\Traits\Dashboard_API;
 
 use DateTime;
 use DateTimeZone;
+use WPMUDEV_Dashboard;
 use WPMUDEV_Dashboard_Api;
 use function array_keys;
 use function array_values;
 use function call_user_func;
 use function date;
 use function dirname;
-use function error_log; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
+use function error_log;
 use function fclose;
 use function file_exists;
 use function fopen;
@@ -150,7 +151,6 @@ final class Utilities {
 
 	/**
 	 * Checks if subsite id is valid.
-	 *
 	 * @param int|null $id
 	 *
 	 * @return false|void
@@ -160,7 +160,7 @@ final class Utilities {
 			return false;
 		}
 
-		return in_array( $id, get_sites( array( 'fields' => 'ids' ) ) );
+		return in_array( $id, get_sites( array( 'fields' => "ids" ) ) );
 	}
 
 	/**
@@ -193,7 +193,7 @@ final class Utilities {
 				$user_key = is_numeric( $parsed_query[ $wp_rewrite->author_base ] ) ? 'id' : 'login';
 				$user     = get_user_by( $user_key, sanitize_user( $parsed_query[ $wp_rewrite->author_base ] ) );
 			}
-		} elseif ( ! empty( $parsed_url['path'] ) ) {
+		} else if ( ! empty( $parsed_url['path'] ) ) {
 			// Check url with pretty permalink structure.
 			$path        = trim( $parsed_url['path'], '/\\' );
 			$author_base = "{$wp_rewrite->author_base}/";
@@ -207,7 +207,7 @@ final class Utilities {
 
 	/**
 	 * Get collation of a table's column.
-	 *
+	 * 
 	 * @since 2.2.2
 	 *
 	 * @param string $table The table name
@@ -232,7 +232,7 @@ final class Utilities {
 			$table_status                = null;
 
 			// Alternatively in order to check only for wp core tables $wpdb->tables() could be used.
-			$tables_like_table = $wpdb->get_results( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) );
+			$tables_like_table = $wpdb->get_results( $wpdb->prepare( "SHOW TABLES LIKE %s", $table ) );
 
 			if ( ! empty( $tables_like_table ) ) {
 				$table_status = $wpdb->get_row(
@@ -253,7 +253,7 @@ final class Utilities {
 
 	/**
 	 * Get charset of a table's column.
-	 *
+	 * 
 	 * @since 2.2.2
 	 *
 	 * @param string $table The table name
@@ -343,12 +343,27 @@ final class Utilities {
 	}
 
 	/**
-	 * Returns true if the current user has a Free membership, else false.
+	 *  Check if user is active member.
+	 *
+	 * @since 2.0.0
 	 *
 	 * @return bool
 	 */
-	public static function is_free_member(): bool {
-		return 'free' === self::get_membership_type();
+	public static function is_member() {
+		$is_member = false;
+
+		if ( class_exists( '\WPMUDEV_Dashboard' ) ) {
+			if ( method_exists( '\WPMUDEV_Dashboard_Api', 'get_membership_projects' ) && method_exists( '\WPMUDEV_Dashboard_Api', 'get_membership_type' ) ) {
+				$type      = WPMUDEV_Dashboard::$api->get_membership_type();
+				$is_member = ! empty( $type );
+
+				if ( ! $is_member && function_exists( 'is_wpmudev_member' ) ) {
+					$is_member = is_wpmudev_member();
+				}
+			}
+		}
+
+		return apply_filters( 'wpmudev_blc_is_member', $is_member );
 	}
 
 	/**
@@ -360,9 +375,9 @@ final class Utilities {
 		$url = null;
 
 		if ( self::get_dashboard_api() instanceof WPMUDEV_Dashboard_Api ) {
-			$site_id = self::site_id();
+			$site_id = self::get_site_id();
 
-			$url = apply_filters( 'wpmudev_blc_hub_scan_url', self::hub_home_url() . '?start-scan=1' );
+			$url = apply_filters( 'wpmudev_blc_hub_scan_url', self::hub_home_url() . "?start-scan=1" );
 		}
 
 		return $url;
@@ -377,7 +392,7 @@ final class Utilities {
 		$url = null;
 
 		if ( self::get_dashboard_api() instanceof WPMUDEV_Dashboard_Api ) {
-			$site_id = self::site_id();
+			$site_id = self::get_site_id();
 
 			$url = apply_filters( 'wpmudev_blc_hub_home_url', untrailingslashit( self::wpmudev_base_url() . "hub2/site/{$site_id}/blc" ) );
 		}
@@ -424,12 +439,10 @@ final class Utilities {
 	 */
 	public static function signup_url() {
 		if ( self::get_dashboard_api() instanceof WPMUDEV_Dashboard_Api ) {
-			return add_query_arg(
-				array(
-					'page' => 'wpmudev',
-				),
-				is_multisite() ? network_admin_url() : get_admin_url()
-			);
+
+			return add_query_arg( array(
+				'page' => 'wpmudev',
+			), is_multisite() ? network_admin_url() : get_admin_url() );
 		}
 
 		return self::hub_signup_url();
@@ -454,15 +467,6 @@ final class Utilities {
 	}
 
 	/**
-	 * Returns the hub's pricing url.
-	 *
-	 * @return string
-	 */
-	public static function dev_pricing_url() {
-		return apply_filters( 'wpmudev_blc_dev_pricing_url', self::wpmudev_base_url() . 'pricing/' );
-	}
-
-	/**
 	 * Returns the hub's start scan page url.
 	 *
 	 * @return string|null
@@ -474,9 +478,9 @@ final class Utilities {
 			$url = add_query_arg(
 				array(
 					'domain'  => untrailingslashit( self::schemaless_url() ),
-					'site_id' => self::site_id(),
+					'site_id' => self::site_id()
 				),
-				self::wpmudev_base_url() . 'api/blc/v1/scan'
+				self::wpmudev_base_url() . "api/blc/v1/scan"
 			);
 		}
 
@@ -525,9 +529,9 @@ final class Utilities {
 			$url = add_query_arg(
 				array(
 					'domain'  => untrailingslashit( self::schemaless_url() ),
-					'site_id' => self::site_id(),
+					'site_id' => self::site_id()
 				),
-				self::wpmudev_base_url() . 'api/blc/v1/result'
+				self::wpmudev_base_url() . "api/blc/v1/result"
 			);
 		}
 
@@ -540,7 +544,7 @@ final class Utilities {
 	 * @return string
 	 */
 	public static function hub_edit_link_completed() {
-		return apply_filters( 'hub_edit_link_completed', self::wpmudev_base_url() . 'api/blc/v1/edit-link-completed' );
+		return apply_filters( 'hub_edit_link_completed', self::wpmudev_base_url() . "api/blc/v1/edit-link-completed" );
 	}
 
 	public static function make_link_relative( string $url = '' ) {
@@ -555,7 +559,7 @@ final class Utilities {
 		// Check if missing url scheme.
 		// It is not unusual to have urls starting with two slashes.
 		// Relative urls starting with 2 slashes replace everything from the hostname onward.
-		if ( substr( $url, 0, 2 ) === '//' ) {
+		if ( substr( $url, 0, 2 ) === "//" ) {
 			$url = wp_parse_url( $site_url, PHP_URL_SCHEME ) . ':' . $url;
 		}
 
@@ -575,7 +579,7 @@ final class Utilities {
 	 * @since 2.0.0
 	 *
 	 * @param string|array $screen .
-	 * @param bool         $strict .
+	 * @param bool $strict .
 	 *
 	 * @return bool
 	 */
@@ -592,12 +596,12 @@ final class Utilities {
 
 		return is_array( $screen ) ?
 			! empty(
-				array_filter(
-					$screen,
-					function ( $page ) {
-						return strpos( get_current_screen()->id, $page ) !== false;
-					}
-				)
+			array_filter(
+				$screen,
+				function ( $page ) {
+					return strpos( get_current_screen()->id, $page ) !== false;
+				}
+			)
 			) : strpos( get_current_screen()->id, $screen ) !== false;
 	}
 
@@ -632,7 +636,7 @@ final class Utilities {
 	}
 
 	/**
-	 * Returns array with formatted hour list 0...23. Taken from Snapshot4.
+	 * Returns array with hour list 0...23. Taken from Snapshot4.
 	 *
 	 * @return array
 	 */
@@ -689,7 +693,7 @@ final class Utilities {
 		global $wp_locale;
 		$week_days = array();
 
-		for ( $day_index = 0; $day_index <= 6; $day_index++ ) {
+		for ( $day_index = 0; $day_index <= 6; $day_index ++ ) {
 			$week_days[] = array(
 				'key'   => $day_index,
 				'value' => $wp_locale->get_weekday( $day_index ),
@@ -722,7 +726,7 @@ final class Utilities {
 	/**
 	 * Returns user avatar by user id.
 	 *
-	 * @param int   $id .
+	 * @param int $id .
 	 * @param array $args .
 	 *
 	 * @return array|bool|string|null
@@ -736,7 +740,7 @@ final class Utilities {
 	 *
 	 * @param string $input .
 	 * @param string $input_type .
-	 * @param array  $args .
+	 * @param array $args .
 	 *
 	 * @return bool|null|array|string
 	 */
@@ -789,7 +793,7 @@ final class Utilities {
 	 * Returns avatar by a given email address.
 	 *
 	 * @param string $email .
-	 * @param array  $args .
+	 * @param array $args .
 	 *
 	 * @return array|bool|string|null
 	 */
@@ -846,6 +850,7 @@ final class Utilities {
 					return false;
 				}
 			);
+
 		}
 
 		return wp_list_pluck( $roles, 'name' );
@@ -868,7 +873,7 @@ final class Utilities {
 
 		if ( $seconds >= HOUR_IN_SECONDS ) {
 			$hours_str = sprintf(
-				// translators: 1. The Hours of the datetime.
+				//translators: 1. The Hours of the datetime.
 				_n(
 					'%d h ',
 					'%d h ',
@@ -880,7 +885,7 @@ final class Utilities {
 		}
 
 		$minutes_str = sprintf(
-			// translators: 1. The Minutes of the datetime.
+			//translators: 1. The Minutes of the datetime.
 			_n(
 				'%d min ',
 				'%d min ',
@@ -891,7 +896,7 @@ final class Utilities {
 		);
 
 		$seconds_str = ( $seconds % MINUTE_IN_SECONDS ) > 0 ? sprintf(
-			// translators: 1. The Seconds of the datetime.
+			//translators: 1. The Seconds of the datetime.
 			_n(
 				'%d s ',
 				'%d s ',
@@ -924,12 +929,13 @@ final class Utilities {
 	/**
 	 * Format a time/date
 	 *
-	 * @param integer           $timestamp Timestamp.
-	 * @param string|null       $format Date/time format.
+	 * @param integer $timestamp Timestamp.
+	 * @param string|null $format Date/time format.
 	 * @param DateTimeZone|null $timezone Timezone.
 	 *
 	 * @return string
 	 * @todo Rename method to be datetime specific.
+	 *
 	 */
 	public static function format_date( $timestamp, $format = null, $timezone = null ) {
 		if ( is_null( $format ) ) {
@@ -950,9 +956,10 @@ final class Utilities {
 	 *
 	 * @return string
 	 * @todo Rename method to be datetime specific.
+	 *
 	 */
 	public static function get_format() {
-		$format  = self::get_date_format();
+		$format = self::get_date_format();
 		$format .= _x( ' ', 'date time sep', 'broken-link-checker' );
 		$format .= self::get_time_format();
 
@@ -987,23 +994,24 @@ final class Utilities {
 	public static function timestamp_from_UTC( int $timestamp = null ) {
 		$timestamp = is_null( $timestamp ) ? time() : $timestamp;
 		$timestamp = strlen( $timestamp ) === 13 ? $timestamp / 1000 : $timestamp;
-		$date_time = DateTime::createFromFormat( 'U', $timestamp, new DateTimeZone( 'UTC' ) );
+		$date_time = DateTime::createFromFormat( 'U', $timestamp, new DateTimeZone('UTC') );
 
 		$date_time->setTimezone( new DateTimeZone( wp_timezone_string() ) );
 
-		return strtotime( $date_time->format( 'Y-m-d H:i:s' ) );
+		return strtotime( $date_time->format('Y-m-d H:i:s') );
 	}
 
 	/**
 	 * Converts microtime to date.
 	 *
 	 * @param int|float $microtime Microtime. Int when sent from API, float from PHP.
-	 * @param string    $form Output form. Accepted values 'full_date', 'date', 'day', 'month', 'year', 'time'.
-	 * @param bool      $gmt_to_local Convert from GMT to site local timezone. By default, it's false.
+	 * @param string $form Output form. Accepted values 'full_date', 'date', 'day', 'month', 'year', 'time'.
+	 * @param bool $gmt_to_local Convert from GMT to site local timezone. By default, it's false.
 	 *
 	 * @return string|null
 	 */
-	public static function microtime_to_date( $microtime = 0, string $form = 'full_date', bool $gmt_to_local = false ) {
+	public static function microtime_to_date( $microtime = 0, string $form = 'full_date', bool $gmt_to_local = false
+	) {
 		if ( ! in_array( $form, array( 'full_date', 'date', 'day', 'month', 'year', 'time' ), true ) ) {
 			return null;
 		}
@@ -1056,7 +1064,7 @@ final class Utilities {
 	 *
 	 * @param int|float|null $micro_start .
 	 * @param int|float|null $micro_end .
-	 * @param string         $format .
+	 * @param string $format .
 	 *
 	 * @return false|float|int|mixed|null
 	 */
@@ -1119,12 +1127,9 @@ final class Utilities {
 	 */
 	public static function is_localhost() {
 		return ! wp_doing_cron() &&
-				isset( $_SERVER['REMOTE_ADDR'] ) &&
-				in_array( $_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1' ), true ) &&
-				! (
-					( defined( 'WPMUDEV_DEVELOPMENT_MODE' ) && WPMUDEV_DEVELOPMENT_MODE ) ||
-					( defined( 'WP_ENVIRONMENT_TYPE' ) && 'local' === WP_ENVIRONMENT_TYPE )
-				);
+		       isset( $_SERVER['REMOTE_ADDR'] ) &&
+		       in_array( $_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1' ), true ) &&
+		       ! ( defined( 'WPMUDEV_DEVELOPMENT_MODE' ) && WPMUDEV_DEVELOPMENT_MODE );
 	}
 
 	/**
@@ -1171,9 +1176,9 @@ final class Utilities {
 	 * Returns replaced value based on array keys and callbacks/values from a given mapped array.
 	 *
 	 * @param string $content The string that contains the content we need to replace the mapped values.
-	 * @param array  $map An array mapping keys and values/callbacks.
+	 * @param array $map An array mapping keys and values/callbacks.
 	 * @param string $context An optional string holding a context. Used in filter to help in specificity.
-	 * @param array  $keys Optional. An array of keys to map in given mapped array. If empty all $map's array keys will be used.
+	 * @param array $keys Optional. An array of keys to map in given mapped array. If empty all $map's array keys will be used.
 	 *
 	 * @return string
 	 */
@@ -1198,7 +1203,7 @@ final class Utilities {
 	/**
 	 * Returns replaced value based on array keys and callbacks/values from a given mapped array.
 	 *
-	 * @param mixed  $input An array mapping keys and values/callbacks.
+	 * @param mixed $input An array mapping keys and values/callbacks.
 	 * @param string $context An optional string holding a context. Used in filter to help in specificity.
 	 */
 	public static function get_mapped_value( $input = null, string $context = null ) {
