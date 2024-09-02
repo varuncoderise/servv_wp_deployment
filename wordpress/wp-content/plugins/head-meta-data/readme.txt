@@ -9,9 +9,9 @@ Author URI: https://plugin-planet.com/
 Donate link: https://monzillamedia.com/donate.html
 Contributors: specialk
 Requires at least: 4.6
-Tested up to: 6.5
-Stable tag: 20240301
-Version:    20240301
+Tested up to: 6.6
+Stable tag: 20240627
+Version:    20240627
 Requires PHP: 5.6.20
 Text Domain: head-meta-data
 Domain Path: /languages
@@ -261,13 +261,13 @@ To ask a question, suggest a feature, or provide feedback, [contact me directly]
 If you like Head Meta Data, please take a moment to [give a 5-star rating](https://wordpress.org/support/plugin/head-meta-data/reviews/?rate=5#new-post). It helps to keep development and support going strong. Thank you!
 
 
-**20240301**
+**20240627**
 
-* Fixes deprecated warning in PHP 8.2 (Thanks [@knofte](https://wordpress.org/support/topic/php-8-2-deprecated-warnings-fix/))
+* Fixes bug with `dismiss_notice_link`
+* Moves `hmd-logo.jpg` to `/images/` directory
 * Updates plugin settings page
 * Updates default translation template
-* Improves plugin docs/readme.txt
-* Tests on WordPress 6.5 (beta)
+* Tests on WordPress 6.6 (beta)
 
 
 Full changelog @ [https://plugin-planet.com/wp/changelog/head-meta-data.txt](https://plugin-planet.com/wp/changelog/head-meta-data.txt)

@@ -28,6 +28,7 @@ use DUP_Web_Services;
 use Duplicator\Ajax\ServicesDashboard;
 use Duplicator\Ajax\ServicesEducation;
 use Duplicator\Ajax\ServicesExtraPlugins;
+use Duplicator\Ajax\ServicesTools;
 use Duplicator\Controllers\EmailSummaryPreviewPageController;
 use Duplicator\Controllers\WelcomeController;
 use Duplicator\Core\Controllers\ControllersManager;
@@ -37,6 +38,8 @@ use Duplicator\Core\Notifications\Notifications;
 use Duplicator\Core\Notifications\Review;
 use Duplicator\Core\Views\TplMng;
 use Duplicator\Utils\CronUtils;
+use Duplicator\Utils\ExtraPlugins\CrossPromotion;
+use Duplicator\Utils\ExtraPlugins\ExtraPluginsMng;
 use Duplicator\Utils\Upsell;
 use Duplicator\Views\DashboardWidget;
 use Duplicator\Views\EducationElements;
@@ -115,12 +118,15 @@ class Bootstrap
             Notifications::init();
             EmailSummaryPreviewPageController::init();
             HelpPageController::init();
+            CrossPromotion::init();
             $dashboardService = new ServicesDashboard();
             $dashboardService->init();
             $extraPlugin = new ServicesExtraPlugins();
             $extraPlugin->init();
             $educationService = new ServicesEducation();
             $educationService->init();
+            $toolsServices = new ServicesTools();
+            $toolsServices->init();
         }
     }
 

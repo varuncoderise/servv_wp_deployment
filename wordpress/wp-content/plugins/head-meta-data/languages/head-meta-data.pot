@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Head Meta Data\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-01 23:37+0000\n"
+"POT-Creation-Date: 2024-06-27 20:12+0000\n"
 "POT-Revision-Date: Thu Aug 11 2016 12:07:05 GMT-0700 (PDT)\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
@@ -27,11 +27,11 @@ msgstr ""
 msgid " or higher, and has been deactivated!"
 msgstr ""
 
-#: head-meta-data.php:615
+#: head-meta-data.php:622
 msgid "(HMD) adds a custom set of"
 msgstr ""
 
-#: head-meta-data.php:743
+#: head-meta-data.php:750
 msgid "(under &ldquo;Custom meta tags&rdquo;) for more details."
 msgstr ""
 
@@ -41,15 +41,11 @@ msgid ""
 "posts &amp; pages."
 msgstr ""
 
-#: head-meta-data.php:884
-msgid "and"
-msgstr ""
-
 #: support-panel.php:61
 msgid "and is greatly appreciated."
 msgstr ""
 
-#: head-meta-data.php:790
+#: head-meta-data.php:797
 msgid "And more specifically the section on meta tags:"
 msgstr ""
 
@@ -59,48 +55,44 @@ msgid ""
 "awesome WordPress resources."
 msgstr ""
 
-#: head-meta-data.php:886
-msgid "Apply code"
-msgstr ""
-
-#: head-meta-data.php:858
+#: head-meta-data.php:865
 msgid "Are you sure you want to restore all default options?"
 msgstr ""
 
-#: head-meta-data.php:886
-msgid "at checkout. Sale ends 5/25/24."
-msgstr ""
-
-#: support-panel.php:53 head-meta-data.php:885
+#: support-panel.php:53
 msgid "books"
 msgstr ""
 
-#: head-meta-data.php:826
+#: head-meta-data.php:889
+msgid "Buy one get one FREE with code"
+msgstr ""
+
+#: head-meta-data.php:833
 msgid "by"
 msgstr ""
 
-#: head-meta-data.php:654
+#: head-meta-data.php:661
 msgid ""
 "Check box for HTML format (default), or leave unchecked for XHTML format"
 msgstr ""
 
-#: head-meta-data.php:674
+#: head-meta-data.php:681
 msgid "Classify your site, examples: Shopping, Movies, Food"
 msgstr ""
 
-#: head-meta-data.php:734
+#: head-meta-data.php:741
 msgid "Contact the developer via contact form"
 msgstr ""
 
-#: head-meta-data.php:740
+#: head-meta-data.php:747
 msgid "Custom Content"
 msgstr ""
 
-#: head-meta-data.php:753 head-meta-data.php:779
+#: head-meta-data.php:760 head-meta-data.php:786
 msgid "Custom content"
 msgstr ""
 
-#: head-meta-data.php:963
+#: head-meta-data.php:968
 msgid "Dismiss"
 msgstr ""
 
@@ -112,25 +104,29 @@ msgstr ""
 msgid "donation"
 msgstr ""
 
-#: head-meta-data.php:649
+#: head-meta-data.php:656
 msgid "Enable meta tags"
 msgstr ""
 
-#: head-meta-data.php:647
+#: head-meta-data.php:654
 msgid "Enable tags"
 msgstr ""
 
-#: head-meta-data.php:786
+#: head-meta-data.php:793
 msgid "For more information on document headers:"
 msgstr ""
 
-#: head-meta-data.php:714
+#: head-meta-data.php:721
 msgid ""
 "Frequency (in days) for search engines to revisit your site for re-indexing, "
 "examples: 1, 2, 3"
 msgstr ""
 
-#: head-meta-data.php:626
+#: head-meta-data.php:891
+msgid "Get&nbsp;plugins&nbsp;&raquo;"
+msgstr ""
+
+#: head-meta-data.php:633
 msgid "give it a 5-star rating"
 msgstr ""
 
@@ -138,29 +134,25 @@ msgstr ""
 msgid "Give us a 5-star rating at WordPress.org"
 msgstr ""
 
-#: head-meta-data.php:881
-msgid "Go Pro!"
-msgstr ""
-
 #. Name of the plugin
 #: support-panel.php:7 head-meta-data.php:42
 msgid "Head Meta Data"
 msgstr ""
 
-#: head-meta-data.php:772
+#: head-meta-data.php:779
 msgid ""
 "Here is a preview of your meta tags and custom content. Note that any "
 "special characters will be encoded in the actual page markup."
 msgstr ""
 
-#: head-meta-data.php:742
+#: head-meta-data.php:749
 msgid ""
 "Here you may define any custom content that should be included in the head "
 "section of your pages. You also can add custom tags to specific posts and "
 "pages. Check the"
 msgstr ""
 
-#: head-meta-data.php:641
+#: head-meta-data.php:648
 msgid "Here you may define your"
 msgstr ""
 
@@ -168,7 +160,7 @@ msgstr ""
 msgid "Homepage"
 msgstr ""
 
-#: head-meta-data.php:652
+#: head-meta-data.php:659
 msgid "HTML format"
 msgstr ""
 
@@ -180,68 +172,68 @@ msgstr ""
 msgid "https://plugin-planet.com/"
 msgstr ""
 
-#: head-meta-data.php:625
+#: head-meta-data.php:632
 msgid "If you like this plugin, please"
 msgstr ""
 
-#: head-meta-data.php:746
+#: head-meta-data.php:753
 msgid ""
 "In the next setting, you can include any of the following shortcodes to "
 "display dynamic information:"
 msgstr ""
 
-#: head-meta-data.php:729
+#: head-meta-data.php:736
 msgid "Indicate any robots directives for your site, example: index,follow"
 msgstr ""
 
-#: head-meta-data.php:724
+#: head-meta-data.php:731
 msgid ""
 "Indicate any template used by your site, example: Awesome WordPress Theme"
 msgstr ""
 
-#: head-meta-data.php:704
+#: head-meta-data.php:711
 msgid ""
 "Indicate the rating of your site&rsquo;s content, examples: General, Mature, "
 "Restricted"
 msgstr ""
 
-#: head-meta-data.php:669
+#: head-meta-data.php:676
 msgid "Indicate your site&rsquo;s author(s)"
 msgstr ""
 
-#: head-meta-data.php:679
+#: head-meta-data.php:686
 msgid "Indicate your site&rsquo;s copyright information"
 msgstr ""
 
-#: head-meta-data.php:684
+#: head-meta-data.php:691
 msgid "Indicate your site&rsquo;s designer/developer"
 msgstr ""
 
-#: head-meta-data.php:689
+#: head-meta-data.php:696
 msgid ""
 "Indicate your site&rsquo;s distribution level, examples: Global, Regional, "
 "Local"
 msgstr ""
 
-#: head-meta-data.php:694
+#: head-meta-data.php:701
 msgid "Indicate your site&rsquo;s primary language, examples: EN-US, EN, FR"
 msgstr ""
 
-#: head-meta-data.php:709
+#: head-meta-data.php:716
 msgid "Indicate your site&rsquo;s primary resource type, examples: Document"
 msgstr ""
 
-#: head-meta-data.php:719
+#: head-meta-data.php:726
 msgid ""
 "Indicate your site&rsquo;s primary subject(s), examples: Photography, Sports,"
 " Pancakes"
 msgstr ""
 
-#: head-meta-data.php:699
+#: head-meta-data.php:706
 msgid "Indicate your site&rsquo;s publisher"
 msgstr ""
 
-#: head-meta-data.php:743
+#: head-meta-data.php:750
 msgid "Installation docs"
 msgstr ""
 
@@ -249,11 +241,11 @@ msgstr ""
 msgid "Jeff Starr"
 msgstr ""
 
-#: head-meta-data.php:827
+#: head-meta-data.php:834
 msgid "Jeff Starr on Twitter"
 msgstr ""
 
-#: head-meta-data.php:808
+#: head-meta-data.php:815
 msgid ""
 "leave this option unchecked to remember your settings. Or, to go ahead and "
 "restore all default options, check the box, save your settings, and then "
@@ -264,7 +256,7 @@ msgstr ""
 msgid "Like this plugin? Give it a"
 msgstr ""
 
-#: head-meta-data.php:621 head-meta-data.php:770
+#: head-meta-data.php:628 head-meta-data.php:777
 msgid "Live Preview"
 msgstr ""
 
@@ -272,87 +264,87 @@ msgstr ""
 msgid "Make a donation&nbsp;&raquo;"
 msgstr ""
 
-#: head-meta-data.php:662
+#: head-meta-data.php:669
 msgid "Meta abstract"
 msgstr ""
 
-#: head-meta-data.php:667
+#: head-meta-data.php:674
 msgid "Meta author"
 msgstr ""
 
-#: head-meta-data.php:657
+#: head-meta-data.php:664
 msgid "Meta Charset"
 msgstr ""
 
-#: head-meta-data.php:672
+#: head-meta-data.php:679
 msgid "Meta classification"
 msgstr ""
 
-#: head-meta-data.php:677
+#: head-meta-data.php:684
 msgid "Meta copyright"
 msgstr ""
 
-#: head-meta-data.php:682
+#: head-meta-data.php:689
 msgid "Meta designer"
 msgstr ""
 
-#: head-meta-data.php:687
+#: head-meta-data.php:694
 msgid "Meta distribution"
 msgstr ""
 
-#: head-meta-data.php:692
+#: head-meta-data.php:699
 msgid "Meta language"
 msgstr ""
 
-#: head-meta-data.php:697
+#: head-meta-data.php:704
 msgid "Meta publisher"
 msgstr ""
 
-#: head-meta-data.php:702
+#: head-meta-data.php:709
 msgid "Meta rating"
 msgstr ""
 
-#: head-meta-data.php:707
+#: head-meta-data.php:714
 msgid "Meta resource-type"
 msgstr ""
 
-#: head-meta-data.php:712
+#: head-meta-data.php:719
 msgid "Meta revisit-after"
 msgstr ""
 
-#: head-meta-data.php:727
+#: head-meta-data.php:734
 msgid "Meta Robots"
 msgstr ""
 
-#: head-meta-data.php:717
+#: head-meta-data.php:724
 msgid "Meta subject"
 msgstr ""
 
-#: head-meta-data.php:639
+#: head-meta-data.php:646
 msgid "Meta Tags"
 msgstr ""
 
-#: head-meta-data.php:775
+#: head-meta-data.php:782
 msgid "Meta tags"
 msgstr ""
 
-#: head-meta-data.php:722
+#: head-meta-data.php:729
 msgid "Meta template"
 msgstr ""
 
-#: head-meta-data.php:783
+#: head-meta-data.php:790
 msgid "More infos"
 msgstr ""
 
-#: head-meta-data.php:732
+#: head-meta-data.php:739
 msgid "More tags"
 msgstr ""
 
-#: head-meta-data.php:828
+#: head-meta-data.php:835
 msgid "Obsessive Web Design &amp; Development"
 msgstr ""
 
-#: head-meta-data.php:757
+#: head-meta-data.php:764
 msgid "Optional tags/markup for the"
 msgstr ""
 
@@ -364,7 +356,11 @@ msgstr ""
 msgid "or by making a"
 msgstr ""
 
-#: head-meta-data.php:610
+#: head-meta-data.php:890
+msgid "or take 30% off with code"
+msgstr ""
+
+#: head-meta-data.php:617
 msgid "Overview"
 msgstr ""
 
@@ -384,7 +380,7 @@ msgstr ""
 msgid "Please show support by purchasing one of my"
 msgstr ""
 
-#: head-meta-data.php:325 head-meta-data.php:622 head-meta-data.php:826
+#: head-meta-data.php:325 head-meta-data.php:629 head-meta-data.php:833
 msgid "Plugin Homepage"
 msgstr ""
 
@@ -392,7 +388,7 @@ msgstr ""
 msgid "Plugin Planet: Pro WordPress Plugins"
 msgstr ""
 
-#: head-meta-data.php:620 head-meta-data.php:637
+#: head-meta-data.php:627 head-meta-data.php:644
 msgid "Plugin Settings"
 msgstr ""
 
@@ -400,12 +396,12 @@ msgstr ""
 msgid "plugins"
 msgstr ""
 
-#: head-meta-data.php:630
-msgid "Pro version coming soon!"
+#: head-meta-data.php:888
+msgid "Pro Plugin Sale!"
 msgstr ""
 
-#: head-meta-data.php:883
-msgid "Pro WordPress plugins"
+#: head-meta-data.php:637
+msgid "Pro version coming soon!"
 msgstr ""
 
 #: head-meta-data.php:332
@@ -416,27 +412,23 @@ msgstr ""
 msgid "requires WordPress "
 msgstr ""
 
-#: head-meta-data.php:803
+#: head-meta-data.php:810
 msgid "Restore default options upon plugin deactivation/reactivation."
 msgstr ""
 
-#: head-meta-data.php:799
+#: head-meta-data.php:806
 msgid "Restore Defaults"
 msgstr ""
 
-#: head-meta-data.php:882
-msgid "Save 30% on our"
-msgstr ""
-
-#: head-meta-data.php:765 head-meta-data.php:811
+#: head-meta-data.php:772 head-meta-data.php:818
 msgid "Save Settings"
 msgstr ""
 
-#: head-meta-data.php:758
+#: head-meta-data.php:765
 msgid "section (leave blank to disable). For more ideas, check out"
 msgstr ""
 
-#: head-meta-data.php:617
+#: head-meta-data.php:624
 msgid "section of all posts and pages."
 msgstr ""
 
@@ -444,23 +436,23 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: head-meta-data.php:659
+#: head-meta-data.php:666
 msgid "Specify the character encoding for your web pages (default: utf-8)"
 msgstr ""
 
-#: head-meta-data.php:735
+#: head-meta-data.php:742
 msgid "Suggest more meta tags"
 msgstr ""
 
-#: head-meta-data.php:664
+#: head-meta-data.php:671
 msgid "Summarize your site&rsquo;s content in a short sentence"
 msgstr ""
 
-#: head-meta-data.php:616
+#: head-meta-data.php:623
 msgid "tags to the"
 msgstr ""
 
-#: head-meta-data.php:641
+#: head-meta-data.php:648
 msgid "tags. To disable any tag, leave it blank."
 msgstr ""
 
@@ -468,19 +460,19 @@ msgstr ""
 msgid "Thank you for using"
 msgstr ""
 
-#: head-meta-data.php:626
+#: head-meta-data.php:633
 msgid "THANK YOU for your support!"
 msgstr ""
 
-#: head-meta-data.php:759
+#: head-meta-data.php:766
 msgid "this article at Perishable Press"
 msgstr ""
 
-#: head-meta-data.php:807
+#: head-meta-data.php:814
 msgid "Tip:"
 msgstr ""
 
-#: head-meta-data.php:642
+#: head-meta-data.php:649
 msgid "To add more tags, visit the option &ldquo;Custom Content&rdquo; below."
 msgstr ""
 
@@ -488,15 +480,15 @@ msgstr ""
 msgid "to upgrade WordPress and try again."
 msgstr ""
 
-#: head-meta-data.php:601
+#: head-meta-data.php:608
 msgid "Toggle all panels"
 msgstr ""
 
-#: head-meta-data.php:780
+#: head-meta-data.php:787
 msgid "Visit your front-end pages to view any dynamic shortcode output."
 msgstr ""
 
-#: head-meta-data.php:776
+#: head-meta-data.php:783
 msgid ""
 "When meta tags are enabled, the following code will be added to the head "
 "section of your web pages."
@@ -506,15 +498,15 @@ msgstr ""
 msgid "WordPress Admin area"
 msgstr ""
 
-#: head-meta-data.php:816
+#: head-meta-data.php:823
 msgid "WP Resources"
 msgstr ""
 
-#: head-meta-data.php:787
+#: head-meta-data.php:794
 msgid "XHTML Document Header Resource"
 msgstr ""
 
-#: head-meta-data.php:791
+#: head-meta-data.php:798
 msgid "XHTML Document Header Resource: meta tags"
 msgstr ""
 
