@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image:
+  repository: varuncoderise/wordpress
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+
+database:
+  host: mysql-service
+  user: wordpress
+  password: wordpress-password
+  name: wordpress_db
+
