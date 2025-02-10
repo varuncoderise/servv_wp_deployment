@@ -1,7 +1,5 @@
 <?php
-/**
- * WordPress Configuration File for Minikube Deployment
- */
+
 
 define('WP_MEMORY_LIMIT', '1024M');
 define('FORCE_SSL_ADMIN', true);
@@ -16,7 +14,7 @@ $wp_port = trim(shell_exec("kubectl get svc wordpress -o=jsonpath='{.spec.ports[
 define( 'WP_HOME', 'http://' . $minikube_ip . ':' . $wp_port );
 define( 'WP_SITEURL', 'http://' . $minikube_ip . ':' . $wp_port );
 
-/* Database settings */
+/* Database */
 define('DB_NAME', getenv('WORDPRESS_DB_NAME') ?: 'wordpress_db');
 define('DB_USER', getenv('WORDPRESS_DB_USER') ?: 'wordpress');
 define('DB_PASSWORD', getenv('WORDPRESS_DB_PASSWORD') ?: 'wordpress-password');
