@@ -6,7 +6,7 @@ WP deployment on AKS cluster
 This repository contains  steps to deploy a **WordPress website** on **Minikube** using **Helm, Docker, and Kubernetes**.
 
 ---
-## ** Prerequisites**
+## **Prerequisites**
 Ensure you have the following tools installed on your system:
 
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
