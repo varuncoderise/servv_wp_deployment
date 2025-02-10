@@ -6,7 +6,7 @@ WP deployment on AKS cluster
 This repository contains  steps to deploy a **WordPress website** on **Minikube** using **Helm, Docker, and Kubernetes**.
 
 ---
-## **🔹 Prerequisites**
+## ** Prerequisites**
 Ensure you have the following tools installed on your system:
 
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
@@ -28,7 +28,7 @@ minikube status
 ```
 
 ---
-## **🔹 Step 1: Clone the Repository**
+## **Step 1: Clone the Repository**
 Since the organization provided a customized WordPress website, clone it:
 
 ```bash
@@ -37,7 +37,7 @@ cd directory-name
 ```
 
 ---
-## **🔹 Step 2: Create Helm Charts**
+## **Step 2: Create Helm Charts**
 1️⃣ **Create a Helm chart for MySQL inside helm directory:**
 ```bash
 helm create mysql
@@ -51,7 +51,7 @@ helm create wordpress
 Modify `wordpress/values.yaml`, `wordpress/templates/deployment.yaml`, `wordpress/templates/service.yaml`:
 
 ---
-## **🔹 Step 3: Build & Push Docker Image**
+## **Step 3: Build & Push Docker Image**
 1️⃣ **Log in to Docker Hub**
 ```bash
 docker login
@@ -73,19 +73,19 @@ docker push your-dockerhub-user/wordpress:latest
 ```
 
 ---
-## **🔹 Step 4: Deploy MySQL Using Helm**
+## **Step 4: Deploy MySQL Using Helm**
 ```bash
 helm install mysql ./mysql -f mysql/values.yaml
 ```
 
 ---
-## **🔹 Step 5: Deploy WordPress Using Helm**
+## **Step 5: Deploy WordPress Using Helm**
 ```bash
 helm install wordpress ./wordpress -f wordpress/values.yaml
 ```
 
 ---
-## **🔹 Step 6: Access the WordPress Site**
+## **Step 6: Access the WordPress Site**
 
 ### **Option 1: Using Minikube Service Command**
 ```bash
