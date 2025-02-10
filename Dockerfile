@@ -1,22 +1,11 @@
-# Base Image
-FROM wordpress:php8.1-apache
+FROM wordpress:php7.4-apache
 
-# Set working directory
-WORKDIR /var/www/html
+RUN rm -rf /usr/src/wordpress/*
 
-# Install necessary PHP extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql && \
-    docker-php-ext-enable pdo pdo_mysql
+COPY wordpress/ /usr/src/wordpress
 
-# Copy the customized WordPress site
-COPY . .
+COPY php/php.ini-production /usr/local/etc/php/php.ini
 
-# Set file permissions
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /usr/src/wordpress
 
-# Expose Apache port
 EXPOSE 80
-
-# Start Apache
-CMD ["apache2-foreground"]
-
