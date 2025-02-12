@@ -1,1 +1,13 @@
+name: CD Pipeline for WordPress
 
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [deploy]
+
+env:
+
+
+  
+
+jobs:
