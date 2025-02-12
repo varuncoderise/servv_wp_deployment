@@ -1,8 +1,5 @@
 # servv_wp_deployment
-WP deployment on AKS cluster 
-<<<<<<< HEAD
-=======
-# **WordPress Deployment on Minikube**
+WP deployment on AKS cluste
 
 ## **Overview**
 This repository contains  steps to deploy a **WordPress website** on **Minikube** using **Helm, Docker, and Kubernetes**.
